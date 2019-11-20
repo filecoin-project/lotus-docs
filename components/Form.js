@@ -101,7 +101,8 @@ export const Input = ({
       onFocus={onFocus}
       onBlur={onBlur}
       type={type}
-      placeholder={placeholder}>
+      placeholder={placeholder}
+    >
       {children}
     </input>
   );

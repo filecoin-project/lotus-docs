@@ -25,6 +25,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+          <link href="/static/prism.css" rel="stylesheet" />
         </Head>
         <body>
           <Main />

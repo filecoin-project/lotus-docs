@@ -1,9 +1,9 @@
-import express from "express";
-import next from "next";
-import BodyParser from "body-parser";
-import compression from "compression";
+import express from 'express';
+import next from 'next';
+import BodyParser from 'body-parser';
+import compression from 'compression';
 
-const dev = process.env.NODE_ENV !== "production";
+const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 1337;
 const app = next({ dev, quiet: false });
 const nextRequestHandler = app.getRequestHandler();
@@ -15,19 +15,30 @@ app.prepare().then(() => {
     server.use(compression());
   }
 
-  server.use("/public", express.static("public"));
+  server.use('/public', express.static('public'));
   server.use(BodyParser.json());
   server.use(
     BodyParser.urlencoded({
-      extended: false
+      extended: false,
     })
   );
 
-  server.get("/:slug", async (req, res) => {
-    return app.render(req, res, "/");
+  server.get('/cn+:slug', async (req, res) => {
+    req.params.language = 'cn';
+    return app.render(req, res, '/');
   });
 
-  server.get("*", async (req, res) => {
+  server.get('/en+:slug', async (req, res) => {
+    req.params.language = 'en';
+    return app.render(req, res, '/');
+  });
+
+  server.get('/:slug', async (req, res) => {
+    req.params.language = 'en';
+    return app.render(req, res, '/');
+  });
+
+  server.get('*', async (req, res) => {
     return nextRequestHandler(req, res, req.url);
   });
 

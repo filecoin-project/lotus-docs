@@ -2,20 +2,23 @@ import * as Constants from '~/common/constants';
 
 import { injectGlobal } from 'react-emotion';
 
-/*
-  @font-face {
-    font-family: 'heading';
-    src: url('/static/Font-SansSerif-Demi.woff');
-  }
-
-  @font-face {
-    font-family: 'body';
-    src: url('/static/Font-SansSerif-Book.woff');
-  }
-*/
-
 /* prettier-ignore */
 export default () => injectGlobal`
+  @font-face {
+    font-family: 'body';
+    src: url('/static/SansSerif-Regular.woff2') format('woff');
+  }
+
+  @font-face {
+    font-family: 'medium';
+    src: url('/static/SansSerif-Medium.woff2') format('woff');
+  }
+
+  @font-face {
+    font-family: 'mono';
+    src: url('/static/SFMono-Medium.woff') format('woff');
+  }
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -54,6 +57,11 @@ export default () => injectGlobal`
 
     ::-webkit-scrollbar {
       display: none;
+    }
+
+    strong {
+      font-family: "medium";
+      font-weight: 400;
     }
   }
 `;

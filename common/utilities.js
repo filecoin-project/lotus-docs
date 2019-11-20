@@ -1,4 +1,4 @@
-import * as Strings from "~/common/strings";
+import * as Strings from '~/common/strings';
 
 export const removeAllMarks = editor => {
   const { value } = editor;
@@ -21,16 +21,16 @@ export const findFirstHeading = editorStateValue => {
       continue;
     }
 
-    if (node.type === "H1") {
+    if (node.type === 'H1') {
       return node.text;
     }
 
-    if (node.type === "H2") {
+    if (node.type === 'H2') {
       return node.text;
     }
   }
 
-  return "Untitled";
+  return 'Untitled';
 };
 
 export const findFirstParagraph = editorStateValue => {
@@ -43,10 +43,10 @@ export const findFirstParagraph = editorStateValue => {
       continue;
     }
 
-    if (node.type === "P") {
+    if (node.type === 'P') {
       return node.text;
     }
   }
 
-  return "";
+  return '';
 };

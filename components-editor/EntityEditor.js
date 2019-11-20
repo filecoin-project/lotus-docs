@@ -1,81 +1,84 @@
-import * as React from "react";
-import * as Utilities from "~/common/utilities";
-import * as Strings from "~/common/strings";
+import * as React from 'react';
+import * as Utilities from '~/common/utilities';
+import * as Strings from '~/common/strings';
 
-import { runPluginOnReturn, runPluginOnModReturn } from "~/common/plugins";
+import PluginCodeBlock from '~/plugins/slate-code-block';
+import PluginPrism from '~/plugins/slate-prism';
 
-import { Block } from "slate";
-import { Editor } from "slate-react";
-import { P, H1, H2 } from "~/components/Text";
-import { BOLD, ITALIC, UNDERLINED, INLINE_CODE } from "~/components/Marks";
-import { isKeyHotkey } from "~/vendor/is-hotkey";
+import { Block } from 'slate';
+import { Editor } from 'slate-react';
+import { P, H1, H2, H3, UL, OL, LI, BLOCKQUOTE } from '~/components/Text';
+import { CODE, CODE_LINE } from '~/components/Code';
+import {
+  BOLD,
+  ITALIC,
+  UNDERLINED,
+  INLINE_CODE,
+  LINK,
+} from '~/components/Marks';
 
-const isBoldHotkey = isKeyHotkey("mod+b");
-const isItalicHotkey = isKeyHotkey("mod+i");
-const isUnderlinedHotkey = isKeyHotkey("mod+u");
-const isTab = isKeyHotkey("tab");
+const plugins = [PluginCodeBlock(), PluginPrism()];
 
 const renderBlock = ({ attributes, children, node }, editor, next) => {
   switch (node.type) {
-    case "H1":
+    case 'H1':
       return <H1 {...attributes} children={children} ref={null} />;
-    case "H2":
+    case 'H2':
       return <H2 {...attributes} children={children} ref={null} />;
-    case "P":
+    case 'H3':
+      return <H3 {...attributes} children={children} ref={null} />;
+    case 'P':
       return <P {...attributes} children={children} ref={null} />;
+    case 'CODE':
+      return <CODE {...attributes} children={children} ref={null} />;
+    case 'CODE_LINE':
+      return <CODE_LINE {...attributes} children={children} ref={null} />;
+    case 'UL':
+      return <UL {...attributes} children={children} ref={null} />;
+    case 'OL':
+      return <OL {...attributes} children={children} ref={null} />;
+    case 'LI':
+      return <LI {...attributes} children={children} ref={null} />;
+    case 'BLOCKQUOTE':
+      return <BLOCKQUOTE {...attributes} children={children} ref={null} />;
     default:
       return next();
+  }
+};
+
+const renderInline = (props, editor, next) => {
+  const { attributes, children, node } = props;
+
+  switch (node.type) {
+    case 'link': {
+      const { data } = node;
+      const href = data.get('href');
+      return (
+        <LINK {...attributes} href={href} ref={null}>
+          {children}
+        </LINK>
+      );
+    }
+
+    default: {
+      return next();
+    }
   }
 };
 
 const renderMark = ({ children, mark, attributes }, editor, next) => {
   switch (mark.type) {
-    case "bold":
+    case 'bold':
       return <BOLD {...attributes} children={children} />;
-    case "italic":
+    case 'italic':
       return <ITALIC {...attributes} children={children} />;
-    case "underlined":
+    case 'underlined':
       return <UNDERLINED {...attributes} children={children} />;
+    case 'code':
+      return <INLINE_CODE {...attributes} children={children} />;
     default:
       return next();
   }
-};
-
-const onKeyDown = (event, editor, next) => {
-  if (event.key === "Enter") {
-    if (event.metaKey) {
-      return runPluginOnModReturn(event, editor, next);
-    }
-
-    if (event.shiftKey) {
-      event.preventDefault();
-      return editor.insertText("\n");
-    }
-
-    return runPluginOnReturn(event, editor, next);
-  }
-
-  if (isBoldHotkey(event)) {
-    event.preventDefault();
-    return editor.toggleMark("bold");
-  }
-
-  if (isItalicHotkey(event)) {
-    event.preventDefault();
-    return editor.toggleMark("italic");
-  }
-
-  if (isUnderlinedHotkey(event)) {
-    event.preventDefault();
-    return editor.toggleMark("underlined");
-  }
-
-  if (isTab(event)) {
-    event.preventDefault();
-    return editor.insertText("  ");
-  }
-
-  return next();
 };
 
 export default ({
@@ -86,18 +89,19 @@ export default ({
   onChange,
   onSave,
   onCancel,
-  renderEditor
+  renderEditor,
 }) => (
   <Editor
+    readOnly
     spellCheck={spellCheck}
     autoFocus={autoFocus}
-    readOnly={readOnly}
-    placeholder="Start typing..."
+    plugins={plugins}
+    placeholder=""
     value={value}
     onChange={onChange}
-    onKeyDown={onKeyDown}
     renderBlock={renderBlock}
     renderMark={renderMark}
+    renderInline={renderInline}
     renderEditor={renderEditor}
   />
 );

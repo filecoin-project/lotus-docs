@@ -1,8 +1,8 @@
-import * as Strings from "~/common/strings";
-import * as Utilities from "~/common/utilities";
+import * as Strings from '~/common/strings';
+import * as Utilities from '~/common/utilities';
 
-import { EMPTY_PARAGRAPH_BLOCK } from "~/common/fixtures";
-import { Block } from "slate";
+import { EMPTY_PARAGRAPH_BLOCK } from '~/common/fixtures';
+import { Block } from 'slate';
 
 export const runPluginOnReturn = (event, editor, next) => {
   const { value } = editor;
