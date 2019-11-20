@@ -1,0 +1,28 @@
+{
+  "name": "lotus-documentation",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon .",
+    "build": "next build",
+    "start": "NODE_ENV=production node ."
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "babel-plugin-emotion": "^9.2.11",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "emotion": "^9.2.11",
+    "emotion-server": "^9.2.11",
+    "express": "^4.17.1",
+    "immutable": "^4.0.0-rc.12",
+    "minisearch": "^2.1.3",
+    "next": "^9.1.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-emotion": "^9.2.11",
+    "slate": "^0.47.9",
+    "slate-react": "^0.22.10"
+  }
+}
