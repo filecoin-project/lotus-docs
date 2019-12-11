@@ -124,6 +124,7 @@ export default props => {
           <a
             href="https://github.com/filecoin-project/lotus/tree/master/documentation"
             className={STYLES_ITEM}
+            target="_blank"
             style={{ marginRight: 24 }}
           >
             <span className={STYLES_GHOST_ELEMENT} />
@@ -132,6 +133,7 @@ export default props => {
           <a
             className={STYLES_ITEM}
             href="https://github.com/filecoin-project/lotus"
+            target="_blank"
             style={{ marginRight: 28 }}
           >
             <SVG.GitHub height="16px" style={{ marginRight: 8 }} />
@@ -140,6 +142,7 @@ export default props => {
           <a
             className={STYLES_ITEM}
             href="https://github.com/filecoin-project/lotus/releases/latest"
+            target="_blank"
           >
             <span className={STYLES_GHOST_ELEMENT} style={{ marginRight: 16 }}>
               <span className={STYLES_EMOJI}>📦</span>
