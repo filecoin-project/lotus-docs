@@ -1,4 +1,9 @@
 export default {
+  ['bellman']: {
+    title: 'Bellman',
+    value:
+      'Bellman is a rust crate for building zk-SNARK circuits. It provides circuit traits and primitive structures, as well as basic gadget implementations such as booleans and number abstractions.',
+  },
   ['nvme']: {
     title: 'NVMe',
     value: `(non-volatile memory express) is a host controller interface and storage protocol created to accelerate the transfer of data between enterprise and client systems and solid-state drives (SSDs) over a computer's high-speed Peripheral Component Interconnect Express (PCIe) bus.`,
@@ -71,10 +76,15 @@ export default {
     title: 'Proof-of-Spacetime(s)',
     value: `Filecoin is a protocol token whose blockchain runs on a novel proof, called Proof-of-Spacetime, where blocks are created by miners that are storing data.`,
   },
-  ['filecoin-testnet']: {
-    title: 'TestNet',
+  ['lotus-testnet']: {
+    title: 'Filecoin TestNet',
     value:
-      'Until we launch, we are making lots of changes to Lotus. The TestNet is expected to bring a few significant fixes/improvements.',
+      'Until we launch, we are making lots of changes to Lotus. The TestNet is expected to bring a few significant fixes/improvements. During TestNet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until MainNet launch.',
+  },
+  ['filecoin-testnet']: {
+    title: 'Filecoin TestNet',
+    value:
+      'Until we launch, we are making lots of changes to Lotus. The TestNet is expected to bring a few significant fixes/improvements. During TestNet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until MainNet launch.',
   },
   ['filecoin-decentralized-storage-market']: {
     title: 'Filecoin Decentralized Storage Market',

@@ -1,30 +1,30 @@
-import d0 from '~/pre-processing/en/hardware.md';
-import d0_1 from '~/pre-processing/en/hardware-mining.md';
+import d0 from '~/.lotus-docs-pre-processing/en/hardware.md';
+import d0_1 from '~/.lotus-docs-pre-processing/en/hardware-mining.md';
 
-import d1 from '~/pre-processing/en/getting-started.md';
-import d1_1 from '~/pre-processing/en/install-lotus-arch.md';
-import d1_2 from '~/pre-processing/en/install-lotus-ubuntu.md';
-import d1_3 from '~/pre-processing/en/install-lotus-macos.md';
-import d1_4 from '~/pre-processing/en/updating-lotus.md';
-import d1_5 from '~/pre-processing/en/join-devnet.md';
-import d1_t from '~/pre-processing/en/setup-troubleshooting.md';
+import d1 from '~/.lotus-docs-pre-processing/en/getting-started.md';
+import d1_1 from '~/.lotus-docs-pre-processing/en/install-lotus-arch.md';
+import d1_2 from '~/.lotus-docs-pre-processing/en/install-lotus-ubuntu.md';
+import d1_3 from '~/.lotus-docs-pre-processing/en/install-lotus-macos.md';
+import d1_4 from '~/.lotus-docs-pre-processing/en/updating-lotus.md';
+import d1_5 from '~/.lotus-docs-pre-processing/en/join-testnet.md';
+import d1_t from '~/.lotus-docs-pre-processing/en/setup-troubleshooting.md';
 
-import d2 from '~/pre-processing/en/storing-data.md';
-import d2_t from '~/pre-processing/en/storing-data-troubleshooting.md';
+import d2 from '~/.lotus-docs-pre-processing/en/storing-data.md';
+import d2_t from '~/.lotus-docs-pre-processing/en/storing-data-troubleshooting.md';
 
-import d3 from '~/pre-processing/en/retrieving-data.md';
+import d3 from '~/.lotus-docs-pre-processing/en/retrieving-data.md';
 
-import d4 from '~/pre-processing/en/mining.md';
-import d4_1 from '~/pre-processing/en/setting-a-static-port.md';
-import d4_t from '~/pre-processing/en/mining-troubleshooting.md';
+import d4 from '~/.lotus-docs-pre-processing/en/mining.md';
+import d4_1 from '~/.lotus-docs-pre-processing/en/setting-a-static-port.md';
+import d4_t from '~/.lotus-docs-pre-processing/en/mining-troubleshooting.md';
 
-import d5 from '~/pre-processing/en/api.md';
-import d5_1 from '~/pre-processing/en/api-scripting-support.md';
-import d5_t from '~/pre-processing/en/api-troubleshooting.md';
+import d5 from '~/.lotus-docs-pre-processing/en/api.md';
+import d5_1 from '~/.lotus-docs-pre-processing/en/api-scripting-support.md';
+import d5_t from '~/.lotus-docs-pre-processing/en/api-troubleshooting.md';
 
-import d6 from '~/pre-processing/en/dev-tools.md';
-import d6_1 from '~/pre-processing/en/dev-tools-jaegar-tracing.md';
-import d6_2 from '~/pre-processing/en/dev-tools-pond-ui.md';
+import d6 from '~/.lotus-docs-pre-processing/en/dev-tools.md';
+import d6_1 from '~/.lotus-docs-pre-processing/en/dev-tools-jaegar-tracing.md';
+import d6_2 from '~/.lotus-docs-pre-processing/en/dev-tools-pond-ui.md';
 
 export default {
   posts: [
@@ -81,9 +81,9 @@ export default {
         },
         {
           id: `1-5`,
-          title: 'Join DevNet',
-          slug: 'en+join-devnet',
-          github: 'en/join-devnet.md',
+          title: 'Join TestNet',
+          slug: 'en+join-testnet',
+          github: 'en/join-testnet.md',
           value: d1_5,
         },
         {

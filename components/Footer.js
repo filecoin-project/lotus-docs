@@ -123,7 +123,7 @@ export default props => {
         >
           <span className={STYLES_ITEM_LEFT}>Faucet</span>
           <span className={STYLES_ITEM_RIGHT}>
-            Do you need Filecoin for testing? Get some from the DevNet faucet.
+            Do you need Filecoin for testing? Get some from the TestNet faucet.
           </span>
         </a>
       </footer>

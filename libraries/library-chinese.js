@@ -1,25 +1,25 @@
-import d0 from '~/pre-processing/cn/hardware.md';
-import d0_1 from '~/pre-processing/cn/hardware-mining.md';
+import d0 from '~/.lotus-docs-pre-processing/cn/hardware.md';
+import d0_1 from '~/.lotus-docs-pre-processing/cn/hardware-mining.md';
 
-import d1 from '~/pre-processing/cn/getting-started.md';
-import d1_1 from '~/pre-processing/cn/install-lotus-arch.md';
-import d1_2 from '~/pre-processing/cn/install-lotus-ubuntu.md';
-import d1_3 from '~/pre-processing/cn/install-lotus-macos.md';
-import d1_5 from '~/pre-processing/cn/join-devnet.md';
+import d1 from '~/.lotus-docs-pre-processing/cn/getting-started.md';
+import d1_1 from '~/.lotus-docs-pre-processing/cn/install-lotus-arch.md';
+import d1_2 from '~/.lotus-docs-pre-processing/cn/install-lotus-ubuntu.md';
+import d1_3 from '~/.lotus-docs-pre-processing/cn/install-lotus-macos.md';
+import d1_5 from '~/.lotus-docs-pre-processing/cn/join-testnet.md';
 
-import d2 from '~/pre-processing/cn/storing-data.md';
+import d2 from '~/.lotus-docs-pre-processing/cn/storing-data.md';
 
-import d3 from '~/pre-processing/cn/retrieving-data.md';
+import d3 from '~/.lotus-docs-pre-processing/cn/retrieving-data.md';
 
-import d4 from '~/pre-processing/cn/mining.md';
-import d4_1 from '~/pre-processing/cn/setting-a-static-port.md';
+import d4 from '~/.lotus-docs-pre-processing/cn/mining.md';
+import d4_1 from '~/.lotus-docs-pre-processing/cn/setting-a-static-port.md';
 
-import d5 from '~/pre-processing/cn/api.md';
-import d5_1 from '~/pre-processing/cn/api-scripting-support.md';
+import d5 from '~/.lotus-docs-pre-processing/cn/api.md';
+import d5_1 from '~/.lotus-docs-pre-processing/cn/api-scripting-support.md';
 
-import d6 from '~/pre-processing/cn/dev-tools.md';
-import d6_1 from '~/pre-processing/cn/dev-tools-jaegar-tracing.md';
-import d6_2 from '~/pre-processing/cn/dev-tools-pond-ui.md';
+import d6 from '~/.lotus-docs-pre-processing/cn/dev-tools.md';
+import d6_1 from '~/.lotus-docs-pre-processing/cn/dev-tools-jaegar-tracing.md';
+import d6_2 from '~/.lotus-docs-pre-processing/cn/dev-tools-pond-ui.md';
 
 export default {
   posts: [
@@ -76,9 +76,9 @@ export default {
         },
         {
           id: `1-5`,
-          title: 'Join DevNet with CLI',
-          slug: 'cn+join-devnet',
-          github: 'cn/join-devnet.md',
+          title: 'Join TestNet with CLI',
+          slug: 'cn+join-testnet',
+          github: 'cn/join-testnet.md',
           value: d1_5,
         },
       ],
