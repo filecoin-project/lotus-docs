@@ -1,6 +1,6 @@
 # Lotus
 
-Lotus is an implementation of the **Filecoin Distributed Storage Network**. You can run the Lotus software client to join the **Filecoin TestNet** (when it launches).
+Lotus is an implementation of the **Filecoin Distributed Storage Network**. You can run the Lotus software client to join the **Filecoin TestNet**.
 
 For more details about Filecoin, check out the [Filecoin Spec](https://github.com/filecoin-project/specs).
 
