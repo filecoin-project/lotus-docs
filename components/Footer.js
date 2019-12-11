@@ -118,7 +118,7 @@ export default props => {
         </a>
         <a
           className={STYLES_ITEM}
-          href="https://lotus-faucet.kittyhawk.wtf/"
+          href="https://faucet.testnet.filecoin.io/"
           target="_blank"
         >
           <span className={STYLES_ITEM_LEFT}>Faucet</span>
