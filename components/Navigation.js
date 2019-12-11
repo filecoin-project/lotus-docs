@@ -134,7 +134,7 @@ export default props => {
             className={STYLES_ITEM}
             href="https://github.com/filecoin-project/lotus"
             target="_blank"
-            style={{ marginRight: 28 }}
+            style={{ marginRight: 24 }}
           >
             <SVG.GitHub height="16px" style={{ marginRight: 8 }} />
             <span>GitHub</span>
@@ -144,9 +144,7 @@ export default props => {
             href="https://github.com/filecoin-project/lotus/releases/latest"
             target="_blank"
           >
-            <span className={STYLES_GHOST_ELEMENT} style={{ marginRight: 16 }}>
-              <span className={STYLES_EMOJI}>📦</span>
-            </span>
+            <span className={STYLES_GHOST_ELEMENT} />
             <span>Binaries</span>
           </a>
         </div>
