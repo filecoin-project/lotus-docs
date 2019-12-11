@@ -37,7 +37,7 @@ export default {
       posts: [
         {
           id: `0-1`,
-          title: 'Mining Hardware',
+          title: 'Testing Configuration',
           slug: 'en+hardware-mining',
           github: 'en/hardware-mining.md',
           value: d0_1,
