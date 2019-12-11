@@ -26,11 +26,16 @@ const STYLES_TITLE_BAR = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: hidden;
 `;
 
 const STYLES_LEFT = css`
   min-width: 10%;
   width: 100%;
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 `;
 
 const STYLES_RIGHT = css`
@@ -73,6 +78,7 @@ const STYLES_ITEM = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: nowrap;
   color: ${Constants.theme.pageText};
 
   :visited {
@@ -95,9 +101,19 @@ const CHINESE_COMPONENT = (
 );
 
 const STYLES_GHOST_ELEMENT = css`
+  font-size: 16px;
   height: 16px;
-  width: 1px;
+  min-width: 1px;
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const STYLES_EMOJI = css`
+  position: absolute;
+  top: -5px;
+  left: -8px;
 `;
 
 export default props => {
@@ -106,18 +122,29 @@ export default props => {
       <div className={STYLES_TITLE_BAR}>
         <div className={STYLES_LEFT}>
           <a
-            href="https://github.com/filecoin-project/lotus/releases/latest"
+            href="https://github.com/filecoin-project/lotus/tree/master/documentation"
             className={STYLES_ITEM}
             style={{ marginRight: 24 }}
           >
             <span className={STYLES_GHOST_ELEMENT} />
-            Lotus Documentation {PackageInfo.version}
+            <span>Docs {PackageInfo.version}</span>
           </a>
           <a
             className={STYLES_ITEM}
             href="https://github.com/filecoin-project/lotus"
+            style={{ marginRight: 28 }}
           >
-            <SVG.GitHub height="16px" style={{ marginRight: 8 }} /> GitHub
+            <SVG.GitHub height="16px" style={{ marginRight: 8 }} />
+            <span>GitHub</span>
+          </a>
+          <a
+            className={STYLES_ITEM}
+            href="https://github.com/filecoin-project/lotus/releases/latest"
+          >
+            <span className={STYLES_GHOST_ELEMENT} style={{ marginRight: 16 }}>
+              <span className={STYLES_EMOJI}>📦</span>
+            </span>
+            <span>Binaries</span>
           </a>
         </div>
         <div className={STYLES_RIGHT}>
