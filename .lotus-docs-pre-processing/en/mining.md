@@ -50,7 +50,7 @@ To mine:
 lotus-storage-miner run
 ```
 
-If you are downloading **Filecoin Proof Parameters**, the download can take some time.
+If you are downloading **Filecoin Proof Parameters**, the download can take some time. If you are located geographically in China you can try our [JD Cloud CDN](https://s3.cn-south-1.jdcloud-oss.com/proof-parameters/filecoin-proof-parameters-v20-testnet.tar.gz).
 
 Get information about your miner:
 

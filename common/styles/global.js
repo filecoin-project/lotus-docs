@@ -1,6 +1,6 @@
-import * as Constants from '~/common/constants';
-
 import { injectGlobal } from 'react-emotion';
+
+import * as Constants from '~/common/constants';
 
 /* prettier-ignore */
 export default () => injectGlobal`
