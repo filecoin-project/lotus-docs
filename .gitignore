@@ -1,5 +1,4 @@
 .next
-.lotus-docs-pre-processing
 .DS_STORE
 package-lock.json
 node_modules
