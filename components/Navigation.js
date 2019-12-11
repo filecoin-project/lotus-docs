@@ -106,7 +106,7 @@ export default props => {
       <div className={STYLES_TITLE_BAR}>
         <div className={STYLES_LEFT}>
           <a
-            href="https://github.com/filecoin-project/lotus/tree/master/documentation"
+            href="https://github.com/filecoin-project/lotus/releases/latest"
             className={STYLES_ITEM}
             style={{ marginRight: 24 }}
           >
