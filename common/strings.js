@@ -1,6 +1,5 @@
 import * as MarkdownDeserializer from '~/vendor/markdown-deserializer';
 
-import { EMPTY_EXAMPLE_POST } from '~/common/fixtures';
 import { Value } from 'slate';
 
 export const clientInsertElements = options => {
@@ -85,10 +84,6 @@ export const elide = (string, length = 140, emptyState = '...') => {
   }
 
   return `${string.substring(0, length)}...`;
-};
-
-export const createSampleEditorJSON = () => {
-  return EMPTY_EXAMPLE_POST;
 };
 
 export const parseMD = markdown => {

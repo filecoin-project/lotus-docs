@@ -76,7 +76,7 @@ export default {
         },
         {
           id: `1-5`,
-          title: 'Join TestNet with CLI',
+          title: 'Join Testnet',
           slug: 'cn+join-testnet',
           github: 'cn/join-testnet.md',
           value: d1_5,

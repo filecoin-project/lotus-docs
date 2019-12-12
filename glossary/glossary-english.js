@@ -46,7 +46,7 @@ export default {
   ['faucet']: {
     title: 'Filecoin Test Faucet',
     value:
-      'A webpage where you can get free test Filecoin to participate in the TestNet.',
+      'A webpage where you can get free test Filecoin to participate in the Testnet.',
   },
   ['chain']: {
     title: 'Chain',
@@ -77,14 +77,14 @@ export default {
     value: `Filecoin is a protocol token whose blockchain runs on a novel proof, called Proof-of-Spacetime, where blocks are created by miners that are storing data.`,
   },
   ['lotus-testnet']: {
-    title: 'Filecoin TestNet',
+    title: 'Filecoin Testnet',
     value:
-      'Until we launch, we are making lots of changes to Lotus. The TestNet is expected to bring a few significant fixes/improvements. During TestNet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until MainNet launch.',
+      'Until we launch, we are making lots of changes to Lotus. The Testnet is expected to bring a few significant fixes/improvements. During Testnet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until Mainnet launch.',
   },
   ['filecoin-testnet']: {
-    title: 'Filecoin TestNet',
+    title: 'Filecoin Testnet',
     value:
-      'Until we launch, we are making lots of changes to Lotus. The TestNet is expected to bring a few significant fixes/improvements. During TestNet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until MainNet launch.',
+      'Until we launch, we are making lots of changes to Lotus. The Testnet is expected to bring a few significant fixes/improvements. During Testnet, you can retrieve test filecoin from our network faucet to use as collateral to start mining. Test filecoin do not have any value – the official filecoin tokens will not be released until Mainnet launch.',
   },
   ['filecoin-decentralized-storage-market']: {
     title: 'Filecoin Decentralized Storage Market',

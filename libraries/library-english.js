@@ -81,7 +81,7 @@ export default {
         },
         {
           id: `1-5`,
-          title: 'Join TestNet',
+          title: 'Join Testnet',
           slug: 'en+join-testnet',
           github: 'en/join-testnet.md',
           value: d1_5,
