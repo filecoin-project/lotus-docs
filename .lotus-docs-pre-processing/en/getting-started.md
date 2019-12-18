@@ -1,13 +1,13 @@
 # Lotus
 
-Lotus is an implementation of the **Filecoin Distributed Storage Network**. You can run the Lotus software client to join the **Filecoin Testnet**.
+Lotus is an implementation of the **Filecoin Distributed Storage Network**. You can run the Lotus software client to join the **Filecoin TestNet** (when it launches).
 
 For more details about Filecoin, check out the [Filecoin Spec](https://github.com/filecoin-project/specs).
 
 ## What can I learn here?
 
 - How to install Lotus on [Arch Linux](https://docs.lotu.sh/en+install-lotus-arch), [Ubuntu](https://docs.lotu.sh/en+install-lotus-ubuntu), or [MacOS](https://docs.lotu.sh/en+install-lotus-macos).
-- Joining the [Lotus Testnet](https://docs.lotu.sh/en+join-testnet).
+- Joining the [Lotus TestNet](https://docs.lotu.sh/en+join-testnet).
 - [Storing](https://docs.lotu.sh/en+storing-data) or [retrieving](https://docs.lotu.sh/en+retrieving-data) data.
 - Mining Filecoin using the **Lotus Storage Miner** in your [CLI](https://docs.lotu.sh/en+mining).
 

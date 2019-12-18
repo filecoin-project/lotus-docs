@@ -6,7 +6,6 @@ import * as Strings from '~/common/strings';
 import * as SVG from '~/components/SVG';
 
 import GlossaryEnglish from '~/glossary/glossary-english';
-import GlossaryChinese from '~/glossary/glossary-chinese';
 import RectBoundary from '~/components/RectBoundary';
 
 const delay = async waitMs => {
@@ -112,9 +111,6 @@ export default class GlobalTooltips extends React.Component {
 
   _handleAdd = e => {
     let glossary = GlossaryEnglish;
-    if (this.props.langauge === 'cn') {
-      glossary = GlossaryChinese;
-    }
 
     const { tooltips } = this.state;
 

@@ -5,7 +5,7 @@
   },
   "nvme": {
     "title": "NVMe",
-    "value": `(non-volatile memory express) is a host controller interface and storage protocol created to accelerate the transfer of data between enterprise and client systems and solid-state drives (SSDs) over a computer's high-speed Peripheral Component Interconnect Express (PCIe) bus.`
+    "value": "(non-volatile memory express) is a host controller interface and storage protocol created to accelerate the transfer of data between enterprise and client systems and solid-state drives (SSDs) over a computer's high-speed Peripheral Component Interconnect Express (PCIe) bus."
   },
   "multiaddr": {
     "title": "Multiaddr",
@@ -49,7 +49,7 @@
   },
   "sector": {
     "title": "Sector",
-    "value": `A fixed-size block of data of SECTOR_SIZE bytes which generally contains client's data.`
+    "value": "A fixed-size block of data of SECTOR_SIZE bytes which generally contains client's data."
   },
   "sealing": {
     "title": "Sealing",
@@ -61,7 +61,7 @@
   },
   "posts": {
     "title": "Proof-of-Spacetime(s)",
-    "value": `Filecoin is a protocol token whose blockchain runs on a novel proof, called Proof-of-Spacetime, where blocks are created by miners that are storing data.`
+    "value": "Filecoin is a protocol token whose blockchain runs on a novel proof, called Proof-of-Spacetime, where blocks are created by miners that are storing data."
   },
   "lotus-testnet": {
     "title": "Filecoin Testnet",
@@ -89,7 +89,7 @@
   },
   "lotus-node": {
     "title": "Lotus Node",
-    "value": `The Lotus Node is full of capabilities. It runs the Blockchain system, makes retrieval deals, does data transfer, supports block producer logic, and syncs and validates the chain.`
+    "value": "The Lotus Node is full of capabilities. It runs the Blockchain system, makes retrieval deals, does data transfer, supports block producer logic, and syncs and validates the chain."
   },
   "block-rewards": {
     "title": "Block Reward",
@@ -97,11 +97,11 @@
   },
   "block-producer-miner": {
     "title": "Miner (Block Producer)",
-    "value": `The Block Producer Miner's logic. It currently shares an interface and process with the Lotus Node. A Block Producer chooses which messages to include in a block and is rewarded according to each message’s gas price and consumption, forming a market.`
+    "value": "The Block Producer Miner's logic. It currently shares an interface and process with the Lotus Node. A Block Producer chooses which messages to include in a block and is rewarded according to each message’s gas price and consumption, forming a market."
   },
   "lotus-storage-miner": {
     "title": "Storage Miner (lotus-storage-miner)",
-    "value": `The Storage Miner's logic. It has its own dedicated process. Contributes to the network through Sector commitments and Proofs of Spacetime to prove that it is storing the sectors it has commited to.`
+    "value": "The Storage Miner's logic. It has its own dedicated process. Contributes to the network through Sector commitments and Proofs of Spacetime to prove that it is storing the sectors it has commited to."
   },
   "swarm-port": {
     "title": "Swarm Port (Libp2p)",

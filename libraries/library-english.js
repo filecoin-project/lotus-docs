@@ -16,6 +16,7 @@ import d3 from '~/.lotus-docs-pre-processing/en/retrieving-data.md';
 
 import d4 from '~/.lotus-docs-pre-processing/en/mining.md';
 import d4_1 from '~/.lotus-docs-pre-processing/en/setting-a-static-port.md';
+import d4_2 from '~/.lotus-docs-pre-processing/en/mining-worker.md';
 import d4_t from '~/.lotus-docs-pre-processing/en/mining-troubleshooting.md';
 
 import d5 from '~/.lotus-docs-pre-processing/en/api.md';
@@ -23,8 +24,9 @@ import d5_1 from '~/.lotus-docs-pre-processing/en/api-scripting-support.md';
 import d5_t from '~/.lotus-docs-pre-processing/en/api-troubleshooting.md';
 
 import d6 from '~/.lotus-docs-pre-processing/en/dev-tools.md';
-import d6_1 from '~/.lotus-docs-pre-processing/en/dev-tools-jaegar-tracing.md';
+import d6_1 from '~/.lotus-docs-pre-processing/en/dev-tools-jaeger-tracing.md';
 import d6_2 from '~/.lotus-docs-pre-processing/en/dev-tools-pond-ui.md';
+import d6_3 from '~/.lotus-docs-pre-processing/en/local-dev-net.md';
 
 export default {
   posts: [
@@ -104,6 +106,13 @@ export default {
       posts: [
         {
           id: `5-1`,
+          title: 'Mining Worker',
+          slug: 'en+mining-worker',
+          github: 'en/mining-worker.md',
+          value: d4_2,
+        },
+        {
+          id: `5-1`,
           title: 'Static Ports',
           slug: 'en+setting-a-static-port',
           github: 'en/setting-a-static-port.md',
@@ -173,6 +182,14 @@ export default {
       value: d6,
       posts: [
         {
+          id: `2_3`,
+          title: 'Setup Local Devnet',
+          slug: 'en+setup-local-dev-net',
+          github: 'en/local-dev-net.md',
+          value: d6_3,
+          posts: [],
+        },
+        {
           id: `2_1`,
           title: 'Pond UI',
           slug: 'en+dev-tools-pond-ui',
@@ -182,9 +199,9 @@ export default {
         },
         {
           id: `2_2`,
-          title: 'Jaegar Tracing',
-          slug: 'en+dev-tools-jaegar-tracing',
-          github: 'en/dev-tools-jaegar-tracing.md',
+          title: 'Jaeger Tracing',
+          slug: 'en+dev-tools-jaeger-tracing',
+          github: 'en/dev-tools-jaeger-tracing.md',
           value: d6_1,
           posts: [],
         },

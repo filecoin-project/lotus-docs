@@ -2,7 +2,7 @@
 
 Here are instructions to learn how to perform storage mining. For hardware specifications please read [this](https://docs.lotu.sh/en+hardware-mining).
 
-It is useful to [join the Testnet](https://docs.lotu.sh/en+join-testnet) prior to attempting storage mining for the first time.
+It is useful to [join the TestNet](https://docs.lotu.sh/en+join-testnet) prior to attempting storage mining for the first time.
 
 NOTE: While a miner is running, there will be many `WARN` and `ERROR` logs.
 
@@ -16,7 +16,7 @@ lotus wallet list
 
 With your wallet address:
 
-- Visit the [faucet](https://faucet.testnet.filecoin.io/)
+- Visit the [faucet](https://lotus-faucet.kittyhawk.wtf/miner.html)
 - Click "Create Miner"
 - DO NOT REFRESH THE PAGE. THIS OPERATION CAN TAKE SOME TIME.
 
@@ -50,7 +50,7 @@ To mine:
 lotus-storage-miner run
 ```
 
-If you are downloading **Filecoin Proof Parameters**, the download can take some time. If you are located geographically in China you can try our [JD Cloud CDN](https://s3.cn-south-1.jdcloud-oss.com/proof-parameters/filecoin-proof-parameters-v20-testnet.tar.gz).
+If you are downloading **Filecoin Proof Parameters**, the download can take some time.
 
 Get information about your miner:
 

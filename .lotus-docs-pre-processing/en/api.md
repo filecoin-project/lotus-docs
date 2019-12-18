@@ -22,7 +22,7 @@ For now, you can look into different files to find methods available to you base
 * [Lotus node API](https://github.com/filecoin-project/lotus/blob/master/api/api_full.go)
 * [Storage miner API](https://github.com/filecoin-project/lotus/blob/master/api/api_storage.go)
 
-The necessary permissions for each are in [api/struct.go](https://github.com/filecoin-project/lotus/blob/master/api/apistruct/struct.go).
+The necessary permissions for each are in [api/struct.go](https://github.com/filecoin-project/lotus/blob/master/api/struct.go).
 
 ## How do I make an API request?
 

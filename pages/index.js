@@ -20,7 +20,6 @@ import GlobalTooltips from '~/components/GlobalTooltips';
 import TableOfContents from '~/components/TableOfContents';
 
 import LibraryEnglish from '~/libraries/library-english';
-import LibraryChinese from '~/libraries/library-chinese';
 
 const SEARCH_LIMIT = 20;
 
@@ -112,9 +111,6 @@ export default class IndexPage extends React.Component {
 
   static getInitialProps(ctx) {
     let library = LibraryEnglish;
-    if (ctx.req.params.language === 'cn') {
-      library = LibraryChinese;
-    }
 
     let post = library.posts[1];
     const currentRoute = `${ctx.req.params.language}${ctx.req.params.slug}`;

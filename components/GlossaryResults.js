@@ -5,7 +5,6 @@ import * as Constants from '~/common/constants';
 import { css } from 'react-emotion';
 
 import GlossaryEnglish from '~/glossary/glossary-english';
-import GlossaryChinese from '~/glossary/glossary-chinese';
 
 const STYLES_GLOSSARY_RESULTS = css`
   flex-shrink: 0;
@@ -44,15 +43,12 @@ const STYLES_ITEM_BOTTOM = css`
 
 const getResultsWithQuery = (search, language) => {
   let glossary = GlossaryEnglish;
-  if (language === 'cn') {
-    glossary = GlossaryChinese;
-  }
 
   const query = search.toLowerCase();
   if (Strings.isEmpty(query)) {
     return Object.keys(glossary).map(each => {
       return (
-        <div className={STYLES_ITEM} key={`glossary-${glossary[each].title}`}>
+        <div className={STYLES_ITEM} key={`glossary-${each}`}>
           <div className={STYLES_ITEM_TOP}>{glossary[each].title}</div>
           <div className={STYLES_ITEM_BOTTOM}>{glossary[each].value}</div>
         </div>
@@ -71,6 +67,7 @@ const getResultsWithQuery = (search, language) => {
       results.push({
         title,
         value,
+        slug: each,
         isResult: true,
       });
 
@@ -80,13 +77,14 @@ const getResultsWithQuery = (search, language) => {
     remainder.push({
       title,
       value,
+      slug: each,
       isResult: false,
     });
   });
 
-  return [...results, ...remainder].map(result => {
+  return [...results, ...remainder].map((result, i) => {
     return (
-      <div className={STYLES_ITEM} key={`glossary-${result.title}`}>
+      <div className={STYLES_ITEM} key={`glossary-${result.slug}-${i}`}>
         <div
           className={STYLES_ITEM_TOP}
           style={{ color: result.isResult ? Constants.theme.action : null }}
