@@ -27,7 +27,7 @@ export default class WebRectBoundary extends React.PureComponent {
     this._removeListeners();
   }
 
-  componentWillReceiveProps(props) {
+  componentDidUpdate(props) {
     if (props.enabled) {
       this._addListeners();
     } else {

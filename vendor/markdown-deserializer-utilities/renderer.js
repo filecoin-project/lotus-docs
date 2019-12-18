@@ -1,5 +1,9 @@
 import { EMPTY_PARAGRAPH_NODES } from '~/common/fixtures';
 
+function flatten(array) {
+  return [].concat.apply([], array);
+}
+
 function decode(href) {
   try {
     return decodeURI(href);
@@ -21,10 +25,6 @@ function decodeSafe(uri) {
     .join('');
 }
 
-function flatten(array) {
-  return [].concat.apply([], array);
-}
-
 function applyMark(childNode, type) {
   return childNode.map(node => {
     if (node.object === 'inline') {
@@ -40,38 +40,31 @@ function applyMark(childNode, type) {
 
 function Renderer() {}
 
-Renderer.prototype.groupTextInLeaves = function(childNode) {
+Renderer.prototype.formatLegacyNodes = function(childNode) {
   let node = flatten(childNode);
 
-  const output = node.reduce((acc, current) => {
-    let accLast = acc.length - 1;
-    let lastIsText =
-      accLast >= 0 && acc[accLast] && acc[accLast]['object'] === 'text';
-
+  const output = node.reduce((a, current) => {
     if (current.text) {
-      if (lastIsText) {
-        // NOTE(jim)
-        // If the previous item was a text object, push the current text to it's range
-        acc[accLast].leaves.push(current);
-        return acc;
-      } else {
-        // NOTE(jim)
-        // Else, create a new text object
-        acc.push({
-          object: 'text',
-          leaves: [current],
-        });
-        return acc;
-      }
-    } else if (current instanceof Array) {
-      return acc.concat(this.groupTextInLeaves(current));
-    } else {
-      acc.push(current);
-      return acc;
+      a.push({
+        ...current,
+        object: 'text',
+      });
+
+      return a;
     }
+
+    if (current instanceof Array) {
+      return a.concat(this.formatLegacyNodes(current));
+    }
+
+    a.push(current);
+    return a;
   }, []);
 
-  if (!output.length) return EMPTY_PARAGRAPH_NODES;
+  if (!output.length) {
+    return EMPTY_PARAGRAPH_NODES;
+  }
+
   return output;
 };
 
@@ -86,7 +79,7 @@ Renderer.prototype.code = function(childNode, language) {
     object: 'block',
     type: 'CODE',
     data,
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
@@ -94,7 +87,7 @@ Renderer.prototype.blockquote = function(childNode) {
   return {
     object: 'block',
     type: 'BLOCKQUOTE',
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
@@ -102,7 +95,7 @@ Renderer.prototype.heading = function(childNode, level) {
   return {
     object: 'block',
     type: 'H' + level,
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
@@ -133,7 +126,7 @@ Renderer.prototype.listitem = function(childNode, flags = {}) {
     object: 'block',
     type: 'LI',
     data,
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
@@ -141,7 +134,7 @@ Renderer.prototype.paragraph = function(childNode) {
   return {
     object: 'block',
     type: 'P',
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
@@ -216,7 +209,7 @@ Renderer.prototype.link = function(href, title, childNode) {
   return {
     object: 'inline',
     type: 'link',
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
     data: data,
   };
 };
@@ -246,7 +239,7 @@ Renderer.prototype.textVariant = function(childNode) {
   return {
     object: 'block',
     type: 'LIST_P_VARIANT',
-    nodes: this.groupTextInLeaves(childNode),
+    nodes: this.formatLegacyNodes(childNode),
   };
 };
 
