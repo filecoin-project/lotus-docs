@@ -106,8 +106,8 @@ export default {
       posts: [
         {
           id: `5-1`,
-          title: 'Mining Worker',
-          slug: 'en+mining-worker',
+          title: 'Lotus Seal Worker',
+          slug: 'en+lotus-seal-worker',
           github: 'en/mining-worker.md',
           value: d4_2,
         },
