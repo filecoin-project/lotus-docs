@@ -235,13 +235,13 @@ export default class IndexPage extends React.Component {
   };
 
   render() {
-    const titleString = Strings.elide(
+    let titleString = Strings.elide(
       Utilities.findFirstHeading(this.state.value),
       88,
       ''
     );
 
-    const descriptionString = Strings.elide(
+    let descriptionString = Strings.elide(
       Utilities.findFirstParagraph(this.state.value),
       228,
       ''
@@ -256,6 +256,11 @@ export default class IndexPage extends React.Component {
     );
 
     if (!Strings.isEmpty(this.state.search)) {
+      titleString = `Searching for: "${this.state.search}"`;
+      descriptionString = `Showing results in Lotus Documentation for "${
+        this.state.search
+      }".`;
+
       bodyElement = (
         <div className={STYLES_SEARCH_CONTAINER}>
           <div className={STYLES_SEARCH_CONTAINER_RESULTS}>
