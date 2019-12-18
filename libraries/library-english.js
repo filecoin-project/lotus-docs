@@ -16,7 +16,7 @@ import d3 from '~/.lotus-docs-pre-processing/en/retrieving-data.md';
 
 import d4 from '~/.lotus-docs-pre-processing/en/mining.md';
 import d4_1 from '~/.lotus-docs-pre-processing/en/setting-a-static-port.md';
-import d4_2 from '~/.lotus-docs-pre-processing/en/mining-worker.md';
+import d4_2 from '~/.lotus-docs-pre-processing/en/mining-lotus-seal-worker.md';
 import d4_t from '~/.lotus-docs-pre-processing/en/mining-troubleshooting.md';
 
 import d5 from '~/.lotus-docs-pre-processing/en/api.md';
@@ -108,7 +108,7 @@ export default {
           id: `5-1`,
           title: 'Lotus Seal Worker',
           slug: 'en+lotus-seal-worker',
-          github: 'en/mining-worker.md',
+          github: 'en/mining-lotus-seal-worker.md',
           value: d4_2,
         },
         {
