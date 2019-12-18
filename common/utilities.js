@@ -50,3 +50,17 @@ export const findFirstParagraph = editorStateValue => {
 
   return '';
 };
+
+// NOTE(jim): https://gist.github.com/romanonthego/223d2efe17b72098326c82718f283adb
+export const scrollToTop = () => {
+  try {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  } catch (error) {
+    console.log(error);
+    window.scrollTo(0, 0);
+  }
+};

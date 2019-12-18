@@ -135,8 +135,6 @@ export default class IndexPage extends React.Component {
     };
   }
 
-  _menu;
-
   state = {
     value: Value.fromJSON(Strings.parseMD(this.props.post.value)),
     search: '',
@@ -194,14 +192,6 @@ export default class IndexPage extends React.Component {
     }
   }
 
-  _handleGetSearchInput = ref => {
-    this._input = ref;
-  };
-
-  _setMenuReference = ref => {
-    this._menu = ref;
-  };
-
   onInputChange = ({ target }) => {
     const results = this._search.search(target.value);
     const searchResults = [];
@@ -217,6 +207,8 @@ export default class IndexPage extends React.Component {
       searchResults.push(results[i]);
     }
 
+    Utilities.scrollToTop();
+
     return this.setState({
       search: target.value,
       searchResults,
@@ -224,47 +216,12 @@ export default class IndexPage extends React.Component {
     });
   };
 
-  onChange = ({ value }) => {
-    this.setState({ value });
+  _handleGetSearchInput = ref => {
+    this._input = ref;
   };
 
-  componentDidUpdate = () => {
-    this.updateMenu();
-  };
-
-  updateMenu = () => {
-    if (!process.browser) {
-      return;
-    }
-
-    const menu = this._menu;
-    if (!menu) {
-      return;
-    }
-
-    const { value } = this.state;
-    const { fragment, selection } = value;
-    const { isBlurred, isCollapsed } = selection;
-
-    if (isBlurred || isCollapsed || fragment.text === '') {
-      menu.removeAttribute('style');
-      return;
-    }
-
-    const native = window.getSelection();
-    const range = native.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-
-    menu.style.visibility = 'visible';
-
-    menu.style.opacity = 1;
-
-    const nextTop = rect.top + window.pageYOffset - menu.offsetHeight;
-    menu.style.top = `${nextTop}px`;
-
-    const nextLeft =
-      rect.left + window.pageXOffset - menu.offsetWidth / 2 + rect.width / 2;
-    menu.style.left = nextLeft >= 24 ? `${nextLeft}px` : `24px`;
+  _setMenuReference = ref => {
+    this._menu = ref;
   };
 
   renderEditor = (props, editor, next) => {
@@ -293,11 +250,8 @@ export default class IndexPage extends React.Component {
     let bodyElement = (
       <EntityEditor
         readOnly
-        spellCheck
-        autoFocus
         value={this.state.value}
         renderEditor={this.renderEditor}
-        onChange={this.onChange}
       />
     );
 
