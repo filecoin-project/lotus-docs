@@ -45,7 +45,10 @@ const STYLES_HEADING = css`
 
 export const H1 = props => {
   const candidate =
-    props.children && props.children[0].props.block
+    props.children &&
+    props.children[0] &&
+    props.children[0].props &&
+    props.children[0].props.block
       ? props.children[0].props.block.text
       : null;
   if (!candidate) {
@@ -91,7 +94,10 @@ const STYLES_HEADING_TWO = css`
 
 export const H2 = props => {
   const candidate =
-    props.children && props.children[0].props.block
+    props.children &&
+    props.children[0] &&
+    props.children[0].props &&
+    props.children[0].props.block
       ? props.children[0].props.block.text
       : null;
   if (!candidate) {
@@ -137,7 +143,10 @@ const STYLES_HEADING_THREE = css`
 
 export const H3 = props => {
   const candidate =
-    props.children && props.children[0].props.block
+    props.children &&
+    props.children[0] &&
+    props.children[0].props &&
+    props.children[0].props.block
       ? props.children[0].props.block.text
       : null;
   if (!candidate) {
