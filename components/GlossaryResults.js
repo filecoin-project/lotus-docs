@@ -4,7 +4,7 @@ import * as Constants from '~/common/constants';
 
 import { css } from 'react-emotion';
 
-import GlossaryEnglish from '~/glossary/glossary-english';
+import GlossaryEnglish from '~/.pre-processing/en/.glossary-english.json';
 
 const STYLES_GLOSSARY_RESULTS = css`
   flex-shrink: 0;
