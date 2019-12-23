@@ -70,10 +70,10 @@ export default props => {
 
   return (
     <React.Fragment>
-      {props.searchResults.map(p => {
+      {props.searchResults.map((p, i) => {
         if (!p.text) {
           return (
-            <div className={STYLES_ITEM} key={`result-${p.post.id}-${p.id}`}>
+            <div className={STYLES_ITEM} key={`result-${p.post.github}-${i}`}>
               <H1 style={{ padding: 0 }}>{p.post.title}</H1>
               <a href={`/${p.post.slug}`} className={STYLES_ACTION}>
                 Read
@@ -97,7 +97,7 @@ export default props => {
 
         if (p.post.isCode) {
           return (
-            <div className={STYLES_ITEM} key={`result-${p.post.id}-${p.id}`}>
+            <div className={STYLES_ITEM} key={`result-${p.post.github}-${i}`}>
               <CODE style={{ margin: 0, padding: 0 }}>{text}</CODE>
               <a href={`/${p.post.slug}`} className={STYLES_ACTION}>
                 Read <strong>{p.post.title}</strong>
@@ -107,7 +107,7 @@ export default props => {
         }
 
         return (
-          <div className={STYLES_ITEM} key={`result-${p.post.id}-${p.id}`}>
+          <div className={STYLES_ITEM} key={`result-${p.post.github}-${i}`}>
             <P style={{ padding: 0 }}>“{text}”</P>
             <a href={`/${p.post.slug}`} className={STYLES_ACTION}>
               Read <strong>{p.post.title}</strong>

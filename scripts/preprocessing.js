@@ -9,7 +9,7 @@ const SERVER_PATH = 'https://api.github.com';
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-const PROCESSING_PATH = '.lotus-docs-pre-processing';
+const PROCESSING_PATH = '.pre-processing';
 
 const requestHeaders = {
   Accept: 'application/json',
