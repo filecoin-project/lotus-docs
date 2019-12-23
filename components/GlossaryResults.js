@@ -4,7 +4,7 @@ import * as Constants from '~/common/constants';
 
 import { css } from 'react-emotion';
 
-import GlossaryEnglish from '~/.pre-processing/en/.glossary-english.json';
+import GlossaryEnglish from '~/.pre-processing/en/.glossary.json';
 
 const STYLES_GLOSSARY_RESULTS = css`
   flex-shrink: 0;
@@ -85,16 +85,10 @@ const getResultsWithQuery = (search, language) => {
   return [...results, ...remainder].map((result, i) => {
     return (
       <div className={STYLES_ITEM} key={`glossary-${result.slug}-${i}`}>
-        <div
-          className={STYLES_ITEM_TOP}
-          style={{ color: result.isResult ? Constants.theme.action : null }}
-        >
+        <div className={STYLES_ITEM_TOP} style={{ color: result.isResult ? Constants.theme.action : null }}>
           {result.title}
         </div>
-        <div
-          className={STYLES_ITEM_BOTTOM}
-          style={{ color: result.isResult ? '#fff' : null }}
-        >
+        <div className={STYLES_ITEM_BOTTOM} style={{ color: result.isResult ? '#fff' : null }}>
           {result.value}
         </div>
       </div>

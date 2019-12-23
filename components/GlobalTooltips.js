@@ -5,7 +5,7 @@ import * as Constants from '~/common/constants';
 import * as Strings from '~/common/strings';
 import * as SVG from '~/components/SVG';
 
-import GlossaryEnglish from '~/.pre-processing/en/.glossary-english.json';
+import GlossaryEnglish from '~/.pre-processing/en/.glossary.json';
 import RectBoundary from '~/components/RectBoundary';
 
 const delay = async waitMs => {
@@ -80,12 +80,7 @@ const STYLES_TOAST_TOP = css`
 class Toast extends React.Component {
   render() {
     return (
-      <RectBoundary
-        className={STYLES_TOAST}
-        captureScroll={false}
-        enabled
-        onOutsideRectEvent={this.props.onDismiss}
-      >
+      <RectBoundary className={STYLES_TOAST} captureScroll={false} enabled onOutsideRectEvent={this.props.onDismiss}>
         <div className={STYLES_TOAST_TOP} onClick={this.props.onDismiss}>
           <SVG.Close height="24px" />
         </div>
@@ -150,11 +145,7 @@ export default class GlobalTooltips extends React.Component {
         <div className={STYLES_TOAST_CONTAINER}>
           {this.state.tooltips.map(t => {
             return (
-              <Toast
-                key={t.id}
-                toast={t}
-                onDismiss={() => this._handleDismiss(t.id)}
-              >
+              <Toast key={t.id} toast={t} onDismiss={() => this._handleDismiss(t.id)}>
                 {t.value}
               </Toast>
             );
