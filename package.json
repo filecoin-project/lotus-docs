@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "nodemon .",
     "command": "node ./scripts",
-    "build-data": "node ./scripts preprocessing",
+    "build-data": "node ./scripts build-data",
+    "build-library": "node ./scripts build-library",
+    "build-all": "node ./scripts build-data && node ./scripts build-library",
     "build": "next build",
     "start": "NODE_ENV=production node ."
   },

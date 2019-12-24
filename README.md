@@ -1,14 +1,8 @@
 # Lotus Documentation - WWW
 
-- Website
+This repository deploys a website here: https://docs.lotu.sh
 
-### Pre-Processing
-
-The `/pre-processing` folder should be pulled automatically with whatever exists in https://github.com/filecoin-project/lotus.
-
-For now it is manually updated.
-
-### Setup
+### Local development
 
 Make sure NodeJS version 10+ is installed on your machine. Then run.
 
@@ -16,3 +10,13 @@ Make sure NodeJS version 10+ is installed on your machine. Then run.
 npm install
 npm run dev
 ```
+
+### Get the latest documentation data
+
+```sh
+npm run build-all
+```
+
+### Deploy
+
+Automated

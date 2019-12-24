@@ -5,7 +5,9 @@ import * as Constants from '~/common/constants';
 import * as Strings from '~/common/strings';
 import * as SVG from '~/components/SVG';
 
-import GlossaryEnglish from '~/.pre-processing/en/.glossary.json';
+import Library from '~/.data.json';
+const GlossaryEnglish = Library.glossary;
+
 import RectBoundary from '~/components/RectBoundary';
 
 const delay = async waitMs => {

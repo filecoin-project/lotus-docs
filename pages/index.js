@@ -19,7 +19,7 @@ import Footer from '~/components/Footer';
 import GlobalTooltips from '~/components/GlobalTooltips';
 import TableOfContents from '~/components/TableOfContents';
 
-import LibraryEnglish from '~/libraries/library-english';
+import LibraryEnglish from '~/.data.json';
 
 const SEARCH_LIMIT = 20;
 
@@ -235,31 +235,15 @@ export default class IndexPage extends React.Component {
   };
 
   render() {
-    let titleString = Strings.elide(
-      Utilities.findFirstHeading(this.state.value),
-      88,
-      ''
-    );
+    let titleString = Strings.elide(Utilities.findFirstHeading(this.state.value), 88, '');
 
-    let descriptionString = Strings.elide(
-      Utilities.findFirstParagraph(this.state.value),
-      228,
-      ''
-    );
+    let descriptionString = Strings.elide(Utilities.findFirstParagraph(this.state.value), 228, '');
 
-    let bodyElement = (
-      <EntityEditor
-        readOnly
-        value={this.state.value}
-        renderEditor={this.renderEditor}
-      />
-    );
+    let bodyElement = <EntityEditor readOnly value={this.state.value} renderEditor={this.renderEditor} />;
 
     if (!Strings.isEmpty(this.state.search)) {
       titleString = `Searching for: "${this.state.search}"`;
-      descriptionString = `Showing results in Lotus Documentation for "${
-        this.state.search
-      }".`;
+      descriptionString = `Showing results in Lotus Documentation for "${this.state.search}".`;
 
       bodyElement = (
         <div className={STYLES_SEARCH_CONTAINER}>
@@ -271,10 +255,7 @@ export default class IndexPage extends React.Component {
               onClearSearch={this._handleClearSearch}
             />
           </div>
-          <GlossaryResults
-            language={this.props.language}
-            search={this.state.search}
-          />
+          <GlossaryResults language={this.props.language} search={this.state.search} />
         </div>
       );
     } else {
@@ -306,15 +287,9 @@ export default class IndexPage extends React.Component {
         />
         <div className={STYLES_MAIN_SECTION} id="root">
           <div className={STYLES_BODY}>
-            {bodyElement}{' '}
-            {Strings.isEmpty(this.state.search) ? (
-              <Footer post={this.props.post} />
-            ) : null}
+            {bodyElement} {Strings.isEmpty(this.state.search) ? <Footer post={this.props.post} /> : null}
           </div>
-          <TableOfContents
-            library={this.props.library}
-            post={this.props.post}
-          />
+          <TableOfContents library={this.props.library} post={this.props.post} />
         </div>
         <GlobalTooltips language={this.props.language} />
       </React.Fragment>
