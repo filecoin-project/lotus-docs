@@ -11,26 +11,34 @@ const run = async () => {
   for (let i = 0; i < library.posts.length; i++) {
     const iPath = `${PROCESSING_PATH}/${library.posts[i].github}`;
     if (iPath.endsWith('.md')) {
-      console.log(`SERIALIZING MARKDOWN ${iPath}`);
-      library.posts[i].value = await FS.readFile(iPath, 'utf8');
+      try {
+        console.log(`SUCCESS -- SERIALIZING MARKDOWN ${iPath}`);
+        library.posts[i].value = await FS.readFile(iPath, 'utf8');
+      } catch (e) {
+        console.log(`FAILURE -- SERIALIZING MARKDOWN ${iPath}`);
+      }
     }
 
     for (let j = 0; j < library.posts[i].posts.length; j++) {
       const jPath = `${PROCESSING_PATH}/${library.posts[i].posts[j].github}`;
 
       if (jPath.endsWith('.md')) {
-        console.log(`SERIALIZING MARKDOWN ${jPath}`);
-        library.posts[i].posts[j].value = await FS.readFile(
-          `${PROCESSING_PATH}/${library.posts[i].posts[j].github}`,
-          'utf8'
-        );
+        try {
+          console.log(`SUCCESS -- SERIALIZING MARKDOWN ${jPath}`);
+          library.posts[i].posts[j].value = await FS.readFile(
+            `${PROCESSING_PATH}/${library.posts[i].posts[j].github}`,
+            'utf8'
+          );
+        } catch (e) {
+          console.log(`FAILURE -- SERIALIZING MARKDOWN ${jPath}`);
+        }
       }
     }
   }
 
   library.glossary = require(`../${PROCESSING_PATH}/en/.glossary.json`);
 
-  FS.writeFile('.data.json', JSON.stringify(library), function(err) {
+  FS.writeFile('.data.json', JSON.stringify(library), function (err) {
     if (err) throw err;
     console.log('ADDING .data.json');
   });
