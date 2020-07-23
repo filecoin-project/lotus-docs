@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Head from 'next/head';
+import * as React from "react";
+import Head from "next/head";
 
 const getScript = () => {
   return `
@@ -8,10 +8,10 @@ const getScript = () => {
       "@type": "WebSite",
       "url": "https://docs.lotu.sh"
     }
-  `.replace(/\n/g, '');
+  `.replace(/\n/g, "");
 };
 
-const getAnalyticsScript = id => {
+const getAnalyticsScript = (id) => {
   return `
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -19,10 +19,10 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 ga('create', '${id}', {cookieDomain: 'auto', siteSpeedSampleRate: 100});
 ga('send', 'pageview');
-`.replace(/\n/g, '');
+`.replace(/\n/g, "");
 };
 
-export const GoogleScript = props => {
+export const GoogleScript = (props) => {
   let markup = { __html: getAnalyticsScript(props.id) };
   return <script dangerouslySetInnerHTML={markup} />;
 };
@@ -32,7 +32,7 @@ export const JSONLD = () => {
   return <script type="application/ld+json" dangerouslySetInnerHTML={markup} />;
 };
 
-export default props => {
+export default (props) => {
   return (
     <Head>
       <meta charSet="UTF-8" />
@@ -136,7 +136,7 @@ export default props => {
       <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
       <meta name="theme-color" content="#ffffff" />
       <JSONLD />
-      <GoogleScript id="UA-154346500-1" />
+      <GoogleScript id="UA-52930282-8" />
     </Head>
   );
 };
