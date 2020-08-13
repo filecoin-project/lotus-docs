@@ -19,4 +19,11 @@ npm run build-all
 
 ### Deploy
 
-Automated
+```sh
+npm run build-all
+git commit -m "your commit message"
+git push origin master
+```
+
+Then the site will automatically deploy and update.
+
