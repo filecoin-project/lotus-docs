@@ -112,7 +112,7 @@ export default class IndexPage extends React.Component {
   static getInitialProps(ctx) {
     let library = LibraryEnglish;
 
-    let post = library.posts[1];
+    let post = library.posts[0];
     const currentRoute = `${ctx.req.params.language}${ctx.req.params.slug}`;
     for (let i = 0; i < library.posts.length; i++) {
       if (library.posts[i].slug === currentRoute) {
