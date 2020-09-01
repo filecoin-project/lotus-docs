@@ -1,6 +1,6 @@
 import FS from 'fs-extra';
 
-const PROCESSING_PATH = '.pre-processing';
+const PROCESSING_PATH = 'lotus/documentation';
 
 const run = async () => {
   await FS.remove('.data.json');
