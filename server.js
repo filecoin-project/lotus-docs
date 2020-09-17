@@ -24,13 +24,15 @@ app.prepare().then(() => {
   );
 
   server.get('/cn+:slug', async (req, res) => {
-    req.params.language = 'cn';
-    return app.render(req, res, '/');
+    //req.params.language = 'cn';
+    //return app.render(req, res, '/');
+    return res.redirect(req.params.slug.replace(/^\+/, ''));
   });
 
   server.get('/en+:slug', async (req, res) => {
-    req.params.language = 'en';
-    return app.render(req, res, '/');
+    //req.params.language = 'en';
+    //return app.render(req, res, '/');
+    return res.redirect(req.params.slug.replace(/^\+/, ''));
   });
 
   server.get('/:slug', async (req, res) => {
