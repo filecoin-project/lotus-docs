@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as Constants from '~/common/constants';
 import * as SVG from '~/components/SVG';
+import { Notice } from '~/components/Notice';
 
 import PackageInfo from '~/package.json';
 
@@ -116,9 +117,16 @@ const STYLES_EMOJI = css`
   left: -8px;
 `;
 
-export default props => {
+export default (props) => {
   return (
     <nav className={STYLES_TOP}>
+      <Notice>
+        <p>
+          This docs site is deprecated, please visit{' '}
+          <a href="https://docs.filecoin.io/">docs.filecoin.io</a> for the
+          latest Lotus information
+        </p>
+      </Notice>
       <div className={STYLES_TITLE_BAR}>
         <div className={STYLES_LEFT}>
           <a
