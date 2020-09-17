@@ -8,6 +8,10 @@ const NOTICE_STYLES = css`
   padding: 0.5rem;
   background-color: ${Constants.colors.neongreen};
   color: ${Constants.colors.black};
+  a {
+    font-weight: bold;
+    color: ${Constants.colors.black};
+  }
 `;
 
 export const Notice = ({ children }) => (
