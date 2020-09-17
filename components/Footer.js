@@ -78,13 +78,6 @@ export default props => {
   return (
     <div className={STYLES_WRAP}>
       <footer className={STYLES_FOOTER}>
-        <a className={STYLES_ITEM} href={documentationURL} target="_blank">
-          <span className={STYLES_ITEM_LEFT}>View Markdown</span>
-          <span className={STYLES_ITEM_RIGHT}>
-            Our documentation lives on GitHub. You can submit a pull request to
-            help us keep this document up to date.
-          </span>
-        </a>
         <a
           className={STYLES_ITEM}
           href="https://github.com/filecoin-project/lotus/issues"
@@ -108,22 +101,12 @@ export default props => {
         </a>
         <a
           className={STYLES_ITEM}
-          href="https://github.com/filecoin-project/community#chat"
+          href="https://docs.filecoin.io/community/chat-and-discussion-forums/"
           target="_blank"
         >
           <span className={STYLES_ITEM_LEFT}>Chat</span>
           <span className={STYLES_ITEM_RIGHT}>
             Our primary chat channels are bridged across Matrix, IRC, and Slack.
-          </span>
-        </a>
-        <a
-          className={STYLES_ITEM}
-          href="https://faucet.testnet.filecoin.io/"
-          target="_blank"
-        >
-          <span className={STYLES_ITEM_LEFT}>Faucet</span>
-          <span className={STYLES_ITEM_RIGHT}>
-            Do you need Filecoin for testing? Get some from the Testnet faucet.
           </span>
         </a>
       </footer>

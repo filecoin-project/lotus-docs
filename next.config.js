@@ -11,7 +11,7 @@ module.exports = {
     return [
       {
 	source: '/hardware',
-	destination: 'https://docs.filecoin.io/get-started/lotus/installation/#minimal-requirements'
+	destination: 'https://docs.filecoin.io/get-started/lotus/installation/#minimal-requirements',
 	permanent: true
       },
       {
@@ -159,6 +159,11 @@ module.exports = {
 	destination: 'https://docs.filecoin.io/about-filecoin/faq/',
 	permanent: true
       },
+      {
+	source: '/glossary',
+	destination: 'https://docs.filecoin.io/reference/glossary/',
+	permanent: true
+      }
     ]
   }
 };

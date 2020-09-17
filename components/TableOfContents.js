@@ -112,7 +112,7 @@ export default props => {
           height="88px"
           className={STYLES_HOVER_LOGO}
           style={{
-            color: props.post.slug === 'en+lotus' ? '#39ff14' : null,
+            color: props.post.slug === '' ? '#39ff14' : null,
           }}
           onClick={() => {
             window.location.href = '/';
@@ -122,6 +122,10 @@ export default props => {
           if (p.isManuallyRendered) {
             return null;
           }
+
+	  if (p.slug == '') {
+	    p.slug = '/'
+	  }
 
           return (
             <React.Fragment key={`post-${p}.id-${p.slug}`}>

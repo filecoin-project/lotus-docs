@@ -150,7 +150,7 @@ export default props => {
         </div>
         <div className={STYLES_RIGHT}>
           {props.language === 'cn' ? (
-            <a href="/en+lotus" className={STYLES_ITEM}>
+            <a href="/" className={STYLES_ITEM}>
               English
             </a>
           ) : null}
