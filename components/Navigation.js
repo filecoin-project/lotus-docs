@@ -122,9 +122,9 @@ export default (props) => {
     <nav className={STYLES_TOP}>
       <Notice>
         <p>
-          This docs site is deprecated, please visit{' '}
+          This site is deprecated, please visit{' '}
           <a href="https://docs.filecoin.io/">docs.filecoin.io</a> for the
-          latest Lotus information
+          latest Lotus documentation
         </p>
       </Notice>
       <div className={STYLES_TITLE_BAR}>
