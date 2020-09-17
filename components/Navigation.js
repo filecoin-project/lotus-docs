@@ -124,7 +124,7 @@ export default (props) => {
         <p>
           This site is deprecated, please visit{' '}
           <a href="https://docs.filecoin.io/">docs.filecoin.io</a> for the
-          latest Lotus documentation
+          latest Lotus docs
         </p>
       </Notice>
       <div className={STYLES_TITLE_BAR}>
