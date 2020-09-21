@@ -112,7 +112,7 @@ export default props => {
           height="88px"
           className={STYLES_HOVER_LOGO}
           style={{
-            color: props.post.slug === 'en+getting-started' ? '#39ff14' : null,
+            color: props.post.slug === '' ? '#39ff14' : null,
           }}
           onClick={() => {
             window.location.href = '/';
@@ -123,11 +123,15 @@ export default props => {
             return null;
           }
 
+	  if (p.slug == '') {
+	    p.slug = '/'
+	  }
+
           return (
             <React.Fragment key={`post-${p}.id-${p.slug}`}>
               <a
                 className={STYLES_DOCUMENT_ITEM}
-                href={`/${p.slug}`}
+                href={`${p.slug}`}
                 style={{
                   color: p.slug === props.post.slug ? '#39ff14' : null,
                 }}
@@ -139,7 +143,7 @@ export default props => {
                 return (
                   <a
                     className={STYLES_DOCUMENT_SUB_ITEM}
-                    href={`/${sp.slug}`}
+                    href={`${sp.slug}`}
                     key={`spost-${sp}.id-${sp.slug}`}
                     style={{
                       color: sp.slug === props.post.slug ? '#39ff14' : null,

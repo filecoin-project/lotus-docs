@@ -4,9 +4,8 @@
   "scripts": {
     "dev": "nodemon .",
     "command": "node ./scripts",
-    "build-data": "node ./scripts build-data",
     "build-library": "node ./scripts build-library  --unhandled-rejections=strict",
-    "build-all": "node ./scripts build-data && node ./scripts build-library  --unhandled-rejections=strict",
+    "build-all": "node ./scripts build-library  --unhandled-rejections=strict",
     "build": "next build",
     "start": "NODE_ENV=production node ."
   },

@@ -3,6 +3,7 @@
 package-lock.json
 node_modules
 DS_STORE
+.data.json
 
 /**/*/package-lock.json
 /**/*/node_modules
