@@ -1,3 +1,0 @@
-[submodule "lotus"]
-	path = lotus
-	url = https://github.com/filecoin-project/lotus
