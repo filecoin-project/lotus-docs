@@ -1,0 +1,80 @@
+# Meta Data for SEO
+
+## Homepage
+title = "Lotus Docs"
+titleSeparator = "-"
+titleAddition = ""
+description = "Documentation for Lotus - the primary node implementation for the Filecoin network."
+
+## Open Graph
+images = ["lotus.png"]
+ogLocale = "en_US"
+domainTLD = "docs.lotu.sh"
+titleHome = "Lotus Docs"
+
+## Twitter Cards
+twitterSite = "@filecoin"
+twitterCreator = "@protocollabs"
+
+## JSON-LD
+# schemaType = "Person"
+schemaType = "Organization"
+schemaName = "Lotus"
+schemaAuthor = "Protocol Labs"
+schemaAuthorTwitter = "https://twitter.com/protocollabs"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/protocollabs/"
+schemaAuthorGitHub = "https://github.com/filecoin-project"
+schemaLocale = "en-US"
+schemaLogo = "lotus.png"
+schemaLogoWidth = 512
+schemaLogoHeight = 512
+schemaImage = "lotus.png"
+schemaImageWidth = 1280
+schemaImageHeight = 640
+schemaTwitter = "https://twitter.com/filecoin"
+schemaLinkedIn = ""
+schemaGitHub = "https://github.com/filecoin-project/lotus-docs"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+footer = "Made by Protocol Labs."
+
+# Feed
+copyRight = ""
+
+# Alert
+alert = false
+alertDismissable = true
+alertText = ""
+
+# Edit Page
+docsRepo = "https://github.com/filecoin-project/lotus-docs"
+docsRepoBranch = "main"
+editPage = true
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = true
+  darkMode = true
+  bootStrapJs = true
+  breadCrumb = true
+  highLight = true
+  kaTex = false
+  collapsibleSidebar = true
+  multilingualMode = false
+  docsVersioning = false # Not yet functional
