@@ -1,52 +1,30 @@
 ---
-title : "Build cool stuff"
-description: "No matter who you are or what you're creating, you can be part of the movement to create the next generation of the internet. This site contains everything you need to start building using the InterPlanetary File System (IPFS) and pave the way for the future Web."
-lead: "No matter who you are or what you're creating, you can be part of the movement to create the next generation of the internet. This site contains everything you need to start building using the InterPlanetary File System (IPFS) and pave the way for the future Web."
-date: 2020-10-06T08:48:23+00:00
-lastmod: 2020-10-06T08:48:23+00:00
+title : "Welcome to Lotus docs"
+description: "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network."
+lead: "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network."
 draft: false
 images: []
+aliases: 
+    - "/docs"
 ---
 
-## Download IPFS tools
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat felis eget diam faucibus condimentum. Sed aliquam leo eget enim fringilla volutpat. Nam pretium congue ante id blandit. Integer mi purus, aliquet vehicula libero sed, consectetur accumsan turpis. Cras at lacinia arcu. Suspendisse ac egestas lacus, bibendum sollicitudin enim. Curabitur venenatis eros eu hendrerit mollis. Nulla fermentum massa sit amet consectetur congue. Nullam lobortis purus in nulla auctor scelerisque. Nulla finibus augue at purus ornare, non tempus erat maximus. Praesent et dictum justo. Nullam a rhoncus urna.
 
-These tools can help you use and build on IPFS more quickly and efficiently — give them a try today!
+## Let's talk about Brexit
 
-| [Browser Companion](https://github.com/ipfs-shipyard/ipfs-companion) | [IPFS Desktop](https://github.com/ipfs-shipyard/ipfs-desktop) | [IPLD Explorer](https://explore.ipld.io/) |
-| --- | --- | --- |
-| ![](ipfs-companion.png) | ![](ipfs-desktop.png) | ![](ipld-explorer.png) |
+In a augue neque. Etiam fermentum pretium diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam auctor et augue at maximus. Etiam feugiat tristique arcu ut molestie. Maecenas ullamcorper massa ut est rhoncus feugiat. Cras at pharetra magna. Fusce ut neque rhoncus, elementum massa in, congue eros. Sed id diam eu est dignissim scelerisque in non magna. Proin maximus massa eu velit congue iaculis. Donec sed lacus vel risus venenatis dapibus. Suspendisse molestie ut nulla sed mattis.
 
-## Host your website on IPFS
+Integer quis nisl eget tellus ornare molestie. Proin sollicitudin est arcu, eget interdum purus maximus sed. Maecenas ac enim cursus, ultricies lectus sed, mollis massa. Donec molestie ex id erat efficitur gravida ullamcorper sit amet ante. Praesent erat nulla, auctor a tempor at, auctor eu neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed euismod, nisi et ullamcorper accumsan, augue augue vestibulum lectus, in faucibus ligula massa eu erat. Cras consequat eleifend molestie. Cras et ante id lorem hendrerit vestibulum. Nullam fringilla felis vel eros auctor vestibulum. Ut sagittis posuere luctus. Integer magna mauris, porta sit amet sodales eu, bibendum eu tellus. Integer quis nisl in tortor interdum feugiat pulvinar nec enim.
 
-Protect yourself from single-point-of-failure risks and benefit from decentralized infrastructure by hosting your static website using IPFS. If you're new to IPFS, this is an excellent place to start learning how to build on the decentralized web.
+## Boris Johnson isn't real
 
-[Start the tutorial →](how-to/websites-on-ipfs/single-page-website.md)
+Vestibulum elementum dolor at tellus consectetur sodales. Sed tempor, sem nec aliquam malesuada, enim diam suscipit lacus, vel convallis leo ex eget erat. Etiam ut metus odio. Proin euismod dui erat, ut ultricies magna pretium nec. Mauris non nibh eget purus hendrerit auctor. Quisque porttitor condimentum sem vitae consequat. Maecenas tempus metus lacus. Fusce sollicitudin dolor ipsum, ornare pharetra felis sodales nec. Sed turpis risus, venenatis eget ullamcorper tristique, semper id nunc. Curabitur pellentesque nibh tortor, at suscipit turpis scelerisque quis.
 
-## Learn about the decentralized web
+### He's a ghost
 
-Want to know more about the decentralized web (DWeb) and how it's changing the internet? These resources will give you a clearer understanding of the DWeb movement, and how it's improving the world:
+Ut molestie, ante et mollis facilisis, turpis nunc hendrerit nunc, in auctor mauris metus porttitor velit. Fusce blandit tellus quis sapien mollis, nec congue erat accumsan. Fusce et leo sed dolor eleifend aliquet ac at nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam et nisl in dolor vehicula fermentum eget quis eros. Donec interdum nisi non convallis fermentum. Nunc ac tristique est. Duis mollis ultrices orci vel viverra. Ut lacinia, elit quis porttitor convallis, ante odio viverra libero, id lacinia ligula metus at felis. Praesent interdum vel nisl vitae vestibulum. Etiam eget scelerisque odio.
 
-- [What is IPFS](concepts/what-is-ipfs.md)
-- [Peer-to-peer sharing](concepts/dht.md)
-- [Content-addressed data](concepts/content-addressing.md)
+### Probably
 
-[See more guides in the Concepts section →](concepts/README.md)
-
-{{< alert icon="🎓" >}}
-ProtoSchool's self-guided [interactive tutorials](https://proto.school/tutorials) are designed to introduce you to decentralized web concepts, protocols, and tools. Explore JS-IPFS APIs by completing browser-based coding challenges in ProtoSchool's [IPFS course](https://proto.school/course/ipfs), or explore code-free intros to essential DWeb concepts and related projects in the IPFS ecosystem.
-{{< /alert >}}
-
-## See what others are building
-
-Are you looking for inspiration? You can find a huge collection of awesome community projects over at Awesome IPFS.
-
-[Check out Awesome IPFS now →](https://awesome.ipfs.io/)
-
-![Awesome IPFS](awesome-ipfs.png)
-
-## Be part of the IPFS community
-
-IPFS has a bustling community of designers, developers, writers, and activists who are all helping to improve the project. You can join in by attending a local meetup, helping out at a conference, chatting online through [Matrix channels](community/chat.md), or joining a discussion in [the IPFS forum](https://discuss.ipfs.io/).
-
-[Find out more in the Community section →](community/README.md)
+Ut molestie, ante et mollis facilisis, turpis nunc hendrerit nunc, in auctor mauris metus porttitor velit. Fusce blandit tellus quis sapien mollis, nec congue erat accumsan. Fusce et leo sed dolor eleifend aliquet ac at nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam et nisl in dolor vehicula fermentum eget quis eros. Donec interdum nisi non convallis fermentum. Nunc ac tristique est. Duis mollis ultrices orci vel viverra. Ut lacinia, elit quis porttitor convallis, ante odio viverra libero, id lacinia ligula metus at felis. Praesent interdum vel nisl vitae vestibulum. Etiam eget scelerisque odio.
 

@@ -1,9 +1,7 @@
 ---
-title : "Docs"
-description: "Docs Doks."
-lead: ""
-date: 2020-10-06T08:48:23+00:00
-lastmod: 2020-10-06T08:48:23+00:00
+title : "Lotus Docs"
+description: "The Lotus documentation website."
+lead: "The Lotus documentation website."
 draft: false
 images: []
 ---
