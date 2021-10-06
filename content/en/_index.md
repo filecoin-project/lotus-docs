@@ -5,7 +5,7 @@ lead: "This website contains all the information you need to spin up a Lotus nod
 draft: false
 images: []
 aliases: 
-    - "/docs"
+    /docs
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat felis eget diam faucibus condimentum. Sed aliquam leo eget enim fringilla volutpat. Nam pretium congue ante id blandit. Integer mi purus, aliquet vehicula libero sed, consectetur accumsan turpis. Cras at lacinia arcu. Suspendisse ac egestas lacus, bibendum sollicitudin enim. Curabitur venenatis eros eu hendrerit mollis. Nulla fermentum massa sit amet consectetur congue. Nullam lobortis purus in nulla auctor scelerisque. Nulla finibus augue at purus ornare, non tempus erat maximus. Praesent et dictum justo. Nullam a rhoncus urna.
