@@ -17,6 +17,6 @@ _That's right, we're bringing it back._
 
 ## Contact
 
-- @johnnymatthews
-- @johndmulhausen
+- [@johnnymatthews](https://github.com/johnnymatthews)
+- [@johndmulhausen](https://github.com/johndmulhausen)
 
