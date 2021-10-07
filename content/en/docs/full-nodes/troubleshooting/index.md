@@ -5,7 +5,7 @@ lead: "Lorem ipsum."
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "full-nodes"
 weight: 30
 toc: true
 ---

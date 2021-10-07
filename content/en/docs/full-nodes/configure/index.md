@@ -5,7 +5,7 @@ lead: "Want to know what happens when your turn your computer off? Let's find ou
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "full-nodes"
 weight: 40
 toc: true
 ---
