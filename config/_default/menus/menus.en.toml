@@ -5,10 +5,16 @@
   url = "/blog"
 
 [[docs]]
-  name = "Nodes"
+  name = "Full nodes"
   weight = 10
-  identifier = "nodes"
-  url = "/nodes"
+  identifier = "full-nodes"
+  url = "/full-nodes"
+
+[[docs]]
+  name = "Lite nodes"
+  weight = 15
+  identifier = "lite-nodes"
+  url = "/lite-nodes"
 
 [[docs]]
   name = "Storage providers"

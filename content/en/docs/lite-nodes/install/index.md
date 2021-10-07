@@ -5,7 +5,8 @@ lead: "Go-IPFS is the default implementation for installing IPFS on your local c
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "lite-nodes"
+        identifier: "lite-nodes-install"
 weight: 10
 toc: true
 ---
