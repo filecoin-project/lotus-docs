@@ -3,7 +3,7 @@
 ## Homepage
 title = "Lotus Docs"
 titleSeparator = "-"
-titleAddition = ""
+titleAddition = "Home"
 description = "Documentation for Lotus - the primary node implementation for the Filecoin network."
 
 ## Open Graph
