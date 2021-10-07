@@ -1,14 +1,32 @@
 [[main]]
   name = "blog"
-  weight = 20
+  weight = 10
   identifier = "blog"
   url = "/blog"
 
 [[docs]]
-  name = "Lotus node"
+  name = "Nodes"
   weight = 10
-  identifier = "lotus-node"
-  url = "/lotus-node"
+  identifier = "nodes"
+  url = "/nodes"
+
+[[docs]]
+  name = "Storage providers"
+  weight = 20
+  identifier = "storage-providers"
+  url = "/storage-providers"
+
+[[docs]]
+  name = "Developers"
+  weight = 30
+  identifier = "developers"
+  url = "/developers"
+
+[[docs]]
+  name = "APIs"
+  weight = 40
+  identifier = "apis"
+  url = "/apis"
 
 [[social]]
   name = "GitHub"
