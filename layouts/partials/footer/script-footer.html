@@ -101,7 +101,7 @@
   {{ end -}}
 
   {{ if (.Site.Params.options.flexSearch) -}}
-    {{ if or (eq .IsHome) (eq .Section "docs") -}}
+    {{ if .IsHome -}}
         <script src="{{ $index.RelPermalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
     {{ end -}}
   {{ end -}}
