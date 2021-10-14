@@ -5,7 +5,7 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     docs:
-        parent: "developers"
+        parent: "tutorials"
 weight: 10
 toc: true
 mermaid: true
