@@ -23,10 +23,10 @@
   url = "/storage-providers"
 
 [[docs]]
-  name = "Developers"
+  name = "Tutorials"
   weight = 30
-  identifier = "developers"
-  url = "/developers"
+  identifier = "tutorials"
+  url = "/tutorials"
 
 [[docs]]
   name = "APIs"
