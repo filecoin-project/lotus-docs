@@ -15,6 +15,26 @@ mermaid: true
 
 The process is split into three main parts: the set-up, storing your data and retrieving your data. Each section has several sub-processes that we need to follow.
 
+{{< mermaid >}}
+flowchart TB 
+    subgraph set-up [Set up]
+    a1[Get a Lotus full-node]-->a2[Create a Lotus lite-node]
+    a2-->a3[Create a Filecoin address]
+    a3-->a4[Sign up to Filecoin plus]
+    end
+    subgraph Store
+    b1[Package your data]-->b2[Import your data into Lotus]
+    b2-->b3[Find a miner]
+    b3-->b4[Create a storage deal]
+    b4-->b5[Wait for the deal to complete]
+    end
+    subgraph Retrieve
+    c1[Create a retrieval deal]-->c2[Download your data]
+    end
+    set-up --> Store
+    Store --> Retrieve
+{{< /mermaid >}}
+
 | Section | Sub-tasks |
 | --- | --- |
 | Set up | 1. Get access to a Lotus full-node.<br> 2. Start a Lotus lite-node on your local computer.<br> 3. Get a FIL address.<br> 4. Sign up for Filecoin Plus. |
