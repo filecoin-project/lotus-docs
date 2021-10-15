@@ -23,6 +23,12 @@
         <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
       </div>
       <div class="offcanvas-body px-4">
+        {{ if .Site.Params.options.flexSearch -}}
+        <form class="doks-search position-relative flex-grow-1 me-auto">
+            <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+            <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+        </form>
+        {{ end -}}
         <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
         <ul class="nav flex-column flex-md-row ms-md-n3">
           {{- $current := . -}}
@@ -38,12 +44,6 @@
         </ul>
         <hr class="text-black-50 my-4 d-md-none">
         <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
-        {{ if .Site.Params.options.flexSearch -}}
-        <form class="doks-search position-relative flex-grow-1 me-auto">
-            <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
-            <div id="suggestions" class="shadow bg-white rounded d-none"></div>
-        </form>
-        {{ end -}}
         <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2">
           {{ range .Site.Menus.social -}}
             <li class="nav-item">
