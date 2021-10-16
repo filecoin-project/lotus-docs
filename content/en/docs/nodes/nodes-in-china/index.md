@@ -1,12 +1,14 @@
 ---
-title: 'Lotus: tips when running in China'
-description: 'This guide provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus.'
-breadcrumb: 'Tips when running in China'
+title: "Nodes in China"
+description: "This guide provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus."
+lead: "This guide provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus."
+draft: false
+menu:
+    docs:
+        parent: "nodes"
+weight: 130
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 ## Speed up proof parameter download for first boot
 
