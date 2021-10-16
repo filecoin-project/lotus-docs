@@ -1,12 +1,14 @@
 ---
-title: 'Lotus: Upgrades'
-description: 'This guide will show you how to safely upgrade a Lotus node to a newer version.'
-breadcrumb: 'Upgrades'
+title: "Upgrade"
+description: "This guide will show you how to safely upgrade a Lotus node to a newer version."
+lead: "This guide will show you how to safely upgrade a Lotus node to a newer version."
+draft: false
+menu:
+    docs:
+        parent: "nodes"
+weight: 40
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 ## Installing an update
 
