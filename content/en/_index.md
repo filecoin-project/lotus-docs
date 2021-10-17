@@ -6,25 +6,29 @@ draft: false
 images: []
 aliases: 
     /docs
+toc: false
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat felis eget diam faucibus condimentum. Sed aliquam leo eget enim fringilla volutpat. Nam pretium congue ante id blandit. Integer mi purus, aliquet vehicula libero sed, consectetur accumsan turpis. Cras at lacinia arcu. Suspendisse ac egestas lacus, bibendum sollicitudin enim. Curabitur venenatis eros eu hendrerit mollis. Nulla fermentum massa sit amet consectetur congue. Nullam lobortis purus in nulla auctor scelerisque. Nulla finibus augue at purus ornare, non tempus erat maximus. Praesent et dictum justo. Nullam a rhoncus urna.
+It is written in [Go](https://golang.org) and it is actually a suite of command-line applications:
 
-## Let's talk about Brexit
+- Lotus Node (`lotus`): a Filecoin Node: validates network transactions, manages a FIL wallet, can perform storage and retrieval deals.
+- Lotus Miner (`lotus-miner`): a Filecoin miner. See the the respective [Lotus Miner](../../mine/lotus/README.md) section in the [Mine](../../mine/README.md) documentation.
+- Lotus Worker (`lotus-worker`): a worker that assists miners to perform mining-related tasks. See its respective [guide](../../mine/lotus/seal-workers.md) for more information.
 
-In a augue neque. Etiam fermentum pretium diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam auctor et augue at maximus. Etiam feugiat tristique arcu ut molestie. Maecenas ullamcorper massa ut est rhoncus feugiat. Cras at pharetra magna. Fusce ut neque rhoncus, elementum massa in, congue eros. Sed id diam eu est dignissim scelerisque in non magna. Proin maximus massa eu velit congue iaculis. Donec sed lacus vel risus venenatis dapibus. Suspendisse molestie ut nulla sed mattis.
+The installation instructions are common to all three, but this section just focuses on getting started with the **Lotus Node**: installing, launching, syncing the chain and managing a Lotus wallet. Documentation on how to make storage deals using Lotus is available in the [store](../../store/lotus/README.md) section. Additional documentation is also available for [miners](../../mine/lotus/README.md) and [developers](../../build/lotus/README.md)!
 
-Integer quis nisl eget tellus ornare molestie. Proin sollicitudin est arcu, eget interdum purus maximus sed. Maecenas ac enim cursus, ultricies lectus sed, mollis massa. Donec molestie ex id erat efficitur gravida ullamcorper sit amet ante. Praesent erat nulla, auctor a tempor at, auctor eu neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed euismod, nisi et ullamcorper accumsan, augue augue vestibulum lectus, in faucibus ligula massa eu erat. Cras consequat eleifend molestie. Cras et ante id lorem hendrerit vestibulum. Nullam fringilla felis vel eros auctor vestibulum. Ut sagittis posuere luctus. Integer magna mauris, porta sit amet sodales eu, bibendum eu tellus. Integer quis nisl in tortor interdum feugiat pulvinar nec enim.
+{{< alert icon="⚠️" >}}
+Lotus is a command line application that **works on Linux and MacOS only**, and needs to be **built from source**. Users should be familiar with how command-line applications work.
+{{< /alert >}}
 
-## Boris Johnson isn't real
+## Getting started with Lotus
 
-Vestibulum elementum dolor at tellus consectetur sodales. Sed tempor, sem nec aliquam malesuada, enim diam suscipit lacus, vel convallis leo ex eget erat. Etiam ut metus odio. Proin euismod dui erat, ut ultricies magna pretium nec. Mauris non nibh eget purus hendrerit auctor. Quisque porttitor condimentum sem vitae consequat. Maecenas tempus metus lacus. Fusce sollicitudin dolor ipsum, ornare pharetra felis sodales nec. Sed turpis risus, venenatis eget ullamcorper tristique, semper id nunc. Curabitur pellentesque nibh tortor, at suscipit turpis scelerisque quis.
+These are the main guides to swiftly get started with Lotus:
 
-### He's a ghost
+- [Install and launch a Lotus node](installation.md)
+- [Create a wallet and send or receive FIL to your address](send-and-receive-fil.md)
+- [Switch between different networks](switch-networks.md)
+- [Learn about the Lotus configuration](configuration-and-advanced-usage.md)
 
-Ut molestie, ante et mollis facilisis, turpis nunc hendrerit nunc, in auctor mauris metus porttitor velit. Fusce blandit tellus quis sapien mollis, nec congue erat accumsan. Fusce et leo sed dolor eleifend aliquet ac at nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam et nisl in dolor vehicula fermentum eget quis eros. Donec interdum nisi non convallis fermentum. Nunc ac tristique est. Duis mollis ultrices orci vel viverra. Ut lacinia, elit quis porttitor convallis, ante odio viverra libero, id lacinia ligula metus at felis. Praesent interdum vel nisl vitae vestibulum. Etiam eget scelerisque odio.
-
-### Probably
-
-Ut molestie, ante et mollis facilisis, turpis nunc hendrerit nunc, in auctor mauris metus porttitor velit. Fusce blandit tellus quis sapien mollis, nec congue erat accumsan. Fusce et leo sed dolor eleifend aliquet ac at nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam et nisl in dolor vehicula fermentum eget quis eros. Donec interdum nisi non convallis fermentum. Nunc ac tristique est. Duis mollis ultrices orci vel viverra. Ut lacinia, elit quis porttitor convallis, ante odio viverra libero, id lacinia ligula metus at felis. Praesent interdum vel nisl vitae vestibulum. Etiam eget scelerisque odio.
+Please check the side menu for additional guides!
 
