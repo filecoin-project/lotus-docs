@@ -6,7 +6,6 @@ draft: false
 images: []
 aliases: 
     /docs
-toc: false
 ---
 
 It is written in [Go](https://golang.org) and it is actually a suite of command-line applications:
