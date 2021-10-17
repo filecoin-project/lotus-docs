@@ -5,7 +5,7 @@ lead: "This guide provides a few tips for users in China to get around some of t
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 130
 toc: true
 ---

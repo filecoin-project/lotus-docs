@@ -5,7 +5,7 @@ lead: "Lotus daemons may be configured to act as network bootstrappers. Bootstra
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 100
 toc: true
 ---
