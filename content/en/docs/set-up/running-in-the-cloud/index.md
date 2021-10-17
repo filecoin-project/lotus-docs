@@ -5,7 +5,7 @@ lead: "Running Lotus on a cloud provider is a quick way to get up and running. U
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 120 
 toc: true
 ---

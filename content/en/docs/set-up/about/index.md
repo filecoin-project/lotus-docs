@@ -5,7 +5,7 @@ lead: "Lotus is a Filecoin implementation written by Protocol Labs, the creators
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 10
 toc: true
 ---

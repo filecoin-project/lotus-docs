@@ -5,7 +5,7 @@ lead: "This guide covers how to install the Lotus applications and launch a Lotu
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 20
 toc: true
 ---

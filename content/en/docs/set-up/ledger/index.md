@@ -5,7 +5,7 @@ lead: "Lotus supports using a Ledger hardware wallet as a backend for FIL transf
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 60
 toc: true
 ---

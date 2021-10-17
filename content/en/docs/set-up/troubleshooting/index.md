@@ -5,7 +5,7 @@ lead: "This page offers some troubleshooting advice for Lotus nodes by listing s
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 140
 toc: true
 ---

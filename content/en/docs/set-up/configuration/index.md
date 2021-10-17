@@ -5,7 +5,7 @@ lead: "This guide documents environment variables, configuration and other advan
 draft: false
 menu:
     docs:
-        parent: "nodes"
+        parent: "node-set-up"
 weight: 30
 toc: true
 ---

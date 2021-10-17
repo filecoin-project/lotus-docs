@@ -11,10 +11,10 @@
   url = "get-started"
 
 [[docs]]
-  name = "Nodes"
+  name = "Node Set-up"
   weight = 15
-  identifier = "nodes"
-  url = "nodes"
+  identifier = "node-set-up"
+  url = "node-set-up"
 
 [[docs]]
   name = "Storage providers"
