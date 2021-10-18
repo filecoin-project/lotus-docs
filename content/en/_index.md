@@ -1,33 +1,36 @@
 ---
 title : "Welcome to Lotus docs"
-description: "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network."
-lead: "This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network."
+description: "Lotus is the primary implementation for the Filecoin network. It is written in Go, and is maintained by the Protocol Labs team. This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network!"
+lead: "Lotus is the primary implementation for the Filecoin network. It is written in Go, and is maintained by the Protocol Labs team. This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network!"
 draft: false
 images: []
 aliases: 
     /docs
 ---
 
-It is written in [Go](https://golang.org) and it is actually a suite of command-line applications:
+## What Lotus does
 
-- Lotus Node (`lotus`): a Filecoin Node: validates network transactions, manages a FIL wallet, can perform storage and retrieval deals.
-- Lotus Miner (`lotus-miner`): a Filecoin miner. See the the respective [Lotus Miner](../../mine/lotus/README.md) section in the [Mine](../../mine/README.md) documentation.
-- Lotus Worker (`lotus-worker`): a worker that assists miners to perform mining-related tasks. See its respective [guide](../../mine/lotus/seal-workers.md) for more information.
+When you install Lotus, you actually install a suite of command-line applications, all bundled into one easy-to-use package:
 
-The installation instructions are common to all three, but this section just focuses on getting started with the **Lotus Node**: installing, launching, syncing the chain and managing a Lotus wallet. Documentation on how to make storage deals using Lotus is available in the [store](../../store/lotus/README.md) section. Additional documentation is also available for [miners](../../mine/lotus/README.md) and [developers](../../build/lotus/README.md)!
+| Application | Description |
+| --- | --- |
+| `lotus` | The main Lotus daemon that runs on every Lotus node. This application can validate transactions, manage FIL addresses, and make storage & retreival deals. |
+| `lotus-miner` | See the the respective [Lotus Miner](../../mine/lotus/README.md) section in the [Mine](../../mine/README.md) documentation. |
+| `lotus-worker` | A worker that assists miners to perform mining-related tasks. See its respective [guide](../../mine/lotus/seal-workers.md) for more information. |
 
 {{< alert icon="⚠️" >}}
 Lotus is a command line application that **works on Linux and MacOS only**, and needs to be **built from source**. Users should be familiar with how command-line applications work.
 {{< /alert >}}
 
-## Getting started with Lotus
+## Who it's for
 
-These are the main guides to swiftly get started with Lotus:
+Want to build applications on the Filecoin network? Do you want to provide storage for the Filecoin users all around the world? Do you just want to play around with some cool tech? Then this impmlementation is for you!
 
-- [Install and launch a Lotus node](installation.md)
-- [Create a wallet and send or receive FIL to your address](send-and-receive-fil.md)
-- [Switch between different networks](switch-networks.md)
-- [Learn about the Lotus configuration](configuration-and-advanced-usage.md)
+## Project
 
-Please check the side menu for additional guides!
+Lotus is created, maintained, and supported by Protocol Labs. To find out more about about the project, [head over to the project page](/about/project)
+
+## Get help
+
+Need a hand installing Lotus, or setting up a `lotus-miner`? [Head over to the discussion tab in the Lotus GitHub repo](#)
 
