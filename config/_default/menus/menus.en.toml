@@ -5,12 +5,6 @@
   url = "/blog"
 
 [[docs]]
-  name = "Get started"
-  weight = 10
-  identifier = "get-started"
-  url = "get-started"
-
-[[docs]]
   name = "Node Set-up"
   weight = 15
   identifier = "node-set-up"
