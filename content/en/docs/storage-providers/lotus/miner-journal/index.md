@@ -1,11 +1,14 @@
 ---
-title: 'Journal'
-description: 'Miners can use the journal to observe the workflow of the program in detail, and simplify troubleshooting.'
+title: "Miner journal"
+description: "Miners can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
+lead: "Miners can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 ## File location
 

@@ -1,12 +1,14 @@
 ---
-title: 'Lotus Miner: custom storage layout'
-description: 'This guide describes how to specify custom storage locations for the Lotus Miner, depending on the needs and available hardware.'
-breadcrumb: 'Custom storage layout'
+title: "Custom storage layout"
+description: "This guide describes how to specify custom storage locations for the Lotus Miner, depending on the needs and available hardware."
+lead: "This guide describes how to specify custom storage locations for the Lotus Miner, depending on the needs and available hardware."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 If you used the `--no-local-storage` flag during the [miner initialization](miner-setup.md#miner-initialization), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
 

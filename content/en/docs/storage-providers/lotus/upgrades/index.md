@@ -1,16 +1,16 @@
 ---
-title: 'Lotus Miner: upgrades'
-description: 'This guide covers how to safely upgrade Lotus when running a miner.'
-breadcrumb: 'Miner upgrades'
+title: "Upgrades"
+description: "This guide covers how to safely upgrade Lotus when running a miner."
+lead: "This guide covers how to safely upgrade Lotus when running a miner."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
 The are two types of upgrades. The _upgrade in-place_ is the default procedure and just updates the software. The _upgrade with reset_ removes all the data and starts from scratch:
-
-[[TOC]]
 
 ## Upgrade in-place
 

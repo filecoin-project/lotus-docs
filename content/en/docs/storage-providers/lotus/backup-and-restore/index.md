@@ -1,7 +1,14 @@
 ---
-title: 'Lotus Miner: Backup and restore'
+title: "Backup and restore"
+identifier: "miner-backup-and-restore"
 description: "It's imperative that you frequently backup your Lotus Miner. This page walks you through how to backup your Lotus Miner, and also how to restore your backup."
-breadcrumb: 'Backup and restore'
+lead: "It's imperative that you frequently backup your Lotus Miner. This page walks you through how to backup your Lotus Miner, and also how to restore your backup."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
 # {{ $frontmatter.title }}

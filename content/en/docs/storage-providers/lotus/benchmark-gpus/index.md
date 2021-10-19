@@ -1,14 +1,13 @@
 ---
-title: 'Lotus Miner: Custom GPUs'
-description: 'This guide explains how to benchmark and test GPUs model that is not explicitally supported by the Lotus Miner.'
-breadcrumb: 'Custom GPUs'
+title: "Benchmark GPUs"
+description: "This guide explains how to benchmark and test GPUs model that is not explicitally supported by the Lotus Miner."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
-[[TOC]]
 
 The list of known-to-work supported GPUs is in the [hardware-requirements](../hardware-requirements.md).
 

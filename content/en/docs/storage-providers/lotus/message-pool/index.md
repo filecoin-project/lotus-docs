@@ -1,12 +1,16 @@
 ---
-title: 'Lotus Miner: the message pool'
-description: 'The Message Pool (mpool) is the component of lotus that handles pending messages for inclusion in the chain.'
-breadcrumb: 'Message Pool'
+title: "Message pool"
+description: "The Message Pool (mpool) is the component of lotus that handles pending messages for inclusion in the chain."
+lead: "The Message Pool (mpool) is the component of lotus that handles pending messages for inclusion in the chain."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }} Messages are added to the mpool either directly for locally published messages or through pubsub propagation. Whenever a miner is ready to create a block for a tipset, it invokes the mpool selection algorithm which selects an appropriate set of messages such that it optimizes miner reward and chain capacity.
+Messages are added to the mpool either directly for locally published messages or through pubsub propagation. Whenever a miner is ready to create a block for a tipset, it invokes the mpool selection algorithm which selects an appropriate set of messages such that it optimizes miner reward and chain capacity.
 
 When messages are executed, they use _gas_. The amount of _gas_ used, the parameters attached to each message and the Network's current _BaseFee_ determine the final FIL-cost to include the transaction in the chain. Part of that cost is burned by the network. The other part is given to the miner of the first block that includes the transaction as a reward.
 

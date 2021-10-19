@@ -1,24 +1,16 @@
 ---
-title: 'Lotus Miner: About the markets dagstore'
-description: ''
-breadcrumb: 'About the markets dagstore'
+title: "Dagstore"
+description: "The dagstore is a sharded store to hold large IPLD graphs efficiently, packaged as location-transparent attachable CAR files, with mechanical sympathy resulting in zero-copy access in ideal situations."
+lead: "The dagstore is a sharded store to hold large IPLD graphs efficiently, packaged as location-transparent attachable CAR files, with mechanical sympathy resulting in zero-copy access in ideal situations."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
-[[TOC]]
-::: warning
-This guide is WIP, please create an issue if you have any feedback!
-:::
 ## Conceptual overview
-
-::: tip
-The dagstore is targeted to be introduced in Lotus v1.11.2. We will update the docs once it’s confirmed.
-:::
-
-The dagstore is a sharded store to hold large IPLD graphs efficiently, packaged as location-transparent attachable CAR files, with mechanical sympathy resulting in zero-copy access in ideal situations.
 
 The dagstore is a component of the _markets_ subsystem in `lotus-miner`. It replaces the former Badger staging blockstore. It is designed to provide high efficiency and throughput, and minimize resource utilization during deal-making operations.
 
