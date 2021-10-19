@@ -29,10 +29,10 @@
   url = "/apis"
 
 [[docs]]
-  name = "About"
+  name = "Project"
   weight = 50
-  identifier = "about"
-  url = "/about"
+  identifier = "project"
+  url = "/project"
 
 [[social]]
   name = "GitHub"

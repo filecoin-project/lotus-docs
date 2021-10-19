@@ -5,7 +5,7 @@ lead: "So you want to contribute to Filecoin and the ecosystem? Here is a quick 
 draft: false
 menu:
     docs:
-        parent: "about"
+        parent: "project"
 weight: 20
 toc: true
 ---
