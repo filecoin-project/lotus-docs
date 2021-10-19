@@ -1,11 +1,11 @@
 ---
-title: "Project"
+title: "About"
 description: "Curious about how it all got started, or where we're headed? Learn about the history, current state, and future trajectory of the Filecoin project here."
 lead: "Curious about how it all got started, or where we're headed? Learn about the history, current state, and future trajectory of the Filecoin project here."
 draft: false
 menu:
     docs:
-        parent: "about"
+        parent: "project"
 weight: 10
 toc: true
 ---
