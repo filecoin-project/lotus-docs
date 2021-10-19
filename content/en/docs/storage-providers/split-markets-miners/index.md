@@ -1,24 +1,20 @@
 ---
-title: 'Lotus Miner: Splitting main miner and markets service processes'
-description: ''
-breadcrumb: 'Splitting main miner and markets service processes'
+title: "Split-markets miners"
+description: "Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients."
+lead: "Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
-[[TOC]]
 
 ## Concepts
 
-Lotus performs mining operations, such as sealing files into sectors, calculating proofs over
-those files and submitting the proofs on chain.
-Lotus also performs markets operations, providing storage and serving retrievals to clients.
+Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients.
 
-It is now possible to run mining and markets subsystems in separate processes. Service providers can
-accept storage and retrieval deals without impacting ongoing mining operations. The markets process
-communicates with the mining process over JSON-RPC.
+It is now possible to run mining and markets subsystems in separate processes. Service providers can accept storage and retrieval deals without impacting ongoing mining operations. The markets process communicates with the mining process over JSON-RPC.
 
 It is **highly recommended** to run the mining and markets processes on separate physical or virtual machines so that:
 - the machine hardware can be targeted according to the typical workload of the process
