@@ -1,7 +1,7 @@
 ---
 title: "Hardware requirements"
-description: "The hardware requirements for Filecoin mining are tied to the computational resources needed to _seal_ a sector and generating regular _Proof of Spacetime_ for every sealed sector."
-lead: "The hardware requirements for Filecoin mining are tied to the computational resources needed to _seal_ a sector and generating regular _Proof of Spacetime_ for every sealed sector."
+description: "The hardware requirements for Filecoin mining are tied to the computational resources needed to seal a sector and generating regular Proof of Spacetime for every sealed sector."
+lead: "The hardware requirements for Filecoin mining are tied to the computational resources needed to seal a sector and generating regular Proof of Spacetime for every sealed sector."
 draft: false
 menu:
     docs:
@@ -62,6 +62,7 @@ As mentioned, the Miners have to perform operations of different nature which di
 
 Note that the [Lotus](lotus/README.md) implementation allows to configure and delegate specific sealing phases to [Lotus workers](lotus/seal-workers.md).
 
-## About hardware requirements
+## Future proofing
 
 The above requirements will not increase in the presumable future, and money spent on hardware should provide users with many years of reliable service, paying for themselves several times over.
+
