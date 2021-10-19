@@ -1,16 +1,16 @@
 ---
-title: 'Lotus Miner: set up a high-performance miner'
-description: 'This guide describes the necessary steps to configure a Lotus miner for production.'
-breadcrumb: 'Miner setup'
+title: "Setup"
+description: "This guide describes the necessary steps to configure a Lotus miner for production."
+lead: "This guide describes the necessary steps to configure a Lotus miner for production."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
-::: warning
 Mining will only work if you fully cover the [minimal hardware requirements](../hardware-requirements.md) for the network in which you will mine. As the mining process is very demanding for the machines on several aspects and relies on precise configuration, we strongly recommend Linux systems administration experience before embarking.
-:::
 
 ## Pre-requisites
 

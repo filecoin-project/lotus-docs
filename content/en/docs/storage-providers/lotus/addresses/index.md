@@ -1,12 +1,14 @@
 ---
-title: 'Lotus Miner: Addresses'
-description: 'A miner can be configured with an owner address, a worker address, and additional control addresses. These allow granularity in how the funds sent and received from the miner are managed and provide additional security to the mining operation.'
-breadcrumb: 'Miner addresses'
+title: "Addresses"
+description: "A miner can be configured with an owner address, a worker address, and additional control addresses. These allow granularity in how the funds sent and received from the miner are managed and provide additional security to the mining operation."
+lead: "A miner can be configured with an owner address, a worker address, and additional control addresses. These allow granularity in how the funds sent and received from the miner are managed and provide additional security to the mining operation."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `t0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
 

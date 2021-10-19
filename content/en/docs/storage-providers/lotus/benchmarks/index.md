@@ -1,12 +1,14 @@
 ---
-title: 'Lotus Miner: Benchmarks'
-description: 'Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive mining operation takes. This guide describes how to install the benchmarking tool, and some basic operations.'
-breadcrumb: 'Benchmarks'
+title: "Benchmarks"
+description: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive mining operation takes. This guide describes how to install the benchmarking tool, and some basic operations."
+lead: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive mining operation takes. This guide describes how to install the benchmarking tool, and some basic operations."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 ## Installation
 

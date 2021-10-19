@@ -1,9 +1,14 @@
 ---
-title: Disputer
-description: Verifying submitted Window PoSts is expensive, and that cost can drastically increase when network congestion causes the gas base fee to rise. To address this, Filecoin Improvement Proposal FIP-0010 enables node operators to optimistically accept Window PoSts on-chain without verification, allowing them to be disputed later by off-chain-verifiers.
+title: "Disputer"
+description: "Verifying submitted Window PoSts is expensive, and that cost can drastically increase when network congestion causes the gas base fee to rise. To address this, Filecoin Improvement Proposal FIP-0010 enables node operators to optimistically accept Window PoSts on-chain without verification, allowing them to be disputed later by off-chain-verifiers."
+lead: "Verifying submitted Window PoSts is expensive, and that cost can drastically increase when network congestion causes the gas base fee to rise. To address this, Filecoin Improvement Proposal FIP-0010 enables node operators to optimistically accept Window PoSts on-chain without verification, allowing them to be disputed later by off-chain-verifiers."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# Disputer
 
 [Window PoSt](../../reference/glossary.md#window-proof-of-spacetime-windowpost) messages are necessary for ongoing maintenance of storage power. Verifying the submitted proofs is expensive, and when the gas base fee rises due to congestion, these messages become even more costly. For miners with mostly empty partitions, this cost can exceed their expected rewards from maintaining power. We need to ensure that these messages are cheap for miners, even when specifying a very high gas fee cap.
 

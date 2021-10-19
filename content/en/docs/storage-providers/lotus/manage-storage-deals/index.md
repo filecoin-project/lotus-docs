@@ -1,12 +1,14 @@
 ---
-title: 'Lotus Miner: manage storage deals'
-description: 'This guide describes the different workflows and options that Lotus miners can use to manage storage deals.'
-breadcrumb: 'Manage storage deals'
+title: "Manage storage deals"
+description: "This guide describes the different workflows and options that Lotus miners can use to manage storage deals."
+lead: "This guide describes the different workflows and options that Lotus miners can use to manage storage deals."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 During the lifetime of a miner, Filecoin network clients will query the storage _price-ask_ advertised by the miner and initiate deals. Deals go through several phases:
 

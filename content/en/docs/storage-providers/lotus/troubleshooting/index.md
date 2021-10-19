@@ -1,18 +1,14 @@
 ---
-title: 'Lotus Miner: troubleshooting'
-description: 'This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross.'
-breadcrumb: 'Troubleshooting'
+title: "Troubleshooting"
+description: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
+lead: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
-::: callout
-**Have you successfully overcome other mining-related problems?** Please contribute to this page by editing it with the link at the bottom!
-:::
-
-[[TOC]]
 
 ## Error: Can't acquire bellman.lock
 

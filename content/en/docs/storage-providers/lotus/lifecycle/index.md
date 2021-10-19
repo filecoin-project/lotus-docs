@@ -1,16 +1,16 @@
 ---
-title: 'Lotus Miner: lifecycle'
-description: 'How to safely perform maintenance on a Lotus miner.'
-breadcrumb: Lifecycle
+title: "Lifecycle"
+description: "How to safely perform maintenance on a Lotus miner."
+lead: "How to safely perform maintenance on a Lotus miner."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
 These operations are normally related to maintenances and upgrades. Given that miners are expected to submit proofs to the chain in a continuous fashion while running long and expensive operations, it is important that operators become familiar with how to manage some of the events in the miner lifecycle so that they can be performed with the maximum guarantees.
-
-[[TOC]]
 
 ## Safely restarting the miner daemon
 

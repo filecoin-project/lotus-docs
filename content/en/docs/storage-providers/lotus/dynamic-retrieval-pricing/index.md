@@ -1,11 +1,14 @@
 ---
-title: Dynamic retrieval pricing
-description: Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External. 
+title: "Dynamic retrieval pricing"
+description: "Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External."
+lead: "Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# Dynamic retrieval pricing
-
-Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are _Default_, and _External_:
 
 | Policy name | Description |
 | --- | --- |

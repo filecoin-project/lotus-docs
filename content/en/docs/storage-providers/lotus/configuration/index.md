@@ -1,12 +1,13 @@
 ---
-title: 'Lotus Miner: configuration reference'
+title: 'Configuration'
 description: 'This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them.'
-breadcrumb: 'Configuration reference'
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
-
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
 
 The Lotus Miner configutation is created after the [initialization step](miner-setup.md) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
 

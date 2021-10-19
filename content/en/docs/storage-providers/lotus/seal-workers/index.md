@@ -1,16 +1,16 @@
 ---
-title: 'Lotus Miner: seal workers'
-description: 'The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers.'
-breadcrumb: 'Lotus Workers'
+title: "Seal workers"
+description: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
+lead: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
+draft: false
+menu:
+    docs:
+        parent: "storage-providers"
+weight: 20
+toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
 While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a _sealing pipeline_ to improve resource utilization. The sealing pipeline frees up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
-
-[[TOC]]
 
 ## Resource allocation in Lotus Workers
 
