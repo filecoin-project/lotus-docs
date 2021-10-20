@@ -133,6 +133,6 @@ To see the various logging systems, run:
 lotus log list
 ```
 
-::: tip
+{{< alert icon="tip" >}}
 The [Environment variables section](#environment-variables) section above documents some `GOLOG_*` variables that allow to control logging locations and formats.
-:::
+{{< /alert >}}

@@ -27,7 +27,7 @@ For synced testnet node endpoints using the [JSON RPC API](../apis/json-rpc), `h
 
 Custom endpoints can be requested, including advanced permission settings. Let us know your use case.
 
-{{< alert icon="" >}}
+{{< alert icon="tip" >}}
 For support, questions and current status, visit the [#fil-glif-node-hosting](https://filecoinproject.slack.com/archives/C017HM9BJ8Z) channel in [Filecoin Community Slack](https://filecoin.io/slack).
 {{< /alert >}}
 
@@ -96,4 +96,3 @@ Your application will very probably interact with the Lotus JSON-RPC API directl
 - From the above, learn how to obtain the parameters and expected format for every endpoint from the Lotus Go documentation. This will be the first place to check if something does not work or the format of some parameter is not understood.
 - You can also use this [Lotus API documentation](https://documenter.getpostman.com/view/4872192/SWLh5mUd?version=latest) which covers the Glif Node-supported methods in a more readable form, with additional tips.
 - If you are planning to send transactions, you will need to manage wallets and create signatures for your messages. See the [signing libraries](signing-libraries.md) page for different solutions.
-

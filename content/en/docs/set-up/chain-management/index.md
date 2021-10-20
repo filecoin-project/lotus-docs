@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 90 
+weight: 90
 toc: true
 ---
 
@@ -25,9 +25,9 @@ Filecoin's blockchain grows relatively fast and a full sync will take a long tim
 
 We recommend most users perform the initial node sync from a lightweight snapshot. These snapshots do not contain the full states of the chain and are not suitable for nodes that need to perform queries against historical state information, such as block explorers. However, they are significantly smaller than full chain snapshots and should be sufficient for most use-cases.
 
-:::warning
+{{< alert icon="warning" >}}
 These lightweight state snapshots **do not contain any message receipts**. To get message receipts, you need to sync your Lotus node from the genesis block without using any of these snapshots.
-:::
+{{< /alert >}}
 
 1. Download the most recent lightweight snapshot and its checksum:
 
@@ -41,11 +41,11 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 
     **Testnet**
 
-    :::warning
+    {{< alert icon="warning" >}}
     Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them.
-    :::
+    {{< /alert >}}
 
-    + Calibration: Download latest snapshot: [lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz](https://www.mediafire.com/file/q7tc2bmcc9d09vv/lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz/file). 
+    + Calibration: Download latest snapshot: [lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz](https://www.mediafire.com/file/q7tc2bmcc9d09vv/lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz/file).
 
 
 2. Check the `sha256sum` of the downloaded snapshot:
@@ -183,7 +183,7 @@ lotus daemon stop
 
 ```shell
 mv ~/.lotus/datastore/chain ~/.lotus/datastore/chain_backup
-mkdir ~/.lotus/datastore/chain 
+mkdir ~/.lotus/datastore/chain
 ```
 
 1. Import the chain data:
@@ -195,12 +195,12 @@ lotus daemon --import-snapshot my-snapshot.car --halt-after-import
 1. Start the daemon:
 
     ```shell
-    lotus daemon 
+    lotus daemon
     ```
 
 1. Open another ssh connection or terminal to check sync status :
 
     ```shell
-    lotus sync status 
-    lotus sync wait 
+    lotus sync status
+    lotus sync wait
     ```

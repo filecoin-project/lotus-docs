@@ -9,7 +9,7 @@ menu:
 weight: 80
 toc: true
 ---
-As we mentioned in the [installation guide](installation.md), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network. 
+As we mentioned in the [installation guide](installation.md), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
 + Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
 + Testnets
@@ -24,7 +24,7 @@ You can choose one of the following methods to switch to a different network.
 The first method is the simplest. In this approach, you remove all the data related to the network you were running on before and launch a Lotus binary built to run on the new one:
 
 1. Shut down the Lotus daemon if it is currently running.
-1. Remove the `~/.lotus` folder, or whatever you set `$LOTUS_PATH` to. The default is `~/.lotus`. 
+1. Remove the `~/.lotus` folder, or whatever you set `$LOTUS_PATH` to. The default is `~/.lotus`.
 1. Clone the Lotus repository and move into the `lotus` folder:
 
     ```shell
@@ -45,11 +45,11 @@ The first method is the simplest. In this approach, you remove all the data rela
     lotus daemon
     ```
 
-:::tip Run on a different `$LOTUS_PATH`
+{{< alert icon="warning">}}**Run on a different `$LOTUS_PATH`.**
 This process deletes everything from the old network, including wallets. If you are on `mainnet` and are switching to `calibnet` but you want to keep all your `mainnet` data intact for when you switch back, change your `$LOTUS_PATH` before running `lotus daemon`:
 
 To change your `$LOTUS_PATH` run: `export LOTUS_PATH=~/.new-lotus-path`.
-:::
+{{< /alert >}}
 
 ## Backing up Lotus data
 

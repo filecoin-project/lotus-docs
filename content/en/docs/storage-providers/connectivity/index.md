@@ -20,9 +20,9 @@ Usually, you can find your public IP address using a service like ifconfig.me. R
 curl ifconfig.me
 ```
 
-::: warning
+{{< alert icon="warning">}}
 The returned IP will not be the right one in some setups in which outgoing traffic is routed through a different exit point (i.e. a NAT gateway), than incoming traffic, and thus, presents a different IP. You should be familiar with your own network setup!
-:::
+{{< /alert >}}
 
 ## Testing connectivity to your an IP address/port
 
@@ -65,9 +65,9 @@ An list of bootstrap peers is available for [mainnet](https://github.com/filecoi
 
 If you are running on a NAT'ed environment (i.e. the usual case in a home setup, where there is a router that controls access from and to the internet), sometimes it is necessary to enable port forwarding from an external port to the miner's port.
 
-:::tip
+{{< alert icon="tip">}}
 Instructions vary wildy depending on brand model. Please use your favourite search engine to discover how to enable port forwarding for your router
-:::
+{{< /alert >}}
 
 ## Obtaining a public IP
 

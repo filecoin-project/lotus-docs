@@ -11,12 +11,12 @@ toc: true
 mermaid: true
 ---
 
-## Before we start 
+## Before we start
 
 The process is split into three main parts: the set-up, storing your data and retrieving your data. Each section has several sub-processes that we need to follow.
 
 {{< mermaid >}}
-flowchart TB 
+flowchart TB
     subgraph set-up [Set up]
     a1[Get a Lotus full-node]-->a2[Create a Lotus lite-node]
     a2-->a3[Create a Filecoin address]
@@ -43,7 +43,7 @@ flowchart TB
 
 It will take about an hour to complete this tutorial. While there aren't too many steps involved, there's a bit of waiting around for the network to process your requests.
 
-{{< alert icon="👉" >}}
+{{< alert icon="tip" >}}
 This tutorial uses the Filecoin mainnet. Everything you'll see over the next hour is happening on a production network with other users storing and retrieving data. But don't worry, this tutorial won't cost you anything! It's just important to know that you'll be dealing with real storage providers, real data, and real transactions.
 {{< /alert >}}
 
@@ -79,7 +79,7 @@ This tutorial contains some words and phrases that you might not be familiar wit
 
 ## Set up
 
-Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node, creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+. 
+Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node, creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
 
 {{< mermaid >}}
 graph LR
@@ -88,7 +88,7 @@ graph LR
     C --> D[Sign up to Filecoin Plus]
 {{< /mermaid >}}
 
-{{< alert icon="💡" >}}
+{{< alert icon="tip" >}}
 Programs that interact with the Filecoin network are called _implementations_, and Lotus is a command-line interface (CLI) implementation. There are other implementation being created alongside Lotus, however Lotus is the only Filecoin implementation created and maintained by Protocol Labs.
 {{< /alert >}}
 
@@ -104,9 +104,9 @@ As you're going through this section, make a note of the following variables:
 
 If you are using macOS you must have [Homebrew](https://brew.sh) installed. If you are using Linux you must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
 
-### Access a full-node 
+### Access a full-node
 
-A Lotus full-node is a computer running the `lotus daemon`. Full-nodes are unique because they have complete access to the Filecoin blockchain. The computer specifications required to run a Lotus full-node are relatively high and might be out of reach for most end-user laptops and PCs. 
+A Lotus full-node is a computer running the `lotus daemon`. Full-nodes are unique because they have complete access to the Filecoin blockchain. The computer specifications required to run a Lotus full-node are relatively high and might be out of reach for most end-user laptops and PCs.
 
 Usually, we'd have to _spin up_ a full-node, but we're going to use a Lotus full-node provided by Protocol Labs for this tutorial. This node, called `api.chain.love`, is only for practice sessions like this tutorial and should not be relied upon for any production or development purposes.
 
@@ -126,7 +126,7 @@ To install a Lotus lite-node on your computer, you must have the tools required 
 
 #### macOS
 
-{{< alert >}}
+{{< alert icon="callout">}}
 You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebrew](https://brew.sh/) installed.
 {{< /alert >}}
 
@@ -142,7 +142,7 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
     brew install lotus
     ```
 
-1. Lotus is now installed on your computer. 
+1. Lotus is now installed on your computer.
 
 #### Ubuntu
 
@@ -193,15 +193,15 @@ You must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
 
-### Run a Lotus lite-node 
+### Run a Lotus lite-node
 
-Now that you have Lotus ready to run, you can start a Lotus lite-node on your computer and connect to the `api.chain.love` Lotus full-node! 
+Now that you have Lotus ready to run, you can start a Lotus lite-node on your computer and connect to the `api.chain.love` Lotus full-node!
 
 {{< alert >}}
 Just as a reminder, `api.chain.love` is a Lotus full-node managed by Protocol Labs. It's ideal for use in this tutorial, but should not be used in a development or in a production environment.
 {{< /alert >}}
 
-1. Open a terminal windows and run the `lotus daemon --lite` command, using `api.chain.love` as the full-node address: 
+1. Open a terminal windows and run the `lotus daemon --lite` command, using `api.chain.love` as the full-node address:
 
     ```shell with-output
     FULLNODE_API_INFO=wss://api.chain.love lotus daemon --lite
@@ -222,14 +222,14 @@ Next up is [getting a FIL address ↓](#get-a-fil-address)
 
 ### Get a FIL address
 
-Filecoin addresses are similar to regular bank account numbers. Other users can use your address to send you FIL, and you can use your address to pay storage providers for storing and retrieving your data. 
+Filecoin addresses are similar to regular bank account numbers. Other users can use your address to send you FIL, and you can use your address to pay storage providers for storing and retrieving your data.
 
 There are two parts to a Filecoin address: the public address and the private key. You can freely share your public address with anyone, but you should never share your private key. We're not going to view any private keys in this tutorial, but it's essential to understand the difference between your public address and your private key.
 
 1. Open a new terminal window and create an address using the `lotus wallet new` command:
 
     ```shell with-output
-    lotus wallet new 
+    lotus wallet new
     ```
 
     ```
@@ -244,7 +244,7 @@ There are two parts to a Filecoin address: the public address and the private ke
 
 Your address is made up of two parts: your _public address_ and your _private key_. The public address is what you see when you run `lotus wallet new`, and you're safe to share that address with whoever you want. Your private key, however, must be kept secret and secure. If you lose your private key, you lose access to any FIL stored in that address.
 
-It is incredibly important that you backup your addreses. Storing a copy of your addresses on another device is a great way to ensure you don't lose access to your funds. 
+It is incredibly important that you backup your addreses. Storing a copy of your addresses on another device is a great way to ensure you don't lose access to your funds.
 
 1. If your public address `f1...` is still in the terminal window, copy it to your clipboard. If not, list the addresses associated with your Lotus node and copy your public address:
 
@@ -253,8 +253,8 @@ It is incredibly important that you backup your addreses. Storing a copy of your
     ```
 
     ```
-    Address                                    Balance  Nonce  Default  
-    f1nau67e6k6ggdwluatfz4waexetjfrqmx6fil3nq  0 FIL    0      X  
+    Address                                    Balance  Nonce  Default
+    f1nau67e6k6ggdwluatfz4waexetjfrqmx6fil3nq  0 FIL    0      X
     ```
 
 1. Use `lotus wallet export` to export your private key, replacing `f1...` with your public key:
@@ -290,26 +290,26 @@ You need a GitHub account that is at least 180 days old. If you don't have a Git
 1. Under **Get verified**, click **Get Verified**.
 1. Click **Automatic Verification**.
 1. Click **Start** next to the GitHub logo.
-1. In the `Request` field, enter the public address you got from running `lotus wallet list`. This step may take a few minutes to complete. 
+1. In the `Request` field, enter the public address you got from running `lotus wallet list`. This step may take a few minutes to complete.
 
 ## Store data
 
 Start storing your data on the Filecoin network. This section covers packaging your data, importing it into your local Lotus lite-node, finding a storage provider through the Filecoin Plus miner registry, creating a storage deal, and then waiting for the deal to complete. There's a lot to do, so let's dive in!
 
-{{< alert icon="☠️" >}}
+{{< alert icon="warning" >}}
 Filecoin is optimized for public data and doesn't yet support access controls. If storing private data, ensure you encrypt it before storage to ensure it remains unreadable by anyone without the ability to decrypt it. Keep in mind that if a vulnerability is found in your encryption process at any point in the future, then your data may be compromised.
 {{< /alert >}}
 
 #### Things to note
 
-As you're going through this section, make a note of the following variables: 
+As you're going through this section, make a note of the following variables:
 
 | Variable | Description | Example |
 | --- | --- | --- |
 | Data CID | The content identifier (CID) of the data that you want to store using Filecoin. | `bafk2bzaceajz56zudni2hli7id6jvvpo5n4wj5eoxm5xwj2ipthwc2pkgowwu` |
 | Miner ID #1 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`
 | Miner ID #2 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`
-| Deal CID | The content identifier (CID) for a deal made with a storage provider. | `bafyreict2zhkbwy2arri3jgthk2jyznck47umvpqis3hc5oclvskwpteau` | 
+| Deal CID | The content identifier (CID) for a deal made with a storage provider. | `bafyreict2zhkbwy2arri3jgthk2jyznck47umvpqis3hc5oclvskwpteau` |
 
 ### Prepare your data
 
@@ -329,7 +329,7 @@ For this tutorial, we're going to create a dummy 5GB file full of random data an
     dd if=/dev/urandom of=5gb-filecoin-payload.bin bs=1m count=5200
     ```
 
-    **Linux** users should run: 
+    **Linux** users should run:
 
     ```shell
     dd if=/dev/urandom of=5gb-filecoin-payload.bin bs=1M count=5200
@@ -343,10 +343,10 @@ We now have our payload file ready to be stored using the Filecoin network.
 
 We need to tell our Lotus lite-node which file we want to store using Filecoin.
 
-1. Import the payload into the `lotus daemon` using the `import` command: 
+1. Import the payload into the `lotus daemon` using the `import` command:
 
     ```shell
-    lotus client import 5gb-filecoin-payload.bin 
+    lotus client import 5gb-filecoin-payload.bin
     ```
 
     Lotus creates a directed acyclic graph (DAG) based off the payload. This process takes a few minutes. Once it's complete, Lotus will output the payload CID.
@@ -361,17 +361,17 @@ We need to tell our Lotus lite-node which file we want to store using Filecoin.
 
 Now that Lotus knows which file we want to use, we can create a deal with a Filecoin storage provider to store our data!
 
-### Find a storage provider 
+### Find a storage provider
 
-We need to find suitable storage providers before we can store our data. The Filecoin network allows storage providers to compete by offering different terms for pricing, acceptable data sizes, and other important deal parameters. It's also important to consider the storage provider's location; the closer the storage provider is to you, the faster the storage and retrieval process will be. 
+We need to find suitable storage providers before we can store our data. The Filecoin network allows storage providers to compete by offering different terms for pricing, acceptable data sizes, and other important deal parameters. It's also important to consider the storage provider's location; the closer the storage provider is to you, the faster the storage and retrieval process will be.
 
 We're going to use the Filecoin Plus miner registry to find a couple of storage providers and then cross-check their information with a third-party storage provider reputation system.
 
-{{< alert icon="💡" >}}
+{{< alert icon="tip" >}}
 Increasing the number of storage providers you use increases your data redundancy, and decreases the chances of your data being lost.
 {{< /alert >}}
 
-#### Filecoin Plus miner registry 
+#### Filecoin Plus miner registry
 
 The Filecoin Plus miner registry is a collection of geographically diverse storage providers that are willing to accept low-cost or free storage deals from users. The more storage providers that offer storage in different parts of the world, the faster we can work toward Filecoin’s underlying mission to store humanity’s most important information.
 
@@ -389,7 +389,7 @@ Let's find a couple of storage providers to store our data.
 
 1. Make sure to write down the IDs of the storage providers you want to use. We'll be referring to these IDs in the next section.
 
-#### Miner reputation systems 
+#### Miner reputation systems
 
 The Filecoin Plus miner registry is a great resource, but it represents a small portion of the entire Filecoin mining community. Filecoin reputation systems like [FilRep](https://filrep.io) can help you compare storage providers based on their past performance and provide useful information about the deal parameters that a storage provider will accept. Using FilRep, you can compare storage provider metrics like location, storage power in the network, pricing, and overall success rate.
 
@@ -401,7 +401,7 @@ We're going to use FilRep to check that the minimum deal size of the storage pro
 
     ![](filrep-select-columns.png)
 
-1. Now you can search for the storage providers you found before, using the miner ID. 
+1. Now you can search for the storage providers you found before, using the miner ID.
 
     ![](filrep-search-min-file-size.png)
 
@@ -410,7 +410,7 @@ We're going to use FilRep to check that the minimum deal size of the storage pro
 
 Now that you've found your miners, you can move onto creating a storage deal!
 
-### Create a deal 
+### Create a deal
 
 To complete this section, you need the **Data CID** you received after running `lotus client import` and the IDs of the storage providers you want to use.
 
@@ -428,10 +428,10 @@ To complete this section, you need the **Data CID** you received after running `
     Data CID (from lotus client import): bafykbz...
     ```
 
-1. Wait for Lotus to finish calculating the size of your payload. Lotus calculates this size by counting the individual bits in your payload to ensure that the size is accurate. 
+1. Wait for Lotus to finish calculating the size of your payload. Lotus calculates this size by counting the individual bits in your payload to ensure that the size is accurate.
 
     ```text output
-    .. calculating data size 
+    .. calculating data size
     ```
 
     The duration of this process depends on the size of your file and the specification of your Lotus node. In tests, Lotus took around 20 minutes file of a ~7.5GB file with a 4-core CPU and 8GB RAM. These specifications are common for most end-user laptops.
@@ -439,8 +439,8 @@ To complete this section, you need the **Data CID** you received after running `
 1. Enter the number of days you want to keep this file on Filecoin. The minimum is 180 days:
 
     ```text output
-    Deal duration (days): 180 
-    ``` 
+    Deal duration (days): 180
+    ```
 
 1. Tell Lotus whether or not this is a Filecoin Plus deal. Since you signed up to Filecoin Plus in an earlier step, select `yes` here:
 
@@ -448,10 +448,10 @@ To complete this section, you need the **Data CID** you received after running `
     Make this a verified deal? (yes/no): yes
     ```
 
-1. Enter the miner IDs from the previous section with an empty space separating the two IDs: 
+1. Enter the miner IDs from the previous section with an empty space separating the two IDs:
 
     ```text output
-    Miner Addresses (f0.. f0..), none to find: f01000 f01001 
+    Miner Addresses (f0.. f0..), none to find: f01000 f01001
     ```
 
 1. Confirm your transaction by entering `yes`:
@@ -460,12 +460,12 @@ To complete this section, you need the **Data CID** you received after running `
     -----
     Proposing from f136b5uqa73jni2rr745d3nek4uw6qiy6b6zmmvcq
             Balance: 2 FIL
-    
+
     Piece size: 8GiB (Payload size: 7.445GiB)
     Duration: 7200h0m0s
     Total price: ~0 FIL (0 FIL per epoch)
     Verified: true
-    
+
     Accept (yes/no): yes
     ```
 
@@ -479,7 +479,7 @@ To complete this section, you need the **Data CID** you received after running `
 
 1. Take a note of the **deal CIDs** `baf...`.
 
-### Check the deal status 
+### Check the deal status
 
 Once the data has been sent to the storage clients, the storage deals can take up to 24 hours to complete. You can check the progress of your deals.
 
@@ -489,20 +489,20 @@ Once the data has been sent to the storage clients, the storage deals can take u
     lotus client list-deals --show-failed
     ```
 
-    **DO NOT TURN OFF YOUR LOTUS NODE!** Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when. 
+    **DO NOT TURN OFF YOUR LOTUS NODE!** Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when.
 
 1. You can check the progress of any data transfers by running `lotus client list-transfers`:
 
     ```shell
     lotus client list-transfers
     ```
-    
+
     This command will output something like:
 
     ```text output
     Sending Channels
-    ID                   Status   Sending To   Root Cid     Initiated?  Transferred  Voucher                                   
-    1620782601911586915  Ongoing  ...KPFTTwY7  ...zyd3kapm  Y           224.1MiB     ...bqhcidjmajbelhlxfqry3d7qlu3tvar45a"}}  
+    ID                   Status   Sending To   Root Cid     Initiated?  Transferred  Voucher
+    1620782601911586915  Ongoing  ...KPFTTwY7  ...zyd3kapm  Y           224.1MiB     ...bqhcidjmajbelhlxfqry3d7qlu3tvar45a"}}
 
     Receiving Channels
     ...
@@ -515,16 +515,16 @@ Once the data has been sent to the storage clients, the storage deals can take u
     ```
     ```
     Sending Channels
-    
-    
+
+
     Receiving Channels
-    
-    
+
+
     ```
 
 #### Deal states
 
-Because of the complex nature of Lotus and the Filecoin network, deals can be in one of many different states. 
+Because of the complex nature of Lotus and the Filecoin network, deals can be in one of many different states.
 
 ##### Processing states
 
@@ -547,7 +547,7 @@ The following table is the list of states that a deal should enter, assuming the
 
 ##### Error states
 
-The following deal states mean there was a failure somewhere along the line, in alphabetical order: 
+The following deal states mean there was a failure somewhere along the line, in alphabetical order:
 
 | State | Description |
 | --- | --- |
@@ -581,7 +581,7 @@ These states come from the [Lotus project GitHub repository](https://github.com/
 
 ## Retrieve data
 
-In the previous step, you stored some data on the Filecoin network. It takes up to 24 hours for a storage provider to _seal_ the data. If it's been more than 24 hours since you completed the last section, great! If not, don't worry; you can still follow this page to retrieve some example data that's already on the Filecoin network. 
+In the previous step, you stored some data on the Filecoin network. It takes up to 24 hours for a storage provider to _seal_ the data. If it's been more than 24 hours since you completed the last section, great! If not, don't worry; you can still follow this page to retrieve some example data that's already on the Filecoin network.
 
 ### Restart the Lotus
 
@@ -611,14 +611,15 @@ Before you can retrieve data from a storage provider, you need to check that you
     Lotus will output something like:
 
     ```shell
-    > Address                                    Balance  Nonce  Default  
-    > f16mwizoeloamhp4dea4uy367mlihddw2mflnb5vy  10 FIL   0      X  
+    > Address                                    Balance  Nonce  Default
+    > f16mwizoeloamhp4dea4uy367mlihddw2mflnb5vy  10 FIL   0      X
     ```
 
-    Any balance above 0.1 FIL is enough to retrieve the data we are requesting in this tutorial. 
+    Any balance above 0.1 FIL is enough to retrieve the data we are requesting in this tutorial.
 
-:::warning Low or no balance
-{{< alert icon="⚠️" >}}
+
+{{< alert icon="warning" >}}**Low or no balance**
+
 If you do not have enough FIL, you need to transfer some FIL to this account. You can either do this by using a cryptocurrency exchange or having a friend send you FIL. The address `f1...` listed when you run `lotus wallet list` is your public address; use this when requesting money from an exchange or your friend.
 {{< /alert >}}
 
@@ -636,7 +637,7 @@ We're going to gather this information now.
 
 1. Copy this **address** to your clipboard: `f16wc2ees6nkmk4pguoaaly4zdkeemaajjbv7aqgq`.
 
-    If you want to retrieve data that **you stored** you can use that **address** in place of the one we're using in this tutorial. If you'd like to use the **address** on your local Lotus note, run `lotus wallet list` and copy it to your clipboard. 
+    If you want to retrieve data that **you stored** you can use that **address** in place of the one we're using in this tutorial. If you'd like to use the **address** on your local Lotus note, run `lotus wallet list` and copy it to your clipboard.
 
     Remember, you will not be able to retrieve data stored less than 24 hours ago.
 
@@ -657,7 +658,7 @@ We're going to gather this information now.
 
 Next up is creating the command for Lotus to run. The structure for a retrieval command is: `lotus client retrieve --miner <MINER ID> <DATA CID> ~/output-file`
 
-1. Using the template above, create the command substituting `<MINER ID>` and `<DATA CID>` with the variables you got in the previous step. Your command should look something like this: 
+1. Using the template above, create the command substituting `<MINER ID>` and `<DATA CID>` with the variables you got in the previous step. Your command should look something like this:
 
     ```shell
     lotus client retrieve --miner f07709 mAVWg5AIgFw51hfKzfy8nRsKHlMtT8/DPBJhn1f9eFyOSeldlAiE output-file
@@ -692,4 +693,3 @@ Next up is creating the command for Lotus to run. The structure for a retrieval 
 1. That's it!
 
 This marks the end of the Filecoin Store and Retrieve tutorial! By now you should have a good understanding of how the storage and retrieval process works on the Filecoin network, and also have some ideas on how to integrate this process into your projects! Feel free to carry on playing around with storing and retrieving data using Lotus and Filecoin. If you need a hand or get stuck, check out the [Filecoin Slack](https://filecoin.io/slack/) for help.
-

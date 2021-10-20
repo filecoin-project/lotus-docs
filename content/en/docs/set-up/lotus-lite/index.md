@@ -1,12 +1,12 @@
 ---
-title: Lite node 
+title: Lite node
 description: "A Lotus lite-node is a stripped down version of a Lotus full-node capable of running on lower-end hardware. Lotus lite-nodes do not contain any chain-data and can only perform message signing and deal transactions. However, they are very quick to spin up and can process transactions in parallel with other Lotus lite-nodes."
 lead: "A Lotus lite-node is a stripped down version of a Lotus full-node capable of running on lower-end hardware. Lotus lite-nodes do not contain any chain-data and can only perform message signing and deal transactions. However, they are very quick to spin up and can process transactions in parallel with other Lotus lite-nodes."
 draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 22 
+weight: 22
 toc: true
 ---
 
@@ -22,7 +22,7 @@ Before we get started, let's just go over the terms we'll use in this guide:
 
 To spin up a Lotus lite-node, you will need:
 
-1. A [Lotus full-node](../../get-started/lotus/installation). For best results, make sure that this node is fully synced. 
+1. A [Lotus full-node](../../get-started/lotus/installation). For best results, make sure that this node is fully synced.
 2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.16.4 or higher installed.
 3. You must have [all the software dependencies required](../../get-started/lotus/installation#software-dependencies) to build Lotus.
 
@@ -30,7 +30,7 @@ To spin up a Lotus lite-node, you will need:
 
 If you have access to the full-node you're using, you need to make some minor modifications to its configuration.
 
-{{< alert icon="⛓️">}}
+{{< alert icon="tip">}}
 If you are using the Protocol Labs `api.chain.love` Lotus full-node, you do not need to complete this section. The Protocol Labs Lotus full-node has been configured to accept all incoming requests, so you don't need to create any API keys.
 
 If you are using a node-hosting service like [Glif](https://www.glif.io/) or [Infura](https://infura.io/), you may need to create an API key through the service website.
@@ -61,13 +61,13 @@ If you are using a node-hosting service like [Glif](https://www.glif.io/) or [In
 
 Next up, you'll create the Lotus executable on your lite-node and running it in _lite_ mode!
 
-## Create the executable 
+## Create the executable
 
 You need to create the Lotus executable to run your lite-node with. This process is the same as when creating a full-node.
 
 ### AMD and Intel-based computers
 
-1. On the computer that you want to run the lite-node from, clone the [Lotus GitHub repository](https://github.com/filecoin-project/lotus) 
+1. On the computer that you want to run the lite-node from, clone the [Lotus GitHub repository](https://github.com/filecoin-project/lotus)
 
     ```shell
     git clone https://github.com/filecoin-project/lotus
@@ -89,9 +89,9 @@ You need to create the Lotus executable to run your lite-node with. This process
 
 Because of the novel architecture of the M1-based Mac computers, some specific environment variables must be set before creating the `lotus` executable.
 
-1. Clone the [Lotus repository](https://github.com/filecoin-project/lotus) from GitHub: 
+1. Clone the [Lotus repository](https://github.com/filecoin-project/lotus) from GitHub:
 
-    ```shell   
+    ```shell
     git clone https://github.com/filecoin-project/lotus
     cd lotus
     ```
@@ -148,9 +148,9 @@ You've got the Lotus executables ready to go, and you have access to a Lotus ful
     2021-03-02T23:59:50.609Z        INFO    main    lotus/daemon.go:201     lotus repo: /root/.lotus
     ...
     ```
-    
+
     The `API_TOKEN` variable must be followed by a colon sign (`:`).
-    
+
     If you don't have an `API_TOKEN`, you can run the above command without one and just gain read-only access to the full-node:
 
     ```shell
@@ -168,11 +168,11 @@ You've got the Lotus executables ready to go, and you have access to a Lotus ful
 
 A lite-node is limited in what it can do and is designed to only perform message signing and transactional operations. Lite-nodes cannot seal data or query the chain directly. All chain requests go through the attached full-node. If for whatever reason, the full-node goes offline, any lite-nodes connected to it will also go offline.
 
-### Access and permissions 
+### Access and permissions
 
-Setting up a Lotus lite-node without using an [API token from a full-node](./api-tokens/) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node. 
+Setting up a Lotus lite-node without using an [API token from a full-node](./api-tokens/) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node.
 
-## Use cases 
+## Use cases
 
 A Lotus lite-node can perform transaction-based functions like creating the transaction, proposing deals, signing messages, etc. They do not have any chain data themselves and rely on a full-node for chain data completely. Lotus lite-nodes are completely useless on their own.
 
@@ -180,9 +180,8 @@ One use case is a service that needs to sign multiple messages a minute, such as
 
 Another scenario is an organization with a lot of data they want to store on Filecoin but no resources to run a full-node. They could create a Lotus lite-node to create deals with a full-node that they trust, and then once a miner has been found, the lite-node can transfer the data to the miner.
 
-## Benefits and drawbacks 
+## Benefits and drawbacks
 
 Since Lotus lite-nodes do not need to sync any chain data, they're able to spin up quickly. Due to their minimal hardware requirements, it's possible to spin up multiple lite-nodes with quite a small footprint. A project can horizontally expand or shrink its processing power by adding or removing Lotus lite-nodes whenever necessary.
 
-However, lite-nodes come with some significant drawbacks. While there are some functions that a lite-node can perform without access to a full-node, all transactions and processes that require access to chain-data must be routed through a Lotus full-node. 
-
+However, lite-nodes come with some significant drawbacks. While there are some functions that a lite-node can perform without access to a full-node, all transactions and processes that require access to chain-data must be routed through a Lotus full-node.

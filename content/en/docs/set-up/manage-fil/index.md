@@ -42,7 +42,7 @@ More information about Addresses can be found in the [How Filecoin works](../../
 
 ## Creating a wallet
 
-Creating wallets using Lotus is very simple. There are mutliple wallet types to choose from. 
+Creating wallets using Lotus is very simple. There are mutliple wallet types to choose from.
 
 ### Create a BLS wallet
 
@@ -64,7 +64,7 @@ lotus msig create address1 address2..
 
 This will create a new address and print it. You can distinguish mainnet from testnet addresses because they start with `f` for mainnet and `t` for testnets.
 
-{{< alert icon="⚠️" >}}
+{{< alert icon="warning">}}
 The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a [hardware wallet](#ledger).
 {{< /alert >}}
 
@@ -154,7 +154,7 @@ Every transaction that sends `FIL` pays an additional fee based on its _gas_ usa
 
 ## Exporting and importing addresses
 
-{{< alert icon="⚠️" >}}
+{{< alert icon="warning">}}
 Keep your addresses' private keys safe! Do not share them with anyone! Store them in a secure location!
 {{< /alert >}}
 
@@ -222,7 +222,7 @@ Make sure you fully trust the Lotus node you are connecting to.
      EnableLedger = true
    ```
 
-1. Unlock your Ledger device. 
+1. Unlock your Ledger device.
 1. Open the Filecoin app on your Ledger device and keep it connected to your computer.
 1. Use `wallet new secp256k1-ledger` to create a Ledger-backed wallet:
 

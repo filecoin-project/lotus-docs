@@ -22,7 +22,7 @@ It is **highly recommended** to run the mining and markets processes on separate
 
 However it is still advantageous to run the processes separately on the same machine to
 isolate them - for example the storage service provider can stop and restart the markets
-process without affecting an ongoing Winning PoSt Window PoSt on the miner. 
+process without affecting an ongoing Winning PoSt Window PoSt on the miner.
 
 The steps below will guide you through the procedure to backup your mining node, create
 an initial configuration for your brand new markets node, disable markets functionality
@@ -59,9 +59,9 @@ enables more efficient access and reduces network IO loads.
 
 ## Splitting the `lotus-miner` monolith into Subsystem
 
-::: tip
+{{< alert icon="tip" >}}
 This feature is available in lotus v1.11.1 and up.
-:::
+{{< /alert >}}
 
 This document explains how to split an existing monolith `lotus-miner` node into multiple processes to take advantage of this new architecture.
 
@@ -112,12 +112,12 @@ the node can be dialed by clients that wish to make storage and retrieval deals.
 This guide won't go into details on how to make the endpoint connectable, as this ultimately depends on your network infrastructure and equipment, refer to the [lotus-miner connectivity guide](https://docs.filecoin.io/mine/lotus/connectivity/#frontmatter-title) for more details. Generally speaking, configuring static port mappings on your external-facing router, and ensuring your markets node has an internal static IP address and port should be sufficient, in addition to adjusting any firewalls that may be present.
 
 
-::: tip  
+{{< alert icon="tip" >}}
 When a `lotus-miner` instance is configured as a `mining/sealing/proving` node,
-**it does not receive requests and should not be publicly exposed on the Internet**.  
+**it does not receive requests and should not be publicly exposed on the Internet**.
 **The `markets` node communicates with the `mining/sealing/proving` node via its
-JSON RPC interface.** Just to reiterate, the `mining/sealing/proving` no longer runs a libp2p interface, and the `markets` and `mining/sealing/proving` do not communicate over libp2p, but through HTTP and/or Websockets (JSON-RPC interface).  
-:::
+JSON RPC interface.** Just to reiterate, the `mining/sealing/proving` no longer runs a libp2p interface, and the `markets` and `mining/sealing/proving` do not communicate over libp2p, but through HTTP and/or Websockets (JSON-RPC interface).
+{{< /alert >}}
 
 ## Split the Market Process
 
@@ -127,9 +127,9 @@ Before splitting the markets service process from the monolith miner process,
 we need to **backup** the miner's metadata repository. Stop the `lotus daemon` and `lotus-miner`, then
 **restart** both of them with the `LOTUS_BACKUP_BASE_PATH` environment variable:
 
-::: tip
+{{< alert icon="tip" >}}
 In this guide, we are replacing the the backup file in the `/tmp` folder as it is a temporary file that is just used to initialize the markets node, it's not used afterwards.
-:::
+{{< /alert >}}
 
 1. in the machine running the full node:
 
@@ -146,7 +146,7 @@ export LOTUS_BACKUP_BASE_PATH=/tmp
 
 3. Restart both daemon and lotus-miner
 4. Create the backup on the machine running the miner node
-   
+
 ```shell
 lotus-miner backup /tmp/backup.cbor
 ```
@@ -173,9 +173,9 @@ needs to be publicly accessible so that clients can make storage and retrieval
 deals with your system.**
 
 
-::: tip 
+{{< alert icon="tip" >}}
 If you were previously running a lotus miner monolith process, copy over the `Dealmaking` session from `~/.lotusminer/config.toml` to preserve your configuration! If you want to initialize the market nodes with the default dealmaking configuration, you can skip this section.
-:::
+{{< /alert >}}
 
 
 ```toml
@@ -226,10 +226,10 @@ If you were previously running a lotus miner monolith process, copy over the `De
   RetrievalFilter = "/absolute/path/to/retrieval_filter_program"
 ```
 
-::: info
+{{< alert >}}
 The `[Libp2p]` section of the `config.toml` on the `mining/sealing/proving` node
 can be removed because it will no longer be running a Libp2p node, as we explained above.
-:::
+{{< /alert >}}
 
 #### Step 2. Disable the Market Subsystem on the `mining/sealing/proving` miner process
 
@@ -259,11 +259,11 @@ a message on chain. This is necessary so that storage and retrieval clients know
 this miner's **deal-making** endpoint is now publicly dialable/reachable on a new
 address (the new `markets` node).
 
-::: warning
+{{< alert icon="warning" >}}
 Make sure your main mining process is running before you run the following step.
-:::
+{{< /alert >}}
 
-For this tutorial, we will us ~/.lotusmarkets` as the markets repository paths. You **do not** need to manually create the folder in advance. 
+For this tutorial, we will us ~/.lotusmarkets` as the markets repository paths. You **do not** need to manually create the folder in advance.
 
 ```shell
 lotus-miner --markets-repo=~/.lotusmarkets init service --type=markets \
@@ -278,9 +278,9 @@ process to a different host and/or port, you must update miner's `multiaddr` on-
 Otherwise, clients wishing to make deals with you will no longer be able to connect to
 your node.
 
-::: tip
+{{< alert icon="tip" >}}
 `multiaddr` onchain should be the same as the `ListenAddresses` you set in the `Libp2p` section of the config.toml on your market node.
-:::
+{{< /alert >}}
 
 ```shell
 lotus-miner actor set-addrs <NEW_MULTIADDR>
@@ -308,9 +308,9 @@ If you have initialized the dagstore, you can optionally move the DAG store
 directory to the lotus markets repository, to carry over the indices you have
 already built up.
 
-::: tip
+{{< alert icon="tip" >}}
 Dagstore has not been introduced in v1.11.1 yet, we will update the docs once its available in Lotus.
-:::
+{{< /alert >}}
 
 ```shell
 mv ~/.lotusminer/dagstore ~/.lotusmarkets/
@@ -327,7 +327,7 @@ depending on the `LOTUS_MINER_PATH` environment variable!
 LOTUS_MINER_PATH=~/.lotusmarkets lotus-miner run
 ```
 
-And that's it, you have successfully set up your market subsystem! 
+And that's it, you have successfully set up your market subsystem!
 
 
 ## Calling commands
@@ -343,9 +343,9 @@ In addition to the [existing environment variables](https://docs.filecoin.io/min
 - `LOTUS_MARKETS_PATH` is the location of your market repository.
 - `MARKETS_API_INFO` is the location of the market node.
 
-::: tip
+{{< alert icon="tip" >}}
 You can learn how to use a different lotus node [here](https://docs.filecoin.io/mine/lotus/miner-lifecycle/#using-a-different-lotus-node).
-:::
+{{< /alert >}}
 
 When splitting miner and markets subsystems, we **recommend** adding `.bashrc` (or equivalent) with the API address / path for your markets node. You can mix and match, for example, the configuration inside the machine running the markets node:
 
@@ -421,9 +421,9 @@ lotus-miner sectors list
 If you want to revert the changes listed above and go back to running `lotus-miner` as a single process, run the following:
 
 1. Shut both `mining/sealing/proving` and `markets` node down.
-   
-2. Make sure that the `mining/sealing/proving` node is publicly exposed, as we will be enabling the markets subsystem on it. Set up the addresses in the [`Libp2p` section](https://docs.filecoin.io/mine/lotus/miner-configuration/#libp2p-section) of the `~/$LOTUS_MINER_PATH/config.toml` 
-   
+
+2. Make sure that the `mining/sealing/proving` node is publicly exposed, as we will be enabling the markets subsystem on it. Set up the addresses in the [`Libp2p` section](https://docs.filecoin.io/mine/lotus/miner-configuration/#libp2p-section) of the `~/$LOTUS_MINER_PATH/config.toml`
+
 3. In the `mining/sealing/proving` repository, update the `config.toml` and set `EnableMarkets` option to `true`
 ```toml
 [Subsystems]
@@ -482,13 +482,13 @@ lotus-miner actor set-addrs <NEW_MULTIADDR>
 9. Update the `Addresses` section of the markets `config.toml` to be the same as same the mining/sealing/proving node.
 
 ```toml
-[Addresses]  
-    PreCommitControl = ["f00XX1"]  
-    CommitControl = ["f00XX2"]  
-    TerminateControl = []  
-    DealPublishControl = ["f00XX3"] 
-    DisableOwnerFallback = false  
-    DisableWorkerFallback = false 
+[Addresses]
+    PreCommitControl = ["f00XX1"]
+    CommitControl = ["f00XX2"]
+    TerminateControl = []
+    DealPublishControl = ["f00XX3"]
+    DisableOwnerFallback = false
+    DisableWorkerFallback = false
 ```
- 
+
 Typically, if you initialize the markets node from the `config.toml` used in the mining/sealing/proving node, the settings in this section will be the same as in the mining/sealing/proving node. If you are already running a subsystem and have changed the configuration in this area, copy the changes to the markets node. If you do not copy the changes, the `DealPublishControl` configuration will not affect, and `DealPublish` costs will be deducted from the worker wallet.

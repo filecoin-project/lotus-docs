@@ -28,9 +28,9 @@ lotus --version # for the lotus binary
 lotus version   # for the currently running daemon
 ```
 
-:::callout
+{{< alert icon="callout">}}
 **You will need to stop and start the daemon again after installing the new version**.
-:::
+{{< /alert >}}
 
 ## Switching networks
 

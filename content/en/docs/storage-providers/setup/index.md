@@ -21,9 +21,9 @@ Before attempting to follow this guide:
 - Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
 - If you are in China, read the [tips for running in China](tips-running-in-china.md) page first.
 
-::: callout
+{{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
-:::
+{{< /alert >}}
 
 ## Before starting the miner
 
@@ -109,15 +109,15 @@ lotus wallet new bls
 f3...
 ```
 
-::: callout
+{{< alert icon="callout" >}}
 Next make sure to [send some funds](../../get-started/lotus/send-and-receive-fil.md) to the **worker address** so that the miner setup can be completed.
-:::
+{{< /alert >}}
 
 For additional information about the different wallets that a miner can use and how to configure them, read the [miner addresses guide](miner-addresses.md).
 
-::: tip
+{{< alert icon="tip" >}}
 Safely [backup your wallets](../../get-started/lotus/send-and-receive-fil.md#exporting-and-importing-addresses)!
-:::
+{{< /alert >}}
 
 ### Downloading parameters
 
@@ -205,9 +205,9 @@ or if you are using the systemd service file:
 systemctl start lotus-miner
 ```
 
-::: warning
+{{< alert icon="warning" >}}
 **Do not proceed** from here until you have verified that your miner not only is running, but also [reachable on its public IP address](connectivity.md).
-:::
+{{< /alert >}}
 
 ## Publishing the miner addresses
 

@@ -10,14 +10,14 @@ weight: 100
 toc: true
 ---
 
-::: tip
+{{< alert icon="tip" >}}
 Unless you are running a private test network, it is not usually necessary for you to run a network bootstrapper node.
-:::
+{{< /alert >}}
 
 ### Configuring a Bootstrapper node
 
 Because bootstrapper nodes handle somewhat different traffic than a typical lotus daemon, we recommend using
-the following configuration. This configuration will setup the node to act as a bootstrapper for 
+the following configuration. This configuration will setup the node to act as a bootstrapper for
 
 ```toml
   [API]
@@ -29,7 +29,7 @@ the following configuration. This configuration will setup the node to act as a 
     ConnMgrGrace = "5m0s"
     Bootstrapper = true
   [Pubsub]
-    Bootstrapper = true 
+    Bootstrapper = true
 
 ```
 

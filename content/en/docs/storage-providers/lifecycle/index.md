@@ -130,9 +130,9 @@ You can restart the miner as soon as you wish. Workers do not need to be restart
 
 Lotus [seal workers](seal-workers.md) can be restarted any time, but if they are in the middle of one of the sealing steps, then the operation will start again (from the last checkpoint).
 
-::: warning
+{{< alert icon="warning" >}}
 There is a maximum of three attempts to complete the _precommit2_ operation before sealing is fully started from scratch (_pre-commit1_ phase).
-:::
+{{< /alert >}}
 
 ## Changing storage locations
 
@@ -164,9 +164,9 @@ If you wish to change the storage location for any of the lotus workers:
 
 Any operations that the worker was performing before stopping will be restarted from the last checkpoint (a point in which they can be restarted, which may correspond to the start of the current sealing phase).
 
-:::warning
+{{< alert icon="warning" >}}
 Moving data between different workers is not currently supported. Moving the worker storage folder to a different worker machine will not work as the miner expects the ongoing sealing operations to be completed by the worker they were assigned to in the first place.
-:::
+{{< /alert >}}
 
 ## Using a different Lotus Node
 
@@ -184,6 +184,6 @@ Follow these steps to learn [how to obtain a token](../../build/lotus/api-tokens
 3. If you have not exported your wallets yet, export them now from the old node and re-import them to the new Lotus node.
 4. Start the miner. It should now communicate with the new Lotus Node and, since it has the same wallets as the older one, it should be able to perform the necessary operations on behalf of the miner.
 
-::: callout
+{{< alert icon="callout" >}}
 Make sure your new Lotus Node is fully synced.
-:::
+{{< /alert >}}

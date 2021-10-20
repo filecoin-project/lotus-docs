@@ -18,9 +18,9 @@ It is written in [Go](https://golang.org) and it is actually a suite of command-
 
 The installation instructions are common to all three, but this section just focuses on getting started with the **Lotus Node**: installing, launching, syncing the chain and managing a Lotus wallet. Documentation on how to make storage deals using Lotus is available in the [store](../../store/lotus/README.md) section. Additional documentation is also available for [miners](../../mine/lotus/README.md) and [developers](../../build/lotus/README.md)!
 
-::: warning
+{{< alert icon="warning" >}}
 Lotus is a command line application that **works on Linux and MacOS only**, and needs to be **built from source**. Users should be familiar with how command-line applications work.
-:::
+{{< /alert >}}
 
 ## Getting started with Lotus
 

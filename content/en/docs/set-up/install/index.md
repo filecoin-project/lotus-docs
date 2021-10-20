@@ -24,9 +24,9 @@ To run a Lotus node your computer must have:
 - 8-core CPU and 32 GiB RAM. Models with support for _Intel SHA Extensions_ (AMD since Zen microarchitecture or Intel since Ice Lake) will significantly speed things up.
 - Enough space to store the current Lotus chain (preferably on an SSD storage medium). The chain grows at approximately 38 GiB per day. The chain can be [synced from trusted state snapshots and compacted or pruned](chain.md) to a minimum size of around 33Gib.  The full history was around 10TiB in June of 2021.
 
-:::warning
+{{< alert icon="warning" >}}
 These are the minimal requirements to run a Lotus node. [Hardware requirements for Miners](../../mine/hardware-requirements.md) are different.
-:::
+{{< /alert >}}
 
 ## Linux
 
@@ -38,9 +38,10 @@ There are several ways to install Lotus on Linux:
 + [AppImages](#appimage)
 + [Building from source](#building-from-source).
 
-:::warning Miners should build from source
+{{< alert icon="warning">}}**Miners should build from source**.
+
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Miners looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
-:::
+{{< /alert >}}
 
 ### Snap package manager
 
@@ -97,7 +98,7 @@ Building Lotus requires some system dependencies, usually provided by your distr
 Arch:
 
 ```shell
-sudo pacman -Syu opencl-icd-loader gcc git bzr jq pkg-config opencl-icd-loader opencl-headers opencl-nvidia hwloc 
+sudo pacman -Syu opencl-icd-loader gcc git bzr jq pkg-config opencl-icd-loader opencl-headers opencl-nvidia hwloc
 ```
 
 Ubuntu/Debian:
@@ -140,7 +141,7 @@ To build Lotus, you need a working installation of [Go 1.16.4 or higher](https:/
 wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 ```
 
-:::tip
+{{< alert icon="tip">}}
 You'll need to add `/usr/local/go/bin` to your path. For most Linux distributions you can run something like:
 
 ```shell
@@ -148,11 +149,11 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 ```
 
 See the [official Golang installation instructions](https://golang.org/doc/install) if you get stuck.
-:::
+{{< /alert >}}
 
 #### Build and install Lotus
 
-Once all the dependencies are installed, you can build and install Lotus. 
+Once all the dependencies are installed, you can build and install Lotus.
 
 1. Clone the repository:
 
@@ -207,12 +208,12 @@ Once all the dependencies are installed, you can build and install Lotus.
    Lotus is compiled to operate on a single network,  run one of the following commands to build the lotus node for the specific lotus network.
 
    ```shell
-   # join mainnet 
-   make clean all 
-   
+   # join mainnet
+   make clean all
+
    # Or to join a testnet or devnet:
    make clean calibnet # Calibration with min 32GiB sectors
-   
+
    sudo make install
    ```
 
@@ -220,7 +221,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    `lotus` will use the `$HOME/.lotus` folder by default for storage (configuration, chain data, wallets). See [advanced options](configuration-and-advanced-usage.md) for information on how to customize the Lotus folder.
 
-   Once the installation is finished, use the command down below to ensure lotus is installed successfully for the right network. 
+   Once the installation is finished, use the command down below to ensure lotus is installed successfully for the right network.
 
    ```shell
    lotus --version
@@ -251,11 +252,11 @@ make install-daemon-service
 make install-miner-service
 ```
 
-::: warning
+{{< alert icon="warning">}}
 Provided service files should be **inspected and edited** according to user needs as they are very generic and may lack specific environment variables and settings needed by the users.
 
 One example is that logs are redirected to files in `/var/log/lotus` by default and not visible in `journalctl`.
-:::
+{{< /alert >}}
 
 ## MacOS
 
@@ -266,13 +267,13 @@ There are several ways to install Lotus on macOS:
 - [Install with Homebrew](#install-with-homebrew).
 - [Build from source](#build-from-source).
 
-:::warning Miners should build from source
+{{< alert icon="warning">}}**Miners should build from source.**
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Miners looking to improve their system efficiency should [install Lotus by building from source](#build-from-source).
-:::
+{{< /alert >}}
 
 ### Install with Homebrew
 
-You can quickly install Lotus using Homebrew on macOS. 
+You can quickly install Lotus using Homebrew on macOS.
 
 1. Add the `filecoin-project/lotus` tap:
 
@@ -309,15 +310,15 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
     /Library/Developer/CommandLineTools
     ```
 
-    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew). 
+    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
 
-   :::warning
-   If the above command doesn't return a path, install Xcode: 
+   {{< alert icon="warning">}}
+   If the above command doesn't return a path, install Xcode:
 
    ```shell
    xcode-select --install
    ```
-   :::
+   {{< /alert >}}
 
 Next up is installing Lotus' dependencies using Homebrew.
 
@@ -340,11 +341,11 @@ The installation instructions are different depending on which CPU is in your Ma
 - [M1-based CPUs](#m1-based-cpus)
 - [Intel and AMD-based CPUs](#intel-and-amd-based-cpus)
 
-##### M1-based CPUs 
+##### M1-based CPUs
 
-:::warning
+{{< alert icon="warning">}}
 These instructions are for installing Lotus on an M1-based Mac. If you have an Intel or AMD-based CPU, use the [Intel and AMD-based CPU instructions ↓](#intel-and-amd-based-cpus)
-:::
+{{< /alert >}}
 
 1. Clone the repository:
 
@@ -361,9 +362,9 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
 
-    :::tip
+    {{< alert icon="tip">}}
     If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →](./switch-networks.md)
-    :::
+    {{< /alert >}}
 
 1. Create necessary environment variable to allow Lotus to run on ARM architecture:
 
@@ -388,9 +389,9 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 
 ##### Intel and AMD-based CPUs
 
-:::warning
+{{< alert icon="warning">}}
 These instructions are for installing Lotus on an Intel or AMD-based Mac. If you have an M1-based CPU, use the [M1-based CPU instructions ↑](#m1-based-cpus)
-:::
+{{< /alert >}}
 
 1. Clone the repository:
 
@@ -407,9 +408,9 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
 
-    :::tip
+    {{< alert icon="tip">}}
     If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →](./switch-networks.md)
-    :::
+    {{< /alert >}}
 
 1. If you are in China, take a look at some [tips for running Lotus in China](./tips-running-in-china.md)".
 1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
@@ -424,7 +425,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. Build and install Lotus:
 
    ```shell
-   make clean && make all 
+   make clean && make all
    sudo make install
    ```
 
@@ -448,9 +449,9 @@ During the first run, Lotus will:
 
 The daemon will start producing lots of log messages right away. From this point, you will have to work on a new terminal. Any`lotus` commands you run now will communicate with the running daemon.
 
-:::tip
+{{< alert icon="tip">}}
 Do not be concerned by the number of warnings and sometimes errors showing in the logs. They are a normal part of the daemon lifecycle as it participates in the globally distributed consensus network.
-:::
+{{< /alert >}}
 
 If you used snapshots, subsequent daemon starts can proceed as normal without any options:
 
@@ -482,7 +483,7 @@ lotus
   - net: Manage P2P Network
   - sync: Inspect or interact with the chain syncer
   ...
-  
+
 # Show general help
 lotus --help
 # Show help for the "client" to make deals, store data, retrieve data
@@ -513,9 +514,9 @@ lotus net peers
 12D3KooWRTQoDUhWVZH9z5u9XmaFDvFw14YkcW7dSBFJ8CuzDHnu, [/ip4/67.212.85.202/tcp/10906]
 ```
 
-Or check the current version of your Lotus node as well as network. 
+Or check the current version of your Lotus node as well as network.
 
-```shell 
+```shell
 lotus version
 ```
 ```
@@ -533,4 +534,3 @@ lotus daemon stop
 ## When running with systemd do:
 # systemctl stop lotus-daemon
 ```
-

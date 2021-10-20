@@ -168,15 +168,13 @@ a. The client must send the data as `.car` files and must generate the CID of ea
 b. The client must share the CIDs of each `.car` file with the storage provider.
 1. If the files were compressed by the client to send over the internet, the storage provider must decompress the data. At this point, the storage provider may need to adjust the deal price to suit any changes in data size.
 1. This client sends a deal proposal. This can be viewed by the storage provider by running `lotus-miner storage-deals list`. The deal will have the `WaitingForData` status.
-1. - The storage provder imports each deal using `lotus-miner storage-deals import-data <dealCid> <carFilePath>`.
+1. The storage provder imports each deal using `lotus-miner storage-deals import-data <dealCid> <carFilePath>`.
 
-    :::tip
-    Each import can take between 5 to 20 minutes. Sometimes the command will look like it has stalled. Be patient.
-    :::
-
+   {{< alert icon="tip" >}}
+   Each import can take between 5 to 20 minutes. Sometimes the command will look like it has stalled. Be patient.
+   {{< /alert >}}
 1. The imported deal will go through the normal process `Empty` → `AP` → `WaitDeal` until `WaitDeal`, the sector expires, or is manually pushed. The storage provider still pays the publish and sealing message fees.
 1. If the storage provider changed the storage price for this specific deal, they must revert to their normal price after imports are done.
 1. Once the deal finishes sealing and has the `active` status, the storage provider can delete the original `.car` files. If the sector does not fully seal and turn `active`, the storage provider must create a new dealCid to retry using the same `.car` file. Storage providers cannot reuse a failed dealCid.
 
 This is just the _general_ workflow for arranging an offline storage deal. Individual workflows may be different from storage provider to storage provider, and client to client.
-
