@@ -5,7 +5,7 @@ lead: "This guide explains how to generate new tokens for the Lotus APIs and wha
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

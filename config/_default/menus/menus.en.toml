@@ -11,10 +11,10 @@
   url = "node-set-up"
 
 [[docs]]
-  name = "Build"
+  name = "Developers"
   weight = 17
-  identifier = "build"
-  url = "build"
+  identifier = "developers"
+  url = "developers"
 
 [[docs]]
   name = "Storage providers"

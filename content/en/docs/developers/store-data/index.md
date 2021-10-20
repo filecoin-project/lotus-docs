@@ -5,7 +5,7 @@ lead: "This guide will show you how to import and make deals to store data on th
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

@@ -4,7 +4,7 @@ description: "Glif provides a number of synced Lotus node endpoints on the Filec
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

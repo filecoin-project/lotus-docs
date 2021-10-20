@@ -5,7 +5,7 @@ lead: "This guide shows how to configure Lotus so that its APIs can be remotely 
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---
