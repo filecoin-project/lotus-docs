@@ -5,7 +5,7 @@ lead: "Payment channels are used to transfer funds between two actors. This guid
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

@@ -5,7 +5,7 @@ lead: "This guide goes into more depth for storing very large files (over 1TiB),
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

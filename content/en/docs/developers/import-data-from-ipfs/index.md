@@ -5,7 +5,7 @@ lead: "This guide will show you how to use Lotus to directly add IPFS-hosted dat
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

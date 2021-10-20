@@ -5,7 +5,7 @@ lead: "This is a guide on how to use the Filecoin Project's json-rpc library to 
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

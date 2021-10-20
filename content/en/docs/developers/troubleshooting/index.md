@@ -5,7 +5,7 @@ lead: "This page offers some troubleshooting advice for Lotus API users by listi
 draft: false
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---

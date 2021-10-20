@@ -4,7 +4,7 @@ description: "This page gathers a list of API client libraries for Lotus that ca
 lead: "This page gathers a list of API client libraries for Lotus that can be used to facilitate integrations against nodes and miners."
 menu:
     docs:
-        parent: "build"
+        parent: "developers"
 weight: 10
 toc: true
 ---
