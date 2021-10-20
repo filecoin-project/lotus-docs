@@ -54,9 +54,9 @@ lotus-worker run
 
 ## Upgrade with reset
 
-::: warning
+{{< alert icon="warning" >}}
 This upgrade procedure should only be used as a last resort or when the chain has been upgraded and requires such action to be taken.
-:::
+{{< /alert >}}
 
 It is similar to re-installing everything from scratch, so you can follow the usual [installation](../../get-started/lotus/installation.md) and [miner-setup](miner-setup.md) guides after it. Before you do this, consider:
 

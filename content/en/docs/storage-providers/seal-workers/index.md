@@ -103,9 +103,9 @@ When comparing task priority:
 
 ## Installation
 
-::: callout
+{{< alert icon="callout" >}}
 During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
-:::
+{{< /alert >}}
 
 The `lotus-worker` application should have been built and installed along with the others when following the [installation guide](../../get-started/lotus/installation.md). For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
 
@@ -165,9 +165,9 @@ export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
 
-::: tip
+{{< alert icon="tip" >}}
 When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China](tips-running-in-china.md)
-:::
+{{< /alert >}}
 
 ### Run the worker
 

@@ -10,9 +10,9 @@ weight: 140
 toc: true
 ---
 
-::: callout
+{{< alert icon="callout">}}
 **Have you successfully overcome other Lotus Node-related problems?** Please contribute to this page by editing it with the link at the bottom!
-:::
+{{< /alert >}}
 
 [[TOC]]
 

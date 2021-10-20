@@ -16,9 +16,9 @@ When messages are executed, they use _gas_. The amount of _gas_ used, the parame
 
 The different caps and fees for messages are explained below, along with instructions on how to inspect and interact with the message pool.
 
-::: tip
+{{< alert icon="tip" >}}
 Lotus provides the tooling to interact with the message pool with the `lotus mpool` subcommands.
-:::
+{{< /alert >}}
 
 [[TOC]]
 
@@ -34,9 +34,9 @@ If the ticket quality is sufficiently high, then a greedy selection algorithm is
 
 When a message is executed it consumes _gas_. The total gas consumed by a message directly affects the cost to place that message in the blockchain, which is a price that the sender will have to pay.
 
-::: tip
+{{< alert icon="tip" >}}
 Lotus can be configured with several addresses to have more granular control over fees and limits depending on the operation and avoid head-of-line blocking, particularly for high value operations such as _WindowPoSts_. Check the [miner addresses guide](miner-addresses.md).
-:::
+{{< /alert >}}
 
 The [How Filecoin works page](../../about-filecoin/how-filecoin-works.md) explains gas-usage and fee in more detail. As an additional tip, you can use Lotus to find out about the current _BaseFee_:
 
@@ -75,9 +75,9 @@ lotus mpool replace --auto <from> <nonce>
 
 The above command will replace the associated message in the pool and automatically reprice it with a new _GasPremium_ and _GasFeeCap_ as estimated from the current network conditions. You can also set `--fee-limit` if you wish to limit the total amount to spend for the message. All other flags are ignored.
 
-::: warning
+{{< alert icon="warning" >}}
 `--fee-limit` uses units of FIL with decimals support, whereas `--max-fee` uses `attoFIL`.
-:::  
+{{< /alert >}}
 
 Alternatively, the _GasPremium_, _GasFeeCap_ can be set manually with their respective flags:
 

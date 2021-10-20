@@ -18,9 +18,9 @@ By sealing sectors with random data, a miner can demonstrate to the network that
 
 Taking the above into account, **pledging sectors [on mainnet] network makes most sense when doing it at a scale where it provides enough power to have real chances to mine new blocks**. Otherwise, it is only useful for testing purposes.
 
-::: tip
+{{< alert icon="tip" >}}
 Pledging one sector during miner setup can be useful to test how long the sealing process takes and make sure that the miner's hardware is correctly configured before taking on real deals.
-:::
+{{< /alert >}}
 
 ## Pledging a sector
 
@@ -30,13 +30,13 @@ To pledge a sector use:
 lotus-miner sectors pledge
 ```
 
-In Lotus, this will pledge the space for ~538 days by default. 
+In Lotus, this will pledge the space for ~538 days by default.
 
 > The protocol allows a sector to have expiration time between [180-540](https://github.com/filecoin-project/specs-actors/blob/73e0409ac77c918c8fc91681c250a710c4b9a374/actors/builtin/miner/policy.go#L201-L206) days. Lotus will allow user to set the committed capacity sector expiration time upon pledge once [issue #4760](https://github.com/filecoin-project/lotus/issues/4760) is addressed.
 
-::: warning
+{{< alert icon="warning" >}}
 This will write data to `$TMPDIR` so make sure that there is enough space available.
-:::
+{{< /alert >}}
 
 Check that the sealing job has started with:
 
@@ -93,11 +93,11 @@ lotus-miner sectors check-expire --cutoff 669600
 ```
 
 ```shell output
-ID  SealProof  InitialPledge  Activation                      Expiration                  MaxExpiration                 MaxExtendNow                  
-5   5          59.605 nFIL    1519 (1 day 9 hours ago)        691857 (in 4 weeks 2 days)  5257519 (in 34 weeks 3 days)  1587303 (in 10 weeks 2 days)  
-10  5          59.605 nFIL    3588 (1 day 7 hours ago)        697617 (in 4 weeks 2 days)  5259588 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)  
-11  5          59.605 nFIL    4695 (1 day 6 hours ago)        697617 (in 4 weeks 2 days)  5260695 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)  
-15  5          59.605 nFIL    6891 (1 day 4 hours ago)        700497 (in 4 weeks 2 days)  5262891 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)  
+ID  SealProof  InitialPledge  Activation                      Expiration                  MaxExpiration                 MaxExtendNow
+5   5          59.605 nFIL    1519 (1 day 9 hours ago)        691857 (in 4 weeks 2 days)  5257519 (in 34 weeks 3 days)  1587303 (in 10 weeks 2 days)
+10  5          59.605 nFIL    3588 (1 day 7 hours ago)        697617 (in 4 weeks 2 days)  5259588 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)
+11  5          59.605 nFIL    4695 (1 day 6 hours ago)        697617 (in 4 weeks 2 days)  5260695 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)
+15  5          59.605 nFIL    6891 (1 day 4 hours ago)        700497 (in 4 weeks 2 days)  5262891 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)
 17  5          59.605 nFIL    7004 (1 day 3 hours ago)        700497 (in 4 weeks 2 days)  5263004 (in 34 weeks 4 days)  1587303 (in 10 weeks 2 days)
 ```
 
@@ -121,14 +121,14 @@ This is an example of updating the lifecycle of a sector read from a file to 155
 lotus-miner sectors renew  --sector-file <your-sectorfile> --new-expiration 1555200
 ```
 
-::: warning
+{{< alert icon="warning" >}}
 You have to select the sectors to renew. That means you have to specify the `--from` and `--to` option, or specify the sector file, if no sector is selected this command will have no effect.
 
 Format of sector file:
 
-```  
-1  
-2  
+```
+1
+2
 ...
-```  
-:::
+```
+{{< /alert >}}
