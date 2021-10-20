@@ -4,7 +4,7 @@
 title = "Lotus Docs"
 titleSeparator = "-"
 titleAddition = "Home"
-description = "Documentation for Lotus - the primary node implementation for the Filecoin network."
+description = "Documentation for Lotus - the reference node implementation for the Filecoin network."
 
 ## Open Graph
 images = ["lotus.png"]
