@@ -11,6 +11,12 @@
   url = "node-set-up"
 
 [[docs]]
+  name = "Build"
+  weight = 17
+  identifier = "build"
+  url = "build"
+
+[[docs]]
   name = "Storage providers"
   weight = 20
   identifier = "storage-providers"

@@ -9,19 +9,17 @@ weight: 20
 toc: true
 ---
 
-The Lotus Miner configutation is created after the [initialization step](miner-setup.md) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
+The Lotus Miner configutation is created after the [initialization step](../setup) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
 
 The _default configuration_ has all the items commented. To customize one of the items, you must remove the leading `#`.
 
-::: tip
-For any configuration changes to take effect, the miner must be [restarted](miner-lifecycle.md).
-:::
-
-[[TOC]]
+{{< alert >}}
+For any configuration changes to take effect, the miner must be [restarted](../lifecycle).
+{{< /alert >}}
 
 ## API section
 
-The API section controls the settings of the [miner API](../../reference/lotus-api.md):
+The API section controls the settings of the [miner API](../../apis/json-rpc):
 
 ```toml
 [API]
@@ -33,13 +31,13 @@ The API section controls the settings of the [miner API](../../reference/lotus-a
   Timeout = "30s"
 ```
 
-As you see, the listen address is bound to the local loopback interface by default. To open access to the miner API for other machines, set this to the IP address of the network interface you want to use. You can also set it to `0.0.0.0` to allow all interfaces. API access is protected by [JWT tokens](../../build/lotus/api-tokens.md), but it should not be open to the internet.
+As you see, the listen address is bound to the local loopback interface by default. To open access to the miner API for other machines, set this to the IP address of the network interface you want to use. You can also set it to `0.0.0.0` to allow all interfaces. API access is protected by JWT tokens, but it should not be open to the internet.
 
 Configure `RemoteListenAddress` to the value that a different node would have to use to reach this API. Usually, it is the miner's IP address and API port, but depending on your setup (proxies, public IPs, etc.), it might be a different IP.
 
 ## Libp2p section
 
-This section configures the miner's embedded Libp2p node. As noted in the [setup instructions](miner-setup.md#connectivity-to-the-miner), it is very important to adjust this section with the miner's public IP and a fixed port:
+This section configures the miner's embedded Libp2p node. As noted in the [setup instructions](../setup/), it is very important to adjust this section with the miner's public IP and a fixed port:
 
 ```toml
 [Libp2p]
@@ -122,9 +120,9 @@ This section controls parameters for making storage and retrieval deals:
 
 `ExpectedSealDuration` is an estimate of how long sealing will take and is used to reject deals whose start epoch might be earlier than the expected completion of sealing. It can be estimated by [benchmarking](benchmarks.md) or by [pledging a sector](sector-pledging.md).
 
-:::warning
+{{< alert icon="⚠️" >}}
 The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR + WaitDealsDelay) * 1.5`. This equation ensures that the miner does not commit to having the sector sealed too soon.
-:::
+{{< /alert >}}
 
 ### Publishing several deals in one message
 
@@ -166,7 +164,7 @@ The most trivial filter rejecting any retrieval deal would be something like:
 
 You can also use a third party content policy framework like `bitscreen` by Murmuration Labs:
 
-```sh
+```shell
 # grab filter program
 go get -u -v github.com/Murmuration-Labs/bitscreen
 
@@ -254,14 +252,13 @@ In lotus v1.10.0 and up, if `BatchPreCommit` is set to false, pre-commitments wi
 
 To check the list of the sectors pre-commitments that are in the batching queue, run:
 
-```
+```shell
 ./lotus-miner sectors batching precommit
 ```
 
-the output is the sector ids:
+This will output the sector IDs:
 
-```
-$ ./lotus-miner sectors batching precommit
+```shell
 14
 15
 16
@@ -269,14 +266,13 @@ $ ./lotus-miner sectors batching precommit
 
 To ignore the configuration and force push the current batch, run:
 
-```
+```shell
 ./lotus-miner sectors batching precommit --publish-now=true
 ```
 
 Then in the output, the message CID of the `PreCommitSectorsBatch` message and the sector number of the sectors' pre-commitments that are being submitted is listed:
 
-```
-$ ./lotus-miner sectors batching precommit --publish-now=true
+```shell
 Batch 0:
 	Message: bafy2bzacecgihnlvbsqu7yksco3vs5tzk3ublbcnkedlofr6nhbq55k5ye3ci
 	Sectors:
@@ -301,14 +297,13 @@ In Lotus v1.10.0 and up, if `AggregateCommits` is set to false, prove-commitment
 
 To check the list of the sectors prove-commitments that are in the batching queue, run:
 
-```
+```shell
 ./lotus-miner sectors batching commit
 ```
 
-the output is the sector ids:
+This will output something like:
 
-```
-$ ./lotus-miner sectors batching commit
+```shell
 10
 11
 12
@@ -321,14 +316,13 @@ $ ./lotus-miner sectors batching commit
 
 To ignore the configuration and force push the current batch, run:
 
-```
+```shell
 ./lotus-miner sectors batching commit --publish-now=true
 ```
 
 Then in the output, the message CID of the `ProveCommitAggregate` message and the sector number of the sectors' prove-commitments that are being submitted is listed:
 
-```
-$ ./lotus-miner sectors batching commit --publish-now=true
+```shell
 Batch 0:
 	Message: bafy2bzacedtmykgf5g4evdvapacpmo4l32ewu5l7yxqkzjh3h6fhev7v7qoys
 	Sectors:
@@ -344,7 +338,7 @@ Batch 0:
 
 If the sectors in the queue are less than `MinCommitBatch`, then individual `ProveCommitSector` messages will be sent for each sector:
 
-```
+```shell
 Batch 0:
 	Message: bafy2bzacedpwysxdsg2ft3hfbwn6ayyaanivfwkx4inav3zm34hwmmwgsljkk
 	Sectors:
@@ -359,7 +353,7 @@ Batch 1:
 
 The available units are:
 
-```
+```shell
 "ms": int64(Millisecond),  
  "s":  int64(Second),  
  "m":  int64(Minute),   
@@ -433,3 +427,4 @@ The addresses section allows users to specify additional addresses to send messa
   # Disable the use of the worker address for messages for which it's possible to use other control addresses
   DisableWorkerFallback = false
 ```
+

@@ -12,11 +12,11 @@ toc: true
 
 During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `t0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
 
-The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the [Lotus Getting Started guide](../../get-started/lotus/send-and-receive-fil.md) for more information on how to manage Lotus wallets.
+The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the set up section for more information on how to [manage Lotus wallets](../../set-up/manage-fil).
 
 The currently configured addresses used by a miner can be listed with:
 
-```sh
+```shell
 lotus-miner actor control list
 ```
 
@@ -24,7 +24,7 @@ The different types of addresses associated with a miner are described below:
 
 ## The owner address
 
-The owner address corresponds to a Lotus node address provided during the [miner initialization](miner-setup.md). The _owner address_ is only needed when:
+The owner address corresponds to a Lotus node address provided during the miner initialization. The _owner address_ is only needed when:
 
 - Changing the owner or the worker address in the _miner actor_.
 - Withdrawing balance from the _miner actor_.
@@ -34,12 +34,11 @@ The address chosen to be the miner's _owner address_ is designed to be kept offl
 
 The owner address can be updated with the following command:
 
-```sh
+```shell
 lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-miner actor set-owner --really-do-it <new address> <new address>
 ```
 
-
-The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one](../../get-started/lotus/send-and-receive-fil.md).
+The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one](../../set-up/manage-fil).
 
 ## The worker address
 
@@ -69,10 +68,11 @@ To set up a _control address_:
 
 1. Create a new address and send it some funds for gas fees:
 
-   ```sh with-output
+   ```shell with-output
    lotus wallet new bls
    ```
-   ```
+
+   ```output
    f3defg...
    ```
 
@@ -82,20 +82,22 @@ To set up a _control address_:
 
 2. Inform the miner of the new address:
 
-   ```sh with-output
+   ```shell with-output
    lotus-miner actor control set --really-do-it f3defg...
    ```
-   ```
+
+   ```output
    Add f3defg...
    Message CID: bafy2...
    ```
 
 3. Wait for the message to land on chain:
 
-   ```sh with-output
+   ```shell with-output
    lotus state wait-msg bafy2...
    ```
-   ```
+
+   ```output
    ...
    Exit Code: 0
    ...
@@ -103,10 +105,11 @@ To set up a _control address_:
 
 4. Check the miner control address list to make sure the address was correctly added:
 
-   ```sh with-output
+   ```shell with-output
    lotus-miner actor control list
    ```
-   ```
+
+   ```output
    name       ID      key        use    balance
    owner      t01111  f3abcd...  other  300 FIL
    worker     t01111  f3abcd...  other  300 FIL
@@ -132,24 +135,24 @@ This feature is enabled as of 2020-12-09 within the [`master` branch of `filecoi
    ```shell with-output
    lotus wallet new bls
    ```
-   ```
+
+   ```shell
    f3rht...
    ```
-   <br/>
 
    ```shell with-output
    lotus wallet new bls
    ```
-   ```
+
+   ```output
    f3sxs...
    ```
-
-   <br/>
 
    ```shell with-output
    lotus wallet list
    ```
-   ```
+
+   ```output
    Address   Balance  Nonce  Default
    f3rht...  0 FIL    0      X
    f3sxs...  0 FIL    0
@@ -162,7 +165,8 @@ This feature is enabled as of 2020-12-09 within the [`master` branch of `filecoi
    ```shell with-output
    lotus wallet list -i
    ```
-   ```
+
+   ```output
     Address   ID        Balance                   Nonce  Default
     f3rht...  f0100933  0.59466768102284489 FIL   1      X
     f3sxs...  f0100939  0.4 FIL                   0
@@ -173,18 +177,18 @@ This feature is enabled as of 2020-12-09 within the [`master` branch of `filecoi
    ```shell with-output
    lotus-miner actor control set --really-do-it=true f0100933 f0100939
    ```
-   ```
+
+   ```output
     Add f3rht...
     Add f3sxs...
     Message CID: bafy2bzacecfryzmwe5ghsazmfzporuybm32yw5q6q75neyopifps3c3gll6aq
    ```
 
-   <br/>
- 
    ```shell with-output
      lotus-miner actor control list
    ```
-   ```
+   
+   ```output
    name       ID      key        use    balance
    owner      t01...  f3abcd...  other  15 FIL
    worker     t01...  f3abcd...  other  10 FIL
@@ -209,7 +213,8 @@ Get the balances associated with a miner wallet by calling `info`:
 ```shell with-output
 lotus-miner info
 ```
-```
+
+```output
 Miner: t01000
 Sector Size: 2 KiB
 Byte Power:   100 KiB / 100 KiB (100.0000%)
@@ -240,6 +245,7 @@ Transfer funds from the Miner actor address to the owner address by calling `act
 lotus-miner actor withdraw <amount>
 ```
 
-::: tip
+{{< alert >}}
 The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporally imported for the operation to succeed.
-:::
+{{< /alert >}}
+
