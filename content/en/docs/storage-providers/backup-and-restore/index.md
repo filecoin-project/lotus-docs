@@ -11,10 +11,6 @@ weight: 20
 toc: true
 ---
 
-# {{ $frontmatter.title }}
-
-{{ $frontmatter.description }}
-
 ## Backup
 
 This process backs-up metadata of the Lotus miner, which is needed to restore the operation. This backup does not include sector data.
@@ -30,6 +26,9 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    ```shell with-output
    lotus-miner backup /root/lotus-backups/2020-11-15/backup.cbor
    ```
+
+   This will output something like: 
+
    ```
    Success
    ```
@@ -39,6 +38,9 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    ```shell with-output
    lotus-miner backup --offline /root/lotus-backups/2020-11-15/backup.cbor
    ```
+
+   This will output something like: 
+
    ```
    Success
    ```
@@ -61,6 +63,9 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
    ```shell with-output
    lotus-miner init restore /root/lotus-backups/2020-11-15/backup.cbor
    ```
+
+   This will output something like: 
+
    ```
    ...
    2020-11-15T17:53:41.630Z        INFO    main    lotus-storage-miner/init_restore.go:254 Initializing libp2p identity

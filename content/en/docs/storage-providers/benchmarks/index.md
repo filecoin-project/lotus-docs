@@ -17,6 +17,9 @@ toc: true
    ```shell with-output
    git clone https://github.com/filecoin-project/lotus.git ~/lotus
    ```
+   
+   This will output something like: 
+
    ```
    Cloning into '/root/lotus'...
    remote: Enumerating objects: 93, done.
@@ -30,6 +33,9 @@ toc: true
    cd ~/lotus
    make clean all && make install
    ```
+   
+   This will output something like: 
+
    ```
    rm -rf  build/.filecoin-install build/.update-modules  lotus lotus-miner lotus-worker lotus-shed lotus-gateway lotus-seed lotus-pond lotus-townhall lotus-fountain lotus-chainwatch lotus-bench lotus-stats lotus-pcr lotus-health lotus-wallet testground
    make -C extern/filecoin-ffi/ clean
@@ -44,6 +50,9 @@ toc: true
    ```shell with-output
    make lotus-bench
    ```
+   
+   This will output something like: 
+
    ```
    rm -f lotus-bench
    go build -o lotus-bench ./cmd/lotus-bench
@@ -62,6 +71,9 @@ Use the self-documenting feature of the tool to explore the different commands.
 ```shell with-output
     ./lotus-bench --help
 ```
+   
+This will output something like: 
+
 ```
   NAME:
   lotus-bench - Benchmark performance of lotus on your hardware
@@ -108,6 +120,9 @@ Benchmark a sealing computation using `lotus-bench sealing [command options] [ar
 ```shell with-output
 ./lotus-bench sealing
 ```
+   
+This will output something like: 
+
 ```
 2020-11-23T18:05:22.028Z        INFO    lotus-bench     lotus-bench/main.go:78  Starting lotus-bench
 ...
