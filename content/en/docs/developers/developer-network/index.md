@@ -1,5 +1,5 @@
 ---
-title: "Local dev-net"
+title: "Developer network"
 description: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
 draft: false
 menu:
