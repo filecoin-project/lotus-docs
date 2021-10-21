@@ -128,7 +128,7 @@ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 
 Lotus needs [rustup](https://rustup.rs). The easiest way to install it is:
 
-```sh
+```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
@@ -169,7 +169,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    For networks other than mainnet, look up the current branch or tag/commit for the network you want to join in the [Filecoin networks dashboard](https://network.filecoin.io), then build Lotus for your specific network below.
 
-   ```sh
+   ```shell
    git checkout <tag_or_branch>
    # For example:
    git checkout <vX.X.X> # tag for a release
@@ -206,7 +206,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    Lotus is compiled to operate on a single network,  run one of the following commands to build the lotus node for the specific lotus network.
 
-   ```sh
+   ```shell
    # join mainnet 
    make clean all 
    
@@ -222,7 +222,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    Once the installation is finished, use the command down below to ensure lotus is installed successfully for the right network. 
 
-   ```sh with-output
+   ```shell
    lotus --version
    ```
    ```
@@ -235,7 +235,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
 Some newer CPU architectures like AMD's Zen and Intel's Ice Lake have support for SHA extensions. Having these extensions enabled significantly speeds up your Lotus node. To make full use of your processor's capabilities, make sure you set the following variables **before building from source**:
 
-```sh
+```shell
 export RUSTFLAGS="-C target-cpu=native -g"
 export FFI_BUILD_FROM_SOURCE=1
 ```
@@ -246,7 +246,7 @@ This method of building does not produce portable binaries. Make sure you run th
 
 Lotus provides **generic** Systemd service files. They can be installed with:
 
-```sh
+```shell
 make install-daemon-service
 make install-miner-service
 ```
@@ -302,7 +302,7 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
 
 1. Check if you already have the XCode Command Line Tools installed via the CLI, run:
 
-    ```shell with-output
+    ```shell
     xcode-select -p
     ```
     ```
@@ -414,7 +414,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. If you are in China, take a look at some [tips for running Lotus in China](./tips-running-in-china.md)".
 1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
 
-   ```sh
+   ```shell
    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
    export CGO_CFLAGS="-D__BLST_PORTABLE__"
    ```
@@ -436,7 +436,7 @@ The `lotus` application runs as a daemon and a client to control and interact wi
 
 When using _mainnet_, we recommend you start the daemon [syncing from a trusted state snapshot](chain.md#lightweight-snapshot). In any case, you can start the daemon with the following command:
 
-```sh
+```shell
 lotus daemon
 ```
 
@@ -454,7 +454,7 @@ Do not be concerned by the number of warnings and sometimes errors showing in th
 
 If you used snapshots, subsequent daemon starts can proceed as normal without any options:
 
-```sh
+```shell
 lotus daemon
 ## When running with systemd do:
 # systemctl start lotus-daemon
@@ -464,7 +464,7 @@ For more information about syncing and snapshots, [see the Chain management sect
 
 We recommend waiting until the syncing process has completed, which should be relatively fast when using trusted state snapshot imports:
 
-```sh
+```shell
 lotus sync wait
 ```
 
@@ -474,7 +474,7 @@ The `lotus` command allows you to interact with a _running_ Lotus daemon. The `l
 
 Lotus comes with built-in CLI documentation.
 
-```sh
+```shell
 lotus
   - chain: Interact with filecoin blockchain
   - client: Make deals, store data, retrieve data
@@ -491,7 +491,7 @@ lotus client --help
 
 For example, after your Lotus daemon has been running for a few minutes, use `lotus sync` to check the sync status of your lotus node.
 
-```sh with-output
+```shell
 lotus net sync
 ```
 ```
@@ -505,7 +505,7 @@ sync status:
 
 Or use `lotus net` to check the number of other peers that it is connected to in the Filecoin network.
 
-```sh with-output
+```shell
 lotus net peers
 ```
 ```
@@ -515,7 +515,7 @@ lotus net peers
 
 Or check the current version of your Lotus node as well as network. 
 
-```sh with-output
+```shell 
 lotus version
 ```
 ```
@@ -528,7 +528,7 @@ Local: lotus version 1.9.0+calibnet+git.ada7f97ba
 
 To gracefully stop the running lotus daemon (required when restarting the daemon to update Lotus), use the following command:
 
-```sh
+```shell
 lotus daemon stop
 ## When running with systemd do:
 # systemctl stop lotus-daemon
