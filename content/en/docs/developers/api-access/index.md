@@ -17,7 +17,7 @@ The Lotus Miner and the Lotus Node applications come with their own local API en
 In this section we will explain how to enable remote access to the Lotus APIs as run by the daemons.
 
 {{< alert >}}
-**Instructions are the equivalent for `lotus` and `lotus-miner`**. For simplicity, we will just show how to do it with `lotus` by editing the [Lotus Node configuration](../../get-started/lotus/configuration-and-advanced-usage.md), but the same can be achieved by editing the [Lotus Miner configuration](../../mine/lotus/miner-configuration.md).
+**Instructions are the equivalent for `lotus` and `lotus-miner`**. For simplicity, we will just show how to do it with `lotus` by editing the [Lotus Node configuration](../../set-up/configuration), but the same can be achieved by editing the [Lotus Miner configuration](../../storage-providers/config).
 {{< /alert >}}
 
 ### Setting the listening interface
