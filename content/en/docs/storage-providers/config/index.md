@@ -1,6 +1,8 @@
 ---
-title: 'Configuration'
-description: 'This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them.'
+title: "Config"
+identifier: "storage-provider-configuration"
+description: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
+lead: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
 draft: false
 menu:
     docs:
