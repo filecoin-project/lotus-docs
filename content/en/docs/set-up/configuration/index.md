@@ -1,5 +1,6 @@
 ---
 title: "Configuration"
+identifier: "node-configuration"
 description: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 lead: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 draft: false
@@ -9,8 +10,6 @@ menu:
 weight: 30
 toc: true
 ---
-
-## Configuration
 
 The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note that by default all settings are commented. Here is an example configuration:
 
