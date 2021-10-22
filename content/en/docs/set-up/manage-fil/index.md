@@ -18,7 +18,7 @@ When using a wallet, an account is identified by its [address](/about-filecoin/h
 
 Filecoin accounts have two kinds of address, longer **public key** addresses, and shorter **ID** addresses. Both addresses refer to the same account and can be used to send and receive FIL using a wallet.
 
-#### Public Key Address
+### Public Key Address
 
 A [public key address](/about-filecoin/how-filecoin-works.md#public-key-addresses-f1-and-f3) is derived directly from a cryptographic key. Public key addresses start with the characters `f1` (secp256k1) or `f3` (BLS), depending on the type of encryption key used.
 
@@ -28,7 +28,7 @@ Public key addresses are the most common way to refer to Filecoin accounts, and 
 
 Because a public key address does not depend on any blockchain state, they are considered [robust](/about-filecoin/how-filecoin-works.md#robust-addresses-versus-id-addresses) and are recommended for most use cases involving transfers of FIL, for example, when sending FIL to another user through an exchange.
 
-#### ID Address
+### ID Address
 
 ID addresses are a compact and more "human friendly" way to refer to an account than public key addresses. ID addresses always start with the characters `f0`, followed by a sequence of digits, for example: `f033259`.
 
@@ -41,6 +41,8 @@ While you can send FIL to an ID address using a wallet, you should first check t
 More information about Addresses can be found in the [How Filecoin works](../../about-filecoin/how-filecoin-works.md#addresses) section.
 
 ## Creating a wallet
+
+Creating wallets using Lotus is very simple. There are mutliple wallet types to choose from. 
 
 ### Create a BLS wallet
 
@@ -62,9 +64,9 @@ lotus msig create address1 address2..
 
 This will create a new address and print it. You can distinguish mainnet from testnet addresses because they start with `f` for mainnet and `t` for testnets.
 
-::: warning
-The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a [hardware wallet](ledger.md).
-:::
+{{< alert icon="⚠️" >}}
+The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a [hardware wallet](#ledger).
+{{< /alert >}}
 
 ## Listing addresses
 
@@ -152,9 +154,9 @@ Every transaction that sends `FIL` pays an additional fee based on its _gas_ usa
 
 ## Exporting and importing addresses
 
-::: warning
+{{< alert icon="⚠️" >}}
 Keep your addresses' private keys safe! Do not share them with anyone! Store them in a secure location!
-:::
+{{< /alert >}}
 
 You can export and re-import a wallet, including a different Lotus node. Use `wallet export` to export an address from a node:
 
@@ -184,3 +186,59 @@ Each node stores its wallet in `~/.lotus/keystore`:
 ```
 
 To export a wallet when a node is offline, copy these files _from_ `~/.lotus/keystore` to another location. To import this wallet, copy these files _into_ `~/.lotus/keystore`. The Lotus node will automatically use these keys when it next starts.
+
+## Ledger
+
+### Setup your Ledger device
+
+1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-connection-issues).
+1. Enable **Developer mode** in the Ledger live settings:
+
+   ![ledger-enable-dev-mode](../images/ledger.png)
+
+1. You should now be able to search and install the **Filecoin** app in the **Manager** section of Ledger Live.
+
+
+### Ledger Wallet UI Options
+
+You can either use the [browser-based Glif wallet](#glif-wallet) or manually manage your funds using the [Lotus node and Ledger integration](#lotus).
+
+#### Glif Wallet
+
+Filecoin is not accessible directly through the Ledger Live application. However, you can use your Ledger hardware with the Glif wallet at [glif.io](https://glif.io). Glif is an open-source Filecoin wallet you can use in the browser. It uses the [Filecoin Ledger integration library](https://github.com/Zondax/ledger-filecoin/), which has been security audited by a third-party.
+
+#### Lotus
+
+You can use a Filecoin Lotus node with Ledger hardware to manage your funds.
+
+##### Add your Ledger to a Lotus node
+
+Make sure you fully trust the Lotus node you are connecting to.
+
+1. In the [Lotus configuration](configuration-and-advanced-usage.md) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
+
+   ```toml
+   [Wallet]
+     EnableLedger = true
+   ```
+
+1. Unlock your Ledger device. 
+1. Open the Filecoin app on your Ledger device and keep it connected to your computer.
+1. Use `wallet new secp256k1-ledger` to create a Ledger-backed wallet:
+
+   ```shell
+   lotus wallet new secp256k1-ledger
+   ```
+
+   You will have to confirm creation on your Ledger device.
+
+    {{< alert icon="⚠️" >}}
+    `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.
+    {{< /alert >}}
+
+1. From this point, any [FIL send operation](send-and-receive-fil.md) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
+
+
+{{< alert icon="⚠️" >}}
+The `lotus-shed` application provides additional Ledger functionality, like listing the keys in the device and providing information about them.
+{{< /alert >}}

@@ -1,7 +1,7 @@
 ---
 title: "API access"
-description: ""
-lead: ""
+description: "You can connect to a Lotus node using the build in Lotus API. There is some preparation you need to do first on the node that you want to connect to. You must also generate an API key to use in order to connect to the Lotus node."
+lead: "You can connect to a Lotus node using the build in Lotus API. There is some preparation you need to do first on the node that you want to connect to. You must also generate an API key to use in order to connect to the Lotus node."
 draft: false
 menu:
     docs:
@@ -75,11 +75,61 @@ The same applies for `lotus-miner`.
 
 ## API client libraries
 
-
 API clients take care of the low-level details of making requests and handling responses and let you focus on writing code specific to your project. They can also translate between different programming languages. These Filecoin API clients are currently available:
 
 - [filecoin.js](https://github.com/filecoin-shipyard/filecoin.js) (Javascript, RPC, compatible with Lotus and other wallet backends).
 - [js-filecoin-api-client](https://github.com/filecoin-shipyard/js-filecoin-api-client) (Javascript, compatible with Venus)
 - [starling-api](https://github.com/smalldata-industries/starling-api) (Javascript, REST, compatible with Lotus)
-- For Go, see the guide on [using Go and JSON-RPC APIs](../../apis/json-rpc).
+- For Go, [see the Go JSON-RPC client section below ↓](#go-json-rpc-client)
+
+## Go JSON-RPC client
+
+To use the Lotus Go client, the [Go RPC-API](https://github.com/filecoin-project/go-jsonrpc) library can be used to interact with the Lotus API node. This library was written by Lotus developers and it is used by Lotus itself.
+
+If your Lotus instance is hosted remotely, ensure that you have enabled [remote API access](#enable-remote-api-access). You will need to obtain an [API token](.#api-tokens).
+
+1. First, import the necessary Go module:
+
+    ```shell
+    go get github.com/filecoin-project/go-jsonrpc
+    ```
+
+1. Create the following script:
+
+    ```go
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "net/http"
+
+        jsonrpc "github.com/filecoin-project/go-jsonrpc"
+        lotusapi "github.com/filecoin-project/lotus/api"
+    )
+
+    func main() {
+        authToken := "<value found in ~/.lotus/token>"
+        headers := http.Header{"Authorization": []string{"Bearer " + authToken}}
+        addr := "127.0.0.1:1234"
+
+        var api lotusapi.FullNodeStruct
+        closer, err := jsonrpc.NewMergeClient(context.Background(), "ws://"+addr+"/rpc/v0", "Filecoin", []interface{}{&api.Internal, &api.CommonStruct.Internal}, headers)
+        if err != nil {
+            log.Fatalf("connecting with lotus failed: %s", err)
+        }
+        defer closer()
+
+           // Now you can call any API you're interested in.
+        tipset, err := api.ChainHead(context.Background())
+        if err != nil {
+            log.Fatalf("calling chain head: %s", err)
+        }
+        fmt.Printf("Current chain head is: %s", tipset.String())
+    }
+    ```
+
+1. Run `go mod init` to setup your `go.mod` file.
+1. You should now to be able to interact with the Lotus API.
 
