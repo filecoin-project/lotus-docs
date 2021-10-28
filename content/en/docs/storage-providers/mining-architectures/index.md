@@ -16,8 +16,6 @@ This section provides examples for Filecoin Storage mining setups to guide miner
 We are working to improve this section. If you would like to share your mining setup, please use the link at the bottom to edit the page!
 {{< /alert >}}
 
-[[TOC]]
-
 ## Protocol Labs example architecture
 
 The following [Lotus](lotus/README.md) miner setup was published as part of the [Guide to Filecoin Storage Mining](https://filecoin.io/blog/filecoin-guide-to-storage-mining/) blog post. A PDF is available for download [here](https://filecoin.io/vintage/mining-hardware-config-testnet-v3.pdf):

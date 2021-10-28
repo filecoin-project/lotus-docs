@@ -26,7 +26,7 @@ Lotus is a command line application that **works on Linux and MacOS only**, and 
 
 These are the main guides to swiftly get started with Lotus:
 
-- [Install and launch a Lotus node](installation.md)
+- [Install and launch a Lotus node]({{< relref "install" >}})
 - [Create a wallet and send or receive FIL to your address](send-and-receive-fil.md)
 - [Switch between different networks](switch-networks.md)
 - [Learn about the Lotus configuration](configuration-and-advanced-usage.md)

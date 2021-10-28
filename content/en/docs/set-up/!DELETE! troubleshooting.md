@@ -14,8 +14,6 @@ toc: true
 **Have you successfully overcome other Lotus Node-related problems?** Please contribute to this page by editing it with the link at the bottom!
 {{< /alert >}}
 
-[[TOC]]
-
 ## Build errors
 
 Please check the build logs closely. If you have a dirty state in your git branch make sure to do something like:
@@ -26,17 +24,17 @@ git reset origin/<desired_branch> --hard
 make clean
 ```
 
-(or directly delete and clone the repository again as shown in the [installation instructions](installation.md).
+(or directly delete and clone the repository again as shown in the [installation instructions]({{< relref "install" >}}).
 
 ## Slow builds/start from China
 
-See the [tips when running in China](tips-running-in-china.md) guide.
+See the [tips when running in China]({{< relref "nodes-in-china" >}}) guide.
 
 ## Error: initializing node error: cbor input had wrong number of fields
 
 This happens when you are starting Lotus which has been compiled for one network, but it encounters data in the Lotus data folder which is for a different network, or for an older incompatible version.
 
-Solution: follow the instructions for [switching networks](switch-networks.md) closely.
+Solution: follow the instructions for [switching networks]({{< relref "switch-networks" >}}) closely.
 
 ## Error: Failed to connect bootstrap peer
 
@@ -82,7 +80,7 @@ If you get a `signal killed` error, it could indcate that there was an error dur
 make: *** [Makefile:68: lotus] Error 1
 ```
 
-Double check that your computer meets the [minimum hardware requirements](./installation.md#minimal-requirements) for Lotus.
+Double check that your computer meets the [minimum hardware requirements]({{< relref "install#minimal-requirements" >}}) for Lotus.
 
 ## Go command not found
 

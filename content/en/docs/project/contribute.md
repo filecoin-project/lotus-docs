@@ -33,14 +33,14 @@ Filecoin is a huge project and undertaking, and with lots of code comes the need
 
 Before contributing to the Filecoin docs, please read these quick guides; they'll save you time and help keep the docs accurate and consistent!
 
-1. [Style and formatting guide](./grammar-formatting-and-style.md)
-2. [Writing guide](./writing-guide.md)
+1. [Style and formatting guide](https://docs.filecoin.io/community/contribute/grammar-formatting-and-style/)
+2. [Writing guide](https://docs.filecoin.io/community/contribute/writing-guide/)
 
-If you have never contributed to an open-source project before, or just need a refresher, take a look at the [contribution tutorial](./contribution-tutorial.md).
+If you have never contributed to an open-source project before, or just need a refresher, take a look at the [contribution tutorial](https://docs.filecoin.io/community/contribute/contribution-tutorial/).
 
 ## Community
 
-If interacting with people is your favorite thing to do in this world, join the [Filecoin chat and discussion forums](../chat-and-discussion-forums.md) to say hello, meet others who share your goals, and connect with other members of the community.
+If interacting with people is your favorite thing to do in this world, join the [Filecoin chat and discussion forums](https://docs.filecoin.io/community/chat-and-discussion-forums/) to say hello, meet others who share your goals, and connect with other members of the community.
 
 ## Build Applications
 
@@ -60,4 +60,3 @@ Filecoin is ultimately about building better protocols, and we always welcome id
 ## Research
 
 Finally, we see Protocol Labs as a research lab, where YOUR ideas can become technologies that have a real impact on the world. If you're interested in contributing to our research, please reach out to [research@protocol.ai](mailto:research@protocol.ai) for more information. Include what your interests are so we can make sure you get to work on something fun and valuable.
-

@@ -14,7 +14,7 @@ toc: true
 
 As an alternative to running locally, you can also run Lotus on a cloud provider. The easiest and cheapest path is to use [the one-click application in the DigitalOcean marketplace](https://marketplace.digitalocean.com/apps/filecoin-lotus).
 
-Other options, including Amazon Web Services, are covered in [Running in the cloud](running-in-the-cloud.md).
+Other options, including Amazon Web Services, are covered in [Running in the cloud]({{< relref "running-in-the-cloud" >}}).
 
 ## Minimal requirements
 
@@ -22,10 +22,10 @@ To run a Lotus node your computer must have:
 
 - macOS or Linux installed. Windows is not yet supported.
 - 8-core CPU and 32 GiB RAM. Models with support for _Intel SHA Extensions_ (AMD since Zen microarchitecture or Intel since Ice Lake) will significantly speed things up.
-- Enough space to store the current Lotus chain (preferably on an SSD storage medium). The chain grows at approximately 38 GiB per day. The chain can be [synced from trusted state snapshots and compacted or pruned](chain.md) to a minimum size of around 33Gib.  The full history was around 10TiB in June of 2021.
+- Enough space to store the current Lotus chain (preferably on an SSD storage medium). The chain grows at approximately 38 GiB per day. The chain can be [synced from trusted state snapshots and compacted or pruned]({{< relref "chain-management" >}}) to a minimum size of around 33Gib.  The full history was around 10TiB in June of 2021.
 
 {{< alert icon="warning" >}}
-These are the minimal requirements to run a Lotus node. [Hardware requirements for Miners](../../mine/hardware-requirements.md) are different.
+These are the minimal requirements to run a Lotus node. [Hardware requirements for Miners]({{< relref "../storage-providers/hardware-requirements" >}}) are different.
 {{< /alert >}}
 
 ## Linux
@@ -166,7 +166,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    To join mainnet, checkout the [latest release](https://github.com/filecoin-project/lotus/releases).
 
-   If you are changing networks from a previous Lotus installation or there has been a network reset, read the [Switch networks guide](./switch-networks.md) before proceeding.
+   If you are changing networks from a previous Lotus installation or there has been a network reset, read the [Switch networks guide]({{< relref "switch-networks" >}}) before proceeding.
 
    For networks other than mainnet, look up the current branch or tag/commit for the network you want to join in the [Filecoin networks dashboard](https://network.filecoin.io), then build Lotus for your specific network below.
 
@@ -178,7 +178,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    Currently, the latest code on the _master_ branch corresponds to the mainnet.
 
-1. If you are in China, see "[Lotus: tips when running in China](tips-running-in-china.md)".
+1. If you are in China, see "[Lotus: tips when running in China]({{< relref "nodes-in-china" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
 
     a. If you have **an AMD Zen or Intel Ice Lake CPU (or later)**, enable the use of SHA extensions by adding these two environment variables:
@@ -219,7 +219,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    This will put `lotus`, `lotus-miner` and `lotus-worker` in `/usr/local/bin`.
 
-   `lotus` will use the `$HOME/.lotus` folder by default for storage (configuration, chain data, wallets). See [advanced options](configuration-and-advanced-usage.md) for information on how to customize the Lotus folder.
+   `lotus` will use the `$HOME/.lotus` folder by default for storage (configuration, chain data, wallets). See [advanced options]({{< relref "configuration" >}}) for information on how to customize the Lotus folder.
 
    Once the installation is finished, use the command down below to ensure lotus is installed successfully for the right network.
 
@@ -409,10 +409,10 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
 
     {{< alert icon="tip">}}
-    If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →](./switch-networks.md)
+    If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
     {{< /alert >}}
 
-1. If you are in China, take a look at some [tips for running Lotus in China](./tips-running-in-china.md)".
+1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "nodes-in-china" >}})".
 1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
 
    ```shell
@@ -435,7 +435,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 
 The `lotus` application runs as a daemon and a client to control and interact with that daemon. A daemon is a long-running program that is usually run in the background.
 
-When using _mainnet_, we recommend you start the daemon [syncing from a trusted state snapshot](chain.md#lightweight-snapshot). In any case, you can start the daemon with the following command:
+When using _mainnet_, we recommend you start the daemon [syncing from a trusted state snapshot]({{< relref "chain-management#lightweight-snapshot" >}}). In any case, you can start the daemon with the following command:
 
 ```shell
 lotus daemon
@@ -461,7 +461,7 @@ lotus daemon
 # systemctl start lotus-daemon
 ```
 
-For more information about syncing and snapshots, [see the Chain management section](./chain.md).
+For more information about syncing and snapshots, [see the Chain management section]({{< relref "chain-management" >}}).
 
 We recommend waiting until the syncing process has completed, which should be relatively fast when using trusted state snapshot imports:
 

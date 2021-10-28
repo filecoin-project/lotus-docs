@@ -9,7 +9,7 @@ menu:
 weight: 80
 toc: true
 ---
-As we mentioned in the [installation guide](installation.md), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
+As we mentioned in the [installation guide]({{< relref "install" >}}), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
 + Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
 + Testnets
@@ -55,4 +55,4 @@ To change your `$LOTUS_PATH` run: `export LOTUS_PATH=~/.new-lotus-path`.
 
 If you wish to backup Lotus data, copy the `~/.lotus` (or `$LOTUS_PATH`) folder somewhere. This will take quite a while if the Lotus node has synced the whole network.
 
-Another alternative is to [export your wallets](send-and-receive-fil.md) and also [export the chain](chain.md) for later re-import on a newly installed Lotus Node.
+Another alternative is to [export your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}}) and also [export the chain]({{< relref "chain-management" >}}) for later re-import on a newly installed Lotus Node.

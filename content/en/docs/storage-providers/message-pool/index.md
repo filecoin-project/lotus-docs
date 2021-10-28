@@ -20,8 +20,6 @@ The different caps and fees for messages are explained below, along with instruc
 Lotus provides the tooling to interact with the message pool with the `lotus mpool` subcommands.
 {{< /alert >}}
 
-[[TOC]]
-
 ## Message selection
 
 When mining a new block, miners must select a set of messages for inclusion in a way that maximizes the reward. Given how message distribution works, using pubsub, and that miners do not communicate their tickets to each other, it is not possible to fully determine if a different miner will also include the message on a different block in the new tipset, and perhaps get the reward instead if their block executes first. The problem is NP-hard (an instance of knapsack packing) so, at best, an approximation can be made to the optimal selection in a reasonable amount of time.

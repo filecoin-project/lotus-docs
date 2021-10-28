@@ -16,8 +16,6 @@ The Lotus Miner keeps track of defined storage locations in in `~/.lotusminer/st
 
 Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
 
-[[TOC]]
-
 ## Custom location for sealing
 
 The _seal_ storage location is used when sealing sectors. It should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:

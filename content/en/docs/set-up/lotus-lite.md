@@ -22,9 +22,9 @@ Before we get started, let's just go over the terms we'll use in this guide:
 
 To spin up a Lotus lite-node, you will need:
 
-1. A [Lotus full-node](../../get-started/lotus/installation). For best results, make sure that this node is fully synced.
+1. A [Lotus full-node]({{< relref "install" >}}). For best results, make sure that this node is fully synced.
 2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.16.4 or higher installed.
-3. You must have [all the software dependencies required](../../get-started/lotus/installation#software-dependencies) to build Lotus.
+3. You must have [all the software dependencies required]({{< relref "install#software-dependencies" >}}) to build Lotus.
 
 ## Full-node preparation
 
@@ -54,7 +54,7 @@ If you are using a node-hosting service like [Glif](https://www.glif.io/) or [In
     lotus auth create-token --perm write
     ```
 
-    Which permissions you choose will depend on your use case. Take a look at the [API tokens section to find out more →](./api-tokens/#obtaining-tokens)
+    Which permissions you choose will depend on your use case. Take a look at the [API tokens section to find out more →]({{< relref "../developers/api-access#obtaining-tokens" >}})
 
 1. Send this API token to your lite-node or to whoever will be the administrator for the lite-node.
 1. If you have the `lotus daemon` running, stop it and start it again. This forces Lotus to open the API port we just set.
@@ -81,7 +81,7 @@ You need to create the Lotus executable to run your lite-node with. This process
     sudo make install
     ```
 
-    If you run into errors here, it may be because you don't have all the Lotus dependencies installed. Take a quick look at the [Lotus Getting Started guide](../../get-started/lotus/installation/#software-dependencies) and double-check that you have all the dependencies installed, along with Golang and Rust.
+    If you run into errors here, it may be because you don't have all the Lotus dependencies installed. Take a quick look at the [Lotus Getting Started guide]({{< relref "install#software-dependencies" >}}) and double-check that you have all the dependencies installed, along with Golang and Rust.
 
 1. Move onto [starting the lite-node](#start-the-lite-node).
 
@@ -170,7 +170,7 @@ A lite-node is limited in what it can do and is designed to only perform message
 
 ### Access and permissions
 
-Setting up a Lotus lite-node without using an [API token from a full-node](./api-tokens/) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node.
+Setting up a Lotus lite-node without using an [API token from a full-node]({{< relref "../developers/api-access/" >}}) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node.
 
 ## Use cases
 
