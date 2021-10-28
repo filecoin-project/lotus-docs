@@ -47,7 +47,7 @@ Advance IPLD users may want to import custom DAGs into Lotus (you may skip this 
 
 The CAR file format allows to serialize any IPLD-DAG (i.e. a IPLD-CBOR). Custom IPLD-DAGs should be encoded in a well-known format (like CBOR) as otherwise Lotus will not know how to interpret them.
 
-{{< alert icon="⚠️" >}}
+{{< alert icon="warning" >}}
 CAR files must contain the full DAG. Partial DAGs are not supported!
 {{< /alert >}}
 
