@@ -10,23 +10,23 @@ weight: 50
 toc: true
 ---
 
-To receive and send FIL with Lotus, you will need to have a [Lotus node installed and running](installation.md).
+To receive and send FIL with Lotus, you will need to have a [Lotus node installed and running]({{< relref "install" >}}).
 
 ## About Wallet Addresses
 
-When using a wallet, an account is identified by its [address](/about-filecoin/how-filecoin-works.md#addresses). A Filecoin address always starts with the letter `f` and a digit that indicates what type of address it is.
+When using a wallet, an account is identified by its [address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses). A Filecoin address always starts with the letter `f` and a digit that indicates what type of address it is.
 
 Filecoin accounts have two kinds of address, longer **public key** addresses, and shorter **ID** addresses. Both addresses refer to the same account and can be used to send and receive FIL using a wallet.
 
 ### Public Key Address
 
-A [public key address](/about-filecoin/how-filecoin-works.md#public-key-addresses-f1-and-f3) is derived directly from a cryptographic key. Public key addresses start with the characters `f1` (secp256k1) or `f3` (BLS), depending on the type of encryption key used.
+A [public key address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#public-key-addresses-f1-and-f3) is derived directly from a cryptographic key. Public key addresses start with the characters `f1` (secp256k1) or `f3` (BLS), depending on the type of encryption key used.
 
 Here's an example of a secp256k1 public key address: `f1abjxfbp274xpdqcpuaykwkfb43omjotacm2p3za`.
 
 Public key addresses are the most common way to refer to Filecoin accounts, and they are supported by hardware wallets like [Ledger](https://ledger.com).
 
-Because a public key address does not depend on any blockchain state, they are considered [robust](/about-filecoin/how-filecoin-works.md#robust-addresses-versus-id-addresses) and are recommended for most use cases involving transfers of FIL, for example, when sending FIL to another user through an exchange.
+Because a public key address does not depend on any blockchain state, they are considered [robust](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#robust-addresses-versus-id-addresses) and are recommended for most use cases involving transfers of FIL, for example, when sending FIL to another user through an exchange.
 
 ### ID Address
 
@@ -34,11 +34,11 @@ ID addresses are a compact and more "human friendly" way to refer to an account 
 
 Every ID address for a Filecoin account has an alternative public key address that corresponds to the same account. You can find the ID address for any public key address by searching for the public key address on [FilFox](https://filfox.info/), a Filecoin block explorer.
 
-Because they are more compact than public key addresses, ID addresses are often used when refering to miners and other long-lived Filecoin [Actors](/about-filecoin/how-filecoin-works.md#actors). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
+Because they are more compact than public key addresses, ID addresses are often used when refering to miners and other long-lived Filecoin [Actors](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#actors). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
 
-While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](/reference/glossary.md#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
+While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](https://docs.filecoin.io/reference/glossary/#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
 
-More information about Addresses can be found in the [How Filecoin works](../../about-filecoin/how-filecoin-works.md#addresses) section.
+More information about Addresses can be found in the [How Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses) section.
 
 ## Creating a wallet
 
@@ -150,7 +150,7 @@ lotus send --params-hex=<encoded output from the previous step>
 
 ### Transaction fees
 
-Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](../../about-filecoin/how-filecoin-works.md). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide](../../mine/lotus/message-pool.md) and [Gas fees](../../about-filecoin/how-filecoin-works/#gas-fees) sections.
+Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "../storage-providers/message-pool" >}}) and [Gas fees](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#gas-fees) sections.
 
 ## Exporting and importing addresses
 
@@ -232,13 +232,11 @@ Make sure you fully trust the Lotus node you are connecting to.
 
    You will have to confirm creation on your Ledger device.
 
-    {{< alert icon="⚠️" >}}
-    `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.
-    {{< /alert >}}
+   {{< alert icon="warning" >}}Calling `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.{{< /alert >}}
 
-1. From this point, any [FIL send operation](send-and-receive-fil.md) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
+1. From this point, any [FIL send operation](#sending-fil) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
 
 
-{{< alert icon="⚠️" >}}
+{{< alert icon="warning" >}}
 The `lotus-shed` application provides additional Ledger functionality, like listing the keys in the device and providing information about them.
 {{< /alert >}}

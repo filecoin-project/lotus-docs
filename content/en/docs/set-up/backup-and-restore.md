@@ -10,13 +10,13 @@ weight: 110
 toc: true
 ---
 
-This backup process is different to that of the [`lotus-miner` backup](../../mine/lotus/backup-and-restore.md). This backup process does not retain any mining information.
+This backup process is different to that of the [`lotus-miner` backup]({{< relref "../storage-providers/backup-and-restore" >}}). This backup process does not retain any mining information.
 
 ## Backup
 
 1. Stop your `lotus` daemon if it is already running.
 1. Run `lotus daemon backup`:
-    
+
     ```shell
     lotus backup --offline ~/lotus-backup.cbor
     ```
@@ -39,7 +39,7 @@ This backup process is different to that of the [`lotus-miner` backup](../../min
     ```
 
     ```shell output
-    2021-09-24T20:24:51.729Z        INFO    main    lotus/daemon.go:218     lotus repo: /root/.lotus                                                                                              
+    2021-09-24T20:24:51.729Z        INFO    main    lotus/daemon.go:218     lotus repo: /root/.lotus
     2021-09-24T20:24:51.730Z        INFO    paramfetch      go-paramfetch@v0.0.2/paramfetch.go:191  Parameter file /var/tmp/filecoin-proof-parameters/v28-proof-of-spacetime-fallback-merkletree-poseidon_hasher-8-0-0-7d739b8cf60f1b0709eeebee7730e297683552e4b69cab6984ec0285663c5781.vk is ok
     ...
     2021-09-24T20:24:52.296Z        INFO    badger  v2@v2.2007.2/value.go:1178      Replay took: 2.975µs
@@ -47,4 +47,3 @@ This backup process is different to that of the [`lotus-miner` backup](../../min
     ```
 
 1. The `lotus daemon` should continue to run from the block height at which your backup was taken.
-

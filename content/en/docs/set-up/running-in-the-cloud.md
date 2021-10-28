@@ -1,12 +1,12 @@
 ---
 title: "Running in the cloud"
-description: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine." 
-lead: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine." 
+description: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine."
+lead: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine."
 draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 120 
+weight: 120
 toc: true
 ---
 
@@ -40,8 +40,6 @@ curl -X POST -H 'Content-Type: application/json' \
 We regularly publish AMIs for each of the [filecoin networks](https://network.filecoin.io/). To use one of these images, just search for one of our AMIs. You can use this [example link which populates a search for Lotus in the `us-west-2` region](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Images:visibility=public-images;search=lotus-mainnet;ownerAlias=657871693752;sort=name).
 
 <a href="https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Images:visibility=public-images;search=lotus-mainnet;ownerAlias=657871693752;sort=name" alt="AWS Logo"><img src="../images/cloud/aws-logo.svg" style="max-width: 40%; cursor: hand !important;"/></a>
-
-![launch-filecoin-ami](../images/cloud/aws-launch-ami.png)
 
 After you launch your AWS instance, you should log in with the 'ubuntu' account.
 The filecoin instance runs a host-based firewall (UFW) which blocks all incomming ports except

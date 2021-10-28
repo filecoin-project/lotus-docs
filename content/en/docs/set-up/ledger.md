@@ -36,7 +36,7 @@ You can use a Filecoin Lotus node with Ledger hardware to manage your funds.
 
 Make sure you fully trust the Lotus node you are connecting to.
 
-1. In the [Lotus configuration](configuration-and-advanced-usage.md) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
+1. In the [Lotus configuration]({{< relref "configuration" >}}) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
 
    ```toml
    [Wallet]
@@ -57,7 +57,7 @@ Make sure you fully trust the Lotus node you are connecting to.
    `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.
    {{< /alert >}}
 
-1. From this point, any [FIL send operation](send-and-receive-fil.md) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
+1. From this point, any [FIL send operation]({{< relref "manage-fil#sending-fil" >}}) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
 
 {{< alert icon="warning">}}
 The `lotus-shed` application provides additional Ledger functionality, like listing the keys in the device and providing information about them.

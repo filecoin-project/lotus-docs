@@ -19,7 +19,7 @@ git pull
 git checkout <branch or tag>
 ```
 
-Once the new version is checked-out, rebuild and re-install as explained in the [installation guide](installation.md).
+Once the new version is checked-out, rebuild and re-install as explained in the [installation guide]({{< relref "install" >}}).
 
 You can verify your current version with:
 
@@ -34,4 +34,4 @@ lotus version   # for the currently running daemon
 
 ## Switching networks
 
-If you want to switch networks, read [this guide](switch-networks.md).
+If you want to switch networks, read [this guide]({{< relref "switch-networks" >}}).
