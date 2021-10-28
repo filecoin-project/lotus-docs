@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Filecoin"
 description: "Curious about how it all got started, or where we're headed? Learn about the history, current state, and future trajectory of the Filecoin project here."
 lead: "Curious about how it all got started, or where we're headed? Learn about the history, current state, and future trajectory of the Filecoin project here."
 draft: false

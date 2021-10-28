@@ -1,5 +1,5 @@
 ---
-title: Backup and restore
+title: Backup and restore a node
 description: "You can backup your Lotus node. You can then restore this backup if something goes wrong, or you simply wish to move your Lotus node from one computer to another."
 lead: "You can backup your Lotus node. You can then restore this backup if something goes wrong, or you simply wish to move your Lotus node from one computer to another."
 draft: false
