@@ -10,7 +10,7 @@ weight: 10
 toc: true
 ---
 
-This guide assumes you are familiar with the [normal storage deal workflow](store-data.md).
+This guide assumes you are familiar with the [normal storage deal workflow]({{< relref "store-data" >}}).
 
 ## Maximizing storage per sector
 

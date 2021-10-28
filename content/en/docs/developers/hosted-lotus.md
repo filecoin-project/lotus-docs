@@ -11,7 +11,7 @@ toc: true
 
 ## Mainnet endpoint
 
-Developers can interact directly with load-balanced, synced mainnet nodes using the [JSON RPC API](../apis/json-rpc) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
+Developers can interact directly with load-balanced, synced mainnet nodes using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
 
 Unlike bare Lotus, the endpoint above is hardened and limited:
 
@@ -21,7 +21,7 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 
 ## Testnet endpoint
 
-For synced testnet node endpoints using the [JSON RPC API](../apis/json-rpc), `https://calibration.node.glif.io` is available.
+For synced testnet node endpoints using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}), `https://calibration.node.glif.io` is available.
 
 ### Custom endpoints
 
@@ -76,7 +76,7 @@ lotus net id 12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt
 
 If the above does not work, verify that you are using the right token and multiaddress.
 
-By default, all read operations are enabled, along with the MPoolPush method. This means that you will need to [sign messages yourself](signing-libraries.md) using your own externally-managed wallets, unless you are given a full node under your full control. We can however, use the CLI to send any read commands. The following are just examples:
+By default, all read operations are enabled, along with the MPoolPush method. This means that you will need to [sign messages yourself](https://docs.filecoin.io/build/signing-libraries/) using your own externally-managed wallets, unless you are given a full node under your full control. We can however, use the CLI to send any read commands. The following are just examples:
 
 ```shell
 ./lotus net id
@@ -92,7 +92,7 @@ Get familiar with the capabilities of your node and verify that the endpoints. T
 
 Your application will very probably interact with the Lotus JSON-RPC API directly. Here are the first steps to gain operative knowledge on this API:
 
-- Read the instructions in the [Lotus API reference](../reference/lotus-api.md). Understand how calls are performed, how authentication works and how parameters and responses are encoded in JSON-RPC. Try out some `curl` examples.
+- Read the instructions in the [Lotus API reference](https://docs.filecoin.io/build/signing-libraries/). Understand how calls are performed, how authentication works and how parameters and responses are encoded in JSON-RPC. Try out some `curl` examples.
 - From the above, learn how to obtain the parameters and expected format for every endpoint from the Lotus Go documentation. This will be the first place to check if something does not work or the format of some parameter is not understood.
 - You can also use this [Lotus API documentation](https://documenter.getpostman.com/view/4872192/SWLh5mUd?version=latest) which covers the Glif Node-supported methods in a more readable form, with additional tips.
-- If you are planning to send transactions, you will need to manage wallets and create signatures for your messages. See the [signing libraries](signing-libraries.md) page for different solutions.
+- If you are planning to send transactions, you will need to manage wallets and create signatures for your messages. See the [signing libraries](https://docs.filecoin.io/build/signing-libraries/) page for different solutions.
