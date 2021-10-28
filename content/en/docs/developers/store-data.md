@@ -10,7 +10,7 @@ weight: 10
 toc: true
 ---
 
-This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files](very-large-files) guide.
+This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files]({{< relref "large-files" >}}) guide.
 
 ## Overview
 
@@ -117,11 +117,10 @@ For a deal to succeed, the miner needs to be correctly configured and running, a
 
 You can make deals with multiple miners for the same data.
 
-Once a deal is sucessful and the data is _sealed_, it can be [retrieved](retrieve-data.md).
+Once a deal is sucessful and the data is _sealed_, it can be [retrieved]({{< relref "retrieve-data" >}}).
 
 ## Additional tools
 
 [Filecoin.tools](https://filecoin.tools/) also allows you to check the status of your deal
 
 [Starling](https://github.com/filecoin-project/starling) provides a set of utilities to add and monitor content to the Filecoin network, using a running Lotus Node.
-

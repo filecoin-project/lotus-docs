@@ -17,7 +17,7 @@ The Lotus Miner and the Lotus Node applications come with their own local API en
 In this section we will explain how to enable remote access to the Lotus APIs as run by the daemons.
 
 {{< alert >}}
-**Instructions are the equivalent for `lotus` and `lotus-miner`**. For simplicity, we will just show how to do it with `lotus` by editing the [Lotus Node configuration](../../set-up/configuration), but the same can be achieved by editing the [Lotus Miner configuration](../../storage-providers/config).
+**Instructions are the equivalent for `lotus` and `lotus-miner`**. For simplicity, we will just show how to do it with `lotus` by editing the [Lotus Node configuration]({{< relref "../set-up/configuration" >}}), but the same can be achieved by editing the [Lotus Miner configuration]({{< relref "../storage-providers/config" >}}).
 {{< /alert >}}
 
 ### Setting the listening interface
@@ -86,7 +86,7 @@ API clients take care of the low-level details of making requests and handling r
 
 To use the Lotus Go client, the [Go RPC-API](https://github.com/filecoin-project/go-jsonrpc) library can be used to interact with the Lotus API node. This library was written by Lotus developers and it is used by Lotus itself.
 
-If your Lotus instance is hosted remotely, ensure that you have enabled [remote API access](#enable-remote-api-access). You will need to obtain an [API token](.#api-tokens).
+If your Lotus instance is hosted remotely, ensure that you have enabled [remote API access](#enable-remote-api-access). You will need to obtain an [API token](#api-tokens).
 
 1. First, import the necessary Go module:
 
@@ -132,4 +132,3 @@ If your Lotus instance is hosted remotely, ensure that you have enabled [remote 
 
 1. Run `go mod init` to setup your `go.mod` file.
 1. You should now to be able to interact with the Lotus API.
-
