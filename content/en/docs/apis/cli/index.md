@@ -1,7 +1,7 @@
 ---
 title: "CLI"
-description: "Lorem ipsum."
-lead: "Lorem ipsum."
+description: "Reference documentation for the Lotus command-line interface."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.13.0"
 draft: false
 menu:
     docs:
