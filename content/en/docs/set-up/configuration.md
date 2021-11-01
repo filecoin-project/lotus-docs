@@ -1,6 +1,6 @@
 ---
-title: "Configuration"
-identifier: "node-configuration"
+title: "Lotus configuration"
+identifier: "lotus-node-configuration"
 description: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 lead: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 draft: false
