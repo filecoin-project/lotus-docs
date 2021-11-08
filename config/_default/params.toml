@@ -50,7 +50,7 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 
 # Footer
-footer = "Made by Protocol Labs."
+footer = "Built by Protocol Labs."
 
 # Feed
 copyRight = ""

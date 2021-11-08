@@ -1,4 +1,4 @@
-baseurl = "https://docs.lotu.sh/"
+baseurl = "https://lotu.sh/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
