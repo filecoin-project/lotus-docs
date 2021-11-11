@@ -31,21 +31,11 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 
 1. Download the most recent lightweight snapshot and its checksum:
 
-    **Mainnet**
-
-    + [This URL](https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car) always contains the latest snapshot available for mainnet.
-
     ```shell
     curl -sI https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car | perl -ne '/x-amz-website-redirect-location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
     ```
 
-    **Testnet**
-
-    {{< alert icon="warning" >}}
-    Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them.
-    {{< /alert >}}
-
-    + Calibration: Download latest snapshot: [lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz](https://www.mediafire.com/file/q7tc2bmcc9d09vv/lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz/file).
+    [The URL in the codeblock above](https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car) always contains the latest snapshot available for mainnet. Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them. Calibration snapshots can [be downloaded here](https://www.mediafire.com/file/q7tc2bmcc9d09vv/lotus_cali_snapshot_2021_07_14_high_73770.car.tar.xz/file).
 
 
 2. Check the `sha256sum` of the downloaded snapshot:
@@ -54,7 +44,10 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     # Replace the filenames for both `.sha256sum` and `.car` files based on the snapshot you downloaded.
     echo "$(cut -c 1-64 minimal_finality_stateroots_517061_2021-02-20_11-00-00.sha256sum) minimal_finality_stateroots_517061_2021-02-20_11-00-00.car" | sha256sum --check
     ```
-    ```
+
+    This command will output something like:
+
+    ```output
     minimal_finality_stateroots_517061_2021-02-20_11-00-00.car: OK
     ```
 
@@ -75,7 +68,7 @@ lotus daemon --import-snapshot https://fil-chain-snapshots-fallback.s3.amazonaws
 
 Full chain snapshots contain every block from genesis until the current tipset. You can trustlessly import these complete snapshots by supplying the `--import-chain` option to recalculate the entire state during import:
 
-```sh
+```shell
 lotus daemon --import-chain https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/complete_chain_with_finality_stateroots_latest.car
 ```
 
@@ -89,10 +82,13 @@ There are two ways to check your Lotus daemon's chain synching progress.
 
 Use `sync status` to output the current state of your local chain:
 
-````sh with-output
+```shell with-output
 lotus sync status
-````
-````
+```
+
+This command will output something like:
+
+```output
 sync status:
 worker 0:
         Base:   [bafy2bzacecnamqgqmifpluoeldx7zzglxcljo6oja4vrmtj7432rphldpdmm2]
@@ -101,7 +97,7 @@ worker 0:
         Stage: header sync
         Height: 414300
         Elapsed: 765.267091ms
-````
+```
 
 #### Sync wait
 
@@ -110,18 +106,24 @@ Use `sync wait` to output the state of your current chain as an ongoing process:
 ```shell with-output
 lotus sync wait
 ```
-```
+
+This command will output something like:
+
+```output
 Worker: 0; Base: 0; Target: 414300 (diff: 414300)
 State: header sync; Current Epoch: 410769; Todo: 3531
 Validated 0 messages (0 per second)
 ...
-````
+```
 
 Use `chain getblock` to check when the last synced block was mined:
 
 ```shell with-output
 date -d @$(./lotus chain getblock $(./lotus chain head) | jq .Timestamp)
 ```
+
+This command will output something like:
+
 ```
 Mon 24 Aug 2020 06:00:00 PM EDT
 ```
@@ -170,27 +172,28 @@ It is possible to _prune_ the current chain data used by Lotus to reduce the nod
 
 1. Export the chain data:
 
-```shell with-output
-lotus chain export --recent-stateroots=901 --skip-old-msgs my-snapshot.car
+    ```shell
+    lotus chain export --recent-stateroots=901 --skip-old-msgs my-snapshot.car
+    ```
 
 1. Stop the Lotus daemon:
 
-```shell
-lotus daemon stop
-```
+    ```shell
+    lotus daemon stop
+    ```
 
 1. Back up the chain data and create a directory  for chain data:
 
-```shell
-mv ~/.lotus/datastore/chain ~/.lotus/datastore/chain_backup
-mkdir ~/.lotus/datastore/chain
-```
+    ```shell
+    mv ~/.lotus/datastore/chain ~/.lotus/datastore/chain_backup
+    mkdir ~/.lotus/datastore/chain
+    ```
 
 1. Import the chain data:
 
-```shell
-lotus daemon --import-snapshot my-snapshot.car --halt-after-import
-```
+    ```shell
+    lotus daemon --import-snapshot my-snapshot.car --halt-after-import
+    ```
 
 1. Start the daemon:
 
