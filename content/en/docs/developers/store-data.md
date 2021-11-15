@@ -10,6 +10,8 @@ weight: 10
 toc: true
 ---
 
+[查看中文翻译](/zh/docs/developers/store-data)
+
 This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files]({{< relref "large-files" >}}) guide.
 
 ## Overview
