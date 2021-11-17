@@ -1,4 +1,4 @@
-baseurl = "https://lotu.sh/"
+baseurl = "https://docs.filecoin.io/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
