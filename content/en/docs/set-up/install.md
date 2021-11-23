@@ -1,7 +1,7 @@
 ---
 title: "Install"
-description: "This guide covers how to install the Lotus applications and launch a Lotus Node. This guide covers installing lotus, lotus-miner, and lotus-worker to your computer, and then runs through setting up a Lotus node."
-lead: "This guide covers how to install the Lotus applications and launch a Lotus Node. This guide covers installing lotus, lotus-miner, and lotus-worker to your computer, and then runs through setting up a Lotus node."
+description: "This guide covers how to install the Lotus applications and launch a Lotus Node. This guide covers installing lotus, lotus-miner, and lotus-worker to your computer, and then runs through setting up a Lotus node. We will not be starting the Lotus miner in this section."
+lead: "This guide covers how to install the Lotus applications and launch a Lotus Node. This guide covers installing lotus, lotus-miner, and lotus-worker to your computer, and then runs through setting up a Lotus node. We will not be starting the Lotus miner in this section."
 draft: false
 menu:
     docs:

@@ -30,6 +30,23 @@ Want to build applications on the Filecoin network? Do you want to provide stora
 
 Lotus is created, maintained, and supported by Protocol Labs. To find out more about about the project, [head over to the project page]({{< relref "/docs/set-up/about" >}})
 
+
+### Roadmap
+
+The latest timing information is available in the [Filecoin Mainnet Roadmap](https://app.instagantt.com/shared/s/1152992274307505/latest).
+
+### Research
+
+Learn about the ongoing cryptography research and design efforts that underpin the Filecoin protocol on the [Filecoin Research website](https://research.filecoin.io/). The [CryptoLab at Protocol Labs](https://research.protocol.ai/groups/cryptolab/) also actively researches improvements.
+
+### Related projects
+
+Filecoin is a highly modular project that is itself made out of many different protocols and tools. Learn more about the [Filecoin-related projects](https://docs.filecoin.io/project/related-projects/) supported by Protocol Labs.
+
+## Code of conduct
+
+The Filecoin community believes that our mission is best served in an environment that is friendly, safe, and accepting, and free from intimidation or harassment. To that end, we ask that everyone involved in Filecoin read and respect our [code of conduct](https://github.com/filecoin-project/community/blob/master/CODE_OF_CONDUCT.md).
+
 ## Get help
 
 Need a hand installing Lotus, or setting up a `lotus-miner`? [Head over to the discussion tab in the Lotus GitHub repo](https://github.com/filecoin-project/lotus/discussions)

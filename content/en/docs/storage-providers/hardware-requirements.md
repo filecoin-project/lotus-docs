@@ -32,7 +32,7 @@ A powerful GPU is **recommended** as it can significantly speed up SNARK computa
 
 The [authoritative list of supported GPUs](https://github.com/filecoin-project/bellman#supported--tested-cards) is in the [Bellman repository](https://github.com/filecoin-project/bellman#supported--tested-cards).
 
-Additional GPU models need to be enabled manually ([instructions for Lotus]({{< relref "benchmark-gpus" >}})).
+Additional GPU models need to be enabled manually ([instructions for Lotus]({{< relref "benchmarks" >}})).
 
 {{< alert icon="warning" >}}
 Mixing AMD and Nvidia GPUs in the same machine is known to cause issues with OpenCL and should be avoided.

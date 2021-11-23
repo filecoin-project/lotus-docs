@@ -48,7 +48,7 @@ If you see this, that means [sector pledging wrote too much data to `$TMPDIR`]({
 
 ## Error: GPU unused
 
-If you suspect that your GPU is not being used, first make sure it is one or the supported or set it up as explained in the [custom GPUs guide]({{< relref "benchmark-gpus" >}}). You can verify your GPU is being used by running a quick lotus-bench benchmark as explained there on that guide as well.
+If you suspect that your GPU is not being used, first make sure it is one or the supported or set it up as explained in the [custom GPUs guide]({{< relref "benchmarks" >}}). You can verify your GPU is being used by running a quick lotus-bench benchmark as explained there on that guide as well.
 
 ## Common connectivity errors
 
