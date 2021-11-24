@@ -38,7 +38,7 @@ flowchart TB
 | Section | Sub-tasks |
 | --- | --- |
 | Set up | 1. Get access to a Lotus full-node.<br> 2. Start a Lotus lite-node on your local computer.<br> 3. Get a FIL address.<br> 4. Sign up for Filecoin Plus. |
-| Store data | 1. Package your data.<br> 2. Import your data into Lotus.<br> 3. Find a storage provider through the Filecoin Plus miner registry.<br> 4. Create a storage deal.<br> 5. Wait for the deal to complete. |
+| Store data | 1. Package your data.<br> 2. Import your data into Lotus.<br> 3. Find a storage provider through the Filecoin Plus Registry.<br> 4. Create a storage deal.<br> 5. Wait for the deal to complete. |
 | Retrieve data | 1. Create a retrieval deal.<br> 2. Download your data.|
 
 It will take about an hour to complete this tutorial. While there aren't too many steps involved, there's a bit of waiting around for the network to process your requests.
@@ -267,31 +267,6 @@ It is incredibly important that you backup your addreses. Storing a copy of your
 
 Once you have your address in a file, you can copy it to another drive, securely send it to another computer, or even print it out. It's important to keep this file safe. If anything happens to your Lotus node, you can still access your funds using this file.
 
-### Filecoin Plus
-
-Storage providers get paid either by receiving FIL directly from users for storing their data, winning block rewards from the network, or both!
-
-Getting paid from users is straightforward. If Laika wants to store some data, and Albert is a storage provider, the two of them can create a deal to store Laika's data for `X` amount of time for `Y` FIL.
-
-Block rewards are randomly given to a storage provider every 30 seconds. The more data that a storage provider is _storing_, the higher their chances of winning the block reward. So if a storage provider accepts a deal from a user to store 5 GB of data, they have 5 chances to win the block reward for each 30 second round.
-
-DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage miner 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus miner registry](https://plus.fil.org/miners/).
-
-#### Sign up
-
-Signing up to Filecoin Plus is easy and free!
-
-{{< alert >}}
-You need a GitHub account that is at least 180 days old. If you don't have a GitHub account that's old enough, [get in touch with the team on Filecoin Slack](https://filecoin.io/slack/).
-{{< /alert >}}
-
-1. Go to [plus.fil.org](https://plus.fil.org).
-1. Under **For isClients**, click **Proceed**.
-1. Under **Get verified**, click **Get Verified**.
-1. Click **Automatic Verification**.
-1. Click **Start** next to the GitHub logo.
-1. In the `Request` field, enter the public address you got from running `lotus wallet list`. This step may take a few minutes to complete.
-
 ## Store data
 
 Start storing your data on the Filecoin network. This section covers packaging your data, importing it into your local Lotus lite-node, finding a storage provider through the Filecoin Plus miner registry, creating a storage deal, and then waiting for the deal to complete. There's a lot to do, so let's dive in!
@@ -307,8 +282,8 @@ As you're going through this section, make a note of the following variables:
 | Variable | Description | Example |
 | --- | --- | --- |
 | Data CID | The content identifier (CID) of the data that you want to store using Filecoin. | `bafk2bzaceajz56zudni2hli7id6jvvpo5n4wj5eoxm5xwj2ipthwc2pkgowwu` |
-| Miner ID #1 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`
-| Miner ID #2 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`
+| Storage Provider ID #1 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`|
+| Storage Provider ID #2 | The unique identifier for each storage provider. You need to have two storage provider IDs for this tutorial. | `f01000`|
 | Deal CID | The content identifier (CID) for a deal made with a storage provider. | `bafyreict2zhkbwy2arri3jgthk2jyznck47umvpqis3hc5oclvskwpteau` |
 
 ### Prepare your data
@@ -361,54 +336,60 @@ We need to tell our Lotus lite-node which file we want to store using Filecoin.
 
 Now that Lotus knows which file we want to use, we can create a deal with a Filecoin storage provider to store our data!
 
-### Find a storage provider
+### Find a storage provider via Filecoin Plus
+
+Storage providers get paid either by receiving FIL directly from users for storing their data, winning block rewards from the network, or both!
+
+Getting paid from users is straightforward. If Laika wants to store some data, and Albert is a storage provider, the two of them can create a deal to store Laika's data for `X` amount of time for `Y` FIL.
+
+Block rewards are randomly given to a storage provider every 30 seconds. The more data that a storage provider is _storing_, the higher their chances of winning the block reward. So if a storage provider accepts a deal from a user to store 5 GB of data, they have 5 chances to win the block reward for each 30 second round.
+
+DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/miners/).
+
+#### Sign up
+
+Signing up to Filecoin Plus is easy and free!
+
+{{< alert >}}
+You need a GitHub account that is at least 180 days old. If you don't have a GitHub account that's old enough, [get in touch with the team on Filecoin Slack](https://filecoin.io/slack/).
+{{< /alert >}}
+
+1. Go to [plus.fil.org](https://plus.fil.org).
+1. Under **For Clients**, click **Proceed**.
+1. Under **Get Verified**, click **Get DataCap**.
+1. Click **Automatic Verification**.
+1. Click **Start** next to the GitHub logo.
+1. In the `Request` field, enter the public address you got from running `lotus wallet list`. This step may take a few minutes to complete.
 
 We need to find suitable storage providers before we can store our data. The Filecoin network allows storage providers to compete by offering different terms for pricing, acceptable data sizes, and other important deal parameters. It's also important to consider the storage provider's location; the closer the storage provider is to you, the faster the storage and retrieval process will be.
 
-We're going to use the Filecoin Plus miner registry to find a couple of storage providers and then cross-check their information with a third-party storage provider reputation system.
+We're going to use the Filecoin Plus Registry to find a couple of storage providers and check their information through the reputation system.
 
 {{< alert icon="tip" >}}
 Increasing the number of storage providers you use increases your data redundancy, and decreases the chances of your data being lost.
 {{< /alert >}}
 
-#### Filecoin Plus miner registry
+#### Filecoin Plus Registry
 
-The Filecoin Plus miner registry is a collection of geographically diverse storage providers that are willing to accept low-cost or free storage deals from users. The more storage providers that offer storage in different parts of the world, the faster we can work toward Filecoin’s underlying mission to store humanity’s most important information.
+The Filecoin Plus  Registry is a collection of geographically diverse storage providers that are willing to accept low-cost or free storage deals from users. The more storage providers that offer storage in different parts of the world, the faster we can work toward Filecoin’s underlying mission to store humanity’s most important information. It can help you compare storage providers based on their location, pricing and data size limitations, and also their reputation based on their historical performance.  
 
 Let's find a couple of storage providers to store our data.
 
-1. Go to [plus.fil.org/miners](https://plus.fil.org/miners/).
-1. Using the table, find a couple of storage providers that suit your needs. Try to find storage providers that are geographically close to you.
-1. Once you have found a couple of suitable storage providers, make a note of their _miner IDs_ from the **Miner ID** column:
+1. Go to [Filecoin Plus  Registry website](https://plus.fil.org/miners/).
 
-    ![A collection of storage providers listed in the Filecoin Plus miner registry.](miner-x-listings.png)
+1. Using the table, find a couple of storage providers that suit your needs. Try to find storage providers that are geographically close to you, minimum file size is lower than 5 GiB, and charge 0 FIL for verified deals.
 
-    Some storage providers list multiple miner IDs. For these storage providers, just copy one of the IDs:
+    ![A collection of storage providers listed in the Filecoin Plus miner registry.](images/miner-x-listings.png)
 
-    ![A list of storage providers, highlighting one storage provider with multiple IDs.](miner-with-multiple-miner-ids.png)
+1. Once you find suitable storage providers, you can check more detail info about it by clicking the Arrow next to its reputation score.  
+
+    ![storage provider](images/storage-provider.png)
 
 1. Make sure to write down the IDs of the storage providers you want to use. We'll be referring to these IDs in the next section.
 
-#### Miner reputation systems
+Filecoin Plus Registry only represents a small portion of the entire Filecoin mining community, you can also use other Filecoin reputation systems like [FilRep](https://filrep.io) to check more storage provider metrics, like storage power in the network, reachability and overall success rate.
 
-The Filecoin Plus miner registry is a great resource, but it represents a small portion of the entire Filecoin mining community. Filecoin reputation systems like [FilRep](https://filrep.io) can help you compare storage providers based on their past performance and provide useful information about the deal parameters that a storage provider will accept. Using FilRep, you can compare storage provider metrics like location, storage power in the network, pricing, and overall success rate.
-
-We're going to use FilRep to check that the minimum deal size of the storage providers we selected fits the size of our file.
-
-1. Go to [filrep.io](https://filrep.io).
-1. Click the **Settings** toggle to display a list of all available storage provider details.
-1. Make sure that the **Min File Size** column is selected:
-
-    ![](filrep-select-columns.png)
-
-1. Now you can search for the storage providers you found before, using the miner ID.
-
-    ![](filrep-search-min-file-size.png)
-
-1. Check that the minimum file size is lower than 5 GiB, and that they charge 0 FIL for verified deals.
-1. If the minimum file size shown for any of your storage providers is larger than 5 GiB, or they charge more thann 0 FIL for verified deals, go back to [the previous section](#filecoin-plus-miner-registry) and select a new storage provider.
-
-Now that you've found your miners, you can move onto creating a storage deal!
+Now that you've found your storage providers, you can move onto creating a storage deal!
 
 ### Create a deal
 
@@ -503,7 +484,7 @@ Once the data has been sent to the storage clients, the storage deals can take u
     Sending Channels
     ID                   Status   Sending To   Root Cid     Initiated?  Transferred  Voucher
     1620782601911586915  Ongoing  ...KPFTTwY7  ...zyd3kapm  Y           224.1MiB     ...bqhcidjmajbelhlxfqry3d7qlu3tvar45a"}}
-
+    
     Receiving Channels
     ...
     ```
@@ -644,13 +625,13 @@ We're going to gather this information now.
 1. Go to [filecoin.tools](https://filecoin.tools).
 1. Paste the **address** in the search bar and press `ENTER` to search for deals made by that **address**:
 
-    ![Filecoin.tools showing all the deals made by a single address.](filecoin-tools-search-address.png)
+    ![Filecoin.tools showing all the deals made by a single address.](images/filecoin-tools-search-address.png)
 
     The default **address** supplied in this tutorial `f16wc2ees...` has only submitted one storage deal, so you'll only see one row in [filecoin.tools](https://filecoin.tools/f16wc2ees6nkmk4pguoaaly4zdkeemaajjbv7aqgq). If you are using a different **address**, you may see multiple rows. If you don't see _any_ rows, the **address** you searched for has not yet completed a deal. The **address** may have submitted a deal, but the storage provider is yet to _seal_ the data. Deals will only show up here once the storage provider has completed sealing the data.
 
 1. Click anywhere on a row to view information about that specific deal:
 
-    ![Information about a particular deal.](filecoin-tools-show-details.png)
+    ![Information about a particular deal.](images/filecoin-tools-show-details.png)
 
 1. Make a note of the **Payload CID** and the **Miner ID**. You'll need both of these to create the retrieval command in the next step.
 
