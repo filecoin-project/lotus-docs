@@ -24,7 +24,7 @@ Lotus is a command line application that **works on Linux and MacOS only**, and 
 
 ## Who it's for
 
-Want to build applications on the Filecoin network? Do you want to provide storage for the Filecoin users all around the world? Do you just want to play around with some cool tech? Then this impmlementation is for you!
+Want to build applications on the Filecoin network? Do you want to provide storage for the Filecoin users all around the world? Do you just want to play around with some cool tech? Then this implementation is for you!
 
 ## Project
 
