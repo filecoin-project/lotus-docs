@@ -221,3 +221,56 @@ The only case where running multiple workers per machine may be a good idea is w
 When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=[device number]` env var.
 
 Device numbers can be obtained with the `nvidia-smi -L` command.
+
+#### Sector Storage Groups
+
+The sectorstore.json contains two additional optional fields to allow for creating worker groups and avoiding unnecessarily moving data between multi-purpose workers.
+
+##### Use case
+
+- This feature is useful when storage path is not shared between the worker.
+- This feature can used to group workers if some of the workers share a storage path (ex: NFS) but not all.
+- In case all workers share the same storage path like NFS or similar storage then this feature would not be helpful.
+- This feature does not relate to long term storage path.
+
+```
+Groups []string - list of group names the storage path belongs to.
+AllowTo []string - list of group names to which sectors can be fetched to from this storage path.
+```
+
+The option `AllowTo` defined which storage path the sector can be pulled from.
+For example in the following setup:
+
+```
+Storage miner
+Path with Groups: ["example-storage-group-1"]
+Worker 1 (PC1, PC2):
+Path with Groups: ["example-seal-group-1"], AllowTo: ["example-seal-group-1"]
+Worker 2 (PC1, PC2):
+Path with Groups: ["example-seal-group-2"], AllowTo: ["example-seal-group-2"]
+Worker 3 (PC1):
+Path with AllowTo: ["example-seal-group-1""]
+```
+
+Without storage groups, PC2 tasks on workers 1 or 2 could be scheduled with sector data from other workers, which would often waste bandwidth and occasionally block processing on fetching data.
+With storage groups configured as above, sectors which had PC1 done on worker1 / worker2 will always execute PC2 on the same worker. Sectors from worker3 will only go to worker1 for PC2
+
+Groups can be setup in two ways:
+
+- For new storage paths, set with
+``` 
+lotus-miner storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to=<["group-a", "group-b" ... ]> or lotus-worker storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to <["group-a", "group-b" ... ]>
+```
+- For existing storage paths, modify [path]/sectorstore.json, then restarting lotus-miner/worker
+```
+{
+ "ID": "74e1d667-7bc9-49bc-a9a6-0c30afd8684c",
+ "Weight": 10,
+ "CanSeal": false,
+ "CanStore": true,
+ "MaxStorage": 0,
+ "Groups": ["group-a", "group-b"]
+  "AllowTo": ["storage0"]
+}
+```
+***Note: if --allow-to or AllowTo is not specified, all groups will be accessible.***
