@@ -228,9 +228,8 @@ The sectorstore.json contains two additional optional fields to allow for creati
 
 ##### Use case
 
-- This feature is useful when storage path is not shared between the worker.
-- This feature can used to group workers if some of the workers share a storage path (ex: NFS) but not all.
-- In case all workers share the same storage path like NFS or similar storage then this feature would not be helpful.
+- This feature is useful when the Lotus storage path is not shared between workers.
+- This feature can be used to group workers together if some, but not all, of them share a storage path (e.g. NFS). If all the workers share the same storage path, then this feature should not be used.
 - This feature does not relate to long term storage path.
 
 ```
@@ -253,6 +252,7 @@ Path with AllowTo: ["example-seal-group-1""]
 ```
 
 Without storage groups, PC2 tasks on workers 1 or 2 could be scheduled with sector data from other workers, which would often waste bandwidth and occasionally block processing on fetching data.
+
 With storage groups configured as above, sectors which had PC1 done on worker1 / worker2 will always execute PC2 on the same worker. Sectors from worker3 will only go to worker1 for PC2
 
 Groups can be setup in two ways:
