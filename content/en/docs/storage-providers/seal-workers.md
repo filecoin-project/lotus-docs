@@ -14,7 +14,7 @@ While the Lotus Miner runs each of the sealing phases itself by default, you can
 
 ## Resource allocation in Lotus Workers
 
-Each **Lotus Worker** can run multiple tasks, depending on your hardware resources. Each slot is called a _window_. The final number is determined by the number of available cores and the requirements of the sealing phase allocated to it. That means that a single worker on a 8-core CPU with a single GPU will run at most:
+Each **Lotus Worker** can run multiple tasks, depending on your hardware resources. Each slot is called a _window_. The final number is determined by the number of available cores and the requirements of the sealing phase allocated to it, including:
 
 - Number of CPU threads the task will use.
 - Minimum amount of RAM required for good performance.
@@ -210,37 +210,39 @@ Additionally, be mindful of the local resources used by the sealing process (par
 
 Note that if you co-locate miner and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
 
-## Lotus Worker co-location
+### Lotus Worker co-location
 
 In most cases, only one Lotus Worker per machine should be running since `lotus-worker` will try to use all available resources. Running multiple Lotus Workers in one operating system context will cause issues with resource allocation, which will cause the scheduler to allocate more work than there are available resources.
 
-The only case where running multiple workers per machine may be a good idea is when there are multiple GPUs available, as lotus currently only supports a single GPU - in that case, it's recommended to run workers in separate containers with non-overlapping resources (separate CPU cores, separate RAM allocations, separate GPUs)
+### Multiple Nvidia GPUs
 
-### Separating Nvidia GPUs
+The only case where running multiple workers per machine may be a good idea is when there are multiple GPUs available, as lotus currently only supports a single GPU. In that case, it's recommended to run workers in separate containers with non-overlapping resources (separate CPU cores, separate RAM allocations, separate GPUs)
 
-When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=[device number]` env var.
+When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable.
 
 Device numbers can be obtained with the `nvidia-smi -L` command.
 
+## Running Multiple Workers
+
+Storage providers intending to scale significantly beyond the 10TB minimum will likely want to run multiple Lotus Workers on dedicated machines. Multi-worker environments can be tuned with additional configuration.
+
 ### Sector Storage Groups
 
-The sectorstore.json contains two additional optional fields to allow for creating worker groups and avoiding unnecessarily moving data between multi-purpose workers.
-
-#### Use case
-
-- This feature is useful when the Lotus storage path is not shared between workers.
-- This feature can be used to group workers together if some, but not all, of them share a storage path (e.g. NFS). If all the workers share the same storage path, then this feature should not be used.
-- This feature does not relate to long term storage path.
-
+As of Lotus v1.13.2, `sectorstore.json` in each storage location contains two additional, optional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers.
 ```
 Groups []string - list of group names the storage path belongs to.
 AllowTo []string - list of group names to which sectors can be fetched to from this storage path.
 ```
+The `Groups` field identifies the storage path as one that accepts incoming PC1 sectors for PC2 processing. `AllowTo` determines which storage path(s) a sector may be moved to for PC2. **If `AllowTo` is not specified, the store will be accessible to all groups.**
 
-The option `AllowTo` determines which storage path the ~sector can be pulled from~. **If `AllowTo` is not specified, the store will be accessible to all groups.**
+- This feature is useful when sealing storage paths are not shared among workers.
+- This feature can be used to group workers together if some, but not all, of them share a storage path (e.g., NFS). If all workers share the same storage path, then this feature should not be used.
+- This feature does not relate to the long term storage path.
 
-Consider the following setup:  
-Worker 1 (PC1, PC2) `sectorstore.json`:
+#### Use case
+
+Consider a setup with three workers: Worker 1 (PC1, PC2); Worker 2 (PC1, PC2); Worker 3 (PC1). Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from any of the three workers, occasionally causing the large volume of data generated in PC1 to be needlessly moved from Worker 1 to Worker 2, or vice versa, for PC2. This wastes bandwidth and can cause data fetching to block processing. The following `sectorstore.json` files are configured to avoid such unnecessary file transfers.
+- Worker 1 (PC1, PC2):
 ```json
 {
   "ID": "2546c5be-10f0-aa96-906b-24434a6c94a0",
@@ -252,41 +254,48 @@ Worker 1 (PC1, PC2) `sectorstore.json`:
   "AllowTo": ["example-seal-group-1"]
 }
 ```
-Worker 2 (PC1, PC2) `sectorstore.json`:
+- Worker 2 (PC1, PC2):
 ```json
 {        
   "ID": "b5db38b9-2d2e-06eb-8367-7338e1bcd0f1",
- ...
+  "Weight": 10,
+  "CanSeal": true,
+  "CanStore": false,
+  "MaxStorage": 0,
   "Groups": ["example-seal-group-2"],
   "AllowTo": ["example-seal-group-2"]
 }
 ```
-Worker 3 (PC1) `sectorstore.json`:
+- Worker 3 (PC1):
 ```json
 {        
-  "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562",
-// ...
+  "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562", 
+  "Weight": 10,
+  "CanSeal": true,
+  "CanStore": false,
+  "MaxStorage": 0,
   "AllowTo": ["example-seal-group-1"]
 }
 ```
+Worker 1 and Worker 2 are given unique `Groups` values, and each worker's `AllowTo` matches its respective `Groups`. This ensures PC1 and PC2 for any given sector always execute on the same worker. Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value means sectors from Worker 3 will only go to Worker 1 for PC2.
 
-Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from Worker 3, which wastes bandwidth and occasionally causes data fetching to block processing.
+#### Implementation
 
-With storage groups configured as above, sectors that had PC1 done on Worker 1 or Worker 2 will always execute PC2 on the same worker. Sectors from Worker 3 will only go to Worker 1 for PC2.
-
-To set up groups on new storage paths: 
-``` 
-lotus-miner storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to=<["group-a", "group-b" ... ]> or lotus-worker storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to <["group-a", "group-b" ... ]>
+To set up storage groups when initializing new storage paths: 
+```shell
+lotus-miner storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
+# or 
+lotus-worker storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
 ```
-For existing storage paths, modify `sectorstore.json`, then restart `lotus-worker`.
-```
+For existing storage paths, add the lines to `sectorstore.json` in each sealing storage location, then restart `lotus-worker`. (`$LOTUS_WORKER_PATH/storage.json` lists all storage locations used by a worker.)
+```json
 {
  "ID": "74e1d667-7bc9-49bc-a9a6-0c30afd8684c",
  "Weight": 10,
  "CanSeal": false,
  "CanStore": true,
  "MaxStorage": 0,
- "Groups": ["group-a", "group-b"]
-  "AllowTo": ["storage0"]
+ "Groups": ["group-a", "group-b"],
+ "AllowTo": ["storage0"]
 }
 ```
