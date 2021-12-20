@@ -1,28 +1,46 @@
 {{ define "main" }}
-	<div class="row flex-xl-nowrap">
-		<div class="col-lg-5 col-xl-4 docs-sidebar">
-			<nav class="docs-links" aria-label="Main navigation">
-				{{ partial "sidebar/docs-menu.html" . }}
-			</nav>        
-        </div>
-		{{ if ne .Params.toc false -}}
-		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
-			{{ partial "sidebar/docs-toc.html" . }}
-		</nav>
-        {{ end -}}
-		{{ if .Params.toc -}}
-		<main class="docs-content col-lg-11 col-xl-9">
-		{{ else -}}
-		<main class="docs-content col-lg-11 col-xl-9 mx-xl-auto">
-		{{ end -}}
-			<h1>{{ .Title }}</h1>
-			<p class="lead">{{ .Params.lead | safeHTML }}</p>
-			{{ partial "main/headline-hash.html" .Content }}
-			{{ if .Site.Params.editPage -}}
-				{{ partial "main/edit-page.html" . }}
-			{{ end -}}
-			{{ partial "main/docs-navigation.html" . }}
-		</main>
-	</div>
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="mt-0">{{ .Title }}</h1>
+      <p class="lead">{{ .Params.lead | safeHTML }}</p>
+    </div>
+    <div class="col-lg-4 img-fluid">
+        <img src="http://placehold.it/900x400">
+    </div>
+  </div>
+</section>
 {{ end }}
 
+{{ define "sidebar-prefooter" }}
+  {{ if eq $.Site.Language.LanguageName "English" }}
+  <section class="section section-sm">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-4">
+          <h2 class="h4">Daemon</h2>
+          <p>Validates network transactions, manages a FIL wallet, can perform storage and retrieval deals.</p>
+        </div>
+        <div class="col-lg-4">
+          <h2 class="h4">Miner</h2>
+          <p>Earn FIL by storing data for clients and submitting cryptographic proofs.</p>
+        </div>
+        <div class="col-lg-4">
+          <h2 class="h4">Worker</h2>
+          <p>Sub-daemon that assist one or multiple <code>miner</code> daemons by performing storage-provider related tasks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9">
+      {{- .Content -}}
+    </div>
+  </div>
+</section>
+{{ end }}
