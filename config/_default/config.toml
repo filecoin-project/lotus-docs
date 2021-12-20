@@ -1,4 +1,4 @@
-baseurl = "https://brave-saha-65d65c.netlify.app/"
+baseurl = "https://deploy-preview-39--blissful-liskov-5fa2cf.netlify.app/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
