@@ -51,6 +51,7 @@ lqipWidth = "20x"
 
 # Footer
 footer = "Built by Protocol Labs."
+footer_link = "https://protocol.ai"
 
 # Feed
 copyRight = ""
