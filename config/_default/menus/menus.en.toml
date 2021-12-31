@@ -35,7 +35,7 @@
   url = "/project"
 
 [[main]]
-  name = "Docs"
+  name = "Home"
   url = "/docs/set-up/install/"
   weight = 10
 

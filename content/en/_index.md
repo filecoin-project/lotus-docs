@@ -5,3 +5,5 @@ lead: "Lotus is the reference implementation for the Filecoin network. It is wri
 draft: false
 images: []
 ---
+
+<!-- This page manages the content for the docs homepage / -->

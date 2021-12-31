@@ -1,12 +1,79 @@
 {{ define "main" }}
-<section class="section container-fluid mt-n3 pb-3">
+<section class="section container-fluid">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <h1 class="mt-0">{{ .Title }}</h1>
-            <p class="lead">{{ .Params.lead | safeHTML }}</p>
+            <h1 class="mt-0">Lotus</h1>
+            <p class="lead">Lotus is the reference implementation for the Filecoin network. It is written in Go, and is maintained by the Protocol Labs team. This website contains all the information you need to spin up a Lotus node, become a Filecoin storage provider, or just tinker around with the Filecoin network!</p>
         </div>
         <div class="col-lg-4 img-fluid">
             <img src="/images/lotus-logo-big.png">
+        </div>
+    </div>
+</section>
+
+<section class="section container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 img-fluid">
+            <img src="/images/homepage-what-is-filecoin.png">
+        </div>
+        <div class="col-lg-8">
+            <h2 class="mt-0">What is Filecoin?</h2>
+            <p class="lead">I'm baby kale chips chillwave fixie, humblebrag tote bag drinking vinegar poutine readymade lumbersexual tilde quinoa you probably haven't heard of them meh affogato. Fashion axe palo santo keffiyeh fam intelligentsia. Literally vaporware tilde, prism migas mlkshk copper mug unicorn listicle kombucha chartreuse hoodie kitsch.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="mt-0">What is Lotus?</h2>
+            <p class="lead">Fashion axe palo santo keffiyeh fam intelligentsia. Literally vaporware tilde, prism migas mlkshk copper mug unicorn listicle kombucha chartreuse hoodie kitsch. Locavore keytar four dollar toast ethical, shoreditch kombucha four loko authentic normcore everyday carry schlitz hoodie. Helvetica prism irony subway tile brunch fashion axe kogi normcore poutine bicycle rights sriracha raw denim. Venmo ennui kinfolk, fam ramps tilde photo booth wayfarers cronut mustache.</p>
+        </div>
+        <div class="col-lg-4 img-fluid">
+            <img src="/images/homepage-what-is-lotus.png">
+        </div>
+    </div>
+</section>
+
+<section class="section container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <h2>Getting started with Lotus</h2>
+            <p>The Lotus project is actually a suite of command-line applications. The <code>lotus</code> daemon is available as a client for users to store data, the <code>miner</code> daemon is for storage providers to rent their storage to users, and the <code>worker</code> daemon allows storage-providers to split tasks across multiple computers. You can get started quickly by following these guides:</p>
+            <ul>
+                <li><a href="/docs/set-up/install/">Install and launch a Lotus node</a></li>
+                <li><a href="/docs/set-up/manage-fil/">Create a wallet and send or receive FIL to your address</a></li>
+                <li><a href="/docs/storage-providers/overview/">Learn about being a storage provider</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <h2 class="mt-0">Need help?</h2>
+            <p class="lead">Reach out to the Lotus team and the Filecoin community through these links:</p>
+            <div class="row justify-content-center">
+                <div class="col-lg text-center">
+                    <a href="https://github.com/filecoin-project/lotus/discussions">
+                        <img src="data:image/png;base64,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"/>
+                        <p>Lotus Discussions</p>
+                    </a>
+                </div>
+                <div class="col-lg text-center">
+                    <a href="https://filecoin.io/slack/">
+                        <img src="data:image/png;base64,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"/>
+                        <p>Filecoin Slack</p>
+                    </a>
+                </div>
+                <div class="col-lg text-center">
+                    <a href="https://github.com/filecoin-project/lotus/issues">
+                        <img src="data:image/png;base64,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"/>
+                        <p>GitHub Issues</p>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -14,41 +81,8 @@
 
 
 {{ define "sidebar-prefooter" }}
-{{ if eq $.Site.Language.LanguageName "English" }}
-<section class="section section-sm">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-4">
-                <h2 class="h4">Daemon</h2>
-                <p>Validates network transactions, manages a FIL wallet, can perform storage and retrieval deals.</p>
-            </div>
-            <div class="col-lg-4">
-                <h2 class="h4">Miner</h2>
-                <p>Earn FIL by storing data for clients and submitting cryptographic proofs.</p>
-            </div>
-            <div class="col-lg-4">
-                <h2 class="h4">Worker</h2>
-                <p>Sub-daemon that assist one or multiple <code>miner</code> daemons by performing storage-provider related tasks.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<section class="section section-sm">
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-8">
-                <h1 class="mt-0">{{ .Title }}</h1>
-                <p class="lead">{{ .Params.lead | safeHTML }}</p>
-            </div>
-            <div class="col-lg-4 img-fluid">
-            </div>
-        </div>
-    </div>
-</section>
-
-{{ end }}
+    {{ if eq $.Site.Language.LanguageName "English" }}
+    {{ end }}
 {{ end }}
 
 
