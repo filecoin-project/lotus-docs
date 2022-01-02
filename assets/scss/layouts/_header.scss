@@ -1,14 +1,15 @@
 /* The progress container (grey background) */
 .progress-container {
-  width: 100%;
-  height: 3px;
-  background: #ccc;
+    margin-top: 8px;
+    width: 100%;
+    height: 1px;
+    background: $gray-200;
 }
 
 /* The progress bar (scroll indicator) */
 .progress-bar {
-  height: 3px;
-  background: #04AA6D;
+  height: 1px;
+  background: $primary;
   width: 0%;
 }
 
@@ -123,7 +124,6 @@ button#doks-versions {
 
 .doks-subnavbar {
   background-color: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid $gray-200;
 }
 
 .doks-subnavbar .nav-link {
