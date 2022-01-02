@@ -19,7 +19,11 @@ If you understood all that, great! You can leave this page and start diving into
 
 Let's start at the end.
 
+### Network
+
 A **network** is a group of computers that talk to each other and exchange information. The internet is the biggest network in the world, and you're using it right now. But a network can also be very small, all you need is at least two computers that can communicate with each other.
+
+### Filecoin
 
 **Filecoin** is a protocol. That means that it's a collection of rules and processes that computers need to follow to be part of the network. If a computer does not follow the rules, then they are ignored by the rest of the computers on the network. 
 
@@ -43,14 +47,18 @@ So let's review. _The Filecoin network_ is:
 
 Again, let's start at the end. 
 
+### Implementation
+
 An **implementation** is _one way_ to do _something_. Take this table from Ikea as an example:
 
-![A wooden table from Ikea.](https://www.ikea.com/ca/en/images/products/ingo-table-pine__0737092_pe740877_s5.jpg?f=xl)
+![A wooden table from Ikea.](ingo-table.jpg)
 
-It's called Ingo, because Ikea likes to give it's products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it.
+It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it.
 
 - _Ingo_ is an _object_ that you can use as a _table_.
 - _Lotus_ is an _application_ that a computer can use to do _Filecoin stuff_.
+
+### Node
 
 A **node** is a computer that can talk to other computers on a network. In your home network there's probably a computer, a TV, and maybe a printer.
 
