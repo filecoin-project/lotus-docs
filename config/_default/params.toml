@@ -9,7 +9,7 @@ description = "Documentation for Lotus - the reference node implementation for t
 ## Open Graph
 images = ["lotus.png"]
 ogLocale = "en_US"
-domainTLD = "docs.lotu.sh"
+domainTLD = "lotus.filecoin.io"
 titleHome = "Lotus Docs"
 
 ## Twitter Cards
@@ -51,6 +51,7 @@ lqipWidth = "20x"
 
 # Footer
 footer = "Built by Protocol Labs."
+footer_link = "https://protocol.ai"
 
 # Feed
 copyRight = ""
@@ -66,15 +67,16 @@ docsRepoBranch = "main"
 editPage = true
 
 [options]
-  lazySizes = true
-  clipBoard = true
-  instantPage = true
-  flexSearch = true
-  darkMode = true
-  bootStrapJs = true
-  breadCrumb = false 
-  highLight = true
-  kaTex = false
-  collapsibleSidebar = true
-  multilingualMode = true
-  docsVersioning = false # Not yet functional
+    lazySizes = true
+    clipBoard = true
+    instantPage = true
+    flexSearch = true
+    darkMode = true
+    bootStrapJs = true
+    breadCrumb = false 
+    highLight = true
+    kaTex = false
+    progressBar = true
+    collapsibleSidebar = true
+    multilingualMode = true
+    docsVersioning = false # Not yet functional
