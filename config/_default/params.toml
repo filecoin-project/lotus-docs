@@ -76,6 +76,7 @@ editPage = true
     breadCrumb = false 
     highLight = true
     kaTex = false
+    progressBar = true
     collapsibleSidebar = true
     multilingualMode = true
     docsVersioning = false # Not yet functional

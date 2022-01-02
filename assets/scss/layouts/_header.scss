@@ -1,3 +1,17 @@
+/* The progress container (grey background) */
+.progress-container {
+  width: 100%;
+  height: 3px;
+  background: #ccc;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+  height: 3px;
+  background: #04AA6D;
+  width: 0%;
+}
+
 .banner .nav li {
   @extend .nav-item;
 }
