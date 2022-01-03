@@ -1,12 +1,12 @@
 ---
-title: "Troubleshooting API code"
+title: "API troubleshooting"
 description: "This page offers some troubleshooting advice for Lotus API users by listing some of the most common errors that they can come accross."
 lead: "This page offers some troubleshooting advice for Lotus API users by listing some of the most common errors that they can come accross."
 draft: false
 menu:
     docs:
         parent: "developers"
-weight: 10
+weight: 305 
 toc: true
 ---
 

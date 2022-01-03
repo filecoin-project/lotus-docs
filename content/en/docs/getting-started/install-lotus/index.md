@@ -8,7 +8,7 @@ menu:
   docs:
     parent: "getting-started"
     identifier: "getting-started-install-lotus"
-weight: 20
+weight: 120
 toc: true
 ---
 

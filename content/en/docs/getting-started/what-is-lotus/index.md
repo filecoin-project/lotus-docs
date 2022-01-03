@@ -5,7 +5,7 @@ draft: false
 menu:
     docs:
         parent: "getting-started"
-weight: 10
+weight: 110
 toc: true
 ---
 

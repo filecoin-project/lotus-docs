@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 50
+weight: 260
 toc: true
 ---
 

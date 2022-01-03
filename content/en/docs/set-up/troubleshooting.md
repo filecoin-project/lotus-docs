@@ -7,7 +7,7 @@ menu:
     docs:
         parent: "node-set-up"
         identifier: "node-troubleshooting"
-weight: 140
+weight: 295
 toc: true
 ---
 
