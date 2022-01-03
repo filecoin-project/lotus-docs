@@ -1,4 +1,10 @@
 [[docs]]
+  name = "Getting started"
+  weight = 10
+  identifier = "getting-started"
+  url = "getting-started"
+
+[[docs]]
   name = "Node Set-up"
   weight = 15
   identifier = "node-set-up"
