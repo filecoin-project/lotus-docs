@@ -55,6 +55,21 @@ lotus msig approve walletAddress transactionID proposerAddress destinationAddres
 
 The value of `transactionID`, `proposerAddress`, `destinationAddress` and `value` must match the values used in the proposal.
 
+## Cancel a pending multisig proposal
+
+Use `lotus msig cancel` to cancel a pending multisig transaction. 
+
+```shell
+lotus msig cancel walletAddress transactionID destinationAddress value
+```
+
+The value of `walletAddress`, `transactionID`, `destinationAddress` and `value` must match the values used in the proposal.
+
+Output of a successful cancel process.
+
+```shell
+sent cancel in message:  bafy2bzacebjy2limeu6mw4b6x5yqgdupxaqabprojwu72xlfhwkhgb5jcyr7c
+```
 ## Inspect a multisig wallet
 
 Use `lotus msig inspect` to get information about the multisig wallet:
@@ -74,4 +89,41 @@ t01003  t3rpukrggza4jjt6vpihiqoekth6tiopzhvxbp36qhrzfu4xpk6n3mxo5geh6bdavkkkhqk7
 Transactions:  1
 ID      State    Approvals  To                                         Value   Method   Params
 0       pending  1          t1fjswymsauvfh5zxw34t2pgz7iev2fn56unyw6ci  20 FIL  Send(0)
+```
+
+## Inspect a multisig proposal
+Use `lotus-shed msg` to inspect the params of a message.
+
+```shell
+lotus-shed msg messageID
+```
+
+Output of a successful inspection on a multisig message.
+
+```plaintext
+---
+Message Details:
+Value: 0 FIL
+Max Fees: 0.00000031548776754 FIL
+Max Total Cost: 0.00000031548776754 FIL
+Method: Propose
+Params: {
+  "To": "t1m2oqtdwx2kporl3dgq4schl46jnu63fqwchf4wq",
+  "Value": "5000000000000000000",
+  "Method": 0,
+  "Params": null
+}
+---
+Params message:
+Msig Propose:
+HEX: 845501669d098ed7d29ee8af633439211d7cf25b4f6cb049004563918244f400000040
+B64: hFUBZp0JjtfSnuivYzQ5IR188ltPbLBJAEVjkYJE9AAAAEA=
+JSON: {
+  "To": "t1m2oqtdwx2kporl3dgq4schl46jnu63fqwchf4wq",
+  "Value": "5000000000000000000",
+  "Method": 0,
+  "Params": null
+}
+
+---
 ```
