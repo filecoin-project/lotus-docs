@@ -57,17 +57,17 @@ The value of `transactionID`, `proposerAddress`, `destinationAddress` and `value
 
 ## Cancel a pending multisig proposal
 
-
 Use `lotus msig cancel` to cancel a pending multisig transaction. 
 
-```shell with-output
+```shell
 lotus msig cancel walletAddress transactionID destinationAddress value
-
 ```
+
 The value of `walletAddress`, `transactionID`, `destinationAddress` and `value` must match the values used in the proposal.
 
 Output of a successful cancel process.
-```
+
+```shell
 sent cancel in message:  bafy2bzacebjy2limeu6mw4b6x5yqgdupxaqabprojwu72xlfhwkhgb5jcyr7c
 ```
 ## Inspect a multisig wallet
@@ -90,18 +90,17 @@ Transactions:  1
 ID      State    Approvals  To                                         Value   Method   Params
 0       pending  1          t1fjswymsauvfh5zxw34t2pgz7iev2fn56unyw6ci  20 FIL  Send(0)
 ```
+
 ## Inspect a multisig proposal
-
-
 Use `lotus-shed msg` to inspect the params of a message.
 
-```shell with-output
+```shell
 lotus-shed msg messageID
-
 ```
+
 Output of a successful inspection on a multisig message.
 
-```
+```plaintext
 ---
 Message Details:
 Value: 0 FIL
