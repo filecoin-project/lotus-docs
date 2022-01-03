@@ -1,5 +1,8 @@
 table {
   @extend .table;
-
   margin: 3rem 0;
+}
+table td, table thead tr th {
+  font-size: 85%;
+  padding: 0.6rem;
 }

@@ -110,7 +110,7 @@ f3...
 ```
 
 {{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "../set-up/manage-fil" >}}) to the **worker address** so that the miner setup can be completed.
+Next make sure to [send some funds]({{< relref "../set-up/manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
 {{< /alert >}}
 
 For additional information about the different wallets that a miner can use and how to configure them, read the [miner addresses guide]({{< relref "addresses" >}}).
