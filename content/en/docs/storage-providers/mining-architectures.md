@@ -20,11 +20,17 @@ We are working to improve this section. If you would like to share your mining s
 
 The following Lotus miner setup was published as part of the [Guide to Filecoin Storage Mining](https://filecoin.io/blog/filecoin-guide-to-storage-mining/) blog post. A PDF is available for download [here](https://filecoin.io/vintage/mining-hardware-config-testnet-v3.pdf):
 
+### AMD based architecture
+
 | Hardware unit        | CPU model                     | GPU                        | RAM        | Disk                        | Processes                                                   | Notes                                                                                       |
 | -------------------- | ----------------------------- | -------------------------- | ---------- | --------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Storage miner + Node | AMD Epyc 7402 (24 cores)      | Nvidia Quadro RTX 6000     | 128-256 GB  | Unspecified                 | 1x lotus <br /><br />1x lotus-miner                         | The miner delegates sealing functions to the workers below.                                 |
 | PC1 workers          | AMD Epyc 7F32 DP/UP (8 cores) | -                          | 128-256 GiB | 6 x 1-2 TiB SSD scratch disk | 6x lotus-worker                                             | Runs 6 [Lotus seal workers]({{< relref "seal-workers" >}}) in parallel for PreCommit1 phase only.   |
 | PC2, Commit workers  | AMD Epyc 7402 (24 cores)      | 2 x Nvidia Quadro RTX 6000 | 256 GiB     | 2-4 TiB SSD scratch disk(s)  | 1x lotus-worker (PC2) <br /><br /> 1x lotus-worker (Commit) | One [worker]({{< relref "seal-workers" >}}) dedicated to PreCommit2 and another to the Commit phase |
+
+### Intel based architecture
+| Hardware unit        | CPU model                     | GPU                        | RAM        | Disk                        | Processes                                                   | Notes                                                                                       |
+| -------------------- | ----------------------------- | -------------------------- | ---------- | --------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Storage miner + Node | Intel Xeon Platinum Processor 8358 (32 cores) | Nvidia GeForce RTX 3080 series or RTX 3090 | 128-256 GB | Unspecified | 1x lotus<br><br>1x lotus-miner | The miner delegates sealing functions to the workers below. |
 | PC1 workers | Intel Xeon Gold Processor 6346 (16 cores) | - | 128-256 GiB | 6 x 1-2 TiB SSD scratch disk | 6x lotus-worker | Runs 6 Lotus seal workers in parallel for PreCommit1 phase only. |
 | PC2, Commit workers | Intel Xeon Platinum Processor 8358 (32 cores) | 2x Nvidia GeForce RTX 3080 series or RTX 3090 | 256 GiB | 2-4 TiB SSD scratch disk(s) | 1x lotus-worker (PC2)<br><br>1x lotus-worker (Commit) | One worker dedicated to PreCommit2 and another to the Commit phase. |
