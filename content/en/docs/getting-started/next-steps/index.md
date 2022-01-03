@@ -11,5 +11,5 @@ weight: 140
 toc: true
 ---
 
-Lorem ipsum.
+This page has no content yet and is currently set to draft mode. How did you find it?
 

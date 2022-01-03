@@ -12,5 +12,5 @@ weight: 120
 toc: true
 ---
 
-Lorem ipsome more.
+This page has no content yet and is currently set to draft mode. How did you find it?
 
