@@ -29,6 +29,7 @@ The following Lotus miner setup was published as part of the [Guide to Filecoin 
 | PC2, Commit workers  | AMD Epyc 7402 (24 cores)      | 2 x Nvidia Quadro RTX 6000 | 256 GiB     | 2-4 TiB SSD scratch disk(s)  | 1x lotus-worker (PC2) <br /><br /> 1x lotus-worker (Commit) | One [worker]({{< relref "seal-workers" >}}) dedicated to PreCommit2 and another to the Commit phase |
 
 ### Intel based architecture
+
 | Hardware unit        | CPU model                     | GPU                        | RAM        | Disk                        | Processes                                                   | Notes                                                                                       |
 | -------------------- | ----------------------------- | -------------------------- | ---------- | --------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
 | Storage miner + Node | Intel Xeon Platinum Processor 8358 (32 cores) | Nvidia GeForce RTX 3080 series or RTX 3090 | 128-256 GB | Unspecified | 1x lotus<br><br>1x lotus-miner | The miner delegates sealing functions to the workers below. |
