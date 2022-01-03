@@ -2,7 +2,7 @@
 title: "Install Lotus"
 description: ""
 lead: ""
-draft: false
+draft: true
 images: []
 menu:
   docs:
