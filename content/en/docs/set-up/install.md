@@ -63,7 +63,7 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
 
 [AppImages](https://appimage.org/) are portable applications that allow developers to package software and dependencies in a single executable. AppImages run on most Linux-based operating systems.
 
-1. Go to the latest [releases page in the Lotus GitHub repository](https://github.com/filecoin-project/lotus/releases/latest).
+1. Go to the latest [releases page in the Lotus GitHub repository](https://github.com/filecoin-project/lotus/releases/tag/v1.13.0).
 1. Under **Assets**, download the AppImage.
 1. Open a terminal window and move to the location where you downloaded the AppImage. This location is likely your **Downloads** folder:
 
@@ -74,13 +74,13 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
 1. Make the AppImage executable:
 
     ```shell
-    chmod +x lotus_v1.10.0_linux-amd64.appimage
+    chmod +x lotus_v1.13.0_linux-amd64.appimage
     ```
 
 1. You can now run the AppImage file by double-clicking on it or opening it from a terminal window:
 
     ```shell
-    ./lotus-v1.10.0_linx-amd64.appimage
+    ./lotus-v1.13.0_linx-amd64.appimage
     ```
 
 ### Building from source
@@ -227,7 +227,7 @@ Once all the dependencies are installed, you can build and install Lotus.
    lotus --version
    ```
    ```
-   lotus version 1.9.0+calibnet+git.ada7f97ba
+   lotus version 1.13.0+calibnet+git.7a55e8e89
    ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
@@ -357,7 +357,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.10.0
+    git checkout v1.13.1
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -403,7 +403,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.10.0
+    git checkout v1.13.1
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -520,9 +520,9 @@ Or check the current version of your Lotus node as well as network.
 lotus version
 ```
 ```
-Daemon:  1.9.0+calibnet+git.ada7f97ba+api1.3.0
-Local: lotus version 1.9.0+calibnet+git.ada7f97ba
-# running lotus v1.9.0 on Calibration testnet
+Daemon:  1.13.0+calibnet+git.7a55e8e89+api1.4.0
+Local: lotus version 1.13.0+calibnet+git.7a55e8e89
+# running lotus v1.13.0 on Calibration testnet
 ```
 
 ## Stop the Lotus daemon
