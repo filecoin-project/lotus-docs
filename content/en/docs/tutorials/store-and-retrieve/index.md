@@ -308,7 +308,7 @@ Getting paid from users is straightforward. If Laika wants to store some data, a
 
 Block rewards are randomly given to a storage provider every 30 seconds. The more data that a storage provider is _storing_, the higher their chances of winning the block reward. So if a storage provider accepts a deal from a user to store 5 GB of data, they have 5 chances to win the block reward for each 30 second round.
 
-DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/miners/).
+DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/).
 
 #### Sign up
 
@@ -339,7 +339,7 @@ The Filecoin Plus  Registry is a collection of geographically diverse storage pr
 
 Let's find a couple of storage providers to store our data.
 
-1. Go to [Filecoin Plus  Registry website](https://plus.fil.org/miners/).
+1. Go to [Filecoin Plus Registry website](https://plus.fil.org).
 
 1. Using the table, find a couple of storage providers that suit your needs. Try to find storage providers that are geographically close to you, minimum file size is lower than 5 GiB, and charge 0 FIL for verified deals.
 

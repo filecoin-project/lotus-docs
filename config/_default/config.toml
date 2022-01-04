@@ -1,4 +1,4 @@
-baseurl = "https://deploy-preview-39--blissful-liskov-5fa2cf.netlify.app/"
+baseurl = "https://lotus.filecoin.io/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
