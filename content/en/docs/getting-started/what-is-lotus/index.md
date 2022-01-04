@@ -90,7 +90,8 @@ The translate, Lotus is:
 This page should have cleared things up regarding what Lotus is. But you may still have questions about Filecoin itself, like:
 
 - why do we need Filecoin?
-- what's wrong with the normal way or storing things?
+- what's wrong with the normal way of storing things?
+- how can I store my stuff on Filecoin?
 - how much does it cost to store things on Filecoin?
 
 To get the answers to these questions, head on over to the [Filecoin documentation website](https://docs.filecoin.io). This website is specific to Lotus documentation only.
