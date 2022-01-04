@@ -42,7 +42,7 @@
 
 [[main]]
   name = "Docs"
-  url = "/docs/set-up/install/"
+  url = "/zh/docs/developers/store-data/"
   weight = 10
 
 #[[main]]
