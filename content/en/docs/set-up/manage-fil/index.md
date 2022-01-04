@@ -191,7 +191,7 @@ To export a wallet when a node is offline, copy these files _from_ `~/.lotus/key
 
 ### Setup your Ledger device
 
-1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-connection-issues).
+1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-connection-issues?support=true).
 1. Enable **Developer mode** in the Ledger live settings:
 
    ![ledger-enable-dev-mode](ledger.png)
