@@ -64,7 +64,7 @@ alertText = ""
 # Edit Page
 docsRepo = "https://github.com/filecoin-project/lotus-docs"
 docsRepoBranch = "main"
-editPage = true
+editPage = false
 
 [options]
     lazySizes = true
