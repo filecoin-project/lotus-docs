@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "storage-providers"
-weight: 20
+weight: 450
 toc: true
 ---
 
@@ -52,7 +52,7 @@ As mentioned, the Miners have to perform operations of different nature which di
 
 | Operation                  | CPU used                       | GPU used | Memory (32Gib sectors) | Notes                                                                                                                                                                                                                                       |
 | -------------------------- | ------------------------------ | -------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sealing: preCommit phase 1 | Yes (1 core or 1 core-complex) | No       | 128GiB                 | PoRep SDR encoding. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/). Also see the [Lotus seal workers guide](lotus/seal-workers.md). |
+| Sealing: preCommit phase 1 | Yes (1 core or 1 core-complex) | No       | 128GiB                 | PoRep SDR encoding. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/). Also see the [Lotus seal workers guide]({{< relref "seal-workers" >}}). |
 | Sealing: preCommit phase 2 | Yes (when no GPU, all cores)   | Yes      | 128GiB                 | Merkle tree generation using the Poseidon hashing algorithm. Slower with just CPUs.                                                                                                                                                         |
 | Sealing: commit phase 1    | Yes (all cores)                | No       | -                      |                                                                                                                                                                                                                                             |
 | Sealing: commit phase 2    | Yes (when no GPU, all cores)   | Yes      | ~ 192GiB               | Slow with just CPUs.                                                                                                                                                                                                                        |
@@ -65,3 +65,4 @@ Note that the Lotus implementation allows to configure and delegate specific sea
 ## Future proofing
 
 The above requirements will not increase in the presumable future, and money spent on hardware should provide users with many years of reliable service, paying for themselves several times over.
+

@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "storage-providers"
-weight: 20
+weight: 480
 toc: true
 ---
 
@@ -23,7 +23,7 @@ Each **Lotus Worker** can run multiple tasks, depending on your hardware resourc
 
 ### Task resource table
 
-The default resource table lives in [resources.go](https://github.com/filecoin-project/lotus/blob/master/extern/sector-storage/resources.go#L47) and can be edited to tune the scheduled behavior to fit specific sealing clusters better.
+The default resource table lives in [resources.go](https://github.com/filecoin-project/lotus/blob/master/extern/sector-storage/storiface/resources.go) and can be edited to tune the scheduled behavior to fit specific sealing clusters better.
 
 Default resource value table. Some of these values are _fairly_ conservative:
 

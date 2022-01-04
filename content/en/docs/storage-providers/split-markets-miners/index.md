@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "storage-providers"
-weight: 20
+weight: 495
 toc: true
 ---
 
@@ -33,7 +33,7 @@ on the mining node, and bring both the mining and markets nodes online.
 The following diagram summarizes the architecture of a split miner/markets
 deployment:
 
-![](../images/miner-markets-segregation-v4.png)
+![](miner-markets-segregation-v4.png)
 
 As you can see, only the markets and the fullnode/daemon run a libp2p host and
 expose public ports to the Internet. The mining/sealing/storage node stays

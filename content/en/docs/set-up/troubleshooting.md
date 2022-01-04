@@ -1,12 +1,13 @@
 ---
-title: "Set-up Troubleshooting"
+title: "Troubleshooting"
 description: "This page offers some troubleshooting advice for Lotus nodes by listing some of the most common errors that users can come accross."
 lead: "This page offers some troubleshooting advice for Lotus nodes by listing some of the most common errors that users can come accross."
 draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 140
+        identifier: "node-troubleshooting"
+weight: 295
 toc: true
 ---
 

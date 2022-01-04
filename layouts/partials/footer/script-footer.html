@@ -57,6 +57,12 @@
   {{ $slice = $slice | append $katexConfig -}}
 {{ end -}}
 
+{{ if .Site.Params.options.progressBar -}}
+  {{ $progressbarConfig := resources.Get "js/progressbar.js" -}}
+  {{ $progressbarConfig := $progressbarConfig | js.Build -}}
+  {{ $slice = $slice | append $progressbarConfig -}}
+{{ end -}}
+
 {{ $js := $slice | resources.Concat "main.js" -}}
 
 {{ if eq (hugo.Environment) "development" -}}
@@ -74,7 +80,7 @@
   {{ with .Params.mermaid -}}
     <script src="{{ $mermaid.RelPermalink }}" defer></script>
   {{ end -}}
-  {{ if (.Site.Params.options.flexSearch) -}}
+  {{ if and (.Site.Params.options.flexSearch) (eq .Section "docs") -}}
     <script src="{{ $index.RelPermalink }}" defer></script>
   {{ end -}}
 {{ else -}}
@@ -99,11 +105,7 @@
   {{ with .Params.mermaid -}}
     <script src="{{ $mermaid.RelPermalink }}" integrity="{{ $mermaid.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
-
-  {{ if (.Site.Params.options.flexSearch) -}}
-    {{ if .IsHome -}}
-        <script src="{{ $index.RelPermalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
-    {{ end -}}
+  {{ if and (.Site.Params.options.flexSearch) (eq .Section "docs") -}}
+    <script src="{{ $index.Permalink }}" integrity="{{ $index.Data.Integrity }}" crossorigin="anonymous" defer></script>
   {{ end -}}
-
 {{ end -}}
