@@ -1,44 +1,44 @@
-[[docs]]
-  name = "Getting started"
-  weight = 10
-  identifier = "getting-started"
-  url = "getting-started"
-
-[[docs]]
-  name = "Node Set-up"
-  weight = 15
-  identifier = "node-set-up"
-  url = "node-set-up"
-
+# [[docs]]
+#   name = "Getting started"
+#   weight = 10
+#   identifier = "getting-started"
+#   url = "getting-started"
+# 
+# [[docs]]
+#   name = "Node Set-up"
+#   weight = 15
+#   identifier = "node-set-up"
+#   url = "node-set-up"
+# 
 [[docs]]
   name = "Developers"
   weight = 17
   identifier = "developers"
   url = "developers"
 
-[[docs]]
-  name = "Storage providers"
-  weight = 20
-  identifier = "storage-providers"
-  url = "/storage-providers"
+# [[docs]]
+#   name = "Storage providers"
+#   weight = 20
+#   identifier = "storage-providers"
+#   url = "/storage-providers"
 
-[[docs]]
-  name = "Tutorials"
-  weight = 30
-  identifier = "tutorials"
-  url = "/tutorials"
-
-[[docs]]
-  name = "APIs"
-  weight = 40
-  identifier = "apis"
-  url = "/apis"
-
-[[docs]]
-  name = "Project"
-  weight = 50
-  identifier = "project"
-  url = "/project"
+# [[docs]]
+#   name = "Tutorials"
+#   weight = 30
+#   identifier = "tutorials"
+#   url = "/tutorials"
+# 
+# [[docs]]
+#   name = "APIs"
+#   weight = 40
+#   identifier = "apis"
+#   url = "/apis"
+# 
+# [[docs]]
+#   name = "Project"
+#   weight = 50
+#   identifier = "project"
+#   url = "/project"
 
 [[main]]
   name = "Docs"
