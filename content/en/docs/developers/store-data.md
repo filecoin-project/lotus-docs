@@ -12,6 +12,8 @@ toc: true
 
 This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files]({{< relref "large-files" >}}) guide.
 
+[在这里阅读中文版](/zh/docs/developers/store-data/)
+
 ## Overview
 
 In order to successfully add data to the Filecoin network the following steps need to be completed successfully:
