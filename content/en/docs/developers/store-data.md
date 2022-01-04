@@ -10,7 +10,7 @@ weight: 350
 toc: true
 ---
 
-[查看中文翻译](/zh/docs/developers/store-data)
+[查看中文翻译](/zh/docs/developers/store-data.zh)
 
 This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files]({{< relref "large-files" >}}) guide.
 
@@ -123,6 +123,6 @@ Once a deal is sucessful and the data is _sealed_, it can be [retrieved]({{< rel
 
 ## Additional tools
 
-[Filecoin.tools](https://filecoin.tools/) also allows you to check the status of your deal
+- [Filecoin.tools](https://filecoin.tools/) also allows you to check the status of your deal
+- [Starling](https://github.com/filecoin-project/starling) provides a set of utilities to add and monitor content to the Filecoin network, using a running Lotus Node.
 
-[Starling](https://github.com/filecoin-project/starling) provides a set of utilities to add and monitor content to the Filecoin network, using a running Lotus Node.
