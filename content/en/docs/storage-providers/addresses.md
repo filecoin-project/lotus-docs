@@ -128,8 +128,6 @@ lotus-miner --actor f01000 actor control list
 
 Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits and commits. With this, only market messages are sent from the worker address. If the basefee is high, then you can still put sectors on chain without those messages being blocked by things like publishing deals.
 
-This feature is enabled as of 2020-12-09 within the [`master` branch of `filecoin-project/lotus`](https://github.com/filecoin-project/lotus/), but is not yet within a tagged release. You need to build Lotus from GitHub using the `master` branch to use this feature.
-
 1. Create two control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
 
    ```shell with-output
