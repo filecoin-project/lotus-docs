@@ -33,7 +33,7 @@ You might of heard of HTTP before; it's the thing right at the start of a websit
 http://example.com
 ```
 
-HTTP is a set of rules that computers need to follow so that they can share websites which each other. If a computer doesn't know what HTTP is then it won't know what to do when you ask it to go to a website.
+HTTP is a set of rules that computers need to follow so that they can share websites with each other. If a computer doesn't know what HTTP is then it won't know what to do when you ask it to go to a website.
 
 The Filecoin protocol lets users store data on any of the computers in the network. Once the data has been stored, users can retrieve the data from the computers on the network. That data can be anything; pictures, music, videos, research data, encrypted archives, anything! If it can be stored digitally then it can be stored using Filecoin.
 
