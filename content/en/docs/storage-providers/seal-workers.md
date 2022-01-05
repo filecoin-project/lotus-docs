@@ -220,56 +220,84 @@ Multiple GPU support is currently in an early stage. It may still be beneficial 
 
 Advanced GPUs with high (>20GB) memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
 
+## Running Multiple Lotus Workers
 
-#### Sector Storage Groups
+Storage providers intending to scale significantly beyond the 10TB minimum will likely want to run multiple Lotus Workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
 
-The sectorstore.json contains two additional optional fields to allow for creating worker groups and avoiding unnecessarily moving data between multi-purpose workers.
+### Sector Storage Groups
 
-##### Use case
-
-- This feature is useful when the Lotus storage path is not shared between workers.
-- This feature can be used to group workers together if some, but not all, of them share a storage path (e.g. NFS). If all the workers share the same storage path, then this feature should not be used.
-- This feature does not relate to long term storage path.
-
+As of Lotus v1.13.2, the `sectorstore.json` file in each storage location contains two additional, optional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers.
 ```
 Groups []string - list of group names the storage path belongs to.
 AllowTo []string - list of group names to which sectors can be fetched to from this storage path.
 ```
+ The `Groups` field identifies the storage path as one that accepts incoming PC1 sectors for PC2 processing. `AllowTo` determines which storage path(s) a sector may be moved to for PC2. **If `AllowTo` is not specified, the store will be accessible to all groups.**
+ 
+- This feature is useful when sealing storage paths are not shared among workers.
+- This feature can be used to group workers together if some, but not all, of them share a storage path (e.g., NFS). If all workers share the same storage path, then this feature should not be used.
+- This feature does not relate to the long term storage path.
 
-The option `AllowTo` defined which storage path the sector can be pulled from.
-For example in the following setup:
+#### Use case
 
+Consider a setup with three workers: Worker 1 (PC1, PC2); Worker 2 (PC1, PC2); Worker 3 (PC1). Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from any of the three workers. For example, if Worker 1 finished a PC1 job but did not yet have an available PC2 window, the large volume of data generated in PC1 might be needlessly moved to Worker 2 for PC2. This wastes bandwidth and can cause data fetching to block data processing. The following `sectorstore.json` files are configured to avoid such unnecessary file transfers.
+- Worker 1 (PC1, PC2):
+```json
+{
+  "ID": "2546c5be-10f0-aa96-906b-24434a6c94a0",
+  "Weight": 10,
+  "CanSeal": true,
+  "CanStore": false,
+  "MaxStorage": 0,
+  "Groups": ["example-seal-group-1"],
+  "AllowTo": ["example-seal-group-1"]
+}
 ```
-Storage miner
-Path with Groups: ["example-storage-group-1"]
-Worker 1 (PC1, PC2):
-Path with Groups: ["example-seal-group-1"], AllowTo: ["example-seal-group-1"]
-Worker 2 (PC1, PC2):
-Path with Groups: ["example-seal-group-2"], AllowTo: ["example-seal-group-2"]
-Worker 3 (PC1):
-Path with AllowTo: ["example-seal-group-1""]
+- Worker 2 (PC1, PC2):
+```json
+{        
+  "ID": "b5db38b9-2d2e-06eb-8367-7338e1bcd0f1",
+ "Weight": 10,
+  "CanSeal": true,
+  "CanStore": false,
+  "MaxStorage": 0,
+  "Groups": ["example-seal-group-2"],
+  "AllowTo": ["example-seal-group-2"]
+}
 ```
 
-Without storage groups, PC2 tasks on workers 1 or 2 could be scheduled with sector data from other workers, which would often waste bandwidth and occasionally block processing on fetching data.
-
-With storage groups configured as above, sectors which had PC1 done on worker1 / worker2 will always execute PC2 on the same worker. Sectors from worker3 will only go to worker1 for PC2
-
-Groups can be setup in two ways:
-
-- For new storage paths, set with
-``` 
-lotus-miner storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to=<["group-a", "group-b" ... ]> or lotus-worker storage attach --init --groups <["group-a", "group-b" ... ]>, --allow-to <["group-a", "group-b" ... ]>
+- Worker 3 (PC1):
+```json
+{        
+  "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562", 
+  "Weight": 10,
+  "CanSeal": true,
+  "CanStore": false,
+  "MaxStorage": 0,
+  "Groups": null,
+  "AllowTo": ["example-seal-group-1"]
+}
 ```
-- For existing storage paths, modify [path]/sectorstore.json, then restarting lotus-miner/worker
+Worker 1 and Worker 2 are given unique `Groups` values, and each worker's `AllowTo` matches its respective `Groups`. This ensures PC1 and PC2 for any given sector always execute on the same worker. 
+
+Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value means sectors from Worker 3 will only go to Worker 1 for PC2.
+
+#### Implementation
+
+To set up storage groups when initializing new storage paths: 
+```shell
+lotus-miner storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
+# or 
+lotus-worker storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
 ```
+For existing storage paths, add the lines to `sectorstore.json` in each sealing storage location, then restart `lotus-worker`. (The storage locations used by a worker can be found in `LOTUS_WORKER_PATH/storage.json`.)
+```json
 {
  "ID": "74e1d667-7bc9-49bc-a9a6-0c30afd8684c",
  "Weight": 10,
  "CanSeal": false,
  "CanStore": true,
  "MaxStorage": 0,
- "Groups": ["group-a", "group-b"]
-  "AllowTo": ["storage0"]
+ "Groups": ["group-a", "group-b"],
+ "AllowTo": ["storage0"]
 }
 ```
-***Note: if --allow-to or AllowTo is not specified, all groups will be accessible.***
