@@ -57,6 +57,8 @@ Default resource value table. Some of these values are _fairly_ conservative:
 
 The Unseal task has the same resource use as the PreCommit1 task.
 
+Note that the default (and custom) configurations in the task resource table can be overridden using environmental variables. See 
+
 ### Resource windows
 
 The scheduler uses the concept of resource windows to prevent resource starvation of tasks requiring larger amounts of resources by tasks with smaller resource requirements.
@@ -100,6 +102,11 @@ When comparing task priority:
 - Sectors with deals are considered second (more deals add more priority)
 - If the above is equal, tasks are selected based on priorities in the table
 - If the above is equal, sectors with lower sector numbers are selected (this can optimize gas usage slightly when submitting messages to the chain)
+
+### Cgroups
+
+Cgroups (control groups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup limits if configured. 
+
 
 ## Installation
 
