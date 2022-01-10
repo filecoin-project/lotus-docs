@@ -57,7 +57,7 @@ Default resource value table. Some of these values are _fairly_ conservative:
 
 The Unseal task has the same resource use as the PreCommit1 task.
 
-Note that the default (and custom) configurations in the task resource table can be overridden using environmental variables. See 
+***Note: The default (and custom) configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "config#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
 
 ### Resource windows
 
@@ -105,8 +105,7 @@ When comparing task priority:
 
 ### Cgroups
 
-Cgroups (control groups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup limits if configured. 
-
+Cgroups (control groups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host. 
 
 ## Installation
 
