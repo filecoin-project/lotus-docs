@@ -45,10 +45,10 @@
   url = "/docs/set-up/install/"
   weight = 10
 
-#[[main]]
-#  name = "Blog"
-#  url = "/blog/"
-#  weight = 20
+[[main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 20
 
 [[social]]
   name = "GitHub"
