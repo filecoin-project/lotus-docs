@@ -10,7 +10,40 @@ weight: 498
 toc: true
 ---
 
-The are two types of upgrades. The _upgrade in-place_ is the default procedure and just updates the software. The _upgrade with reset_ removes all the data and starts from scratch:
+The are two types of upgrades: 
+
+- The [upgrade in-place](#upgrade-in-place) is the default procedure and just updates the software
+- The [upgrade with reset](#upgrade-with-reset) removes all the data and starts from scratch.
+
+{{< alert icon="warning" >}}
+Both upgrade types require you to doublecheck that your configuration files are up-to-date. You can do this by exporting the default configuration files from Lotus and comparing them to your configuration files.
+
+To export the default configuration files from Lotus, run:
+
+```shell
+lotus-miner config default
+```
+
+This will output something like:
+
+```toml
+[API]
+  # Binding address for the Lotus API
+  #
+  # type: string
+  # env var: LOTUS_API_LISTENADDRESS
+  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
+
+...
+```
+
+If you would prefer to have Lotus export the default configuration to a file, run:
+
+```shell
+lotus-miner config default >> ~/default-lotus-miner-configuration.toml
+```
+
+{{< /alert >}}
 
 ## Upgrade in-place
 
@@ -19,7 +52,7 @@ The are two types of upgrades. The _upgrade in-place_ is the default procedure a
 1. Shutdown your Lotus Node (`lotus daemon stop` or `systemctl stop lotus-daemon`)
 1. Pull the new version and rebuild. For more information read the [Lotus installation guide]({{< relref "../set-up/install" >}}) again:
 
-```sh
+```shell
 export RUSTFLAGS="-C target-cpu=native -g"
 export FFI_BUILD_FROM_SOURCE=1
 git pull
@@ -32,23 +65,23 @@ make install
 
 1. Start the Lotus daemon and wait for sync:
 
-```sh
+```shell
 lotus daemon
 # or when using systemctl
 systemctl start lotus-daemon
 ```
 
-```sh
+```shell
 lotus sync wait
 ```
 
 2. Start your miner and your workers
 
-```sh
+```shell
 lotus-miner run
 ```
 
-```sh
+```shell
 lotus-worker run
 ```
 
@@ -65,7 +98,7 @@ It is similar to re-installing everything from scratch, so you can follow the us
 
 Once you are ready, stop everything and delete the data folders (or rename them):
 
-```sh
+```shell
 # Assuming you are using the default data folders
 rm -rf ~/.lotus
 rm -rf ~/.lotusminer
@@ -73,3 +106,4 @@ rm -rf ~/.lotusworker
 ```
 
 After that Lotus applications will start from scratch.
+
