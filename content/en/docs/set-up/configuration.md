@@ -16,54 +16,189 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 ```toml
 [API]
   # Binding address for the Lotus API
-  ListenAddress = "/ip4/127.0.0.1/tcp/1234/http"
-  # Not used by lotus daemon
-  RemoteListenAddress = ""
-  # General network timeout value
-  Timeout = "30s"
+  #
+  # type: string
+  # env var: LOTUS_API_LISTENADDRESS
+  #ListenAddress = "/ip4/127.0.0.1/tcp/1234/http"
 
-# Libp2p provides connectivity to other Filecoin network nodes
+  # type: string
+  # env var: LOTUS_API_REMOTELISTENADDRESS
+  #RemoteListenAddress = ""
+
+  # type: Duration
+  # env var: LOTUS_API_TIMEOUT
+  #Timeout = "30s"
+
+
+[Backup]
+  # Note that in case of metadata corruption it might be much harder to recover
+  # your node if metadata log is disabled
+  #
+  # type: bool
+  # env var: LOTUS_BACKUP_DISABLEMETADATALOG
+  #DisableMetadataLog = false
+
+
 [Libp2p]
   # Binding address for the libp2p host - 0 means random port.
-  ListenAddresses = ["/ip4/0.0.0.0/tcp/0", "/ip6/::/tcp/0"]
-  # Insert any addresses you want to explicitally
-  # announce to other peers here. Otherwise, they are
-  # guessed.
-  AnnounceAddresses = []
-  # Insert any addresses to avoid announcing here.
-  NoAnnounceAddresses = []
-  # Connection manager settings, decrease if your
-  # machine is overwhelmed by connections.
-  ConnMgrLow = 150
-  ConnMgrHigh = 180
-  ConnMgrGrace = "20s"
+  # Format: multiaddress; see https://multiformats.io/multiaddr/
+  #
+  # type: []string
+  # env var: LOTUS_LIBP2P_LISTENADDRESSES
+  #ListenAddresses = ["/ip4/0.0.0.0/tcp/0", "/ip6/::/tcp/0"]
 
-# Pubsub is used to broadcast information in the network
+  # Addresses to explicitally announce to other peers. If not specified,
+  # all interface addresses are announced
+  # Format: multiaddress
+  #
+  # type: []string
+  # env var: LOTUS_LIBP2P_ANNOUNCEADDRESSES
+  #AnnounceAddresses = []
+
+  # Addresses to not announce
+  # Format: multiaddress
+  #
+  # type: []string
+  # env var: LOTUS_LIBP2P_NOANNOUNCEADDRESSES
+  #NoAnnounceAddresses = []
+
+  # When not disabled (default), lotus asks NAT devices (e.g., routers), to
+  # open up an external port and forward it to the port lotus is running on.
+  # When this works (i.e., when your router supports NAT port forwarding),
+  # it makes the local lotus node accessible from the public internet
+  #
+  # type: bool
+  # env var: LOTUS_LIBP2P_DISABLENATPORTMAP
+  #DisableNatPortMap = false
+
+  # ConnMgrLow is the number of connections that the basic connection manager
+  # will trim down to.
+  #
+  # type: uint
+  # env var: LOTUS_LIBP2P_CONNMGRLOW
+  #ConnMgrLow = 150
+
+  # ConnMgrHigh is the number of connections that, when exceeded, will trigger
+  # a connection GC operation. Note: protected/recently formed connections don't
+  # count towards this limit.
+  #
+  # type: uint
+  # env var: LOTUS_LIBP2P_CONNMGRHIGH
+  #ConnMgrHigh = 180
+
+  # ConnMgrGrace is a time duration that new connections are immune from being
+  # closed by the connection manager.
+  #
+  # type: Duration
+  # env var: LOTUS_LIBP2P_CONNMGRGRACE
+  #ConnMgrGrace = "20s"
+
+
 [Pubsub]
-  Bootstrapper = false
-  RemoteTracer = "/dns4/pubsub-tracer.filecoin.io/tcp/4001/p2p/QmTd6UvR47vUidRNZ1ZKXHrAFhqTJAD27rKL9XYghEKgKX"
+  # Run the node in bootstrap-node mode
+  #
+  # type: bool
+  # env var: LOTUS_PUBSUB_BOOTSTRAPPER
+  #Bootstrapper = false
 
-# This section can be used to enable adding and retrieving files from IPFS
+  # type: string
+  # env var: LOTUS_PUBSUB_REMOTETRACER
+  #RemoteTracer = ""
+
+
 [Client]
-  UseIpfs = false
-  IpfsMAddr = ""
-  IpfsUseForRetrieval = false
+  # type: bool
+  # env var: LOTUS_CLIENT_USEIPFS
+  #UseIpfs = false
+
+  # type: bool
+  # env var: LOTUS_CLIENT_IPFSONLINEMODE
+  #IpfsOnlineMode = false
+
+  # type: string
+  # env var: LOTUS_CLIENT_IPFSMADDR
+  #IpfsMAddr = ""
+
+  # type: bool
+  # env var: LOTUS_CLIENT_IPFSUSEFORRETRIEVAL
+  #IpfsUseForRetrieval = false
+
   # The maximum number of simultaneous data transfers between the client
-  # and storage providers
-  SimultaneousTransfers = 20
+  # and storage providers for storage deals
+  #
+  # type: uint64
+  # env var: LOTUS_CLIENT_SIMULTANEOUSTRANSFERSFORSTORAGE
+  #SimultaneousTransfersForStorage = 20
 
-# Metrics configuration
-[Metrics]
-  Nickname = ""
-  HeadNotifs = false
+  # The maximum number of simultaneous data transfers between the client
+  # and storage providers for retrieval deals
+  #
+  # type: uint64
+  # env var: LOTUS_CLIENT_SIMULTANEOUSTRANSFERSFORRETRIEVAL
+  #SimultaneousTransfersForRetrieval = 20
 
-# Wallet configuration
+
 [Wallet]
-  EnableLedger = false
+  # type: string
+  # env var: LOTUS_WALLET_REMOTEBACKEND
+  #RemoteBackend = ""
 
-# Fee configuration
+  # type: bool
+  # env var: LOTUS_WALLET_ENABLELEDGER
+  #EnableLedger = false
+
+  # type: bool
+  # env var: LOTUS_WALLET_DISABLELOCAL
+  #DisableLocal = false
+
+
 [Fees]
-  DefaultMaxFee = 0.007
+  # type: types.FIL
+  # env var: LOTUS_FEES_DEFAULTMAXFEE
+  #DefaultMaxFee = "0.07 FIL"
+
+
+[Chainstore]
+  # type: bool
+  # env var: LOTUS_CHAINSTORE_ENABLESPLITSTORE
+  #EnableSplitstore = false
+
+  [Chainstore.Splitstore]
+    # ColdStoreType specifies the type of the coldstore.
+    # It can be "universal" (default) or "discard" for discarding cold blocks.
+    #
+    # type: string
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
+    #ColdStoreType = "universal"
+
+    # HotStoreType specifies the type of the hotstore.
+    # Only currently supported value is "badger".
+    #
+    # type: string
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTORETYPE
+    #HotStoreType = "badger"
+
+    # MarkSetType specifies the type of the markset.
+    # It can be "map" (default) for in memory marking or "badger" for on-disk marking.
+    #
+    # type: string
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_MARKSETTYPE
+    #MarkSetType = "map"
+
+    # HotStoreMessageRetention specifies the retention policy for messages, in finalities beyond
+    # the compaction boundary; default is 0.
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMESSAGERETENTION
+    #HotStoreMessageRetention = 0
+
+    # HotStoreFullGCFrequency specifies how often to perform a full (moving) GC on the hotstore.
+    # A value of 0 disables, while a value 1 will do full GC in every compaction.
+    # Default is 20 (about once a week).
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
+    #HotStoreFullGCFrequency = 20
 ```
 
 ## Connectivity
