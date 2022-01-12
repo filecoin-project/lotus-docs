@@ -236,8 +236,8 @@ Variables specific to the _Lotus daemon_:
 
 Variables for resource allocation tuning (overrides settings in the resource allocation table).
 
-* 32G environment:
-```
+{{< details "32G environment" >}}
+```plaintext
 AP_32G_BASE_MIN_MEMORY=1073741824
 AP_32G_GPU_UTILIZATION=0
 AP_32G_MAX_MEMORY=4294967296
@@ -281,8 +281,10 @@ UNS_32G_MAX_PARALLELISM=1
 UNS_32G_MAX_PARALLELISM_GPU=0
 UNS_32G_MIN_MEMORY=60129542144
 ```
-* 512MB Environment:
-```
+{{< /details >}}
+
+{{< details "512MB Environment" >}}
+```plaintext
 AP_512M_BASE_MIN_MEMORY=1073741824
 AP_512M_GPU_UTILIZATION=0
 AP_512M_MAX_MEMORY=1073741824
@@ -326,8 +328,10 @@ UNS_512M_MAX_PARALLELISM=1
 UNS_512M_MAX_PARALLELISM_GPU=0
 UNS_512M_MIN_MEMORY=805306368
 ```
-* 64GB Environment:
-```
+{{< /details >}}
+
+{{< details "64GB Environment" >}}
+```plaintext
 AP_64G_BASE_MIN_MEMORY=1073741824
 AP_64G_GPU_UTILIZATION=0
 AP_64G_MAX_MEMORY=8589934592
@@ -371,8 +375,10 @@ UNS_64G_MAX_PARALLELISM=1
 UNS_64G_MAX_PARALLELISM_GPU=0
 UNS_64G_MIN_MEMORY=120259084288
 ```
-* All Environment variables:
-```
+{{< /details >}}
+
+{{< details "All Environment variables" >}}
+```plaintext
 AP_2K_BASE_MIN_MEMORY=2048
 AP_2K_GPU_UTILIZATION=0
 AP_2K_MAX_MEMORY=2048
@@ -584,19 +590,19 @@ UNS_8M_MAX_PARALLELISM=1
 UNS_8M_MAX_PARALLELISM_GPU=0
 UNS_8M_MIN_MEMORY=8388608
 ```
-
+{{< /details >}}
 
 ## Controlling a remote daemon
 
 The `lotus` application, as a client to the lotus daemon, can talk to a Lotus daemon running on any location (not just the local one), by setting the following environment variable:
 
-```sh
+```shell
 FULLNODE_API_INFO="TOKEN:/ip4/<IP>/tcp/<PORT>/http"
 ```
 
 On the _Lotus Node_, the full variable string, including a new token, can be produced with:
 
-```sh
+```shell
 lotus auth api-info --perm admin
 ```
 
@@ -604,7 +610,7 @@ Note that you may need to edit the result to place the right IP for the remote n
 
 ## Log level control
 
-```sh
+```shell
 lotus log set-level <level>
 ```
 
@@ -616,7 +622,7 @@ As an example, to set the `chain` and `blocksync` to log at the `debug` level, r
 
 To see the various logging systems, run:
 
-```sh
+```shell
 lotus log list
 ```
 
