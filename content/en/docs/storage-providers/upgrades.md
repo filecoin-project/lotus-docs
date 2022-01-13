@@ -15,8 +15,9 @@ The are two types of upgrades:
 - The [upgrade in-place](#upgrade-in-place) is the default procedure and just updates the software
 - The [upgrade with reset](#upgrade-with-reset) removes all the data and starts from scratch.
 
-{{< alert icon="warning" >}}
-Both upgrade types require you to doublecheck that your configuration files are up-to-date. You can do this by exporting the default configuration files from Lotus and comparing them to your configuration files.
+## Cross-check your config file
+
+All upgrade types require you to double-check that your configuration files are up-to-date. You can do this by exporting the default configuration files from Lotus and comparing them to your configuration files.
 
 To export the default configuration files from Lotus, run:
 
@@ -43,7 +44,7 @@ If you would prefer to have Lotus export the default configuration to a file, ru
 lotus-miner config default >> ~/default-lotus-miner-configuration.toml
 ```
 
-{{< /alert >}}
+Once you have the default configuration file, compare it with your configuration file and make sure that you're not missing any sections. See the [Lotus release notes](https://github.com/filecoin-project/lotus/releases) for details on what new sections have been added.
 
 ## Upgrade in-place
 
