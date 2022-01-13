@@ -107,7 +107,7 @@ When comparing task priority:
 During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
 {{< /alert >}}
 
-The `lotus-worker` application should have been built and installed along with the others when following the [installation guide]({{< relref "../set-up/install" >}}). For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
+The `lotus-worker` application should have been built and installed along with the others when following the [installation guide]({{< relref "install" >}}). For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
 
 ## Setting up the Lotus Miner
 
@@ -123,7 +123,7 @@ Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network inter
 lotus-miner auth api-info --perm admin
 ```
 
-The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "../apis/json-rpc" >}}). Write down the output so that you can use it in the next step.
+The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "json-rpc" >}}). Write down the output so that you can use it in the next step.
 
 ### Configuring the Lotus Miner sealing capabilities
 
@@ -166,7 +166,7 @@ export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
 
 {{< alert icon="tip" >}}
-When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../set-up/nodes-in-china" >}})
+When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
 {{< /alert >}}
 
 ### Run the worker
@@ -204,7 +204,7 @@ Worker 1, host othercomputer
 
 ### Miner and worker co-location
 
-You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "../config/#storage-section" >}}).
+You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "config#storage-section" >}}).
 
 Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores available and sealing phases to Lotus Miners and Lotus Workers.
 
