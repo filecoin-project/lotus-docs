@@ -14,7 +14,7 @@ While the Lotus Miner runs each of the sealing phases itself by default, you can
 
 ## Resource allocation in Lotus Workers
 
-Each **Lotus Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is ultimately  determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
+Each **Lotus Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
 
 - Number of CPU threads the task will use.
 - Minimum amount of RAM required for good performance.
@@ -204,7 +204,7 @@ Worker 1, host othercomputer
 
 ### Miner and worker co-location
 
-You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. _Lotus Miner_ also performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "../config/#storage-section" >}}).
+You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "../config/#storage-section" >}}).
 
 Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores available and sealing phases to Lotus Miners and Lotus Workers.
 
@@ -212,21 +212,22 @@ Note that if you co-locate miner and worker(s), you do not need to open up the m
 
 ### Lotus Worker co-location
 
-In most cases, only one Lotus Worker per machine should be running since `lotus-worker` will try to use all available resources. Running multiple Lotus Workers in one operating system context will cause issues with resource allocation, which will cause the scheduler to allocate more work than there are available resources. 
+In most cases, only one Lotus Worker per machine should be running since `lotus-worker` will try to use all available resources. Running multiple Lotus Workers in one operating system context will cause issues with resource allocation, which will cause the scheduler to allocate more work than there are available resources.
 
-The only cases where running multiple workers per machine may be a good idea is when there are multiple GPUs, or a single high memory-capacity GPU, available. 
+The only cases where running multiple workers per machine may be a good idea is when there are multiple GPUs, or a single high memory-capacity GPU, available.
 
 Multiple GPU support is currently in an early stage. It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
 
-Advanced GPUs with high (>20GB) memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
+Advanced GPUs with more than 20 GB of memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
 
 ## Running Multiple Lotus Workers
 
-Storage providers intending to scale significantly beyond the 10TB minimum will likely want to run multiple Lotus Workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
+Storage providers intending to scale significantly beyond the 10 TB minimum will likely want to run multiple Lotus Workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
 
 ### Sector Storage Groups
 
-As of Lotus v1.13.2, the `sectorstore.json` file in each storage location contains two additional, optional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers.
+As of Lotus v1.13.2, the `sectorstore.json` file in each storage location contains two additional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers. These fields are optional.
+
 ```
 Groups []string - list of group names the storage path belongs to.
 AllowTo []string - list of group names to which sectors can be fetched to from this storage path.
@@ -239,44 +240,54 @@ AllowTo []string - list of group names to which sectors can be fetched to from t
 
 #### Use case
 
-Consider a setup with three workers: Worker 1 (PC1, PC2); Worker 2 (PC1, PC2); Worker 3 (PC1). Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from any of the three workers. For example, if Worker 1 finished a PC1 job but did not yet have an available PC2 window, the large volume of data generated in PC1 might be needlessly moved to Worker 2 for PC2. This wastes bandwidth and can cause data fetching to block data processing. The following `sectorstore.json` files are configured to avoid such unnecessary file transfers.
+Consider a setup with three workers: 
+
+- Worker 1 (PC1, PC2)
+- Worker 2 (PC1, PC2)
+- Worker 3 (PC1). 
+
+Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from any of the three workers. For example, if Worker 1 finished a PC1 job but did not yet have an available PC2 window, the large volume of data generated in PC1 might be needlessly moved to Worker 2 for PC2. This wastes bandwidth and can cause data fetching to block data processing. The following `sectorstore.json` files are configured to avoid such unnecessary file transfers.
+
 - Worker 1 (PC1, PC2):
-```json
-{
-  "ID": "2546c5be-10f0-aa96-906b-24434a6c94a0",
-  "Weight": 10,
-  "CanSeal": true,
-  "CanStore": false,
-  "MaxStorage": 0,
-  "Groups": ["example-seal-group-1"],
-  "AllowTo": ["example-seal-group-1"]
-}
-```
+    ```json
+    {
+      "ID": "2546c5be-10f0-aa96-906b-24434a6c94a0",
+      "Weight": 10,
+      "CanSeal": true,
+      "CanStore": false,
+      "MaxStorage": 0,
+      "Groups": ["example-seal-group-1"],
+      "AllowTo": ["example-seal-group-1"]
+    }
+    ```
+
 - Worker 2 (PC1, PC2):
-```json
-{        
-  "ID": "b5db38b9-2d2e-06eb-8367-7338e1bcd0f1",
- "Weight": 10,
-  "CanSeal": true,
-  "CanStore": false,
-  "MaxStorage": 0,
-  "Groups": ["example-seal-group-2"],
-  "AllowTo": ["example-seal-group-2"]
-}
-```
+
+    ```json
+    {        
+      "ID": "b5db38b9-2d2e-06eb-8367-7338e1bcd0f1",
+     "Weight": 10,
+      "CanSeal": true,
+      "CanStore": false,
+      "MaxStorage": 0,
+      "Groups": ["example-seal-group-2"],
+      "AllowTo": ["example-seal-group-2"]
+    }
+    ```
 
 - Worker 3 (PC1):
 ```json
-{        
-  "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562", 
-  "Weight": 10,
-  "CanSeal": true,
-  "CanStore": false,
-  "MaxStorage": 0,
-  "Groups": null,
-  "AllowTo": ["example-seal-group-1"]
-}
-```
+    {        
+      "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562", 
+      "Weight": 10,
+      "CanSeal": true,
+      "CanStore": false,
+      "MaxStorage": 0,
+      "Groups": null,
+      "AllowTo": ["example-seal-group-1"]
+    }
+    ```
+
 Worker 1 and Worker 2 are given unique `Groups` values, and each worker's `AllowTo` matches its respective `Groups`. This ensures PC1 and PC2 for any given sector always execute on the same worker. 
 
 Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value means sectors from Worker 3 will only go to Worker 1 for PC2.
@@ -284,12 +295,15 @@ Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value means sectors from Wo
 #### Implementation
 
 To set up storage groups when initializing new storage paths: 
+
 ```shell
 lotus-miner storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
 # or 
 lotus-worker storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
 ```
+
 For existing storage paths, add the lines to `sectorstore.json` in each sealing storage location, then restart `lotus-worker`. (The storage locations used by a worker can be found in `LOTUS_WORKER_PATH/storage.json`.)
+
 ```json
 {
  "ID": "74e1d667-7bc9-49bc-a9a6-0c30afd8684c",
