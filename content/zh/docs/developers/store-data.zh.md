@@ -2,7 +2,7 @@
 title: "存储数据"
 description: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
 lead: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
-draft: false 
+draft: false
 menu:
     docs:
         parent: "developers"
@@ -10,7 +10,7 @@ weight: 355
 toc: true
 ---
 
-提示：提示：本章介绍“线上”数据导入，主要适用于较少的内容。对于“离线”导入和数据传输，请查看very large files 指引，该指引补充了一些更深入的知识
+提示：本章介绍“线上”数据导入，主要适用于较少的内容。对于“离线”导入和数据传输，请查看[大型文件]({{< relref "large-files" >}})指引，该指引补充了一些更深入的知识
 
 ## 概述
 
@@ -41,7 +41,7 @@ lotus client local
 
 如果您需要导入一个完整的文件夹或多个文件，最好先将它们 tar 或 zip 压缩到一个档中。
 
-## #导入定制 DAGs
+### 导入定制 DAGs
 
 高段的IPLD 用户可能希望将客制 DAGs 导入 Lotus（如果不适用, 您可以跳过本节）。
 
@@ -53,7 +53,7 @@ CAR 文件必须包含完整的 DAG, 不支持不完整的 DAG！
 
 如果您构建了自己的 CAR 文件，请确保直接使用 --car 标志将其导入。
 
-### 比扇区大的文件 
+### 比扇区大的文件
 
 如果您的文件大于正在使用的 [Filecoin](https://status.filecoin.io) 网络的扇区（打开视窗），您需要先将文件拆分为多个部分。
 
@@ -86,7 +86,6 @@ lotus client query-ask <miner>
 ### 达成交易
 
 一旦对条款感到满意，您就可以继续使用您在导入过程中获得的数据 CID 向存储供应商提出交易建议。执行：
-
 
 ```shell
 lotus client deal
@@ -124,4 +123,3 @@ lotus client list-deals
 
 - [Filecoin.tools](https://filecoin.tools/) 打开新视窗 还允许您检查交易状态
 - [Starling](https://github.com/filecoin-project/starling) 提供了一组实用程序在运行中的 Lotus Node 上添加和监控 Filecoin 网络的内容。
-

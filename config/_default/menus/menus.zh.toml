@@ -1,44 +1,44 @@
-# [[docs]]
-#   name = "Getting started"
-#   weight = 10
-#   identifier = "getting-started"
-#   url = "getting-started"
-# 
-# [[docs]]
-#   name = "Node Set-up"
-#   weight = 15
-#   identifier = "node-set-up"
-#   url = "node-set-up"
-# 
+ [[docs]]
+   name = "新手入门"
+   weight = 10
+   identifier = "getting-started"
+   url = "getting-started"
+
+ [[docs]]
+   name = "节点配置"
+   weight = 15
+   identifier = "node-set-up"
+   url = "node-set-up"
+
 [[docs]]
-  name = "Developers"
+  name = "开发者"
   weight = 17
   identifier = "developers"
   url = "developers"
 
-# [[docs]]
-#   name = "Storage providers"
-#   weight = 20
-#   identifier = "storage-providers"
-#   url = "/storage-providers"
+ [[docs]]
+   name = "存储供应商"
+   weight = 20
+   identifier = "storage-providers"
+   url = "/storage-providers"
 
-# [[docs]]
-#   name = "Tutorials"
-#   weight = 30
-#   identifier = "tutorials"
-#   url = "/tutorials"
-# 
-# [[docs]]
-#   name = "APIs"
-#   weight = 40
-#   identifier = "apis"
-#   url = "/apis"
-# 
-# [[docs]]
-#   name = "Project"
-#   weight = 50
-#   identifier = "project"
-#   url = "/project"
+ [[docs]]
+   name = "教程"
+   weight = 30
+   identifier = "tutorials"
+   url = "/tutorials"
+
+ [[docs]]
+   name = "APIs"
+   weight = 40
+   identifier = "apis"
+   url = "/apis"
+
+ [[docs]]
+   name = "项目"
+   weight = 50
+   identifier = "project"
+   url = "/project"
 
 [[main]]
   name = "Docs"
