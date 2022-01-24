@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 80
+weight: 280
 toc: true
 ---
 As we mentioned in the [installation guide]({{< relref "install" >}}), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.

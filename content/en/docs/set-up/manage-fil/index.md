@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "node-set-up"
-weight: 50
+weight: 260
 toc: true
 ---
 
@@ -150,7 +150,7 @@ lotus send --params-hex=<encoded output from the previous step>
 
 ### Transaction fees
 
-Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "../storage-providers/message-pool" >}}) and [Gas fees](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#gas-fees) sections.
+Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "message-pool" >}}) and [Gas fees](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#gas-fees) sections.
 
 ## Exporting and importing addresses
 
@@ -191,10 +191,10 @@ To export a wallet when a node is offline, copy these files _from_ `~/.lotus/key
 
 ### Setup your Ledger device
 
-1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-connection-issues).
+1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-USB-connection-issues-with-Ledger-Live?support=true).
 1. Enable **Developer mode** in the Ledger live settings:
 
-   ![ledger-enable-dev-mode](../images/ledger.png)
+   ![ledger-enable-dev-mode](ledger.png)
 
 1. You should now be able to search and install the **Filecoin** app in the **Manager** section of Ledger Live.
 
@@ -215,7 +215,7 @@ You can use a Filecoin Lotus node with Ledger hardware to manage your funds.
 
 Make sure you fully trust the Lotus node you are connecting to.
 
-1. In the [Lotus configuration](configuration-and-advanced-usage.md) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
+1. In the [Lotus configuration]({{ relref configuration-and-advanced-usage }}) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
 
    ```toml
    [Wallet]

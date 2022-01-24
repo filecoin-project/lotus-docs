@@ -11,3 +11,7 @@
   weight = 20
   [zh.params]
     languageISO = "ZH"
+    titleAddition = "莲花文档"
+    description = "Lotus 文档 - Filecoin 网络的参考节点实现。"
+    titleHome= "莲花文档"
+    footer = "由协议实验室构建"

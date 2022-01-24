@@ -6,34 +6,13 @@ draft: false
 menu:
     docs:
         parent: "tutorials"
-weight: 10
+weight: 501
 toc: true
-mermaid: true
 ---
 
 ## Before we start
 
 The process is split into three main parts: the set-up, storing your data and retrieving your data. Each section has several sub-processes that we need to follow.
-
-{{< mermaid >}}
-flowchart TB
-    subgraph set-up [Set up]
-    a1[Get a Lotus full-node]-->a2[Create a Lotus lite-node]
-    a2-->a3[Create a Filecoin address]
-    a3-->a4[Sign up to Filecoin plus]
-    end
-    subgraph Store
-    b1[Package your data]-->b2[Import your data into Lotus]
-    b2-->b3[Find a miner]
-    b3-->b4[Create a storage deal]
-    b4-->b5[Wait for the deal to complete]
-    end
-    subgraph Retrieve
-    c1[Create a retrieval deal]-->c2[Download your data]
-    end
-    set-up --> Store
-    Store --> Retrieve
-{{< /mermaid >}}
 
 | Section | Sub-tasks |
 | --- | --- |
@@ -81,13 +60,6 @@ This tutorial contains some words and phrases that you might not be familiar wit
 
 Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node, creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
 
-{{< mermaid >}}
-graph LR
-    A[Get a Lotus node] -->B[Create a local Lotus lite-node]
-    B --> C[Get a FIL address]
-    C --> D[Sign up to Filecoin Plus]
-{{< /mermaid >}}
-
 {{< alert icon="tip" >}}
 Programs that interact with the Filecoin network are called _implementations_, and Lotus is a command-line interface (CLI) implementation. There are other implementation being created alongside Lotus, however Lotus is the only Filecoin implementation created and maintained by Protocol Labs.
 {{< /alert >}}
@@ -113,14 +85,6 @@ Usually, we'd have to _spin up_ a full-node, but we're going to use a Lotus full
 ### Install a lite-node
 
 A lite-node lets your computer interact with the Filecoin network without having to run a resource-intensive full-node! Lite-nodes can do things like sign messages and talk to storage providers, but any processes that need data from the blockchain must come from a full-node. Luckily, lite-nodes automatically route any blockchain-based requests to a full-node. For this tutorial, you're going to run a Lotus lite-node on your local computer and have it connect to a full-node managed by Protocol Labs.
-
-{{< mermaid >}}
-graph LR
-    A(Get a Lotus node) -- blockchain requests -->B[Full-node]
-    A -- storage/retrieval requests --> C[Filecoin miner]
-    B --> D((The Filecoin Blockchain))
-    C --> D
-{{< /mermaid >}}
 
 To install a Lotus lite-node on your computer, you must have the tools required to _build_ a Lotus binary from the GitHub repository.
 
@@ -326,7 +290,7 @@ We need to tell our Lotus lite-node which file we want to store using Filecoin.
 
     Lotus creates a directed acyclic graph (DAG) based off the payload. This process takes a few minutes. Once it's complete, Lotus will output the payload CID.
 
-    ```text output
+    ```plaintext output
     Import 3, Root bafykb...
     ```
 
@@ -344,7 +308,7 @@ Getting paid from users is straightforward. If Laika wants to store some data, a
 
 Block rewards are randomly given to a storage provider every 30 seconds. The more data that a storage provider is _storing_, the higher their chances of winning the block reward. So if a storage provider accepts a deal from a user to store 5 GB of data, they have 5 chances to win the block reward for each 30 second round.
 
-DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/miners/).
+DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/).
 
 #### Sign up
 
@@ -375,7 +339,7 @@ The Filecoin Plus  Registry is a collection of geographically diverse storage pr
 
 Let's find a couple of storage providers to store our data.
 
-1. Go to [Filecoin Plus  Registry website](https://plus.fil.org/miners/).
+1. Go to [Filecoin Plus Registry website](https://plus.fil.org).
 
 1. Using the table, find a couple of storage providers that suit your needs. Try to find storage providers that are geographically close to you, minimum file size is lower than 5 GiB, and charge 0 FIL for verified deals.
 
@@ -405,13 +369,13 @@ To complete this section, you need the **Data CID** you received after running `
 
 1. Specify the CID of the payload you want to backup on Filecoin. This is the CID that you got from running `lotus client import ~/5gb-filecoin-payload.bin`:
 
-    ```text output
+    ```plaintext output
     Data CID (from lotus client import): bafykbz...
     ```
 
 1. Wait for Lotus to finish calculating the size of your payload. Lotus calculates this size by counting the individual bits in your payload to ensure that the size is accurate.
 
-    ```text output
+    ```plaintext output
     .. calculating data size
     ```
 
@@ -419,25 +383,25 @@ To complete this section, you need the **Data CID** you received after running `
 
 1. Enter the number of days you want to keep this file on Filecoin. The minimum is 180 days:
 
-    ```text output
+    ```plaintext output
     Deal duration (days): 180
     ```
 
 1. Tell Lotus whether or not this is a Filecoin Plus deal. Since you signed up to Filecoin Plus in an earlier step, select `yes` here:
 
-    ```text output
+    ```plaintext output
     Make this a verified deal? (yes/no): yes
     ```
 
 1. Enter the miner IDs from the previous section with an empty space separating the two IDs:
 
-    ```text output
+    ```plaintext output
     Miner Addresses (f0.. f0..), none to find: f01000 f01001
     ```
 
 1. Confirm your transaction by entering `yes`:
 
-    ```text output
+    ```plaintext output
     -----
     Proposing from f136b5uqa73jni2rr745d3nek4uw6qiy6b6zmmvcq
             Balance: 2 FIL
@@ -452,7 +416,7 @@ To complete this section, you need the **Data CID** you received after running `
 
 1. Lotus will returns two **Deal CIDs**:
 
-    ```text output
+    ```plaintext output
     .. executing
     Deal (f01000) CID: bafyreict2zhkbwy2arri3jgthk2jyznck47umvpqis3hc5oclvskwpteau
     Deal (f01001) CID: bafeauyreict2zhkbwy2arri3jgthk2jyznck47umvpqis3hc5oclvskwpt
@@ -480,7 +444,7 @@ Once the data has been sent to the storage clients, the storage deals can take u
 
     This command will output something like:
 
-    ```text output
+    ```plaintext output
     Sending Channels
     ID                   Status   Sending To   Root Cid     Initiated?  Transferred  Voucher
     1620782601911586915  Ongoing  ...KPFTTwY7  ...zyd3kapm  Y           224.1MiB     ...bqhcidjmajbelhlxfqry3d7qlu3tvar45a"}}

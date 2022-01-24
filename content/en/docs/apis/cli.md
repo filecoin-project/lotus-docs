@@ -6,7 +6,7 @@ draft: false
 menu:
     docs:
         parent: "apis"
-weight: 10
+weight: 601
 toc: true
 ---
 
@@ -437,7 +437,10 @@ COMMANDS:
      stat    Print information about a locally stored file (piece size, etc)
    RETRIEVAL:
      find              Find data in the network
+     retrieval-ask     Get a miner's retrieval ask
      retrieve          Retrieve data from network
+     cat               Show data from network
+     ls                List object links
      cancel-retrieval  Cancel a retrieval deal by deal ID; this also cancels the associated transfer
      list-retrievals   List retrieval market deals
    STORAGE:
@@ -545,6 +548,19 @@ OPTIONS:
    
 ```
 
+### lotus client retrieval-ask
+```
+NAME:
+   lotus client retrieval-ask - Get a miner's retrieval ask
+USAGE:
+   lotus client retrieval-ask [command options] [minerAddress] [data CID]
+CATEGORY:
+   RETRIEVAL
+OPTIONS:
+   --size value  data size in bytes (default: 0)
+   --help, -h    show help (default: false)
+```
+
 ### lotus client retrieve
 ```
 NAME:
@@ -565,6 +581,45 @@ OPTIONS:
    --allow-local     (default: false)
    --help, -h        show help (default: false)
    
+```
+
+### lotus client cat
+```
+NAME:
+   lotus client cat - Show data from network
+USAGE:
+   lotus client cat [command options] [dataCid]
+CATEGORY:
+   RETRIEVAL
+OPTIONS:
+   --ipld                           list IPLD datamodel links (default: false)
+   --data-selector value            IPLD datamodel text-path selector, or IPLD json selector
+   --from value                     address to send transactions from
+   --provider value, --miner value  provider to use for retrieval, if not present it'll use local discovery
+   --maxPrice value                 maximum price the client is willing to consider (default: 0 FIL)
+   --pieceCid value                 require data to be retrieved from a specific Piece CID
+   --allow-local                    (default: false)
+   --help, -h                       show help (default: false)
+```
+
+### lotus client ls
+```
+NAME:
+   lotus client ls - List object links
+USAGE:
+   lotus client ls [command options] [dataCid]
+CATEGORY:
+   RETRIEVAL
+OPTIONS:
+   --ipld                           list IPLD datamodel links (default: false)
+   --depth value                    list links recursively up to the specified depth (default: 1)
+   --data-selector value            IPLD datamodel text-path selector, or IPLD json selector
+   --from value                     address to send transactions from
+   --provider value, --miner value  provider to use for retrieval, if not present it'll use local discovery
+   --maxPrice value                 maximum price the client is willing to consider (default: 0 FIL)
+   --pieceCid value                 require data to be retrieved from a specific Piece CID
+   --allow-local                    (default: false)
+   --help, -h                       show help (default: false)
 ```
 
 ### lotus client cancel-retrieval
