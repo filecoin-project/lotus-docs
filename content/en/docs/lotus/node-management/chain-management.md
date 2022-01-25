@@ -5,7 +5,7 @@ lead: "The Lotus chain carries the information necessary to compute the current 
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: ""
 weight: 290
 toc: true
 ---

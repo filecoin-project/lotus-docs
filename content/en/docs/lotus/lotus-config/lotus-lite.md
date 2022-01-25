@@ -5,7 +5,7 @@ lead: "A Lotus lite-node is a stripped down version of a Lotus full-node capable
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: "lotus-config"
 weight: 230
 toc: true
 ---

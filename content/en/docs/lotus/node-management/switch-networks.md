@@ -5,7 +5,7 @@ lead: "This guide will show you how to switch between various Filecoin networks 
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: "node-management"
 weight: 280
 toc: true
 ---

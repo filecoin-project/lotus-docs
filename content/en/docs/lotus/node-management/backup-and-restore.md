@@ -5,7 +5,7 @@ lead: "You can backup your Lotus node. You can then restore this backup if somet
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: "node-management"
 weight: 292
 toc: true
 ---

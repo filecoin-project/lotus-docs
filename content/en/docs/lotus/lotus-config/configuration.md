@@ -6,7 +6,7 @@ lead: "This guide documents environment variables, configuration and other advan
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: "lotus-config"
 weight: 240
 toc: true
 ---

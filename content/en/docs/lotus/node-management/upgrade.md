@@ -5,7 +5,7 @@ lead: "This guide will show you how to safely upgrade a Lotus node to a newer ve
 draft: false
 menu:
     docs:
-        parent: "node-set-up"
+        parent: "node-management"
 weight: 250
 toc: true
 ---
