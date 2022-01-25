@@ -5,7 +5,7 @@ lead: "Reference documentation for the Lotus command-line interface. This docume
 draft: false
 menu:
     docs:
-        parent: "apis"
+        parent: "cli"
 weight: 601
 toc: true
 ---

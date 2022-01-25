@@ -5,7 +5,7 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     docs:
-        parent: "tutorials"
+        parent: "lotus-tutorials"
 weight: 501
 toc: true
 ---
