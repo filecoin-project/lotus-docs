@@ -27,7 +27,7 @@ lotus-miner info
 # WARN  main  lotus-storage-miner/main.go:73  failed to get api endpoint: (/Users/user/.lotusminer) %!w(*errors.errorString=&{API not running (no endpoint)}):
 ```
 
-If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Node needs to [finish syncing]({{< relref "../set-up/chain-management#checking-sync-status" >}}).
+If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Node needs to [finish syncing]({{< relref "../lotus/node-management/chain-management#checking-sync-status" >}}).
 
 ## Error: Your computer may not be fast enough
 

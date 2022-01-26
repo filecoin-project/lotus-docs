@@ -17,9 +17,9 @@ Mining will only work if you fully cover the [minimal hardware requirements]({{<
 Before attempting to follow this guide:
 
 - Make sure you meet the [minimal hardware requirements]({{< relref "hardware-requirements" >}}).
-- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../set-up/install" >}}) and make sure you have built Lotus with ["Native Filecoin FFI"]({{< relref "../set-up/install#native-filecoin-ffi" >}}). Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
+- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../lotus/installation" >}}) and make sure you have built Lotus with "Native Filecoin FFI". Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
 - Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
-- If you are in China, read the [tips for running in China]({{< relref "../set-up/nodes-in-china" >}}) page first.
+- If you are in China, read the [tips for running in China]({{< relref "../lotus/installation#node-in-china" >}}) page first.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
@@ -110,13 +110,13 @@ f3...
 ```
 
 {{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "../set-up/manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
+Next make sure to [send some funds]({{< relref "../lotus/manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
 {{< /alert >}}
 
 For additional information about the different wallets that a miner can use and how to configure them, read the [miner addresses guide]({{< relref "addresses" >}}).
 
 {{< alert icon="tip" >}}
-Safely [backup your wallets]({{< relref "../set-up/manage-fil#exporting-and-importing-addresses" >}})!
+Safely [backup your wallets]({{< relref "../lotus/manage-fil#exporting-and-importing-addresses" >}})!
 {{< /alert >}}
 
 ### Downloading parameters

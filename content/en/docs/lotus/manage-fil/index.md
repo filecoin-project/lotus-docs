@@ -10,7 +10,7 @@ weight: 260
 toc: true
 ---
 
-To receive and send FIL with Lotus, you will need to have a [Lotus node installed and running]({{< relref "install" >}}).
+To receive and send FIL with Lotus, you will need to have a Lotus node installed and running.
 
 ## About Wallet Addresses
 

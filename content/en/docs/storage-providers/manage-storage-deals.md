@@ -142,7 +142,7 @@ The delay can be set using the `WaitDealsDelay` option in the `[Sealing]` sectio
 
 ## Offline storage deals
 
-When the amount of data to be transmitted is [very large]({{< relref "../developers/large-files#deals-with-offline-data-transfer" >}}), it may be more effective to ship some hard drives directly to the miner and complete the deal in an **offline** fashion.
+When the amount of data to be transmitted is [very large]({{< relref "../tutorials/lotus-tutorials/large-files#deals-with-offline-data-transfer" >}}), it may be more effective to ship some hard drives directly to the miner and complete the deal in an **offline** fashion.
 
 In this case, the miner will have to import the storage deal data manually with the following command:
 

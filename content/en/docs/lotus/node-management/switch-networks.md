@@ -9,7 +9,7 @@ menu:
 weight: 280
 toc: true
 ---
-As we mentioned in the [installation guide]({{< relref "install" >}}), Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
+As we mentioned in the installation guide, Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
 + Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
 + Testnets

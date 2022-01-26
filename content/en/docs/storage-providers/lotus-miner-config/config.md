@@ -21,7 +21,7 @@ For any configuration changes to take effect, the miner must be [restarted]({{< 
 
 ## API section
 
-The API section controls the settings of the [miner API]({{< relref "../apis/json-rpc" >}}):
+The API section controls the settings of the [miner API]({{< relref "../../apis/json-rpc" >}}):
 
 ```toml
 [API]

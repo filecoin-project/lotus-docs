@@ -19,7 +19,7 @@ git pull
 git checkout <branch or tag>
 ```
 
-Once the new version is checked-out, rebuild and re-install as explained in the [installation guide]({{< relref "install" >}}).
+Once the new version is checked-out, rebuild and re-install as explained in the installation guide.
 
 You can verify your current version with:
 

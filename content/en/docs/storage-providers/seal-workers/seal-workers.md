@@ -115,7 +115,7 @@ Countrol groups (cgroups) is a Linux Kernel feature that limits, accounts for, a
 During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
 {{< /alert >}}
 
-The `lotus-worker` application should have been built and installed along with the others when following the [installation guide]({{< relref "install" >}}). For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
+The `lotus-worker` application should have been built and installed along with the others when following the installation guide. For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
 
 ## Setting up the Lotus Miner
 

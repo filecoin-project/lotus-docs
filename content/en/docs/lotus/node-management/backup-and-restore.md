@@ -10,7 +10,7 @@ weight: 292
 toc: true
 ---
 
-This backup process is different to that of the [`lotus-miner` backup]({{< relref "../storage-providers/backup-and-restore" >}}). This backup process does not retain any mining information.
+This backup process is different to that of the [`lotus-miner` backup]({{< relref "../../storage-providers/backup-and-restore" >}}). This backup process does not retain any mining information.
 
 ## Backup
 

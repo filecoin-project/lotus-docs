@@ -2,7 +2,7 @@
 title: "About Lotus"
 description: "Lotus is a Filecoin implementation written by Protocol Labs, the creators of IPFS, libp2p, and Filecoin."
 lead: "Lotus is a Filecoin implementation written by Protocol Labs, the creators of IPFS, libp2p, and Filecoin."
-draft: false
+draft: true
 menu:
     docs:
         parent: "node-set-up"

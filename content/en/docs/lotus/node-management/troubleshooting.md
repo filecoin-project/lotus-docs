@@ -25,7 +25,7 @@ git reset origin/<desired_branch> --hard
 make clean
 ```
 
-(or directly delete and clone the repository again as shown in the [installation instructions]({{< relref "install" >}}).
+(or directly delete and clone the repository again as shown in the installation instructions.
 
 ## Slow builds/start from China
 
@@ -81,7 +81,7 @@ If you get a `signal killed` error, it could indcate that there was an error dur
 make: *** [Makefile:68: lotus] Error 1
 ```
 
-Double check that your computer meets the [minimum hardware requirements]({{< relref "install#minimal-requirements" >}}) for Lotus.
+Double check that your computer meets the [minimum hardware requirements]({{< relref "../installation#minimal-requirements" >}}) for Lotus.
 
 ## Go command not found
 
