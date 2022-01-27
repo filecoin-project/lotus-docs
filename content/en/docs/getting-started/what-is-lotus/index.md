@@ -68,7 +68,7 @@ In the case of Lotus, a _Lotus node_ is a computer on a network that is running 
 
 ### Reference
 
-Other computers will refer to this node for how to talk to other computers.
+Other computers refer to this node for how to talk to other computers.
 
 So let's review. A _node implementation_ is:
 
