@@ -43,7 +43,7 @@ So let's review. _The Filecoin network_ is:
 - that are all following the same set of rules
 - to allow users to store pretty much anything on the computers
 
-## A node implementation
+## A reference node implementation
 
 Again, let's start at the end. 
 
@@ -65,6 +65,10 @@ A **node** is a computer that can talk to other computers on a network. In your 
 Each node on your home network has programs that tell it how to talk to the other nodes on the network. Without these programs, the nodes wouldn't be able to understand each other, and would be pretty useless.
 
 In the case of Lotus, a _Lotus node_ is a computer on a network that is running the Lotus application.
+
+### Reference
+
+Other computers will refer to this node for how to talk to other computers.
 
 So let's review. A _node implementation_ is:
 
