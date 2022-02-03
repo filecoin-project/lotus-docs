@@ -15,13 +15,14 @@ Developers can interact directly with load-balanced, synced mainnet nodes using 
 
 Unlike bare Lotus, the endpoint above is hardened and limited:
 
-- Only read calls and `MPoolPush()` are supported.
+- Only read calls and `MPoolPush()` are supported, please use the link [api.node.glif.io](https://api.node.glif.io) to check the full list.
 - Only POST requests are supported.
 - The Filecoin signing tools can be used to sign messages before submission when needed.
-
+- Public endpoint guarantees only 2000 of the latest blocks due to the limitation of the [lightweight-snapshots](https://lotus.filecoin.io/docs/set-up/chain-management/#lightweight-snapshot)
+- Filecoin.StateMarketDeals operation data is available as direct link to AWS S3 bucket. StateMarketDeals Data is refreshing every 10 minutes: [link to StateMarketDeals.json](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json)
 ## Testnet endpoint
 
-For synced testnet node endpoints using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}), `https://calibration.node.glif.io` is available.
+For synced testnet node endpoints using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}), `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0` is available.
 
 ### Custom endpoints
 
