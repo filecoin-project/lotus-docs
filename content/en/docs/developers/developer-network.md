@@ -15,7 +15,7 @@ This process requires you to use multiple terminal windows, so you might find a 
 
 ## Prerequisites
 
-Since spinning up a dev-net requires the `lotus` daemon, the prerequisites are the same as running a Lotus full-node. If you have already installed a Lotus node on this computer, you likely already have these dependencies ready, and can move onto the [next section ↓](#)
+Since spinning up a dev-net requires the `lotus` daemon, the prerequisites are the same as running a Lotus full-node. If you have already installed a Lotus node on this computer, you likely already have these dependencies ready and can move onto the [next section ↓](#environment-setup)
 
 1. Install Lotus dependencies:
 
@@ -35,9 +35,9 @@ Since spinning up a dev-net requires the `lotus` daemon, the prerequisites are t
     wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
     ```
 
-## Environment set up
+## Environment setup
 
-Dev-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to set up the Lotus environment and build those binaries. 
+Dev-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries. 
 
 1. Create the following environment variable in your terminal:
 
@@ -145,7 +145,7 @@ Dev-nets use slightly different binaries to those used in the Filecoin mainnet. 
 
 ## Start the nodes
 
-Now that you've got everything set up, you can start the `lotus` and `lotus-miner` nodes.
+Now that you've got everything setup, you can start the `lotus` and `lotus-miner` nodes.
 
 1. Start the first node:
 
@@ -195,7 +195,7 @@ Now that you've got everything set up, you can start the `lotus` and `lotus-mine
 
 ## Next steps
 
-You now have a fully functioning Filecoin developer network! You can start testing your set up and playing with the Filecoin network in a safe and fast environment.
+You now have a fully functioning Filecoin developer network! You can start testing your setup and playing with the Filecoin network in a safe and fast environment.
 
 <!-- =============================
 
@@ -259,7 +259,7 @@ I'm not sure if these steps are necessary...
 
     Leave this terminal window running.
 
-1. In a new terminal window, initialize a devnet with wallets, presealed sectors and miner:
+1. In a new terminal window, initialize a devnet with wallets, pre-sealed sectors, and miner:
 
     ```shell
     ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key 
@@ -273,4 +273,5 @@ I'm not sure if these steps are necessary...
     ```
 
 ============================= -->
+
 
