@@ -9,11 +9,35 @@ weight: 310
 toc: true
 ---
 
-## Manual set up
-
 You can spin up a developer network (dev-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a dev-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
 
 This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.
+
+## Prerequisites
+
+Since spinning up a dev-net requires the `lotus` daemon, the prerequisites are the same as running a Lotus full-node. If you have already installed a Lotus node on this computer, you likely already have these dependencies ready, and can move onto the [next section ↓](#)
+
+1. Install Lotus dependencies:
+
+    ```shell
+    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+    ```
+    
+1. Install Rust 
+
+    ```shell
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+
+1. Install Go:
+
+    ```shell
+    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
+    ```
+
+## Environment set up
+
+Dev-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to set up the Lotus environment and build those binaries. 
 
 1. Create the following environment variable in your terminal:
 
@@ -23,19 +47,6 @@ This process requires you to use multiple terminal windows, so you might find a 
     export LOTUS_SKIP_GENESIS_CHECK=_yes_
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
-    ```
-
-1. Install Lotus dependencies:
-
-    ```shell
-    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
-    ```
-    
-    Install Rust and Go if you haven't already:
-
-    ```shell
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
     ```
 
 1. Clone Lotus repo:
@@ -81,12 +92,6 @@ This process requires you to use multiple terminal windows, so you might find a 
     Submodule 'extern/filecoin-ffi' (https://github.com/filecoin-project/filecoin-ffi.git) registered for path 'extern/filecoin-ffi'
     ...
     go build  -ldflags="-X=github.com/filecoin-project/lotus/build.CurrentCommit=+git.8d5be1c01" -tags=2k -o lotus-gateway ./cmd/lotus-gateway
-    ```
-
-1. Open `build/params_2k.go` and change `const GenesisNetworkVersion` to `network.Version15`:
-
-    ```go
-    const GenesisNetworkVersion = network.Version15
     ```
 
 1. Grab the 2048 byte parameters:
@@ -138,6 +143,10 @@ This process requires you to use multiple terminal windows, so you might find a 
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance
     ```
 
+## Start the nodes
+
+Now that you've got everything set up, you can start the `lotus` and `lotus-miner` nodes.
+
 1. Start the first node:
 
     ```shell
@@ -184,7 +193,9 @@ This process requires you to use multiple terminal windows, so you might find a 
 
     This command will output a lot of information and continue to run. You should now have two programs running at once - the `lotus` node and this `lotus-miner`. All further steps should be completed in a new terminal window.
 
-You now have a fully functioning Filecoin developer network!
+## Next steps
+
+You now have a fully functioning Filecoin developer network! You can start testing your set up and playing with the Filecoin network in a safe and fast environment.
 
 <!-- =============================
 
@@ -262,3 +273,4 @@ I'm not sure if these steps are necessary...
     ```
 
 ============================= -->
+
