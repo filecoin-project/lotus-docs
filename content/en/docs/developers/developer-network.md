@@ -11,164 +11,254 @@ toc: true
 
 ## Manual set up
 
-You can spin up a dev-net using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a dev-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
+You can spin up a developer network (dev-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a dev-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
 
-This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful.
+This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.
 
-1. Some older Intel and AMD processors without support for the [ADX instruction set](https://en.wikipedia.org/wiki/Intel_ADX) may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
+1. Create the following environment variable in your terminal:
 
-   ```shell
-   export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-   export CGO_CFLAGS="-D__BLST_PORTABLE__"
-   ```
+    ```shell
+    export LOTUS_PATH=~/.lotus-dev-net
+    export LOTUS_MINER_PATH=~/.lotus-miner-dev-net
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    ```
 
-1. Replace `LOTUS_PATH` and `LOTUS_MINER_PATH` with temporary values:
+1. Install Lotus dependencies:
 
-   ```shell
-   export LOTUS_PATH=~/.lotusDevnet
-   export LOTUS_MINER_PATH=~/.lotusminerDevnet
-   ```
+    ```shell
+    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+    ```
+    
+    Install Rust and Go if you haven't already:
 
-   If you add these values to a configuration file like `~/.bashrc` you will have to remove them if you want to run a node on the Filecoin mainnet.
+    ```shell
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
+    ```
 
-1. Clone the Lotus repository:
+1. Clone Lotus repo:
 
-   ```shell
-   git clone https://github.com/filecoin-project/lotus.git
-   cd lotus
-   ```
+    ```shell
+    git clone https://github.com/filecoin-project/lotus lotus-dev-net
+    cd lotus-dev-net
+    ```
 
-1. Make the Lotus binaries in debug mode using 2048 byte sectors:
+    The `filecoin-project/lotus` repository is the same one that you would use to join the Filecoin mainnet. The `git clone` command puts the Lotus repository into the `lotus-dev-net` folder to keep this guide organized.
 
-   ```shell with-output
-   make 2k
-   ```
+1. Checkout to the Snap-deals branch:
 
-   This will output something like:
+    ```shell
+    git checkout release/v1.14.0
+    ```
 
-   ```
-   git submodule update --init --recursive
-   Submodule 'extern/filecoin-ffi' (https://github.com/filecoin-project/filecoin-ffi.git) registered for path 'extern/filecoin-ffi'
-   ...
-   ```
+    This will output something like:
 
-1. Lotus will automatically look for the genesis of the Filecoin mainnet. Skip this step using the `LOTUS_SKIP_GENESIS_CHECK` environment variable:
+    ```plaintext
+    > Branch 'release/v1.14.0' set up to track remote branch 'release/v1.14.0' from 'origin'.
+    > Switched to a new branch 'release/v1.14.0'
+    ```
 
-   ```shell
-   export LOTUS_SKIP_GENESIS_CHECK=_yes_
-   ```
+1. Remove any existing repositories.
+
+    <!-- TODO: test if this section is necessary. -->
+
+    ```shell
+    rm -rf ~/.genesis-sectors
+    ```
+
+1. Build the `2k` binary for Lotus:
+
+    ```shell
+    make 2k
+    ```
+
+    This will output something like:
+
+    ```plaintext
+    git submodule update --init --recursive
+    Submodule 'extern/filecoin-ffi' (https://github.com/filecoin-project/filecoin-ffi.git) registered for path 'extern/filecoin-ffi'
+    ...
+    go build  -ldflags="-X=github.com/filecoin-project/lotus/build.CurrentCommit=+git.8d5be1c01" -tags=2k -o lotus-gateway ./cmd/lotus-gateway
+    ```
+
+1. Open `build/params_2k.go` and change `const GenesisNetworkVersion` to `network.Version15`:
+
+    ```go
+    const GenesisNetworkVersion = network.Version15
+    ```
 
 1. Grab the 2048 byte parameters:
 
-   ```shell with-output
-   ./lotus fetch-params 2048
-   ```
+    ```shell
+    ./lotus fetch-params 2048
+    ```
 
-   This will output something like:
+    This will output something like:
 
-   ```
-   2021-02-23T10:58:01.469-0500    INFO    build   go-paramfetch@v0.0.2-0.20200701152213-3e0f0afdc261/paramfetch.go:138  Parameter file /var/tmp/filecoin-proof-parameters/v28-proof-of-spacetime-fallback-merkletree-poseidon_hasher-8-0-0-0cfb4f178bbb71cf2ecfcd42accce558b27199ab4fb59cb78f2483fe21ef36d9.vk is ok
-   ...
-   c261/paramfetch.go:162  parameter and key-fetching complete
-   ```
+    ```plaintext
+    2021-02-23T10:58:01.469-0500    INFO    build   go-paramfetch@v0.0.2-0.20200701152213-3e0f0afdc261/paramfetch.go:138  Parameter file /var/tmp/filecoin-proof-parameters/v28-proof-of-spacetime-fallback-merkletree-poseidon_hasher-8-0-0-0cfb4f178bbb71cf2ecfcd42accce558b27199ab4fb59cb78f2483fe21ef36d9.vk is ok
+    ...
+    c261/paramfetch.go:162  parameter and key-fetching complete
+    ```
 
 1. Pre-seal some sectors for the genesis block:
 
-   ```shell with-output
-   ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
-   ```
+    ```shell
+    ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
+    ```
 
-   This will output something like:
+    This will output something like:
 
-   ```
-   sector-id: {{1000 0} 0}, piece info: {2048 baga6ea4seaqoej3hzxzqr5y25ibovtjrhed7yba5vm6gwartr5hsgcbao7aluki}
-   ...
-   2021-02-23T10:59:36.937-0500    INFO    preseal seed/seed.go:232        Writing preseal manifest to /home/user/.genesis-sectors/pre-seal-t01000.json
-   ```
+    ```plaintext
+    sector-id: {{1000 0} 0}, piece info: {2048 baga6ea4seaqoej3hzxzqr5y25ibovtjrhed7yba5vm6gwartr5hsgcbao7aluki}
+    ...
+    2021-02-23T10:59:36.937-0500    INFO    preseal seed/seed.go:232        Writing preseal manifest to /home/user/.genesis-sectors/pre-seal-t01000.json
+    ```
 
 1. Create the genesis block:
 
-   ```shell
-   ./lotus-seed genesis new localnet.json
-   ```
+    ```shell
+    ./lotus-seed genesis new localnet.json
+    ```
 
-1. Fund the default account with some FIL:
+    This command does not output anything on success.
 
-   ```shell with-output
-   ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
-   ```
+1. Create a default address and give it some funds:
 
-   This will output something like:
+    ```shell
+    ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
+    ```
 
-   ```
-   t3wknmlrksha5itapqstc46zdals676h67vjl7lg2lvmrxozzuth6hovuuamgfbk6cqgha3m3qfo4fxmuhubha some initial balance
-   ```
+    This will output something like:
+
+    ```plaintext
+    2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:129       Adding miner t01000 to genesis template
+    2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance
+    ```
 
 1. Start the first node:
 
-   ```shell
-   ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
-   ```
+    ```shell
+    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
+    ```
 
-1. Create a new terminal window or tab and re-export the `LOTUS_PATH` and `LOTUS_MINER_PATH` variables:
+    This command will output a lot of information and continue to run. All further steps should be completed in a new terminal window.
 
-   ```shell
-   export LOTUS_PATH=~/.lotusDevnet
-   export LOTUS_MINER_PATH=~/.lotusminerDevnet
-   ```
+1. Create a new terminal window or tab and re-export the LOTUS_PATH and LOTUS_MINER_PATH variables:
 
-   If you added the above variables to a configuration file like `~/.bashrc` then you can just source that file:
-
-   ```shell
-   source ~/.bashrc
-   ```
+    ```shell
+    export LOTUS_PATH=~/.lotus-dev-net
+    export LOTUS_MINER_PATH=~/.lotus-miner-dev-net
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    ```
 
 1. Import the genesis miner key:
 
-   ```shell with-output
-   ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
-   ```
+    ```shell
+    ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
+    ```
 
-   This will output something like:
+    This will output something like:
 
-   ```
-   imported key t3sxyian3zr52a32r7gpyx55rhf4wmbsm7e6ir3ygcaytrl44txwxwyron7uo4pbbqvmsaek36gqbjmmpwkwga successfully!
-   ```
+    ```plaintext
+    imported key t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq successfully!
+    ```
 
 1. Set up the genesis miner. This process can take a few minutes:
 
-   ```shell with-output
-   ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
-   ```
+    ```shell
+    ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
+    ```
 
-   This will output something like:
-
-   ```
-   2021-02-23T11:05:17.941-0500    INFO    main    lotus-storage-miner/init.go:124 Initializing lotus miner
-   ...
-   2021-02-23T16:55:57.257Z        INFO    main    lotus-storage-miner/init.go:494 Importing pre-sealed sector metadata for t01000
-   2021-02-23T16:55:57.266Z        INFO    main    lotus-storage-miner/init.go:266 Miner successfully created, you can now start it with 'lotus-miner run'
-   ```
+    This process may take a few minutes. It will display `Miner successfully created, you can now start it with 'lotus-miner run'` when complete.
 
 1. Start the miner:
 
-   ```shell with-output
-   ./lotus-miner run --nosync
-   ```
+    ```shell
+    ./lotus-miner run --nosync
+    ```
 
-   This will output something like:
+    This command will output a lot of information and continue to run. You should now have two programs running at once - the `lotus` node and this `lotus-miner`. All further steps should be completed in a new terminal window.
 
-   ```
-   2021-02-23T16:58:13.493Z        INFO    main    lotus-storage-miner/run.go:95   Checking full node sync status
-   2021-02-23T16:58:13.501Z        INFO    modules modules/core.go:64      memory limits initialized       {"max_mem_heap": 0, "total_system_mem": 2101817344, "effective_mem_limit": 2101817344}
-   ...
-   ```
+You now have a fully functioning Filecoin developer network!
 
-You now have a Lotus node and a miner running! You can interact with it
+<!-- =============================
 
-## Textile cointainer
+I'm not sure if these steps are necessary... 
 
-The developers at Textile have created a quick way to run a Lotus dev-net for testing purposes. Apart from being easy to set up, an advantage of this dev-net is using a mocked `sector builder, which makes expensive operations like sealing much easier.
+1. Build the dev-net:
 
-Head to the [textileio/lotus-devnet GitHub repository](https://github.com/textileio/lotus-devnet) to learn how to set up a node on the Textile dev-net.
+    ```shell
+    make debug
+    sudo make install
+    ```
 
+    You may get the following errors, but you can safely ignore them:
+
+    ```shell
+    > bash: go: command not found
+    > expr: syntax error: unexpected argument ‘1016000’
+    ```
+
+1. Create `~/.lotusminer/config.toml` and paste in this code:
+
+    ```toml
+    [API]
+    [Backup]
+    [Libp2p]
+    [Pubsub]
+    [Subsystems]
+    [Dealmaking]
+      ExpectedSealDuration = "0m0s"
+      PublishMsgPeriod = "0h0m0s"
+      MaxDealsPerPublishMsg = 1
+      StartEpochSealingBuffer = 0
+      [Dealmaking.RetrievalPricing]
+        [Dealmaking.RetrievalPricing.Default]
+        [Dealmaking.RetrievalPricing.External]
+    [Sealing]
+      MaxWaitDealsSectors = 2
+      MaxSealingSectorsForDeals = 2
+      BatchPreCommits = false
+      AggregateCommits = false
+    [Storage]
+    [Fees]
+      [Fees.MaxPreCommitBatchGasFee]
+      [Fees.MaxCommitBatchGasFee]
+    [Addresses]
+    [DAGStore]
+    ```
+
+1. Set up the _genesis_ block of your local dev-net:
+
+    ```shell
+    ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2 
+    ./lotus-seed genesis new localnet.json ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json 
+    ```
+
+1. Start the Lotus daemon:
+
+    ```shell
+    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
+    ```
+
+    Leave this terminal window running.
+
+1. In a new terminal window, initialize a devnet with wallets, presealed sectors and miner:
+
+    ```shell
+    ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key 
+    ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
+    ```
+
+1. Start the miner:
+
+    ```shell
+    ./lotus-miner run --nosync
+    ```
+
+============================= -->
