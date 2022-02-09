@@ -1,54 +1,99 @@
-[[docs]]
+[[lotus]]
   name = "Getting started"
   weight = 10
-  identifier = "getting-started"
-  url = "getting-started"
+  identifier = "lotus-getting-started"
+  url = "/lotus/getting-started/"
 
-[[docs]]
-  name = "Node Set-up"
-  weight = 15
-  identifier = "node-set-up"
-  url = "node-set-up"
-
-[[docs]]
-  name = "Developers"
-  weight = 17
-  identifier = "developers"
-  url = "developers"
-
-[[docs]]
-  name = "Storage providers"
+[[lotus]]
+  name = "Installation"
   weight = 20
-  identifier = "storage-providers"
-  url = "/storage-providers"
+  identifier = "lotus-installation"
+  url = "/lotus/installation/"
 
-[[docs]]
-  name = "Tutorials"
+[[lotus]]
+  name = "Lotus Configuration"
   weight = 30
-  identifier = "tutorials"
-  url = "/tutorials"
+  identifier = "lotus-config"
+  url = "/lotus/lotus-config/"
 
-[[docs]]
-  name = "APIs"
+[[lotus]]
+  name = "Lotus Node Management"
   weight = 40
-  identifier = "apis"
-  url = "/apis"
+  identifier = "lotus-node-management"
+  url = "/lotus/node-management/"
 
-[[docs]]
+[[lotus]]
   name = "Project"
   weight = 50
   identifier = "project"
-  url = "/project"
+  url = "/lotus/project/"
+
+[[storage-providers]]
+  name = "Getting Started"
+  weight = 10
+  identifier = "lotus-miner-getting-started"
+  url = "/storage-providers/getting-started/"
+
+[[storage-providers]]
+  name = "Lotus Miner Configuration"
+  weight = 20
+  identifier = "lotus-miner-config"
+  url = "/storage-providers/lotus-miner-config/"
+
+[[storage-providers]]
+  name = "Lotus Miner Operation"
+  weight = 30
+  identifier = "lotus-miner-operation"
+  url = "/storage-providers/lotus-miner-operation/"
+
+[[storage-providers]]
+  name = "Lotus Miner Seal Workers"
+  weight = 40
+  identifier = "seal-workers"
+  url = "/storage-providers/seal-workers/"
+
+[[developers]]
+  name = "Developers"
+  weight = 10
+  identifier = "developers"
+  url = "/developers/"
+
+[[tutorials]]
+  name = "Lotus Tutorials"
+  weight = 10
+  identifier = "lotus-tutorials"
+  url = "/tutorials/lotus-tutorials/store-and-retrieve"
+
+[[tutorials]]
+  name = "Lotus Miner Tutorials"
+  weight = 20
+  identifier = "lotus-miner-tutorials"
+  url = "/tutorials/lotus-miner-tutorials"
 
 [[main]]
-  name = "Docs"
-  url = "/docs/set-up/install/"
+  name = "Lotus"
+  url = "/lotus/getting-started/what-is-lotus"
   weight = 10
 
-#[[main]]
-#  name = "Blog"
-#  url = "/blog/"
-#  weight = 20
+[[main]]
+  name = "Developers"
+  url = "/developers/api-access"
+  weight = 20
+
+[[main]]
+  name = "Storage Providers"
+  url = "/storage-providers/getting-started"
+  weight = 30
+
+[[main]]
+  name = "Tutorials"
+  url = "/tutorials"
+  weight = 40
+
+[[main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 50
 
 [[social]]
   name = "GitHub"
