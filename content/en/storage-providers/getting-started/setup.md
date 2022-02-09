@@ -5,7 +5,7 @@ lead: "This guide describes the necessary steps to configure a Lotus miner for p
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-getting-started"
+        parent: "miner-init"
 weight: 140
 toc: true
 ---
@@ -17,9 +17,9 @@ Mining will only work if you fully cover the [minimal hardware requirements]({{<
 Before attempting to follow this guide:
 
 - Make sure you meet the [minimal hardware requirements]({{< relref "hardware-requirements" >}}).
-- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/installation" >}}) and make sure you have built Lotus with "Native Filecoin FFI". Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
+- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/installation/install" >}}) and make sure you have built Lotus with "Native Filecoin FFI". Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
 - Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
-- If you are in China, read the [tips for running in China]({{< relref "../../lotus/installation#node-in-china" >}}) page first.
+- If you are in China, read the [tips for running in China]({{< relref "../../lotus/installation/install#node-in-china" >}}) page first.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.

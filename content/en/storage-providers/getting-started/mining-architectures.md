@@ -5,7 +5,7 @@ breadcrumb: 'Mining architectures'
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-getting-starteds"
+        parent: "miner-init"
 weight: 130
 toc: true
 ---

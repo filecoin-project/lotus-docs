@@ -51,7 +51,7 @@ Once you have the default configuration file, compare it with your configuration
 1. Safely shutdown your Lotus Miner as explained [here]({{< relref "lifecycle" >}}).
 1. Shutdown any seal workers
 1. Shutdown your Lotus Node (`lotus daemon stop` or `systemctl stop lotus-daemon`)
-1. Pull the new version and rebuild. For more information read the [Lotus installation guide]({{< relref "../../lotus/installation" >}}) again:
+1. Pull the new version and rebuild. For more information read the [Lotus installation guide]({{< relref "../../lotus/installation/install" >}}) again:
 
 ```shell
 export RUSTFLAGS="-C target-cpu=native -g"
@@ -92,7 +92,7 @@ lotus-worker run
 This upgrade procedure should only be used as a last resort or when the chain has been upgraded and requires such action to be taken.
 {{< /alert >}}
 
-It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/installation" >}}) and [miner-setup]({{< relref "../getting-started/setup" >}}) guides after it. Before you do this, consider:
+It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/installation/install" >}}) and [miner-setup]({{< relref "../getting-started/setup" >}}) guides after it. Before you do this, consider:
 
 - [Backing up your Lotus wallets]({{< relref "../../lotus/manage-fil#exporting-and-importing-addresses" >}})
 - You may want to backup your Lotus Node and Miner configurations as well.

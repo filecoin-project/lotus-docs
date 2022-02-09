@@ -5,7 +5,7 @@ lead: "The hardware requirements for Filecoin mining are tied to the computation
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-getting-started"
+                 parent: "miner-init"
 weight: 120
 toc: true
 ---

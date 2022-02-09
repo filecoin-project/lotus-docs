@@ -2,67 +2,67 @@
   name = "Getting started"
   weight = 10
   identifier = "lotus-getting-started"
-  url = "/lotus/getting-started/"
+  url = "/lotus/getting-started"
 
 [[lotus]]
   name = "Installation"
   weight = 20
   identifier = "lotus-installation"
-  url = "/lotus/installation/"
+  url = "/lotus/installation"
 
 [[lotus]]
   name = "Lotus Configuration"
   weight = 30
   identifier = "lotus-config"
-  url = "/lotus/lotus-config/"
+  url = "/lotus/lotus-config"
 
 [[lotus]]
   name = "Lotus Node Management"
   weight = 40
   identifier = "lotus-node-management"
-  url = "/lotus/node-management/"
+  url = "/lotus/node-management"
 
 [[lotus]]
   name = "Project"
   weight = 50
   identifier = "project"
-  url = "/lotus/project/"
+  url = "/lotus/project"
 
 [[storage-providers]]
   name = "Getting Started"
   weight = 10
-  identifier = "lotus-miner-getting-started"
-  url = "/storage-providers/getting-started/"
+  identifier = "miner-init"
+  url = "/storage-providers/getting-started"
 
 [[storage-providers]]
   name = "Lotus Miner Configuration"
   weight = 20
   identifier = "lotus-miner-config"
-  url = "/storage-providers/lotus-miner-config/"
+  url = "/storage-providers/lotus-miner-config"
 
 [[storage-providers]]
   name = "Lotus Miner Operation"
   weight = 30
   identifier = "lotus-miner-operation"
-  url = "/storage-providers/lotus-miner-operation/"
+  url = "/storage-providers/lotus-miner-operation"
 
 [[storage-providers]]
   name = "Lotus Miner Seal Workers"
   weight = 40
   identifier = "seal-workers"
-  url = "/storage-providers/seal-workers/"
+  url = "/storage-providers/seal-workers"
 
 [[developers]]
   name = "Developers"
   weight = 10
   identifier = "developers"
-  url = "/developers/"
+  url = "/developers"
 
 [[tutorials]]
   name = "Lotus Tutorials"
   weight = 10
   identifier = "lotus-tutorials"
-  url = "/tutorials/lotus-tutorials/store-and-retrieve"
+  url = "/tutorials/lotus-tutorials"
 
 [[tutorials]]
   name = "Lotus Miner Tutorials"
@@ -82,12 +82,12 @@
 
 [[main]]
   name = "Storage Providers"
-  url = "/storage-providers/getting-started"
+  url = "/storage-providers/getting-started/overview"
   weight = 30
 
 [[main]]
   name = "Tutorials"
-  url = "/tutorials"
+  url = "/tutorials/lotus-tutorials/store-and-retrieve"
   weight = 40
 
 [[main]]
