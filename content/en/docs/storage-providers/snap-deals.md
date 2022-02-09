@@ -1,8 +1,8 @@
 ---
 title: "Snap-deals"
-description: ""
-lead: "I'm not great at the advice. Can I interest you in a sarcastic comment? No I worked in a Dairy Queen."
-draft: true
+description: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn straoge rewards without having to seal new sectors."
+lead: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn straoge rewards without having to seal new sectors."
+draft: false
 menu:
     docs:
         parent: "storage-providers"
@@ -10,9 +10,11 @@ weight: 492
 toc: true
 ---
 
-## What Snap-deals are
-
 ### What problem they're trying to solve
+
+Storage providers earn rewards by commiting storage space to the network, and by charging users fees for storing data. However, most of the storage available on the Filecoin network, also known as committed capacity, is storing _dummy data_.
+
+When a user wants to store something on the n
 
 ### Who they're aimed at - who is going to use them (SPs mostly).
 
