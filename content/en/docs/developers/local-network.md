@@ -1,49 +1,39 @@
 ---
-title: "Developer network"
+title: "Local network"
 description: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
+lead: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
 draft: false
 menu:
     docs:
         parent: "developers"
 weight: 310
 toc: true
+aliases:
+    "/docs/developers/developer-network/"
 ---
 
-You can spin up a developer network (dev-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a dev-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
+You can spin up a local network (local-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a local-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
 
 This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.
 
-## Prerequisites
+## Install Lotus
 
-Since spinning up a dev-net requires the `lotus` daemon, the prerequisites are the same as running a Lotus full-node. If you have already installed a Lotus node on this computer, you likely already have these dependencies ready and can move onto the [next section ↓](#environment-setup)
+Since spinning up a local-net requires the `lotus` daemon, you need to have Lotus installed. If you have already installed a Lotus node on this computer you can move onto the [next section ↓](#environment-setup)
 
-1. Install Lotus dependencies:
+- [MacOS]({{< relref "install#macos" >}})
+- [Linux]({{< relref "install#linux" >}})
 
-    ```shell
-    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
-    ```
-    
-1. Install Rust 
-
-    ```shell
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    ```
-
-1. Install Go:
-
-    ```shell
-    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local && echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
-    ```
+Run through the installation steps for your operating system, then return here.
 
 ## Environment setup
 
-Dev-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries. 
+Local-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries. 
 
 1. Create the following environment variable in your terminal:
 
     ```shell
-    export LOTUS_PATH=~/.lotus-dev-net
-    export LOTUS_MINER_PATH=~/.lotus-miner-dev-net
+    export LOTUS_PATH=~/.lotus-local-net
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
     export LOTUS_SKIP_GENESIS_CHECK=_yes_
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
@@ -52,11 +42,11 @@ Dev-nets use slightly different binaries to those used in the Filecoin mainnet. 
 1. Clone Lotus repo:
 
     ```shell
-    git clone https://github.com/filecoin-project/lotus lotus-dev-net
-    cd lotus-dev-net
+    git clone https://github.com/filecoin-project/lotus lotus-local-net
+    cd lotus-local-net
     ```
 
-    The `filecoin-project/lotus` repository is the same one that you would use to join the Filecoin mainnet. The `git clone` command puts the Lotus repository into the `lotus-dev-net` folder to keep this guide organized.
+    The `filecoin-project/lotus` repository is the same one that you would use to join the Filecoin mainnet. The `git clone` command puts the Lotus repository into the `lotus-local-net` folder to keep this guide organized.
 
 1. Checkout to the Snap-deals branch:
 
@@ -158,8 +148,8 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 1. Create a new terminal window or tab and re-export the LOTUS_PATH and LOTUS_MINER_PATH variables:
 
     ```shell
-    export LOTUS_PATH=~/.lotus-dev-net
-    export LOTUS_MINER_PATH=~/.lotus-miner-dev-net
+    export LOTUS_PATH=~/.lotus-local-net
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
     export LOTUS_SKIP_GENESIS_CHECK=_yes_
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
@@ -195,13 +185,13 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 
 ## Next steps
 
-You now have a fully functioning Filecoin developer network! You can start testing your setup and playing with the Filecoin network in a safe and fast environment.
+You now have a fully functioning Filecoin local network! You can start testing your setup and playing with the Filecoin network in a safe and fast environment.
 
 <!-- =============================
 
 I'm not sure if these steps are necessary... 
 
-1. Build the dev-net:
+1. Build the local-net:
 
     ```shell
     make debug
@@ -244,7 +234,7 @@ I'm not sure if these steps are necessary...
     [DAGStore]
     ```
 
-1. Set up the _genesis_ block of your local dev-net:
+1. Set up the _genesis_ block of your local local-net:
 
     ```shell
     ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2 
