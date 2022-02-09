@@ -1,5 +1,5 @@
 ---
-title: "Running in the cloud"
+title: "Running on cloud"
 description: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine."
 draft: flase
 menu:
@@ -8,8 +8,6 @@ menu:
 weight: 140
 toc: true
 ---
-
-## Cloud Providers
 
 ### DigitalOcean
 

@@ -1,5 +1,5 @@
 ---
-title: "Installation Requirements"
+title: "Install Lotus"
 description: "This page provide details on Lotus installation prerequisites and supported platforms."
 draft: false
 menu:
@@ -9,11 +9,8 @@ weight: 110
 toc: true
 ---
 
-TODO:
-Add supported platform
-Linux
-Mac
-Cloud - supported cloud providers
+Please make sure to read the [getting-started guide]({{< relref "../getting-started/what-is-lotus" >}}) before proceeding with the installation.
+This page provide details on Lotus installation prerequisites and supported platforms.
 
 ## Minimal requirements
 
@@ -49,3 +46,10 @@ Building Lotus requires downloading a few Go modules. These are usually hosted o
 export GOPROXY=https://goproxy.cn
 ```
 
+## Supported Platforms
+
+Currently, lotus installation is supported on the following platforms.
+
+- [Linux]({{< relref "linux" >}})
+- [MacOS]({{< relref "mac" >}})
+- [Cloud]({{< relref "cloud" >}})

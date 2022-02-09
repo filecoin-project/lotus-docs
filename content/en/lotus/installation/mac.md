@@ -1,5 +1,5 @@
 ---
-title: "Lotus Installation on MacOS"
+title: "MacOS"
 description: "This page provide detailed steps to install Lotus on MacOS."
 draft: false
 menu:
@@ -9,9 +9,7 @@ weight: 130
 toc: true
 ---
 
-TODO:
-Move all Mac installation steps here
-o## MacOS
+## MacOS
 
 These instructions are specific to macOS. You can install Lotus on macOS 10.11 El Capitan or higher. If you are installing Lotus on a Linux distribution, head over to the [Linux section](#linux).
 

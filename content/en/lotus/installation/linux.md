@@ -1,5 +1,5 @@
 ---
-title: "Lotus Installation on Linux"
+title: "Linux"
 description: "This page provide detailed steps to install Lotus on Linux."
 draft: false
 menu:
@@ -9,12 +9,9 @@ weight: 120
 toc: true
 ---
 
-TODO:
-Move everything related to Linux installation here
-
 ## Linux
 
-The following instructions are specific to Linux installations. Head to the [macOS](#macos) section if you want to install Lotus on a Mac.
+The following instructions are specific to Linux installations.
 
 There are several ways to install Lotus on Linux:
 
