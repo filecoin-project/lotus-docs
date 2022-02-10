@@ -4,9 +4,9 @@ description: "Reference documentation for the Lotus command-line interface."
 lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.13.0"
 draft: false
 menu:
-    docs:
-        parent: "cli"
-weight: 601
+    lotus:
+        parent: "lotus-node-management"
+weight: 180
 toc: true
 ---
 

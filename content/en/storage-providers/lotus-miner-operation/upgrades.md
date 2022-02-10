@@ -92,7 +92,7 @@ lotus-worker run
 This upgrade procedure should only be used as a last resort or when the chain has been upgraded and requires such action to be taken.
 {{< /alert >}}
 
-It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/installation/install" >}}) and [miner-setup]({{< relref "../getting-started/setup" >}}) guides after it. Before you do this, consider:
+It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/installation/install" >}}) and [miner-setup]({{< relref "setup" >}}) guides after it. Before you do this, consider:
 
 - [Backing up your Lotus wallets]({{< relref "../../lotus/node-management/manage-fil#exporting-and-importing-addresses" >}})
 - You may want to backup your Lotus Node and Miner configurations as well.

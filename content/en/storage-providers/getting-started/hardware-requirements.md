@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
                  parent: "miner-init"
-weight: 120
+weight: 130
 toc: true
 ---
 

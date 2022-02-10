@@ -11,7 +11,7 @@ weight: 110
 toc: true
 ---
 
-The Lotus Miner configutation is created after the [initialization step]({{< relref "../getting-started/setup" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
+The Lotus Miner configutation is created after the [initialization step]({{< relref "setup" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
 
 The _default configuration_ has all the items commented. To customize one of the items, you must remove the leading `#`.
 
@@ -39,7 +39,7 @@ Configure `RemoteListenAddress` to the value that a different node would have to
 
 ## Libp2p section
 
-This section configures the miner's embedded Libp2p node. As noted in the [setup instructions]({{< relref "../getting-started/setup" >}}), it is very important to adjust this section with the miner's public IP and a fixed port:
+This section configures the miner's embedded Libp2p node. As noted in the [setup instructions]({{< relref "setup" >}}), it is very important to adjust this section with the miner's public IP and a fixed port:
 
 ```toml
 [Libp2p]

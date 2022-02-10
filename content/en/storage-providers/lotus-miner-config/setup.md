@@ -5,8 +5,8 @@ lead: "This guide describes the necessary steps to configure a Lotus miner for p
 draft: false
 menu:
     storage-providers:
-        parent: "miner-init"
-weight: 140
+        parent: "lotus-miner-config"
+weight: 100
 toc: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Install Lotus"
+title: "Lotus Prerequisite"
 description: "This page provide details on Lotus installation prerequisites and supported platforms."
 draft: false
 menu:

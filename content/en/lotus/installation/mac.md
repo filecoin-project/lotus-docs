@@ -1,5 +1,5 @@
 ---
-title: "MacOS"
+title: "Install on MacOS"
 description: "This page provide detailed steps to install Lotus on MacOS."
 draft: false
 menu:

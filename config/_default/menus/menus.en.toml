@@ -17,7 +17,7 @@
   url = "/lotus/lotus-config"
 
 [[lotus]]
-  name = "Lotus Node Management"
+  name = "Node Management"
   weight = 40
   identifier = "lotus-node-management"
   url = "/lotus/node-management"
@@ -35,19 +35,19 @@
   url = "/storage-providers/getting-started"
 
 [[storage-providers]]
-  name = "Lotus Miner Configuration"
+  name = "Setup and Configuration"
   weight = 20
   identifier = "lotus-miner-config"
   url = "/storage-providers/lotus-miner-config"
 
 [[storage-providers]]
-  name = "Lotus Miner Operation"
+  name = "Daily Operations"
   weight = 30
   identifier = "lotus-miner-operation"
   url = "/storage-providers/lotus-miner-operation"
 
 [[storage-providers]]
-  name = "Lotus Miner Seal Workers"
+  name = "Seal Workers"
   weight = 40
   identifier = "seal-workers"
   url = "/storage-providers/seal-workers"
@@ -91,9 +91,15 @@
   weight = 40
 
 [[main]]
+  name = "Knowledge Base"
+  url = "/kb"
+  identifier = "kb"
+  weight = 50
+
+[[main]]
   name = "Blog"
   url = "/blog/"
-  weight = 50
+  weight = 60
 
 [[social]]
   name = "GitHub"

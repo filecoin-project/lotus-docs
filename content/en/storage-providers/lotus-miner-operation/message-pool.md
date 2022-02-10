@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
         parent: "lotus-miner-operation"
-weight: 465
+weight: 210
 toc: true
 ---
 

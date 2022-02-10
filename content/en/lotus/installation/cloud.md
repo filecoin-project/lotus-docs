@@ -1,5 +1,5 @@
 ---
-title: "Running on cloud"
+title: "Running in cloud"
 description: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine."
 draft: flase
 menu:
@@ -9,7 +9,7 @@ weight: 140
 toc: true
 ---
 
-### DigitalOcean
+## DigitalOcean
 
 The easiest and cheapest path is to use [the one-click application in the DigitalOcean marketplace](https://marketplace.digitalocean.com/apps/filecoin-lotus).
 
@@ -19,7 +19,7 @@ After deploying, log into your new DigitalOcean Droplet as `root` using the pass
 ssh root@<your_droplet_public_ipv4>
 ```
 
-#### Using the DigitalOcean API to deploy Lotus
+### Using the DigitalOcean API to deploy Lotus
 
 You can also spin up Lotus nodes programmatically. For example, to create a 4 GB filecoin-lotus Droplet in the SFO2 region, you can use the following curl command:
 
@@ -30,7 +30,7 @@ curl -X POST -H 'Content-Type: application/json' \
 "image":"protocollabs-filecoinlotus-20-04"}'  "https://api.digitalocean.com/v2/droplets"
 ```
 
-### Amazon Web Services
+## Amazon Web Services
 
 We regularly publish AMIs for each of the [filecoin networks](https://network.filecoin.io/). To use one of these images, just search for one of our AMIs. You can use this [example link which populates a search for Lotus in the `us-west-2` region](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Images:visibility=public-images;search=lotus-mainnet;ownerAlias=657871693752;sort=name).
 
@@ -40,7 +40,7 @@ After you launch your AWS instance, you should log in with the 'ubuntu' account.
 ssh ubuntu@<your_instance_public_ipv4>
 ```
 
-## Using the image
+## Using the Instance
 
 As soon as the instance is started, it will download a large file containing the last 2000 state roots. During this time the lotus API will not be up, but lotus _is_ working. After about 20 minutes, the state root download will complete and lotus will start normally. This process happens automatically. You don't need to do anything for lotus to start.
 
