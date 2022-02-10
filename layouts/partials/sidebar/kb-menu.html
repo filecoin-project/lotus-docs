@@ -1,0 +1,23 @@
+{{ $currentPage := . -}}
+
+<h3>Browse</h3>
+<ul class="list-unstyled">
+  {{ $active := or (eq $currentPage.Title "Knowledge Base") (eq .Type "kb") -}}
+  <li><a class="docs-link{{ if $active }} active{{ end }}" href="/kb/">Knowledge Base</a></li>
+</ul>
+
+<h3>Types</h3>
+<ul class="list-unstyled">
+  {{ range .Site.Taxonomies.types }}
+    {{ $active := eq .Page.Title $currentPage.Title -}}
+    <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+  {{ end }}
+</ul>
+
+<h3>Areas</h3>
+<ul class="list-unstyled">
+  {{ range .Site.Taxonomies.areas }}
+    {{ $active := eq .Page.Title $currentPage.Title -}}
+    <li><a class="docs-link d-flex{{ if $active }} active{{ end }}" href="{{ .Page.Permalink }}"><span>{{ .Page.Title | title }}</span><span class="badge bg-light text-dark fw-normal ms-auto me-lg-4">{{ .Count }}</span></a></li>
+  {{ end }}
+</ul>

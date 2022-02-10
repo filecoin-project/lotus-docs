@@ -59,6 +59,8 @@ rel  = "sitemap"
 
 [taxonomies]
   contributor = "contributors"
+  areas = "areas"
+  type = "types"
 
 [permalinks]
   blog = "/blog/:title/"
