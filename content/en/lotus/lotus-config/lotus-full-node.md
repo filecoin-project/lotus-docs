@@ -1,7 +1,7 @@
 ---
 title: Lite Full Node
 description: "A Lotus full node contains all the blockchain data of the Filecoin network from the genesis block."
-draft: false
+draft: true
 menu:
     lotus:
         parent: "lotus-config"

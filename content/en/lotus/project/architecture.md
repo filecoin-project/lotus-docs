@@ -1,7 +1,7 @@
 ---
 title: "Architecture"
 description: "This page explains the lotus architecture."
-draft: flase
+draft: true
 menu:
     lotus:
         parent: "project"
