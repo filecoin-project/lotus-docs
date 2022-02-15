@@ -27,7 +27,7 @@ A **network** is a group of computers that talk to each other and exchange infor
 
 **Filecoin** is a protocol. That means that it's a collection of rules and processes that computers need to follow to be part of the network. If a computer does not follow the rules, then they are ignored by the rest of the computers on the network. 
 
-You might of heard of HTTP before; it's the thing right at the start of a website link:
+You might have heard of HTTP before; it's the thing right at the start of a website link:
 
 ```plaintext
 http://example.com
@@ -43,7 +43,7 @@ So let's review. _The Filecoin network_ is:
 - that are all following the same set of rules
 - to allow users to store pretty much anything on the computers
 
-## A node implementation
+## A reference node implementation
 
 Again, let's start at the end. 
 
@@ -53,7 +53,7 @@ An **implementation** is _one way_ to do _something_. Take this table from Ikea 
 
 ![A wooden table from Ikea.](ingo-table.jpg)
 
-It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it.
+It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it. It's one implementation, or application, of the table idea.
 
 - _Ingo_ is an _object_ that you can use as a _table_.
 - _Lotus_ is an _application_ that a computer can use to do _Filecoin stuff_.
@@ -65,6 +65,10 @@ A **node** is a computer that can talk to other computers on a network. In your 
 Each node on your home network has programs that tell it how to talk to the other nodes on the network. Without these programs, the nodes wouldn't be able to understand each other, and would be pretty useless.
 
 In the case of Lotus, a _Lotus node_ is a computer on a network that is running the Lotus application.
+
+### Reference
+
+Other computers refer to this node for how to talk to other computers.
 
 So let's review. A _node implementation_ is:
 
@@ -78,7 +82,7 @@ Hopefully that all made sense, so let's put all this together.
 
 > Lotus is the reference node implementation for the Filecoin network.
 
-The translate, Lotus is:
+To translate, Lotus is:
 
 - an application
 - that tells computers how to talk to other computers

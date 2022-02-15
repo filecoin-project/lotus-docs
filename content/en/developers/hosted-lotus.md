@@ -11,17 +11,18 @@ toc: true
 
 ## Mainnet endpoint
 
-Developers can interact directly with load-balanced, synced mainnet nodes using the [JSON RPC API]({{< relref "apis/json-rpc" >}}) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
+Developers can interact directly with load-balanced, synced mainnet nodes using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
 
 Unlike bare Lotus, the endpoint above is hardened and limited:
 
-- Only read calls and `MPoolPush()` are supported.
+- Only read calls and `MPoolPush()` are supported. You can view the full list of available calls at [api.node.glif.io](https://api.node.glif.io).
 - Only POST requests are supported.
 - The Filecoin signing tools can be used to sign messages before submission when needed.
-
+- Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
+- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
 ## Testnet endpoint
 
-For synced testnet node endpoints using the [JSON RPC API]({{< relref "apis/json-rpc" >}}), `https://calibration.node.glif.io` is available.
+Testnet nodes using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}) can use `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0`.
 
 ### Custom endpoints
 
