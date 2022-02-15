@@ -1,0 +1,8 @@
+<a
+  href="#" 
+  class="tooltip-anchor"
+  data-bs-toggle="tooltip"
+  title="{{ .Get 0 }}"
+  data-bs-placement='{{ if (.Get 1) }}{{ .Get 1 }}{{ else }}top{{ end }}'>
+  {{ .Inner }}
+</a>
