@@ -192,12 +192,6 @@
             </li>
           {{ end -}}
         </ul>
-         {{ if .Site.Params.options.flexSearch -}}
-           <form class="doks-search position-relative flex-grow-1 me-auto">
-           <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
-           <div id="suggestions" class="shadow bg-white rounded d-none"></div>
-           </form>
-         {{ end -}}
         <hr class="text-black-50 my-4 d-md-none">
         <h3 class="h6 text-uppercase mb-3 d-md-none">Socials</h3>
         <ul class="nav flex-column flex-md-row ms-md-auto me-md-n5 pe-md-2">
@@ -255,7 +249,12 @@
 
 <nav class="doks-subnavbar py-2 sticky-lg-top" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
-
+           {{ if .Site.Params.options.flexSearch -}}
+           <form class="doks-search position-relative flex-grow-1 me-auto">
+           <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
+           <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+           </form>
+         {{ end -}}
   </div>
   <div class="progress-container">
     <div class="progress-bar" id="progress_bar"></div>
