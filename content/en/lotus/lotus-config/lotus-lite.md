@@ -10,9 +10,6 @@ weight: 130
 toc: true
 ---
 
-TODO: Remove all installtions steps and link back to lotus installation
-      Remove the mention of full node when we actually mean a normal lotus node. Full node is different.
-
 Before we get started, let's just go over the terms we'll use in this guide:
 
 | Term | Description |

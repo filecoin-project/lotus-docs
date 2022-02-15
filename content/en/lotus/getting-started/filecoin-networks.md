@@ -117,8 +117,3 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
 - [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
 - [Block explorer - filscan for Calibration](https://calibration.filscan.io/)
-
-### Devnet
-
-TODO - Add devnet use-case and details same as other networks.
-TODO - Add devnet paremeters

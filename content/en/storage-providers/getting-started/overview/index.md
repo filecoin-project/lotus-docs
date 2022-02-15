@@ -10,12 +10,6 @@ weight: 110
 toc: true
 ---
 
-TODO:
-Add mining economics
-Minimum Limits for block winning
-Initial pledges
-Anything else a user needs to know to take a decision to become SP
-
 This sections contains guides to setup and run succesful mining operations using Lotus and should be approached by **advanced users only**, familiar with [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [how mining works](https://docs.filecoin.io/mine/how-mining-works/) and the operation of a Lotus node.
 
 {{< alert icon="warning" >}}
