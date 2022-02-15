@@ -1,7 +1,7 @@
 ---
 title: "Filecoin Economics"
 description: "This page provide details on filecoin economics a user should be familiar with before running a lotus node."
-draft: false
+draft: true
 menu:
     lotus:
         parent: "lotus-getting-started"
