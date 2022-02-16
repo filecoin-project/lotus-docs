@@ -64,11 +64,11 @@
   identifier = "lotus-tutorials"
   url = "/tutorials/lotus-tutorials"
 
-[[tutorials]]
-  name = "Lotus Miner Tutorials"
-  weight = 20
-  identifier = "lotus-miner-tutorials"
-  url = "/tutorials/lotus-miner-tutorials"
+#[[tutorials]]
+#  name = "Lotus Miner Tutorials"
+#  weight = 20
+#  identifier = "lotus-miner-tutorials"
+#  url = "/tutorials/lotus-miner-tutorials"
 
 [[main]]
   name = "Lotus"
@@ -96,10 +96,10 @@
   identifier = "kb"
   weight = 50
 
-[[main]]
-  name = "Blog"
-  url = "/blog/"
-  weight = 60
+#[[main]]
+#  name = "Blog"
+#  url = "/blog/"
+#  weight = 60
 
 [[social]]
   name = "GitHub"
