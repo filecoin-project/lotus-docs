@@ -21,69 +21,76 @@ section = ["HTML", "RSS", "SITEMAP"]
 
 # remove .{ext} from text/netlify
 [mediaTypes."text/netlify"]
-suffixes = [""]
 delimiter = ""
+suffixes = [""]
 
 # add output format for netlify _redirects
 [outputFormats.REDIRECTS]
-mediaType = "text/netlify"
 baseName = "_redirects"
 isPlainText = true
+mediaType = "text/netlify"
 notAlternative = true
 
 # add output format for netlify _headers
 [outputFormats.HEADERS]
-mediaType = "text/netlify"
 baseName = "_headers"
 isPlainText = true
+mediaType = "text/netlify"
 notAlternative = true
 
 # add output format for section sitemap.xml
 [outputFormats.SITEMAP]
-mediaType = "application/xml"
 baseName = "sitemap"
 isHTML = false
 isPlainText = true
+mediaType = "application/xml"
 noUgly = true
-rel  = "sitemap"
+rel = "sitemap"
 
 [caches]
-  [caches.getjson]
-    dir = ":cacheDir/:project"
-    maxAge = "10s"
+[caches.getjson]
+dir = ":cacheDir/:project"
+maxAge = "10s"
 
 [sitemap]
-  changefreq = "weekly"
-  filename = "sitemap.xml"
-  priority = 0.5
+changefreq = "weekly"
+filename = "sitemap.xml"
+priority = 0.5
 
 [taxonomies]
-  contributor = "contributors"
+contributor = "contributors"
 
 [permalinks]
-  blog = "/blog/:title/"
+blog = "/blog/:title/"
 # docs = "/docs/1.0/:sections[1:]/:title/"
 
 [minify.tdewolff.html]
-  keepWhitespace = false
+keepWhitespace = false
 
 [module]
-  [module.hugoVersion]
-    extended = true
-    min = "0.80.0"
-    max = ""
-  [[module.mounts]]
-    source = "assets"
-    target = "assets"
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-  [[module.mounts]]
-    source = "node_modules/flexsearch"
-    target = "assets/js/vendor/flexsearch"
-  [[module.mounts]]
-    source = "node_modules/katex"
-    target = "assets/js/vendor/katex"
-  [[module.mounts]]
-    source = "node_modules/mermaid"
-    target = "assets/js/vendor/mermaid"
+[module.hugoVersion]
+extended = true
+max = ""
+min = "0.80.0"
+[[module.mounts]]
+source = "assets"
+target = "assets"
+[[module.mounts]]
+source = "static"
+target = "static"
+[[module.mounts]]
+source = "node_modules/flexsearch"
+target = "assets/js/vendor/flexsearch"
+[[module.mounts]]
+source = "node_modules/katex"
+target = "assets/js/vendor/katex"
+[[module.mounts]]
+source = "node_modules/mermaid"
+target = "assets/js/vendor/mermaid"
+# see https://github.com/h-enk/doks/discussions/281
+[[module.mounts]]
+source = "node_modules/bootstrap"
+target = "assets/js/vendor/bootstrap"
+[[module.mounts]]
+source = "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+target = "static/js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js.map"
