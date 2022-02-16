@@ -218,7 +218,7 @@ Some aspects of the Lotus Node can be controlled using environment variables.
 Variables common to most Lotus binaries:
 
 - `LOTUS_FD_MAX`: Sets the file descriptor limit for the process
-- `LOTUS_JAEGER`: Sets the Jaeger URL to send traces. See TODO.
+- `LOTUS_JAEGER`: Sets the Jaeger URL to send traces.
 - `LOTUS_DEV`: Any non-empty value will enable more verbose logging, useful only for developers.
 - `GOLOG_OUTPUT`: Controls where the program logs. Possible values: `stdout`, `stderr`, `file`. Multiple values can be combined with '+'.
 - `GOLOG_FILE`: Path to file to log to.
