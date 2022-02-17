@@ -1,7 +1,7 @@
 ---
 title: "Snap-deals"
-description: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn straoge rewards without having to seal new sectors."
-lead: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn straoge rewards without having to seal new sectors."
+description: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
+lead: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
 draft: false
 menu:
     docs:
@@ -17,7 +17,7 @@ Storage providers earn rewards in two ways:
 1. Committing storage space to the network. 
 1. Charging clients fees for storing data. 
 
-Most of the storage available on the Filecoin network, also known as _committed capacity_, is storing _dummy data_. If there aren't any users that want to store something at the time that the sector is committed, then the storage provider fills in space random 1s and 0s. This means that a large portion of the storage available on the Filecoin network isn't being used for anything particularly important.
+Most of the storage available on the Filecoin network, also known as _committed capacity_, is storing _dummy data_. If there aren't any users that want to store something at the time that the sector is committed, then the storage provider fills in the binary space with lots of `0`s. This means that a large portion of the storage available on the Filecoin network isn't being used for anything particularly important.
 
 ## A simplified explanation
 
@@ -39,9 +39,7 @@ This is a simplified view of how Snap-deals work. Instead of a storage provider 
 
 ## Benefits
 
-While everyone in the Filecoin ecosystem will benefit from Snap-deals, storage providers will benefit the most. Snap-deals let storage providers use their available storage more effectively and make processing deals much faster. 
-
-Clients will also benefit since their data will become available much faster. 
+Snap-deals benefit all users throughout the Filecoin ecosystem. Storage providers are able to use their storage capacity more effectively and speed up the deal-making process. Snap-deals also make the data from clients available much faster.
 
 <!-- 
 ## Performance information
