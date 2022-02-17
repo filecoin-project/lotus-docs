@@ -43,6 +43,7 @@ While everyone in the Filecoin ecosystem will benefit from Snap-deals, storage p
 
 Clients will also benefit since their data will become available much faster. 
 
+<!-- 
 ## Performance information
 
 Here is a table to compare basic deals, Snap-deals, and the associated hardware used.
@@ -57,3 +58,4 @@ If you are a storage provider and want to get to grips with Snap-deals, then fol
 
 ### Convert deals to Snap-deals
 
+-->
