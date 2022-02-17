@@ -1,5 +1,7 @@
 ---
 title: "Local network"
+aliases:
+    - /docs/developers/developer-network
 description: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
 lead: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
 draft: false
@@ -8,8 +10,6 @@ menu:
         parent: "developers"
 weight: 310
 toc: true
-aliases:
-    "/docs/developers/developer-network/"
 ---
 
 You can spin up a local network (local-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a local-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
@@ -145,7 +145,7 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 
     This command will output a lot of information and continue to run. All further steps should be completed in a new terminal window.
 
-1. Create a new terminal window or tab and re-export the LOTUS_PATH and LOTUS_MINER_PATH variables:
+1. Create a new terminal window or tab and re-export the `LOTUS_PATH` and `LOTUS_MINER_PATH` variables:
 
     ```shell
     export LOTUS_PATH=~/.lotus-local-net
@@ -173,7 +173,11 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
     ```
 
-    This process may take a few minutes. It will display `Miner successfully created, you can now start it with 'lotus-miner run'` when complete.
+    This process may take a few minutes. When complete, the terminal window will display:
+
+    ```plaintext
+    Miner successfully created, you can now start it with 'lotus-miner run'
+    ```
 
 1. Start the miner:
 
@@ -186,82 +190,4 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 ## Next steps
 
 You now have a fully functioning Filecoin local network! You can start testing your setup and playing with the Filecoin network in a safe and fast environment.
-
-<!-- =============================
-
-I'm not sure if these steps are necessary... 
-
-1. Build the local-net:
-
-    ```shell
-    make debug
-    sudo make install
-    ```
-
-    You may get the following errors, but you can safely ignore them:
-
-    ```shell
-    > bash: go: command not found
-    > expr: syntax error: unexpected argument ‘1016000’
-    ```
-
-1. Create `~/.lotusminer/config.toml` and paste in this code:
-
-    ```toml
-    [API]
-    [Backup]
-    [Libp2p]
-    [Pubsub]
-    [Subsystems]
-    [Dealmaking]
-      ExpectedSealDuration = "0m0s"
-      PublishMsgPeriod = "0h0m0s"
-      MaxDealsPerPublishMsg = 1
-      StartEpochSealingBuffer = 0
-      [Dealmaking.RetrievalPricing]
-        [Dealmaking.RetrievalPricing.Default]
-        [Dealmaking.RetrievalPricing.External]
-    [Sealing]
-      MaxWaitDealsSectors = 2
-      MaxSealingSectorsForDeals = 2
-      BatchPreCommits = false
-      AggregateCommits = false
-    [Storage]
-    [Fees]
-      [Fees.MaxPreCommitBatchGasFee]
-      [Fees.MaxCommitBatchGasFee]
-    [Addresses]
-    [DAGStore]
-    ```
-
-1. Set up the _genesis_ block of your local local-net:
-
-    ```shell
-    ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2 
-    ./lotus-seed genesis new localnet.json ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json 
-    ```
-
-1. Start the Lotus daemon:
-
-    ```shell
-    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
-    ```
-
-    Leave this terminal window running.
-
-1. In a new terminal window, initialize a devnet with wallets, pre-sealed sectors, and miner:
-
-    ```shell
-    ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key 
-    ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
-    ```
-
-1. Start the miner:
-
-    ```shell
-    ./lotus-miner run --nosync
-    ```
-
-============================= -->
-
 
