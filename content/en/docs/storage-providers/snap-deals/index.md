@@ -19,7 +19,11 @@ Storage providers earn rewards in two ways:
 
 Most of the storage available on the Filecoin network, also known as _committed capacity_, is storing _dummy data_. If there aren't any users that want to store something at the time that the sector is committed, then the storage provider fills in the binary space with lots of `0`s. This means that a large portion of the storage available on the Filecoin network isn't being used for anything particularly important.
 
-## A simplified explanation
+{{< alert icon="tip" >}}
+If you'd like to see an in-depth explanation of how Snap-deals work, take a look at the [Filecoin Improvement Proposal FIP-0019](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0019.md).
+{{< /alert >}}
+
+## Simplified explanation
 
 Snap-deals allow storage providers to accept deals from users and place that user's data into a block of storage that had already been committed. That was a bit of a mouthful, so picture it like this.
 
@@ -41,10 +45,17 @@ This is a simplified view of how Snap-deals work. Instead of a storage provider 
 
 Snap-deals benefit all users throughout the Filecoin ecosystem. Storage providers are able to use their storage capacity more effectively and speed up the deal-making process. Snap-deals also make the data from clients available much faster.
 
-<!-- 
 ## Performance information
 
-Here is a table to compare basic deals, Snap-deals, and the associated hardware used.
+Storage providers from the Lotus [community tested Snap-deals performance](https://github.com/filecoin-project/lotus/discussions/8127) with the following hardware and results:
+
+| Provider<br>Hardware | UpdateReplica<br>(RU) | ProveReplicaUpdate<br>(PR2) | ProveCommit<br>(C2) |	
+| --- | --- | --- | --- |
+| **CPU**: 3975WX<br>**GPU**: 2x RTX 3090 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 32 GiB | 5m 38s | 7m 52s | 6m 57s |
+| **CPU**: EPYC 7F72<br>**GPU**: 2x RTX 2080ti (CUDA) <br>**RAM**: 256 GB<br>**SWAP**: 20 GB<br>**Sector**: 64 GiB | 9m 19s | 19m 0s | 16m 10s |
+| **CPU**: EPYC 7502<br>**GPU**: RTX 3080 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 64 GiB | 12m 59s | 23m 13s | 18m 24s |
+
+<!-- 
 
 ## Test snap-deals
 
