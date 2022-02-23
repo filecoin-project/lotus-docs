@@ -59,6 +59,8 @@ priority = 0.5
 
 [taxonomies]
 contributor = "contributors"
+areas = "areas"
+type = "types"
 
 [permalinks]
 blog = "/blog/:title/"
