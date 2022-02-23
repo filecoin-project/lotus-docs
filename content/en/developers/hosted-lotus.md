@@ -23,7 +23,7 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
 ## Testnet endpoint
 
-Testnet nodes using the [JSON RPC API]({{< relref "../apis/json-rpc" >}}) can use `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0`.
+Testnet nodes using the [JSON RPC API]({{< relref "apis/json-rpc" >}}) can use `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0`.
 =======
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "../lotus/node-management/chain-management" >}}).
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
