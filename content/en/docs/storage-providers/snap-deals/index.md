@@ -1,7 +1,7 @@
 ---
 title: "Snap-deals"
-description: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
-lead: "Snap-deals are a way add data into sectors that have already been sealed. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
+description: "A one-message protocol for updating any sector with new data without re-sealing. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
+lead: "A one-message protocol for updating any sector with new data without re-sealing. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
 draft: false
 menu:
     docs:
@@ -102,6 +102,10 @@ If you are a storage provider and want to get to grips with Snap-deals, then fol
 ### Create basic deals
 
 ### Convert deals to Snap-deals
+
+## Video example
+
+Here is a simple run-through of how Snap-deals work:
 
 -->
 
