@@ -67,8 +67,11 @@ If you are a storage provider and want to get to grips with Snap-deals, then fol
 
 ### Convert deals to Snap-deals
 
-## Video example
-
-Here is a simple run-through of how Snap-deals work:
-
 -->
+
+## Video ask-me-anything
+
+Here's a video the Lotus team created from an ask-me-anything (AMA) event held before the launch of Snap-deals:
+
+{{< youtube _9fgQHVMuVA >}}
+
