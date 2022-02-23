@@ -57,15 +57,15 @@ Storage providers from the Lotus [community tested Snap-deals performance](https
 
 ## Troubleshooting
 
-There are some cases where you may run into problem with Snap-deals. We have tried to list them all here.
+There are some cases where you may run into problems with Snap-deals. We have tried to list them all here.
 
 ### Premature replica update
 
-If the FSM finishes the replica update within the deadline of the sector, or the one before it, Lotus will hang for a while in the `ReplicaUpdateFailed` state. The FSM will keep retrying until the immutable deadlines pass and submit the message. No action required in this case.
+If the FSM finishes the replica update within the deadline of the sector or the one before it, Lotus will hang for a while in the `ReplicaUpdateFailed` state. The FSM will keep retrying until the immutable deadlines pass and submit the message. No action is required in this case.
 
 ### New configuration option
 
-There is a new config option `MakeNewSectorForDeals` which ensures that only Snap-deals will be accepted. Deals will hang until you make a Snap-deal instead of kicking off a new sector.
+There is a new config option, `MakeNewSectorForDeals`, which ensures that only Snap-deals will be accepted. Deals will hang until you make a Snap-deal instead of kicking off a new sector.
 
 ### Command mark-for-upgrade deprecated
 
@@ -73,7 +73,7 @@ The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lo
 
 ### Extension workflow
 
-If you have a Snap-deals sector waiting for deals, and make a deal that is staged but that does not fit in that sector because the sector expires too soon, you must run the following:
+If you have a Snap-deals sector waiting for deals and make a deal that is staged, but that does not fit in that sector because the sector expires too soon, you must run the following:
 
 ```shell
 ./lotus-miner sectors extend --new-expiration && ./lotus-miner sectors match-pending-pieces
@@ -83,7 +83,7 @@ This will match the piece to the newly extended sector and start the replica upd
 
 ### Halt the upgrade
 
-You can abort the upgrade and remove all replica updata data, reverting your sector back to the proving state, by running:
+You can abort the upgrade and remove all replica update data, reverting your sector back to the proving state, by running:
 
 ```shell
 ./lotus-miner sectors update-state --really-do-it AbortUpgrade
@@ -104,3 +104,4 @@ If you are a storage provider and want to get to grips with Snap-deals, then fol
 ### Convert deals to Snap-deals
 
 -->
+
