@@ -1,8 +1,7 @@
 {{ $indexTemplate := resources.Get "js/index.js" -}}
 {{ $index := $indexTemplate | resources.ExecuteAsTemplate "index.js" . -}}
 
-{{ $bs := resources.Get "js/bootstrap.js" -}}
-{{ $bs := $bs | js.Build -}}
+{{ $bs := resources.Get "js/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" -}}
 
 {{ $highlight := resources.Get "js/highlight.js" -}}
 {{ $highlight := $highlight | js.Build -}}
