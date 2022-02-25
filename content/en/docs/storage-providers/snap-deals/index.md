@@ -15,7 +15,7 @@ When clients want to store something using Filecoin, they must first find a stor
 Storage providers earn rewards in two ways:
 
 1. Committing storage space to the network. 
-1. Charging clients fees for storing data. 
+1. Charging client's fees for storing data. 
 
 Most of the storage available on the Filecoin network, also known as _committed capacity_, is storing _dummy data_. If there aren't any users that want to store something at the time that the sector is committed, then the storage provider fills in the binary space with lots of `0`s. This means that a large portion of the storage available on the Filecoin network isn't being used for anything particularly important.
 
@@ -78,7 +78,7 @@ You must have to following set up to follow this guide through:
     lotus-miner sectors list
     ```
 
-    This will ouput something like:
+    This will output something like:
 
     ```plaintext
     ID  State    OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
@@ -87,7 +87,7 @@ You must have to following set up to follow this guide through:
     ...
     ```
 
-    Right now we don't have any commited-capacity (CC) sectors that we can modify.
+    Right now, we don't have any committed-capacity (CC) sectors that we can modify.
 
 1. Create a basic CC sector:
 
@@ -120,7 +120,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
 ### Convert snap-deals sector
 
-1. Chose a deal `ID` that you want to convert to a snap-deal. The deal must be a `CC` deal that is not active. So in the above example, sectors with the IDs `2`, `3`, and `4` are available.
+1. Chose a deal `ID` that you want to convert to a snap-deal. 
 1. Convert the sector to a snap-deals sector by using the `snap-up` command followed by the `ID` of the sector you want to use:
 
     ```shell
@@ -129,7 +129,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This command does not output anything on success.
 
-1. By listing your deals again you'll be able to see that the FSM has marked the sector as being in a `SnapDealsWaitDeals` state:
+1. By listing your deals again, you'll see that the FSM has marked the sector as being in a `SnapDealsWaitDeals` state:
 
     ```shell
     lotus-miner sectors list
@@ -142,9 +142,45 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This means that this sector (`2`) is ready to wait for deals!
 
-{{< alert >}}
-While the sector is transitioning through the snap-deals states, this sector is still preserved and nothing is changing internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undistrupted during the process.  
-{{< /alert >}}
+While the sector is transitioning through the snap-deals states, this sector is still preserved, and nothing is changing internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undisrupted during the process.  
+
+### Add data to the snap-deal sector
+
+1. Create a `UUID` variable and set it to the result of `uuidgen`:
+
+    ```shell
+    UUID=`uuidgen | awk -F"-" '{print $1}'`
+    ```
+
+1. Create a 1500 byte file with random data in it:
+
+    ```shell
+    dd if=/dev/urandom of=$UUID.deal bs=1 count=1500
+    ```
+
+1. Create a `$ROOT` variable that we'll use in a moment:
+
+    ```shell
+    OUT=`./lotus client import $UUID.deal`
+    ROOT`echo $OUT | awk 'NF>1{print $NF}'` 
+    ```
+
+1. Invoke the `lotus client deal` command with the newly created `$ROOT` variable and some deal parameters:
+
+    ```shell
+    ./lotus client deal $ROOT t01000 0.00001 600001
+    ```
+ 
+    This will output something like:
+
+    ```plaintext
+    1500+0 records in
+    1500+0 records out
+    1500 bytes transferred in 0.019269 secs (77845 bytes/sec)
+    bafyreiamntewzox3wxngh6vuguqqdmajcfwwsrgozwshatfqhnbpvxbbrm
+    ```
+
+This process might take a while, but eventually, the deal will go to your `lotus-miner` and be placed into the `snap-deals` sector we just made.
 
 ## Videos
 
@@ -162,7 +198,7 @@ If the FSM finishes the replica update within the deadline of the sector or the 
 
 ### New configuration option
 
-There is a new config option, `MakeNewSectorForDeals`, which ensures that only Snap-deals will be accepted. Deals will hang until you make a Snap-deal instead of kicking off a new sector.
+There is a new config option, `MakeNewSectorForDeals`, which ensures that only Snap-deals will be accepted. Deals will hang until you make a snap-deal instead of kicking off a new sector.
 
 ### Command mark-for-upgrade deprecated
 
