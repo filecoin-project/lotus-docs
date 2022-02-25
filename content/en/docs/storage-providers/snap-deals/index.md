@@ -202,7 +202,7 @@ There is a new config option, `MakeNewSectorForDeals`, which ensures that only S
 
 ### Command mark-for-upgrade deprecated
 
-The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lotus 1.15.0.
+The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lotus 1.14.0.
 
 ### Extension workflow
 
