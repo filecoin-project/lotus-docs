@@ -55,6 +55,96 @@ Storage providers from the Lotus [community tested Snap-deals performance](https
 | **CPU**: EPYC 7F72<br>**GPU**: 2x RTX 2080ti (CUDA) <br>**RAM**: 256 GB<br>**SWAP**: 20 GB<br>**Sector**: 64 GiB | 9m 19s | 19m 0s | 16m 10s |
 | **CPU**: EPYC 7502<br>**GPU**: RTX 3080 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 64 GiB | 12m 59s | 23m 13s | 18m 24s |
 
+## Test snap-deals
+
+If you are a storage provider and want to get to grips with Snap-deals, then follow this quick guide! You will learn how to set up a local Filecoin network, create some basic deals, and then convert those deals to Snap-deals.
+
+{{< alert icon="warning" >}}
+This is a relatively advanced storage provider operation. Users should be familiar with Filecoin, Lotus, the sector-deal lifecycle, and basic storage provider operations.
+{{< /alert >}}
+
+### Prerequisites
+
+You must have to following set up to follow this guide through:
+
+- Lotus 1.15.0 or higher [installed]({{< relref "install">}}).
+- A local [Filecoin network (local-net)]({{< relref "local-network" >}}) running.
+
+### Create basic deals
+
+1. List the deals on your storage provider:
+
+    ```shell
+    lotus-miner sectors list
+    ```
+
+    This will ouput something like:
+
+    ```plaintext
+    ID  State    OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
+    0   Proving  YES      YES     1550097 (in 10 weeks 1 day)  CC
+    1   Proving  YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB 
+    ...
+    ```
+
+    Right now we don't have any CC sectors that we can modify.
+
+1. Create a basic CC sector:
+
+    ```shell
+    lotus-miner sectors pledge
+    ```
+
+    This will output something like:
+
+    ```plaintext
+    Created CC sector:  2
+    ```
+
+1. Create two more basic CC sectors.
+
+    ```shell
+    lotus-miner sectors pledge && lotus miner sectors pledge
+    ```
+
+1. List your deals again:
+
+    ```shell
+    lotus-miner sectors list
+    ```
+
+    This will output something like:
+
+    ```shell
+    ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
+    0   Proving               YES      YES     1550097 (in 10 weeks 1 day)  CC
+    1   Proving               YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB
+    2   SubmitPreCommitBatch  NO       NO      n/a                          CC
+    3   SubmitPreCommitBatch  NO       NO      n/a                          CC
+    4   SubmitPreCommitBatch  NO       NO      n/a                          CC
+    ```
+
+1. Chose a deal `ID` that you want to convert to a snap-deal. The deal must be a `CC` deal that is not active. So in the above example, sectors with the IDs `2`, `3`, and `4` are available.
+1. Convert the sector to a snap-deals sector by using the `snap-up` command followed by the `ID` of the sector you want to use:
+
+    ```shell
+    lotus-miner sectors snap-up 2
+    ```
+
+    This will output something like:
+
+    ```plaintext
+
+    ```
+
+### Convert deals to Snap-deals
+
+## Videos
+
+Here's a video the Lotus team created from an ask-me-anything (AMA) event held before the launch of Snap-deals:
+
+{{< youtube _9fgQHVMuVA >}}
+
 ## Troubleshooting
 
 There are some cases where you may run into problems with Snap-deals. We have tried to list them all here.
@@ -90,24 +180,4 @@ You can abort the upgrade and remove all replica update data, reverting your sec
 ```
 
 Keep in mind that **you will lose the deals in the update**, and the FSM won't rematch the deal with other sectors. This is the same thing that happens when you remove a deal sector.
-
-<!-- 
-
-## Test snap-deals
-
-If you are a storage provider and want to get to grips with Snap-deals, then follow this quick guide! You will learn how to set up a local Filecoin network, create some basic deals, and then convert those deals to Snap-deals.
-
-### Start a Lotus local-net
-
-### Create basic deals
-
-### Convert deals to Snap-deals
-
--->
-
-## Video ask-me-anything
-
-Here's a video the Lotus team created from an ask-me-anything (AMA) event held before the launch of Snap-deals:
-
-{{< youtube _9fgQHVMuVA >}}
 
