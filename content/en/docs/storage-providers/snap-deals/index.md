@@ -70,7 +70,7 @@ You must have to following set up to follow this guide through:
 - Lotus 1.15.0 or higher [installed]({{< relref "install">}}).
 - A local [Filecoin network (local-net)]({{< relref "local-network" >}}) running.
 
-### Create basic deals
+### Create committed-capacity sectors
 
 1. List the deals on your storage provider:
 
@@ -87,7 +87,7 @@ You must have to following set up to follow this guide through:
     ...
     ```
 
-    Right now we don't have any CC sectors that we can modify.
+    Right now we don't have any commited-capacity (CC) sectors that we can modify.
 
 1. Create a basic CC sector:
 
@@ -99,12 +99,6 @@ You must have to following set up to follow this guide through:
 
     ```plaintext
     Created CC sector:  2
-    ```
-
-1. Create two more basic CC sectors.
-
-    ```shell
-    lotus-miner sectors pledge && lotus miner sectors pledge
     ```
 
 1. List your deals again:
@@ -119,10 +113,12 @@ You must have to following set up to follow this guide through:
     ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
     0   Proving               YES      YES     1550097 (in 10 weeks 1 day)  CC
     1   Proving               YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB
-    2   SubmitPreCommitBatch  NO       NO      n/a                          CC
-    3   SubmitPreCommitBatch  NO       NO      n/a                          CC
-    4   SubmitPreCommitBatch  NO       NO      n/a                          CC
+    2   Proving               YES      YES     1549517 (in 10 weeks 1 day)  CC
     ```
+
+Now that you have created a basic CC sector, it's time to convert it to a snap-deal sector.
+
+### Convert snap-deals sector
 
 1. Chose a deal `ID` that you want to convert to a snap-deal. The deal must be a `CC` deal that is not active. So in the above example, sectors with the IDs `2`, `3`, and `4` are available.
 1. Convert the sector to a snap-deals sector by using the `snap-up` command followed by the `ID` of the sector you want to use:
@@ -131,13 +127,24 @@ You must have to following set up to follow this guide through:
     lotus-miner sectors snap-up 2
     ```
 
-    This will output something like:
+    This command does not output anything on success.
 
-    ```plaintext
+1. By listing your deals again you'll be able to see that the FSM has marked the sector as being in a `SnapDealsWaitDeals` state:
 
+    ```shell
+    lotus-miner sectors list
+
+    > ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
+    > 0   Proving               YES      YES     1550097 (in 10 weeks 1 day)  CC
+    > 1   Proving               YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB
+    > 2   SnapDealsWaitDeals    YES      YES     1549517 (in 10 weeks 1 day)  CC
     ```
 
-### Convert deals to Snap-deals
+    This means that this sector (`2`) is ready to wait for deals!
+
+{{< alert >}}
+While the sector is transitioning through the snap-deals states, this sector is still preserved and nothing is changing internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undistrupted during the process.  
+{{< /alert >}}
 
 ## Videos
 
