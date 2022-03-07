@@ -1,11 +1,10 @@
 ---
-title: "Linux"
-description: "This page provide detailed steps to install Lotus on Linux."
+title: "Ubuntu"
+description: "This page provide detailed steps to install Lotus on Ubuntu Linux."
 draft: false
 menu:
     lotus:
          parent: "lotus-install"
-         identifier: "lotus-install-linux"
 weight: 120
 toc: true
 ---

@@ -5,7 +5,7 @@ lead: "This page contains all lotus API definitions. Interfaces defined here are
 draft: false
 menu:
     developers:
-             parent: "developers"
+             parent: "developers-apis"
 weight: 150
 toc: true
 ---

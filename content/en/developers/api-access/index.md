@@ -5,7 +5,7 @@ lead: "You can connect to a Lotus node using the build in Lotus API. There is so
 draft: false
 menu:
     developers:
-             parent: "developers"
+             parent: "developers-apis"
 weight: 110
 toc: true
 ---
