@@ -1,12 +1,12 @@
 ---
-title: "Lotus configuration"
-identifier: "lotus-node-configuration"
+title: "Defaults"
 description: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 lead: "This guide documents environment variables, configuration and other advanced features in the Lotus Node."
 draft: false
 menu:
     lotus:
-        parent: "lotus-config"
+        parent: "lotus-configure"
+        identifier: "lotus-configure-defaults"
 weight: 110
 toc: true
 ---

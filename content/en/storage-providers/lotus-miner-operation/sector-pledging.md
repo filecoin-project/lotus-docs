@@ -58,7 +58,7 @@ When sealing for the new is complete, `pSet: NO` will become `pSet: YES`.
 
 ## Adjusting the expected seal duration setting
 
-If you pledged a sector, you can use the duration of the operation to update the [`ExpectedSealDuration` setting]({{< relref "config#dealmaking-section" >}}).
+If you pledged a sector, you can use the duration of the operation to update the [`ExpectedSealDuration` setting]({{< relref "configuration#dealmaking-section" >}}).
 
 To find out how long it took to seal the sector, run:
 

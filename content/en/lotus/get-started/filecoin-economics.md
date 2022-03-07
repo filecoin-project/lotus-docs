@@ -4,7 +4,8 @@ description: "This page provide details on filecoin economics a user should be f
 draft: true
 menu:
     lotus:
-        parent: "lotus-getting-started"
+        parent: "lotus-get-started"
+        identifier: "filecoin-economics"
 weight: 120
 toc: true
 ---

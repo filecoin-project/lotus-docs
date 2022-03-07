@@ -17,9 +17,9 @@ Mining will only work if you fully cover the [minimal hardware requirements]({{<
 Before attempting to follow this guide:
 
 - Make sure you meet the [minimal hardware requirements]({{< relref "hardware-requirements" >}}).
-- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/installation/install" >}}) and make sure you have built Lotus with "Native Filecoin FFI". Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
+- Make sure you have followed the instructions to [install the Lotus suite]({{< relref "install" >}}) and make sure you have built Lotus with "Native Filecoin FFI". Once the installation is complete, `lotus`, `lotus-miner` and `lotus-worker` will be installed.
 - Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
-- If you are in China, read the [tips for running in China]({{< relref "../../lotus/installation/install#node-in-china" >}}) page first.
+- If you are in China, read the [tips for running in China]({{< relref "install#node-in-china" >}}) page first.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
@@ -68,7 +68,7 @@ If you opt to run a miner on a different machine as the Lotus Node, set:
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-and **make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}})**. Instructions on how to obtain a token are [available here]({{< relref "../../developers/api-access#obtaining-tokens" >}}).
+and **make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}})**. Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
 
 Similarly, `lotus-miner` (as a client application to the Lotus Miner daemon), can talk to a remote miner by setting:
 
@@ -110,13 +110,13 @@ f3...
 ```
 
 {{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "../../lotus/node-management/manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
+Next make sure to [send some funds]({{< relref "manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
 {{< /alert >}}
 
 For additional information about the different wallets that a miner can use and how to configure them, read the [miner addresses guide]({{< relref "addresses" >}}).
 
 {{< alert icon="tip" >}}
-Safely [backup your wallets]({{< relref "../../lotus/node-management/manage-fil#exporting-and-importing-addresses" >}})!
+Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
 {{< /alert >}}
 
 ### Downloading parameters
@@ -222,7 +222,7 @@ lotus-miner actor set-addrs /ip4/<YOUR_PUBLIC_IP_ADDRESS>/tcp/24001
 Your miner should now be preliminarily set up and running, but **there are still a few more recommended tasks** to be ready for prime-time:
 
 - Set up your [custom storage layout]({{< relref "custom-storage-layout" >}}) (required if you used `--no-local-storage`).
-- Edit the miner [configuration settings]({{< relref "config" >}}) to fit your requirements.
+- Edit the miner [configuration settings]({{< relref "configuration" >}}) to fit your requirements.
 - Learn what is a right moment to [shut down/restart your miner]({{< relref "lifecycle" >}})
 - Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
 - Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the miner's capacity to seal sectors.

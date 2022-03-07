@@ -12,7 +12,7 @@ toc: true
 
 During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `t0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
 
-The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the set up section for more information on how to [manage Lotus wallets]({{< relref "../../lotus/node-management/manage-fil" >}}).
+The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the set up section for more information on how to [manage Lotus wallets]({{< relref "manage-fil" >}}).
 
 The currently configured addresses used by a miner can be listed with:
 
@@ -30,7 +30,7 @@ The owner address corresponds to a Lotus node address provided during the miner 
 - Withdrawing balance from the _miner actor_.
 - Submit _WindowPoSts_, **unless _control addresses_ are defined and have enough balance** (continued below).
 
-The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "../../lotus/node-management/manage-fil" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
+The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "manage-fil" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
 
 The owner address can be updated with the following command:
 
@@ -38,7 +38,7 @@ The owner address can be updated with the following command:
 lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-miner actor set-owner --really-do-it <new address> <new address>
 ```
 
-The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "../../lotus/node-management/manage-fil" >}}).
+The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
 
 ## The worker address
 

@@ -159,7 +159,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    Currently, the latest code on the _master_ branch corresponds to the mainnet.
 
-1. If you are in China, see "[Lotus: tips when running in China]({{< relref "nodes-in-china" >}})".
+1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
 
     a. If you have **an AMD Zen or Intel Ice Lake CPU (or later)**, enable the use of SHA extensions by adding these two environment variables:

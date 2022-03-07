@@ -58,7 +58,7 @@ Default resource value table. Some of these values are _fairly_ conservative:
 The Unseal task has the same resource use as the PreCommit1 task.
 
 {{< alert icon="info" >}}
-The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "config#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
+The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "configuration#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
 {{< /alert >}}
 
 ### Resource windows
@@ -482,7 +482,7 @@ The Lotus Miner needs to be ready to accept API connections from workers.
 
 ### Allow external connections to the miner API
 
-Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network interface as [documented here]({{< relref "config#api-section" >}}). For security, the API port should not be open to the internet.
+Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network interface as [documented here]({{< relref "configuration#api-section" >}}). For security, the API port should not be open to the internet.
 
 ### Obtain an authentication token
 
@@ -571,7 +571,7 @@ Worker 1, host othercomputer
 
 ### Miner and worker co-location
 
-You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "config#storage-section" >}}).
+You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
 
 Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores available and sealing phases to Lotus Miners and Lotus Workers.
 

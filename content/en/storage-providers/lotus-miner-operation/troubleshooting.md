@@ -27,7 +27,7 @@ lotus-miner info
 # WARN  main  lotus-storage-miner/main.go:73  failed to get api endpoint: (/Users/user/.lotusminer) %!w(*errors.errorString=&{API not running (no endpoint)}):
 ```
 
-If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Node needs to [finish syncing]({{< relref "../../lotus/node-management/chain-management#checking-sync-status" >}}).
+If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Node needs to [finish syncing]({{< relref "chain-management#checking-sync-status" >}}).
 
 ## Error: Your computer may not be fast enough
 
@@ -35,7 +35,7 @@ If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Nod
 CAUTION: block production took longer than the block delay. Your computer may not be fast enough to keep up
 ```
 
-If you see this, that means [your computer is too slow]({{< relref "../getting-started/hardware-requirements" >}}) and your blocks are not included in the chain, and you will not receive any rewards.
+If you see this, that means [your computer is too slow]({{< relref "hardware-requirements" >}}) and your blocks are not included in the chain, and you will not receive any rewards.
 
 ## Error: No space left on device
 

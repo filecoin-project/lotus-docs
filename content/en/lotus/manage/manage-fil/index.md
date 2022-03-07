@@ -215,7 +215,7 @@ You can use a Filecoin Lotus node with Ledger hardware to manage your funds.
 
 Make sure you fully trust the Lotus node you are connecting to.
 
-1. In the [Lotus configuration]({{ relref configuration-and-advanced-usage }}) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
+1. In the [Lotus configuration]({{ relref "configuration"uration-and-advanced-usage }}) (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
 
    ```toml
    [Wallet]

@@ -61,7 +61,7 @@ To reduce the output to the messages key values you can use:
 lotus mpool pending --local | grep "Nonce" -A5
 ```
 
-In order to avoid messages from staying long periods in the pool when they are sent, it is possible to adjust the [Lotus Miner fees in the configuration]({{< relref "config" >}}) and use [additional control addresses for _WindowPoSts_]({{< relref "addresses" >}}). Existing messages can be replaced at any time with the procedure explained below.
+In order to avoid messages from staying long periods in the pool when they are sent, it is possible to adjust the [Lotus Miner fees in the configuration]({{< relref "configuration" >}}) and use [additional control addresses for _WindowPoSts_]({{< relref "addresses" >}}). Existing messages can be replaced at any time with the procedure explained below.
 
 ## Replacing messages in the pool
 

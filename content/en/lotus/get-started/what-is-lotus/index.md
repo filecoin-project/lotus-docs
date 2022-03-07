@@ -4,7 +4,7 @@ description: "The surface-level answer to the question 'what is Lotus' often lea
 draft: false
 menu:
     lotus:
-        parent: "lotus-getting-started"
+        parent: lotus-get-started"
 weight: 110
 toc: true
 ---

@@ -7,6 +7,7 @@ draft: false
 menu:
     storage-providers:
         parent: "lotus-miner-config"
+        identifier: "storage-provider-configuration"
 weight: 110
 toc: true
 ---

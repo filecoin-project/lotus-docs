@@ -112,7 +112,7 @@ You can publish the deals whenever you want with the `--publish-now` option:
 lotus-miner storage-deals pending-publish --publish-now
 ```
 
-The miner's default configuration is set to batch multiple deals and publish the message to a maximum of 8 deals per hour. You can change the `PublishMsgPeriod` and `MaxDealsPerPublishMsg` in your [configuration file]({{< relref "config#publishing-several-deals-in-one-message" >}}).
+The miner's default configuration is set to batch multiple deals and publish the message to a maximum of 8 deals per hour. You can change the `PublishMsgPeriod` and `MaxDealsPerPublishMsg` in your [configuration file]({{< relref "configuration#publishing-several-deals-in-one-message" >}}).
 
 ## Blocking storage deals by PieceCID
 
@@ -138,7 +138,7 @@ lotus-miner storage-deals reset-blocklist
 
 A delay between the moment the deals are received and the start of the sealing of the sector that contains the data allows miners to include multiple deals per sector when space permits it. A higher number of deals per sector allows a more efficient operation since it will require less sealing and proving operations.
 
-The delay can be set using the `WaitDealsDelay` option in the `[Sealing]` section of the [configuration]({{< relref "config" >}}).
+The delay can be set using the `WaitDealsDelay` option in the `[Sealing]` section of the [configuration]({{< relref "configuration" >}}).
 
 ## Offline storage deals
 

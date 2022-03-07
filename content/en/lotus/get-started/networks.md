@@ -1,10 +1,11 @@
 ---
-title: "Filecoin Networks"
+title: "Networks"
 description: "This page provide details on available filecoin network and their uses."
 draft: false
 menu:
     lotus:
-        parent: "lotus-getting-started"
+        parent: "lotus-get-started"
+        identifier: "lotus-get-started-networks"
 weight: 130
 toc: true
 ---
