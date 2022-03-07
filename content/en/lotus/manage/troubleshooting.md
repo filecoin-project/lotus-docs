@@ -5,7 +5,7 @@ lead: "This page offers some troubleshooting advice for Lotus nodes by listing s
 draft: false
 menu:
     lotus:
-        parent: "lotus-node-management"
+        parent: "lotus-management"
 weight: 170
 toc: true
 ---
@@ -80,7 +80,7 @@ If you get a `signal killed` error, it could indcate that there was an error dur
 make: *** [Makefile:68: lotus] Error 1
 ```
 
-Double check that your computer meets the [minimum hardware requirements]({{< relref "install#minimal-requirements" >}}) for Lotus.
+Double check that your computer meets the [minimum hardware requirements]({{< relref "prerequisites#minimal-requirements" >}}) for Lotus.
 
 ## Go command not found
 

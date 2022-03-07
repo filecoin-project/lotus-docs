@@ -5,7 +5,7 @@ lead: "Reference documentation for the Lotus command-line interface. This docume
 draft: false
 menu:
     lotus:
-        parent: "lotus-node-management"
+        parent: "lotus-management"
 weight: 180
 toc: true
 ---

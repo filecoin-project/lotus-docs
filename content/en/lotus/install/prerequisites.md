@@ -1,10 +1,11 @@
 ---
-title: "Lotus Prerequisite"
+title: "Prerequisites"
 description: "This page provide details on Lotus installation prerequisites and supported platforms."
 draft: false
 menu:
     lotus:
-        parent: "lotus-installation"
+        parent: "lotus-install"
+        identifier: "lotus-install-prerequisites"
 weight: 110
 toc: true
 ---
@@ -23,8 +24,6 @@ To run a Lotus node your computer must have:
 {{< alert icon="warning" >}}
 These are the minimal requirements to run a Lotus node. [Hardware requirements for Miners]({{< relref "hardware-requirements" >}}) are different.
 {{< /alert >}}
-
-
 
 ## Nodes in China
 
@@ -51,5 +50,5 @@ export GOPROXY=https://goproxy.cn
 Currently, lotus installation is supported on the following platforms.
 
 - [Linux]({{< relref "linux" >}})
-- [MacOS]({{< relref "mac" >}})
-- [Cloud]({{< relref "cloud" >}})
+- [MacOS]({{< relref "macos" >}})
+- [Cloud]({{< relref "cloud-services" >}})

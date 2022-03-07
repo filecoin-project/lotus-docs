@@ -5,7 +5,7 @@ lead: "This guide will show you how to switch between various Filecoin networks 
 draft: false
 menu:
     lotus:
-        parent: "lotus-node-management"
+        parent: "lotus-management"
 weight: 140
 toc: true
 ---

@@ -1,15 +1,14 @@
 ---
-title: "Install on MacOS"
+title: "MacOS"
 description: "This page provide detailed steps to install Lotus on MacOS."
 draft: false
 menu:
     lotus:
-         parent: "lotus-installation"
+         parent: "lotus-install"
+         identifier: "lotus-install-macos"
 weight: 130
 toc: true
 ---
-
-## MacOS
 
 These instructions are specific to macOS. You can install Lotus on macOS 10.11 El Capitan or higher. If you are installing Lotus on a Linux distribution, head over to the [Linux section](#linux).
 
@@ -22,7 +21,7 @@ There are several ways to install Lotus on macOS:
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Miners looking to improve their system efficiency should [install Lotus by building from source](#build-from-source).
 {{< /alert >}}
 
-### Install with Homebrew
+## Install with Homebrew
 
 You can quickly install Lotus using Homebrew on macOS.
 
@@ -40,15 +39,15 @@ You can quickly install Lotus using Homebrew on macOS.
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
 
-### Build from source
+## Build from source
 
 You can build the Lotus executables from source by following these steps.
 
-#### Software dependencies
+### Software dependencies
 
 You must have XCode and Homebrew installed to build Lotus from source.
 
-##### XCode Command Line Tools
+#### XCode Command Line Tools
 
 Lotus requires that X-Code CLI tools be installed before building the Lotus binaries.
 
@@ -73,7 +72,7 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
 
 Next up is installing Lotus' dependencies using Homebrew.
 
-##### Homebrew
+#### Homebrew
 
 We recommend that macOS users use [Homebrew](https://brew.sh) to install each of the necessary packages.
 
@@ -85,14 +84,14 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 
 Next up is cloning the Lotus repository and building the executables.
 
-#### Build and install Lotus
+### Build and install Lotus
 
 The installation instructions are different depending on which CPU is in your Mac:
 
 - [M1-based CPUs](#m1-based-cpus)
 - [Intel and AMD-based CPUs](#intel-and-amd-based-cpus)
 
-##### M1-based CPUs
+#### M1-based CPUs
 
 {{< alert icon="warning">}}
 These instructions are for installing Lotus on an M1-based Mac. If you have an Intel or AMD-based CPU, use the [Intel and AMD-based CPU instructions ↓](#intel-and-amd-based-cpus)
@@ -138,7 +137,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
 
-##### Intel and AMD-based CPUs
+#### Intel and AMD-based CPUs
 
 {{< alert icon="warning">}}
 These instructions are for installing Lotus on an Intel or AMD-based Mac. If you have an M1-based CPU, use the [M1-based CPU instructions ↑](#m1-based-cpus)

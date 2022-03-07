@@ -1,15 +1,14 @@
 ---
-title: "Install on Linux"
+title: "Linux"
 description: "This page provide detailed steps to install Lotus on Linux."
 draft: false
 menu:
     lotus:
-         parent: "lotus-installation"
+         parent: "lotus-install"
+         identifier: "lotus-install-linux"
 weight: 120
 toc: true
 ---
-
-## Linux
 
 The following instructions are specific to Linux installations.
 
@@ -24,7 +23,7 @@ There are several ways to install Lotus on Linux:
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Miners looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
 {{< /alert >}}
 
-### Snap package manager
+## Snap package manager
 
 To install Lotus using Snap, run:
 
@@ -40,7 +39,7 @@ snap install lotus-filecoin --edge
 
 You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.io/lotus-filecoin).
 
-### AppImage
+## AppImage
 
 [AppImages](https://appimage.org/) are portable applications that allow developers to package software and dependencies in a single executable. AppImages run on most Linux-based operating systems.
 
@@ -64,15 +63,15 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
     ./lotus-v1.13.0_linx-amd64.appimage
     ```
 
-### Building from source
+## Building from source
 
 You can build the Lotus executables from source by following these steps.
 
-#### Software dependencies
+### Software dependencies
 
 You will need the following software installed to install and run Lotus.
 
-#### System-specific
+### System-specific
 
 Building Lotus requires some system dependencies, usually provided by your distribution.
 
@@ -106,7 +105,7 @@ Amazon Linux 2:
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y git gcc bzr jq pkgconfig clang llvm mesa-libGL-devel opencl-headers ocl-icd ocl-icd-devel hwloc-devel
 ```
 
-#### Rustup
+### Rustup
 
 Lotus needs [rustup](https://rustup.rs). The easiest way to install it is:
 
@@ -114,7 +113,7 @@ Lotus needs [rustup](https://rustup.rs). The easiest way to install it is:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-#### Go
+### Go
 
 To build Lotus, you need a working installation of [Go 1.16.4 or higher](https://golang.org/dl/):
 
@@ -132,7 +131,7 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 See the [official Golang installation instructions](https://golang.org/doc/install) if you get stuck.
 {{< /alert >}}
 
-#### Build and install Lotus
+### Build and install Lotus
 
 Once all the dependencies are installed, you can build and install Lotus.
 
@@ -213,7 +212,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
 
-#### Native Filecoin FFI
+### Native Filecoin FFI
 
 Some newer CPU architectures like AMD's Zen and Intel's Ice Lake have support for SHA extensions. Having these extensions enabled significantly speeds up your Lotus node. To make full use of your processor's capabilities, make sure you set the following variables **before building from source**:
 
@@ -224,7 +223,7 @@ export FFI_BUILD_FROM_SOURCE=1
 
 This method of building does not produce portable binaries. Make sure you run the binary on the same computer as you built it.
 
-#### Systemd service files
+### Systemd service files
 
 Lotus provides **generic** Systemd service files. They can be installed with:
 

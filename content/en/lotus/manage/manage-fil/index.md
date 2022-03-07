@@ -5,7 +5,7 @@ lead: "This guide will show you how to create and manage a Lotus wallet and how 
 draft: false
 menu:
     lotus:
-        parent: "lotus-node-management"
+        parent: "lotus-management"
 weight: 110
 toc: true
 ---

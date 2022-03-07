@@ -1,10 +1,11 @@
 ---
-title: "Running in cloud"
+title: "Cloud services"
 description: "Running Lotus on a cloud provider is a quick way to get up and running. Using these images, you can be up and running with a fully synced node in less than half an hour without compiling Lotus on your local machine."
 draft: flase
 menu:
     lotus:
-        parent: "lotus-installation"
+        parent: "lotus-install"
+        identifier: "lotus-install-identifier"
 weight: 140
 toc: true
 ---

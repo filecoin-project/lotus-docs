@@ -21,8 +21,8 @@ This process requires you to use multiple terminal windows, so you might find a 
 
 Since spinning up a local-net requires the `lotus` daemon, you need to have Lotus installed. If you have already installed a Lotus node on this computer you can move onto the [next section ↓](#environment-setup)
 
-- [MacOS]({{< relref "install#macos" >}})
-- [Linux]({{< relref "install#linux" >}})
+- [MacOS]({{< relref "prerequisites#macos" >}})
+- [Linux]({{< relref "prerequisites#linux" >}})
 
 Run through the installation steps for your operating system, then return here.
 

@@ -5,7 +5,7 @@ lead: "A multi-signature (multisig) wallet refers to a wallet that requires mult
 draft: false
 menu:
     lotus:
-        parent: "lotus-node-management"
+        parent: "lotus-management"
 weight: 120
 toc: true
 ---

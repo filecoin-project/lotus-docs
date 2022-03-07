@@ -1,6 +1,6 @@
 [[main]]
   name = "Lotus"
-  url = "/lotus/getting-started/what-is-lotus"
+  url = "/lotus/get-started/what-is-lotus"
   weight = 10
 
 [[main]]
@@ -28,7 +28,7 @@
   name = "Get started"
   weight = 10
   identifier = "lotus-get-started"
-  url = "/lotus/get-started"
+  url = "/lotus/get-started/what-is-lotus"
 
 [[lotus]]
   name = "Install"
