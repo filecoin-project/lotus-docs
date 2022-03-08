@@ -5,7 +5,7 @@ lead: "This guide will show you how to use Lotus to retrieve data that has been 
 draft: false
 menu:
     tutorials:
-        parent: "lotus-tutorials"
+        parent: "tutorials-lotus"
 weight: 130
 toc: true
 ---

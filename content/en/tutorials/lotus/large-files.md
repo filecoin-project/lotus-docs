@@ -5,7 +5,7 @@ lead: "This guide goes into more depth for storing very large files (over 1TiB),
 draft: false
 menu:
     tutorials:
-        parent: "lotus-tutorials"
+        parent: "tutorials-lotus"
 weight: 150
 toc: true
 ---

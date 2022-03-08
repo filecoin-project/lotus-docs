@@ -5,7 +5,7 @@ lead: "This guide will show you how to import and make deals to store data on th
 draft: false
 menu:
     tutorials:
-        parent: "lotus-tutorials"
+        parent: "tutorials-lotus"
 weight: 120
 toc: true
 ---

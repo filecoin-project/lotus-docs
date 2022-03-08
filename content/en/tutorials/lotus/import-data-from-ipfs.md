@@ -5,7 +5,7 @@ lead: "This guide will show you how to use Lotus to directly add IPFS-hosted dat
 draft: false
 menu:
     tutorials:
-        parent: "lotus-tutorials"
+        parent: "tutorials-lotus"
 weight: 140
 toc: true
 ---

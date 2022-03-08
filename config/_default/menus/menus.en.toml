@@ -15,7 +15,7 @@
 
 [[main]]
   name = "Tutorials"
-  url = "/tutorials/lotus-tutorials/store-and-retrieve"
+  url = "/tutorials/store-and-retrieve/set-up/"
   weight = 40
 
 [[main]]
@@ -54,6 +54,24 @@
   identifier = "project"
   url = "/lotus/project"
 
+[[developers]]
+  name = "Nodes"
+  weight = 10
+  identifier = "developers-nodes"
+  url = "/developers/networks"
+
+[[developers]]
+  name = "Networks"
+  weight = 30
+  identifier = "developers-networks"
+  url = "/developers/networks"
+
+[[developers]]
+  name = "APIs"
+  weight = 20
+  identifier = "developers-apis"
+  url = "/developers/apis"
+
 [[storage-providers]]
   name = "Get started"
   weight = 20
@@ -78,27 +96,21 @@
   identifier = "storage-providers-seal-workers"
   url = "/storage-providers/seal-workers"
 
-[[developers]]
-  name = "Nodes"
+[[tutorials]]
+  name = "Lotus"
   weight = 10
-  identifier = "developers-nodes"
-  url = "/developers/networks"
+  identifier = "tutorials-lotus"
+  url = "/tutorials/lotus"
 
-[[developers]]
-  name = "Networks"
-  weight = 30
-  identifier = "developers-networks"
-  url = "/developers/networks"
-
-[[developers]]
-  name = "APIs"
+[[tutorials]]
+  name = "Providers"
   weight = 20
-  identifier = "developers-apis"
-  url = "/developers/apis"
+  identifier = "tutorials-providers"
+  url = "/tutorials/lotus"
 
 [[tutorials]]
   name = "Store and retrieve"
-  weight = 10
+  weight = 30
   identifier = "tutorials-store-and-retrieve"
   url = "/tutorials/store-and-retrieve"
 
