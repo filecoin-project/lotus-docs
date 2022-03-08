@@ -1,12 +1,12 @@
 ---
 title: "Backup and restore"
-identifier: "miner-backup-and-restore"
 description: "It's imperative that you frequently backup your Lotus Miner. This page walks you through how to backup your Lotus Miner, and also how to restore your backup."
 lead: "It's imperative that you frequently backup your Lotus Miner. This page walks you through how to backup your Lotus Miner, and also how to restore your backup."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-backup-and-restore"
 weight: 140
 toc: true
 ---

@@ -5,7 +5,7 @@ description: "This guide covers the Lotus Miner log configuration and logging us
 draft: true
 menu:
     storage-providers:
-        parent: "lotus-miner-config"
+        parent: "lotus-miner-configure"
 weight: 160
 toc: true
 ---

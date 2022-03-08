@@ -5,7 +5,8 @@ lead: "This guide shows tips and tricks to improve miner connectivity."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provier-connectivity"
 weight: 130
 toc: true
 ---

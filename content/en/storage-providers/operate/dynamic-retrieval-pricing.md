@@ -5,7 +5,8 @@ lead: "Lotus allows you to set different policies to calculate the quoted price 
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-dynamic-retrieval-pricing"
 weight: 180
 toc: true
 ---

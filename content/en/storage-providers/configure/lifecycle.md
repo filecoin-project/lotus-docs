@@ -5,7 +5,8 @@ lead: "How to safely perform maintenance on a Lotus miner."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-config"
+        parent: "storage-provider-configure"
+        identifier: "storage-provider-lifecycle"
 weight: 455
 toc: true
 ---

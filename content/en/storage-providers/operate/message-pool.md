@@ -5,7 +5,8 @@ lead: "The Message Pool (mpool) is the component of lotus that handles pending m
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-message-pool"
 weight: 210
 toc: true
 ---

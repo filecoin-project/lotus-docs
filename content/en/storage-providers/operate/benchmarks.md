@@ -5,7 +5,8 @@ lead: "Lotus comes with a benchmarking tool that can be used to test how long ea
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-benchmarks"
 weight: 110
 toc: true
 ---
@@ -205,7 +206,7 @@ Available options:
 
 ## GPUs
 
-The list of known-to-work supported GPUs is in the [hardware-requirements]({{< relref "../getting-started/hardware-requirements" >}}).
+The list of known-to-work supported GPUs is in the [hardware-requirements]({{< relref "hardware-requirements" >}}).
 
 ### Enabling a custom GPU
 

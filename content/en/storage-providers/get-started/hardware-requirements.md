@@ -5,14 +5,15 @@ lead: "The hardware requirements for Filecoin mining are tied to the computation
 draft: false
 menu:
     storage-providers:
-                 parent: "miner-init"
+        parent: "storage-providers-get-started"
+        identifier: "storage-providers-hardware-requirements"
 weight: 130
 toc: true
 ---
 
 The Filecoin network requires storage providers to run computationally expensive operations. The cost of these operations depends on which network the storage provider is running; some testnets use a smaller sector size to increase the speeds of transactions artificially. For reference, the requirements listed below correspond to **32GiB sectors**, as used by mainnet and some testnets.
 
-Different Filecoin Miner implementations may distribute sealing tasks differently, for example, using additional workers apart from the Miner. The following are _general_ requirements assuming all the mining operations are performed by the same machine. Resources needed by each operation are detailed later below. For a concrete example of hardware type and usage, see the [mining architectures]({{< relref "mining-architectures" >}}).
+Different Filecoin Miner implementations may distribute sealing tasks differently, for example, using additional workers apart from the Miner. The following are _general_ requirements assuming all the mining operations are performed by the same machine. Resources needed by each operation are detailed later below. For a concrete example of hardware type and usage, see the [provider architectures]({{< relref "architectures" >}}).
 
 ## General hardware requirements
 

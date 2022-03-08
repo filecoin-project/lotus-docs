@@ -5,7 +5,8 @@ lead: "Pledging sectors is a technique to seal sectors with random data to make 
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-sector-pledging"
 weight: 160
 toc: true
 ---

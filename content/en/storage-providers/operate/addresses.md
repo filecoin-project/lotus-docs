@@ -5,7 +5,8 @@ lead: "A miner can be configured with an owner address, a worker address, and ad
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-addresses"
 weight: 120
 toc: true
 ---

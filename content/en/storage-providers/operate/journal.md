@@ -1,11 +1,12 @@
 ---
-title: "Miner journal"
-description: "Miners can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
-lead: "Miners can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
+title: "Journal"
+description: "Storage providers can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
+lead: "Storage providers can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-journal"
 weight: 200
 toc: true
 ---

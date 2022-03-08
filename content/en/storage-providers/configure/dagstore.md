@@ -5,7 +5,8 @@ lead: "The dagstore is a sharded store to hold large IPLD graphs efficiently, pa
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-config"
+        parent: "storage-provider-configure"
+        identifier: "storage-provider-dagstore"
 weight: 160
 toc: true
 ---

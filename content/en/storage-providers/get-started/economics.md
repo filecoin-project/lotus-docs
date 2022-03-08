@@ -1,11 +1,12 @@
 ---
-title: "Storage Provider Economics"
+title: "Economics"
 description: "This guide documents the basic economics of being a storage provider in filecoin."
 lead: "This guide documents the basic economics of being a storage provider in filecoin."
 draft: false
 menu:
     storage-providers:
-        parent: "miner-init"
+        parent: "storage-providers-get-started"
+        identifier: "storage-providers-economics"
 weight: 120
 toc: true
 ---

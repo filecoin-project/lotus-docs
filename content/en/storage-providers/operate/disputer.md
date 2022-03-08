@@ -5,7 +5,8 @@ lead: "Verifying submitted Window PoSts is expensive, and that cost can drastica
 draft: false
 menu:
     docs:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-disputer"
 weight: 190
 toc: true
 ---

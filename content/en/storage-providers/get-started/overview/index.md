@@ -5,7 +5,8 @@ lead: "Miners in the Filecoin network are in charge of storing, providing conten
 draft: false
 menu:
     storage-providers:
-                 parent: "miner-init"
+        parent: "storage-providers-get-started"
+        identifier: "storage-providers-overview"
 weight: 110
 toc: true
 ---

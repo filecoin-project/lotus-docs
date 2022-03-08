@@ -5,7 +5,8 @@ lead: "This page offers some troubleshooting advice for Lotus Miners by listing 
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-troubleshooting"
 weight: 230
 toc: true
 ---

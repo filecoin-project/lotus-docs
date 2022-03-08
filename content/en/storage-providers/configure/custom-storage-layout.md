@@ -5,7 +5,8 @@ lead: "This guide describes how to specify custom storage locations for the Lotu
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-config"
+        parent: "storage-provider-configure"
+        identifier: "storage-provider-custom-storage-layout"
 weight: 120
 toc: true
 ---

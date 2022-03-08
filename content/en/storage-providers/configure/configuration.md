@@ -1,13 +1,12 @@
 ---
-title: "Configuration"
-identifier: "storage-provider-configuration"
+title: "Configure"
 description: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
 lead: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-config"
-        identifier: "storage-provider-configuration"
+        parent: "storage-provider-configure"
+        identifier: "storage-provider-configure"
 weight: 110
 toc: true
 ---

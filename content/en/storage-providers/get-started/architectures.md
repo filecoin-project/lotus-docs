@@ -1,11 +1,12 @@
 ---
-title: "Mining architectures"
+title: "Architectures"
 description: "Filecoin allows anyone to set up a mining operation to participate in a global, distributed storage market."
 breadcrumb: 'Mining architectures'
 draft: false
 menu:
     storage-providers:
-        parent: "miner-init"
+        parent: "storage-providers-get-started"
+        identifier: "storage-providers-architectures"
 weight: 140
 toc: true
 ---

@@ -5,7 +5,8 @@ lead: "This guide covers how to safely upgrade Lotus when running a miner."
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-upgrades"
 weight: 150
 toc: true
 ---

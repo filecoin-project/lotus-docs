@@ -5,7 +5,8 @@ lead: "This guide describes the different workflows and options that Lotus miner
 draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-operation"
+        parent: "storage-providers-operate"
+        identifier: "storage-provider-manage-storage-deals"
 weight: 170
 toc: true
 ---
