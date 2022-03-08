@@ -71,16 +71,6 @@ lotus-miner sectors status --log 0
 
 Then follow the instructions in the configuration reference linked above.
 
-## Upgrading pledged sectors
-
-The minimum pledge period is 6 months. However, the pledged sector can be replaced before then by replacing it with a new sector containing deals, as long as the replacement sector expires after the pledged sector. The following command marks a sector for _upgrade_:
-
-```sh
-lotus-miner sectors mark-for-upgrade <sector number>
-```
-
-The sector should become inactive within 24 hours after a new replacement sector has sealed. From that point, the pledged storage can be re-used for new sectors.
-
 ## Inspect expiring sectors
 
 You can check which sectors are about to expire. Sectors that will expire within 60 days can be checked by default with the following command:
@@ -135,3 +125,11 @@ Format of sector file:
 ...
 ```
 {{< /alert >}}
+
+## Deprecated features
+
+The following features have been deprecated from the `lotus-miner sectors` subsection:
+
+### Mark for upgrade
+
+The `lotus-miner sectors mark-for-upgrade` command has been deprecated, as of Lotus 1.15.0.
