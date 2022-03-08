@@ -67,7 +67,7 @@ This is a relatively advanced storage provider operation. Users should be famili
 
 You must have to following set up to follow this guide through:
 
-- Lotus 1.14.0 or higher [installed]({{< relref "install">}}).
+- Lotus 1.14.0 or higher [installed]({{< relref "prerequisites">}}).
 - A local [Filecoin network (local-net)]({{< relref "local-network" >}}) running.
 
 ### Create committed-capacity sectors
