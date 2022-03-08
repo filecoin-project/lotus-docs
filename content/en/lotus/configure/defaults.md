@@ -7,6 +7,8 @@ menu:
     lotus:
         parent: "lotus-configure"
         identifier: "lotus-configure-defaults"
+aliases:
+    - /docs/set-up/configuration/
 weight: 110
 toc: true
 ---

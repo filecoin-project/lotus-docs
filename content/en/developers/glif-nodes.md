@@ -5,6 +5,8 @@ draft: false
 menu:
     developers:
              parent: "developers-nodes"
+aliases:
+    - /docs/developers/hosted-lotus/
 weight: 130
 toc: true
 ---

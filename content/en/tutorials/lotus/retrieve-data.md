@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
+aliases:
+    - /docs/developers/retrieve-data/
 weight: 130
 toc: true
 ---

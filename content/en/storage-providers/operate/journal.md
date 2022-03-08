@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-journal"
+aliases:
+    - /docs/storage-providers/miner-journal/
 weight: 200
 toc: true
 ---

@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    - /docs/set-up/chain-management/
 weight: 130
 toc: true
 ---

@@ -5,6 +5,9 @@ draft: false
 menu:
     lotus:
         parent: "lotus-get-started"
+aliases:
+    - /docs/getting-started/what-is-lotus/
+    - /docs/set-up/about/
 weight: 110
 toc: true
 ---

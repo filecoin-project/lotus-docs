@@ -5,8 +5,10 @@ lead: "How to safely perform maintenance on a Lotus miner."
 draft: false
 menu:
     storage-providers:
-        parent: "storage-provider-configure"
-        identifier: "storage-provider-lifecycle"
+        parent: "storage-providers-configure"
+        identifier: "storage-providers-configure-lifecycle"
+aliases:
+    - /docs/storage-providers/lifecycle/
 weight: 455
 toc: true
 ---

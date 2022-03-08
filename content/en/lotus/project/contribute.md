@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
          parent: "project"
+aliases:
+    - /docs/project/contribute/
 weight: 120
 toc: true
 ---

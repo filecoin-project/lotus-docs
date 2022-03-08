@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-dynamic-retrieval-pricing"
+aliases:
+    - /docs/storage-providers/dynamic-retrieval-pricing/
 weight: 180
 toc: true
 ---

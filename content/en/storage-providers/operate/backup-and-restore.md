@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-backup-and-restore"
+aliases:
+    - /docs/storage-providers/backup-and-restore/
 weight: 140
 toc: true
 ---

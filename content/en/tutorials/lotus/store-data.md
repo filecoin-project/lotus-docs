@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
+aliases:
+    - /docs/developers/store-data/
 weight: 120
 toc: true
 ---

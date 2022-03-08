@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    /docs/set-up/upgrade/
 weight: 160
 toc: true
 ---

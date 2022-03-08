@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provier-connectivity"
+aliases:
+    - /docs/storage-providers/connectivity/
 weight: 130
 toc: true
 ---

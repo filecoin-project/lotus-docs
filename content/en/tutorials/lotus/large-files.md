@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
+aliases:
+    - /docs/developers/large-files/
 weight: 150
 toc: true
 ---

@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-providers"
+aliases:
+    - /docs/developers/payment-channels/
 weight: 160
 toc: true
 ---

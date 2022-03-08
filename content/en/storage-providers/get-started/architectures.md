@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-get-started"
         identifier: "storage-providers-architectures"
+aliases:
+    - /docs/storage-providers/mining-architectures/
 weight: 140
 toc: true
 ---

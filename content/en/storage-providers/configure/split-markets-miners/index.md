@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-configure"
         identifier: "storage-providers-split-markets"
+aliases:
+    - /docs/storage-providers/split-markets-miners/
 weight: 140
 toc: true
 ---

@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-configure"
+aliases:
+    - /docs/set-up/nodes-in-china/
 toc: true
 ---
 

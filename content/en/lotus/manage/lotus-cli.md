@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    - /docs/apis/cli/
 weight: 180
 toc: true
 ---

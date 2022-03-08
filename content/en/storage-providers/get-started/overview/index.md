@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-get-started"
         identifier: "storage-providers-overview"
+aliases:
+    - /docs/storage-providers/overview/
 weight: 110
 toc: true
 ---

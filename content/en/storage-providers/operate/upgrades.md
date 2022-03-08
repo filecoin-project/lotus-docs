@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-upgrades"
+aliases:
+    - /docs/storage-providers/upgrades/
 weight: 150
 toc: true
 ---

@@ -6,6 +6,8 @@ menu:
     lotus:
         parent: "lotus-install"
         identifier: "lotus-install-prerequisites"
+aliases:
+    - /docs/set-up/install/
 weight: 110
 toc: true
 ---

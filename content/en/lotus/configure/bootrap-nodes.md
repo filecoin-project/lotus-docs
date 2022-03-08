@@ -7,6 +7,8 @@ menu:
     lotus:
         parent: "lotus-configure"
         identifier: "bootstrap-nodes"
+aliases:
+    - /docs/set-up/bootstrappers/
 weight: 140
 toc: true
 ---

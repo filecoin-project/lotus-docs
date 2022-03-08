@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-get-started"
         identifier: "storage-providers-hardware-requirements"
+aliases:
+    - /docs/storage-providers/hardware-requirements/
 weight: 130
 toc: true
 ---

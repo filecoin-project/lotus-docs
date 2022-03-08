@@ -5,8 +5,10 @@ lead: "This guide describes how to specify custom storage locations for the Lotu
 draft: false
 menu:
     storage-providers:
-        parent: "storage-provider-configure"
-        identifier: "storage-provider-custom-storage-layout"
+        parent: "storage-providers-configure"
+        identifier: "storage-providers-configure-custom-storage-layout"
+aliases:
+    - /docs/storage-providers/custom-storage-layout/
 weight: 120
 toc: true
 ---

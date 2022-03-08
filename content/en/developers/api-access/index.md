@@ -6,6 +6,8 @@ draft: false
 menu:
     developers:
              parent: "developers-apis"
+aliases:
+    - /docs/developers/api-access/
 weight: 110
 toc: true
 ---

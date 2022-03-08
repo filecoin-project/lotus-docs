@@ -6,6 +6,8 @@ menu:
     lotus:
         parent: "lotus-install"
         identifier: "lotus-install-identifier"
+aliases:
+    - /docs/set-up/running-in-the-cloud/
 weight: 140
 toc: true
 ---

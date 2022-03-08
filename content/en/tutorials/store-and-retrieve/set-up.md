@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-store-and-retrieve"
+aliases:
+    - /docs/tutorials/store-and-retrieve/
 weight: 110
 toc: true
 ---

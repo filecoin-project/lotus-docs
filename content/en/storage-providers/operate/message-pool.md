@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-message-pool"
+aliases:
+    - /docs/storage-providers/message-pool/
 weight: 210
 toc: true
 ---

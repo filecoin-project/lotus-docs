@@ -6,6 +6,8 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
+aliases:
+    - /docs/developers/import-data-from-ipfs/
 weight: 140
 toc: true
 ---

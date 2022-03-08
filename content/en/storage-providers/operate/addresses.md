@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-addresses"
+aliases:
+    - /docs/storage-providers/addresses/
 weight: 120
 toc: true
 ---

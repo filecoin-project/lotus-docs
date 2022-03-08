@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    - /docs/set-up/multisig/
 weight: 120
 toc: true
 ---

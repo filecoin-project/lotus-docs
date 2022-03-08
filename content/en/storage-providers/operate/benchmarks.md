@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-benchmarks"
+aliases:
+    - /docs/storage-providers/benchmarks/
 weight: 110
 toc: true
 ---

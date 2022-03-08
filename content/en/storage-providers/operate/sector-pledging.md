@@ -7,6 +7,8 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-sector-pledging"
+aliases:
+    - /docs/storage-providers/sector-pledging/
 weight: 160
 toc: true
 ---

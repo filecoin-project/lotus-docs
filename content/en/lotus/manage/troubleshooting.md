@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    - /docs/set-up/troubleshooting/
 weight: 170
 toc: true
 ---

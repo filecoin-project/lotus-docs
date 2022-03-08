@@ -1,11 +1,14 @@
 ---
-title: "API troubleshooting"
+title: "Troubleshooting"
 description: "This page offers some troubleshooting advice for Lotus API users by listing some of the most common errors that they can come accross."
 lead: "This page offers some troubleshooting advice for Lotus API users by listing some of the most common errors that they can come accross."
 draft: false
 menu:
     developers:
-             parent: "developers-nodes"
+             parent: "developers-apis"
+             identifier: "developers-apis-troubleshooting"
+aliases:
+    - /docs/developers/troubleshooting/
 weight: 140 
 toc: true
 ---

@@ -5,8 +5,10 @@ lead: "This guide describes the necessary steps to configure a Lotus miner for p
 draft: false
 menu:
     storage-providers:
-        parent: "storage-provider-configure"
-        identifier: "storage-provider-setup"
+        parent: "storage-providers-configure"
+        identifier: "storage-providers-configure-setup"
+aliases:
+    - /docs/storage-providers/setup/
 weight: 100
 toc: true
 ---

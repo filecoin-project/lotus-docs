@@ -6,6 +6,8 @@ draft: false
 menu:
     lotus:
         parent: "lotus-management"
+aliases:
+    - /docs/set-up/manage-fil/
 weight: 110
 toc: true
 ---

@@ -1,11 +1,14 @@
 ---
-title: Backup and restore a node
+title: "Backup and restore"
 description: "You can backup your Lotus node. You can then restore this backup if something goes wrong, or you simply wish to move your Lotus node from one computer to another."
 lead: "You can backup your Lotus node. You can then restore this backup if something goes wrong, or you simply wish to move your Lotus node from one computer to another."
 draft: false
 menu:
     lotus:
         parent: "lotus-management"
+        identifier: "lotus-management-backup-and-restore"
+aliases:
+    - /docs/set-up/backup-and-restore/
 weight: 150
 toc: true
 ---

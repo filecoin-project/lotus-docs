@@ -6,6 +6,8 @@ draft: false
 menu:
     developers:
              parent: "developers-apis"
+aliases:
+    - /docs/apis/json-rpc/
 weight: 150
 toc: true
 ---
