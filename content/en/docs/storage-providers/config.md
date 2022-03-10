@@ -130,7 +130,7 @@ The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR +
 
 ### Disabling New Sector for Deal
 
-The `MakeNewSectorForDeals` boolean option can be used to control if a new sector would be created for the new incoming deals. This option can be used to ensure that all new deals are being sealed as snap deals into the CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap deals.
+The `MakeNewSectorForDeals` boolean option can be used to control if a new sector would be created for the new incoming deals. This option can set to `false` to ensure that all new deals are being sealed as snap deals into the CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap deals.
 
 ### Publishing several deals in one message
 
