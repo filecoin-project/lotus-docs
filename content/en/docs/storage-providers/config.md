@@ -126,6 +126,12 @@ This section controls parameters for making storage and retrieval deals:
 The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR + WaitDealsDelay) * 1.5`. This equation ensures that the miner does not commit to having the sector sealed too soon.
 {{< /alert >}}
 
+`StartEpochSealingBuffer` is minimum start epoch buffer to give time for sealing of sector with deal. In case a sector has multiple deal, this parameter enforces that sectors are packed for sealing/updating even if the nearest deal start date is close enough to the present even if there are more deals to be waited upon.
+
+### Disabling New Sector for Deal
+
+The `MakeNewSectorForDeals` boolean option can be used to control if a new sector would be created for the new incoming deals. This option can be used to ensure that all new deals are being sealed as snap deals into the CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap deals.
+
 ### Publishing several deals in one message
 
 The `PublishStorageDeals` message can publish many deals in a single message.
