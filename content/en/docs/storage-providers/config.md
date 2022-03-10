@@ -128,6 +128,17 @@ The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR +
 
 `StartEpochSealingBuffer` is minimum start epoch buffer to give time for sealing of sector with deal. In case a sector has multiple deal, this parameter enforces that sectors are packed for sealing/updating even if the nearest deal start date is close enough to the present even if there are more deals to be waited upon.
 
+```shell
+Example
+  Current Epoch:      1620712
+  Deal 1 Start Epoch: 1622712
+  Deal 2 Start Epoch: 1621712
+  Deal 3 Start Epoch: 1621212
+  Sector Number:      500
+  `StartEpochSealingBuffer` is set to `480`
+  The `WaitDealsDelay` is not over but as soon as network reaches epoch 1620732(20 epoch from now), the sector 500 will start sealing data for deal 1,2 and 3 as the buffer of 480 epochs has been reached for the deal 3(1621212-1620732=480). The new deal `Deal 4` that could have been sealed in setor 500 will now be sealed in sector 501. This will avoid delays with sealing and ensure that data is sealed before the deal start epoch.
+```
+
 ### Disabling New Sector for Deal
 
 The `MakeNewSectorForDeals` boolean option can be used to control if a new sector would be created for the new incoming deals. This option can set to `false` to ensure that all new deals are being sealed as snap deals into the CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap deals.
