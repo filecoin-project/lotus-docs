@@ -168,9 +168,9 @@ Note that if you have split your markets subsystem, you will need to specify `--
 
 ## Configuration
 
-You can adjust the values under the `IndexProvider` session in the `config.toml` of your market process to configure indexes' announcement to the indexer.
+You can adjust the values under the `IndexProvider` section in the `config.toml` of your market process to configure indexes' announcement to the indexer.
 
-If the session doesn't exist, you can manually add it:
+If the section doesn't exist, you can manually add it:
 
 ```toml
 [IndexProvider]
