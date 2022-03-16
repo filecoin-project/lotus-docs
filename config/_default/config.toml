@@ -1,4 +1,4 @@
-baseurl = "https://lotus.filecoin.io/"
+baseurl = ""
 canonifyURLs = false
 disableAliases = false
 disableHugoGeneratorInject = true
