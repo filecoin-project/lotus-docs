@@ -18,11 +18,11 @@
   url = "/tutorials/store-and-retrieve/set-up/"
   weight = 40
 
-# [[main]]
-#   name = "Knowledge Base"
-#   url = "/kb"
-#   identifier = "kb"
-#   weight = 50
+[[main]]
+  name = "Knowledge Base"
+  url = "/kb"
+  identifier = "kb"
+  weight = 50
 
 [[lotus]]
   name = "Get started"
