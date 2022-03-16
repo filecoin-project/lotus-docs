@@ -1,54 +1,118 @@
-[[docs]]
-  name = "Getting started"
+[[main]]
+  name = "Lotus"
+  url = "/lotus/get-started/what-is-lotus"
   weight = 10
-  identifier = "getting-started"
-  url = "getting-started"
 
-[[docs]]
-  name = "Node Set-up"
-  weight = 15
-  identifier = "node-set-up"
-  url = "node-set-up"
-
-[[docs]]
+[[main]]
   name = "Developers"
-  weight = 17
-  identifier = "developers"
-  url = "developers"
-
-[[docs]]
-  name = "Storage providers"
+  url = "/developers/apis/json-rpc/"
   weight = 20
-  identifier = "storage-providers"
-  url = "/storage-providers"
 
-[[docs]]
-  name = "Tutorials"
+[[main]]
+  name = "Storage Providers"
+  url = "/storage-providers/get-started/overview"
   weight = 30
-  identifier = "tutorials"
-  url = "/tutorials"
 
-[[docs]]
-  name = "APIs"
+[[main]]
+  name = "Tutorials"
+  url = "/tutorials/store-and-retrieve/set-up/"
   weight = 40
-  identifier = "apis"
-  url = "/apis"
 
-[[docs]]
+[[main]]
+  name = "Knowledge Base"
+  url = "/kb"
+  identifier = "kb"
+  weight = 50
+
+[[lotus]]
+  name = "Get started"
+  weight = 10
+  identifier = "lotus-get-started"
+  url = "/lotus/get-started/what-is-lotus"
+
+[[lotus]]
+  name = "Install"
+  weight = 20
+  identifier = "lotus-install"
+  url = "/lotus/install"
+
+[[lotus]]
+  name = "Configure"
+  weight = 30
+  identifier = "lotus-configure"
+  url = "/lotus/lotus-configure"
+
+[[lotus]]
+  name = "Manage"
+  weight = 40
+  identifier = "lotus-management"
+  url = "/lotus/manage"
+
+[[lotus]]
   name = "Project"
   weight = 50
   identifier = "project"
-  url = "/project"
+  url = "/lotus/project"
 
-[[main]]
-  name = "Docs"
-  url = "/docs/set-up/install/"
+[[developers]]
+  name = "Nodes"
   weight = 10
+  identifier = "developers-nodes"
+  url = "/developers/networks"
 
-#[[main]]
-#  name = "Blog"
-#  url = "/blog/"
-#  weight = 20
+[[developers]]
+  name = "Networks"
+  weight = 30
+  identifier = "developers-networks"
+  url = "/developers/networks"
+
+[[developers]]
+  name = "APIs"
+  weight = 20
+  identifier = "developers-apis"
+  url = "/developers/apis"
+
+[[storage-providers]]
+  name = "Get started"
+  weight = 20
+  identifier = "storage-providers-get-started"
+  url = "/storage-providers/get-started"
+
+[[storage-providers]]
+  name = "Configure"
+  weight = 25
+  identifier = "storage-providers-configure"
+  url = "/storage-providers/configure"
+
+[[storage-providers]]
+  name = "Operate"
+  weight = 30
+  identifier = "storage-providers-operate"
+  url = "/storage-providers/operate"
+
+[[storage-providers]]
+  name = "Seal Workers"
+  weight = 40
+  identifier = "storage-providers-seal-workers"
+  url = "/storage-providers/seal-workers"
+
+[[tutorials]]
+  name = "Lotus"
+  weight = 10
+  identifier = "tutorials-lotus"
+  url = "/tutorials/lotus"
+
+[[tutorials]]
+  name = "Providers"
+  weight = 20
+  identifier = "tutorials-providers"
+  url = "/tutorials/lotus"
+
+[[tutorials]]
+  name = "Store and retrieve"
+  weight = 30
+  identifier = "tutorials-store-and-retrieve"
+  url = "/tutorials/store-and-retrieve"
 
 [[social]]
   name = "GitHub"
@@ -60,7 +124,7 @@
 [[social]]
   name = "Twitter"
   pre = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-twitter\"><path d=\"M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z\"></path></svg>"
-  url = "https://twitter.com/protocollabs"
+  url = "https://twitter.com/lotus_web3"
   weight = 20
 
 # [[footer]]

@@ -27,13 +27,16 @@
         <button type="button" class="btn-close text-reset me-2" data-bs-dismiss="offcanvas" aria-label="Close main menu"></button>
       </div>
       <div class="offcanvas-body px-4">
-        <h3 class="h6 text-uppercase mb-3 d-md-none">Main</h3>
         <ul class="nav flex-column flex-md-row ms-md-n3">
           {{- $current := . -}}
           {{ range .Site.Menus.main -}}
             {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) -}}
             {{- $active = or $active (eq .Name $current.Title) -}}
-            {{- $active = or $active (and (eq .Name "Docs") (eq $current.Section "docs")) -}}
+            {{- $active = or $active (and (eq .Name "Lotus") (eq $current.Section "lotus")) -}}
+            {{- $active = or $active (and (eq .Name "Storage Providers") (eq $current.Section "storage-providers")) -}}
+            {{- $active = or $active (and (eq .Name "Developers") (eq $current.Section "developers")) -}}
+            {{- $active = or $active (and (eq .Name "Knowledge Base") (eq $current.Section "kb")) -}}
+            {{- $active = or $active (and (eq .Name "Tutorials") (eq $current.Section "tutorials")) -}}
             {{- $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog" "authors")) -}}
             <li class="nav-item">
               <a class="nav-link ps-0 py-1{{ if $active }} active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
@@ -81,10 +84,7 @@
           {{ end -}}
         {{ end -}}
       {{ end -}}
-        <!--
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="/docs/contributing/how-to-contribute/">Help Translate</a></li>
-        -->
       </ul>
     </div>
     {{ end -}}
@@ -95,7 +95,7 @@
 </div>
 {{ end -}}
 
-{{ if eq .Section "docs" -}}
+{{ if not .IsHome -}}
 <nav class="doks-subnavbar py-2 sticky-lg-top{{ if eq .Site.Params.options.flexSearch false }} d-lg-none{{ end }}" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
 

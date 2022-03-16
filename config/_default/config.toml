@@ -1,6 +1,6 @@
-baseurl = "https://lotus.filecoin.io/"
+baseurl = "/"
 canonifyURLs = false
-disableAliases = true
+disableAliases = false
 disableHugoGeneratorInject = true
 enableEmoji = true
 enableGitInfo = false
@@ -59,6 +59,8 @@ priority = 0.5
 
 [taxonomies]
 contributor = "contributors"
+areas = "areas"
+type = "types"
 
 [permalinks]
 blog = "/blog/:title/"
