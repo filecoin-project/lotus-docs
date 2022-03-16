@@ -2,11 +2,12 @@
 title: "Index provider"
 description: "Index provider is the backbone of content routing in Filecoin network: it advertises the availability of the content provided by a storage provider to indexer nodes."
 lead: "The index provider generates advertisements from the deals made by a storage provider and announces changes to the indexer nodes for further processing."
-draft: true
+draft: false 
 menu:
     docs:
         parent: "storage-providers"
-weight: 436
+        identifier: "storage-providers-index-provider"
+weight: 452
 toc: true
 ---
 
@@ -215,3 +216,4 @@ If the section doesn't exist, you can manually add it:
   # env var: LOTUS_INDEXPROVIDER_PURGECACHEONSTART
   #PurgeCacheOnStart = false
 ```
+
