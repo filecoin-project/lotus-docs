@@ -18,7 +18,8 @@ areas: ["lotus-shed", "Linux", "Lotus Node"]
 When installing lotus for mainnet, lotus-shed is not installed by default. 
 
 # Environment:
-* Mainnet
+
+- Mainnet
 
 # Resolution:
 
