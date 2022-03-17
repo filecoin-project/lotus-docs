@@ -136,7 +136,21 @@
 <div class="container-xxl">
   <aside class="doks-sidebar">
     <nav id="doks-docs-nav" class="collapse d-lg-none" aria-label="Tertiary navigation">
-      {{ partial "sidebar/docs-menu.html" . }}
+        {{ if eq .Section "developers" -}}
+            {{ partial "sidebar/developers-menu.html" . }}
+        {{ end -}}
+        {{ if eq .Section "lotus" -}}
+            {{ partial "sidebar/lotus-menu.html" . }}
+        {{ end -}}
+        {{ if eq .Section "storage-providers" -}}
+            {{ partial "sidebar/storage-providers-menu.html" . }}
+        {{ end -}}
+        {{ if eq .Section "tutorials" -}}
+            {{ partial "sidebar/tutorials-menu.html" . }}
+        {{ end -}}
+        {{ if eq .Section "knowledge-base" -}}
+            {{ partial "sidebar/knowledge-base-menu.html" . }}
+        {{ end -}}
     </nav>
   </aside>
 </div>

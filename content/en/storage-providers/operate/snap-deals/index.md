@@ -4,8 +4,8 @@ description: "A one-message protocol for updating any sector with new data witho
 lead: "A one-message protocol for updating any sector with new data without re-sealing. This allows users to utilize the confirmed storage available in the network, while also allowing storage providers to earn storage rewards without having to seal new sectors."
 draft: false
 menu:
-    docs:
-        parent: "storage-providers"
+    storage-providers:
+        parent: "storage-providers-operate"
 weight: 492
 toc: true
 ---
