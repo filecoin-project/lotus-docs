@@ -39,7 +39,7 @@ All lotus process will run as a non-root user. Please make sure to open relevant
 
 ### Installation
 
-1. Install Lotus binaries by following the [Linux install guide - build from source]({{<relref "../../lotus/installation/linux/#building-from-source" >}}).
+1. Install Lotus binaries by following the [Linux install guide - build from source]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
 
 ```shell
 sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -90,7 +90,7 @@ make clean calibnet
 ### Configuration
 
 
-1. Initialize the lotus node and wait for the sync to complete. If you are configuring the miner for mainnet then, please [import a snapshot]({{<relref "../../lotus/node-management/chain-management/#lightweight-snapshot">}}) and wait for lotus node to get synced.
+1. Initialize the lotus node and wait for the sync to complete. If you are configuring the miner for mainnet then, please [import a snapshot]({{<relref "../../lotus/manage/chain-management/#lightweight-snapshot">}}) and wait for lotus node to get synced.
 
 ```shell
 export GOLOG_OUTPUT=file >> ~/.bashrc
@@ -158,7 +158,7 @@ lotus wallet list
 
 ### Installation
 
-1. Install Lotus binaries by following the [Linux install guide(build from source)]({{<relref "../../lotus/installation/linux/#building-from-source" >}}).
+1. Install Lotus binaries by following the [Linux install guide(build from source)]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
 
 ```shell
 sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -278,7 +278,7 @@ Choosing port 0.0.0.0 on ListenAddress allows the miner process to listen on bot
 lotus-miner run
 ```
 
-6. Test that your miner is reachable on its public address. Go through [connectivity guide]({{<relref "../../storage-providers/lotus-miner-operation/connectivity" >}}) in case you need more information about this. Please do not proceed with next step if your miner is not reachable.
+6. Test that your miner is reachable on its public address. Go through [connectivity guide]({{<relref "../../storage-providers/operate/connectivity" >}}) in case you need more information about this. Please do not proceed with next step if your miner is not reachable.
 
 ```shell
 $ lotus-miner net reachability

@@ -29,7 +29,7 @@ This tutorial is use the miner setup under the How To Run A Miner tutorials.TODO
 
 ### Installation
 
-1. Install Lotus binaries by following the [Linux install guide - build from source]({{<relref "../../lotus/installation/linux/#building-from-source" >}}).
+1. Install Lotus binaries by following the [Linux install guide - build from source]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
 
 ```shell
 sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
