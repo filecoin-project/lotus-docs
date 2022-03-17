@@ -5,7 +5,7 @@ lead: "This is a step by step guide on how to configure and use CUDA architectur
 draft: false
 menu:
     tutorials:
-        parent: "lotus-miner-tutorials"
+        parent: "tutorials-providers"
 weight: 130
 toc: true
 ---

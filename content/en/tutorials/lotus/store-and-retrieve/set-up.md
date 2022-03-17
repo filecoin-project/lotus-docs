@@ -5,7 +5,7 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     tutorials:
-        parent: "tutorials-store-and-retrieve"
+        parent: "tutorials-lotus"
 aliases:
     - /docs/tutorials/store-and-retrieve/
 weight: 110

@@ -5,11 +5,15 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     tutorials:
-        parent: "tutorials-store-and-retrieve"
+        parent: "tutorials-lotus"
         identifier: "tutorials-store-and-retrieve-retrieve-data"
 weight: 130
 toc: true
 ---
+
+Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a [payment channel]({{< relref "payment-channels" >}}). Unlike storage deals, retrieval deals happen off-chain.
+
+Currently, Lotus supports direct retrieval from the storage miners which originally stored the data, although, per the network's specification, it is planned to support independent retrieval miners that are specifically dedicated to that business by making retrieval an efficient, fast and reliable operation. At that point, clients will be able to search the network for all possible providers of their desired data (via the DHT, the chain, or out-of-band aggregators), compare deal terms, and chose the best retrieval option for their needs.
 
 In the previous step, you stored some data on the Filecoin network. It takes up to 24 hours for a storage provider to _seal_ the data. If it's been more than 24 hours since you completed the last section, great! If not, don't worry; you can still follow this page to retrieve some example data that's already on the Filecoin network.
 
@@ -123,3 +127,7 @@ Next up is creating the command for Lotus to run. The structure for a retrieval 
 1. That's it!
 
 This marks the end of the Filecoin Store and Retrieve tutorial! By now you should have a good understanding of how the storage and retrieval process works on the Filecoin network, and also have some ideas on how to integrate this process into your projects! Feel free to carry on playing around with storing and retrieving data using Lotus and Filecoin. If you need a hand or get stuck, check out the [Filecoin Slack](https://filecoin.io/slack/) for help.
+
+{{< alert >}}
+If you added a CAR file serializing an IPLD-DAG with a format that cannot be readily turned into a file (i.e. anything non unixfs), pass the `--car` flag and deserialize your DAG manually as needed.
+{{< /alert >}}

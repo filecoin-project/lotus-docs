@@ -5,7 +5,7 @@ lead: "This is a step by step guide on how to setup a lotus miner in calibnet. S
 draft: false
 menu:
     tutorials:
-        parent: "lotus-miner-tutorials"
+        parent: "tutorials-providers"
 weight: 110
 toc: true
 ---

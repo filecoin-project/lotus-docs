@@ -5,7 +5,7 @@ lead: "This is a step by step guide on how to setup a lotus seal-worker and conn
 draft: false
 menu:
     tutorials:
-        parent: "lotus-miner-tutorials"
+        parent: "tutorials-providers"
 weight: 120
 toc: true
 ---

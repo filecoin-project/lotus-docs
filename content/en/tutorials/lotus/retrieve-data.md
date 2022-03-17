@@ -2,7 +2,7 @@
 title: "Retrieve data"
 description: "This guide will show you how to use Lotus to retrieve data that has been stored on the Filecoin network."
 lead: "This guide will show you how to use Lotus to retrieve data that has been stored on the Filecoin network."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"
