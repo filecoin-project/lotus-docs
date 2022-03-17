@@ -5,7 +5,7 @@ lead: "A one-message protocol for updating any sector with new data without re-s
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers"
+        parent: "storage-providers-operate"
 weight: 492
 toc: true
 ---
