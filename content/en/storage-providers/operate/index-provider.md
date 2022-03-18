@@ -65,9 +65,16 @@ The exact storage usage depends on the number of multihashes stored in a single 
 
 Based on the equation above, caching 128-bit long multihashes will result in chunk sizes of 0.25MiB with maximum cache growth of 256 MiB for advertisements with a single chunk.
 
-## First-time migration
+## Become a Index Provider
 
-A one-off migration is needed to enable index provider migration to re-generate DagStore CARv2 indices. To enable the indexing integration, follow the following step:
+{{< alert icon="tip" >}}
+This feature is available in lotus v1.15.1 and up.
+{{< /alert >}}
+
+If you are a new Storage Provider created on or after v1.15.1, you can move directly to step 11 in the [one-off migration](#one-off-migration) section after you have finished your first storage deal.
+
+### One-off migration
+If you are a Storage Provider who have previously run the markets-module, you´ll need to do a one-off migration to re-generate the DagStore with the new CARv2 indexing format. You can confirm that you have 
 
 1. **Stop the `daemon` `miner` and  `markets` processes**
 
