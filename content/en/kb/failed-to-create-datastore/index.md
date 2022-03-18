@@ -1,10 +1,21 @@
-
-
-
+---
+title: "Failed to create data store"
+description: "This is a solution for the failed to create data store error."
+date: 2022-03-18T12:00:35+01:00
+lastmod: 2022-03-18T12:00:35+01:00
+draft: false
+menu:
+  kb:
+    parent: "browse"
+toc: false
+pinned: false
+types: ["solution"]
+areas: ["sealing", "Lotus Worker", "Lotus Miner"]
+---
 
 # Problem:
 
-The following error shows up in the worker's miner.log.
+The following error shows up in the worker's log.
 ```
 {"level":"warn","ts":"2021-12-05T13:19:00.649+0100","logger":"ffi-wrapper","caller":"ffiwrapper/ffiwrapper.go:52","msg":"copied different amount than expected: 65536 != 4161536"}
 ```
