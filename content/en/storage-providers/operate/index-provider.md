@@ -65,7 +65,7 @@ The exact storage usage depends on the number of multihashes stored in a single 
 
 Based on the equation above, caching 128-bit long multihashes will result in chunk sizes of 0.25MiB with maximum cache growth of 256 MiB for advertisements with a single chunk.
 
-## Become an Index Provider
+## Become an index provider
 
 {{< alert icon="tip" >}}
  This feature is available in lotus v1.15.1 and up.
