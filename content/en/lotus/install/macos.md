@@ -113,7 +113,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
 
     {{< alert icon="tip">}}
-    If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →](./switch-networks.md)
+    If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide](./switch-networks.md)
     {{< /alert >}}
 
 1. Create necessary environment variable to allow Lotus to run on ARM architecture:
