@@ -32,4 +32,4 @@ ERROR: could not get API info for StorageMiner: repo directory does not exist. M
 The miner cannot find the .lotusminer path. The env variable `LOTUS_MINER_PATH` needs to be set in the active terminal.  
 
 ## Extras
-[https://filecoinproject.slack.com/archives/CPFTWMY7N/p1641409490259000](https://filecoinproject.slack.com/archives/CPFTWMY7N/p1641409490259000)
+[Filecoin Slack](https://filecoinproject.slack.com/archives/CPFTWMY7N/p1641409490259000)
