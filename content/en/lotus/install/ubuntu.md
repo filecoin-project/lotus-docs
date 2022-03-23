@@ -17,9 +17,9 @@ There are several ways to install Lotus on Linux:
 + [AppImages](#appimage)
 + [Building from source](#building-from-source).
 
-{{< alert icon="warning">}}**Miners should build from source**.
+{{< alert icon="warning">}}**Storage providers should build from source**.
 
-Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Miners looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
+Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Storage providers looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
 {{< /alert >}}
 
 ## Snap package manager

@@ -24,7 +24,7 @@ To run a Lotus node your computer must have:
 - Enough space to store the current Lotus chain (preferably on an SSD storage medium). The chain grows at approximately 38 GiB per day. The chain can be [synced from trusted state snapshots and compacted or pruned]({{< relref "chain-management" >}}) to a minimum size of around 33Gib.  The full history was around 10TiB in June of 2021.
 
 {{< alert icon="warning" >}}
-These are the minimal requirements to run a Lotus node. [Hardware requirements for Miners]({{< relref "hardware-requirements" >}}) are different.
+These are the minimal requirements to run a Lotus node. [Hardware requirements for storage providers]({{< relref "hardware-requirements" >}}) are different.
 {{< /alert >}}
 
 ## Nodes in China
