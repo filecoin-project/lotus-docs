@@ -13,7 +13,6 @@ types: ["solution"]
 areas: ["sealing", "Lotus Worker", "Lotus Miner"]
 ---
 
-
 The following error shows up in the worker's log.
 
 ```json
@@ -28,13 +27,12 @@ add piece:\n    github.com/filecoin-project/lotus/extern/storage-sealing.(*Seali
 storage call error 0: generating piece commitment: failed to build tree\n\nCaused by:\n    0: failed to create data store\n    1: No such file or directory (os error 2)"
 ```
 
-
 The key error from the above output is `failed to create data store\n    1: No such file or directory (os error 2)"`
 
 ## Environment
 
-* Calibnet
-* Mainnet 
+- Calibnet
+- Mainnet 
 
 ## Resolution
 
