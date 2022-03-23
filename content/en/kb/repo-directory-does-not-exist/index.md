@@ -13,7 +13,6 @@ types: ["solution"]
 areas: ["repo", "env", "Lotus Miner"]
 ---
 
-
 ## Problem
 
 When running `lotus-miner auth create-token --perm admin` the following error occures (could happen with any lotus-miner commands). 
