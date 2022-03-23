@@ -27,7 +27,7 @@ ERROR: could not get API info for StorageMiner: repo directory does not exist. M
 * Calibnet
 * Devnet
 
-# Resolution
+## Resolution
 
 The miner cannot find the .lotusminer path. The env variable `LOTUS_MINER_PATH` needs to be set in the active terminal.  
 
