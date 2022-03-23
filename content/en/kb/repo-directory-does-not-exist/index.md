@@ -23,9 +23,9 @@ ERROR: could not get API info for StorageMiner: repo directory does not exist. M
 ```
 
 # Environment
-* Mainnet 
-* Calibnet
-* Devnet
+- Mainnet 
+- Calibnet
+- Devnet
 
 ## Resolution
 
