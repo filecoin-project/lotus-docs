@@ -22,7 +22,7 @@ When running `lotus-miner auth create-token --perm admin` the following error oc
 ERROR: could not get API info for StorageMiner: repo directory does not exist. Make sure your configuration is correct
 ```
 
-# Environment
+## Environment
 - Mainnet 
 - Calibnet
 - Devnet
