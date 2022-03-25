@@ -110,9 +110,9 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
 
 1. Lotus is now installed on your computer.
 
-### Ubuntu
+### Linux
 
-There are two simple ways to install Lotus on Ubuntu:
+There are two simple ways to install Lotus on Linux:
 
 - [AppImage](#appimage)
 - [Snap](#snap)
