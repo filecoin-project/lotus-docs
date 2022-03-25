@@ -1,6 +1,6 @@
 ---
-title: "Ubuntu"
-description: "This page provide detailed steps to install Lotus on Ubuntu Linux."
+title: "Linux"
+description: "This page provide detailed steps to install Lotus on Linux."
 draft: false
 menu:
     lotus:
