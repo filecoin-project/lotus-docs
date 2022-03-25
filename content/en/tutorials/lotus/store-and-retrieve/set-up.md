@@ -8,6 +8,7 @@ menu:
         parent: "tutorials-lotus"
 aliases:
     - /docs/tutorials/store-and-retrieve/
+    - /tutorials/store-and-retrieve/set-up/
 weight: 110
 toc: true
 ---
