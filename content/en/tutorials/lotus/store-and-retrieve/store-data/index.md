@@ -7,8 +7,6 @@ menu:
     tutorials:
         parent: "tutorials-lotus"
         identifier: "tutorials-store-and-retrieve-store-data"
-aliases:
-    - /tutorials/store-and-retrieve/store-data/
 weight: 120
 toc: true
 ---
