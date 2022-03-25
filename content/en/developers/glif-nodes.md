@@ -20,19 +20,15 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 - Only read calls and `MPoolPush()` are supported. You can view the full list of available calls at [api.node.glif.io](https://api.node.glif.io).
 - Only POST requests are supported.
 - The Filecoin signing tools can be used to sign messages before submission when needed.
-<<<<<<< HEAD:content/en/docs/developers/hosted-lotus.md
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
+
 ## Testnet endpoint
 
 Testnet nodes using the [JSON RPC API]({{< relref "json-rpc" >}}) can use `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0`.
-=======
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
-## Testnet endpoint
 
-Testnet nodes using the [JSON RPC API]({{< relref "json-rpc" >}}) can use `https://dev.node.glif.io/calibrationapi/lotus/rpc/v0`.
->>>>>>> 8d548cad28f01b453a22049b00f6fb8e759d838d:content/en/developers/hosted-lotus.md
 
 ### Custom endpoints
 
