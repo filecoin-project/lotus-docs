@@ -1,6 +1,6 @@
 ---
 title: "API access"
-description: "You can connect to a Lotus node using the build in Lotus API. There is some preparation you need to do first on the node that you want to connect to. You must also generate an API key to use in order to connect to the Lotus node."
+description: "You can connect to a Lotus node using the built-in Lotus API. There is some preparation you need to do first on the node that you want to connect to. You must also generate an API key to use in order to connect to the Lotus node."
 lead: "You can connect to a Lotus node using the build in Lotus API. There is some preparation you need to do first on the node that you want to connect to. You must also generate an API key to use in order to connect to the Lotus node."
 draft: false
 menu:
