@@ -51,17 +51,17 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 
     The `filecoin-project/lotus` repository is the same one that you would use to join the Filecoin mainnet. The `git clone` command puts the Lotus repository into the `lotus-local-net` folder to keep this guide organized.
 
-1. Checkout to the Snap-deals branch:
+1. Checkout to the latest branch:
 
     ```shell
-    git checkout release/v1.14.0
+    git checkout release/v1.15.0
     ```
 
     This will output something like:
 
     ```plaintext
-    > Branch 'release/v1.14.0' set up to track remote branch 'release/v1.14.0' from 'origin'.
-    > Switched to a new branch 'release/v1.14.0'
+    > Branch 'release/v1.15.0' set up to track remote branch 'release/v1.15.0' from 'origin'.
+    > Switched to a new branch 'release/v1.15.0'
     ```
 
 1. Remove any existing repositories.
