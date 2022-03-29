@@ -107,7 +107,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.13.1
+    git checkout v1.15.0
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -153,7 +153,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.13.1
+    git checkout v1.15.0
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
