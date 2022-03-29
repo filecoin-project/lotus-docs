@@ -38,8 +38,7 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 
 ### Remote storage access
 
-
-PoSt workers do not need 
+PoSt workers do not necessarily need local access to the sealed sectors. Workers without local access will ask workers with local access to read challenges from their storage. 
 
 ### Environment variables
 
@@ -47,7 +46,6 @@ Ensure that workers have access to the following environment variables when they
 
 ```
 # MINER_API_INFO as obtained before
-export TMPDIR=/fast/disk/folder3                    # used when sealing
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export MARKETS_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export BELLMAN_CPU_UTILIZATION=0.875      # optimal value depends on exact hardware
@@ -56,8 +54,9 @@ export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
-export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
+
+The PoSt workers will fail to start if the file descriptor limit is not set high enough. So raise the the file descriptor limit with `ulimit -n 1048576` or by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
 
 {{< alert icon="tip" >}}
 When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
@@ -128,9 +127,9 @@ Consider this proving deadline with four full partitions:
 
 ```
 lotus-miner proving deadlines
-Miner: f023467
+Miner: f011235
 deadline  partitions  sectors (faults)  proven partitions
 0         4           9396 (0)          0
 ```
 
-If that storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel on each worker. While the last partition will be picked up by the first windowPoSt worker to finish its computation.
+If the storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel. While the last partition will be picked up by the first windowPoSt worker to finish its computation.
