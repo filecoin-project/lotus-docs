@@ -42,7 +42,7 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
 
 [AppImages](https://appimage.org/) are portable applications that allow developers to package software and dependencies in a single executable. AppImages run on most Linux-based operating systems.
 
-1. Go to the latest [releases page in the Lotus GitHub repository](https://github.com/filecoin-project/lotus/releases/tag/v1.13.0).
+1. Go to the latest [releases page in the Lotus GitHub repository](https://github.com/filecoin-project/lotus/releases/tag/v1.15.0).
 1. Under **Assets**, download the AppImage.
 1. Open a terminal window and move to the location where you downloaded the AppImage. This location is likely your **Downloads** folder:
 
@@ -53,13 +53,13 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
 1. Make the AppImage executable:
 
     ```shell
-    chmod +x lotus_v1.13.0_linux-amd64.appimage
+    chmod +x lotus_v1.15.0_linux-amd64.appimage
     ```
 
 1. You can now run the AppImage file by double-clicking on it or opening it from a terminal window:
 
     ```shell
-    ./lotus-v1.13.0_linx-amd64.appimage
+    ./lotus-v1.15.0_linx-amd64.appimage
     ```
 
 ## Building from source
