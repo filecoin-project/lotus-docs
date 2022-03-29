@@ -48,7 +48,7 @@ Storage providers should design their workers sector access depending on their s
 
 ### Environment variables
 
-Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "setup" >}})):
+Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "configure#setup" >}})):
 
 ```
 # MINER_API_INFO as obtained before
