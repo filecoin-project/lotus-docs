@@ -6,8 +6,6 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-seal-workers"
-aliases:
-    - /docs/storage-providers/seal-workers/
 weight: 120
 toc: true
 ---
@@ -38,14 +36,14 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 
 ### Remote storage access
 
-The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline, so when setting up windowPoSt workers one needs to consider how the workers can access those files. By default 
+The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline. So when setting up windowPoSt workers one needs to consider how the workers can access those files. By default 
 
 At least one PoSt worker needs local read access to the sealed sectors. If you have multiple PoSt workers, workers without local sector access will ask workers with sector access to read challenges from their storage.
 
 The lotus-miner instance disables PoSt-work when a PoSt worker is connected, meaning that a single windowPoSt worker can not rely on reading challenges from the lotus-miner instance. And therefore needs read access to the sealed sectors. 
 
 {{< alert icon="warning" >}}
-Storage providers should design their sealed sector access depending on their setup size and also redundancy required. If only one PoSt worker has access to the sealed sector that can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers reading challenges from the same source may cause unwanted I/O load.
+Storage providers should design their workers sector access depending on their setup size and also redundancy required. If only one worker has read access to the sealed sectors, it can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers reading challenges from the same source may also cause unwanted I/O load.
 {{< /alert >}}
 
 ### Environment variables
@@ -55,8 +53,7 @@ Ensure that workers have access to the following environment variables when they
 ```
 # MINER_API_INFO as obtained before
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
-export MARKETS_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
-export BELLMAN_CPU_UTILIZATION=0.875      # optimal value depends on exact hardware
+export BELLMAN_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
 export FIL_PROOFS_MAXIMIZE_CACHING=1
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
@@ -113,7 +110,7 @@ Workers:
 	WinPoSt: 3
 ```
 
-### Optional settings
+### Advanced settings
 
 Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
 
@@ -131,7 +128,7 @@ Lets you set a cut off time for reading challenges from storage, after which it 
 
 ## Multiple partitions
 
-If you have multiple partitions in a single proving deadline, each partition will run on seperate workers in parallel, up to the number of partitions.
+If you have multiple partitions in a single proving deadline and multiple windowPoSt workers, each partition will run on seperate workers in parallel, up to the number of partitions.
 
 Consider this proving deadline with four full partitions:
 
@@ -143,3 +140,13 @@ deadline  partitions  sectors (faults)  proven partitions
 ```
 
 If the storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel, while the last partition will be picked up by the first windowPoSt worker to finish its computation.
+
+### Testing the setup
+
+When doing changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period, and risk failing windowPoSt. 
+
+After you have set up your windowPoSt workers you can manually trigger a windowPoSt with `lotus-miner proving compute window-post`.
+
+{{< alert icon="tip" >}}
+This should be scheduled outside of any proving deadlines. Check `lotus-miner proving info` to see when your next proving period starts.
+{{< /alert >}}
