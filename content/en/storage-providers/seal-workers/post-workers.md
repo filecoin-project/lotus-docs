@@ -21,18 +21,25 @@ A lotus worker instance can only be one of the following:
 
 ## Launching PoSt workers
 
-Before launching your PoSt workers you need to ensure that your meets the minial requirements for the task.
+Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider 
 
 ### Minminal spec requirements
+
+These are the minimal requirements for running each of the PoSt tasks:
 
 | **Task**    | **GPU**            | **VRAM** | **RAM** |
 |:-----------:|:------------------:|:--------:|:-------:|
 | winningPoSt | Highly recommended |          |         |
 | windowPoSt  | Highly recommended | 8\.5GiB  | 128GiB  |
 
+{{< alert icon="callout" >}}
+Although both tasks can be run with a powerful CPU, it is highly recommended to run on GPU as it speeds up the process significantly, and therefore reducing the chance to miss windowPoSt or winningPoSt
+{{< /alert >}}
+
 ### Remote storage access
 
 
+PoSt workers do not need 
 
 ### Environment variables
 
@@ -112,3 +119,18 @@ Lets you set an upper boundary of how many challenges it reads from your storage
 ```
 
 Lets you set a cut off time for reading challenges from storage, after which it will abort the job. At default this is set to no limit.
+
+## Multiple partitions
+
+If you have multiple partitions in a single proving deadline, each partition will run on seperate workers in parallel, up to the number of partitions.
+
+Consider this proving deadline with four full partitions:
+
+```
+lotus-miner proving deadlines
+Miner: f023467
+deadline  partitions  sectors (faults)  proven partitions
+0         4           9396 (0)          0
+```
+
+If that storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel on each worker. While the last partition will be picked up by the first windowPoSt worker to finish its computation.
