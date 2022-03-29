@@ -38,7 +38,15 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 
 ### Remote storage access
 
-PoSt workers do not necessarily need local access to the sealed sectors. Workers without local access will ask workers with local access to read challenges from their storage. 
+The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline, so when setting up windowPoSt workers one needs to consider how the workers can access those files. By default 
+
+At least one PoSt worker needs local read access to the sealed sectors. If you have multiple PoSt workers, workers without local sector access will ask workers with sector access to read challenges from their storage.
+
+The lotus-miner instance disables PoSt-work when a PoSt worker is connected, meaning that a single windowPoSt worker can not rely on reading challenges from the lotus-miner instance. And therefore needs read access to the sealed sectors. 
+
+{{< alert icon="warning" >}}
+Storage providers should design their sealed sector access depending on their setup size and also redundancy required. If only one PoSt worker has access to the sealed sector that can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers reading challenges from the same source may cause unwanted I/O load.
+{{< /alert >}}
 
 ### Environment variables
 
@@ -56,7 +64,7 @@ export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 ```
 
-The PoSt workers will fail to start if the file descriptor limit is not set high enough. So raise the the file descriptor limit with `ulimit -n 1048576` or by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
+The PoSt workers will fail to start if the file descriptor limit is not set high enough. Raise the the file descriptor limit temporarily before running with `ulimit -n 1048576` or permanently by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
 
 {{< alert icon="tip" >}}
 When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
@@ -75,7 +83,9 @@ The above command will start the worker. You´ll need to specify which PoSt oper
    --windowpost                  enable window post (default: false)
 ```
 
-When a winningPoSt or windowPoSt worker connects to the _lotus-miner_, the lotus miner will delegate all winningPoSt or windowPoSt tasks to that worker. If both tasks are delegated to seperate PoSt workers, no PoSt tasks will be executed locally on the miner instance. If a worker is stopped, lotus-miner switches back to local PoSt automatically.
+A PoSt worker instance can only be either a winningPoSt worker, or a windowPoSt worker.
+
+When a winningPoSt or windowPoSt worker connects to the _lotus-miner_, the lotus miner will delegate all winningPoSt or windowPoSt tasks to that worker. If both tasks are delegated to seperate PoSt workers, no PoSt tasks will be executed locally on the miner instance. If a worker is stopped, the lotus-miner instance switches back to local PoSt automatically.
 
 You can verify that PoSt workers are connected to the lotus-miner with `lotus-miner proving workers`:
 
@@ -132,4 +142,4 @@ deadline  partitions  sectors (faults)  proven partitions
 0         4           9396 (0)          0
 ```
 
-If the storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel. While the last partition will be picked up by the first windowPoSt worker to finish its computation.
+If the storage provider has four windowPoSt workers connected, each of the partitions will be computed on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel, while the last partition will be picked up by the first windowPoSt worker to finish its computation.
