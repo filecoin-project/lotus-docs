@@ -14,7 +14,7 @@ toc: true
 
 While the Lotus Miner runs _windowPoSt_ and _winningPoSt_ by default, you can use specialized lotus workers to create a cluster of windowPoSt and winningPoSt workers to handle multiple Proof-of-Spacetime partitions simultaneously.
 
-One lotus worker instance can only be one of the following:
+A lotus worker instance can only be one of the following:
 - WindowPoSt worker
 - WinningPoSt worker
 - Worker for sealing tasks
@@ -69,7 +69,7 @@ The above command will start the worker. You´ll need to specify which PoSt oper
    --windowpost                  enable window post (default: false)
 ```
 
-When a winningPoSt or windowPoSt worker connects to the _lotus-miner_, the lotus miner will delegate all winningPoSt or windowPoSt tasks to that worker. If both tasks are delegated to seperate PoSt workers, no PoSt taks will be executed locally on the miner instance. If a worker is stopped, lotus-miner switches back to local PoSt automatically.
+When a winningPoSt or windowPoSt worker connects to the _lotus-miner_, the lotus miner will delegate all winningPoSt or windowPoSt tasks to that worker. If both tasks are delegated to seperate PoSt workers, no PoSt tasks will be executed locally on the miner instance. If a worker is stopped, lotus-miner switches back to local PoSt automatically.
 
 You can verify that PoSt workers are connected to the lotus-miner with `lotus-miner proving workers`:
 
@@ -87,7 +87,7 @@ Worker 1, host othercomputer
         GPU: GeForce RTX 2080, not used
 ```
 
-You can also verify that PoSt workers are connected with `lotus-miner info` in the workers-section.
+You can also verify that PoSt workers are connected in the workers-section of `lotus-miner info`.
 
 ```shell
 $ lotus-miner info
@@ -99,9 +99,16 @@ Workers:
 
 ### Optional settings
 
-You can configure some advanced settings for PoSt workers.
+Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
 
 ```
    --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 0)
+```
+
+Lets you set an upper boundary of how many challenges it reads from your storage simultaneously. At defualt this is set to no limit, meaning that it will try to read all challenges at the same time from your storage.
+
+```
    --post-read-timeout value     time limit for reading PoSt challenges (0 = no limit) (default: 0s)
 ```
+
+Lets you set a cut off time for reading challenges from storage, after which it will abort the job. At default this is set to no limit.
