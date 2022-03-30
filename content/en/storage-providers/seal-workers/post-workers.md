@@ -36,9 +36,7 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 
 ### Remote storage access
 
-The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline. So when setting up windowPoSt workers one needs to consider how the workers can access those files. By default 
-
-At least one PoSt worker needs local read access to the sealed sectors. If you have multiple PoSt workers, workers without local sector access will ask workers with sector access to read challenges from their storage.
+The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline. When setting up windowPoSt workers one needs to consider how the workers can access those files. The PoSt workers can read challenges from any other workers, including the lotus-miner process, but it will prefer reading it from local paths.
 
 The lotus-miner instance disables PoSt-work when a PoSt worker is connected, meaning that a single windowPoSt worker can not rely on reading challenges from the lotus-miner instance. And therefore needs read access to the sealed sectors. 
 
@@ -60,6 +58,8 @@ export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 ```
+
+For the PoSt worker to start, it will need to read and verify the Filecoin proof parameters. These are the same parameters as is currently on the lotus-miner instance. We recomend copying them over from your lotus-miner machine, else they will be downloaded on first run.
 
 The PoSt workers will fail to start if the file descriptor limit is not set high enough. Raise the the file descriptor limit temporarily before running with `ulimit -n 1048576` or permanently by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
 
@@ -145,7 +145,7 @@ If the storage provider has four windowPoSt workers connected, each of the parti
 
 When doing changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period, and risk failing windowPoSt. 
 
-After you have set up your windowPoSt workers you can manually trigger a windowPoSt with `lotus-miner proving compute window-post`.
+After you have set up your windowPoSt workers you can manually trigger a windowPoSt with `lotus-miner proving compute window-post [deadline index]`. It will not send any messages to the chain.
 
 {{< alert icon="tip" >}}
 This should be scheduled outside of any proving deadlines. Check `lotus-miner proving info` to see when your next proving period starts.
