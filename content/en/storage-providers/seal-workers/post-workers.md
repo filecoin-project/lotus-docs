@@ -19,7 +19,7 @@ A lotus worker instance can only be one of the following:
 
 ## Launching PoSt workers
 
-Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider 
+Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider how they can access sectors and setting correct enviroment variables be you run the workers.
 
 ### Minminal spec requirements
 
@@ -147,7 +147,7 @@ If the storage provider has four windowPoSt workers connected, each of the parti
 
 ### Testing the setup
 
-When doing changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period, and risk failing windowPoSt. 
+When doing changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period and risk failing windowPoSt. 
 
 After you have set up your windowPoSt workers you can manually trigger a windowPoSt with `lotus-miner proving compute window-post [deadline index]`. It will not send any messages to the chain.
 
