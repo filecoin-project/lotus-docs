@@ -49,12 +49,8 @@ Storage providers should design their workers sector access depending on their s
 Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "configure#setup" >}})):
 
 ```
-# MINER_API_INFO as obtained before
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export BELLMAN_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
-export FIL_PROOFS_MAXIMIZE_CACHING=1
-export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
-export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 ```
