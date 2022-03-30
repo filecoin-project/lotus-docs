@@ -38,8 +38,6 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 
 The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline. When setting up windowPoSt workers one needs to consider how the workers can access those files. The PoSt workers can read challenges from any other workers, including the lotus-miner process, but it will prefer reading it from local paths.
 
-The lotus-miner instance disables PoSt-work when a PoSt worker is connected, meaning that a single windowPoSt worker can not rely on reading challenges from the lotus-miner instance. And therefore needs read access to the sealed sectors. 
-
 {{< alert icon="warning" >}}
 Storage providers should design their workers sector access depending on their setup size and also redundancy required. If only one worker has read access to the sealed sectors, it can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers reading challenges from the same source may also cause unwanted I/O load.
 {{< /alert >}}
