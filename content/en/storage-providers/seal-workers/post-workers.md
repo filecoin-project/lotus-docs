@@ -114,11 +114,15 @@ Workers:
 
 Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
 
+{{< alert icon="tip" >}}
+Use with caution as changing these values to extremes might cause you to miss windowPoSt.
+{{< /alert >}}
+
 ```
-   --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 0)
+   --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
 ```
 
-Lets you set an upper boundary of how many challenges it reads from your storage simultaneously. At defualt this is set to no limit, meaning that it will try to read all challenges at the same time from your storage.
+Lets you set an upper boundary of how many challenges it reads from your storage simultaneously. At defualt this is set to 128.
 
 ```
    --post-read-timeout value     time limit for reading PoSt challenges (0 = no limit) (default: 0s)
