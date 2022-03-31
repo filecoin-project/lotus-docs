@@ -19,7 +19,7 @@ A lotus worker instance can only be one of the following:
 
 ## Launching PoSt workers
 
-Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider how they can access sectors and setting correct enviroment variables be you run the workers.
+Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider how they can access sectors and setting the correct enviroment variables before you run the workers.
 
 ### Minminal spec requirements
 
@@ -39,7 +39,7 @@ Although both tasks can be run with a powerful CPU, it is highly recommended to 
 The windowPoSt process requires reading random leafs of all the sealed sectors in a proving deadline. When setting up windowPoSt workers one needs to consider how the workers can access those files. The PoSt workers can ask any other worker to read challenges for them, including the lotus-miner process, but it will prefer reading it from local paths.
 
 {{< alert icon="warning" >}}
-Storage providers should design their workers sector access depending on their setup size and also redundancy required. If only one worker has read access to the sealed sectors, it can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers reading challenges from the same source may also cause unwanted I/O load.
+Storage providers should design their worker sectors access according to their setup size and also redundancy required. If only one worker has read access to the sealed sectors, it can create a single point of failure. If you have multiple partitions in a deadline, having multiple PoSt workers requesting a single worker to read challenges for them may cause unwanted I/O load.
 {{< /alert >}}
 
 ### Environment variables
