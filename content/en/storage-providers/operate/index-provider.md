@@ -136,7 +136,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
    To start the initialization of DagStore shards, run:
 
-   `lotus-miner dagstore initialize-all --concurrency=N` if you run a monolith miner process or `lotus-miner --call-on-market dagstore initialize-all --concurrency=N` if you have split your market subsystem.
+   `lotus-miner dagstore initialize-all --concurrency=N` if you run a monolith miner process or `lotus-miner --call-on-markets dagstore initialize-all --concurrency=N` if you have split your market subsystem.
 
    {{< alert icon="warning" >}}
    Initialization places IO workload on your storage system. `N` controls the number of deals that are concurrently initialized. See [DagStrore Force Bulk Initialisation](https://lotus.filecoin.io/docs/storage-providers/dagstore/#forcing-bulk-initialization) docs for more information.
@@ -152,7 +152,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
     To announce all the indices in bulk to the indexers, run:
 
-    `lotus-miner index announce-all`  if you run a monolith miner process or `lotus-miner --call-on-market index announce-all` if you have split your market subsystem.
+    `lotus-miner index announce-all`  if you run a monolith miner process or `lotus-miner --call-on-markets index announce-all` if you have split your market subsystem.
 
     This command generates advertisements and publishes indices onto the indexer gossipsub channel. Look for a series of logs in the markets logs that include `deal announcement sent to index provider`. You should see one such log per deal. The log-line also includes the advertised CID, the deal proposal CID to which it belongs, and the shard key from which its multihash entries are generated. The logs should also include information about the number of multihash entries each advertisement includes. For example:
 
@@ -174,7 +174,7 @@ lotus-miner index announce-all
 ```
 
 {{< alert icon="tip" >}}
-Note that if you have split your markets subsystem, you will need to specify `--call-on-market`.
+Note that if you have split your markets subsystem, you will need to specify `--call-on-markets`.
 {{< /alert >}}
 
 ## Configuration
