@@ -37,7 +37,7 @@ All lotus processes will run as a non-root user. Please make sure to open releva
 This section will cover the installation, configuration and starting a lotus node to be used in the tutorial.
 
 ### Installation
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
     
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -56,17 +56,8 @@ This section will cover the installation, configuration and starting a lotus nod
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     export FFI_BUILD_FROM_SOURCE=1
     export RUSTFLAGS="-C target-cpu=native -g"
-    ```
-    
-    #### Nvidia specific variables
-    `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
-
-    ```shell
     export FFI_USE_CUDA=1
     export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
-    ```
-    
-    ```shell
     make clean calibnet
     ./lotus --version
     ```
@@ -140,7 +131,7 @@ This section will cover the installation, configuration and starting a lotus nod
 This section will cover the installation, configuration and starting a lotus-miner node to be used in the tutorial.
 
 ### Installation
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
 
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -159,17 +150,8 @@ This section will cover the installation, configuration and starting a lotus-min
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     export FFI_BUILD_FROM_SOURCE=1
     export RUSTFLAGS="-C target-cpu=native -g"
-    ```
-
-    #### Nvidia specific variables
-    `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
-
-    ```shell
     export FFI_USE_CUDA=1
     export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
-    ```
-
-    ```shell
     make clean calibnet
     ./lotus --version
     ```
@@ -200,6 +182,9 @@ This section will cover the installation, configuration and starting a lotus-min
     
     export FIL_PROOFS_PARAMETER_CACHE=/home/miner/param_cache # > 100GiB!
     export FIL_PROOFS_PARENT_CACHE=/home/miner/parent_cache   # > 50GiB!
+
+    export FFI_USE_CUDA=1
+    export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
     
     export LOTUS_MINER_PATH=~/.lotusminer
     export GOLOG_OUTPUT=file
