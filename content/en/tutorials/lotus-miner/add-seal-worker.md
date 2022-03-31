@@ -28,21 +28,21 @@ All lotus processes will run as a non-root user. Please make sure to open releva
 This section will cover the installation, configuration and running a lotus seal-worker.
 
 ### Installation
-1. Install Lotus binaries by following the [Linux install guide - build from source]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}).
-    
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}). As this is PC1 only worker, we have not used any `CUDA` variables but you can use them if building a worker that requires GPU usage.
+
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
     
-    Choose the default installation option 1) for the above rust installation.
+    Follow the prompts to install Rust, and then run these commands:
     
     ```shell
     wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
     echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
     git clone https://github.com/filecoin-project/lotus.git
     cd lotus/
-    git checkout tags/v1.14.4
+    git checkout tags/v1.15.0
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     export FFI_BUILD_FROM_SOURCE=1
