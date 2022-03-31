@@ -1,7 +1,7 @@
 ---
 title: "Add Seal Worker"
-description: "This is a step by step guide on how to set up a lotus seal-worker and connect it to the miner in calibnet."
-lead: "This is a step by step guide on how to set up a lotus seal-worker and connect it to the miner in calibnet. Some of the steps are specific to the hardware and configuration used in this setup and might not be applicable for everyone. Please follow the documentation to set up your miner and use this guide only as a reference point."
+description: "This is a step by step guide on how to set up a Lotus seal-worker and connect it to the miner in calibnet."
+lead: "This is a step by step guide on how to set up a Lotus seal-worker and connect it to the miner in calibnet. Some of the steps are specific to the hardware and configuration used in this setup and might not be applicable for everyone. Please follow the documentation to set up your miner and use this guide only as a reference point."
 draft: false
 menu:
     tutorials:
@@ -11,9 +11,11 @@ toc: true
 ---
 
 ## Setup Details
+
 Below are the details of the physical server used in this tutorial. 
 
 ### PC1 Worker
+
 - CPU: 2 x AMD EPYC 7F32 8-Core Processor
 - RAM: 1007 GiB
 - GPU: None
@@ -22,12 +24,14 @@ Below are the details of the physical server used in this tutorial.
 - Private IP: z.z.z.z
 - Public IP: C.C.C.C
 
-All lotus processes will run as a non-root user. Please make sure to open relevant ports in your firewall to allow connections. This tutorial will use the same miner created under the [How To Run A Miner tutorial]({{<relref "run-a-miner">}}).
+All Lotus processes will run as a non-root user. Please make sure to open relevant ports in your firewall to allow connections. This tutorial will use the same miner created under the [How To Run A Miner tutorial]({{<relref "run-a-miner">}}).
 
 ## Lotus Worker Setup
-This section will cover the installation, configuration and running a lotus seal-worker.
+
+This section will cover the installation, configuration and running a Lotus seal-worker.
 
 ### Installation
+
 1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}). As this is PC1 only worker, we have not used any `CUDA` variables but you can use them if building a worker that requires GPU usage.
 
     ```shell
@@ -54,6 +58,7 @@ This section will cover the installation, configuration and running a lotus seal
 2. Add sufficient swap to the machines based on the [hardware requirements guide]({{<relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements">}}).
 
 ### Configuration
+
 1. Add the below variables to enable logging to a file.
     
     ```shell
@@ -61,7 +66,7 @@ This section will cover the installation, configuration and running a lotus seal
     export GOLOG_FILE="$HOME/worker.log" >> ~/.bashrc && source ~/.bashrc
     ```
 
-2. On the seal-worker machines, create directories to store cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your seal-worker.
+1. On the seal-worker machines, create directories to store cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your seal-worker.
     
     ```shell
     mkdir ~/parent_cache
@@ -69,6 +74,7 @@ This section will cover the installation, configuration and running a lotus seal
     ```
 
 ### Setup
+
 1. Add the following variables to the `~/.bashrc` file and source the file. The token used for API authentication is the same as generated in the [previous tutorial]({{<relref "run-a-miner#generate-auth-token-for-seal-worker">}}). 
     
     ```shell
@@ -90,25 +96,27 @@ This section will cover the installation, configuration and running a lotus seal
     export GOLOG_FILE="$HOME/miner.log"
     ```
 
+1. You then need to load in these changes:
+
     ```shell
     source ~/.bashrc
     ```
  
-2. Copy the parameters from the miner node to the seal-worker node.
-3. Start the seal-worker
+1. Copy the parameters from the miner node to the seal-worker node.
+1. Start the seal-worker
     
     ```shell
     lotus-worker run --addpiece=true --precommit1=true --unseal=false --precommit2=false --commit=false &
     ```
 
-4. Verify that the seal-worker is running
+1. Verify that the seal-worker is running
     
     ```shell
     lotus-worker info
     lotus-miner sealing workers # This command need to be run on the lotus-miner node
     ```
 
-5. Add storage for sealing the sectors.
+1. Add storage for sealing the sectors.
     
     ```shell
     mkdir ~/tmp
@@ -122,3 +130,4 @@ This section will cover the installation, configuration and running a lotus seal
     ```
     
 Now the seal-worker is ready to start performing PC1 for the sectors.
+
