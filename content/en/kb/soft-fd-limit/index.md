@@ -31,10 +31,10 @@ Note that this error is an example from Ubuntu, but would be similar in other OS
 
 This will be host OS specific, but it should be similar on all OS types. Below is the example from Ubuntu. You will also have to reboot.
 ```
-sudo echo "* soft nofile 32000000" >> /etc/security/limits.conf
-sudo echo "* hard nofile 128000000" >> /etc/security/limits.conf
-sudo echo "fs.nr_open=128000000" >> /etc/sysctl.conf
-sudo echo "fs.file-max=128000000" >> /etc/sysctl.conf
+sudo echo "* soft nofile 256000" >> /etc/security/limits.conf
+sudo echo "* hard nofile 512000" >> /etc/security/limits.conf
+sudo echo "fs.nr_open=512000" >> /etc/sysctl.conf
+sudo echo "fs.file-max=612000" >> /etc/sysctl.conf
 sudo sysctl -p
 ```
 Values of the above resolution (the big number) may vary.
