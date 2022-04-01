@@ -109,7 +109,7 @@ When comparing task priority:
 
 ### Control groups
 
-Countrol groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host. There are 6 cgroup variables for each sealing stage.
+Control groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the lotus-worker will honor the cgroup memory limits configured on the host. There are 6 cgroup variables for each sealing stage.
 
 | Cgroup variable    |  Type    |  Explanation                                                                                                |
 |--------------------|----------|-------------------------------------------------------------------------------------------------------------|
