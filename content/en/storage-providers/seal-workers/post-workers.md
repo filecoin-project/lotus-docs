@@ -49,7 +49,7 @@ Remember to have the appropriate Nvidia-drivers and nvidia-opencl-icd installed 
 Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "configure#setup" >}})):
 
 ```
-export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
+export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
 export BELLMAN_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
@@ -60,7 +60,7 @@ For the PoSt worker to start, it will need to read and verify the Filecoin proof
 The PoSt workers will fail to start if the file descriptor limit is not set high enough. Raise the the file descriptor limit temporarily before running with `ulimit -n 1048576` or permanently by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
 
 {{< alert icon="tip" >}}
-When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
+When fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
 {{< /alert >}}
 
 ### Run the PoSt worker
@@ -84,16 +84,19 @@ You can verify that PoSt workers are connected to the lotus-miner with `lotus-mi
 
 ```shell
 $ lotus-miner proving workers
-Worker 0, host computer
-        CPU:  [                                                                ] 0 core(s) in use
-        RAM:  [||||||||||||||||||                                              ] 28% 18.1 GiB/62.7 GiB
-        VMEM: [||||||||||||||||||                                              ] 28% 18.1 GiB/62.7 GiB
+Worker 0, host windowPoSt
+        CPU:  [                                                                ] 0/48 core(s) in use
+        RAM:  [|                                                               ] 1% 4.005 GiB/119.2 GiB
+        VMEM: [|                                                               ] 1% 4.005 GiB/119.2 GiB
+        GPU:  [                                                                ] 0% 0.00/1 gpu(s) in use
+        GPU: GeForce RTX 2080 Ti, not used
 
-Worker 1, host othercomputer
-        CPU:  [                                                                ] 0 core(s) in use
-        RAM:  [||||||||||||||                                                  ] 23% 14 GiB/119.2 GiB
-        VMEM: [||||||||||||||                                                  ] 23% 14 GiB/119.2 GiB
-        GPU: GeForce RTX 2080, not used
+Worker 1, host winningPoSt
+        CPU:  [                                                                ] 0/16 core(s) in use
+        RAM:  [|                                                               ] 1% 4.005 GiB/119.2 GiB
+        VMEM: [|                                                               ] 1% 4.005 GiB/119.2 GiB
+        GPU:  [                                                                ] 0% 0.00/1 gpu(s) in use
+        GPU: GeForce RTX 2080 Ti, not used
 ```
 
 You can also verify that PoSt workers are connected in the workers-section of `lotus-miner info`.
