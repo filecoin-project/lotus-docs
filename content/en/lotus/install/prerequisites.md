@@ -8,6 +8,7 @@ menu:
         identifier: "lotus-install-prerequisites"
 aliases:
     - /docs/set-up/install/
+    - /get-started/lotus/installation
 weight: 110
 toc: true
 ---
