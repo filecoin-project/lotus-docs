@@ -146,7 +146,7 @@ If the storage provider has four windowPoSt workers connected, each of the parti
 
 ### Testing the setup
 
-When doing changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period and risk failing windowPoSt. 
+When making changes to your PoSt setup it is useful to verify that the changes works as intended without testing it on a real proving period and risk failing windowPoSt. 
 
 After you have set up your windowPoSt workers you can manually trigger a windowPoSt with `lotus-miner proving compute window-post [deadline index]`. It will not send any messages to the chain.
 
