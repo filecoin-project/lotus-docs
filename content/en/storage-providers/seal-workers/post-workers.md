@@ -57,7 +57,7 @@ export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 
 When the PoSt worker starts, it needs to read and verify the Filecoin proof parameters. We recommend copying them over from your lotus-miner machine. Otherwise, they will be downloaded locally on first run.
 
-The PoSt workers will fail to start if the file descriptor limit is not set high enough. Raise the the file descriptor limit temporarily before running with `ulimit -n 1048576` or permanently by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
+The PoSt workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value](https://github.com/filecoin-project/lotus/discussions/6198) guide.
 
 {{< alert icon="tip" >}}
 When fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
