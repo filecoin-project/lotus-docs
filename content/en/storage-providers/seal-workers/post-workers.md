@@ -52,7 +52,6 @@ The following environment variables are required to be set before starting the w
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
 export BELLMAN_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
-export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
 ```
 
 When the PoSt worker starts, it needs to read and verify the Filecoin proof parameters. We recommend copying them over from your lotus-miner machine. Otherwise, they will be downloaded locally on first run.
