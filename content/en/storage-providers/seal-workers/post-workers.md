@@ -44,7 +44,7 @@ Storage providers should design their worker sectors access according to their s
 
 ### Environment variables
 
-Remember to have the appropriate Nvidia-drivers and nvidia-opencl-icd installed if running OpenCL on your worker. If using CUDA, install the CUDA-toolkit and build Lotus with FFI_USE_CUDA=1
+Remember to have the appropriate Nvidia-drivers and nvidia-opencl-icd installed if running OpenCL on your worker. If using CUDA, install the CUDA-toolkit and build lotus binaries with `FFI_USE_CUDA=1`
 
 Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "configure#setup" >}})):
 
