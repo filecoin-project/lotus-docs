@@ -515,6 +515,8 @@ If you want to fully delegate any of these operations to workers, set them to `f
 
 Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "setup" >}})):
 
+The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "kb#soft-fd-limit" >}}) guide.
+
 ```
 # MINER_API_INFO as obtained before
 export TMPDIR=/fast/disk/folder3                    # used when sealing
