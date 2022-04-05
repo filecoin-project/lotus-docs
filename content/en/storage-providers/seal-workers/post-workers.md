@@ -75,7 +75,7 @@ The above command will start the worker. You´ll need to specify which PoSt oper
    --windowpost                  enable window post (default: false)
 ```
 
-A PoSt worker instance can only be either a winningPoSt worker, or a windowPoSt worker.
+A PoSt worker instance can only be either a winningPoSt worker, or a windowPoSt worker. Enabling a PoSt tasks will automatically disable all other tasks.
 
 When a winningPoSt or windowPoSt worker connects to the _lotus-miner_, the lotus miner will delegate all winningPoSt or windowPoSt tasks to that worker. If both tasks are delegated to seperate PoSt workers, no PoSt tasks will be executed locally on the miner instance. If a worker is stopped, the lotus-miner instance switches back to local PoSt automatically.
 
