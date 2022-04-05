@@ -32,7 +32,7 @@ This section will cover the installation, configuration and running a Lotus seal
 
 ### Installation
 
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "../../lotus/install/ubuntu/#building-from-source" >}}). As this is PC1 only worker, we have not used any `CUDA` variables but you can use them if building a worker that requires GPU usage.
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). As this is PC1 only worker, we have not used any `CUDA` variables but you can use them if building a worker that requires GPU usage.
 
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
