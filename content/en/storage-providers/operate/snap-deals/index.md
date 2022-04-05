@@ -143,7 +143,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This means that this sector (`2`) is ready to wait for deals!
 
-While the sector is transitioning through the snap-deals states, this sector is still preserved, and nothing is changing internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undisrupted during the process.  
+While the sector is transitioning through the snap-deals states, this sector is still preserved, and nothing is changed internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undisrupted during the process.  
 
 ### Accept the new storage deal
 
