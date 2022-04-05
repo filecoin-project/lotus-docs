@@ -6,6 +6,8 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-operate"
+aliases:
+    - /storage-providers/configure/snap-deals/
 weight: 492
 toc: true
 ---
@@ -129,7 +131,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This command does not output anything on success.
 
-1. By listing your deals again, you'll see that the FSM has marked the sector as being in a `SnapDealsWaitDeals` state:
+1. By listing your deals again, you'll see that the FSM has marked the sector as being in a `Available` state:
 
     ```shell
     lotus-miner sectors list
@@ -137,7 +139,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
     > ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
     > 0   Proving               YES      YES     1550097 (in 10 weeks 1 day)  CC
     > 1   Proving               YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB
-    > 2   SnapDealsWaitDeals    YES      YES     1549517 (in 10 weeks 1 day)  CC
+    > 2   Available    YES      YES     1549517 (in 10 weeks 1 day)  CC
     ```
 
     This means that this sector (`2`) is ready to wait for deals!
@@ -209,7 +211,7 @@ The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lo
 If you have a Snap-deals sector waiting for deals and make a deal that is staged, but that does not fit in that sector because the sector expires too soon, you must run the following:
 
 ```shell
-./lotus-miner sectors extend --new-expiration && ./lotus-miner sectors match-pending-pieces
+lotus-miner sectors extend --new-expiration && lotus-miner sectors match-pending-pieces
 ```
 
 This will match the piece to the newly extended sector and start the replica update process.
@@ -219,7 +221,7 @@ This will match the piece to the newly extended sector and start the replica upd
 You can abort the upgrade and remove all replica update data, reverting your sector back to the proving state, by running:
 
 ```shell
-./lotus-miner sectors update-state --really-do-it AbortUpgrade
+lotus-miner sectors abort-upgrade --really-do-it <sectornumber>
 ```
 
 Keep in mind that **you will lose the deals in the update**, and the FSM won't rematch the deal with other sectors. This is the same thing that happens when you remove a deal sector.
