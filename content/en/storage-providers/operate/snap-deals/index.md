@@ -202,7 +202,7 @@ A new feature in `lotus-miner` allows converting all the future "CC" sectors to 
 
 This new feature can be enabled in the lotus miner [configuration]({{<relref "../../configure/configuration/#make-new-cc-sector-available-for-snap-deal">}}).
 
-When a deal arrives to the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deal before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../configure/configuration/#disabling-new-sector-for-deal">}}). 
+When a deal enters the the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deals before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with the lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../configure/configuration/#disabling-new-sector-for-deal">}}). 
 
 {{< alert >}}
 In case creating new sectors for deals is disabled then deal will be left hanging till a sectors is made "Available" for it.
