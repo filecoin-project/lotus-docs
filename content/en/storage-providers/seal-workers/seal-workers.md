@@ -109,7 +109,16 @@ When comparing task priority:
 
 ### Control groups
 
-Countrol groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host.
+Control groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the `lotus-worker` will honor the cgroup memory limits configured on the host. There are 6 cgroup variables for each sealing stage.
+
+| Cgroup variable    |  Type    |  Explanation                                                                                                |
+|--------------------|----------|-------------------------------------------------------------------------------------------------------------|
+|  MinMemory         | uint64   | Minimum RAM used for decent performance.                                                                     |
+|  MaxMemory         | uint64   | Maximum memory (swap+RAM) usage during task execution.                                                        |
+|  GPUUtilization    | float64  | Number of GPUs a task can use.                                                                              |
+|  MaxParallelism    | int      | Number of CPU cores a task can use when GPU is not in use.                                                   |
+|  MaxParallelismGPU | int      | Number of CPU cores a task can use when GPU is in use. Inherits value from `MaxParallelism` when set to 0.  |
+|  BaseMinMemory     | uint64   | Minimum RAM used for decent performance. This is shared between the treads, unlike `MinMemory`.               |
 
 Variables for resource allocation tuning (overrides settings in the resource allocation table).
 

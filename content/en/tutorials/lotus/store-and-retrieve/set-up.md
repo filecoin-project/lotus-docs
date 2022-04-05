@@ -5,9 +5,10 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     tutorials:
-        parent: "tutorials-store-and-retrieve"
+        parent: "tutorials-lotus"
 aliases:
     - /docs/tutorials/store-and-retrieve/
+    - /tutorials/store-and-retrieve/set-up/
 weight: 110
 toc: true
 ---
@@ -110,9 +111,9 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
 
 1. Lotus is now installed on your computer.
 
-### Linux
+### Ubuntu
 
-There are two simple ways to install Lotus on Linux:
+There are two simple ways to install Lotus on Ubuntu:
 
 - [AppImage](#appimage)
 - [Snap](#snap)
