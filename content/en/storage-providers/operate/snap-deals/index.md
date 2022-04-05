@@ -232,7 +232,7 @@ The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lo
 
 ### Extension workflow
 
-If you have a Snap-deals sector waiting for deals and make a deal that is staged, but that does not fit in that sector because the sector expires too soon, you must run the following:
+In the event that the duration of a newly received deal exceeds the remaining duration of the `Available` Snap-deals sector, you can run the following command:
 
 ```shell
 lotus-miner sectors extend --new-expiration && lotus-miner sectors match-pending-pieces
