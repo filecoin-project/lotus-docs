@@ -67,7 +67,7 @@ This is a relatively advanced storage provider operation. Users should be famili
 
 ### Prerequisites
 
-You must have to following set up to follow this guide through:
+You must have the following set up to follow this guide through:
 
 - Lotus 1.14.0 or higher [installed]({{< relref "prerequisites">}}).
 
