@@ -15,7 +15,7 @@
 
 [[main]]
   name = "Tutorials"
-  url = "/tutorials/store-and-retrieve/set-up/"
+  url = "/tutorials/lotus/store-and-retrieve/set-up/"
   weight = 40
 
 [[main]]
@@ -103,16 +103,16 @@
   url = "/tutorials/lotus"
 
 [[tutorials]]
-  name = "Providers"
+  name = "Storage Providers"
   weight = 20
   identifier = "tutorials-providers"
-  url = "/tutorials/lotus"
+  url = "/tutorials/lotus-miner"
 
-[[tutorials]]
-  name = "Store and retrieve"
-  weight = 30
-  identifier = "tutorials-store-and-retrieve"
-  url = "/tutorials/store-and-retrieve"
+#[[tutorials]]
+#  name = "Store and retrieve"
+#  weight = 30
+#  identifier = "tutorials-store-and-retrieve"
+#  url = "/tutorials/store-and-retrieve"
 
 [[social]]
   name = "GitHub"

@@ -2,7 +2,7 @@
 title: "Store data"
 description: "This guide will show you how to import and make deals to store data on the Filecoin network using Lotus."
 lead: "This guide will show you how to import and make deals to store data on the Filecoin network using Lotus."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"
