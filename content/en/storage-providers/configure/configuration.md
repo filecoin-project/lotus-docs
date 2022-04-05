@@ -138,7 +138,7 @@ If `MakeNewSectorForDeals` is set to `true` then `lotus-miner` will create new s
 
 ### Make new CC sector available for snap-deal
 
-`MakeCCSectorsAvailable` makes all the new CC sectors available to be upgraded with snap-deals. When this boolean is set to `true`, all pledged "CC" sectors from that point onwards will be coverted to "Available" state after sealing. This enables sealing the incoming storage deals more quickly into these "Available" sectors compared to creating a new sector for the deals. 
+`MakeCCSectorsAvailable` makes all the new CC sectors available to be upgraded with snap-deals. When this boolean is set to `true`, all pledged "CC" sectors from that point onwards will be converted to "Available" state after sealing. This enables sealing the incoming storage deals more quickly into these "Available" sectors compared to creating a new sector for the deals. 
 
 ### Publishing several deals in one message
 
