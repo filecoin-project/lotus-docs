@@ -130,7 +130,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This command does not output anything on success.
 
-1. By listing your deals again, you'll see that the FSM has marked the sector as being in a `Available` state:
+1. By listing your deals again, you'll see that the FSM has marked the sector as being in an `Available` state:
 
     ```shell
     lotus-miner sectors list
