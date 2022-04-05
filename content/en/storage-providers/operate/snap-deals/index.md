@@ -156,7 +156,6 @@ lotus-miner sectors status --log <sectorNum>
 ## Testing snap-deal manually
 
 1. Convert a CC sector into snap-deal sector by following the [perform snap-deal guide]({{<relref "#Perform snap-deals">}}).
-
 2. Create a `UUID` variable and set it to the result of `uuidgen`:
 
     ```shell
