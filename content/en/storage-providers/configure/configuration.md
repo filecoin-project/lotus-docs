@@ -142,7 +142,7 @@ If `MakeNewSectorForDeals` is set to `true` then `lotus-miner` will create new s
 
 ### Publishing several deals in one message
 
-The `PublishStorageDeals` message can publish many deals in a single message.
+The `PublishStorageDeals` message can publish multiple deals in a single message.
 When a deal is ready to be published, Lotus will wait up to `PublishMsgPeriod`
 for other deals to be ready before sending the `PublishStorageDeals` message.
 
