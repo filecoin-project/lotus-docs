@@ -147,7 +147,7 @@ While the sector is transitioning through the snap-deals states, this sector is 
 
 ### Accept the new storage deal
 
-After the CC sector has been converted to accept the snap-deal, a new storage deal is accepted the storage provider will be sealed into the converted sector. You can track the status by checking the sector logs using the below command.
+After the CC sector has been converted to accept the snap-deal, a new storage deal is accepted by the storage provider and will be sealed into the converted sector. You can track the status by checking the sector logs using the below command.
 
 ```shell
 lotus-miner sectors status --log <sectorNum>
