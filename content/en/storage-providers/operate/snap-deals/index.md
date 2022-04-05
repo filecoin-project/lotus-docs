@@ -6,6 +6,8 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-operate"
+aliases:
+    - /storage-providers/configure/snap-deals/
 weight: 492
 toc: true
 ---
@@ -55,9 +57,9 @@ Storage providers from the Lotus [community tested Snap-deals performance](https
 | **CPU**: EPYC 7F72<br>**GPU**: 2x RTX 2080ti (CUDA) <br>**RAM**: 256 GB<br>**SWAP**: 20 GB<br>**Sector**: 64 GiB | 9m 19s | 19m 0s | 16m 10s |
 | **CPU**: EPYC 7502<br>**GPU**: RTX 3080 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 64 GiB | 12m 59s | 23m 13s | 18m 24s |
 
-## Test snap-deals
+## Perform snap-deals
 
-If you are a storage provider and want to get to grips with Snap-deals, then follow this quick guide! You will learn how to set up a local Filecoin network, create some basic deals, and then convert those deals to Snap-deals.
+If you are a storage provider and want to get to grips with snap-deals, then follow this quick guide! You will learn how to create some CC sectors, and then convert those sectors to snap-deals.
 
 {{< alert icon="warning" >}}
 This is a relatively advanced storage provider operation. Users should be familiar with Filecoin, Lotus, the sector-deal lifecycle, and basic storage provider operations.
@@ -65,10 +67,9 @@ This is a relatively advanced storage provider operation. Users should be famili
 
 ### Prerequisites
 
-You must have to following set up to follow this guide through:
+You must have the following set up to follow this guide through:
 
 - Lotus 1.14.0 or higher [installed]({{< relref "prerequisites">}}).
-- A local [Filecoin network (local-net)]({{< relref "local-network" >}}) running.
 
 ### Create committed-capacity sectors
 
@@ -129,7 +130,7 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
 
     This command does not output anything on success.
 
-1. By listing your deals again, you'll see that the FSM has marked the sector as being in a `SnapDealsWaitDeals` state:
+1. By listing your deals again, you'll see that the FSM has marked the sector as being in an `Available` state:
 
     ```shell
     lotus-miner sectors list
@@ -137,35 +138,44 @@ Now that you have created a basic CC sector, it's time to convert it to a snap-d
     > ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
     > 0   Proving               YES      YES     1550097 (in 10 weeks 1 day)  CC
     > 1   Proving               YES      YES     1550097 (in 10 weeks 1 day)  1      2KiB        18KiB
-    > 2   SnapDealsWaitDeals    YES      YES     1549517 (in 10 weeks 1 day)  CC
+    > 2   Available    YES      YES     1549517 (in 10 weeks 1 day)  CC
     ```
 
     This means that this sector (`2`) is ready to wait for deals!
 
-While the sector is transitioning through the snap-deals states, this sector is still preserved, and nothing is changing internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undisrupted during the process.  
+While the sector is transitioning through the snap-deals states, this sector is still preserved, and nothing is changed internally. The FSM works to keep the sector safe so that WindowPosts and WinningPosts are totally undisrupted during the process.  
 
-### Add data to the snap-deal sector
+### Accept the new storage deal
 
-1. Create a `UUID` variable and set it to the result of `uuidgen`:
+After the CC sector has been converted to accept the snap-deal, a new storage deal is accepted by the storage provider and will be sealed into the converted sector. You can track the status by checking the sector logs using the below command.
+
+```shell
+lotus-miner sectors status --log <sectorNum>
+```
+
+## Testing snap-deal manually
+
+1. Convert a CC sector into snap-deal sector by following the [perform snap-deal guide]({{<relref "#perform-snap-deals">}}).
+2. Create a `UUID` variable and set it to the result of `uuidgen`:
 
     ```shell
     UUID=`uuidgen | awk -F"-" '{print $1}'`
     ```
 
-1. Create a 1500 byte file with random data in it:
+3. Create a 1500 byte file with random data in it:
 
     ```shell
     dd if=/dev/urandom of=$UUID.deal bs=1 count=1500
     ```
 
-1. Create a `$ROOT` variable that we'll use in a moment:
+4. Create a `$ROOT` variable that we'll use in a moment:
 
     ```shell
     OUT=`./lotus client import $UUID.deal`
     ROOT`echo $OUT | awk 'NF>1{print $NF}'` 
     ```
 
-1. Invoke the `lotus client deal` command with the newly created `$ROOT` variable and some deal parameters:
+5. Invoke the `lotus client deal` command with the newly created `$ROOT` variable and some deal parameters:
 
     ```shell
     ./lotus client deal $ROOT t01000 0.00001 600001
@@ -181,6 +191,21 @@ While the sector is transitioning through the snap-deals states, this sector is 
     ```
 
 This process might take a while, but eventually, the deal will go to your `lotus-miner` and be placed into the `snap-deals` sector we just made.
+
+## Snap-deal queue
+
+A new feature in `lotus-miner` allows converting all the future "CC" sectors to snap-deal ready sectors by default. This features moves the newly sealed "CC" sector to "Available" state as part of the sector finalizing steps to mark it as available for snap deals. It provides two main benifits:
+
+1. It removes the manual intervention required to convert the "CC" sectors to snap-deal ready sectors and thus, reduces the overhead for the storage provider. 
+2. As all the new storage deals will be sealed as part of snap-deal, the sealing time would be considerable less.
+
+This new feature can be enabled in the lotus miner [configuration]({{<relref "../../configure/configuration/#make-new-cc-sector-available-for-snap-deal">}}).
+
+When a deal enters the the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deals before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with the lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../configure/configuration/#disabling-new-sector-for-deal">}}). 
+
+{{< alert >}}
+In the case that creating new sectors for deals is disabled, the deal will be left hanging until a sector is made "Available" for it.
+{{< /alert >}}
 
 ## Videos
 
@@ -206,10 +231,10 @@ The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lo
 
 ### Extension workflow
 
-If you have a Snap-deals sector waiting for deals and make a deal that is staged, but that does not fit in that sector because the sector expires too soon, you must run the following:
+In the event that the duration of a newly received deal exceeds the remaining duration of the `Available` Snap-deals sector, you can run the following command:
 
 ```shell
-./lotus-miner sectors extend --new-expiration && ./lotus-miner sectors match-pending-pieces
+lotus-miner sectors extend --new-expiration && lotus-miner sectors match-pending-pieces
 ```
 
 This will match the piece to the newly extended sector and start the replica update process.
@@ -219,7 +244,7 @@ This will match the piece to the newly extended sector and start the replica upd
 You can abort the upgrade and remove all replica update data, reverting your sector back to the proving state, by running:
 
 ```shell
-./lotus-miner sectors update-state --really-do-it AbortUpgrade
+lotus-miner sectors abort-upgrade --really-do-it <sectornumber>
 ```
 
 Keep in mind that **you will lose the deals in the update**, and the FSM won't rematch the deal with other sectors. This is the same thing that happens when you remove a deal sector.
