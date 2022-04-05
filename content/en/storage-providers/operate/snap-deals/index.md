@@ -205,7 +205,7 @@ This new feature can be enabled in the lotus miner [configuration]({{<relref "..
 When a deal enters the the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deals before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with the lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../configure/configuration/#disabling-new-sector-for-deal">}}). 
 
 {{< alert >}}
-In case creating new sectors for deals is disabled then deal will be left hanging till a sectors is made "Available" for it.
+In the case that creating new sectors for deals is disabled, the deal will be left hanging until a sector is made "Available" for it.
 {{< /alert >}}
 
 ## Videos
