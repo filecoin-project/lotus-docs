@@ -1,7 +1,7 @@
 ---
 title: "Seal workers"
 description: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
-lead: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
+lead: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or more lotus workers."
 draft: false
 menu:
     storage-providers:
@@ -12,7 +12,7 @@ weight: 110
 toc: true
 ---
 
-While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a _sealing pipeline_ to improve resource utilization. The sealing pipeline frees up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
+While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
 
 ## Resource allocation in Lotus Workers
 
@@ -60,7 +60,7 @@ Default resource value table. Some of these values are _fairly_ conservative:
 The Unseal task has the same resource use as the PreCommit1 task.
 
 {{< alert icon="info" >}}
-The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "configuration#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
+The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [cgroup environment variables]({{< relref "#control-groups" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
 {{< /alert >}}
 
 ### Resource windows
@@ -485,7 +485,7 @@ UNS_8M_MIN_MEMORY=8388608
 During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
 {{< /alert >}}
 
-The `lotus-worker` application should have been built and installed along with the others when following the installation guide. For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
+The `lotus-worker` application is built and installed along with the other Lotus binaries when following the installation guide. For simplicity, we recommend following the similar procedure as building `lotus-miner` application for building the `lotus-worker` application.
 
 ## Setting up the Lotus Miner
 
@@ -501,7 +501,7 @@ Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network inter
 lotus-miner auth api-info --perm admin
 ```
 
-The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "json-rpc" >}}). Write down the output so that you can use it in the next step.
+The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "api-access#api-tokens" >}}). Write down the output so that you can use it in the next step.
 
 ### Configuring the Lotus Miner sealing capabilities
 
@@ -586,7 +586,7 @@ Worker 1, host othercomputer
 
 You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
 
-Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores available and sealing phases to Lotus Miners and Lotus Workers.
+Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU (and GPU if available) intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between Lotus Miners and Lotus Workers.
 
 Note that if you co-locate miner and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
 
@@ -596,7 +596,7 @@ In most cases, only one Lotus Worker per machine should be running since `lotus-
 
 The only cases where running multiple workers per machine may be a good idea is when there are multiple GPUs, or a single high memory-capacity GPU, available.
 
-Multiple GPU support is currently in an early stage. It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
+It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
 
 Advanced GPUs with more than 20 GB of memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
 
