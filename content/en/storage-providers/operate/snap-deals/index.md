@@ -209,9 +209,7 @@ In the case that creating new sectors for deals is disabled, the deal will be le
 
 ## Videos
 
-Here's a video the Lotus team created from an ask-me-anything (AMA) event held before the launch of Snap-deals:
-
-{{< youtube _9fgQHVMuVA >}}
+The Lotus team held an ask-me-anything (AMA) event in February 2022. In the AMA, Lotus developers covered topics like how snap-deals works, how useful they are, and how storage providers can benefit from using them. You can [watch a recording of the live AMA over on YouTube](https://www.youtube.com/watch?v=_9fgQHVMuVA).
 
 ## Troubleshooting
 
