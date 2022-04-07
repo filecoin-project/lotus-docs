@@ -27,8 +27,10 @@ These are the minimal requirements for running each of the PoSt tasks:
 
 | **Task**    | **GPU**            | **VRAM** | **RAM** |
 |:-----------:|:------------------:|:--------:|:-------:|
-| winningPoSt | Highly recommended |          |         |
+| winningPoSt | Highly recommended |  6GiB*   |  64GiB* |
 | windowPoSt  | Highly recommended | 8\.5GiB  | 128GiB  |
+
+*These are conservative numbers and we are currently exploring the lower boundaries for winningPoSt.
 
 {{< alert icon="callout" >}}
 Although both tasks can be run with a powerful CPU, it is highly recommended to run on GPU as it speeds up the process significantly, therefore reducing the chance to miss windowPoSt or winningPoSt
