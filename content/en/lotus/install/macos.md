@@ -84,6 +84,16 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 
 Next up is cloning the Lotus repository and building the executables.
 
+#### Rust
+
+We need to download and install the official compiler for the Rust programming language, and its package manager, Cargo.
+
+```shell
+rustup-init
+```
+
+Follow the prompts to install Rust. The default installation option should be chosen unless you are familiar with customisation.
+
 ### Build and install Lotus
 
 The installation instructions are different depending on which CPU is in your Mac:
