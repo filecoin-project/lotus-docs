@@ -79,7 +79,7 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 1. Use the command `brew install` to install the following packages:
 
    ```shell
-   brew install go bzr jq pkg-config rustup hwloc
+   brew install go bzr jq pkg-config rustup hwloc coreutils
    ```
 
 Next up is cloning the Lotus repository and building the executables.
@@ -107,7 +107,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.15.0
+    git checkout v1.15.1
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -121,6 +121,7 @@ If you want to checkout to a network other than mainnet, take a look at the [Swi
     ```shell
     export LIBRARY_PATH=/opt/homebrew/lib
     export FFI_BUILD_FROM_SOURCE=1
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
     ```
 
 1. Build the `lotus` daemon:
@@ -153,7 +154,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-    git checkout v1.15.0
+    git checkout v1.15.1
     ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -168,6 +169,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
    ```shell
    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+   export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
    ```
 
    This is due to a Lotus bug that prevents Lotus from running on a processor without `adx` instruction support, and should be fixed soon.
