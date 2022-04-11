@@ -469,6 +469,10 @@ UNS_8M_MIN_MEMORY=8388608
 
 ## Advanced PoSt worker configurations
 
+{{< alert icon="tip" >}}
+ Use with caution as changing these values to extremes might cause you to miss windowPoSt.
+ {{< /alert >}}
+
 Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
 
 ```
