@@ -466,3 +466,21 @@ UNS_8M_MAX_PARALLELISM_GPU=0
 UNS_8M_MIN_MEMORY=8388608
 ```
 {{< /details >}}
+
+## Advanced PoSt worker configurations
+
+Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
+
+```
+    --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
+```
+
+Lets you set an upper boundary of how many challenges it reads from your storage simultaneously. At defualt this is set to 128.
+
+```
+   --post-read-timeout value     time limit for reading PoSt challenges (0 = no limit) (default: 0s)
+```
+
+Lets you set a cut off time for reading challenges from storage, after which it will abort the job. At default this is set to no limit.
+
+Both these settings can be set at runtime of the PoSt workers.
