@@ -20,7 +20,7 @@ USAGE:
    lotus-miner [global options] command [command options] [arguments...]
 
 VERSION:
-   1.13.2
+   1.15.1
 
 COMMANDS:
    init     Initialize a lotus miner repo
@@ -43,6 +43,7 @@ COMMANDS:
      retrieval-deals  Manage retrieval deals and related configuration
      data-transfers   Manage data transfers
      dagstore         Manage the dagstore on the markets subsystem
+     index            Manage the index provider on the markets subsystem
    NETWORK:
      net  Manage P2P Network
    RETRIEVAL:
@@ -56,7 +57,7 @@ COMMANDS:
 GLOBAL OPTIONS:
    --actor value, -a value                  specify other actor to query / manipulate
    --color                                  use color in display output (default: depends on output being a TTY)
-   --miner-repo value, --storagerepo value  Specify miner repo path. flag(storagerepo) and env(LOTUS_STORAGE_PATH) are DEPRECATION, will REMOVE SOON (default: "/Users/lexluthr/.lotusminerDevnet") [$LOTUS_MINER_PATH, $LOTUS_STORAGE_PATH]
+   --miner-repo value, --storagerepo value  Specify miner repo path. flag(storagerepo) and env(LOTUS_STORAGE_PATH) are DEPRECATION, will REMOVE SOON (default: "~/.lotusminer") [$LOTUS_MINER_PATH, $LOTUS_STORAGE_PATH]
    --markets-repo value                     Markets repo path [$LOTUS_MARKETS_PATH]
    --call-on-markets                        (experimental; may be removed) call this command against a markets node; use only with common commands like net, auth, pprof, etc. whose target may be ambiguous (default: false)
    --vv                                     enables very verbose mode, useful for debugging the CLI (default: false)
@@ -82,7 +83,7 @@ OPTIONS:
    --create-worker-key          create separate worker key (default: false)
    --worker value, -w value     worker key to use (overrides --create-worker-key)
    --owner value, -o value      owner key to use
-   --sector-size value          specify sector size to use (default: "2KiB")
+   --sector-size value          specify sector size to use (default: "32GiB")
    --pre-sealed-sectors value   specify set of presealed sectors for starting as a genesis miner
    --pre-sealed-metadata value  specify the metadata file for the presealed sectors
    --nosync                     don't check full-node sync status (default: false)
@@ -91,10 +92,42 @@ OPTIONS:
    --gas-premium value          set gas premium for initialization messages in AttoFIL (default: "0")
    --from value                 select which address to send actor creation message from
    --help, -h                   show help (default: false)
-   --version, -v                print the version (default: false)
    
 ```
 
+### lotus-miner init restore
+```
+NAME:
+   lotus-miner init restore - Initialize a lotus miner repo from a backup
+
+USAGE:
+   lotus-miner init restore [command options] [backupFile]
+
+OPTIONS:
+   --nosync                don't check full-node sync status (default: false)
+   --config value          config file (config.toml)
+   --storage-config value  storage paths config (storage.json)
+   --help, -h              show help (default: false)
+   
+```
+
+### lotus-miner init service
+```
+NAME:
+   lotus-miner init service - Initialize a lotus miner sub-service
+
+USAGE:
+   lotus-miner init service [command options] [backupFile]
+
+OPTIONS:
+   --config value            config file (config.toml)
+   --nosync                  don't check full-node sync status (default: false)
+   --type value              type of service to be enabled
+   --api-sealer value        sealer API info (lotus-miner auth api-info --perm=admin)
+   --api-sector-index value  sector Index API info (lotus-miner auth api-info --perm=admin)
+   --help, -h                show help (default: false)
+   
+```
 
 ## lotus-miner run
 ```
@@ -113,7 +146,6 @@ OPTIONS:
    
 ```
 
-
 ## lotus-miner stop
 ```
 NAME:
@@ -126,7 +158,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ## lotus-miner config
 ```
@@ -142,11 +173,37 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+### lotus-miner config default
+```
+NAME:
+   lotus-miner config default - Print default node config
+
+USAGE:
+   lotus-miner config default [command options] [arguments...]
+
+OPTIONS:
+   --no-comment  don't comment default values (default: false)
+   --help, -h    show help (default: false)
+   
+```
+
+### lotus-miner config updated
+```
+NAME:
+   lotus-miner config updated - Print updated node config
+
+USAGE:
+   lotus-miner config updated [command options] [arguments...]
+
+OPTIONS:
+   --no-comment  don't comment default values (default: false)
+   --help, -h    show help (default: false)
+   
+```
 
 ## lotus-miner backup
 ```
@@ -158,18 +215,17 @@ USAGE:
 
 DESCRIPTION:
    The backup command writes a copy of node metadata under the specified path
-
-Online backups:
-For security reasons, the daemon must be have LOTUS_BACKUP_BASE_PATH env var set
-to a path where backup files are supposed to be saved, and the path specified in
-this command must be within this base path
+   
+   Online backups:
+   For security reasons, the daemon must be have LOTUS_BACKUP_BASE_PATH env var set
+   to a path where backup files are supposed to be saved, and the path specified in
+   this command must be within this base path
 
 OPTIONS:
    --offline   create backup without the node running (default: false)
    --help, -h  show help (default: false)
    
 ```
-
 
 ## lotus-miner version
 ```
@@ -183,7 +239,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ## lotus-miner actor
 ```
@@ -206,8 +261,7 @@ COMMANDS:
    help, h                Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -226,7 +280,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner actor withdraw
 ```
 NAME:
@@ -240,7 +293,6 @@ OPTIONS:
    --help, -h          show help (default: false)
    
 ```
-
 
 ### lotus-miner actor repay-debt
 ```
@@ -256,7 +308,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner actor set-peer-id
 ```
 NAME:
@@ -270,7 +321,6 @@ OPTIONS:
    --help, -h         show help (default: false)
    
 ```
-
 
 ### lotus-miner actor set-owner
 ```
@@ -286,7 +336,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner actor control
 ```
 NAME:
@@ -301,11 +350,38 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+#### lotus-miner actor control list
+```
+NAME:
+   lotus-miner actor control list - Get currently set control addresses
+
+USAGE:
+   lotus-miner actor control list [command options] [arguments...]
+
+OPTIONS:
+   --verbose   (default: false)
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner actor control set
+```
+NAME:
+   lotus-miner actor control set - Set control address(-es)
+
+USAGE:
+   lotus-miner actor control set [command options] [...address]
+
+OPTIONS:
+   --really-do-it  Actually send transaction performing the action (default: false)
+   --help, -h      show help (default: false)
+   
+```
 
 ### lotus-miner actor propose-change-worker
 ```
@@ -321,7 +397,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner actor confirm-change-worker
 ```
 NAME:
@@ -335,7 +410,6 @@ OPTIONS:
    --help, -h      show help (default: false)
    
 ```
-
 
 ### lotus-miner actor compact-allocated
 ```
@@ -353,7 +427,6 @@ OPTIONS:
    
 ```
 
-
 ## lotus-miner info
 ```
 NAME:
@@ -370,10 +443,21 @@ OPTIONS:
    --hide-sectors-info  hide sectors info (default: false)
    --blocks value       Log of produced <blocks> newest blocks and rewards(Miner Fee excluded) (default: 0)
    --help, -h           show help (default: false)
-   --version, -v        print the version (default: false)
    
 ```
 
+### lotus-miner info all
+```
+NAME:
+   lotus-miner info all - dump all related miner info
+
+USAGE:
+   lotus-miner info all [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
 
 ## lotus-miner auth
 ```
@@ -389,11 +473,37 @@ COMMANDS:
    help, h       Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+### lotus-miner auth create-token
+```
+NAME:
+   lotus-miner auth create-token - Create token
+
+USAGE:
+   lotus-miner auth create-token [command options] [arguments...]
+
+OPTIONS:
+   --perm value  permission to assign to the token, one of: read, write, sign, admin
+   --help, -h    show help (default: false)
+   
+```
+
+### lotus-miner auth api-info
+```
+NAME:
+   lotus-miner auth api-info - Get token with API info required to connect to this node
+
+USAGE:
+   lotus-miner auth api-info [command options] [arguments...]
+
+OPTIONS:
+   --perm value  permission to assign to the token, one of: read, write, sign, admin
+   --help, -h    show help (default: false)
+   
+```
 
 ## lotus-miner log
 ```
@@ -410,11 +520,69 @@ COMMANDS:
    help, h    Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+### lotus-miner log list
+```
+NAME:
+   lotus-miner log list - List log systems
+
+USAGE:
+   lotus-miner log list [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner log set-level
+```
+NAME:
+   lotus-miner log set-level - Set log level
+
+USAGE:
+   lotus-miner log set-level [command options] [level]
+
+DESCRIPTION:
+   Set the log level for logging systems:
+   
+      The system flag can be specified multiple times.
+   
+      eg) log set-level --system chain --system chainxchg debug
+   
+      Available Levels:
+      debug
+      info
+      warn
+      error
+   
+      Environment Variables:
+      GOLOG_LOG_LEVEL - Default log level for all log systems
+      GOLOG_LOG_FMT   - Change output log format (json, nocolor)
+      GOLOG_FILE      - Write logs to file
+      GOLOG_OUTPUT    - Specify whether to output to file, stderr, stdout or a combination, i.e. file+stderr
+
+OPTIONS:
+   --system value  limit to log system
+   --help, -h      show help (default: false)
+   
+```
+
+### lotus-miner log alerts
+```
+NAME:
+   lotus-miner log alerts - Get alert states
+
+USAGE:
+   lotus-miner log alerts [command options] [arguments...]
+
+OPTIONS:
+   --all       get all (active and inactive) alerts (default: false)
+   --help, -h  show help (default: false)
+   
+```
 
 ## lotus-miner wait-api
 ```
@@ -433,7 +601,6 @@ OPTIONS:
    
 ```
 
-
 ## lotus-miner fetch-params
 ```
 NAME:
@@ -449,7 +616,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ## lotus-miner storage-deals
 ```
@@ -474,8 +640,7 @@ COMMANDS:
    help, h            Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -491,7 +656,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner storage-deals list
 ```
@@ -509,7 +673,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner storage-deals selection
 ```
 NAME:
@@ -525,11 +688,52 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+#### lotus-miner storage-deals selection list
+```
+NAME:
+   lotus-miner storage-deals selection list - List storage deal proposal selection criteria
+
+USAGE:
+   lotus-miner storage-deals selection list [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner storage-deals selection reset
+```
+NAME:
+   lotus-miner storage-deals selection reset - Reset storage deal proposal selection criteria to default values
+
+USAGE:
+   lotus-miner storage-deals selection reset [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner storage-deals selection reject
+```
+NAME:
+   lotus-miner storage-deals selection reject - Configure criteria which necessitate automatic rejection
+
+USAGE:
+   lotus-miner storage-deals selection reject [command options] [arguments...]
+
+OPTIONS:
+   --online      (default: false)
+   --offline     (default: false)
+   --verified    (default: false)
+   --unverified  (default: false)
+   --help, -h    show help (default: false)
+   
+```
 
 ### lotus-miner storage-deals set-ask
 ```
@@ -548,7 +752,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner storage-deals get-ask
 ```
 NAME:
@@ -561,7 +764,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner storage-deals set-blocklist
 ```
@@ -576,7 +778,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner storage-deals get-blocklist
 ```
 NAME:
@@ -589,7 +790,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner storage-deals reset-blocklist
 ```
@@ -604,7 +804,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner storage-deals set-seal-duration
 ```
 NAME:
@@ -617,7 +816,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner storage-deals pending-publish
 ```
@@ -632,7 +830,6 @@ OPTIONS:
    --help, -h     show help (default: false)
    
 ```
-
 
 ### lotus-miner storage-deals retry-publish
 ```
@@ -663,8 +860,7 @@ COMMANDS:
    help, h    Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -683,11 +879,50 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
+#### lotus-miner retrieval-deals selection list
+```
+NAME:
+   lotus-miner retrieval-deals selection list - List retrieval deal proposal selection criteria
+
+USAGE:
+   lotus-miner retrieval-deals selection list [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner retrieval-deals selection reset
+```
+NAME:
+   lotus-miner retrieval-deals selection reset - Reset retrieval deal proposal selection criteria to default values
+
+USAGE:
+   lotus-miner retrieval-deals selection reset [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner retrieval-deals selection reject
+```
+NAME:
+   lotus-miner retrieval-deals selection reject - Configure criteria which necessitate automatic rejection
+
+USAGE:
+   lotus-miner retrieval-deals selection reject [command options] [arguments...]
+
+OPTIONS:
+   --online    (default: false)
+   --offline   (default: false)
+   --help, -h  show help (default: false)
+   
+```
 
 ### lotus-miner retrieval-deals list
 ```
@@ -701,7 +936,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner retrieval-deals set-ask
 ```
@@ -719,7 +953,6 @@ OPTIONS:
    --help, -h                         show help (default: false)
    
 ```
-
 
 ### lotus-miner retrieval-deals get-ask
 ```
@@ -743,14 +976,14 @@ USAGE:
    lotus-miner data-transfers command [command options] [arguments...]
 
 COMMANDS:
-   list     List ongoing data transfers for this miner
-   restart  Force restart a stalled data transfer
-   cancel   Force cancel a data transfer
-   help, h  Shows a list of commands or help for one command
+   list         List ongoing data transfers for this miner
+   restart      Force restart a stalled data transfer
+   cancel       Force cancel a data transfer
+   diagnostics  Get detailed diagnostics on active transfers with a specific peer
+   help, h      Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -771,7 +1004,6 @@ OPTIONS:
    --help, -h     show help (default: false)
    
 ```
-
 
 ### lotus-miner data-transfers restart
 ```
@@ -804,6 +1036,19 @@ OPTIONS:
    
 ```
 
+### lotus-miner data-transfers diagnostics
+```
+NAME:
+   lotus-miner data-transfers diagnostics - Get detailed diagnostics on active transfers with a specific peer
+
+USAGE:
+   lotus-miner data-transfers diagnostics [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
 ## lotus-miner dagstore
 ```
 NAME:
@@ -818,11 +1063,11 @@ COMMANDS:
    recover-shard     Attempt to recover a shard in errored state
    initialize-all    Initialize all uninitialized shards, streaming results as they're produced; only shards for unsealed pieces are initialized by default
    gc                Garbage collect the dagstore
+   lookup-pieces     Lookup pieces that a given CID belongs to
    help, h           Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -840,7 +1085,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner dagstore initialize-shard
 ```
 NAME:
@@ -855,7 +1099,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner dagstore recover-shard
 ```
 NAME:
@@ -869,7 +1112,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner dagstore initialize-all
 ```
@@ -887,7 +1129,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner dagstore gc
 ```
 NAME:
@@ -895,6 +1136,66 @@ NAME:
 
 USAGE:
    lotus-miner dagstore gc [command options] [arguments...]
+
+OPTIONS:
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner dagstore lookup-pieces
+```
+NAME:
+   lotus-miner dagstore lookup-pieces - Lookup pieces that a given CID belongs to
+
+USAGE:
+   lotus-miner dagstore lookup-pieces [command options] <cid>
+
+OPTIONS:
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
+   
+```
+
+## lotus-miner index
+```
+NAME:
+   lotus-miner index - Manage the index provider on the markets subsystem
+
+USAGE:
+   lotus-miner index command [command options] [arguments...]
+
+COMMANDS:
+   announce      Announce a deal to indexers so they can download its index
+   announce-all  Announce all active deals to indexers so they can download the indices
+   help, h       Shows a list of commands or help for one command
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner index announce
+```
+NAME:
+   lotus-miner index announce - Announce a deal to indexers so they can download its index
+
+USAGE:
+   lotus-miner index announce [command options] <deal proposal cid>
+
+OPTIONS:
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner index announce-all
+```
+NAME:
+   lotus-miner index announce-all - Announce all active deals to indexers so they can download the indices
+
+USAGE:
+   lotus-miner index announce-all [command options] [arguments...]
 
 OPTIONS:
    --color     use color in display output (default: depends on output being a TTY)
@@ -911,20 +1212,24 @@ USAGE:
    lotus-miner net command [command options] [arguments...]
 
 COMMANDS:
-   peers         Print peers
-   connect       Connect to a peer
-   listen        List listen addresses
-   id            Get node identity
-   findpeer      Find the addresses of a given peerID
-   scores        Print peers' pubsub scores
-   reachability  Print information about reachability from the internet
-   bandwidth     Print bandwidth usage information
-   block         Manage network connection gating rules
-   help, h       Shows a list of commands or help for one command
+   peers           Print peers
+   connect         Connect to a peer
+   listen          List listen addresses
+   id              Get node identity
+   findpeer        Find the addresses of a given peerID
+   scores          Print peers' pubsub scores
+   reachability    Print information about reachability from the internet
+   bandwidth       Print bandwidth usage information
+   block           Manage network connection gating rules
+   stat            Report resource usage for a scope
+   limit           Get or set resource limits for a scope
+   protect         Add one or more peer IDs to the list of protected peer connections
+   unprotect       Remove one or more peer IDs from the list of protected peer connections.
+   list-protected  List the peer IDs with protected connection.
+   help, h         Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -943,7 +1248,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner net connect
 ```
 NAME:
@@ -956,7 +1260,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner net listen
 ```
@@ -971,7 +1274,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner net id
 ```
 NAME:
@@ -985,7 +1287,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner net findpeer
 ```
 NAME:
@@ -998,7 +1299,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner net scores
 ```
@@ -1014,7 +1314,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner net reachability
 ```
 NAME:
@@ -1027,7 +1326,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner net bandwidth
 ```
@@ -1044,7 +1342,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner net block
 ```
 NAME:
@@ -1060,8 +1357,225 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner net block add
+```
+NAME:
+   lotus-miner net block add - Add connection gating rules
+
+USAGE:
+   lotus-miner net block add command [command options] [arguments...]
+
+COMMANDS:
+   peer     Block a peer
+   ip       Block an IP address
+   subnet   Block an IP subnet
+   help, h  Shows a list of commands or help for one command
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block add peer
+```
+NAME:
+   lotus-miner net block add peer - Block a peer
+
+USAGE:
+   lotus-miner net block add peer [command options] <Peer> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block add ip
+```
+NAME:
+   lotus-miner net block add ip - Block an IP address
+
+USAGE:
+   lotus-miner net block add ip [command options] <IP> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block add subnet
+```
+NAME:
+   lotus-miner net block add subnet - Block an IP subnet
+
+USAGE:
+   lotus-miner net block add subnet [command options] <CIDR> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner net block remove
+```
+NAME:
+   lotus-miner net block remove - Remove connection gating rules
+
+USAGE:
+   lotus-miner net block remove command [command options] [arguments...]
+
+COMMANDS:
+   peer     Unblock a peer
+   ip       Unblock an IP address
+   subnet   Unblock an IP subnet
+   help, h  Shows a list of commands or help for one command
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block remove peer
+```
+NAME:
+   lotus-miner net block remove peer - Unblock a peer
+
+USAGE:
+   lotus-miner net block remove peer [command options] <Peer> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block remove ip
+```
+NAME:
+   lotus-miner net block remove ip - Unblock an IP address
+
+USAGE:
+   lotus-miner net block remove ip [command options] <IP> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+##### lotus-miner net block remove subnet
+```
+NAME:
+   lotus-miner net block remove subnet - Unblock an IP subnet
+
+USAGE:
+   lotus-miner net block remove subnet [command options] <CIDR> ...
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner net block list
+```
+NAME:
+   lotus-miner net block list - list connection gating rules
+
+USAGE:
+   lotus-miner net block list [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner net stat
+```
+NAME:
+   lotus-miner net stat - Report resource usage for a scope
+
+USAGE:
+   lotus-miner net stat [command options] scope
+
+DESCRIPTION:
+   Report resource usage for a scope.
+   
+     The scope can be one of the following:
+     - system        -- reports the system aggregate resource usage.
+     - transient     -- reports the transient resource usage.
+     - svc:<service> -- reports the resource usage of a specific service.
+     - proto:<proto> -- reports the resource usage of a specific protocol.
+     - peer:<peer>   -- reports the resource usage of a specific peer.
+     - all           -- reports the resource usage for all currently active scopes.
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner net limit
+```
+NAME:
+   lotus-miner net limit - Get or set resource limits for a scope
+
+USAGE:
+   lotus-miner net limit [command options] scope [limit]
+
+DESCRIPTION:
+   Get or set resource limits for a scope.
+   
+     The scope can be one of the following:
+     - system        -- reports the system aggregate resource usage.
+     - transient     -- reports the transient resource usage.
+     - svc:<service> -- reports the resource usage of a specific service.
+     - proto:<proto> -- reports the resource usage of a specific protocol.
+     - peer:<peer>   -- reports the resource usage of a specific peer.
+   
+    The limit is json-formatted, with the same structure as the limits file.
+
+OPTIONS:
+   --set       set the limit for a scope (default: false)
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner net protect
+```
+NAME:
+   lotus-miner net protect - Add one or more peer IDs to the list of protected peer connections
+
+USAGE:
+   lotus-miner net protect [command options] <peer-id> [<peer-id>...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner net unprotect
+```
+NAME:
+   lotus-miner net unprotect - Remove one or more peer IDs from the list of protected peer connections.
+
+USAGE:
+   lotus-miner net unprotect [command options] <peer-id> [<peer-id>...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner net list-protected
+```
+NAME:
+   lotus-miner net list-protected - List the peer IDs with protected connection.
+
+USAGE:
+   lotus-miner net list-protected [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1084,8 +1598,7 @@ COMMANDS:
    help, h      Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1102,7 +1615,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner pieces list-cids
 ```
 NAME:
@@ -1117,7 +1629,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner pieces piece-info
 ```
 NAME:
@@ -1130,7 +1641,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner pieces cid-info
 ```
@@ -1154,27 +1664,29 @@ USAGE:
    lotus-miner sectors command [command options] [arguments...]
 
 COMMANDS:
-   status             Get the seal status of a sector by its number
-   list               List sectors
-   refs               List References to sectors
-   update-state       ADVANCED: manually update the state of a sector, this may aid in error recovery
-   pledge             store random data in a sector
-   check-expire       Inspect expiring sectors
-   expired            Get or cleanup expired sectors
-   renew              Renew expiring sectors while not exceeding each sector's max life
-   extend             Extend sector expiration
-   terminate          Terminate sector on-chain then remove (WARNING: This means losing power and collateral for the removed sector)
-   remove             Forcefully remove a sector (WARNING: This means losing power and collateral for the removed sector (use 'terminate' for lower penalty))
-   mark-for-upgrade   Mark a committed capacity sector for replacement by a sector with deals
-   seal               Manually start sealing a sector (filling any unused space with junk)
-   set-seal-delay     Set the time, in minutes, that a new sector waits for deals before sealing starts
-   get-cc-collateral  Get the collateral required to pledge a committed capacity sector
-   batching           manage batch sector operations
-   help, h            Shows a list of commands or help for one command
+   status                Get the seal status of a sector by its number
+   list                  List sectors
+   refs                  List References to sectors
+   update-state          ADVANCED: manually update the state of a sector, this may aid in error recovery
+   pledge                store random data in a sector
+   check-expire          Inspect expiring sectors
+   expired               Get or cleanup expired sectors
+   renew                 Renew expiring sectors while not exceeding each sector's max life
+   extend                Extend sector expiration
+   terminate             Terminate sector on-chain then remove (WARNING: This means losing power and collateral for the removed sector)
+   remove                Forcefully remove a sector (WARNING: This means losing power and collateral for the removed sector (use 'terminate' for lower penalty))
+   snap-up               Mark a committed capacity sector to be filled with deals
+   abort-upgrade         Abort the attempted (SnapDeals) upgrade of a CC sector, reverting it to as before
+   mark-for-upgrade      Mark a committed capacity sector for replacement by a sector with deals
+   seal                  Manually start sealing a sector (filling any unused space with junk)
+   set-seal-delay        Set the time, in minutes, that a new sector waits for deals before sealing starts
+   get-cc-collateral     Get the collateral required to pledge a committed capacity sector
+   batching              manage batch sector operations
+   match-pending-pieces  force a refreshed match of pending pieces to open sectors without manually waiting for more deals
+   help, h               Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1195,7 +1707,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors list
 ```
 NAME:
@@ -1205,17 +1716,17 @@ USAGE:
    lotus-miner sectors list [command options] [arguments...]
 
 OPTIONS:
-   --show-removed, -r  show removed sectors (default: false)
-   --color, -c         use color in display output (default: depends on output being a TTY)
-   --fast, -f          don't show on-chain info for better performance (default: false)
-   --events, -e        display number of events the sector has received (default: false)
-   --seal-time         display how long it took for the sector to be sealed (default: false)
-   --states value      filter sectors by a comma-separated list of states
-   --unproven, -u      only show sectors which aren't in the 'Proving' state (default: false)
-   --help, -h          show help (default: false)
+   --show-removed, -r    show removed sectors (default: false)
+   --color, -c           use color in display output (default: depends on output being a TTY)
+   --fast, -f            don't show on-chain info for better performance (default: false)
+   --events, -e          display number of events the sector has received (default: false)
+   --initial-pledge, -p  display initial pledge (default: false)
+   --seal-time, -t       display how long it took for the sector to be sealed (default: false)
+   --states value        filter sectors by a comma-separated list of states
+   --unproven, -u        only show sectors which aren't in the 'Proving' state (default: false)
+   --help, -h            show help (default: false)
    
 ```
-
 
 ### lotus-miner sectors refs
 ```
@@ -1230,6 +1741,19 @@ OPTIONS:
    
 ```
 
+### lotus-miner sectors update-state
+```
+NAME:
+   lotus-miner sectors update-state - ADVANCED: manually update the state of a sector, this may aid in error recovery
+
+USAGE:
+   lotus-miner sectors update-state [command options] <sectorNum> <newState>
+
+OPTIONS:
+   --really-do-it  pass this flag if you know what you are doing (default: false)
+   --help, -h      show help (default: false)
+   
+```
 
 ### lotus-miner sectors pledge
 ```
@@ -1244,7 +1768,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors check-expire
 ```
 NAME:
@@ -1258,7 +1781,6 @@ OPTIONS:
    --help, -h      show help (default: false)
    
 ```
-
 
 ### lotus-miner sectors expired
 ```
@@ -1275,7 +1797,6 @@ OPTIONS:
    --help, -h             show help (default: false)
    
 ```
-
 
 ### lotus-miner sectors renew
 ```
@@ -1299,7 +1820,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors extend
 ```
 NAME:
@@ -1319,6 +1839,91 @@ OPTIONS:
    
 ```
 
+### lotus-miner sectors terminate
+```
+NAME:
+   lotus-miner sectors terminate - Terminate sector on-chain then remove (WARNING: This means losing power and collateral for the removed sector)
+
+USAGE:
+   lotus-miner sectors terminate command [command options] <sectorNum>
+
+COMMANDS:
+   flush    Send a terminate message if there are sectors queued for termination
+   pending  List sector numbers of sectors pending termination
+   help, h  Shows a list of commands or help for one command
+
+OPTIONS:
+   --really-do-it  pass this flag if you know what you are doing (default: false)
+   --help, -h      show help (default: false)
+   
+```
+
+#### lotus-miner sectors terminate flush
+```
+NAME:
+   lotus-miner sectors terminate flush - Send a terminate message if there are sectors queued for termination
+
+USAGE:
+   lotus-miner sectors terminate flush [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner sectors terminate pending
+```
+NAME:
+   lotus-miner sectors terminate pending - List sector numbers of sectors pending termination
+
+USAGE:
+   lotus-miner sectors terminate pending [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner sectors remove
+```
+NAME:
+   lotus-miner sectors remove - Forcefully remove a sector (WARNING: This means losing power and collateral for the removed sector (use 'terminate' for lower penalty))
+
+USAGE:
+   lotus-miner sectors remove [command options] <sectorNum>
+
+OPTIONS:
+   --really-do-it  pass this flag if you know what you are doing (default: false)
+   --help, -h      show help (default: false)
+   
+```
+
+### lotus-miner sectors snap-up
+```
+NAME:
+   lotus-miner sectors snap-up - Mark a committed capacity sector to be filled with deals
+
+USAGE:
+   lotus-miner sectors snap-up [command options] <sectorNum>
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner sectors abort-upgrade
+```
+NAME:
+   lotus-miner sectors abort-upgrade - Abort the attempted (SnapDeals) upgrade of a CC sector, reverting it to as before
+
+USAGE:
+   lotus-miner sectors abort-upgrade [command options] <sectorNum>
+
+OPTIONS:
+   --really-do-it  pass this flag if you know what you are doing (default: false)
+   --help, -h      show help (default: false)
+   
+```
 
 ### lotus-miner sectors mark-for-upgrade
 ```
@@ -1333,7 +1938,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors seal
 ```
 NAME:
@@ -1347,7 +1951,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors set-seal-delay
 ```
 NAME:
@@ -1360,7 +1963,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner sectors get-cc-collateral
 ```
@@ -1376,7 +1978,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sectors batching
 ```
 NAME:
@@ -1391,8 +1992,48 @@ COMMANDS:
    help, h    Shows a list of commands or help for one command
 
 OPTIONS:
+   --help, -h  show help (default: false)
+   
+```
+
+#### lotus-miner sectors batching commit
+```
+NAME:
+   lotus-miner sectors batching commit - list sectors waiting in commit batch queue
+
+USAGE:
+   lotus-miner sectors batching commit [command options] [arguments...]
+
+OPTIONS:
+   --publish-now  send a batch now (default: false)
    --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   
+```
+
+#### lotus-miner sectors batching precommit
+```
+NAME:
+   lotus-miner sectors batching precommit - list sectors waiting in precommit batch queue
+
+USAGE:
+   lotus-miner sectors batching precommit [command options] [arguments...]
+
+OPTIONS:
+   --publish-now  send a batch now (default: false)
+   --help, -h     show help (default: false)
+   
+```
+
+### lotus-miner sectors match-pending-pieces
+```
+NAME:
+   lotus-miner sectors match-pending-pieces - force a refreshed match of pending pieces to open sectors without manually waiting for more deals
+
+USAGE:
+   lotus-miner sectors match-pending-pieces [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1413,8 +2054,7 @@ COMMANDS:
    help, h    Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1431,7 +2071,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner proving deadlines
 ```
 NAME:
@@ -1444,7 +2083,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner proving deadline
 ```
@@ -1459,7 +2097,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner proving faults
 ```
 NAME:
@@ -1472,7 +2109,6 @@ OPTIONS:
    --help, -h  show help (default: false)
    
 ```
-
 
 ### lotus-miner proving check
 ```
@@ -1500,20 +2136,20 @@ USAGE:
 
 DESCRIPTION:
    Sectors can be stored across many filesystem paths. These
-commands provide ways to manage the storage the miner will used to store sectors
-long term for proving (references as 'store') as well as how sectors will be
-stored while moving through the sealing pipeline (references as 'seal').
+   commands provide ways to manage the storage the miner will used to store sectors
+   long term for proving (references as 'store') as well as how sectors will be
+   stored while moving through the sealing pipeline (references as 'seal').
 
 COMMANDS:
    attach   attach local storage path
    list     list local storage paths
    find     find sector in the storage system
    cleanup  trigger cleanup actions
+   locks    show active sector locks
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1527,24 +2163,23 @@ USAGE:
 
 DESCRIPTION:
    Storage can be attached to the miner using this command. The storage volume
-list is stored local to the miner in $LOTUS_MINER_PATH/storage.json. We do not
-recommend manually modifying this value without further understanding of the
-storage system.
-
-Each storage volume contains a configuration file which describes the
-capabilities of the volume. When the '--init' flag is provided, this file will
-be created using the additional flags.
-
-Weight
-A high weight value means data will be more likely to be stored in this path
-
-Seal
-Data for the sealing process will be stored here
-
-Store
-Finalized sectors that will be moved here for long term storage and be proven
-over time
+   list is stored local to the miner in $LOTUS_MINER_PATH/storage.json. We do not
+   recommend manually modifying this value without further understanding of the
+   storage system.
    
+   Each storage volume contains a configuration file which describes the
+   capabilities of the volume. When the '--init' flag is provided, this file will
+   be created using the additional flags.
+   
+   Weight
+   A high weight value means data will be more likely to be stored in this path
+   
+   Seal
+   Data for the sealing process will be stored here
+   
+   Store
+   Finalized sectors that will be moved here for long term storage and be proven
+   over time
 
 OPTIONS:
    --init               initialize the path first (default: false)
@@ -1557,7 +2192,6 @@ OPTIONS:
    --help, -h           show help (default: false)
    
 ```
-
 
 ### lotus-miner storage list
 ```
@@ -1572,12 +2206,24 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --color        use color in display output (default: depends on output being a TTY)
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
    
 ```
 
+#### lotus-miner storage list sectors
+```
+NAME:
+   lotus-miner storage list sectors - get list of all sector files
+
+USAGE:
+   lotus-miner storage list sectors [command options] [arguments...]
+
+OPTIONS:
+   --color     use color in display output (default: depends on output being a TTY)
+   --help, -h  show help (default: false)
+   
+```
 
 ### lotus-miner storage find
 ```
@@ -1592,7 +2238,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner storage cleanup
 ```
 NAME:
@@ -1603,6 +2248,19 @@ USAGE:
 
 OPTIONS:
    --removed   cleanup remaining files from removed sectors (default: true)
+   --help, -h  show help (default: false)
+   
+```
+
+### lotus-miner storage locks
+```
+NAME:
+   lotus-miner storage locks - show active sector locks
+
+USAGE:
+   lotus-miner storage locks [command options] [arguments...]
+
+OPTIONS:
    --help, -h  show help (default: false)
    
 ```
@@ -1623,8 +2281,7 @@ COMMANDS:
    help, h     Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h     show help (default: false)
-   --version, -v  print the version (default: false)
+   --help, -h  show help (default: false)
    
 ```
 
@@ -1643,7 +2300,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sealing workers
 ```
 NAME:
@@ -1658,7 +2314,6 @@ OPTIONS:
    
 ```
 
-
 ### lotus-miner sealing sched-diag
 ```
 NAME:
@@ -1672,7 +2327,6 @@ OPTIONS:
    --help, -h     show help (default: false)
    
 ```
-
 
 ### lotus-miner sealing abort
 ```
