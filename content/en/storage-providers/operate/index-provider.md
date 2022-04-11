@@ -100,7 +100,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
 5. **Install Lotus Release**
 
-   Install the target Lotus release with index provider integration enabled.
+   Install the Lotus release v1.15.1 or higher. The index-provider enabled by default in v1.15.1 and newer releases.
 
 6. **Start `daemon` and `miner` processes**
 
