@@ -19,7 +19,7 @@ A lotus worker instance can only be one of the following:
 
 ## Launching PoSt workers
 
-Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider how the PoSt workers can access the sealed sectors<> and setting the correct enviroment variables before you run the workers.
+Before launching your PoSt worker you need to ensure that your worker meets the minimal requirements for the job it is going to perfom. You should also consider how the PoSt workers can access the sealed sectors and setting the correct enviroment variables before you run the workers.
 
 ### Minminal spec requirements
 
@@ -48,7 +48,7 @@ Storage providers should design their worker sectors access according to their s
 
 Remember to have the appropriate Nvidia-drivers and nvidia-opencl-icd installed if running OpenCL on your worker. If using CUDA, install the CUDA-toolkit and build lotus binaries with `FFI_USE_CUDA=1`
 
-The following environment variables are required to be set before starting the worker. These variables are similar to those set on the lotus-miner node as [explained in the setup guide]({{< relref "../configure/setup" >}}):
+The following environment variables are required to be set before starting the worker.
 
 ```
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
