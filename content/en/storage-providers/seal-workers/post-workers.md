@@ -9,9 +9,11 @@ menu:
 weight: 120
 toc: true
 ---
-{{< alert icon="warning" >}}
+
+{{< alert icon="callout" >}}
 This feature is supported since lotus v1.15.2.
 {{< /alert >}}
+
 While the Lotus Miner runs _windowPoSt_ and _winningPoSt_ by default, you can use specialized lotus workers to create a cluster of windowPoSt and winningPoSt workers to handle multiple Proof-of-Spacetime partitions simultaneously.
 
 A lotus worker instance can only be one of the following:
