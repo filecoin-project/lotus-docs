@@ -48,7 +48,7 @@ Storage providers should design their worker sectors access according to their s
 
 Remember to have the appropriate Nvidia-drivers and nvidia-opencl-icd installed if running OpenCL on your worker. If using CUDA, install the CUDA-toolkit and build lotus binaries with `FFI_USE_CUDA=1`
 
-The following environment variables are required to be set before starting the worker. These variables are similar to those set on the lotus-miner node as [explained in the setup guide]({{< relref "/storage-providers/configure/setup/" >}}):
+The following environment variables are required to be set before starting the worker. These variables are similar to those set on the lotus-miner node as [explained in the setup guide]({{< relref "../configure/setup" >}}):
 
 ```
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
