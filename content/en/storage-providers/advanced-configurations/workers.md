@@ -58,7 +58,7 @@ Default resource value table. Some of these values are _fairly_ conservative:
 The Unseal task has the same resource use as the PreCommit1 task.
 
 {{< alert icon="info" >}}
-The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "configuration#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
+The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "#control-groups" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
 {{< /alert >}}
 
 ### Resource windows
