@@ -1,7 +1,7 @@
 ---
 title: "Workers"
-description: "Lotus workers has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
-lead: "Lotus workers has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
+description: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
+lead: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
 draft: false
 menu:
     storage-providers:
@@ -10,7 +10,7 @@ weight: 110
 toc: true
 ---
 
-While the Lotus Workers has very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
+While the Lotus workers has very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
 
 ## Resource allocation in Seal Workers
 
