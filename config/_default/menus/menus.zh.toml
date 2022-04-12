@@ -95,7 +95,13 @@
 #   weight = 40
 #   identifier = "storage-providers-seal-workers"
 #   url = "/storage-providers/seal-workers"
- 
+# 
+#[[storage-providers]]
+#  name = "Advanced configurations"
+#  weight = 50
+#  identifier = "storage-providers-advanced-configurations"
+#  url = "/storage-providers/advanced-configurations"
+#
 [[tutorials]]
   name = "Lotus"
   weight = 10
