@@ -10,7 +10,7 @@ weight: 110
 toc: true
 ---
 
-While the Lotus workers has very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
+While the Lotus workers have very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
 
 ## Resource allocation in Seal Workers
 
