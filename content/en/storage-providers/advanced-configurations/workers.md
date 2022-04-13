@@ -1,7 +1,7 @@
 ---
 title: "Workers"
-description: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
-lead: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for Seal and PoSt workers"
+description: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for seal workers and PoSt workers"
+lead: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for seal workers and PoSt workers"
 draft: false
 menu:
     storage-providers:
