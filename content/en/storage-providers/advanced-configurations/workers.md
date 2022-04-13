@@ -68,13 +68,19 @@ The scheduler uses the concept of resource windows to prevent _resource starvati
 A resource window is simply a bucket of sealing tasks that can be run by a given worker in parallel based on the resources the worker has available when no tasks are running.
 
 In the scheduler, each worker has:
-- Scheduling windows - Two resource windows used to assign tasks to execute from the global queue
-- Preparing window - One resource window in which tasks are prepared to execute (for example, sector data is fetched if needed)
-- Executing window - One resource window for currently executing tasks
 
-When tasks arrive in the global scheduling queue, the scheduler will look for empty scheduling windows, and based on a number of factors, like whether the worker already has direct access to sector data, task types supported by the worker, whether the worker has disk space for sector data, task priority - tasks may be assigned to the scheduling window.
+- Scheduling windows - Two resource windows used to assign tasks to execute from the global queue.
+- Preparing window - One resource window in which tasks are prepared to execute. For example, sector data is fetched if needed.
+- Executing window - One resource window for currently executing tasks.
 
-After a scheduling window is filled with a number of tasks, it's sent to the worker for processing. The worker will pull tasks out of the scheduling window and start preparing them in the preparing window. After the preparing step is done, the task will be executed in the executing window.
+When tasks arrive in the global scheduling queue, the scheduler will look for empty scheduling windows. The scheduler may assign tasks to the scheduling window based on several factors, such as: 
+
+- whether the worker already has direct access to sector data.
+- task types supported by the worker.
+- whether the worker has disk space for sector data.
+- task priority.
+
+After the scheduler fills the scheduling window, the schedule is sent to the worker for processing. The worker will pull tasks out of the scheduling window and start preparing them in the preparing window. After the preparing step is done, the task will be executed in the executing window.
 
 After the worker has fully processed a scheduling window, it's sent back to the global scheduler to get more sealing tasks.
 
@@ -82,7 +88,7 @@ After the worker has fully processed a scheduling window, it's sent back to the 
 
 When the scheduler decides which tasks to run, it takes into account the priority of running a specific task.
 
-There are two priority tiers - high priority, for tasks that are cheap to execute but block other actions, and normal priority for all other tasks. Default priorities are defined in the table below.
+There are two priority tiers - high priority, for tasks that are cheap to execute but block other actions, and normal priority for all other tasks. Default priorities are defined in the table below. The lower the number, the higher the priority. Negative numbers have the highest priority. So `-2` has a higher priority than `1`.
 
 | Task Type           | Priority |
 |---------------------|----------|
@@ -99,22 +105,21 @@ There are two priority tiers - high priority, for tasks that are cheap to execut
 | Fetch               | -1       |
 | Finalize            | -2       |
 
-- Lower number means higher priority.
-- Negative number means the highest priority.
 
 When comparing task priority:
-- High priority tasks are considered first
-- Sectors with deals are considered second (more deals add more priority)
-- If the above is equal, tasks are selected based on priorities in the table
-- If the above is equal, sectors with lower sector numbers are selected (this can optimize gas usage slightly when submitting messages to the chain)
+
+- High priority tasks are considered first.
+- Sectors with deals are considered second. Additional deals increase the priority.
+- If the above is equal, tasks are selected based on priorities in the table.
+- If the above is equal, sectors with lower sector numbers are selected (this can optimize gas usage slightly when submitting messages to the chain).
 
 ### Control groups
 
-Countrol groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host.
+Countrol groups (cgroups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host.
 
-Variables for resource allocation tuning (overrides settings in the resource allocation table).
+These are the default variables for resource allocation tuning. These values override settings in the resource allocation table.
 
-{{< details "32G environment" >}}
+{{< details "32 GB environment" >}}
 ```plaintext
 AP_32G_BASE_MIN_MEMORY=1073741824
 AP_32G_GPU_UTILIZATION=0
@@ -185,7 +190,7 @@ UNS_32G_MIN_MEMORY=60129542144
 ```
 {{< /details >}}
 
-{{< details "512MB Environment" >}}
+{{< details "512 MB Environment" >}}
 ```plaintext
 AP_512M_BASE_MIN_MEMORY=1073741824
 AP_512M_GPU_UTILIZATION=0
@@ -665,21 +670,22 @@ UNS_8M_MIN_MEMORY=8388608
 ## Advanced PoSt worker configurations
 
 {{< alert icon="tip" >}}
- Use with caution as changing these values to extremes might cause you to miss windowPoSt.
+Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
  {{< /alert >}}
 
 Although the default settings are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware.
 
-```
-    --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
+The `--post-parallel-reads` option lets you set an upper boundary of how many challenges it reads from your storage simultaneously. This option is set to 128 by default.
+
+```plaintext
+--post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
 ```
 
-Lets you set an upper boundary of how many challenges it reads from your storage simultaneously. At defualt this is set to 128.
 
-```
-   --post-read-timeout value     time limit for reading PoSt challenges (0 = no limit) (default: 0s)
-```
+The `--post-read-timeout` option lets you set a cut off time for reading challenges from storage, after which it will abort the job. This option has no default limit.
 
-Lets you set a cut off time for reading challenges from storage, after which it will abort the job. At default this is set to no limit.
+```plaintext
+--post-read-timeout value     time limit for reading PoSt challenges (0 = no limit) (default: 0s)
+```
 
 Both these settings can be set at runtime of the PoSt workers.
