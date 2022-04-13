@@ -63,7 +63,7 @@ The default and custom configurations in the task resource table can be overridd
 
 ### Resource windows
 
-The scheduler uses the concept of resource windows to prevent resource starvation of tasks requiring larger amounts of resources by tasks with smaller resource requirements.
+The scheduler uses the concept of resource windows to prevent _resource starvation_ of tasks requiring larger amounts of resources by tasks with smaller resource requirements.
 
 A resource window is simply a bucket of sealing tasks that can be run by a given worker in parallel based on the resources the worker has available when no tasks are running.
 
