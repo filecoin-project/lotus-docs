@@ -60,7 +60,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     This will output something like:
 
    ```shell
-   git checkout <tag_or_branch>
+   git checkout <tag_or_release>
    # For example:
    git checkout <vX.X.X> # tag for a release
    ```
