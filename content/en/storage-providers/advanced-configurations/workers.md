@@ -256,7 +256,7 @@ UNS_512M_MIN_MEMORY=805306368
 ```
 {{< /details >}}
 
-{{< details "64GB Environment" >}}
+{{< details "64 GB Environment" >}}
 ```plaintext
 AP_64G_BASE_MIN_MEMORY=1073741824
 AP_64G_GPU_UTILIZATION=0
