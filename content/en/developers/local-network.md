@@ -53,12 +53,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 
 1. Checkout to the latest branch:
 
-    ```shell
-    git checkout release/v1.15.0
-    ```
-
-    This will output something like:
-
    ```shell
    git checkout <tag_or_release>
    # For example:
