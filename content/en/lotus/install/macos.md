@@ -164,7 +164,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
     ```shell
-   git checkout <tag_or_branch>
+   git checkout <tag_or_release>
    # For example:
    git checkout <vX.X.X> # tag for a release
    ```
