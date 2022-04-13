@@ -53,7 +53,7 @@ Here is the default resource value table. There values are conservative:
  128 * 0.92 = 117
 ```
 
-**** The Commit1 step is very cheap in terms of CPU time and blocks the Commit2 step. Allocating it to zero threads makes it more likely it will be scheduled with higher priority.
+\**** The Commit1 step is very cheap in terms of CPU time and blocks the Commit2 step. Allocating it to zero threads makes it more likely it will be scheduled with higher priority.
 
 The Unseal task has the same resource use as the PreCommit1 task.
 
