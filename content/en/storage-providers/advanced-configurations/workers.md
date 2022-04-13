@@ -668,7 +668,7 @@ UNS_8M_MIN_MEMORY=8388608
  Use with caution as changing these values to extremes might cause you to miss windowPoSt.
  {{< /alert >}}
 
-Although the default settings are reasonable you can configure some advanced settings when running the PoSt workers, that can be tested for local optimizations of your hardware.
+Although the default settings are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware.
 
 ```
     --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
