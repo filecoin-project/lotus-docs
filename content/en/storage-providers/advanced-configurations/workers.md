@@ -42,7 +42,7 @@ Here is the default resource value table. There values are conservative:
 
 \* AddPiece can use multiple threads. This value may change in near future.
 \** When used with the `FIL_PROOFS_USE_MULTICORE_SDR=1` environment variable, `PreCommit1` can use multiple cores, up to the number of cores sharing L3 caches.
-*** Depending on the number of available threads, this value means:
+\*** Depending on the number of available threads, this value means:
 
 ```
  12  * 0.92 = 11
