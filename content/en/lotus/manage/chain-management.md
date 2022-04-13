@@ -157,7 +157,7 @@ To create a _pruned_ snapshot and only include blocks directly referenced by the
 lotus chain export --recent-stateroots=2000 --skip-old-msgs <filename>
 ```
 
-{{< alert icon="warning" >}} This is a resource demanding task for the node. It may take up to 8 hours creating the CAR-snapshot, and the process will use around 70GB of RAM. {{< /alert >}}
+{{< alert icon="warning" >}} This is a resource demanding task for the node. It may take up to 8 hours to create the CAR-snapshot, and the process will use around 70GB of RAM. {{< /alert >}}
 
 ## Restoring a custom snapshot
 
