@@ -44,7 +44,7 @@ Here is the default resource value table. There values are conservative:
 \** When used with the `FIL_PROOFS_USE_MULTICORE_SDR=1` environment variable, `PreCommit1` can use multiple cores, up to the number of cores sharing L3 caches.
 \*** Depending on the number of available threads, this value means:
 
-```
+```plaintext
  12  * 0.92 = 11
  16  * 0.92 = 14
  24  * 0.92 = 22
