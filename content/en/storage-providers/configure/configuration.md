@@ -264,6 +264,19 @@ This section controls the behavior around the Index Provider:
   #PurgeCacheOnStart = false
 ```
 
+## Proving section
+
+This section controls some of the behavior around windowPoSt:
+
+```toml
+[Proving]
+  # Maximum number of sector checks to run in parallel. (0 = unlimited)
+  #
+  # type: int
+  # env var: LOTUS_PROVING_PARALLELCHECKLIMIT
+  #ParallelCheckLimit = 128
+```
+
 ## Sealing section
 
 This section controls some of the behavior around sector sealing:
