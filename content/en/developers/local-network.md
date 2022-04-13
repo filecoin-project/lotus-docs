@@ -53,16 +53,11 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 
 1. Checkout to the latest branch:
 
-    ```shell
-    git checkout release/v1.15.0
-    ```
-
-    This will output something like:
-
-    ```plaintext
-    > Branch 'release/v1.15.0' set up to track remote branch 'release/v1.15.0' from 'origin'.
-    > Switched to a new branch 'release/v1.15.0'
-    ```
+   ```shell
+   git checkout <tag_or_release>
+   # For example:
+   git checkout <vX.X.X> # tag for a release
+   ```
 
 1. Remove any existing repositories.
 
