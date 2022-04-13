@@ -12,7 +12,7 @@ toc: true
 
 While the Lotus workers have very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
 
-## Resource allocation in Seal Workers
+## Resource allocation in seal workers
 
 Each **Seal Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
 
