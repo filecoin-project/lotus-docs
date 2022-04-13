@@ -84,6 +84,37 @@ This section controls some Pubsub settings. Pubsub is used to distribute message
   DirectPeers = []
 ```
 
+## Subsystems
+
+This section allows you to disable subsystems of the `lotus-miner`.
+
+```toml
+[Subsystems]
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLEMINING
+  #EnableMining = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLESEALING
+  #EnableSealing = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLESECTORSTORAGE
+  #EnableSectorStorage = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLEMARKETS
+  #EnableMarkets = true
+
+  # type: string
+  # env var: LOTUS_SUBSYSTEMS_SEALERAPIINFO
+  #SealerApiInfo = ""
+
+  # type: string
+  # env var: LOTUS_SUBSYSTEMS_SECTORINDEXAPIINFO
+  #SectorIndexApiInfo = ""
+```
+
 ## Dealmaking section
 
 This section controls parameters for making storage and retrieval deals:
