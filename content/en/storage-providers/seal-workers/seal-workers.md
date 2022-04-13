@@ -121,7 +121,7 @@ Worker 1, host othercomputer
 
 You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
 
-Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU (and GPU if available) intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between Lotus Miners and Lotus Workers.
+Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU and GPU intensive. WindowPoSTs need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, and [lose collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between `lotus-miner` and `lotus-worker` instances.
 
 Note that if you co-locate miner and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
 
