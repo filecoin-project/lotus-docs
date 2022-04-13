@@ -727,6 +727,21 @@ The default configuration for a Lotus storage provider can be found in the [Lotu
   # env var: LOTUS_SEALING_MAXSEALINGSECTORSFORDEALS
   #MaxSealingSectorsForDeals = 0
 
+  # Prefer creating new sectors even if there are sectors Available for upgrading.
+  # This setting combined with MaxUpgradingSectors set to a value higher than MaxSealingSectorsForDeals makes it
+  # possible to use fast sector upgrades to handle high volumes of storage deals, while still using the simple sealing
+  # flow when the volume of storage deals is lower.
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_PREFERNEWSECTORSFORDEALS
+  PreferNewSectorsForDeals = false
+
+  # Upper bound on how many sectors can be sealing+upgrading at the same time when upgrading CC sectors with deals (0 = MaxSealingSectorsForDeals)
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXUPGRADINGSECTORS
+  MaxUpgradingSectors = 0
+
   # CommittedCapacitySectorLifetime is the duration a Committed Capacity (CC) sector will
   # live before it must be extended or converted into sector containing deals before it is
   # terminated. Value must be between 180-540 days inclusive
