@@ -85,7 +85,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
 2. **Back up the existing DagStore repository**
 
-   By default, the DagStore repository is located at `$LOTUS_MARKETS_PATH/dagstore` if the market subsystem has been split from the miner. For a monolith miner, the DagStore repository is located at `$LOTUS_MINER_PATH/dagstore`. Make a copy of that folder. This is necessary for:
+   By default, the DagStore repository is located at `$LOTUS_MARKETS_PATH/dagstore` if the market subsystem has been split from the miner. For a monolith miner, the DagStore repository is located at `$LOTUS_MINER_PATH/dagstore`. Make a copy of this directory. This is necessary for:
 
   - verifying that the expected shard indices are re-generated after migration, and
   - rolling back the changes in case of an error.
@@ -139,9 +139,9 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
        
    - For split market subsystem
 
-    ```shell
-    lotus-miner --call-on-markets log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
-    ```
+        ```shell
+        lotus-miner --call-on-markets log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
+        ```
 
 9. **Initialise the DagStore shards**
 
@@ -157,7 +157,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
 10. **Verify re-creation of DagStore repository**
 
-    The previous step should recreate the DagStore repository, located at `$LOTUS_MARKETS_PATH/dagstore`. Navigate to that directory. Under the subfolder `index`, verify that matching `*.full.idx` files can be found for all files under the same sub-directory in the backup of DagStore taken in step 2.
+    The previous step should recreate the DagStore repository, located at `$LOTUS_MARKETS_PATH/dagstore` or `$LOTUS_MINER_PATH/dagstore`(for monolith miner). Navigate to that directory. Under the subfolder `index`, verify that matching `*.full.idx` files can be found for all files under the same sub-directory in the backup of DagStore taken in step 2.
 
 11. **Announce all indices to the indexers**
 
