@@ -134,7 +134,7 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
    - For monolith miner
    
        ```shell
-       lotus-miner --call-on-markets log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
+       lotus-miner log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
        ```
        
    - For split market subsystem
