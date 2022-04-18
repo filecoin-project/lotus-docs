@@ -85,14 +85,14 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
 
 2. **Back up the existing DagStore repository**
 
-   By default, the DagStore repository is located at `$LOTUS_MARKETS_PATH/dagstore`. Make a copy of that folder. This is necessary for:
+   By default, the DagStore repository is located at `$LOTUS_MARKETS_PATH/dagstore` if the market subsystem has been split from the miner. For a monolith miner, the DagStore repository is located at `$LOTUS_MINER_PATH/dagstore`. Make a copy of that folder. This is necessary for:
 
   - verifying that the expected shard indices are re-generated after migration, and
   - rolling back the changes in case of an error.
 
 3. **Delete the existing DagStore repository**
 
-   By default, delete the DagStore repository located at `$LOTUS_MARKETS_PATH/dagstore`. The absence of the repository signals to the Lotus instance that a DagStore migration is needed and will automatically trigger one upon `markets` instance start-up.
+   By default, delete the DagStore repository located at `$LOTUS_MARKETS_PATH/dagstore` for the split miner or `$LOTUS_MINER_PATH/dagstore` for monolith miner. The absence of the repository signals to the Lotus instance that a DagStore migration is needed and will automatically trigger one upon `markets` instance start-up.
 
 4. **Rotate any existing Lotus log files and adjust log level**
 
@@ -112,6 +112,9 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
     ```
 
 7. **Start the `markets` process**
+   {{< alert icon="tip" >}}
+   This step is only required when the market subsystem has been split from the miner.
+   {{< /alert >}}
 
    Start only the `markets` process and wait for the following line in the markets process logs: `dagstore migration completed successfully`
 
@@ -127,6 +130,14 @@ If you are a Storage Provider who has previously run the markets-module, you´ll
    - `dagstore`
 
    To do this run the following command:
+   
+   - For monolith miner
+   
+       ```shell
+       lotus-miner --call-on-markets log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
+       ```
+       
+   - For split market subsystem
 
     ```shell
     lotus-miner --call-on-markets log set-level --system provider/engine --system go-legs-gpubsub --system dagstore info
