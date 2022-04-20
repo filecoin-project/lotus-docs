@@ -5,11 +5,12 @@ lead: "Lotus performs mining operations, such as sealing files into sectors, cal
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-configure"
+        parent: "storage-providers-advanced-configurations"
         identifier: "storage-providers-split-markets"
 aliases:
     - /docs/storage-providers/split-markets-miners/
-weight: 140
+    - /storage-providers/configure/split-markets-miners/
+weight: 130
 toc: true
 ---
 

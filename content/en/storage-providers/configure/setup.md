@@ -226,7 +226,7 @@ Your miner should now be preliminarily set up and running, but **there are still
 
 - Set up your [custom storage layout]({{< relref "custom-storage-layout" >}}) (required if you used `--no-local-storage`).
 - Edit the miner [configuration settings]({{< relref "configuration" >}}) to fit your requirements.
-- Learn what is a right moment to [shut down/restart your miner]({{< relref "lifecycle" >}})
+- Learn what is a right moment to [shut down/restart your miner]({{< relref "maintenance" >}})
 - Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
 - Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the miner's capacity to seal sectors.
 - Configure a [separate address for WindowPost messages]({{< relref "addresses" >}}).

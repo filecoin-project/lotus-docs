@@ -1,11 +1,11 @@
 ---
-title: "Lotus Miner Logging"
+title: "Logging"
 identifier: "storage-provider-configuration"
 description: "This guide covers the Lotus Miner log configuration and logging usage."
-draft: true
+draft: false
 menu:
     storage-providers:
-        parent: "lotus-miner-configure"
+        parent: "storage-providers-advanced-configurations"
 weight: 160
 toc: true
 ---

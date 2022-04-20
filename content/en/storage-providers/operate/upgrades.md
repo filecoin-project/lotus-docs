@@ -51,7 +51,7 @@ Once you have the default configuration file, compare it with your configuration
 
 ## Upgrade in-place
 
-1. Safely shutdown your Lotus Miner as explained [here]({{< relref "lifecycle" >}}).
+1. Safely shutdown your Lotus Miner as explained [here]({{< relref "maintenance" >}}).
 1. Shutdown any seal workers
 1. Shutdown your Lotus Node (`lotus daemon stop` or `systemctl stop lotus-daemon`)
 1. Pull the new version and rebuild. For more information read the [Lotus installation guide]({{< relref "prerequisites" >}}) again:

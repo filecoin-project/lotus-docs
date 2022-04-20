@@ -1,14 +1,15 @@
 ---
-title: "Lifecycle"
+title: "Maintenance"
 description: "How to safely perform maintenance on a Lotus miner."
 lead: "How to safely perform maintenance on a Lotus miner."
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-configure"
+        parent: "storage-providers-operate"
         identifier: "storage-providers-configure-lifecycle"
 aliases:
     - /docs/storage-providers/lifecycle/
+    - /storage-providers/configure/lifecycle/
 weight: 455
 toc: true
 ---
