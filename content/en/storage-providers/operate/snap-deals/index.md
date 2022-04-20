@@ -69,7 +69,7 @@ This is a relatively advanced storage provider operation. Users should be famili
 
 You must have the following set up to follow this guide through:
 
-- Lotus 1.14.0 or higher [installed]({{< relref "prerequisites">}}).
+- Lotus 1.14.0 or higher [installed]({{< relref "../../../lotus/install/prerequisites">}}).
 
 ### Create committed-capacity sectors
 
