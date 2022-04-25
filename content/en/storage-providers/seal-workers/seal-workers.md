@@ -98,6 +98,9 @@ The above command will start the worker. Depending on the operations that you wa
    --unseal                      enable unsealing (32G sectors: 1 core, 128GiB RAM) (default: true)
    --precommit2                  enable precommit2 (32G sectors: multiple cores, 96GiB RAM) (default: true)
    --commit                      enable commit (32G sectors: multiple cores or GPUs, 128GiB RAM + 64GiB swap) (default: true)
+   --replica-update              enable replica update (default: true)
+   --prove-replica-update2       enable prove replica update 2 (default: true)
+   --regen-sector-key            enable regen sector key (default: true)
 ```
 
 Once the worker is running, it should connect to the Lotus miner. You can verify this with:
