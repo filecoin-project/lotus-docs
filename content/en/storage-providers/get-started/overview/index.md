@@ -21,12 +21,12 @@ Being a storage provider on the _mainnet_ has stringent minimal **[hardware requ
 
 ## How to read the storage provider documentation
 
-The guides in this section is meant to introduce high level concepts early in the docs, and bring in more advanced topics and configurations later on. 
+The guides in this section are meant to introduce high-level concepts early in the docs and bring in more advanced topics and configurations later on. 
 
-- The miner installation is covered in the [Installation guide]({{< relref "../../../lotus/install/prerequisites" >}}). Once the installation is complete, the Lotus node, Lotus miner, and Lotus worker applications should all be installed.
-
-- The [Miner setup]({{< relref "initialize" >}}) covers all the details to configure your miner to achieve the maximum performance and avoid common pitfalls.
-- The [Configuration reference]({{< relref "configuration" >}}) explains what the different miner configuration options mean.
-- The [Seal workers]({{< relref "seal-workers" >}}) guide covers how to run additional seal workers co-located or not with the Lotus Miner.
+- The `Get started` segment contains a high-level overview of the tasks the `lotus-miner` binary does, introduces the basic economics of being a storage provider, and outlines some hardware and architectural requirements.
+- The `Setup` segment contains all the necessary information for initializing the storage provider on the network.
+- The `Operate` segment contains the necessary information about operating the storage provider daily and introduces more complex operations like SnapDeals, Batching and Index Provider.
+- The `Workers` segment contains guides for setting up dedicated workers for offloading tasks from the `lotus-miner` binary.
+- The `Advanced onfigurations` segment details all the configurations you can tune to optimize your storage provider setup.
 
 We nevertheless recommend careful reading of every existing section and gaining as much background as possible before proceeding with a Lotus miner deployment.
