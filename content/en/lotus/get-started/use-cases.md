@@ -22,7 +22,7 @@ A lotus node need to be deployed by anyone who wants to interact with the fileco
 A lotus full node differs from a normal lotus node in just one aspect. A full node is synced from the epoch "0" or "genesis block" of the filecoin blockchain.
 These nodes require a huge amount of space to store the full chain and take a very long time be synced from the beginining. A [full chain snapshot can be imported]({{ < relref "chain-management" >}}) on a new lotus node to designate it as a full lotus node.
 
-A lotus full node is useful when historical queries have to be run against the chain. Please do not that historical queries are slow due to size of the chain and can take from few minutes to hours to get a response.
+A lotus full node is useful when historical queries have to be run against the chain. Please do note that historical queries are slow due to the size of the chain and can take anywhere between a few minutes to hours to get a response.
 
 ## Lite node
 
