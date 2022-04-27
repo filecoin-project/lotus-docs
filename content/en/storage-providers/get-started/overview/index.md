@@ -1,7 +1,7 @@
 ---
 title: "Overview"
-description: "Miners in the Filecoin network are in charge of storing, providing content and issuing new blocks."
-lead: "Miners in the Filecoin network are in charge of storing, providing content and issuing new blocks."
+description: "Storage providers in the Filecoin network are in charge of storing, providing content and creating consensus."
+lead: "Storage providers in the Filecoin network are in charge of storing, providing content and creating consensus."
 draft: false
 menu:
     storage-providers:
@@ -13,15 +13,15 @@ weight: 110
 toc: true
 ---
 
-This sections contains guides to setup and run succesful mining operations using Lotus and should be approached by **advanced users only**, familiar with [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [how mining works](https://docs.filecoin.io/mine/how-mining-works/) and the operation of a Lotus node.
+This section contains guides to initialize and run a successful storage provider operation using Lotus and should be approached by **advanced users only**. You should read through and be familiar with the concepts outlined in these two articles: [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [how mining works](https://docs.filecoin.io/mine/how-mining-works/), as well as having a Lotus node running.
 
 {{< alert icon="warning" >}}
-Lotus Mining for _mainnet_ has stringent minimal **[hardware requirements]({{< relref "hardware-requirements" >}})**. Do not attempt this installation if your computer does not meet the minimum requirements.
+Being a storage provider on the _mainnet_ has stringent minimal **[hardware requirements]({{< relref "hardware-requirements" >}})**. Do not attempt this installation if your server does not meet the minimum requirements.
 {{< /alert >}}
 
-## Getting started with Lotus Miner
+## How to read the storage provider documentation
 
-The following guides are essential starting points for those willing to launch a Lotus miner:
+The guides in this section is meant to introduce high level concepts early in the docs, and bring in more advanced topics and configurations later on. 
 
 - The miner installation is covered in the [Installation guide]({{< relref "../../../lotus/install/prerequisites" >}}). Once the installation is complete, the Lotus node, Lotus miner, and Lotus worker applications should all be installed.
 
