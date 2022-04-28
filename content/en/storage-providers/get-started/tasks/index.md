@@ -17,18 +17,15 @@ This guide provides a high-level overview of the core tasks undertaken by the `l
 
 We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into three categories.
 
-**Sealing tasks**
-Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
+**Sealing tasks**: Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
 
 Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate section.
 
-**Proving tasks**
-These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
+**Proving tasks**: These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
 
-**Scheduling tasks**
-These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
+**Scheduling tasks**: These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
 
-![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
+![Overview of the lotus-miner tasks](lotus-miner-tasks.svg) 
 
 ### Add piece
 
@@ -72,12 +69,12 @@ Storage providers who fail to do this in the necessary window will forfeit their
 
 ## Tips
 
-### Safely restarting the miner daemon
+### Safely restarting the lotus-miner daemon
 
 The process of shutting down a storage provider and starting it again is complicated. Several factors need to be taken into account to be able to do it with all the guarantees:
 
-- How long the miner plans to be offline.
-- The existence and distribution of proving deadlines for the miner.
+- How long the storage provider plans to be offline.
+- The existence and distribution of proving deadlines for the storage provider.
 - The presence of open payment channels and ongoing retrieval deals.
 - The occurrence of ongoing sealing operations.
 
