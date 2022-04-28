@@ -13,21 +13,21 @@ types: ["solution"]
 areas: ["OS", "Linux", "Lotus Node"]
 ---
 
-# Problem:
+## Problem
 
-Sector sealing can fail for a number of reasons and may cause various issues. Whilst it is always suggested that miner admin or system maintenance be performed with an empty sealing queue, it is not always possible. Disruptions to the sealing pipeline can cause sector removal or termination difficulties which may in turn negatively impact window posts.
+Sector sealing can fail for a number of reasons and may cause various issues. Whilst it is always suggested that storage provider admin or system maintenance be performed with an empty sealing queue, it is not always possible. Disruptions to the sealing pipeline can cause sector removal or termination difficulties which may in turn negatively impact windowPoSts.
 
 Depending on the nature of the failure you may find that `lotus-miner sectors remove` or `lotus-miner sectors terminate` commands do not result in successful removal or termination of the sector in question.
 
 Detailed below are a few methods that may help finalize the removal or termination of failed sectors. Please apply the methods in the order listed in order to minimize further disruption to active sealing tasks that you may wish to retain. 
 
-# Environment:
+## Environment
 
-* Mainnet
-* Calibnet
-* Butterflynet
+- Mainnet
+- Calibnet
+- Butterflynet
 
-# Resolution:
+## Resolution
 
 ### Step 1: Initiate a Scheduler Update
 
@@ -35,9 +35,9 @@ It may initially appear that running `lotus-miner sectors remove` or `lotus-mine
 
 Just like any other sealing step transition (e.g. PC1 to PC2), remove and terminate requests are queued by the lotus scheduler (FSM). If the sector in question is still actively trying to complete sealing, the remove/terminate command will not actually trigger until the current task has been completed. 
 
-Example: 
+Example 
 > You experienced an unscheduled disruption to your sealing tasks and now sector `1237` is persistently failing to complete PC2. It is continuously looping back to PC1 which takes several hours to complete.
-> ```
+> ```plaintext
 >#  Your miner ID is f01234
 >
 > lotus-miner sealing jobs
@@ -50,23 +50,20 @@ Example:
 > ```
 > 
 
-
 Rather than restarting your worker or miner which will disrupt the other sealing sectors, you can simply run:
 
 `lotus-miner sealing remove 1237`
 `lotus-miner sealing abort 1237`
 
 This will prompt the Lotus scheduler to cancel the current PC1 job and apply the `lotus-miner sealing remove' request that you have just issued.
-</br>
 
 ### Step 2: Terminate With Lotus Shed
 
-Lotus Shed is not installed by default when installing Lotus. [Please follow the steps detailed here](https://lotus.filecoin.io/kb/lotus-shed-not-installed/).
+Lotus Shed is not installed by default when installing Lotus. [Please follow the steps detailed here]({{< relref "lotus-shed-not-installed" >}}).
 
 Lotus Shed includes a function to terminate sectors. Using the example data above the correct command to run would be:
 
 `lotus-shed sectors terminate --really-do-it 1237`
-</br>
 
 ### Step 3: Create Dummy Sector Data
 
@@ -76,7 +73,7 @@ You can repopulate the missing data by either duplicating an existing sector's d
 
 In the event that the sector **sucessfully completed** sealing, you will need to create the dummy data in your long-term storage folder as follows:
 
-```
+```plaintext
 /long-term-storage-folder/sealed/s-t01234-1237
 /long-term-storage-folder/unsealed/s-t01234-1237
 /long-term-storage-folder/cache/s-t01234-1237   #  s-t01234-1237 refers to a folder here
@@ -84,20 +81,18 @@ In the event that the sector **sucessfully completed** sealing, you will need to
 
 In the event that the sector **failed to complete** sealing,  you will need to create the dummy data in your sealing folder as follows:
 
-```
+```plaintext
 /sealing-folder/sealed/s-t01234-1237
 /sealing-folder/unsealed/s-t01234-1237
 /sealing-folder/cache/s-t01234-1237   #  s-t01234-1237 refers to a folder here
 ```
 
-> NOTE: your miner ID is specified with  a `t` prefix for sector asset naming convention and not the familiar `f`.
-
+NOTE: your miner ID is specified with  a `t` prefix for sector asset naming convention and not the familiar `f`.
 
 Having created the dummy data you will then need to restart your miner (and worker if applicable) and then run the `lotus-miner sectors remove` or `lotus-miner sectors terminate` command again.
 
-> NOTE: restarting your miner will also restart all other sealing tasks that may be active.
-</br>
+NOTE: restarting your miner will also restart all other sealing tasks that may be active.
 
-## Extras:
+## Extras
 
 If you are unable to remove/terminate your sector after following all three steps, please reach out to the Lotus Team in Slack.
