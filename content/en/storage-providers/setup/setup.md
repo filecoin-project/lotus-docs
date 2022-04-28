@@ -9,6 +9,7 @@ menu:
         identifier: "storage-providers-setup-setup"
 aliases:
     - /docs/storage-providers/setup/
+    - storage-providers/configure/setup/
 weight: 110
 toc: true
 ---

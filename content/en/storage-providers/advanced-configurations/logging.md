@@ -1,7 +1,7 @@
 ---
 title: "Logging"
-identifier: "storage-provider-configuration"
 description: "This guide covers the Lotus Miner log configuration and logging usage."
+lead: "This guide describes how to capture logs to a file and search through the file for important events."
 draft: false
 menu:
     storage-providers:
@@ -10,8 +10,60 @@ weight: 160
 toc: true
 ---
 
-TODO:
-Add how logging happens in lotus-miner.
-How to capture all output to proper logs files. Get details from lotus engineering on this.
-How to rotate logs.
-How to serach logs for important events.
+## Log file configuration
+
+The Lotus miner process generates two types of logs, namely, Go logs and Rust logs. Each of these logs can redirecting to individual files.
+
+{{< alert icon="callout" >}}
+This section is not applicable if you are running lotus-miner as a systemd service.
+{{< /alert >}}
+
+### Redirect GO logs to a file
+
+By default, lotus-miner redirect all logs to the standard output if not running as a systemd service. To change this behavior, add the following variable to the `.bashrc` file and restart the Lotus miner process to start redirecting all logs to the file.
+
+```shell
+export GOLOG_OUTPUT=FILE >> ~/.bashrc
+export GOLOG_FILE="$HOME/miner.log" >> ~/.bashrc && source ~/.bashrc
+```
+
+
+### Redirect Rust logs to a file
+TODO
+
+
+## Change logging verbosity
+
+The verbosity of the `lotus` and `lotus-miner` logs can be changed without restarting the lotus. The following command can be used to list different subsystems within the `lotus-miner` process and change the verbosity of individual subsystem to get more/less detailed logs.
+
+```shell
+lotus-miner log list
+```
+
+To change the verbosity, please run
+
+```shell
+lotus-miner log set-level --system chain debug
+```
+
+The log-level can be chose between 4 options
+- debug
+- info
+- warn
+- error
+
+You can specify multiple subsystems to change the log level of multiple subsystems at once.
+
+```shell
+lotus-miner log set-level --system chain --system chainxchg debug
+```
+
+## Searching through logs
+
+1. To look for logs related to mining a block, you can check with following commands.
+    ```shell
+    cat /path/to/log | grep "mined"
+
+2. To look for logs related to winning a block, you can check with following commands.
+    ```shell
+    cat /path/to/log | grep "isEligible"
