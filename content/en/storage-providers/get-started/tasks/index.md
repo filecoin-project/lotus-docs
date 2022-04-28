@@ -1,7 +1,7 @@
 ---
 title: "Tasks"
-description: "An explanation of the tasks the lotus-miner daemon is doing"
-lead: "An explanation of the tasks the lotus-miner daemon is doing"
+description: "An explanation of the tasks the lotus-miner daemon are responsible for"
+lead: "An explanation of the tasks the lotus-miner daemon are responsible for"
 draft: false
 menu:
     storage-providers:
@@ -15,7 +15,7 @@ This guide provides a high-level overview of the core tasks undertaken by the `l
 
 ## Tasks
 
-The `lotus-miner` daemon and its sub-components are responsible for many tasks. We can split these tasks into three categories.
+We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into three categories.
 
 **Sealing tasks**
 Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
@@ -26,21 +26,25 @@ Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate
 These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
 
 **Scheduling tasks**
-These are mostly background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
+These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
 
 ![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
 
 ### Add piece
 
+Add piece is the task where deal data, and padding if required, is written to a sector. A sector will be left open and waiting for more deal data until it´s full, then it will move on to the PreCommit 1 task. If no sectors with enough space are open when a `Add piece` task happens, a new sector will be created.
+
 ### PreCommit 1
 
-The PreCommit 1 phase is the first phase of the Proof-of-Replication process and is where encoding and replication takes place. 
+The PreCommit 1 task is the first phase of the Proof-of-Replication process and is where encoding and replication of the data takes place. The PreCommit 1 task is predominantly using a single CPU core, and is heavily utilizing the SHA256 instruction set. Using a CPU that have the SHA256 instruction set is therefore recommended.
 
-All 11 layers of calculation, layer by layer, are calculated sequentially. Each layer is 32GiB in size, and during PreCommit 1 you also need to keep around a copy of the unsealed sector (32GiB).
+All 11 layers of calculation, layer by layer, are calculated sequentially. Each layer is 32GiB in size. When the PreCommit 1 process is finished you will have generated data to the amount of 384GiB (A 32GiB unsealed sector + (11 layers x 32GiB))
 
 ### PreCommit 2
 
-During this phase an additional 64GiB file (when using 32GiB sectors) that represents the tree is kept around, bringing the total amount of storage needed to approx XX GiB for one sector.
+In the PreCommit 2 task, a column hash computation based on the 11 layers generated in PreCommit 1 is calculated, and a merkle tree gets constructed. These tasks can either be done by the CPU or accelerated by using a GPU.
+
+During this phase an additional 64GiB file (32GiB sectors) that represents the merkle tree is stored, in addition to the sealed 32GiB sector. Bringing the total amount of storage needed to approximately 500 GiB for one sector.
 
 ### WaitSeed
 
@@ -48,7 +52,11 @@ The WaitSeed state is a security wait requirement by the network that is initiat
 
 ### Commit 1
 
+The proof size generated at the end of PreCommit 2 is too large for the blockchain, and during the Commit phases the proofs are compressed using zk-SNARKs. The Commit 1 phase is the  
+
 ### Commit 2
+
+
 
 ### windowPoSt
 
