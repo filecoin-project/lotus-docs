@@ -35,20 +35,19 @@ It may initially appear that running `lotus-miner sectors remove` or `lotus-mine
 
 Just like any other sealing step transition (e.g. PC1 to PC2), remove and terminate requests are queued by the lotus scheduler (FSM). If the sector in question is still actively trying to complete sealing, the remove/terminate command will not actually trigger until the current task has been completed. 
 
-Example 
-> You experienced an unscheduled disruption to your sealing tasks and now sector `1237` is persistently failing to complete PC2. It is continuously looping back to PC1 which takes several hours to complete.
-> ```plaintext
->#  Your miner ID is f01234
->
-> lotus-miner sealing jobs
->
-> ID        Sector  Worker    Hostname      Task  State    Time
-> 2e62c170  1234    1abc2abc  SERVER-1  PC1   running  2h35.5s
-> e87a6d1c  1235    2cde3cde  SERVER-1  PC2   running  23m48.9s
-> 80509f7d  1236    2cde3cde  SERVER-1  C2   running  22m42.4s
-> 4680f2f0  1237    1abc2abc  SERVER-1  PC1   running  30m54.6s
-> ```
-> 
+#### Example 
+
+You experienced an unscheduled disruption to your sealing tasks and now sector `1237` is persistently failing to complete PC2. It is continuously looping back to PC1 which takes several hours to complete. In this example your miner ID is `f01234`.
+
+```plaintext
+lotus-miner sealing jobs
+
+ID        Sector  Worker    Hostname      Task  State    Time
+2e62c170  1234    1abc2abc  SERVER-1  PC1   running  2h35.5s
+e87a6d1c  1235    2cde3cde  SERVER-1  PC2   running  23m48.9s
+80509f7d  1236    2cde3cde  SERVER-1  C2   running  22m42.4s
+4680f2f0  1237    1abc2abc  SERVER-1  PC1   running  30m54.6s
+```
 
 Rather than restarting your worker or miner which will disrupt the other sealing sectors, you can simply run:
 
