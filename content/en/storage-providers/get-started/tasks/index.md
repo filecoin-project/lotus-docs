@@ -13,26 +13,6 @@ toc: true
 
 This guide provides a high-level overview of the core tasks undertaken by the `lotus-miner` daemon and its sub-components.
 
-## Key concepts
-
-### Sectors
-
-A sector is the default unit of storage that storage providers submit to the Filecoin network. Storage providers can decide if they want to commit 32 GiB or 64 GiB sector sizes when they first initialize their storage provider. It´s not possible to change the sector size once it has been initialized on-chain.
-
-A sector can contain data from multiple deals and clients. A storage provider can also submit “Committed Capacity” (CC) sectors. CC sectors are available to the Filecoin network as committed storage power but do not initially contain storage deals. Actively proving CC sectors can be upgraded at a later date to include storage deals in a process known as Snap Deals.
-
-**Sealed sectors**
-An unsealed sector contains raw storage deal data. These sectors may optionally be retained if the client requires fast retrieval of their data.
-
-**Unsealed sectors**
-A unsealed sector is the raw data. Some clients request that their unsealed data is kept for fast retrievals.
-
-### Epoch
-
-The passing of time on the Filecoin network is divided into epochs of 30 seconds in duration. For every new epoch, a subset of storage providers are elected to add a new block to the chain.
-
-![Overview of the lotus-miner tasks](lotus-miner-tasks.png)
-
 ## Tasks
 
 The `lotus-miner` daemon and its sub-components are responsible for many tasks. We can split these tasks into three categories.
@@ -46,7 +26,9 @@ Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate
 These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
 
 **Scheduling tasks**
-These are mostly background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important. 
+These are mostly background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
+
+![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
 
 ### Add piece
 
