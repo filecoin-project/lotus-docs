@@ -5,8 +5,10 @@ lead: "The process of storing and retrieving data using the Filecoin network is 
 draft: false
 menu:
     tutorials:
-        parent: "tutorials-store-and-retrieve"
+        parent: "tutorials-lotus"
         identifier: "tutorials-store-and-retrieve-store-data"
+aliases:
+    - /tutorials/store-and-retrieve/store-data/
 weight: 120
 toc: true
 ---
@@ -77,6 +79,24 @@ We need to tell our Lotus lite-node which file we want to store using Filecoin.
 1. Make a note of the CID `bafykb...`. This is your **Data CID**. We'll use it in an upcoming section.
 
 Now that Lotus knows which file we want to use, we can create a deal with a Filecoin storage provider to store our data!
+
+### Importing custom DAGs
+
+Advance IPLD users may want to import custom DAGs into Lotus (you may skip this section if that is not you).
+
+The CAR file format allows to serialize any IPLD-DAG (i.e. a IPLD-CBOR). Custom IPLD-DAGs should be encoded in a well-known format (like CBOR) as otherwise Lotus will not know how to interpret them.
+
+{{< alert icon="warning" >}}
+CAR files must contain the full DAG. Partial DAGs are not supported!
+{{< /alert >}}
+
+If you built your own CAR file, make sure to import it directly with the `--car` flag.
+
+### Files bigger than a sector
+
+If your file is larger than a sector for the [Filecoin network in use](https://network.filecoin.io), you will need to split your file into multiple parts first.
+
+Storage miners will specify which size(s) they're offering so you can select the best option for you. Smaller sectors are faster, while larger sectors are more cost-effective.
 
 ## Find a storage provider via Filecoin Plus
 
@@ -201,6 +221,10 @@ To complete this section, you need the **Data CID** you received after running `
     ```
 
 1. Take a note of the **deal CIDs** `baf...`.
+
+### Securing a deal
+
+Given the network's current speed and stability, users may find that individual deals with miners fail unexpectedly. For this reason, we suggest making up to 10 deals for each [CAR file](https://github.com/ipld/specs/blob/master/block-layer/content-addressable-archives.md) you want to store. While this may seem a bit over-kill, it's a simple way to increase the chances of a successful deal and your data being stored. This work-around will become less and less necessary as the network matures.
 
 ## Check the deal status
 

@@ -85,7 +85,7 @@ This will output something like:
   lotus-bench [global options] command [command options] [arguments...]
 
   VERSION:
-  1.2.0
+  1.15.1
 
   COMMANDS:
   prove    Benchmark a proof computation
@@ -127,28 +127,28 @@ Benchmark a sealing computation using `lotus-bench sealing [command options] [ar
 This will output something like:
 
 ```
-2020-11-23T18:05:22.028Z        INFO    lotus-bench     lotus-bench/main.go:78  Starting lotus-bench
+2022-04-13T18:37:41.141+0200	INFO	lotus-bench	lotus-bench/main.go:103	Starting lotus-bench
 ...
 ----
-results (v28) (536870912)
-seal: addPiece: 21.783625761s (23.5 MiB/s)
-seal: preCommit phase 1: 4m45.456592593s (1.794 MiB/s)
-seal: preCommit phase 2: 5m39.64126859s (1.507 MiB/s)
-seal: commit phase 1: 48.158372ms (10.38 GiB/s)
-seal: commit phase 2: 2m10.561079144s (3.922 MiB/s)
-seal: verify: 6.236412ms
-unseal: 3m52.85376877s  (2.199 MiB/s)
+results (v28) SectorSize:(536870912), SectorNumber:(1)
+seal: addPiece: 1.815989865s (281.9 MiB/s)
+seal: preCommit phase 1: 23.512164789s (21.78 MiB/s)
+seal: preCommit phase 2: 11.748902504s (43.58 MiB/s)
+seal: commit phase 1: 18.391743ms (27.19 GiB/s)
+seal: commit phase 2: 5.698575481s (89.85 MiB/s)
+seal: verify: 1.536285ms
+unseal: 26.136081682s  (19.59 MiB/s)
 
-generate candidates: 231.814µs (2.106 TiB/s)
-compute winning post proof (cold): 23.405645045s
-compute winning post proof (hot): 22.507299071s
-verify winning post proof (cold): 257.502167ms
-verify winning post proof (hot): 7.473581ms
+generate candidates: 101.562µs (4.808 TiB/s)
+compute winning post proof (cold): 665.669815ms
+compute winning post proof (hot): 624.667643ms
+verify winning post proof (cold): 17.949129ms
+verify winning post proof (hot): 1.26867ms
 
-compute window post proof (cold): 7.132316755s
-compute window post proof (hot): 6.893502363s
-verify window post proof (cold): 57.524992ms
-verify window post proof (hot): 5.629919ms
+compute window post proof (cold): 446.549819ms
+compute window post proof (hot): 450.785891ms
+verify window post proof (cold): 8.572963ms
+verify window post proof (hot): 1.517569ms
 ```
 
 Available options:
@@ -221,7 +221,7 @@ export BELLMAN_CUSTOM_GPU="<NAME>:<NUMBER_OF_CORES>"
 Here is an example of trying a GeForce GTX 1660 Ti with 1536 cores:
 
 ```shell
-export BELLMAN_CUSTOM_GPU="GeForce GTX 1660 Ti:1536"
+export BELLMAN_CUSTOM_GPU="NVIDIA GeForce 3090 Ti:10752"
 ```
 
 {{< alert icon="warning" >}}

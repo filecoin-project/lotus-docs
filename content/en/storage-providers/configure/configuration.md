@@ -84,6 +84,37 @@ This section controls some Pubsub settings. Pubsub is used to distribute message
   DirectPeers = []
 ```
 
+## Subsystem section
+
+This section allows you to disable subsystems of the `lotus-miner`.
+
+```toml
+[Subsystems]
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLEMINING
+  #EnableMining = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLESEALING
+  #EnableSealing = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLESECTORSTORAGE
+  #EnableSectorStorage = true
+
+  # type: bool
+  # env var: LOTUS_SUBSYSTEMS_ENABLEMARKETS
+  #EnableMarkets = true
+
+  # type: string
+  # env var: LOTUS_SUBSYSTEMS_SEALERAPIINFO
+  #SealerApiInfo = ""
+
+  # type: string
+  # env var: LOTUS_SUBSYSTEMS_SECTORINDEXAPIINFO
+  #SectorIndexApiInfo = ""
+```
+
 ## Dealmaking section
 
 This section controls parameters for making storage and retrieval deals:
@@ -132,13 +163,17 @@ The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR +
 
 If there are multiple deals in a sector, the deal with a start time closest to the current epoch is what `StartEpochSealingBuffer` will be based off. So, if the sector in our example has three deals that start on epoch 1000, 1200, and 1400, then we `lotus-miner` will start sealing the sector at epoch 500.
 
-### Disabling New Sector for Deal
+### Disabling new sector for deal
 
 If `MakeNewSectorForDeals` is set to `true` then `lotus-miner` will create new sectors for incoming deals. This option can set to `false` to ensure that all new deals are sealed as snap-deals into CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap-deals.
 
+### Make new CC sector available for snap-deal
+
+`MakeCCSectorsAvailable` makes all the new CC sectors available to be upgraded with snap-deals. When this boolean is set to `true`, all pledged "CC" sectors from that point onwards will be converted to "Available" state after sealing. This enables sealing the incoming storage deals more quickly into these "Available" sectors compared to creating a new sector for the deals. 
+
 ### Publishing several deals in one message
 
-The `PublishStorageDeals` message can publish many deals in a single message.
+The `PublishStorageDeals` message can publish multiple deals in a single message.
 When a deal is ready to be published, Lotus will wait up to `PublishMsgPeriod`
 for other deals to be ready before sending the `PublishStorageDeals` message.
 
@@ -183,6 +218,67 @@ go get -u -v github.com/Murmuration-Labs/bitscreen
 # add it to both filters
 Filter = "/path/to/go/bin/bitscreen"
 RetrievalFilter = "/path/to/go/bin/bitscreen"
+```
+
+## Index Provider section
+
+This section controls the behavior around the Index Provider:
+
+```toml
+[IndexProvider]
+  # Enable set whether to enable indexing announcement to the network and expose endpoints that
+  # allow indexer nodes to process announcements. Disabled by default.
+  #
+  # type: bool
+  # env var: LOTUS_INDEXPROVIDER_ENABLE
+  #Enable = true
+
+  # EntriesCacheCapacity sets the maximum capacity to use for caching the indexing advertisement
+  # entries. Defaults to 1024 if not specified. The cache is evicted using LRU policy. The
+  # maximum storage used by the cache is a factor of EntriesCacheCapacity, EntriesChunkSize and
+  # the length of multihashes being advertised. For example, advertising 128-bit long multihashes
+  # with the default EntriesCacheCapacity, and EntriesChunkSize means the cache size can grow to
+  # 256MiB when full.
+  #
+  # type: int
+  # env var: LOTUS_INDEXPROVIDER_ENTRIESCACHECAPACITY
+  #EntriesCacheCapacity = 1024
+
+  # EntriesChunkSize sets the maximum number of multihashes to include in a single entries chunk.
+  # Defaults to 16384 if not specified. Note that chunks are chained together for indexing
+  # advertisements that include more multihashes than the configured EntriesChunkSize.
+  #
+  # type: int
+  # env var: LOTUS_INDEXPROVIDER_ENTRIESCHUNKSIZE
+  #EntriesChunkSize = 16384
+
+  # TopicName sets the topic name on which the changes to the advertised content are announced.
+  # Defaults to '/indexer/ingest/mainnet' if not specified.
+  #
+  # type: string
+  # env var: LOTUS_INDEXPROVIDER_TOPICNAME
+  #TopicName = "/indexer/ingest/mainnet"
+
+  # PurgeCacheOnStart sets whether to clear any cached entries chunks when the provider engine
+  # starts. By default, the cache is rehydrated from previously cached entries stored in
+  # datastore if any is present.
+  #
+  # type: bool
+  # env var: LOTUS_INDEXPROVIDER_PURGECACHEONSTART
+  #PurgeCacheOnStart = false
+```
+
+## Proving section
+
+This section controls some of the behavior around windowPoSt:
+
+```toml
+[Proving]
+  # Maximum number of sector checks to run in parallel. (0 = unlimited)
+  #
+  # type: int
+  # env var: LOTUS_PROVING_PARALLELCHECKLIMIT
+  #ParallelCheckLimit = 128
 ```
 
 ## Sealing section
@@ -248,7 +344,6 @@ This section controls some of the behavior around sector sealing:
   TerminateBatchMax = 100
   TerminateBatchMin = 1
   TerminateBatchWait = "5m0s"
-
 ```
 
 ### PreCommitSectorsBatch
@@ -726,6 +821,21 @@ The default configuration for a Lotus storage provider can be found in the [Lotu
   # type: uint64
   # env var: LOTUS_SEALING_MAXSEALINGSECTORSFORDEALS
   #MaxSealingSectorsForDeals = 0
+
+  # Prefer creating new sectors even if there are sectors Available for upgrading.
+  # This setting combined with MaxUpgradingSectors set to a value higher than MaxSealingSectorsForDeals makes it
+  # possible to use fast sector upgrades to handle high volumes of storage deals, while still using the simple sealing
+  # flow when the volume of storage deals is lower.
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_PREFERNEWSECTORSFORDEALS
+  PreferNewSectorsForDeals = false
+
+  # Upper bound on how many sectors can be sealing+upgrading at the same time when upgrading CC sectors with deals (0 = MaxSealingSectorsForDeals)
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXUPGRADINGSECTORS
+  MaxUpgradingSectors = 0
 
   # CommittedCapacitySectorLifetime is the duration a Committed Capacity (CC) sector will
   # live before it must be extended or converted into sector containing deals before it is

@@ -1,7 +1,7 @@
 ---
 title: "Seal workers"
 description: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
-lead: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or several Lotus Workers."
+lead: "The Lotus Worker is a separate application that can be used to offload phases of the sealing process to separate machines or processes. This guide explains how to setup one or more lotus workers."
 draft: false
 menu:
     storage-providers:
@@ -12,472 +12,7 @@ weight: 110
 toc: true
 ---
 
-While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a _sealing pipeline_ to improve resource utilization. The sealing pipeline frees up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
-
-## Resource allocation in Lotus Workers
-
-Each **Lotus Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
-
-- Number of CPU threads the task will use.
-- Minimum amount of RAM required for good performance.
-- Maximum amount of RAM required to run the task, where the system can swap out part of the RAM to disk, and the performance won't be affected too much.
-- Whether the system has a GPU.
-
-### Task resource table
-
-The default resource table lives in [resources.go](https://github.com/filecoin-project/lotus/blob/master/extern/sector-storage/storiface/resources.go) and can be edited to tune the scheduled behavior to fit specific sealing clusters better.
-
-Default resource value table. Some of these values are _fairly_ conservative:
-
-| Sector size | Task Type  | Threads | Min RAM | Min disk space| GPU        |
-|-------------|------------|---------|---------|------------|------------|
-|     32G     | AddPiece   | 1*      | 4G      | 4G         |            |
-|             | PreCommit1 | 1**     | 56G     | 64G        |            |
-|             | PreCommit2 | 92%***  | 15G     | 15G        | If Present |
-|             | Commit1    | 0****   | 1G      | 1G         |            |
-|             | Commit2    | 92%***  | 32G+30G | 32G+150G   | If Present |
-|     64G     | AddPiece   | 1*      | 8G      | 8G         |            |
-|             | PreCommit1 | 1**     | 112G    | 128G       |            |
-|             | PreCommit2 | 92%***  | 30G     | 30G        | If Present |
-|             | Commit1    | 0****   | 1G      | 1G         |            |
-|             | Commit2    | 92%***  | 64G+60G | 64G+190G   | If Present |
-
-\* AddPiece can use multiple threads, it's likely that this value will change in near future\
-** When used with the `FIL_PROOFS_USE_MULTICORE_SDR=1` env var, PreCommit1 can use multiple cores (up to the number of cores sharing L3 caches)\
-*** Depending on the number of available threads, this value means:
-
-```
- 12  * 0.92 = 11
- 16  * 0.92 = 14
- 24  * 0.92 = 22
- 32  * 0.92 = 29
- 64  * 0.92 = 58
- 128 * 0.92 = 117
-```
-
-**** The Commit1 step is very cheap in terms of CPU time and blocks the Commit2 step. Allocating it to zero threads makes it more likely it will be scheduled with higher priority.
-
-The Unseal task has the same resource use as the PreCommit1 task.
-
-{{< alert icon="info" >}}
-The default and custom configurations in the task resource table can be overridden using environment variables on a per worker basis. See the [environment variables]({{< relref "configuration#environment-variables" >}}) section for information. You can also gather these details using the `lotus-worker resources --default` command.
-{{< /alert >}}
-
-### Resource windows
-
-The scheduler uses the concept of resource windows to prevent resource starvation of tasks requiring larger amounts of resources by tasks with smaller resource requirements.
-
-A resource window is simply a bucket of sealing tasks that can be run by a given worker in parallel based on the resources the worker has available when no tasks are running.
-
-In the scheduler, each worker has:
-- Scheduling windows - Two resource windows used to assign tasks to execute from the global queue
-- Preparing window - One resource window in which tasks are prepared to execute (for example, sector data is fetched if needed)
-- Executing window - One resource window for currently executing tasks
-
-When tasks arrive in the global scheduling queue, the scheduler will look for empty scheduling windows, and based on a number of factors, like whether the worker already has direct access to sector data, task types supported by the worker, whether the worker has disk space for sector data, task priority - tasks may be assigned to the scheduling window.
-
-After a scheduling window is filled with a number of tasks, it's sent to the worker for processing. The worker will pull tasks out of the scheduling window and start preparing them in the preparing window. After the preparing step is done, the task will be executed in the executing window.
-
-After the worker has fully processed a scheduling window, it's sent back to the global scheduler to get more sealing tasks.
-
-### Task priorities
-
-When the scheduler decides which tasks to run, it takes into account the priority of running a specific task.
-
-There are two priority tiers - high priority, for tasks that are cheap to execute but block other actions, and normal priority for all other tasks. Default priorities are defined in the table below.
-
-| Task Type    | Priority |
-|--------------|----------|
-| AddPiece     | 6        |
-| PreCommit1   | 5        |
-| PreCommit2   | 4        |
-| Commit2      | 3        |
-| Commit1      | 2        |
-| Unseal       | 1        |
-| Fetch        | -1       |
-| ReadUnsealed | -1       |
-| Finalize     | -2       |
-
-- Lower number means higher priority.
-- Negative number means the highest priority.
-
-When comparing task priority:
-- High priority tasks are considered first
-- Sectors with deals are considered second (more deals add more priority)
-- If the above is equal, tasks are selected based on priorities in the table
-- If the above is equal, sectors with lower sector numbers are selected (this can optimize gas usage slightly when submitting messages to the chain)
-
-### Control groups
-
-Control groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the `lotus-worker` will honor the cgroup memory limits configured on the host. There are 6 cgroup variables for each sealing stage.
-
-| Cgroup variable    |  Type    |  Explanation                                                                                                |
-|--------------------|----------|-------------------------------------------------------------------------------------------------------------|
-|  MinMemory         | uint64   | Minimum RAM used for decent performance.                                                                     |
-|  MaxMemory         | uint64   | Maximum memory (swap+RAM) usage during task execution.                                                        |
-|  GPUUtilization    | float64  | Number of GPUs a task can use.                                                                              |
-|  MaxParallelism    | int      | Number of CPU cores a task can use when GPU is not in use.                                                   |
-|  MaxParallelismGPU | int      | Number of CPU cores a task can use when GPU is in use. Inherits value from `MaxParallelism` when set to 0.  |
-|  BaseMinMemory     | uint64   | Minimum RAM used for decent performance. This is shared between the treads, unlike `MinMemory`.               |
-
-Variables for resource allocation tuning (overrides settings in the resource allocation table).
-
-{{< details "32G environment" >}}
-```plaintext
-AP_32G_BASE_MIN_MEMORY=1073741824
-AP_32G_GPU_UTILIZATION=0
-AP_32G_MAX_MEMORY=4294967296
-AP_32G_MAX_PARALLELISM=1
-AP_32G_MAX_PARALLELISM_GPU=0
-AP_32G_MIN_MEMORY=4294967296
-C1_32G_BASE_MIN_MEMORY=1073741824
-C1_32G_GPU_UTILIZATION=0
-C1_32G_MAX_MEMORY=1073741824
-C1_32G_MAX_PARALLELISM=0
-C1_32G_MAX_PARALLELISM_GPU=0
-C1_32G_MIN_MEMORY=1073741824
-C2_32G_BASE_MIN_MEMORY=34359738368
-C2_32G_GPU_UTILIZATION=1
-C2_32G_MAX_MEMORY=161061273600
-C2_32G_MAX_PARALLELISM=-1
-C2_32G_MAX_PARALLELISM_GPU=6
-C2_32G_MIN_MEMORY=32212254720
-GET_32G_BASE_MIN_MEMORY=0
-GET_32G_GPU_UTILIZATION=0
-GET_32G_MAX_MEMORY=1048576
-GET_32G_MAX_PARALLELISM=0
-GET_32G_MAX_PARALLELISM_GPU=0
-GET_32G_MIN_MEMORY=1048576
-PC1_32G_BASE_MIN_MEMORY=10485760
-PC1_32G_GPU_UTILIZATION=0
-PC1_32G_MAX_MEMORY=68719476736
-PC1_32G_MAX_PARALLELISM=1
-PC1_32G_MAX_PARALLELISM_GPU=0
-PC1_32G_MIN_MEMORY=60129542144
-PC2_32G_BASE_MIN_MEMORY=1073741824
-PC2_32G_GPU_UTILIZATION=1
-PC2_32G_MAX_MEMORY=16106127360
-PC2_32G_MAX_PARALLELISM=-1
-PC2_32G_MAX_PARALLELISM_GPU=6
-PC2_32G_MIN_MEMORY=16106127360
-UNS_32G_BASE_MIN_MEMORY=10485760
-UNS_32G_GPU_UTILIZATION=0
-UNS_32G_MAX_MEMORY=68719476736
-UNS_32G_MAX_PARALLELISM=1
-UNS_32G_MAX_PARALLELISM_GPU=0
-UNS_32G_MIN_MEMORY=60129542144
-```
-{{< /details >}}
-
-{{< details "512MB Environment" >}}
-```plaintext
-AP_512M_BASE_MIN_MEMORY=1073741824
-AP_512M_GPU_UTILIZATION=0
-AP_512M_MAX_MEMORY=1073741824
-AP_512M_MAX_PARALLELISM=1
-AP_512M_MAX_PARALLELISM_GPU=0
-AP_512M_MIN_MEMORY=1073741824
-C1_512M_BASE_MIN_MEMORY=1073741824
-C1_512M_GPU_UTILIZATION=0
-C1_512M_MAX_MEMORY=1073741824
-C1_512M_MAX_PARALLELISM=0
-C1_512M_MAX_PARALLELISM_GPU=0
-C1_512M_MIN_MEMORY=1073741824
-C2_512M_BASE_MIN_MEMORY=10737418240
-C2_512M_GPU_UTILIZATION=1
-C2_512M_MAX_MEMORY=1610612736
-C2_512M_MAX_PARALLELISM=1
-C2_512M_MAX_PARALLELISM_GPU=0
-C2_512M_MIN_MEMORY=1073741824
-GET_512M_BASE_MIN_MEMORY=0
-GET_512M_GPU_UTILIZATION=0
-GET_512M_MAX_MEMORY=1048576
-GET_512M_MAX_PARALLELISM=0
-GET_512M_MAX_PARALLELISM_GPU=0
-GET_512M_MIN_MEMORY=1048576
-PC1_512M_BASE_MIN_MEMORY=1048576
-PC1_512M_GPU_UTILIZATION=0
-PC1_512M_MAX_MEMORY=1073741824
-PC1_512M_MAX_PARALLELISM=1
-PC1_512M_MAX_PARALLELISM_GPU=0
-PC1_512M_MIN_MEMORY=805306368
-PC2_512M_BASE_MIN_MEMORY=1073741824
-PC2_512M_GPU_UTILIZATION=0
-PC2_512M_MAX_MEMORY=1610612736
-PC2_512M_MAX_PARALLELISM=-1
-PC2_512M_MAX_PARALLELISM_GPU=0
-PC2_512M_MIN_MEMORY=1073741824
-UNS_512M_BASE_MIN_MEMORY=1048576
-UNS_512M_GPU_UTILIZATION=0
-UNS_512M_MAX_MEMORY=1073741824
-UNS_512M_MAX_PARALLELISM=1
-UNS_512M_MAX_PARALLELISM_GPU=0
-UNS_512M_MIN_MEMORY=805306368
-```
-{{< /details >}}
-
-{{< details "64GB Environment" >}}
-```plaintext
-AP_64G_BASE_MIN_MEMORY=1073741824
-AP_64G_GPU_UTILIZATION=0
-AP_64G_MAX_MEMORY=8589934592
-AP_64G_MAX_PARALLELISM=1
-AP_64G_MAX_PARALLELISM_GPU=0
-AP_64G_MIN_MEMORY=8589934592
-C1_64G_BASE_MIN_MEMORY=1073741824
-C1_64G_GPU_UTILIZATION=0
-C1_64G_MAX_MEMORY=1073741824
-C1_64G_MAX_PARALLELISM=0
-C1_64G_MAX_PARALLELISM_GPU=0
-C1_64G_MIN_MEMORY=1073741824
-C2_64G_BASE_MIN_MEMORY=68719476736
-C2_64G_GPU_UTILIZATION=1
-C2_64G_MAX_MEMORY=204010946560
-C2_64G_MAX_PARALLELISM=-1
-C2_64G_MAX_PARALLELISM_GPU=6
-C2_64G_MIN_MEMORY=64424509440
-GET_64G_BASE_MIN_MEMORY=0
-GET_64G_GPU_UTILIZATION=0
-GET_64G_MAX_MEMORY=1048576
-GET_64G_MAX_PARALLELISM=0
-GET_64G_MAX_PARALLELISM_GPU=0
-GET_64G_MIN_MEMORY=1048576
-PC1_64G_BASE_MIN_MEMORY=10485760
-PC1_64G_GPU_UTILIZATION=0
-PC1_64G_MAX_MEMORY=137438953472
-PC1_64G_MAX_PARALLELISM=1
-PC1_64G_MAX_PARALLELISM_GPU=0
-PC1_64G_MIN_MEMORY=120259084288
-PC2_64G_BASE_MIN_MEMORY=1073741824
-PC2_64G_GPU_UTILIZATION=1
-PC2_64G_MAX_MEMORY=32212254720
-PC2_64G_MAX_PARALLELISM=-1
-PC2_64G_MAX_PARALLELISM_GPU=6
-PC2_64G_MIN_MEMORY=32212254720
-UNS_64G_BASE_MIN_MEMORY=10485760
-UNS_64G_GPU_UTILIZATION=0
-UNS_64G_MAX_MEMORY=137438953472
-UNS_64G_MAX_PARALLELISM=1
-UNS_64G_MAX_PARALLELISM_GPU=0
-UNS_64G_MIN_MEMORY=120259084288
-```
-{{< /details >}}
-
-{{< details "All Environment variables" >}}
-```plaintext
-AP_2K_BASE_MIN_MEMORY=2048
-AP_2K_GPU_UTILIZATION=0
-AP_2K_MAX_MEMORY=2048
-AP_2K_MAX_PARALLELISM=1
-AP_2K_MAX_PARALLELISM_GPU=0
-AP_2K_MIN_MEMORY=2048
-AP_32G_BASE_MIN_MEMORY=1073741824
-AP_32G_GPU_UTILIZATION=0
-AP_32G_MAX_MEMORY=4294967296
-AP_32G_MAX_PARALLELISM=1
-AP_32G_MAX_PARALLELISM_GPU=0
-AP_32G_MIN_MEMORY=4294967296
-AP_512M_BASE_MIN_MEMORY=1073741824
-AP_512M_GPU_UTILIZATION=0
-AP_512M_MAX_MEMORY=1073741824
-AP_512M_MAX_PARALLELISM=1
-AP_512M_MAX_PARALLELISM_GPU=0
-AP_512M_MIN_MEMORY=1073741824
-AP_64G_BASE_MIN_MEMORY=1073741824
-AP_64G_GPU_UTILIZATION=0
-AP_64G_MAX_MEMORY=8589934592
-AP_64G_MAX_PARALLELISM=1
-AP_64G_MAX_PARALLELISM_GPU=0
-AP_64G_MIN_MEMORY=8589934592
-AP_8M_BASE_MIN_MEMORY=8388608
-AP_8M_GPU_UTILIZATION=0
-AP_8M_MAX_MEMORY=8388608
-AP_8M_MAX_PARALLELISM=1
-AP_8M_MAX_PARALLELISM_GPU=0
-AP_8M_MIN_MEMORY=8388608
-C1_2K_BASE_MIN_MEMORY=2048
-C1_2K_GPU_UTILIZATION=0
-C1_2K_MAX_MEMORY=2048
-C1_2K_MAX_PARALLELISM=0
-C1_2K_MAX_PARALLELISM_GPU=0
-C1_2K_MIN_MEMORY=2048
-C1_32G_BASE_MIN_MEMORY=1073741824
-C1_32G_GPU_UTILIZATION=0
-C1_32G_MAX_MEMORY=1073741824
-C1_32G_MAX_PARALLELISM=0
-C1_32G_MAX_PARALLELISM_GPU=0
-C1_32G_MIN_MEMORY=1073741824
-C1_512M_BASE_MIN_MEMORY=1073741824
-C1_512M_GPU_UTILIZATION=0
-C1_512M_MAX_MEMORY=1073741824
-C1_512M_MAX_PARALLELISM=0
-C1_512M_MAX_PARALLELISM_GPU=0
-C1_512M_MIN_MEMORY=1073741824
-C1_64G_BASE_MIN_MEMORY=1073741824
-C1_64G_GPU_UTILIZATION=0
-C1_64G_MAX_MEMORY=1073741824
-C1_64G_MAX_PARALLELISM=0
-C1_64G_MAX_PARALLELISM_GPU=0
-C1_64G_MIN_MEMORY=1073741824
-C1_8M_BASE_MIN_MEMORY=8388608
-C1_8M_GPU_UTILIZATION=0
-C1_8M_MAX_MEMORY=8388608
-C1_8M_MAX_PARALLELISM=0
-C1_8M_MAX_PARALLELISM_GPU=0
-C1_8M_MIN_MEMORY=8388608
-C2_2K_BASE_MIN_MEMORY=2048
-C2_2K_GPU_UTILIZATION=1
-C2_2K_MAX_MEMORY=2048
-C2_2K_MAX_PARALLELISM=1
-C2_2K_MAX_PARALLELISM_GPU=0
-C2_2K_MIN_MEMORY=2048
-C2_32G_BASE_MIN_MEMORY=34359738368
-C2_32G_GPU_UTILIZATION=1
-C2_32G_MAX_MEMORY=161061273600
-C2_32G_MAX_PARALLELISM=-1
-C2_32G_MAX_PARALLELISM_GPU=6
-C2_32G_MIN_MEMORY=32212254720
-C2_512M_BASE_MIN_MEMORY=10737418240
-C2_512M_GPU_UTILIZATION=1
-C2_512M_MAX_MEMORY=1610612736
-C2_512M_MAX_PARALLELISM=1
-C2_512M_MAX_PARALLELISM_GPU=0
-C2_512M_MIN_MEMORY=1073741824
-C2_64G_BASE_MIN_MEMORY=68719476736
-C2_64G_GPU_UTILIZATION=1
-C2_64G_MAX_MEMORY=204010946560
-C2_64G_MAX_PARALLELISM=-1
-C2_64G_MAX_PARALLELISM_GPU=6
-C2_64G_MIN_MEMORY=64424509440
-C2_8M_BASE_MIN_MEMORY=8388608
-C2_8M_GPU_UTILIZATION=1
-C2_8M_MAX_MEMORY=8388608
-C2_8M_MAX_PARALLELISM=1
-C2_8M_MAX_PARALLELISM_GPU=0
-C2_8M_MIN_MEMORY=8388608
-GET_2K_BASE_MIN_MEMORY=0
-GET_2K_GPU_UTILIZATION=0
-GET_2K_MAX_MEMORY=1048576
-GET_2K_MAX_PARALLELISM=0
-GET_2K_MAX_PARALLELISM_GPU=0
-GET_2K_MIN_MEMORY=1048576
-GET_32G_BASE_MIN_MEMORY=0
-GET_32G_GPU_UTILIZATION=0
-GET_32G_MAX_MEMORY=1048576
-GET_32G_MAX_PARALLELISM=0
-GET_32G_MAX_PARALLELISM_GPU=0
-GET_32G_MIN_MEMORY=1048576
-GET_512M_BASE_MIN_MEMORY=0
-GET_512M_GPU_UTILIZATION=0
-GET_512M_MAX_MEMORY=1048576
-GET_512M_MAX_PARALLELISM=0
-GET_512M_MAX_PARALLELISM_GPU=0
-GET_512M_MIN_MEMORY=1048576
-GET_64G_BASE_MIN_MEMORY=0
-GET_64G_GPU_UTILIZATION=0
-GET_64G_MAX_MEMORY=1048576
-GET_64G_MAX_PARALLELISM=0
-GET_64G_MAX_PARALLELISM_GPU=0
-GET_64G_MIN_MEMORY=1048576
-GET_8M_BASE_MIN_MEMORY=0
-GET_8M_GPU_UTILIZATION=0
-GET_8M_MAX_MEMORY=1048576
-GET_8M_MAX_PARALLELISM=0
-GET_8M_MAX_PARALLELISM_GPU=0
-GET_8M_MIN_MEMORY=1048576
-PC1_2K_BASE_MIN_MEMORY=2048
-PC1_2K_GPU_UTILIZATION=0
-PC1_2K_MAX_MEMORY=2048
-PC1_2K_MAX_PARALLELISM=1
-PC1_2K_MAX_PARALLELISM_GPU=0
-PC1_2K_MIN_MEMORY=2048
-PC1_32G_BASE_MIN_MEMORY=10485760
-PC1_32G_GPU_UTILIZATION=0
-PC1_32G_MAX_MEMORY=68719476736
-PC1_32G_MAX_PARALLELISM=1
-PC1_32G_MAX_PARALLELISM_GPU=0
-PC1_32G_MIN_MEMORY=60129542144
-PC1_512M_BASE_MIN_MEMORY=1048576
-PC1_512M_GPU_UTILIZATION=0
-PC1_512M_MAX_MEMORY=1073741824
-PC1_512M_MAX_PARALLELISM=1
-PC1_512M_MAX_PARALLELISM_GPU=0
-PC1_512M_MIN_MEMORY=805306368
-PC1_64G_BASE_MIN_MEMORY=10485760
-PC1_64G_GPU_UTILIZATION=0
-PC1_64G_MAX_MEMORY=137438953472
-PC1_64G_MAX_PARALLELISM=1
-PC1_64G_MAX_PARALLELISM_GPU=0
-PC1_64G_MIN_MEMORY=120259084288
-PC1_8M_BASE_MIN_MEMORY=8388608
-PC1_8M_GPU_UTILIZATION=0
-PC1_8M_MAX_MEMORY=8388608
-PC1_8M_MAX_PARALLELISM=1
-PC1_8M_MAX_PARALLELISM_GPU=0
-PC1_8M_MIN_MEMORY=8388608
-PC2_2K_BASE_MIN_MEMORY=2048
-PC2_2K_GPU_UTILIZATION=0
-PC2_2K_MAX_MEMORY=2048
-PC2_2K_MAX_PARALLELISM=-1
-PC2_2K_MAX_PARALLELISM_GPU=0
-PC2_2K_MIN_MEMORY=2048
-PC2_32G_BASE_MIN_MEMORY=1073741824
-PC2_32G_GPU_UTILIZATION=1
-PC2_32G_MAX_MEMORY=16106127360
-PC2_32G_MAX_PARALLELISM=-1
-PC2_32G_MAX_PARALLELISM_GPU=6
-PC2_32G_MIN_MEMORY=16106127360
-PC2_512M_BASE_MIN_MEMORY=1073741824
-PC2_512M_GPU_UTILIZATION=0
-PC2_512M_MAX_MEMORY=1610612736
-PC2_512M_MAX_PARALLELISM=-1
-PC2_512M_MAX_PARALLELISM_GPU=0
-PC2_512M_MIN_MEMORY=1073741824
-PC2_64G_BASE_MIN_MEMORY=1073741824
-PC2_64G_GPU_UTILIZATION=1
-PC2_64G_MAX_MEMORY=32212254720
-PC2_64G_MAX_PARALLELISM=-1
-PC2_64G_MAX_PARALLELISM_GPU=6
-PC2_64G_MIN_MEMORY=32212254720
-PC2_8M_BASE_MIN_MEMORY=8388608
-PC2_8M_GPU_UTILIZATION=0
-PC2_8M_MAX_MEMORY=8388608
-PC2_8M_MAX_PARALLELISM=-1
-PC2_8M_MAX_PARALLELISM_GPU=0
-PC2_8M_MIN_MEMORY=8388608
-UNS_2K_BASE_MIN_MEMORY=2048
-UNS_2K_GPU_UTILIZATION=0
-UNS_2K_MAX_MEMORY=2048
-UNS_2K_MAX_PARALLELISM=1
-UNS_2K_MAX_PARALLELISM_GPU=0
-UNS_2K_MIN_MEMORY=2048
-UNS_32G_BASE_MIN_MEMORY=10485760
-UNS_32G_GPU_UTILIZATION=0
-UNS_32G_MAX_MEMORY=68719476736
-UNS_32G_MAX_PARALLELISM=1
-UNS_32G_MAX_PARALLELISM_GPU=0
-UNS_32G_MIN_MEMORY=60129542144
-UNS_512M_BASE_MIN_MEMORY=1048576
-UNS_512M_GPU_UTILIZATION=0
-UNS_512M_MAX_MEMORY=1073741824
-UNS_512M_MAX_PARALLELISM=1
-UNS_512M_MAX_PARALLELISM_GPU=0
-UNS_512M_MIN_MEMORY=805306368
-UNS_64G_BASE_MIN_MEMORY=10485760
-UNS_64G_GPU_UTILIZATION=0
-UNS_64G_MAX_MEMORY=137438953472
-UNS_64G_MAX_PARALLELISM=1
-UNS_64G_MAX_PARALLELISM_GPU=0
-UNS_64G_MIN_MEMORY=120259084288
-UNS_8M_BASE_MIN_MEMORY=8388608
-UNS_8M_GPU_UTILIZATION=0
-UNS_8M_MAX_MEMORY=8388608
-UNS_8M_MAX_PARALLELISM=1
-UNS_8M_MAX_PARALLELISM_GPU=0
-UNS_8M_MIN_MEMORY=8388608
-```
-{{< /details >}}
-
+While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
 
 ## Installation
 
@@ -485,7 +20,7 @@ UNS_8M_MIN_MEMORY=8388608
 During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
 {{< /alert >}}
 
-The `lotus-worker` application should have been built and installed along with the others when following the installation guide. For simplicity, we recommend following the same procedure in the machines that will run the Lotus Workers (only the steps required to build the binaries).
+The `lotus-worker` application is built and installed along with the other Lotus binaries when following the installation guide. For simplicity, we recommend following the similar procedure as building `lotus-miner` application for building the `lotus-worker` application.
 
 ## Setting up the Lotus Miner
 
@@ -501,7 +36,7 @@ Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network inter
 lotus-miner auth api-info --perm admin
 ```
 
-The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "json-rpc" >}}). Write down the output so that you can use it in the next step.
+The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "api-access#api-tokens" >}}). Write down the output so that you can use it in the next step.
 
 ### Configuring the Lotus Miner sealing capabilities
 
@@ -523,6 +58,8 @@ If you want to fully delegate any of these operations to workers, set them to `f
 ### Environment variables
 
 Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "setup" >}})):
+
+The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "kb#soft-fd-limit" >}}) guide.
 
 ```
 # MINER_API_INFO as obtained before
@@ -561,6 +98,9 @@ The above command will start the worker. Depending on the operations that you wa
    --unseal                      enable unsealing (32G sectors: 1 core, 128GiB RAM) (default: true)
    --precommit2                  enable precommit2 (32G sectors: multiple cores, 96GiB RAM) (default: true)
    --commit                      enable commit (32G sectors: multiple cores or GPUs, 128GiB RAM + 64GiB swap) (default: true)
+   --replica-update              enable replica update (default: true)
+   --prove-replica-update2       enable prove replica update 2 (default: true)
+   --regen-sector-key            enable regen sector key (default: true)
 ```
 
 Once the worker is running, it should connect to the Lotus miner. You can verify this with:
@@ -584,7 +124,7 @@ Worker 1, host othercomputer
 
 You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
 
-Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU intensive and need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, thus [losing collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores available and sealing phases to Lotus Miners and Lotus Workers.
+Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU and GPU intensive. WindowPoSTs need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, and [lose collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between `lotus-miner` and `lotus-worker` instances.
 
 Note that if you co-locate miner and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
 
@@ -594,7 +134,7 @@ In most cases, only one Lotus Worker per machine should be running since `lotus-
 
 The only cases where running multiple workers per machine may be a good idea is when there are multiple GPUs, or a single high memory-capacity GPU, available.
 
-Multiple GPU support is currently in an early stage. It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
+It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
 
 Advanced GPUs with more than 20 GB of memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
 
