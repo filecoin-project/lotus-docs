@@ -5,8 +5,8 @@ lead: "This guide covers the Lotus Miner configuration files, detailing the mean
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-configure"
-        identifier: "storage-providers-configure-configuration"
+        parent: "storage-providers-setup"
+        identifier: "storage-providers-setup-configuration"
 aliases:
     - /docs/storage-providers/config/
 weight: 120

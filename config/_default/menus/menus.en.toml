@@ -79,10 +79,10 @@
   url = "/storage-providers/get-started"
 
 [[storage-providers]]
-  name = "Configure"
+  name = "Setup"
   weight = 25
-  identifier = "storage-providers-configure"
-  url = "/storage-providers/configure"
+  identifier = "storage-providers-setup"
+  url = "/storage-providers/setup"
 
 [[storage-providers]]
   name = "Operate"
@@ -113,12 +113,6 @@
   weight = 20
   identifier = "tutorials-providers"
   url = "/tutorials/lotus-miner"
-
-#[[tutorials]]
-#  name = "Store and retrieve"
-#  weight = 30
-#  identifier = "tutorials-store-and-retrieve"
-#  url = "/tutorials/store-and-retrieve"
 
 [[social]]
   name = "GitHub"

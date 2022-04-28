@@ -199,9 +199,9 @@ A new feature in `lotus-miner` allows converting all the future "CC" sectors to 
 1. It removes the manual intervention required to convert the "CC" sectors to snap-deal ready sectors and thus, reduces the overhead for the storage provider. 
 2. As all the new storage deals will be sealed as part of snap-deal, the sealing time would be considerable less.
 
-This new feature can be enabled in the lotus miner [configuration]({{<relref "../../configure/configuration/#make-new-cc-sector-available-for-snap-deal">}}).
+This new feature can be enabled in the lotus miner [configuration]({{<relref "../../advanced-configurations/market#make-new-cc-sector-available-for-snap-deal">}}).
 
-When a deal enters the the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deals before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with the lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../configure/configuration/#disabling-new-sector-for-deal">}}). 
+When a deal enters the the sealing pipeline, lotus-miner will try to match it to any sectors waiting for deals before sealing. If none are found then, lotus-miner will try to check if any `Available` sectors can accept it. It will select a candidate with the lowest initial pledge. If none of the sectors are eligible then a new sector can be created based on the value of `MakeNewSectorForDeals` under [configuration]({{<relref "../../advanced-configurations/market#disabling-new-sector-for-deal">}}). 
 
 {{< alert >}}
 In the case that creating new sectors for deals is disabled, the deal will be left hanging until a sector is made "Available" for it.
