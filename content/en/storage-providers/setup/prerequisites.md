@@ -13,7 +13,7 @@ weight: 100
 toc: true
 ---
 
-Mining will only work if you fully cover the [minimal hardware requirements]({{< relref "hardware-requirements" >}}) for the network in which you will mine. As the mining process is very demanding for the machines on several aspects and relies on precise configuration, we strongly recommend Linux systems administration experience before embarking.
+Mining will only work if you fully comply with the [minimal hardware requirements]({{< relref "hardware-requirements" >}}) for the network in which you will mine. The mining process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
@@ -125,11 +125,11 @@ Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addr
 
 ## Optional prerequisites
 
-These prerequisites are optional and can be used on case by case basis. Please make sure to understand the use case before performing these steps.
+These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
 
 ### Install extra dependencies
 
-This step is only if you are running an Nvidia GPU and would prefer to use OpenCL instead of CUDA. Please note that Cuda is after than OpenCL for sealing and proving workload. Most Linux distributions contain this package in their package manager:
+This step is only necessary if you are running an Nvidia GPU and would prefer to use OpenCL instead of CUDA. Please note that Cuda is recommended over OpenCL for sealing and proving workload. Most Linux distributions contain this package in their package manager:
 
 ```shell
 sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y

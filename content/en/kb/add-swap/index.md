@@ -15,7 +15,7 @@ areas: ["swap", "Linux"]
 
 ## Add swap on lotus miner or worker node:
 
-If you have only 128 GiB of RAM, you will need to make sure your system provides at least an extra 256 GiB of very fast swap (preferably NVMe SSD) or you will be unable to seal sectors:
+If you only have 128 GiB of RAM, you will need to make sure your system provides at least an extra 256 GiB of very fast swap (preferably NVMe SSD) or you will be unable to seal sectors:
 
 ```sh
 sudo fallocate -l 256G /swapfile
