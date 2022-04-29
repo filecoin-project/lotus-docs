@@ -17,9 +17,9 @@ There are two main types of rewards for their efforts: storage fees and block re
 
 ### Storage fees
 
-_PoSt (Proof-of-Spacetime)_ window checks are performed on 24 hour intervals across the network to ensure that storage providers are continuing to host their required sectors as normal. Correspondingly, each storage providers set of pledged sectors is partitioned into subsets, one subset for each window. Within a given window, each storage provider must submit a PoSt for each sector in their respective subset. For each day a storage provider is inactive it will receive a [fault fee](#penalty).
+_PoSt (Proof-of-Spacetime)_ window checks are performed on 24 hour intervals across the network to ensure that storage providers are continuing to host their required sectors as normal. Correspondingly, each storage provider’s set of pledged sectors is partitioned into subsets, one subset for each window. Within a given window, each storage provider must submit a PoSt for each sector in their respective subset. For each day a storage provider is inactive it will receive a [fault fee](#penalty).
 
-**Storage fees** are the fees paid regularly by clients after a deal has been reached, in exchange for storing data. These fees are automatically deposited into a provider´s associated withdrawal wallet as they continue to perform their duties over time and are briefly locked upon being received.
+**Storage fees** are the fees paid regularly by clients after a deal has been reached, in exchange for storing data. These fees are automatically deposited into a provider´s associated withdrawal wallet as they continue to perform their duties over time, and are briefly locked upon being received.
 
 ### Block rewards
 
@@ -33,7 +33,7 @@ The mechanism to earn the right to _provide_ a new block is called _WinningPoSt_
 
 The number of blocks on every tipset is based on a Poisson distribution of a random variable with λ = 5. Provider implementations may use several strategies to choose which messages to include in every block to minimize overlap. Only the "first execution" of each message will collect the associated fees, with executions ordered per the hash of the VRF (Verifiable Random Function) ticket associated to the block.
 
-When storage provider get block rewards from the network, 25% percent of the reward will be immediately released to your storage providers actor's available balance and the rest 75% will become locked funds and be released linearly in 180 days.
+When storage provider get block rewards from the network, 25% percent of the reward will be immediately released to your storage provider actor's available balance and the rest 75% will become locked funds and be released linearly in 180 days.
 
 ### Verified clients
 
@@ -61,19 +61,19 @@ This penalty is incurred when committing consensus faults. This penalty is appli
 
 ## Storage provider accounting
 
-A Storage providers financial gain or loss is affected by the following three actions:
+A Storage provider’s financial gain or loss is affected by the following three actions:
 
 1. The deposited tokens to act as collateral for their PreCommitted and ProveCommitted Sectors
-2. Storage providers earn tokens from block rewards, when they are elected to mine a new block and extend the blockchain.
+2. Storage providers earn tokens from block rewards when they are elected to mine a new block and extend the blockchain.
 3. Storage providers lose tokens if they fail to prove storage of a sector and are given penalties as a result.
 
 ### Balance requirements
 
-A storage providers token balance MUST cover ALL of the following:
+A storage provider’s token balance MUST cover ALL of the following:
 
 - **PreCommit Deposits**: When a storage provider PreCommits a Sector, they must supply a "precommit deposit" for the Sector, which acts as collateral. If the Sector is not ProveCommitted on time, this deposit is removed and burned.
 - **Initial Pledge**: When a storage provider ProveCommits a Sector, they must supply an "initial pledge" for the Sector, which acts as collateral. If the Sector is terminated, this deposit is removed and burned along with rewards earned by this sector up to a limit.
-- **Locked Funds**: When a storage provider receives tokens from block rewards, the tokens are locked and added to the storage providers vesting table to be unlocked linearly over future epochs.
+- **Locked Funds**: When a storage provider receives tokens from block rewards, the tokens are locked and added to the storage provider vesting table to be unlocked linearly over future epochs.
 
 ### Faults, Penalties and Fee Debt
 
@@ -83,6 +83,6 @@ A Sector's PoSts must be submitted on time, or that Sector is marked "faulty." T
 
 - **Declared Fault**: When the storage provider explicitly declares a Sector "faulty" _before_ its Deadline's FaultCutoff. Recall that `WindowPoSt` proofs are submitted per partition for a specific `ChallengeWindow`. A storage provider has to declare the sector as faulty before the `ChallengeWindow` for the particular partition opens. Until the sectors are recovered they will be masked from proofs in subsequent proving periods.
 - **Detected Fault**: Partitions of sectors without PoSt proof verification records, which have not been declared faulty before the `FaultCutoff` epoch's deadline are marked as detected faults.
-- **Skipped Fault**: If a sector is currently in active or recovering state and has not been declared faulty before, but the storage providers PoSt submission does not include a proof for this sector, then this is a "skipped fault" sector (also referred to as "skipped undeclared fault"). In other words, when a storage provider submits PoSt proofs for a partition but does not include proofs for some sectors in the partition, then these sectors are in "skipped fault" state. This is in contrast to the "detected fault" state, where the storage provider does not submit a PoSt proof for any section in the partition at all. The skipped fault is helpful in case a sector becomes faulty after the `FaultCutoff` epoch. Skip faults happen when windowPost process is not able to acquire certain sectors on the disk during the dealine. These sectors an be found in the wdPost message submitted to the chain.
+- **Skipped Fault**: If a sector is currently in active or recovering state and has not been declared faulty before, but the storage provider’s PoSt submission does not include a proof for this sector, then this is a "skipped fault" sector (also referred to as "skipped undeclared fault"). In other words, when a storage provider submits PoSt proofs for a partition but does not include proofs for some sectors in the partition, then these sectors are in "skipped fault" state. This is in contrast to the "detected fault" state, where the storage provider does not submit a PoSt proof for any section in the partition at all. The skipped fault is helpful in case a sector becomes faulty after the `FaultCutoff` epoch. Skip faults happen when windowPost process is not able to acquire certain sectors on the disk during the dealine. These sectors an be found in the wdPost message submitted to the chain.
 
 Note that the "skipped fault" allows for sector-wise fault penalties, as compared to partition-wide faults and penalties, as is the case with "detected faults".
