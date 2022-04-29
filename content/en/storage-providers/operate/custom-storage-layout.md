@@ -13,7 +13,7 @@ weight: 120
 toc: true
 ---
 
-If you used the `--no-local-storage` flag during the [miner initialization]({{< relref "../setup/setup#miner-initialization" >}}), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
+If you used the `--no-local-storage` flag during the [miner initialization]({{< relref "../setup/initialize#miner-initialization" >}}), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
 
 The Lotus Miner keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
 
