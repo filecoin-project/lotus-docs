@@ -25,7 +25,7 @@ Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate
 
 **Scheduling tasks**: These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
 
-![Overview of the lotus-miner tasks](lotus-miner-tasks.svg) 
+![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
 
 ### Add piece
 
