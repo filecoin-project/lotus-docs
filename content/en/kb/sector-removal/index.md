@@ -3,7 +3,7 @@ title: "Troubleshooting Sector Removal"
 description: "This is a solution issues with sector removals and terminations."
 date: 2022-04-04T12:00:35+01:00
 lastmod: 2022-04-04T12:00:35+01:00
-draft: true
+draft: false
 menu:
   kb:
     parent: "browse"
