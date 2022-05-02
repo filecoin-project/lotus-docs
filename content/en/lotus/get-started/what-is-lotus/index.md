@@ -8,6 +8,7 @@ menu:
 aliases:
     - /docs/getting-started/what-is-lotus/
     - /docs/set-up/about/
+    - /docs/
 weight: 110
 toc: true
 ---

@@ -8,6 +8,7 @@ menu:
         parent: "tutorials-lotus"
 aliases:
     - /docs/developers/large-files/
+    - /store/lotus/very-large-files
 weight: 150
 toc: true
 ---

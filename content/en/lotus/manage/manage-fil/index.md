@@ -8,6 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/manage-fil/
+    - /get-started/lotus/send-and-receive-fil
 weight: 110
 toc: true
 ---

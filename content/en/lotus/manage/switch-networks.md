@@ -11,13 +11,14 @@ aliases:
 weight: 140
 toc: true
 ---
+
 As we mentioned in the installation guide, Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
-+ Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
-+ Testnets
-  + [Calibnet](https://network.filecoin.io/#calibration)
-  + [NerpaNet](https://github.com/filecoin-project/community/discussions/74#discussioncomment-1348469) was deprecated on 2021-08-16 and is no longer available.
-+ [Mainnet](https://network.filecoin.io/#mainnet)
+- Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
+- Testnets
+    - [Calibnet](https://network.filecoin.io/#calibration)
+    - [NerpaNet](https://github.com/filecoin-project/community/discussions/74#discussioncomment-1348469) was deprecated on 2021-08-16 and is no longer available.
+- [Mainnet](https://network.filecoin.io/#mainnet)
 
 You can choose one of the following methods to switch to a different network.
 
