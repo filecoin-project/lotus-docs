@@ -131,6 +131,11 @@
   identifier = "reference-api"
   url = "/reference/api"
 
+[[reference]]
+  name = "Basics"
+  weight = 1
+  identifier = "reference-basics"
+  url = "/reference/basics/overview"
 
 #[[tutorials]]
 #  name = "Store and retrieve"
