@@ -7,6 +7,8 @@ menu:
     lotus:
         parent: "lotus-get-started"
         identifier: "types-of-node"
+aliases:
+    - /build/examples
 weight: 140
 toc: true
 ---
