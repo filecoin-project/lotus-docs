@@ -20,7 +20,7 @@
 
 [[main]]
   name = "Reference"
-  url = "/reference/api/auth/"
+  url = "/reference/basics/overview/"
   identifier = "reference"
   weight = 50
 
