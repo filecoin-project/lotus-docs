@@ -6,6 +6,8 @@ menu:
     lotus:
         parent: "lotus-get-started"
         identifier: "lotus-get-started-networks"
+aliases:
+    - /about-filecoin/networks
 weight: 130
 toc: true
 ---
