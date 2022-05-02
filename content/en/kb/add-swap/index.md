@@ -17,7 +17,7 @@ areas: ["swap", "Linux"]
 
 If you only have 128 GiB of RAM, you will need to make sure your system provides at least an extra 256 GiB of very fast swap (preferably NVMe SSD) or you will be unable to seal sectors:
 
-```sh
+```shell
 sudo fallocate -l 256G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile

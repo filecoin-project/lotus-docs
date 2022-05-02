@@ -12,13 +12,13 @@ toc: true
 
 ## Log file configuration
 
-The Lotus miner process generates two types of logs, namely, Go logs and Rust logs. Each of these logs can redirecting to individual files.
+The `lotus-miner` process generates Go logs and Rust logs. Each of these logs can redirecting to individual files.
 
 {{< alert icon="callout" >}}
-This section is not applicable if you are running lotus-miner as a systemd service.
+This section is not applicable if you are running `lotus-miner` as a systemd service.
 {{< /alert >}}
 
-### Redirect GO logs to a file
+### Redirect Go logs to a file
 
 By default, lotus-miner redirect all logs to the standard output if not running as a systemd service. To change this behavior, add the following variable to the `.bashrc` file and restart the Lotus miner process to start redirecting all logs to the file.
 
@@ -27,15 +27,16 @@ export GOLOG_OUTPUT=FILE >> ~/.bashrc
 export GOLOG_FILE="$HOME/miner.log" >> ~/.bashrc && source ~/.bashrc
 ```
 
-
 ### Redirect Rust logs to a standard output
+
 By default the `fil_logger` library used by `rust-fil-proof` doesn't log anything. You can change this by setting the RUST_LOG environment variable to another level. This will show log output on stderr. It can help debug error during the sealing and windowPost.
 
 ```shell
 export RUST_LOG=info >> ~/.bashrc && source ~/.bashrc
 ```
 
-The log-level can be chose between 5 options
+The log-level can be chose between 5 options:
+
 - trace
 - debug
 - info
@@ -50,13 +51,14 @@ The verbosity of the `lotus` and `lotus-miner` logs can be changed without resta
 lotus-miner log list
 ```
 
-To change the verbosity, please run
+To change the verbosity, please run:
 
 ```shell
 lotus-miner log set-level --system chain debug
 ```
 
-The log-level can be chose between 4 options
+The log-level can be chose between 4 options:
+
 - debug
 - info
 - warn

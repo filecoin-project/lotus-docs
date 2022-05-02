@@ -43,17 +43,17 @@ Please make sure that the following prerequites are met whether you are planning
 
 If you opt to run a miner on a different machine as the Lotus Node, set:
 
-```sh
+```shell
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-and **make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}})**. Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
 
 ### Performance tweaks
 
-It is recommended to set the following environment variables in your environment so that they are defined **every time any of the Lotus applications is launched** (meaning, when the daemons are started):
+It is recommended to set the following environment variables in your environment so that they are defined every time any of the `lotus` daemons are launched:
 
-```sh
+```shell
 # See https://github.com/filecoin-project/rust-fil-proofs/
 export FIL_PROOFS_MAXIMIZE_CACHING=1 # More speed at RAM cost (1x sector-size of RAM - 32 GB).
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # precommit2 GPU acceleration
@@ -89,7 +89,7 @@ For the miner to start, it will need to read and verify the Filecoin proof param
 
 We recommend setting a custom location to store parameters and proofs parent cache -created during the first run- with:
 
-```sh
+```shell
 export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
@@ -102,7 +102,7 @@ Parameters will be downloaded automatically when the miner is initiated. You can
 
 You will need at least a BLS wallet (`f3...` for mainnet) for mining. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
 
-```sh
+```shell
 # A new BLS address to use as owner address:
 lotus wallet new bls
 f3...
@@ -121,8 +121,6 @@ For additional information about the different wallets that a miner can use and 
 {{< alert icon="tip" >}}
 Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
 {{< /alert >}}
-
-
 ## Optional prerequisites
 
 These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
@@ -137,7 +135,7 @@ sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y
 
 ### Optional Performance tweaks
 
-```sh
+```shell
 # See https://github.com/filecoin-project/bellman
 export BELLMAN_CPU_UTILIZATION=0.875
 ```
@@ -149,7 +147,7 @@ l result in different values being optimal. Omitting this environment variable m
 
 To download the parameters do:
 
-```sh
+```shell
 # Use sectors supported by the Filecoin network that the miner will join and use.
 # lotus-miner fetch-params <sector-size>
 lotus-miner fetch-params 32GiB

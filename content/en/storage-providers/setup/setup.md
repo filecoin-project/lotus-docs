@@ -9,7 +9,7 @@ menu:
         identifier: "storage-providers-setup-setup"
 aliases:
     - /docs/storage-providers/setup/
-    - storage-providers/configure/setup/
+    - /storage-providers/configure/setup/
 weight: 110
 toc: true
 ---
@@ -41,7 +41,7 @@ To summarize, make sure that:
 
 Before starting your miner for the first time run:
 
-```sh
+```shell
 lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
 ```
 
@@ -67,13 +67,13 @@ Once you start your miner, [make sure you can connect to its public IP/port]({{<
 
 You are now ready to start your Lotus miner:
 
-```sh
+```shell
 lotus-miner run
 ```
 
 or if you are using the systemd service file:
 
-```sh
+```shell
 systemctl start lotus-miner
 ```
 
@@ -85,7 +85,7 @@ systemctl start lotus-miner
 
 Once the miner is up and running, publish your miner address (which you configured above) to the chain so that other nodes can talk to it directly and make deals:
 
-```sh
+```shell
 lotus-miner actor set-addrs /ip4/<YOUR_PUBLIC_IP_ADDRESS>/tcp/24001
 ```
 
