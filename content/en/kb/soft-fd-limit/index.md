@@ -33,8 +33,6 @@ This will be host OS specific, but it should be similar on all OS types. Below i
 ```
 sudo echo "* soft nofile 256000" >> /etc/security/limits.conf
 sudo echo "* hard nofile 512000" >> /etc/security/limits.conf
-sudo echo "fs.nr_open=512000" >> /etc/sysctl.conf
-sudo echo "fs.file-max=612000" >> /etc/sysctl.conf
 sudo sysctl -p
 ```
 Values of the above resolution (the big number) may vary.
