@@ -28,8 +28,8 @@ export GOLOG_FILE="$HOME/miner.log" >> ~/.bashrc && source ~/.bashrc
 ```
 
 
-### Redirect Rust logs to a file
-By default the `fil_logger` library used by `rust-fil-proof` doesn't log anything. You can change this by setting the RUST_LOG environment variable to another level. This will show log output on stderr or in the file if Go logging is configured to a file.
+### Redirect Rust logs to a standard output
+By default the `fil_logger` library used by `rust-fil-proof` doesn't log anything. You can change this by setting the RUST_LOG environment variable to another level. This will show log output on stderr. It can help debug error during the sealing and windowPost.
 
 ```shell
 export RUST_LOG=info >> ~/.bashrc && source ~/.bashrc
