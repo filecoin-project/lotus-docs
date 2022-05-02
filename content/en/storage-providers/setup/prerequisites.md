@@ -7,8 +7,6 @@ menu:
     storage-providers:
         parent: "storage-providers-setup"
         identifier: "storage-providers-setup-prerequisites"
-aliases:
-    - /docs/storage-providers/setup/
 weight: 100
 toc: true
 ---
@@ -35,6 +33,7 @@ Please make sure that the following prerequites are met whether you are planning
     ```
 
     Please do not use the `lotus-miner` binary created during Lotus node installation process as it does not include the above options.
+
 3. Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
 4. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
 5. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine as required.

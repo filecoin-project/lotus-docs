@@ -83,7 +83,9 @@ For example, if `PublishMsgPeriod` is 1 hour:
 
 If `MaxDealsPerPublishMsg` is 2, then in the above example, when deal 2 is ready to be published at 1:30, Lotus would immediately publish Deals 1 & 2 in a single `PublishStorageDeals` message. Deal 3 would be published in a subsequent `PublishStorageDeals` message.
 
-> If any of the deals in the `PublishStorageDeals` fails validation upon execution, or if the start epoch has passed, all deals will fail to be published.
+{{< alert icon="👉" >}}
+If any of the deals in the `PublishStorageDeals` fails validation upon execution, or if the start epoch has passed, all deals will fail to be published.
+{{< /alert >}}
 
 ## Using filters for fine-grained storage and retrieval deal acceptance
 
@@ -113,3 +115,4 @@ go get -u -v github.com/Murmuration-Labs/bitscreen
 # add it to both filters
 Filter = "/path/to/go/bin/bitscreen"
 RetrievalFilter = "/path/to/go/bin/bitscreen"
+```

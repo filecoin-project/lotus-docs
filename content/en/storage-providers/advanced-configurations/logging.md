@@ -12,7 +12,7 @@ toc: true
 
 ## Log file configuration
 
-The `lotus-miner` process generates Go logs and Rust logs. Each of these logs can redirecting to individual files.
+The `lotus-miner` process generates Go logs and Rust logs. Both of these can be redirected to individual files.
 
 {{< alert icon="callout" >}}
 This section is not applicable if you are running `lotus-miner` as a systemd service.
@@ -29,13 +29,13 @@ export GOLOG_FILE="$HOME/miner.log" >> ~/.bashrc && source ~/.bashrc
 
 ### Redirect Rust logs to a standard output
 
-By default the `fil_logger` library used by `rust-fil-proof` doesn't log anything. You can change this by setting the RUST_LOG environment variable to another level. This will show log output on stderr. It can help debug error during the sealing and windowPost.
+By default the `fil_logger` library used by `rust-fil-proof` doesn't log anything. You can change this by setting the RUST_LOG environment variable to another level. This will show log output on stderr which can be redirected to a file in the shell while launching the `lotus-miner` command.
 
 ```shell
 export RUST_LOG=info >> ~/.bashrc && source ~/.bashrc
 ```
 
-The log-level can be chose between 5 options:
+The log-level can be chosen between 5 options:
 
 - trace
 - debug
@@ -57,7 +57,7 @@ To change the verbosity, please run:
 lotus-miner log set-level --system chain debug
 ```
 
-The log-level can be chose between 4 options:
+The log-level can be chosen between 4 options:
 
 - debug
 - info
@@ -75,7 +75,9 @@ lotus-miner log set-level --system chain --system chainxchg debug
 1. To look for logs related to mining a block, you can check with following commands.
     ```shell
     cat /path/to/log | grep "mined"
+    ```
 
 2. To look for logs related to winning a block, you can check with following commands.
     ```shell
     cat /path/to/log | grep "isEligible"
+    ```
