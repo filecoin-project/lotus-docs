@@ -6,6 +6,8 @@ menu:
     reference:
              parent: "reference-api"
 toc: true
+aliases:
+    - /developers/apis/json-rpc/
 ---
 
 ## AuthNew

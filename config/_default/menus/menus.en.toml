@@ -5,7 +5,7 @@
 
 [[main]]
   name = "Developers"
-  url = "/developers/apis/json-rpc/"
+  url = "/developers/glif-nodes"
   weight = 20
 
 [[main]]
@@ -124,6 +124,7 @@
   identifier = "tutorials-providers"
   url = "/tutorials/lotus-miner"
 
+
 [[reference]]
   name = "API"
   weight = 10
@@ -141,7 +142,6 @@
 #  weight = 30
 #  identifier = "tutorials-store-and-retrieve"
 #  url = "/tutorials/store-and-retrieve"
-
 
 
 [[social]]
