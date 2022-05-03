@@ -8,6 +8,7 @@ menu:
              parent: "developers-apis"
 aliases:
     - /docs/apis/json-rpc/
+    - /developers/apis/json-rpc/
 weight: 150
 toc: true
 ---
