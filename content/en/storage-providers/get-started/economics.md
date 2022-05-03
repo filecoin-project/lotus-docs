@@ -33,7 +33,7 @@ The mechanism to earn the right to _provide_ a new block is called _WinningPoSt_
 
 The number of blocks on every tipset is based on a Poisson distribution of a random variable with λ = 5. Provider implementations may use several strategies to choose which messages to include in every block to minimize overlap. Only the "first execution" of each message will collect the associated fees, with executions ordered per the hash of the VRF (Verifiable Random Function) ticket associated to the block.
 
-When storage provider get block rewards from the network, 25% percent of the reward will be immediately released to your storage provider actor's available balance and the rest 75% will become locked funds and be released linearly in 180 days.
+When storage provider get block rewards from the network, 25% percent of the reward will be immediately released to your storage provider actor's available balance and the remaining 75% will become locked funds and be released linearly in 180 days.
 
 ### Verified clients
 
