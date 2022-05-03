@@ -22,23 +22,29 @@ To change the owner address of the storage provider to a multisignature address 
 
 ### Disadvantages
 
-- Some commands like `lotus-miner actor withdraw` currently do not support multisignature addresses, and as such do not function.
+- Some commands like `lotus-miner actor withdraw` currently do not support multisignature addresses, and you will need to use the `lotus-shed` tool to withdraw from the available actor balance.
 
 ## Changing to a msig owner address
 
-First one needs to initiate the owner-change proposal:
+First one needs to initiate a change of the owner address from the original single singature address to the multisignature address:
+
+```shell
+lotus-miner actor set-owner --really-do-it <msigID> <current-owner-address>
+```
+
+Secondly, one needs to use one of multisignature address signers to confirm the owner-change proposal:
 
 ```shell
 lotus-shed miner-multisig --from <msig-signer-1> --multisig <msigID> --miner <minerID> propose-change-owner <new-owner-address>
 ```
 
-Depending on how many signatures is needed, the rest of the multisignature signers need to approve the owner change proposal message: 
+Depending on what kind of signature threshold the mulitsignature address has, the rest of the multisignature signers needs to approve the owner change proposal message: 
 
 ```shell
 lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner  <minerID> approve-change-owner <msigID> <txnId> <proposer-address>
 ```
 
-To find the the txnId 
+To find the the txnId, you can check `lotus msig inspect <msigID>` and 
 
 ### Withdraw miner balance with msig owner
 
