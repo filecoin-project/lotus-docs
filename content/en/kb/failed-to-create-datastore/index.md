@@ -13,6 +13,8 @@ types: ["solution"]
 areas: ["sealing", "Lotus Worker", "Lotus Miner"]
 ---
 
+## Problem
+
 The following error shows up in the worker's log.
 
 ```json

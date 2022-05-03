@@ -5,10 +5,11 @@ lead: "The dagstore is a sharded store to hold large IPLD graphs efficiently, pa
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-configure"
+        parent: "storage-providers-operate"
         identifier: "storage-providers-configure-dagstore"
 aliases:
     - /docs/storage-providers/dagstore/
+    - /storage-providers/configure/dagstore/
 weight: 160
 toc: true
 ---

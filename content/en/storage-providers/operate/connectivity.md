@@ -13,7 +13,7 @@ weight: 130
 toc: true
 ---
 
-Filecoin miners, like participants in all peer-to-peer protocols, require a steady and quality pool of peers to communicate with in order to perform their various functions. This complements the [connectivity section]({{< relref "setup#connectivity-to-the-miner" >}}) in the setup instructions and the [seal workers]({{< relref "seal-workers" >}}) guide.
+Filecoin miners, like participants in all peer-to-peer protocols, require a steady and quality pool of peers to communicate with in order to perform their various functions. This complements the [connectivity section]({{< relref "initialize#connectivity-to-the-miner" >}}) in the setup instructions and the [seal workers]({{< relref "seal-workers" >}}) guide.
 
 ## Finding your public IP address
 
