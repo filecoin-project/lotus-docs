@@ -7,6 +7,8 @@ menu:
         parent: "reference-basics"
 toc: true
 weight: 1
+aliases:
+    - /developers/apis/
 ---
 
 This section contains reference information for the Lotus API and CLI. Most commands found within the CLI have an equivilent in the API. 

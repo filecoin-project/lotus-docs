@@ -5,7 +5,7 @@
 
 [[main]]
   name = "Developers"
-  url = "/developers/apis/json-rpc/"
+  url = "/developers/glif-nodes"
   weight = 20
 
 [[main]]
