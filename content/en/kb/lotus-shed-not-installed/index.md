@@ -1,6 +1,6 @@
 ---
-title: "lotus-shed is not installed by default"
-description: "This is a solution for lotus-shed."
+title: "How to install lotus-shed"
+description: "This is a guide for installing lotus-shed."
 date: 2022-03-17T12:00:35+01:00
 lastmod: 2021-11-16T12:00:35+01:00
 draft: false
@@ -9,19 +9,19 @@ menu:
     parent: "browse"
 toc: false
 pinned: false
-types: ["solution"]
+types: ["article"]
 areas: ["lotus-shed", "Linux", "Lotus Node"]
 ---
 
-# Problem:
+## Problem:
 
 When installing lotus for mainnet, lotus-shed is not installed by default. 
 
-# Environment:
+## Environment:
 
 - Mainnet
 
-# Resolution:
+## Resolution:
 
 After lotus installs (completely) run `make install lotus-shed`
 

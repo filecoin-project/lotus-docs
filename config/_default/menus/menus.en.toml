@@ -88,10 +88,10 @@
   url = "/storage-providers/get-started"
 
 [[storage-providers]]
-  name = "Configure"
+  name = "Setup"
   weight = 25
-  identifier = "storage-providers-configure"
-  url = "/storage-providers/configure"
+  identifier = "storage-providers-setup"
+  url = "/storage-providers/setup"
 
 [[storage-providers]]
   name = "Operate"

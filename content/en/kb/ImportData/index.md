@@ -13,7 +13,7 @@ types: ["solution"]
 areas: ["function", "bidbot", "Lotus Node", "Markets Node"]
 ---
 
-# Problem:
+## Problem:
 
 Where does the `ImportData` function get executed? 
 
@@ -21,15 +21,15 @@ Where does the `ImportData` function get executed?
 
 > During normal operation bidbot listens, bids, downloads data, and then calls ImportData. https://github.com/textileio/bidbot/blob/v0.1.6/service/store/store.go#L615-L622
 
-The question is: How do you organize your API access/where bidbot runs? Does it expect the above to happen on the market node, or do you actual give bidbot miner-node credentials? Something else?
+The question is: How do you organize your API access/where bidbot runs? Does it expect the above to happen on the market node, or do you actually give bidbot miner-node credentials? Something else?
 
-# Environment:
+## Environment:
 
 - Mainnet 
 - Calibnet 
 - Split markets node
 
-# Resolution:
+## Resolution:
 
 The `ImportData` function is always called/processed on the market node, regardless of any split configurations between a market node and the main miner-node. 
 

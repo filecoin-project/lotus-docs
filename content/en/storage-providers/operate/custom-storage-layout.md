@@ -5,7 +5,7 @@ lead: "This guide describes how to specify custom storage locations for the Lotu
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-configure"
+        parent: "storage-providers-operate"
         identifier: "storage-providers-configure-custom-storage-layout"
 aliases:
     - /docs/storage-providers/custom-storage-layout/
@@ -13,7 +13,7 @@ weight: 120
 toc: true
 ---
 
-If you used the `--no-local-storage` flag during the [miner initialization]({{< relref "setup#miner-initialization" >}}), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
+If you used the `--no-local-storage` flag during the [miner initialization]({{< relref "../setup/initialize#miner-initialization" >}}), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
 
 The Lotus Miner keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
 
@@ -45,6 +45,6 @@ lotus-miner storage list
 
 ## Updating locations
 
-To move data from one location to another, follow the instructions in the [Miner lifecycle guide]({{< relref "lifecycle#changing-storage-locations" >}}).
+To move data from one location to another, follow the instructions in the [Miner maintenance guide]({{< relref "maintenance#changing-storage-locations" >}}).
 
 To fully remove one location, edit the `storage.json` manually and re-start your miner.
