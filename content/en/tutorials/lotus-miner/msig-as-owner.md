@@ -46,7 +46,7 @@ lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner  <m
 
 To find the the txnId, you can check `lotus msig inspect <msigID>` and 
 
-### Withdraw miner balance with msig owner
+## Withdraw balance with multisig owner
 
 Currently, the `lotus-miner actor withdraw` command does not support withdrawals with multisignature addresses, instead one can initiate the withdrawal with `lotus-shed`.
 
@@ -57,5 +57,6 @@ lotus-shed miner-multisig --from <msig-signer-1> --multisig <msigID> --miner <Mi
 The other signers of the multisignature address will have to approve the withdrawal. They can approve the withrawal request by:
 
 ```shell
-lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner <MinerID> approve-withdraw <amount> <MinerID> <txnID>
+lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner <MinerID> approve-withdraw <amount> <txnID> <proposer-address>
 ```
+## Changing away from multisig owner
