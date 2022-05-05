@@ -1,6 +1,6 @@
 ---
 title: "I"
-description: "Lorem ipsum."
+description: ""
 draft: false
 menu:
     reference:
