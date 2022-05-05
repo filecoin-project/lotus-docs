@@ -44,7 +44,7 @@ A sector can contain data from multiple deals and clients. A storage provider ca
 An unsealed sector contains raw storage deal data. These sectors may optionally be retained if the client requires fast retrieval of their data.
 
 **Unsealed sectors**
-A unsealed sector is the raw data. Some clients request that their unsealed data is kept for fast retrievals.
+An unsealed sector is the raw data. Some clients request that their unsealed data is kept for fast retrievals.
 
 ### Epoch
 
