@@ -61,7 +61,7 @@ This penalty is incurred when committing consensus faults. This penalty is appli
 
 ## Storage provider accounting
 
-A Storage provider’s financial gain or loss is affected by the following three actions:
+A storage provider’s financial gain or loss is affected by the following three actions:
 
 1. The deposited tokens to act as collateral for their PreCommitted and ProveCommitted Sectors
 2. Storage providers earn tokens from block rewards when they are elected to mine a new block and extend the blockchain.
