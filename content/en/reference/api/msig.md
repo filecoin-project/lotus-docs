@@ -1,6 +1,6 @@
 ---
 title: "Msig"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

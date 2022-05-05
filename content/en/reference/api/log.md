@@ -1,6 +1,6 @@
 ---
 title: "Log"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

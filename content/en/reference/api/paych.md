@@ -1,6 +1,6 @@
 ---
 title: "Paych"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

@@ -1,6 +1,6 @@
 ---
 title: "Net"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

@@ -1,6 +1,6 @@
 ---
 title: "State"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

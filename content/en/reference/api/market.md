@@ -1,6 +1,6 @@
 ---
 title: "Market"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

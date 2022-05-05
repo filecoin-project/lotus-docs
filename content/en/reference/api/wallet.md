@@ -1,6 +1,6 @@
 ---
 title: "Wallet"
-description: "."
+description: ""
 draft: false
 menu:
     reference:

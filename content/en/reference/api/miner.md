@@ -1,6 +1,6 @@
 ---
 title: "Miner"
-description: "."
+description: ""
 draft: false
 menu:
     reference:
