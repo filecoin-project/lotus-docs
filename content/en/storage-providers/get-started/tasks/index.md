@@ -45,15 +45,15 @@ During this phase an additional 64GiB file (32GiB sectors) that represents the m
 
 ### WaitSeed
 
-The WaitSeed state is a security wait requirement by the network that is initiated between the PreCommit 2 and the start of the Commit 1 phase. It is fixed at 150 epochs, i.e 75 minutes long.
+The WaitSeed state is a security wait requirement by the network that is initiated between the PreCommit 2 and the start of the Commit 1 phase. It is fixed at 150 epochs, i.e 75 minutes long. At the end of the wait seed state the sector aquires some randomness from the chain.
 
 ### Commit 1
 
-The proof size generated at the end of PreCommit 2 is too large for the blockchain, and during the Commit phases the proofs are compressed using zk-SNARKs. The Commit 1 phase is the  
+The randomness aquired at the end of the wait seed state is used in the Commit 1 phase to select a random subset of leaf nodes from the merkle tree generated in the PreCommit 2 phase. From the subset of leaf nodes it checks, it generates a much smaller file then the full merkle tree. That file is is approximately 16MiB in size.
 
 ### Commit 2
 
-
+In the Commit 2 phase, the file from the Commit 1 gets compressed into a much smaller proof using zk-SNARKs. The proof generated at the end of Commit 2 can be verified that is correct very fast, and is small enough to be suitable for a blockchain. The final size of the proofs is approximately 2kib, and gets published on the blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
 
 ### windowPoSt
 
