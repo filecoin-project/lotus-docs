@@ -9,7 +9,7 @@ menu:
         identifier: "storage-providers-architectures"
 aliases:
     - /docs/storage-providers/mining-architectures/
-weight: 150
+weight: 140
 toc: true
 ---
 
