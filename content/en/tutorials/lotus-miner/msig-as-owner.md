@@ -18,11 +18,12 @@ To change the owner address of the storage provider to a multisignature address 
 - [Lotus-shed]({{< relref "../../../kb/lotus-shed-not-installed/" >}}) installed.
 
 ### Advantages
-- Using a multisignature address adds a lot of security to the owner address as multiple signers need to sign a message for it to be executed.
+
+Using a multisignature address adds a lot of security to the owner address as multiple signers need to sign a message for it to be executed.
 
 ### Disadvantages
 
-- Some commands like `lotus-miner actor withdraw` currently do not support multisignature addresses, and you will need to use the `lotus-shed` tool to withdraw from the available actor balance.
+Some commands like `lotus-miner actor withdraw` currently do not support multisignature addresses, and you will need to use the `lotus-shed` tool to withdraw from the available actor balance.
 
 ## Change owner to a msig address
 
