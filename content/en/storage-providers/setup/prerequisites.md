@@ -1,7 +1,7 @@
 ---
 title: "Prerequisites"
 description: "This guide describes the necessary prerequisites before configuring a Lotus miner for production."
-lead: "This guide describes the necessary prerequisites before configuring a Lotus miner for production.."
+lead: "This guide describes the necessary prerequisites before configuring a Lotus miner for production."
 draft: false
 menu:
     storage-providers:
@@ -11,15 +11,13 @@ weight: 100
 toc: true
 ---
 
-Mining will only work if you fully comply with the [minimal hardware requirements]({{< relref "hardware-requirements" >}}) for the network in which you will mine. The mining process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
+Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "hardware-requirements" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
 {{< /alert >}}
 
-## Neccessary prerequisites
-
-These steps must be performed to sucessfully intialize a lotus miner.
+## Prerequisites
 
 ### Basic Prerequisites
 
@@ -32,15 +30,15 @@ Please make sure that the following prerequites are met whether you are planning
     export FFI_USE_CUDA=1
     ```
 
-    Please do not use the `lotus-miner` binary created during Lotus node installation process as it does not include the above options.
+ Please do not use the `lotus-miner` binary created during Lotus node installation process as it does not include the above options.
 
-3. Make sure your Lotus Node is running as the miner will communicate with it and cannot work otherwise.
+3. Make sure your Lotus Node is running, as the storage provider will communicate with it and cannot work otherwise.
 4. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
-5. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine as required.
+5. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine if needed.
 
-### Running the miner on a different machine as the Lotus Node
+### Running the storage provider on a different machine as the Lotus Node
 
-If you opt to run a miner on a different machine as the Lotus Node, set:
+If you opt to run a the `lotus-miner` on a different machine then the Lotus Node, set:
 
 ```shell
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
@@ -84,22 +82,31 @@ Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and 
 
 ### Configure parameters location
 
-For the miner to start, it will need to read and verify the Filecoin proof parameters. These can be downloaded in advance (recommended), or otherwise the init process will. Proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 100 GiB**.
+For the storage provider to start, it will need to read and verify the Filecoin proof parameters. The proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 200 GiB**.
 
-We recommend setting a custom location to store parameters and proofs parent cache -created during the first run- with:
+We recommend setting a custom location, on to store parameters and proofs parent cache -created during the first run- with:
 
 ```shell
 export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
 
-Parameters are read on every (re)start, so using disks with very fast access, like NVMe drives, will speed up miners and workers (re)boots. When the above variables are not set, things will end up in `/var/tmp/` by default, which **often lacks enough space**.
+Parameters are read on every (re)start, so using disks with very fast access, like NVMe drives, will speed up miners and workers (re)boots. When the above variables are not set, things will end up in `/var/tmp/` by default.
 
-Parameters will be downloaded automatically when the miner is initiated. You can also [optionally download]({{< relref "#downloading-parameters" >}}) them before initializing.
+Parameters will be downloaded automatically when the storage provider is initiated. You can also [optionally download]({{< relref "#downloading-parameters" >}}) them before initializing.
+
+To download the parameters:
+
+```shell
+# Use sectors supported by the Filecoin network that the miner will join and use.
+# lotus-miner fetch-params <sector-size>
+lotus-miner fetch-params 32GiB
+lotus-miner fetch-params 64GiB
+```
 
 ### Creating wallets for the miner
 
-You will need at least a BLS wallet (`f3...` for mainnet) for mining. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
+You will need at least a BLS wallet (`f3...` for mainnet) to initialize. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
 
 ```shell
 # A new BLS address to use as owner address:
@@ -120,6 +127,7 @@ For additional information about the different wallets that a miner can use and 
 {{< alert icon="tip" >}}
 Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
 {{< /alert >}}
+
 ## Optional prerequisites
 
 These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
@@ -132,19 +140,9 @@ This step is only necessary if you are running an Nvidia GPU and would prefer to
 sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y
 ```
 
-### Optional Performance tweaks
-
-```shell
-# See https://github.com/filecoin-project/bellman
-export BELLMAN_CPU_UTILIZATION=0.875
-```
-
-The `BELLMAN_CPU_UTILIZATION` is an optional variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel to the GPU. This is an effort to keep all the hardware occupied. The interval must be a number between `0` and `1`. The value `0.875` is a good starting point, but you should experiment with it if you want an optimal setting. Different hardware setups wil
-l result in different values being optimal. Omitting this environment variable might also be optimal.
-
 ### Downloading parameters
 
-To download the parameters do:
+To download the parameters:
 
 ```shell
 # Use sectors supported by the Filecoin network that the miner will join and use.
