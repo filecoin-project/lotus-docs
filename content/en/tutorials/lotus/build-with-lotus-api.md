@@ -83,7 +83,7 @@ To make sure everything's running and set up properly, we should check a couple 
     > Done!
     ```
 
-  This tells us that our node is fully synced and ready to go.
+    This tells us that our node is fully synced and ready to go.
 
 1. Next, let's check that the test FIL has landed in your wallet:
 
@@ -139,7 +139,6 @@ Now we're ready to connect to our Lotus node and interact with the Lotus APIs. L
     const version = await lotusClient.common.version();
 
     console.log(version);
-
     ```
 
 2. Run the following command in your project directory:
