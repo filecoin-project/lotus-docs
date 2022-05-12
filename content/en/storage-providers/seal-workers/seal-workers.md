@@ -8,7 +8,7 @@ menu:
         parent: "storage-providers-seal-workers"
 aliases:
     - /docs/storage-providers/seal-workers/
-weight: 110
+weight: 405
 toc: true
 ---
 

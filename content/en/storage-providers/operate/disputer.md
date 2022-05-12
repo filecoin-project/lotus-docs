@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-operate-disputer"
 aliases:
     - /docs/storage-providers/disputer/
-weight: 190
+weight: 355
 toc: true
 ---
 

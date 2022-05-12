@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-troubleshooting"
 aliases:
     - /docs/storage-providers/troubleshooting/
-weight: 230
+weight: 380
 toc: true
 ---
 

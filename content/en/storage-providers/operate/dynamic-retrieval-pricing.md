@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-dynamic-retrieval-pricing"
 aliases:
     - /docs/storage-providers/dynamic-retrieval-pricing/
-weight: 180
+weight: 350
 toc: true
 ---
 

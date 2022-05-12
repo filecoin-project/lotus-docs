@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/storage-providers/dagstore/
     - /storage-providers/configure/dagstore/
-weight: 160
+weight: 335
 toc: true
 ---
 

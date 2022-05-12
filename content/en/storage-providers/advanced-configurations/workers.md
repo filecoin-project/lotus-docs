@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-advanced-configurations"
-weight: 110
+weight: 505
 toc: true
 ---
 

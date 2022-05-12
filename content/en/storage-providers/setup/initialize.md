@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/storage-providers/setup/
     - /storage-providers/configure/setup/
-weight: 110
+weight: 210
 toc: true
 ---
 

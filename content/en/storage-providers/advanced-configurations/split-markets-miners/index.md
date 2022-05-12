@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/storage-providers/split-markets-miners/
     - /storage-providers/configure/split-markets-miners/
-weight: 130
+weight: 520
 toc: true
 ---
 
