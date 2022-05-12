@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-upgrades"
 aliases:
     - /docs/storage-providers/upgrades/
-weight: 150
+weight: 330
 toc: true
 ---
 

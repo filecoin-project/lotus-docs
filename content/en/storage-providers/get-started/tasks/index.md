@@ -7,7 +7,7 @@ menu:
     storage-providers:
         parent: "storage-providers-get-started"
         identifier: "storage-providers-tasks"
-weight: 120
+weight: 110
 toc: true
 ---
 

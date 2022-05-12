@@ -9,7 +9,7 @@ menu:
         identifier: "storage-providers-overview"
 aliases:
     - /docs/storage-providers/overview/
-weight: 110
+weight: 105
 toc: true
 ---
 

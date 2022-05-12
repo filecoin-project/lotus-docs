@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-journal"
 aliases:
     - /docs/storage-providers/miner-journal/
-weight: 200
+weight: 365
 toc: true
 ---
 

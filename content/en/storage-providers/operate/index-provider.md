@@ -7,7 +7,7 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-providers-index-provider"
-weight: 191
+weight: 360
 aliases:
     - /docs/storage-providers/index-provider/
 toc: true

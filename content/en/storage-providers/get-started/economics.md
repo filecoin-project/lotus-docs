@@ -7,7 +7,7 @@ menu:
     storage-providers:
         parent: "storage-providers-get-started"
         identifier: "storage-providers-economics"
-weight: 130
+weight: 115
 toc: true
 ---
 

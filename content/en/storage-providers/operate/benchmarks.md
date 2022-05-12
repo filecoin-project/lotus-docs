@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-benchmarks"
 aliases:
     - /docs/storage-providers/benchmarks/
-weight: 110
+weight: 305
 toc: true
 ---
 

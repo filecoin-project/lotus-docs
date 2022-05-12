@@ -7,7 +7,7 @@ menu:
     storage-providers:
         parent: "storage-providers-setup"
         identifier: "storage-providers-setup-prerequisites"
-weight: 100
+weight: 205
 toc: true
 ---
 

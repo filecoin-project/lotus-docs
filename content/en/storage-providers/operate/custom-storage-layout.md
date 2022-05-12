@@ -9,7 +9,7 @@ menu:
         identifier: "storage-providers-configure-custom-storage-layout"
 aliases:
     - /docs/storage-providers/custom-storage-layout/
-weight: 120
+weight: 315
 toc: true
 ---
 

@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-backup-and-restore"
 aliases:
     - /docs/storage-providers/backup-and-restore/
-weight: 140
+weight: 325
 toc: true
 ---
 

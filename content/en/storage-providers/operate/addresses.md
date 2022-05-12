@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-addresses"
 aliases:
     - /docs/storage-providers/addresses/
-weight: 120
+weight: 310
 toc: true
 ---
 

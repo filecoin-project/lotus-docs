@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provier-connectivity"
 aliases:
     - /docs/storage-providers/connectivity/
-weight: 130
+weight: 320
 toc: true
 ---
 

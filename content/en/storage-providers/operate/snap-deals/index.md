@@ -8,7 +8,7 @@ menu:
         parent: "storage-providers-operate"
 aliases:
     - /storage-providers/configure/snap-deals/
-weight: 492
+weight: 390
 toc: true
 ---
 
