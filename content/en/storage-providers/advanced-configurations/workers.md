@@ -12,7 +12,11 @@ toc: true
 
 While the Lotus workers have very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
 
-## Resource allocation in seal workers
+## Advanced seal worker configurations
+
+Although the default settings for the seal workers are reasonable, you can configure some advanced settings when running the workers. These settings should be tested for local optimizations of your hardware.
+
+### Resource allocation in seal workers
 
 Each **Seal Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
 
@@ -669,18 +673,15 @@ UNS_8M_MIN_MEMORY=8388608
 
 ## Advanced PoSt worker configurations
 
-{{< alert icon="tip" >}}
-Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
- {{< /alert >}}
+Although the default settings for the PoSt workers are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware. Most of the advanced PoSt worker configurations can be found in the helptext.
 
-Although the default settings are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware.
+### Proving challenges
 
 The `--post-parallel-reads` option lets you set an upper boundary of how many challenges it reads from your storage simultaneously. This option is set to 128 by default.
 
 ```plaintext
 --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
 ```
-
 
 The `--post-read-timeout` option lets you set a cut off time for reading challenges from storage, after which it will abort the job. This option has no default limit.
 
@@ -689,3 +690,7 @@ The `--post-read-timeout` option lets you set a cut off time for reading challen
 ```
 
 Both these settings can be set at runtime of the PoSt workers.
+
+{{< alert icon="tip" >}}
+Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
+ {{< /alert >}}
