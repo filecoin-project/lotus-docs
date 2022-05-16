@@ -36,50 +36,6 @@ Please make sure that the following prerequites are met whether you are planning
 4. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
 5. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine if needed.
 
-### Running the storage provider on a different machine as the Lotus Node
-
-If you opt to run a the `lotus-miner` on a different machine then the Lotus Node, set:
-
-```shell
-export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
-```
-
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
-
-### Performance tweaks
-
-It is recommended to set the following environment variables in your environment so that they are defined every time any of the `lotus` daemons are launched:
-
-```shell
-# See https://github.com/filecoin-project/rust-fil-proofs/
-export FIL_PROOFS_MAXIMIZE_CACHING=1 # More speed at RAM cost (1x sector-size of RAM - 32 GB).
-export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # precommit2 GPU acceleration
-export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
-
-# The following increases speed of PreCommit1 at the cost of using a full
-# CPU Core-Complex rather than a single core. Should be used with CPU affinities set!
-# See https://github.com/filecoin-project/rust-fil-proofs/ and the seal workers guide.
-export FIL_PROOFS_USE_MULTICORE_SDR=1
-```
-
-### Cuda variables
-
-There are some changes in the latest Nvidia driver, so if you upgrade your driver remember to check `nvidia-smi` - it will always display the correct name for the GPU. The new names are not picked by FFI automatically and need to be exported manually.
-
-If you are using an nvidia driver below `460.91.03`
-
-```shell
-export BELLMAN_CUSTOM_GPU="GeForce RTX 3090:10496"
-```
-
-If you are using an Nvidia driver above `510.47.03`
-
-```shell
-export BELLMAN_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
-```
-
-Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
-
 ### Configure parameters location
 
 For the storage provider to start, it will need to read and verify the Filecoin proof parameters. The proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 200 GiB**.
@@ -103,6 +59,34 @@ To download the parameters:
 lotus-miner fetch-params 32GiB
 lotus-miner fetch-params 64GiB
 ```
+
+### Running the storage provider on a different machine as the Lotus Node
+
+If you opt to run a the `lotus-miner` on a different machine then the Lotus Node, set:
+
+```shell
+export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
+```
+
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+
+### Cuda variables
+
+There are some changes in the latest Nvidia driver, so if you upgrade your driver remember to check `nvidia-smi` - it will always display the correct name for the GPU. The new names are not picked by FFI automatically and need to be exported manually.
+
+If you are using an nvidia driver below `460.91.03`
+
+```shell
+export BELLMAN_CUSTOM_GPU="GeForce RTX 3090:10496"
+```
+
+If you are using an Nvidia driver above `510.47.03`
+
+```shell
+export BELLMAN_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
+```
+
+Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
 
 ### Creating wallets for the miner
 
