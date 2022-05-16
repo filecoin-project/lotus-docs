@@ -9,7 +9,7 @@ menu:
         identifier: "bootstrap-nodes"
 aliases:
     - /docs/set-up/bootstrappers/
-weight: 140
+weight: 315
 toc: true
 ---
 

@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     /docs/set-up/upgrade/
-weight: 160
+weight: 430
 toc: true
 ---
 
