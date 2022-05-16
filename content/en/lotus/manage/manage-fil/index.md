@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/set-up/manage-fil/
     - /get-started/lotus/send-and-receive-fil
-weight: 110
+weight: 405
 toc: true
 ---
 

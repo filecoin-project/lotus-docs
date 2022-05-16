@@ -8,7 +8,7 @@ menu:
         parent: "lotus-configure"
 alises:
     - /docs/set-up/lotus-lite/
-weight: 130
+weight: 310
 toc: true
 ---
 

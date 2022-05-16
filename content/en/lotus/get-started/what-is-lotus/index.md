@@ -9,7 +9,7 @@ aliases:
     - /docs/getting-started/what-is-lotus/
     - /docs/set-up/about/
     - /docs/
-weight: 110
+weight: 105
 toc: true
 ---
 

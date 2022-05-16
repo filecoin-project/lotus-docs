@@ -8,7 +8,7 @@ menu:
         identifier: "lotus-get-started-networks"
 aliases:
     - /about-filecoin/networks
-weight: 130
+weight: 110
 toc: true
 ---
 

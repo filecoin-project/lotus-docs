@@ -8,7 +8,7 @@ menu:
          parent: "project"
 aliases:
     - /docs/project/contribute/
-weight: 120
+weight: 505
 toc: true
 ---
 

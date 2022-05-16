@@ -8,7 +8,7 @@ menu:
         identifier: "lotus-install-identifier"
 aliases:
     - /docs/set-up/running-in-the-cloud/
-weight: 140
+weight: 220
 toc: true
 ---
 

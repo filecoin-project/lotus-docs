@@ -6,7 +6,7 @@ menu:
     lotus:
          parent: "lotus-install"
          identifier: "lotus-install-macos"
-weight: 130
+weight: 215
 toc: true
 ---
 
