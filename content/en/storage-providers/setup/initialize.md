@@ -47,7 +47,7 @@ lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
 ```
 
 - The Lotus Miner configuration folder is created in `~/.lotusminer/` or in your `$LOTUS_MINER_PATH` if set.
-- The difference between _owner_ and _worker_ addresses is explained in the [miner addresses guide]({{< relref "../../..storage-providers/operate/addresses/" >}}). As mentioned above, we recommend using two separate addresses. If the `--worker` flag is not provided, the owner address will be used. _Control addresses_ can be added later when the storage provider is running.
+- The difference between _owner_ and _worker_ addresses is explained in the [miner addresses guide]({{< relref "../../storage-providers/operate/addresses/" >}}). As mentioned above, we recommend using two separate addresses. If the `--worker` flag is not provided, the owner address will be used. _Control addresses_ can be added later when the storage provider is running.
 - The `--no-local-storage` flag is used so that we can later configure [specific locations for storage]({{< relref "../../../storage-providers/operate/custom-storage-layout/" >}}) the location of our sealing storage, and our long term storage.
 
 ## Connectivity to the storage provider
@@ -99,5 +99,5 @@ Your storage provider should now be preliminarily initialized and running, but *
 - Learn when to safely [shut down/restart your miner]({{< relref "maintenance" >}})
 - Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
 - Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the storage providers capacity to seal sectors.
-- Configure a [separate address for WindowPost messages]({{< relref "../../..storage-providers/operate/addresses/" >}}).
+- Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
 - Consider [splitting markets and miners processes]({{< relref "split-markets-miners" >}}) for increased stability.
