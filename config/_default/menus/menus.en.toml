@@ -100,7 +100,7 @@
   url = "/storage-providers/operate"
 
 [[storage-providers]]
-  name = "Seal Workers"
+  name = "Workers"
   weight = 40
   identifier = "storage-providers-seal-workers"
   url = "/storage-providers/seal-workers"
