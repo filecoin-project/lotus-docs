@@ -5,9 +5,9 @@ lead: "The Lotus Worker is a separate application that can be used to offload ph
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-seal-workers"
+        parent: "storage-providers-workers"
 aliases:
-    - /docs/storage-providers/seal-workers/
+    - /docs/storage-providers/workers/seal-workers
 weight: 405
 toc: true
 ---

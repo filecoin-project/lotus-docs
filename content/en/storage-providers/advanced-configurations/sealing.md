@@ -204,7 +204,7 @@ For example, if you want to set the sector lifecycle to 180 days, you can multip
 
 ## Storage section
 
-The storage sector controls whether the miner can perform certain sealing actions. Depending on the setup and the use of additional [seal workers]({{< relref "seal-workers" >}}), you may want to modify some of the options.
+The storage sector controls whether the miner can perform certain sealing actions. Depending on the setup and the use of additional [seal workers]({{< relref "../workers/seal-workers.md" >}}), you may want to modify some of the options.
 
 ```toml
 [Storage]

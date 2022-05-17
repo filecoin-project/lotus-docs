@@ -5,7 +5,7 @@ lead: "PoSt workers are specialized instances of a lotus-worker. It enables you 
 draft: false
 menu:
     storage-providers:
-        parent: "storage-providers-seal-workers"
+        parent: "storage-providers-workers"
 weight: 410
 toc: true
 ---

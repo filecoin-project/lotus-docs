@@ -98,6 +98,6 @@ Your miner should now be preliminarily set up and running, but **there are still
 - Edit the miner [configuration settings]({{< relref "configuration" >}}) to fit your requirements.
 - Learn when to safely [shut down/restart your miner]({{< relref "maintenance" >}})
 - Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
-- Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the miner's capacity to seal sectors.
+- Configure additional [seal workers]({{< relref "../../../workers/seal-workers.md" >}}) to increase the miner's capacity to seal sectors.
 - Configure a [separate address for WindowPost messages]({{< relref "addresses" >}}).
 - Consider [splitting markets and miners processes]({{< relref "split-markets-miners" >}}) for increased stability.

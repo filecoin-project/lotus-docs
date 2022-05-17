@@ -132,7 +132,7 @@ You can restart the miner as soon as you wish. Workers do not need to be restart
 
 ## Restarting workers
 
-Lotus [seal workers]({{< relref "seal-workers" >}}) can be restarted any time, but if they are in the middle of one of the sealing steps, then the operation will start again (from the last checkpoint).
+Lotus [seal workers]({{< relref "../../../workers/seal-workers.md" >}}) can be restarted any time, but if they are in the middle of one of the sealing steps, then the operation will start again (from the last checkpoint).
 
 {{< alert icon="warning" >}}
 There is a maximum of three attempts to complete the _precommit2_ operation before sealing is fully started from scratch (_pre-commit1_ phase).
