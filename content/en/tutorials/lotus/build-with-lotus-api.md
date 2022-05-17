@@ -75,7 +75,7 @@ To make sure everything's running and set up properly, we should check a couple 
     lotus sync wait
     ```
 
-    ```shell
+    ```plaintext
     > Worker: 10161; Base: 778820; Target: 778820 (diff: 0)
     > State: complete; Current Epoch: 778820; Todo: 0
     > 
@@ -125,14 +125,12 @@ Now we're ready to connect to our Lotus node and interact with the Lotus APIs. L
     import { HttpJsonRpcConnector, LotusClient } from "filecoin.js";
 
     // Use the local node URL to create a connection to your Lotus node
-
     const localNodeUrl = "http://127.0.0.1:1234/rpc/v0";
     const localConnector = new HttpJsonRpcConnector({ url: localNodeUrl });
 
     // lotusClient exposes all Lotus APIs
     const lotusClient = new LotusClient(localConnector);
     const version = await lotusClient.common.version();
-
     console.log(version);
     ```
 
@@ -175,7 +173,6 @@ In the previous step, we created a `chainDataQuery.mjs` file to demonstrate the 
 
     ```javascript with-output
      //Query the current block head
-
      const chainHead = await lotusClient.chain.getHead();
      console.log(chainHead);
     ```
@@ -190,7 +187,6 @@ In the previous step, we created a `chainDataQuery.mjs` file to demonstrate the 
         ],
         Blocks: [
             {...} # long list of additional blocks
-
         ],
         Height: 781268
     }
@@ -199,7 +195,6 @@ In the previous step, we created a `chainDataQuery.mjs` file to demonstrate the 
 2. Get messages in a block
 
     ```javascript with-output
-
     //Query all the messages in a block
     const tipSet = await lotusClient.chain.getTipSetByHeight(781267);
     const messages = await lotusClient.chain.getBlockMessages(tipSet.Cids[0]);
@@ -222,7 +217,6 @@ In the previous step, we created a `chainDataQuery.mjs` file to demonstrate the 
       Cids: [
         {'/': 'bafy2bzaceapv6ms4m3x4gdaefmpilgsqfhfsrvrciw4iux4n7va47es4vudpa'},
         {'/': 'bafy2bzaceaxaz5ews6a2jnwmeafhi2p5xpwjz7kogilakblp3q3wpxa3ax2xy'}
-
       ]
     }
     ```
@@ -487,7 +481,7 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
                 To: "t1ax5kdqxrrecxpyys6svvxjing7shqju26ytcsoa",
                 Value: new BigNumber(15000000000000000000)//in autoFIL
             });
-    
+
             //Sign and send the message
             const signedMessage = await lightWallet.signMessage(message);
             const msgCid = await lightWallet.sendSignedMessage(signedMessage);
@@ -511,7 +505,6 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
 
     ```shell
     {
-
       '/': 'bafy2bzaceamdsqcc3jccrhvwrz6kmpujfkg6crwynmrtal2nsmwkqv22bktrs'
     }
     ```
@@ -593,7 +586,6 @@ Let's dive in!
     ```shell
     .. querying asks
     * Queried 43 asks, got 8 responses
-
     t029598: min:256 B max:32 GiB price:0 FIL/GiB/Epoch verifiedPrice:0 FIL/GiB/Epoch ping:340.644025ms
     t031337: min:256 B max:32 GiB price:0 FIL/GiB/Epoch verifiedPrice:0 FIL/GiB/Epoch ping:342.296042ms
     t01105: min:256 B max:32 GiB price:0.0000000002 FIL/GiB/Epoch verifiedPrice:0.00000000002 FIL/GiB/Epoch ping:589.173496ms
@@ -649,7 +641,6 @@ Let's dive in!
     {
       '/': 'bafy2bzaceamdsqcc3jccrhvwrz6kmpujfkg6crwynmrtal2nsmwkqv22bktrs'
     }
-
     ```
 
 By this step, you have made a storage deal with a storage provider successfully. The Lotus node will start processing the data and sending it to the storage provider. Your storage deal will need to go through many sub-processes to be finalized on-chain. See the [Deal states](https://lotus.filecoin.io/tutorials/lotus/store-and-retrieve/store-data/#deal-states) table for more details.
