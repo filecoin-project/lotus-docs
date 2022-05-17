@@ -39,7 +39,7 @@ In this section, we'll set up a Lotus node, install the filecoin.js library, and
 
 ### Lotus node
 
-The following the steps walk-through how to install a Lotus node. Further, more detailed, instructions are available on the [Install a Lotus node page](https://lotus.filecoin.io/docs/set-up/install/).
+The following the steps walk through how to install a Lotus node. Further, more detailed, instructions are available on the [Install a Lotus node page](https://lotus.filecoin.io/docs/set-up/install/).
 
 1. Download the Lotus source code. The version number of the latest release can be found on the [lotus releases](https://github.com/filecoin-project/lotus/releases) page:
 
@@ -461,7 +461,7 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
 
     ```
 
-1. When creating a light wallet using the BIP39 standard, it is very important to backup the mnemonic code, the `encryptedWallet` object, and your password. Do not share them ΓÇö anyone who has this information will have control of your light wallet and assets!
+1. When creating a light wallet using the BIP39 standard, it is very important to backup the mnemonic code, the `encryptedWallet` object, and your password. Do not share them &mdash; anyone who has this information will have control of your light wallet and assets!
 
     ```javascript with-output
     async function createLightWallet(){
@@ -551,11 +551,15 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
 
     After the message containing this transfer makes it on-chain, you will be able to see it using the [Filecoin Calibration Explorer](https://calibration.filscan.io/tipset/message-list) website.
 
-By this point we've learned how to create a wallet on the Lotus node using an RPC API call, as well as create a light wallet and manage it's assets through a hosted Glif node. If you are interested in exploring more features of Lotus, keep following this tutorial. You can also go to the [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/) and start creating your own projects on Filecoin.
+By this point we've learned how to create a wallet on the Lotus node using an RPC API call, as well as create a light wallet and manage its assets through a hosted Glif node. To explore more features of the Lotus API, keep following this tutorial. You can also go to the [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/) and start creating your own projects on Filecoin.
 
 ## Make a storage deal
 
-Storing data is one of the most important features of Filecoin. In this section, we'll walk through the end-to-end process of storing your data on the Filecoin network. We'll start by importing your data to the local Lotus node, then make a storage deal with a storage provider, and finally wait for the deal to complete. Let's dive in!
+Storing data is one of the most important features of Filecoin. In this section, we'll walk through the end-to-end process of storing your data on the Filecoin network. We'll start by importing your data to the local Lotus node, then make a storage deal with a storage provider, and finally wait for the deal to complete.
+
+_Note that the simplest way to store data on Filecoin is by using one of the many [storage helper tools](https://docs.filecoin.io/store/overview/) which wrap all of the following steps into a single API call. However, we include this section of the tutorial for anyone who wants to explore Filecoin storage at the protocol level in order to build developer tools or deepen their understanding._
+
+Let's dive in!
 
 1. Start by generating an admin auth token. This is required to import data into the Lotus node:
 
