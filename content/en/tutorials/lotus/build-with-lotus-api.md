@@ -45,7 +45,6 @@ The following the steps walk through how to install a Lotus node. Further, more 
 
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
-
     cd lotus
     git checkout vX.X.X # tag for the latest release
     ```
@@ -105,11 +104,8 @@ Let's set up a Node.js project with the necessary dependencies.
 1. Create a new Node.js project.
 
     ```shell
-
     mkdir build-with-lotus && cd build-with-lotus
-
     npm init
-
     ```
 
 2. Install the filecoin.js library.
@@ -132,7 +128,6 @@ Now we're ready to connect to our Lotus node and interact with the Lotus APIs. L
 
     const localNodeUrl = "http://127.0.0.1:1234/rpc/v0";
     const localConnector = new HttpJsonRpcConnector({ url: localNodeUrl });
-
 
     // lotusClient exposes all Lotus APIs
     const lotusClient = new LotusClient(localConnector);
@@ -271,13 +266,11 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
 
     ```shell with-output
     lotus auth create-token --perm sign
-
     ```
 
     This will output your auth token. Save this somewhere, we'll be using it later:
 
     ```shell
-
     eyJhbGciOiJIUzI1NiIsInRaaaaaa.xxxxxxx.bbbbbbbbbbbvq1W0ZjqrXHygd6fBRk
     ```
 
@@ -285,11 +278,8 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
 1. In `lotusWallet.mjs` import modules from filecoin.js and initialize the `HttpJsonRpcConnector`, `LotusClient`, and `LotusWalletProvider` components:
 
     ```javascript
-
     import { HttpJsonRpcConnector, LotusWalletProvider, LotusClient} from "filecoin.js";
-
     import BigNumber from "bignumber.js";
-
     
     // Use your localNodeUrl and auth token to interact with Lotus wallet
     const localNodeUrl = "http://127.0.0.1:1234/rpc/v0";
@@ -304,18 +294,15 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     ```javascript
     async function newWallet(){
         try {
-
             const account = await lotusWallet.newAddress();
             const hasWallet = await lotusWallet.hasAddress(account);
             if(hasWallet){console.log("new wallet address: ", account)}
         } catch (error) {
             console.log(error);
         }
-
     }
 
     // Test newWallet function.
-
     newWallet();
     ```
 
@@ -349,12 +336,9 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
 
     ```javascript
     async function transferFIL(){
-
         try {
             const fromAddress = await lotusWallet.getDefaultAddress();
             const toAddress = "t1ax5kdqxrrecxpyys6svvxjing7shqju26ytcsoa";
-
-    
             // SendMessage will create a message, assign a nounce, 
             // Sign the message using the fromAddress and push it to mpool
             const msgResult = await lotusWallet.sendMessage({
@@ -362,7 +346,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
                 To: toAddress,
                 Value: new BigNumber(10000000000000000000)//in autoFIL
               });
-    
             console.log("message: ", msgResult);
         } catch (error) {
             console.log(error);
@@ -376,8 +359,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
 1. Run the code to test the transfer of FIL:
 
     ```shell with-output
-
-
     node lotusWallet.mjs
     ```
 
@@ -396,7 +377,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
        try {
            //Get the list of wallet address on your Lotus node & query their balance
            const walletAdds = await lotusWallet.getAddresses();
-
            walletAdds.forEach(async(address) => {
                try {
                    const balance = await lotusWallet.getBalance(address);
@@ -409,7 +389,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
            console.log(error);
        }
     }
-
 
     // Test walletBalance function
     walletBalance();
@@ -453,12 +432,9 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
     ```javascript
     import { HttpJsonRpcConnector, LotusClient, LightWalletProvider,MnemonicWalletProvider} from "filecoin.js";
     import BigNumber from "bignumber.js";
-    
     const glifNodeurl = "https://calibration.node.glif.io";
     const glifNodeConn = new HttpJsonRpcConnector({url:glifNodeurl});
-
     const glifClient = new LotusClient(glifNodeConn);
-
     ```
 
 1. When creating a light wallet using the BIP39 standard, it is very important to backup the mnemonic code, the `encryptedWallet` object, and your password. Do not share them &mdash; anyone who has this information will have control of your light wallet and assets!
@@ -469,29 +445,22 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
             const lightWallet = new LightWalletProvider(glifClient, () => { return '<YOUR-Password>' }, 'test');
             let mnemonic = await lightWallet.createLightWallet('<YOUR-Password>');
             console.log(mnemonic);
-          
             let encryptedWallet = lightWallet.keystore.serialize();
-
             console.log(encryptedWallet);
-    
             const lightWalletAddress = await lightWallet.getDefaultAddress();
             console.log(lightWalletAddress);
         } catch (error) {
             console.log(error);
         }
-
-
     }
 
     // Test the function
-
     createLightWallet()
     ```
 
 1. Calling the `createLightWallet()` function will output your mnemonic, `encryptedWallet` object, and your wallet address:
 
     ```shell
-
     mnemonic: mouse escape tilt destroy xxx top yyy spice art zzz price image
     encryptedWallet: {......}
     Wallet Address: t1qfyuosiqgoycy5ojwsxtpnlp44orxg4gtmuhhaq
@@ -512,13 +481,11 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
             await lightWallet.recoverLightWallet(mnemonic, pw);
             const lightWalletAddress = await lightWalletHttp.getDefaultAddress();
 
-            
             //Create a FIL transfer message
             const message = await lightWallet.createMessage({
                 From: lightWalletAddress,
                 To: "t1ax5kdqxrrecxpyys6svvxjing7shqju26ytcsoa",
                 Value: new BigNumber(15000000000000000000)//in autoFIL
-
             });
     
             //Sign and send the message
@@ -577,26 +544,17 @@ Let's dive in!
 
     ```javascript
     import { HttpJsonRpcConnector, LotusClient} from "filecoin.js";
-
     const localNode = "http://127.0.0.1:1234/rpc/v0";
     const adminAuthToken="<Your-admin-auth-token>"
-
     const localConnector = new HttpJsonRpcConnector({ url: localNode, token: adminAuthToken });
-
     const lotusClient = new LotusClient(localConnector);
     const lotusWallet = new LotusWalletProvider(lotusClient);
 
-
-
     async function storeFile(){
       try {
-
         //1. import data to lotus
-        
         //2. query storage provider's offer for storing this file
-        
         //3. start storage deal with SP
-        
       } catch (error) {
         console.log(error);
       }
@@ -612,7 +570,6 @@ Let's dive in!
         Path: "PATH_TO_YOUR_FILE",
         IsCAR: false,
     });
-
     
     console.log(importResult.Root);
     ```
@@ -659,7 +616,6 @@ Let's dive in!
 
     ```plaintext
     Provider is active: true
-
     ```
 
 1. Create a storage deal with a storage provider. Replace `t00001` with the storage provider ID you chose:
@@ -668,13 +624,9 @@ Let's dive in!
     //3. start storage deal with SP
     if(isActive){
       const dealCid = await lotusClient.client.startDeal({
-
-
         Data: {
-
           TransferType: 'graphsync',
           Root: importResult.Root,
-
         },
         Miner: 't00001',
         Wallet: await lotusWallet.getDefaultAddress(),
@@ -682,7 +634,6 @@ Let's dive in!
         MinBlocksDuration: 518400,
       });
       console.log("dealCID is ", dealCid);
-
     }
     ```
 
@@ -696,7 +647,6 @@ Let's dive in!
 
     ```json
     {
-
       '/': 'bafy2bzaceamdsqcc3jccrhvwrz6kmpujfkg6crwynmrtal2nsmwkqv22bktrs'
     }
 
@@ -713,13 +663,10 @@ lotus client list-deals --show-failed
 This should output something like:
 
 ```shell
-
 DealCid      DealId  Provider  State                     On Chain?  Slashed?  PieceCID     Size       Price             Duration  Verified  
 ...dbuwcbjq  0       t024557   StorageDealFundsReserved  N          N         ...7rkejcnq  3.969 MiB  0 FIL             522909    false     
 ...pkbhfkju  0       t01105    StorageDealError          N          N         ...7rkejcnq  3.969 MiB  0.0000177158 FIL  88579     false  
 ...wb4wiuwq  0       t01105    StorageDealClientFunding  N          N         ...7rkejcnq  3.969 MiB  0.0001041094 FIL  520547    false 
-
-
 ```
 
 Congratulations on making it all the way through this tutorial! In this tutorial, we learned the basics of interacting with the Filecoin network using an API client library and local Lotus node. This can serve as the foundation for you explore the complete [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/).
