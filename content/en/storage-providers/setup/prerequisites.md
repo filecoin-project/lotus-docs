@@ -58,7 +58,7 @@ lotus-miner fetch-params 64GiB
 
 ### Running the storage provider on a different machine as the Lotus Node
 
-If you opt to run a the `lotus-miner` on a different machine then the Lotus Node, set:
+If you opt to run the `lotus-miner` on a different machine than the Lotus Node, set:
 
 ```shell
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
