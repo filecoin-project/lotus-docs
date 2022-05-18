@@ -11,7 +11,7 @@ weight: 205
 toc: true
 ---
 
-Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "../../get-started/hardware-requirements/" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
+Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "../../storage-providers/get-started/hardware-requirements/" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
