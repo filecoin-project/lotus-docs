@@ -1,7 +1,7 @@
 ---
 title: "Prerequisites"
-description: "This guide describes the necessary prerequisites before configuring a Lotus miner for production."
-lead: "This guide describes the necessary prerequisites before configuring a Lotus miner for production."
+description: "This guide describes the necessary prerequisites before configuring a storage provider for production."
+lead: "This guide describes the necessary prerequisites before configuring a storage provider for production."
 draft: false
 menu:
     storage-providers:
@@ -19,9 +19,7 @@ Be warned: if you decide to skip any of the sections below, things will not work
 
 ## Prerequisites
 
-### Basic Prerequisites
-
-Please make sure that the following prerequites are met whether you are planning to run the lotus miner on the same machine as lotus daemon or a different machine.
+Please make sure that the following prerequites are met whether you are planning to run the `lotus miner` on the same machine as the lotus daemon or a different machine.
 
 1. Install the latest stable [Nvidia drivers and Cuda]({{< relref "../../tutorials/lotus-miner/cuda" >}}) if you have an Nvidia card on your machine. Nvidia cards have a better performance with Cuda when compared to OpenCL.
 2. Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/install/prerequisites" >}}) to build the `lotus-miner` binary. Make sure that you have built Lotus with "Native Filecoin FFI" and exported the following variable to compile FFI to use Cuda if using Nvidia cards.
@@ -38,7 +36,7 @@ Please make sure that the following prerequites are met whether you are planning
 
 ### Configure parameters location
 
-For the storage provider to start, it will need to read and verify the Filecoin proof parameters. The proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 200 GiB**.
+For the storage provider to start, it will need to read and verify the Filecoin proof parameters. The proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 100 GiB**.
 
 We recommend setting a custom location, on to store parameters and proofs parent cache -created during the first run- with:
 
@@ -47,14 +45,12 @@ export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
 
-Parameters are read on every (re)start, so using disks with very fast access, like NVMe drives, will speed up miners and workers (re)boots. When the above variables are not set, things will end up in `/var/tmp/` by default.
-
-Parameters will be downloaded automatically when the storage provider is initiated. You can also [optionally download]({{< relref "#downloading-parameters" >}}) them before initializing.
+Parameters are read on every (re)start, so using disks with very fast access, like NVMe drives, will speed up `lotus-miner` and workers (re)boots. When the above variables are not set, things will end up in `/var/tmp/` by default.
 
 To download the parameters:
 
 ```shell
-# Use sectors supported by the Filecoin network that the miner will join and use.
+# Use sectors supported by the Filecoin network that the storage provider will join and use.
 # lotus-miner fetch-params <sector-size>
 lotus-miner fetch-params 32GiB
 lotus-miner fetch-params 64GiB
@@ -69,6 +65,30 @@ export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_po
 ```
 
 Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+
+### Creating wallets for the storage provider
+
+You will need at least a BLS wallet (`f3...` for mainnet) to initialize. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
+
+```shell
+# A new BLS address to use as owner address:
+lotus wallet new bls
+f3...
+
+# A new BLS address to use as worker address:
+lotus wallet new bls
+f3...
+```
+
+{{< alert icon="callout" >}}
+Next make sure to [send some funds]({{< relref "manage-fil" >}}) to the **worker address** so that the storage provider setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
+{{< /alert >}}
+
+For additional information about the different wallets that a storage provider can use and how to configure them, read the [addresses guide]({{< relref "addresses" >}}).
+
+{{< alert icon="tip" >}}
+Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
+{{< /alert >}}
 
 ### Cuda variables
 
@@ -87,50 +107,3 @@ export BELLMAN_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
 ```
 
 Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
-
-### Creating wallets for the miner
-
-You will need at least a BLS wallet (`f3...` for mainnet) to initialize. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
-
-```shell
-# A new BLS address to use as owner address:
-lotus wallet new bls
-f3...
-
-# A new BLS address to use as worker address:
-lotus wallet new bls
-f3...
-```
-
-{{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "manage-fil" >}}) to the **worker address** so that the miner setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
-{{< /alert >}}
-
-For additional information about the different wallets that a miner can use and how to configure them, read the [miner addresses guide]({{< relref "addresses" >}}).
-
-{{< alert icon="tip" >}}
-Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
-{{< /alert >}}
-
-## Optional prerequisites
-
-These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
-
-### Install extra dependencies
-
-This step is only necessary if you are running an Nvidia GPU and would prefer to use OpenCL instead of CUDA. Please note that Cuda is recommended over OpenCL for sealing and proving workload. Most Linux distributions contain this package in their package manager:
-
-```shell
-sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y
-```
-
-### Downloading parameters
-
-To download the parameters:
-
-```shell
-# Use sectors supported by the Filecoin network that the miner will join and use.
-# lotus-miner fetch-params <sector-size>
-lotus-miner fetch-params 32GiB
-lotus-miner fetch-params 64GiB
-```
