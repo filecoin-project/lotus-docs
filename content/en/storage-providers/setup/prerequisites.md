@@ -38,7 +38,7 @@ Please make sure that the following prerequites are met whether you are planning
 
 For the storage provider to start, it will need to read and verify the Filecoin proof parameters. The proof parameters consist of several files, which in the case of 32 GiB sectors, total **over 100 GiB**.
 
-We recommend setting a custom location, on to store parameters and proofs parent cache -created during the first run- with:
+We recommend setting a custom location to store the parameters and proofs parent cache:
 
 ```shell
 export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
