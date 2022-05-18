@@ -8,7 +8,7 @@ menu:
         parent: "tutorials-lotus"
 aliases:
     - /docs/developers/import-data-from-ipfs/
-weight: 140
+weight: 120
 toc: true
 ---
 

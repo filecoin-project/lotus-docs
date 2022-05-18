@@ -11,7 +11,7 @@ aliases:
     - /tutorials/store-and-retrieve/store-data/
     - /store/lotus/store-data
     - /store/slate
-weight: 120
+weight: 110
 toc: true
 ---
 

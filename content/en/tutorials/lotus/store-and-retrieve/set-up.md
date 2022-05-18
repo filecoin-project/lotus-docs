@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/tutorials/store-and-retrieve/
     - /tutorials/store-and-retrieve/set-up/
-weight: 110
+weight: 105
 toc: true
 ---
 
