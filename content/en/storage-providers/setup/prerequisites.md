@@ -17,9 +17,13 @@ Being a storage provider will only work if you fully comply with the [minimal ha
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
 {{< /alert >}}
 
-## Prerequisites
-
 Please make sure that the following prerequites are met whether you are planning to run the `lotus miner` on the same machine as the lotus daemon or a different machine.
+
+1. Make sure your Lotus Node is running, as the storage provider will communicate with it and cannot work otherwise.
+2. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
+3. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine if needed.
+
+### Install CUDA
 
 1. Install the latest stable [Nvidia drivers and Cuda]({{< relref "../../tutorials/lotus-miner/cuda" >}}) if you have an Nvidia card on your machine. Nvidia cards have a better performance with Cuda when compared to OpenCL.
 2. Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/install/prerequisites" >}}) to build the `lotus-miner` binary. Make sure that you have built Lotus with "Native Filecoin FFI" and exported the following variable to compile FFI to use Cuda if using Nvidia cards.
@@ -29,10 +33,6 @@ Please make sure that the following prerequites are met whether you are planning
     ```
 
  Please do not use the `lotus-miner` binary created during Lotus node installation process as it does not include the above options.
-
-3. Make sure your Lotus Node is running, as the storage provider will communicate with it and cannot work otherwise.
-4. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
-5. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine if needed.
 
 ### Configure parameters location
 
