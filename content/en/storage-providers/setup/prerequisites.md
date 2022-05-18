@@ -7,11 +7,11 @@ menu:
     storage-providers:
         parent: "storage-providers-setup"
         identifier: "storage-providers-setup-prerequisites"
-weight: 100
+weight: 205
 toc: true
 ---
 
-Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "hardware-requirements" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
+Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "../../get-started/hardware-requirements/" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
 
 {{< alert icon="callout" >}}
 Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
@@ -64,11 +64,11 @@ If you opt to run a the `lotus-miner` on a different machine then the Lotus Node
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "../../developers/api-access/#obtaining-tokens" >}}).
 
 ### Creating wallets for the storage provider
 
-You will need at least a BLS wallet (`f3...` for mainnet) to initialize. We recommend using [separate owner and worker addresses]({{< relref "addresses" >}}):
+You will need at least a BLS wallet (`f3...` for mainnet) to initialize. We recommend using [separate owner and worker addresses]({{< relref "../../storage-providers/operate/addresses/" >}}):
 
 ```shell
 # A new BLS address to use as owner address:
@@ -81,13 +81,13 @@ f3...
 ```
 
 {{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "manage-fil" >}}) to the **worker address** so that the storage provider setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
+Next make sure to [send some funds]({{< relref "../../lotus/manage/manage-fil/" >}}) to the **worker address** so that the storage provider setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
 {{< /alert >}}
 
-For additional information about the different wallets that a storage provider can use and how to configure them, read the [addresses guide]({{< relref "addresses" >}}).
+For additional information about the different wallets that a storage provider can use and how to configure them, read the [addresses guide]({{< relref "../../storage-providers/operate/addresses/" >}}).
 
 {{< alert icon="tip" >}}
-Safely [backup your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})!
+Safely [backup your wallets]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})!
 {{< /alert >}}
 
 ### Cuda variables
