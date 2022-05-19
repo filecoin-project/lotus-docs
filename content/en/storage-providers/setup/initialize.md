@@ -37,7 +37,7 @@ Make sure that:
 
 ## Initialization
 
-Before we can run the storage provider we need to initilize it by sending a message to the chain and tell the Filecoin network that we want to start a storage provider:
+Before we can run the storage provider we need to initilize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
 
 ```shell
 lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
