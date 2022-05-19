@@ -1,7 +1,7 @@
 ---
 title: "Configuration"
-description: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
-lead: "This guide covers the Lotus Miner configuration files, detailing the meaning of the options contained in them."
+description: "This guide covers what configurations that are needed after initializing your storage provider. It also highlights some optional configurations you might want to consider."
+lead: "This guide covers what configurations that are needed after initializing your storage provider. It also highlights some optional configurations you might want to consider."
 draft: false
 menu:
     storage-providers:
@@ -14,13 +14,75 @@ weight: 215
 toc: true
 ---
 
-The Lotus Miner configutation is created after the [initialization step]({{< relref "initialize" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
-
-The _default configuration_ has all the items commented. To customize one of the items, you must remove the leading `#`.
-
 {{< alert >}}
 For any configuration changes to take effect, the miner must be [restarted]({{< relref "maintenance" >}}).
 {{< /alert >}}
+
+## Basic required configurations
+
+### Adding storage location
+
+Since we set the `--no-local-storage` flag during the storage provider initialization, we need to specify the disk locations for sealing (fast SSDs recommended) and long-term storage.
+
+The `lotus-miner` keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
+
+Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
+
+**Custom location for sealing:** The _seal_ storage location is used when sealing sectors. It should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+
+```sh
+lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
+```
+
+**Custom location for storing:** Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follow:
+
+```sh
+lotus-miner storage attach --init --store <PATH_FOR_LONG_TERM_STORAGE>
+```
+
+This location can be made of large capacity, albeit slower, spinning-disks.
+
+## Basic optional configurations
+
+These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
+
+### Using OpenCL instead of CUDA
+
+This step is only necessary if you are running an Nvidia GPU and would prefer to use OpenCL instead of CUDA. Please note that Cuda is recommended over OpenCL for sealing and proving workload. Most Linux distributions contain this package in their package manager:
+
+```shell
+sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y
+```
+
+### Sealing performance
+
+It is recommended to set the following environment variables in your environment so that they are defined every time any of the lotus daemons are launched:
+
+```shell
+ # See https://github.com/filecoin-project/rust-fil-proofs/
+ export FIL_PROOFS_MAXIMIZE_CACHING=1 # More speed at RAM cost (1x sector-size of RAM - 32 GB).
+ export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # precommit2 GPU acceleration
+ export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
+
+ # The following increases speed of PreCommit1 at the cost of using a full
+ # CPU Core-Complex rather than a single core. Should be used with CPU affinities set!
+ # See https://github.com/filecoin-project/rust-fil-proofs/ and the seal workers guide.
+ export FIL_PROOFS_USE_MULTICORE_SDR=1
+ ```
+
+ Depending on your GPU, you might want to experiment with the optional `BELLMAN_CPU_UTILIZATION` variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel to the GPU. This is an effort to keep all the hardware occupied, but omitting this environment variable might also be optimal.
+
+ ```shell
+ # See https://github.com/filecoin-project/bellman
+ export BELLMAN_CPU_UTILIZATION=0.875
+ ```
+
+The interval must be a number between `0` and `1`. The value `0.875` is a good starting point, but you should experiment with it if you want an optimal setting. Different hardware setups will result in different values being optimal.
+
+
+The Lotus Miner configutation is created after the [initialization step]({{< relref "initialize" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
+
+The _default configuration_ has all the items commented. To customize one of the items, you must remove the leading `#`.
 
 ## API section
 
@@ -39,51 +101,6 @@ The API section controls the settings of the [miner API]({{< relref "/reference/
 As you see, the listen address is bound to the local loopback interface by default. To open access to the miner API for other machines, set this to the IP address of the network interface you want to use. You can also set it to `0.0.0.0` to allow all interfaces. API access is protected by JWT tokens, but it should not be open to the internet.
 
 Configure `RemoteListenAddress` to the value that a different node would have to use to reach this API. Usually, it is the miner's IP address and API port, but depending on your setup (proxies, public IPs, etc.), it might be a different IP.
-
-## Libp2p section
-
-This section configures the miner's embedded Libp2p node. As noted in the [setup instructions]({{< relref "initialize" >}}), it is very important to adjust this section with the miner's public IP and a fixed port:
-
-```toml
-[Libp2p]
-  # Binding address for the libp2p host. 0 means random port.
-  # Type: Array of multiaddress strings
-  ListenAddresses = ["/ip4/0.0.0.0/tcp/0", "/ip6/::/tcp/0"]
-  # Insert any addresses you want to explicitally
-  # announce to other peers here. Otherwise, they are
-  # guessed.
-  # Type: Array of multiaddress strings
-  AnnounceAddresses = []
-  # Insert any addresses to avoid announcing here.
-  # Type: Array of multiaddress strings
-  NoAnnounceAddresses = []
-  # Connection manager settings, decrease if your
-  # machine is overwhelmed by connections.
-  ConnMgrLow = 150
-  ConnMgrHigh = 180
-  ConnMgrGrace = "20s"
-```
-
-The connection manager will start to prune the existing connections if the number of established crosses the value set for `ConnMgrHigh` until it hits the value set for `ConnMgrLow`. Connections younger than `ConnMgrGrace` will be kept.
-
-## Pubsub section
-
-This section controls some Pubsub settings. Pubsub is used to distribute messages in the network:
-
-```toml
-[Pubsub]
-  # Usually, you will not run a pubsub bootstrapping node, so leave this as false
-  Bootstrapper = false
-  # FIXME
-  RemoteTracer = ""
-  # DirectPeers specifies peers with direct peering agreements. These peers are
-  # connected outside of the mesh, with all (valid) message unconditionally
-  # forwarded to them. The router will maintain open connections to these peers.
-  # Note that the peering agreement should be reciprocal with direct peers
-  # symmetrically configured at both ends.
-  # Type: Array of multiaddress peerinfo strings, must include peerid (/p2p/12D3K...)
-  DirectPeers = []
-```
 
 ## Subsystem section
 
@@ -114,19 +131,6 @@ This section allows you to disable subsystems of the `lotus-miner`.
   # type: string
   # env var: LOTUS_SUBSYSTEMS_SECTORINDEXAPIINFO
   #SectorIndexApiInfo = ""
-```
-
-## Proving section
-
-This section controls some of the behavior around windowPoSt:
-
-```toml
-[Proving]
-  # Maximum number of sector checks to run in parallel. (0 = unlimited)
-  #
-  # type: int
-  # env var: LOTUS_PROVING_PARALLELCHECKLIMIT
-  #ParallelCheckLimit = 128
 ```
 
 ## Addresses section
@@ -688,53 +692,4 @@ The default configuration for a Lotus storage provider can be found in the [Lotu
   # type: bool
   # env var: LOTUS_ADDRESSES_DISABLEWORKERFALLBACK
   #DisableWorkerFallback = false
-
-
-[DAGStore]
-  # Path to the dagstore root directory. This directory contains three
-  # subdirectories, which can be symlinked to alternative locations if
-  # need be:
-  # - ./transients: caches unsealed deals that have been fetched from the
-  # storage subsystem for serving retrievals.
-  # - ./indices: stores shard indices.
-  # - ./datastore: holds the KV store tracking the state of every shard
-  # known to the DAG store.
-  # Default value: <LOTUS_MARKETS_PATH>/dagstore (split deployment) or
-  # <LOTUS_MINER_PATH>/dagstore (monolith deployment)
-  #
-  # type: string
-  # env var: LOTUS_DAGSTORE_ROOTDIR
-  #RootDir = ""
-
-  # The maximum amount of indexing jobs that can run simultaneously.
-  # 0 means unlimited.
-  # Default value: 5.
-  #
-  # type: int
-  # env var: LOTUS_DAGSTORE_MAXCONCURRENTINDEX
-  #MaxConcurrentIndex = 5
-
-  # The maximum amount of unsealed deals that can be fetched simultaneously
-  # from the storage subsystem. 0 means unlimited.
-  # Default value: 0 (unlimited).
-  #
-  # type: int
-  # env var: LOTUS_DAGSTORE_MAXCONCURRENTREADYFETCHES
-  #MaxConcurrentReadyFetches = 0
-
-  # The maximum number of simultaneous inflight API calls to the storage
-  # subsystem.
-  # Default value: 100.
-  #
-  # type: int
-  # env var: LOTUS_DAGSTORE_MAXCONCURRENCYSTORAGECALLS
-  #MaxConcurrencyStorageCalls = 100
-
-  # The time between calls to periodic dagstore GC, in time.Duration string
-  # representation, e.g. 1m, 5m, 1h.
-  # Default value: 1 minute.
-  #
-  # type: Duration
-  # env var: LOTUS_DAGSTORE_GCINTERVAL
-  #GCInterval = "1m0s"
 ```
