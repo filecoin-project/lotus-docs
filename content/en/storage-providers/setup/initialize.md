@@ -49,7 +49,7 @@ lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
 
 ## Connectivity to the storage provider
 
-Before you run your storage provider, it is important to configure it so that it is reachable from any peer in the Filecoin network. For this, you will need a stable public IP and edit your `~/.lotusminer/config.toml` as follows:
+Before you run your storage provider, it is important that it is reachable from any peer in the Filecoin network. For this, you will need a stable public IP and edit your `~/.lotusminer/config.toml` as follows:
 
 ```toml
 ...
