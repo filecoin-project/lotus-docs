@@ -26,9 +26,6 @@ Make sure that:
   export LOTUS_MINER_PATH=/path/to/miner/config/storage
   export LOTUS_PATH=/path/to/lotus/node/folder # When using a local node.
   export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http # When using a remote Lotus node.
-  export FIL_PROOFS_MAXIMIZE_CACHING=1
-  export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # When having GPU.
-  export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # When having GPU.
   export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
   export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
   ```
@@ -79,7 +76,7 @@ systemctl start lotus-miner
 ```
 
 {{< alert icon="warning" >}}
-**Do not proceed** from here until you have verified that your storage provider not only is running, but also [reachable on its public IP address]({{< relref "connectivity" >}}).
+**Do not proceed** from here until you have verified that your storage provider not only is running, but also [reachable on its public IP address]({{< relref "../../../storage-providers/operate/connectivity/" >}}).
 {{< /alert >}}
 
 ## Publishing the addresses
@@ -92,12 +89,4 @@ lotus-miner actor set-addrs /ip4/<YOUR_PUBLIC_IP_ADDRESS>/tcp/24001
 
 ## Next steps
 
-Your storage provider should now be preliminarily initialized and running, but **there are still a few more recommended tasks** to be ready for prime-time:
-
-- Set up your [custom storage layout]({{< relref "../../../storage-providers/operate/custom-storage-layout/" >}}) (required if you used `--no-local-storage`).
-- Edit the miner [configuration settings]({{< relref "configuration" >}}) to fit your requirements.
-- Learn when to safely [shut down/restart your miner]({{< relref "maintenance" >}})
-- Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
-- Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the storage providers capacity to seal sectors.
-- Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
-- Consider [splitting markets and miners processes]({{< relref "split-markets-miners" >}}) for increased stability.
+Your storage provider should now be preliminarily initialized and running, but **there are still a few more things you need to configure** to be ready for prime-time. We will go through these in the [configuration section]({{< relref "../../../storage-providers/setup/configuration/" >}}).
