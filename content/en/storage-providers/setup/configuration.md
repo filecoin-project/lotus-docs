@@ -1,7 +1,7 @@
 ---
 title: "Configuration"
-description: "This guide covers what configurations that are needed after initializing your storage provider. It also highlights some optional configurations you might want to consider."
-lead: "This guide covers what configurations that are needed after initializing your storage provider. It also highlights some optional configurations you might want to consider."
+description: "This guide covers configurations that are needed after initializing your storage provider."
+lead: "This guide covers configurations that are needed after initializing your storage provider. It also highlights some optional configurations you might want to consider."
 draft: false
 menu:
     storage-providers:
@@ -15,10 +15,10 @@ toc: true
 ---
 
 {{< alert >}}
-For any configuration changes to take effect, the miner must be [restarted]({{< relref "maintenance" >}}).
+For any configuration changes to take effect, the storage provider must be [restarted]({{< relref "../../storage-providers/operate/maintenance/" >}}).
 {{< /alert >}}
 
-## Basic required configurations
+## Required configurations
 
 ### Adding storage location
 
@@ -42,7 +42,7 @@ lotus-miner storage attach --init --store <PATH_FOR_LONG_TERM_STORAGE>
 
 This location can be made of large capacity, albeit slower, spinning-disks.
 
-## Basic optional configurations
+## Optional configurations
 
 These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
 
@@ -80,13 +80,13 @@ It is recommended to set the following environment variables in your environment
 The interval must be a number between `0` and `1`. The value `0.875` is a good starting point, but you should experiment with it if you want an optimal setting. Different hardware setups will result in different values being optimal.
 
 
-The Lotus Miner configutation is created after the [initialization step]({{< relref "initialize" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
+The Lotus Miner configutation is created after the [initialization step]({{< relref "../../storage-providers/setup/initialize/" >}}) during setup and placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
 
 The _default configuration_ has all the items commented. To customize one of the items, you must remove the leading `#`.
 
 ## API section
 
-The API section controls the settings of the [miner API]({{< relref "/reference/basics/overview" >}}):
+The API section controls the settings of the [miner API]({{< relref "../../reference/basics/overview" >}}):
 
 ```toml
 [API]
