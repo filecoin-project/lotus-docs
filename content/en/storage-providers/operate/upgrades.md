@@ -97,7 +97,7 @@ This upgrade procedure should only be used as a last resort or when the chain ha
 
 It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/install/prerequisites/" >}}) and [miner-setup]({{< relref "../../storage-providers/setup/initialize/" >}}) guides after it. Before you do this, consider:
 
-- [Backing up your Lotus wallets]({{< relref "./../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})
+- [Backing up your Lotus wallets]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})
 - You may want to backup your Lotus Node and Miner configurations as well.
 
 Once you are ready, stop everything and delete the data folders (or rename them):
