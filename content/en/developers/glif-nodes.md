@@ -7,7 +7,7 @@ menu:
              parent: "developers-nodes"
 aliases:
     - /docs/developers/hosted-lotus/
-weight: 130
+weight: 105
 toc: true
 ---
 
