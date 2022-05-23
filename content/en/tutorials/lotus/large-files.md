@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/developers/large-files/
     - /store/lotus/very-large-files
-weight: 150
+weight: 125
 toc: true
 ---
 
