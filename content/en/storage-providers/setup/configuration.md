@@ -15,26 +15,51 @@ toc: true
 ---
 
 {{< alert >}}
-For any configuration changes to take effect, the storage provider must be [restarted]({{< relref "../../storage-providers/operate/maintenance/" >}}).
+For any configuration in the config.toml file to take effect, the storage provider must be [restarted]({{< relref "../../storage-providers/operate/maintenance/" >}}).
 {{< /alert >}}
 
 ## Required configurations
 
-### Adding storage location
+Since we initialized the storage provider with the `--no-local-storage` in the [initialize]({{< relref "../../storage-providers/setup/initialize/" >}} page, we need to specify the disk locations for long-term storage and sealing (fast SSDs recommended).
 
-Since we set the `--no-local-storage` flag during the storage provider initialization, we need to specify the disk locations for sealing (fast SSDs recommended) and long-term storage.
+### Adding sealing storage location
 
-The `lotus-miner` keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
+Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}} to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architecture your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
 
-Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
+Under the storage-section in your `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` file, you can configure which sealing process you would like your `lotus-miner` to perform. If you want to fully delegate any of these operations to workers, set them to false.
 
-**Custom location for sealing:** The _seal_ storage location is used when sealing sectors. It should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+```toml
+[Storage]
+  AllowAddPiece = true
+  AllowPreCommit1 = true
+  AllowPreCommit2 = true
+  AllowCommit = true
+  AllowUnseal = true
+  AllowReplicaUpdate = true
+  AllowProveReplicaUpdate2 = true
+```
+
+If you want some or all of the sealing tasks to be perfomed on the `lotus-miner` you will need to add a custom location for the tasks.
+
+**Custom location for sealing on the `lotus-miner`:** The _seal_ storage location is used when sealing sectors. It should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
 
 ```sh
 lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 ```
 
-**Custom location for storing:** Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follow:
+**Custom location for sealing on the `lotus-worker`:** The _seal_ storage location is used when sealing sectors. It should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+
+```sh
+lotus-worker storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
+```
+
+### Adding long-term storage location
+
+The `lotus-miner` keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
+
+Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
+
+**Custom location for storing:** After the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follow:
 
 ```sh
 lotus-miner storage attach --init --store <PATH_FOR_LONG_TERM_STORAGE>
