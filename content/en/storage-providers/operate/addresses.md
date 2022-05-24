@@ -247,5 +247,9 @@ lotus-miner actor withdraw <amount>
 ```
 
 {{< alert >}}
+Tip: If no amount entered it will withdraw all Available funds. 
+{{< /alert >}}
+
+{{< alert >}}
 The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporally imported for the operation to succeed.
 {{< /alert >}}
