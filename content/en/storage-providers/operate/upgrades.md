@@ -55,7 +55,7 @@ If you keep the same formatting as the default configuration file it should be f
 diff -y -W 200 your-config.toml default-lotus-miner-configuration.toml
 ```
 
-A `vertical bar` sign indcates that there is a difference in that line between your configuraion file, and the default configuration file..
+A `vertical bar` sign indcates that there is a difference in that line between your configuraion file, and the default configuration file.
 
 ```toml
 #ListenAddress = "/ip4/127.0.0.1/tcp/4567/http"   |	  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
