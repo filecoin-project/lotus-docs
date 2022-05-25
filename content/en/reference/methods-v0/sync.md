@@ -1,6 +1,5 @@
 ---
 title: "Sync"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

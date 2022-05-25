@@ -1,6 +1,5 @@
 ---
 title: "State"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

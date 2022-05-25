@@ -1,6 +1,5 @@
 ---
 title: "Mpool"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

@@ -1,6 +1,5 @@
 ---
 title: "Net"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

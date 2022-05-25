@@ -1,6 +1,5 @@
 ---
 title: "Create"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

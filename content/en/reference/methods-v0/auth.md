@@ -1,6 +1,5 @@
 ---
 title: "Auth"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

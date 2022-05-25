@@ -1,6 +1,5 @@
 ---
 title: "Msig"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

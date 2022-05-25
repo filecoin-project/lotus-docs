@@ -1,6 +1,5 @@
 ---
 title: "Client"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

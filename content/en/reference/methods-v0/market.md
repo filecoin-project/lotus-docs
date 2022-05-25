@@ -1,6 +1,5 @@
 ---
 title: "Market"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:

@@ -1,6 +1,5 @@
 ---
 title: "Chain"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:
@@ -415,7 +414,7 @@ Response:
 ChainGetPath returns a set of revert/apply operations needed to get from
 one tipset to another, for example:
 
-```
+```plaintext
        to
         ^
 from   tAA

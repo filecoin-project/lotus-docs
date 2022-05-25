@@ -1,6 +1,5 @@
 ---
 title: "Beacon"
-description: "Lorem ipsum."
 draft: false
 menu:
     reference:
