@@ -3,7 +3,8 @@ title: "Log"
 draft: false
 menu:
     reference:
-             parent: "reference-miner-methods-v0"
+              parent: "reference-miner-methods-v0"
+              identifier: "reference-miner-methods-v0-log"
 toc: true
 ---
 

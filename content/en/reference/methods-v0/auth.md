@@ -5,8 +5,6 @@ menu:
     reference:
              parent: "reference-methods-v0"
 toc: true
-aliases:
-    - /developers/apis/json-rpc/
 ---
 
 ## AuthNew
