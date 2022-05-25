@@ -22,6 +22,7 @@ Please make sure that the following prerequites are met whether you are planning
 1. Make sure your Lotus Node is running, as the storage provider will communicate with it and cannot work otherwise.
 2. If you are in China, read the [tips for running in China]({{< relref "../../lotus/install/prerequisites#node-in-china" >}}) page first.
 3. Make sure to [add swap]({{< relref "../../kb/add-swap" >}}) to the machine if needed.
+4. Permanently raise your [fd-limit]({{< relref "../../kb/soft-fd-limit/#resolution" >}}).
 
 ### Install CUDA
 
