@@ -1,7 +1,7 @@
 ---
 title: "Upgrades"
-description: "This guide covers how to safely upgrade Lotus when running a miner."
-lead: "This guide covers how to safely upgrade Lotus when running a miner."
+description: "This guide covers how to safely upgrade Lotus when running a storage provider."
+lead: "This guide covers how to safely upgrade Lotus when running a storage provider."
 draft: false
 menu:
     storage-providers:
@@ -47,11 +47,33 @@ If you would prefer to have Lotus export the default configuration to a file, ru
 lotus-miner config default >> ~/default-lotus-miner-configuration.toml
 ```
 
-Once you have the default configuration file, compare it with your configuration file and make sure that you're not missing any sections. See the [Lotus release notes](https://github.com/filecoin-project/lotus/releases) for details on what new sections have been added.
+Once you have an updated default configuration file from the new version, compare it with your configuration file and make sure that you're not missing any sections. You can use the `diff` command to produce a list of changes that would need to be made to the your configuration file, to make it match the updated default configuration file.
+
+If you keep the same formatting as the default configuration file it should be fairly easy to spot difference and new sections using this command:
+
+```shell
+diff -y -W 200 your-config.toml default-lotus-miner-configuration.toml
+```
+
+A `vertical bar` sign indcates that there is a difference in that line between your configuration file, and the default configuration file.
+
+```toml
+#ListenAddress = "/ip4/127.0.0.1/tcp/4567/http"   |	  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
+```
+
+The `greater-than-sign` indicates that your configuration file is missing some lines that are included in the updated default configuration file.
+
+```toml
+					      >	  # env var: LOTUS_STORAGE_ALLOWPROVEREPLICAUPDATE2
+					      >	  #AllowProveReplicaUpdate2 = true
+					      >
+```
+
+You can also check the [Lotus release notes](https://github.com/filecoin-project/lotus/releases) for details on what new sections have been added.
 
 ## Upgrade in-place
 
-1. Safely shutdown your Lotus Miner as explained [here]({{< relref "maintenance" >}}).
+1. Safely shutdown your `lotus-miner` as explained [here]({{< relref "../../storage-providers/operate/maintenance/" >}}).
 1. Shutdown any seal workers
 1. Shutdown your Lotus Node (`lotus daemon stop` or `systemctl stop lotus-daemon`)
 1. Pull the new version and rebuild. For more information read the [Lotus installation guide]({{< relref "../../lotus/install/prerequisites" >}}) again:
@@ -67,7 +89,7 @@ make all
 make install
 ```
 
-1. Start the Lotus daemon and wait for sync:
+1. Start the Lotus daemon and wait for it to finish syncing:
 
 ```shell
 lotus daemon
@@ -79,7 +101,7 @@ systemctl start lotus-daemon
 lotus sync wait
 ```
 
-2. Start your miner and your workers
+2. Start your `lotus-miner` and your `lotus-workers`
 
 ```shell
 lotus-miner run
@@ -95,9 +117,9 @@ lotus-worker run
 This upgrade procedure should only be used as a last resort or when the chain has been upgraded and requires such action to be taken.
 {{< /alert >}}
 
-It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/install/prerequisites" >}}) and [miner-setup]({{< relref "initialize" >}}) guides after it. Before you do this, consider:
+It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/install/prerequisites/" >}}) and [miner-setup]({{< relref "../../storage-providers/setup/initialize/" >}}) guides after it. Before you do this, consider:
 
-- [Backing up your Lotus wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}})
+- [Backing up your Lotus wallets]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})
 - You may want to backup your Lotus Node and Miner configurations as well.
 
 Once you are ready, stop everything and delete the data folders (or rename them):
@@ -110,4 +132,3 @@ rm -rf ~/.lotusworker
 ```
 
 After that Lotus applications will start from scratch.
-
