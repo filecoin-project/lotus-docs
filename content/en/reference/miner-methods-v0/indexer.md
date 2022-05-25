@@ -25,6 +25,7 @@ so they can download its index
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {

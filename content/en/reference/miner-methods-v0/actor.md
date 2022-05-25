@@ -22,6 +22,7 @@ Perms: read
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "PreCommitControl": [
@@ -46,6 +47,7 @@ Response:
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -53,3 +55,4 @@ Inputs:
 ```
 
 Response: `34359738368`
+

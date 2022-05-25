@@ -83,7 +83,6 @@ to publish them externally.
 This operation fails if the shard is not in ShardStateNew state.
 It blocks until initialization finishes.
 
-
 Perms: write
 
 Inputs:
@@ -100,7 +99,6 @@ Response: `{}`
 
 DagstoreListShards returns information about all shards known to the
 DAG store. Only available on nodes running the markets subsystem.
-
 
 Perms: read
 
