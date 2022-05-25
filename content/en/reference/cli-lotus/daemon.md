@@ -7,8 +7,6 @@ menu:
 toc: true
 ---
 
-## lotus daemon
-
 ```plaintext
 NAME:
    lotus daemon - Start a lotus daemon process
@@ -39,7 +37,7 @@ OPTIONS:
    
 ```
 
-### lotus daemon stop
+### stop
 
 ```plaintext
 NAME:

@@ -154,6 +154,12 @@
   identifier = "reference-worker-methods-v0"
   url = "/reference/worker-methods-v0"
 
+[[reference]]
+  name = "CLI lotus"
+  weight = 30
+  identifier = "reference-cli-lotus"
+  url = "/reference/cli-lotus"
+
 
 [[social]]
   name = "GitHub"

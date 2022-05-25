@@ -4,6 +4,7 @@ draft: false
 menu:
     reference:
              parent: "reference-methods-v0"
+             identifier: "reference-methods-v0-wallet"
 toc: true
 ---
 
