@@ -1,5 +1,5 @@
 ---
-title: "Generate.md"
+title: "Generate"
 draft: false
 menu:
     reference:
