@@ -12,12 +12,13 @@ The Mpool methods are for interacting with the message pool. The message pool
 manages all incoming and outgoing 'messages' going over the network.
 
 ## MpoolBatchPush
-MpoolBatchPush batch pushes a signed message to mempool.
 
+MpoolBatchPush batch pushes a signed message to mempool.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   [
@@ -50,6 +51,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -59,12 +61,13 @@ Response:
 ```
 
 ## MpoolBatchPushMessage
-MpoolBatchPushMessage batch pushes a unsigned message to mempool.
 
+MpoolBatchPushMessage batch pushes a unsigned message to mempool.
 
 Perms: sign
 
 Inputs:
+
 ```json
 [
   [
@@ -91,6 +94,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -121,12 +125,13 @@ Response:
 ```
 
 ## MpoolBatchPushUntrusted
-MpoolBatchPushUntrusted batch pushes a signed message to mempool from untrusted sources.
 
+MpoolBatchPushUntrusted batch pushes a signed message to mempool from untrusted sources.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   [
@@ -159,6 +164,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -168,12 +174,13 @@ Response:
 ```
 
 ## MpoolClear
-MpoolClear clears pending messages from the mpool
 
+MpoolClear clears pending messages from the mpool
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   true
@@ -183,14 +190,15 @@ Inputs:
 Response: `{}`
 
 ## MpoolGetConfig
-MpoolGetConfig returns (a copy of) the current mpool config
 
+MpoolGetConfig returns (a copy of) the current mpool config
 
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "PriorityAddrs": [
@@ -205,13 +213,14 @@ Response:
 ```
 
 ## MpoolGetNonce
+
 MpoolGetNonce gets next nonce for the specified sender.
 Note that this method may not be atomic. Use MpoolPushMessage instead.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -221,12 +230,13 @@ Inputs:
 Response: `42`
 
 ## MpoolPending
-MpoolPending returns pending mempool messages.
 
+MpoolPending returns pending mempool messages.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -241,6 +251,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -271,12 +282,13 @@ Response:
 ```
 
 ## MpoolPush
-MpoolPush pushes a signed message to mempool.
 
+MpoolPush pushes a signed message to mempool.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -307,6 +319,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "/": "bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4"
@@ -314,6 +327,7 @@ Response:
 ```
 
 ## MpoolPushMessage
+
 MpoolPushMessage atomically assigns a nonce, signs, and pushes a message
 to mempool.
 maxFee is only used when GasFeeCap/GasPremium fields aren't specified
@@ -321,10 +335,10 @@ maxFee is only used when GasFeeCap/GasPremium fields aren't specified
 When maxFee is set to 0, MpoolPushMessage will guess appropriate fee
 based on current chain conditions
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   {
@@ -349,6 +363,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Message": {
@@ -377,12 +392,13 @@ Response:
 ```
 
 ## MpoolPushUntrusted
-MpoolPushUntrusted pushes a signed message to mempool from untrusted sources.
 
+MpoolPushUntrusted pushes a signed message to mempool from untrusted sources.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -413,6 +429,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "/": "bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4"
@@ -420,12 +437,13 @@ Response:
 ```
 
 ## MpoolSelect
-MpoolSelect returns a list of pending messages for inclusion in the next block
 
+MpoolSelect returns a list of pending messages for inclusion in the next block
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -441,6 +459,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -471,12 +490,13 @@ Response:
 ```
 
 ## MpoolSetConfig
-MpoolSetConfig sets the mpool config to (a copy of) the supplied config
 
+MpoolSetConfig sets the mpool config to (a copy of) the supplied config
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -501,6 +521,7 @@ Perms: read
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "Type": 0,
@@ -530,4 +551,3 @@ Response:
   }
 }
 ```
-

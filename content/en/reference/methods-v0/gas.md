@@ -9,12 +9,13 @@ toc: true
 ---
 
 ## GasEstimateFeeCap
-GasEstimateFeeCap estimates gas fee cap
 
+GasEstimateFeeCap estimates gas fee cap
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -47,13 +48,14 @@ Inputs:
 Response: `"0"`
 
 ## GasEstimateGasLimit
+
 GasEstimateGasLimit estimates gas used by the message and returns it.
 It fails if message fails to execute.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -85,13 +87,14 @@ Inputs:
 Response: `9`
 
 ## GasEstimateGasPremium
+
 GasEstimateGasPremium estimates what gas price should be used for a
 message to have high likelihood of inclusion in `nblocksincl` epochs.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   42,
@@ -111,12 +114,13 @@ Inputs:
 Response: `"0"`
 
 ## GasEstimateMessageGas
-GasEstimateMessageGas estimates gas values for unset message gas fields
 
+GasEstimateMessageGas estimates gas values for unset message gas fields
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -149,6 +153,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Version": 42,
@@ -166,4 +171,3 @@ Response:
   }
 }
 ```
-

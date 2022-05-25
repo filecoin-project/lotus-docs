@@ -12,12 +12,13 @@ The Client methods all have to do with interacting with the storage and
 retrieval markets as a client
 
 ## ClientCalcCommP
-ClientCalcCommP calculates the CommP for a specified file
 
+ClientCalcCommP calculates the CommP for a specified file
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   "string value"
@@ -25,6 +26,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Root": {
@@ -35,12 +37,13 @@ Response:
 ```
 
 ## ClientCancelDataTransfer
-ClientCancelDataTransfer cancels a data transfer with the given transfer ID and other peer
 
+ClientCancelDataTransfer cancels a data transfer with the given transfer ID and other peer
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   3,
@@ -52,12 +55,13 @@ Inputs:
 Response: `{}`
 
 ## ClientCancelRetrievalDeal
-ClientCancelRetrievalDeal cancels an ongoing retrieval deal based on DealID
 
+ClientCancelRetrievalDeal cancels an ongoing retrieval deal based on DealID
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   5
@@ -68,12 +72,12 @@ Response: `{}`
 
 ## ClientDataTransferUpdates
 
-
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "TransferID": 3,
@@ -107,12 +111,13 @@ Response:
 ```
 
 ## ClientDealPieceCID
-ClientCalcCommP calculates the CommP and data size of the specified CID
 
+ClientCalcCommP calculates the CommP and data size of the specified CID
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -122,6 +127,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "PayloadSize": 9,
@@ -133,12 +139,13 @@ Response:
 ```
 
 ## ClientDealSize
-ClientDealSize calculates real deal data size
 
+ClientDealSize calculates real deal data size
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -148,6 +155,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "PayloadSize": 9,
@@ -156,12 +164,13 @@ Response:
 ```
 
 ## ClientFindData
-ClientFindData identifies peers that have a certain file, and returns QueryOffers (one per peer).
 
+ClientFindData identifies peers that have a certain file, and returns QueryOffers (one per peer).
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -172,6 +181,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -197,12 +207,13 @@ Response:
 ```
 
 ## ClientGenCar
-ClientGenCar generates a CAR file for the specified file.
 
+ClientGenCar generates a CAR file for the specified file.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -216,12 +227,13 @@ Inputs:
 Response: `{}`
 
 ## ClientGetDealInfo
-ClientGetDealInfo returns the latest information about a given deal.
 
+ClientGetDealInfo returns the latest information about a given deal.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -231,6 +243,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "ProposalCid": {
@@ -312,12 +325,13 @@ Response:
 ```
 
 ## ClientGetDealStatus
-ClientGetDealStatus returns status given a code
 
+ClientGetDealStatus returns status given a code
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   42
@@ -327,14 +341,15 @@ Inputs:
 Response: `"string value"`
 
 ## ClientGetDealUpdates
-ClientGetDealUpdates returns the status of updated deals
 
+ClientGetDealUpdates returns the status of updated deals
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "ProposalCid": {
@@ -416,14 +431,15 @@ Response:
 ```
 
 ## ClientGetRetrievalUpdates
-ClientGetRetrievalUpdates returns status of updated retrieval deals
 
+ClientGetRetrievalUpdates returns status of updated retrieval deals
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "PayloadCID": {
@@ -478,12 +494,13 @@ Response:
 ```
 
 ## ClientHasLocal
-ClientHasLocal indicates whether a certain CID is locally stored.
 
+ClientHasLocal indicates whether a certain CID is locally stored.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -495,12 +512,13 @@ Inputs:
 Response: `true`
 
 ## ClientImport
-ClientImport imports file under the specified path into filestore.
 
+ClientImport imports file under the specified path into filestore.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -511,6 +529,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Root": {
@@ -521,14 +540,15 @@ Response:
 ```
 
 ## ClientListDataTransfers
-ClientListTransfers returns the status of all ongoing transfers of data
 
+ClientListTransfers returns the status of all ongoing transfers of data
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -564,14 +584,15 @@ Response:
 ```
 
 ## ClientListDeals
-ClientListDeals returns information about the deals made by the local client.
 
+ClientListDeals returns information about the deals made by the local client.
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -655,14 +676,15 @@ Response:
 ```
 
 ## ClientListImports
-ClientListImports lists imported files and their root CIDs
 
+ClientListImports lists imported files and their root CIDs
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -677,15 +699,16 @@ Response:
 ```
 
 ## ClientListRetrievals
+
 ClientQueryAsk returns a signed StorageAsk from the specified miner.
 ClientListRetrievals returns information about retrievals made by the local client
-
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -742,12 +765,13 @@ Response:
 ```
 
 ## ClientMinerQueryOffer
-ClientMinerQueryOffer returns a QueryOffer for the specific miner and file.
 
+ClientMinerQueryOffer returns a QueryOffer for the specific miner and file.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -759,6 +783,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Err": "string value",
@@ -783,10 +808,10 @@ Response:
 
 ## ClientQueryAsk
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf",
@@ -795,6 +820,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Price": "0",
@@ -809,12 +835,13 @@ Response:
 ```
 
 ## ClientRemoveImport
-ClientRemoveImport removes file import
 
+ClientRemoveImport removes file import
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   50
@@ -824,12 +851,13 @@ Inputs:
 Response: `{}`
 
 ## ClientRestartDataTransfer
-ClientRestartDataTransfer attempts to restart a data transfer with the given transfer ID and other peer
 
+ClientRestartDataTransfer attempts to restart a data transfer with the given transfer ID and other peer
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   3,
@@ -841,12 +869,13 @@ Inputs:
 Response: `{}`
 
 ## ClientRetrieve
-ClientRetrieve initiates the retrieval of a file, as specified in the order.
 
+ClientRetrieve initiates the retrieval of a file, as specified in the order.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -879,13 +908,14 @@ Inputs:
 Response: `{}`
 
 ## ClientRetrieveTryRestartInsufficientFunds
+
 ClientRetrieveTryRestartInsufficientFunds attempts to restart stalled retrievals on a given payment channel
 which are stuck due to insufficient funds
-
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -895,13 +925,14 @@ Inputs:
 Response: `{}`
 
 ## ClientRetrieveWithEvents
+
 ClientRetrieveWithEvents initiates the retrieval of a file, as specified in the order, and provides a channel
 of status updates.
-
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -932,6 +963,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Event": 5,
@@ -943,12 +975,13 @@ Response:
 ```
 
 ## ClientStartDeal
-ClientStartDeal proposes a deal with a miner.
 
+ClientStartDeal proposes a deal with a miner.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -976,12 +1009,13 @@ Inputs:
 Response: `null`
 
 ## ClientStatelessDeal
-ClientStatelessDeal fire-and-forget-proposes an offline deal to a miner without subsequent tracking.
 
+ClientStatelessDeal fire-and-forget-proposes an offline deal to a miner without subsequent tracking.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -1007,4 +1041,3 @@ Inputs:
 ```
 
 Response: `null`
-

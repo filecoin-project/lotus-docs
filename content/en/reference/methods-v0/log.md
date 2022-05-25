@@ -15,6 +15,7 @@ Perms: admin
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -44,6 +45,7 @@ Perms: write
 Inputs: `null`
 
 Response:
+
 ```json
 [
   "string value"
@@ -55,10 +57,10 @@ Response:
 Perms: write
 
 Inputs:
+
 ```json
 [
   "string value",
   "string value"
 ]
 ```
-

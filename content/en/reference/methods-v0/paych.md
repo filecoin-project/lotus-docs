@@ -12,10 +12,10 @@ The Paych methods are for interacting with and managing payment channels
 
 ## PaychAllocateLane
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -26,10 +26,10 @@ Response: `42`
 
 ## PaychAvailableFunds
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -37,6 +37,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Channel": "\u003cempty\u003e",
@@ -54,10 +55,10 @@ Response:
 
 ## PaychAvailableFundsByFromTo
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -66,6 +67,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Channel": "\u003cempty\u003e",
@@ -83,10 +85,10 @@ Response:
 
 ## PaychCollect
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -94,6 +96,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "/": "bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4"
@@ -101,11 +104,13 @@ Response:
 ```
 
 ## PaychGet
+
 There are not yet any comments for this method.
 
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -115,6 +120,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Channel": "f01234",
@@ -126,10 +132,10 @@ Response:
 
 ## PaychGetWaitReady
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   {
@@ -142,12 +148,12 @@ Response: `"f01234"`
 
 ## PaychList
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   "f01234"
@@ -156,10 +162,10 @@ Response:
 
 ## PaychNewPayment
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -181,6 +187,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Channel": "f01234",
@@ -219,10 +226,10 @@ Response:
 
 ## PaychSettle
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -230,6 +237,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "/": "bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4"
@@ -238,10 +246,10 @@ Response:
 
 ## PaychStatus
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -249,6 +257,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "ControlAddr": "f01234",
@@ -258,10 +267,10 @@ Response:
 
 ## PaychVoucherAdd
 
-
 Perms: write
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -299,10 +308,10 @@ Response: `"0"`
 
 ## PaychVoucherCheckSpendable
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -340,10 +349,10 @@ Response: `true`
 
 ## PaychVoucherCheckValid
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -379,10 +388,10 @@ Response: `{}`
 
 ## PaychVoucherCreate
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -392,6 +401,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Voucher": {
@@ -425,10 +435,10 @@ Response:
 
 ## PaychVoucherList
 
-
 Perms: write
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -436,6 +446,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -468,10 +479,10 @@ Response:
 
 ## PaychVoucherSubmit
 
-
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -506,9 +517,9 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "/": "bafy2bzacea3wsdh6y3a36tb3skempjoxqpuyompjbmfeyf34fi3uy6uue42v4"
 }
 ```
-

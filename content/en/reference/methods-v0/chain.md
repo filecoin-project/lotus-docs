@@ -12,12 +12,13 @@ The Chain method group contains methods for interacting with the
 blockchain, but that do not require any form of state computation.
 
 ## ChainDeleteObj
-ChainDeleteObj deletes node referenced by the given CID
 
+ChainDeleteObj deletes node referenced by the given CID
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -29,16 +30,17 @@ Inputs:
 Response: `{}`
 
 ## ChainExport
+
 ChainExport returns a stream of bytes with CAR dump of chain data.
 The exported chain data includes the header chain from the given tipset
 back to genesis, the entire genesis state, and the most recent 'nroots'
 state trees.
 If oldmsgskip is set, messages from before the requested roots are also not included.
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   10101,
@@ -57,12 +59,13 @@ Inputs:
 Response: `"Ynl0ZSBhcnJheQ=="`
 
 ## ChainGetBlock
-ChainGetBlock returns the block specified by the given CID.
 
+ChainGetBlock returns the block specified by the given CID.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -72,6 +75,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Miner": "f01234",
@@ -125,6 +129,7 @@ Response:
 ```
 
 ## ChainGetBlockMessages
+
 ChainGetBlockMessages returns messages stored in the specified block.
 
 Note: If there are multiple blocks in a tipset, it's likely that some
@@ -138,10 +143,10 @@ NOTE: THIS METHOD SHOULD ONLY BE USED FOR GETTING MESSAGES IN A SPECIFIC BLOCK
 DO NOT USE THIS METHOD TO GET MESSAGES INCLUDED IN A TIPSET
 Use ChainGetParentMessages, which will perform correct message deduplication
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -151,6 +156,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "BlsMessages": [
@@ -205,14 +211,15 @@ Response:
 ```
 
 ## ChainGetGenesis
-ChainGetGenesis returns the genesis tipset.
 
+ChainGetGenesis returns the genesis tipset.
 
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "Cids": null,
@@ -222,13 +229,14 @@ Response:
 ```
 
 ## ChainGetMessage
+
 ChainGetMessage reads a message referenced by the specified CID from the
 chain blockstore.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -238,6 +246,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Version": 42,
@@ -257,12 +266,13 @@ Response:
 ```
 
 ## ChainGetMessagesInTipset
-ChainGetMessagesInTipset returns message stores in current tipset
 
+ChainGetMessagesInTipset returns message stores in current tipset
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -277,6 +287,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -304,10 +315,10 @@ Response:
 
 ## ChainGetNode
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "string value"
@@ -315,6 +326,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Cid": {
@@ -325,13 +337,14 @@ Response:
 ```
 
 ## ChainGetParentMessages
+
 ChainGetParentMessages returns messages stored in parent tipset of the
 specified block.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -341,6 +354,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -367,14 +381,15 @@ Response:
 ```
 
 ## ChainGetParentReceipts
+
 ChainGetParentReceipts returns receipts for messages in parent tipset of
 the specified block. The receipts in the list returned is one-to-one with the
 messages returned by a call to ChainGetParentMessages with the same blockCid.
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -384,6 +399,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -395,8 +411,10 @@ Response:
 ```
 
 ## ChainGetPath
+
 ChainGetPath returns a set of revert/apply operations needed to get from
 one tipset to another, for example:
+
 ```
        to
         ^
@@ -407,12 +425,13 @@ tBA    tAB
      ^
     tRR
 ```
-Would return `[revert(tBA), apply(tAB), apply(tAA)]`
 
+Would return `[revert(tBA), apply(tAB), apply(tAA)]`
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -435,6 +454,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 [
   {
@@ -449,12 +469,13 @@ Response:
 ```
 
 ## ChainGetRandomnessFromBeacon
-ChainGetRandomnessFromBeacon is used to sample the beacon for randomness.
 
+ChainGetRandomnessFromBeacon is used to sample the beacon for randomness.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -474,12 +495,13 @@ Inputs:
 Response: `"Bw=="`
 
 ## ChainGetRandomnessFromTickets
-ChainGetRandomnessFromTickets is used to sample the chain for randomness.
 
+ChainGetRandomnessFromTickets is used to sample the chain for randomness.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -499,12 +521,13 @@ Inputs:
 Response: `"Bw=="`
 
 ## ChainGetTipSet
-ChainGetTipSet returns the tipset specified by the given TipSetKey.
 
+ChainGetTipSet returns the tipset specified by the given TipSetKey.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -519,6 +542,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Cids": null,
@@ -528,14 +552,15 @@ Response:
 ```
 
 ## ChainGetTipSetByHeight
+
 ChainGetTipSetByHeight looks back for a tipset at the specified epoch.
 If there are no blocks at the specified epoch, a tipset at an earlier epoch
 will be returned.
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   10101,
@@ -551,6 +576,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Cids": null,
@@ -560,12 +586,13 @@ Response:
 ```
 
 ## ChainHasObj
-ChainHasObj checks if a given CID exists in the chain blockstore.
 
+ChainHasObj checks if a given CID exists in the chain blockstore.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -577,14 +604,15 @@ Inputs:
 Response: `true`
 
 ## ChainHead
-ChainHead returns the current head of the chain.
 
+ChainHead returns the current head of the chain.
 
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "Cids": null,
@@ -594,15 +622,16 @@ Response:
 ```
 
 ## ChainNotify
+
 ChainNotify returns channel with chain head updates.
 First message is guaranteed to be of len == 1, and type == 'current'.
-
 
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -617,13 +646,14 @@ Response:
 ```
 
 ## ChainReadObj
+
 ChainReadObj reads ipld nodes referenced by the specified CID from chain
 blockstore and returns raw bytes.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -635,12 +665,13 @@ Inputs:
 Response: `"Ynl0ZSBhcnJheQ=="`
 
 ## ChainSetHead
-ChainSetHead forcefully sets current chain head. Use with caution.
 
+ChainSetHead forcefully sets current chain head. Use with caution.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   [
@@ -657,14 +688,15 @@ Inputs:
 Response: `{}`
 
 ## ChainStatObj
+
 ChainStatObj returns statistics about the graph referenced by 'obj'.
 If 'base' is also specified, then the returned stat will be a diff
 between the two objects.
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   {
@@ -677,6 +709,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Size": 42,
@@ -685,12 +718,13 @@ Response:
 ```
 
 ## ChainTipSetWeight
-ChainTipSetWeight computes weight for the specified tipset.
 
+ChainTipSetWeight computes weight for the specified tipset.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   [
@@ -705,4 +739,3 @@ Inputs:
 ```
 
 Response: `"0"`
-

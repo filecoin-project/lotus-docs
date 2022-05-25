@@ -11,6 +11,7 @@ toc: true
 The Beacon method group contains methods for interacting with the random beacon (DRAND)
 
 ## BeaconGetEntry
+
 BeaconGetEntry returns the beacon entry for the given filecoin epoch. If
 the entry has not yet been produced, the call will block until the entry
 becomes available
@@ -33,4 +34,3 @@ Response:
   "Data": "Ynl0ZSBhcnJheQ=="
 }
 ```
-

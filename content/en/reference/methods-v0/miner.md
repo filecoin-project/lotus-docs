@@ -13,6 +13,7 @@ toc: true
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -77,6 +78,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Header": {
@@ -142,11 +144,13 @@ Response:
 ```
 
 ## MinerGetBaseInfo
+
 There are not yet any comments for this method.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -163,6 +167,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "MinerPower": "0",
@@ -192,4 +197,3 @@ Response:
   "EligibleForMining": true
 }
 ```
-

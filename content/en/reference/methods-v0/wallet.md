@@ -9,12 +9,13 @@ toc: true
 ---
 
 ## WalletBalance
-WalletBalance returns the balance of the given address at the current head of the chain.
 
+WalletBalance returns the balance of the given address at the current head of the chain.
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -24,8 +25,8 @@ Inputs:
 Response: `"0"`
 
 ## WalletDefaultAddress
-WalletDefaultAddress returns the address marked as default in the wallet.
 
+WalletDefaultAddress returns the address marked as default in the wallet.
 
 Perms: write
 
@@ -34,12 +35,13 @@ Inputs: `null`
 Response: `"f01234"`
 
 ## WalletDelete
-WalletDelete deletes an address from the wallet.
 
+WalletDelete deletes an address from the wallet.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -49,12 +51,13 @@ Inputs:
 Response: `{}`
 
 ## WalletExport
-WalletExport returns the private key of an address in the wallet.
 
+WalletExport returns the private key of an address in the wallet.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -62,6 +65,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Type": "bls",
@@ -70,12 +74,13 @@ Response:
 ```
 
 ## WalletHas
-WalletHas indicates whether the given address is in the wallet.
 
+WalletHas indicates whether the given address is in the wallet.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -85,12 +90,13 @@ Inputs:
 Response: `true`
 
 ## WalletImport
-WalletImport receives a KeyInfo, which includes a private key, and imports it into the wallet.
 
+WalletImport receives a KeyInfo, which includes a private key, and imports it into the wallet.
 
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -103,14 +109,15 @@ Inputs:
 Response: `"f01234"`
 
 ## WalletList
-WalletList lists all the addresses in the wallet.
 
+WalletList lists all the addresses in the wallet.
 
 Perms: write
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   "f01234"
@@ -118,14 +125,15 @@ Response:
 ```
 
 ## WalletNew
+
 WalletNew creates a new address in the wallet with the given sigType.
 Available key types: bls, secp256k1, secp256k1-ledger
 Support for numerical types: 1 - secp256k1, 2 - BLS is deprecated
 
-
 Perms: write
 
 Inputs:
+
 ```json
 [
   "bls"
@@ -135,12 +143,13 @@ Inputs:
 Response: `"f01234"`
 
 ## WalletSetDefault
-WalletSetDefault marks the given address as as the default one.
 
+WalletSetDefault marks the given address as as the default one.
 
 Perms: write
 
 Inputs:
+
 ```json
 [
   "f01234"
@@ -150,12 +159,13 @@ Inputs:
 Response: `{}`
 
 ## WalletSign
-WalletSign signs the given bytes using the given address.
 
+WalletSign signs the given bytes using the given address.
 
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -164,6 +174,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Type": 2,
@@ -172,12 +183,13 @@ Response:
 ```
 
 ## WalletSignMessage
-WalletSignMessage signs the given message using the given address.
 
+WalletSignMessage signs the given message using the given address.
 
 Perms: sign
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -200,6 +212,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Message": {
@@ -228,12 +241,13 @@ Response:
 ```
 
 ## WalletValidateAddress
-WalletValidateAddress validates whether a given string can be decoded as a well-formed address
 
+WalletValidateAddress validates whether a given string can be decoded as a well-formed address
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "string value"
@@ -243,13 +257,14 @@ Inputs:
 Response: `"f01234"`
 
 ## WalletVerify
+
 WalletVerify takes an address, a signature, and some bytes, and indicates whether the signature is valid.
 The address does not have to be in the wallet.
-
 
 Perms: read
 
 Inputs:
+
 ```json
 [
   "f01234",
@@ -262,4 +277,3 @@ Inputs:
 ```
 
 Response: `true`
-

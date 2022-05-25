@@ -10,12 +10,12 @@ toc: true
 
 ## NetAddrsListen
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "ID": "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf",
@@ -27,10 +27,10 @@ Response:
 
 ## NetAgentVersion
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -41,12 +41,12 @@ Response: `"string value"`
 
 ## NetAutoNatStatus
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "Reachability": 1,
@@ -56,12 +56,12 @@ Response:
 
 ## NetBandwidthStats
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "TotalIn": 9,
@@ -73,12 +73,12 @@ Response:
 
 ## NetBandwidthStatsByPeer
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "12D3KooWSXmXLJmBR1M7i9RW9GQPNUhZSzXKzxDHWtAgNuJAbyEJ": {
@@ -92,12 +92,12 @@ Response:
 
 ## NetBandwidthStatsByProtocol
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "/fil/hello/1.0.0": {
@@ -111,10 +111,10 @@ Response:
 
 ## NetBlockAdd
 
-
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -135,12 +135,12 @@ Response: `{}`
 
 ## NetBlockList
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 {
   "Peers": [
@@ -157,10 +157,10 @@ Response:
 
 ## NetBlockRemove
 
-
 Perms: admin
 
 Inputs:
+
 ```json
 [
   {
@@ -181,10 +181,10 @@ Response: `{}`
 
 ## NetConnect
 
-
 Perms: write
 
 Inputs:
+
 ```json
 [
   {
@@ -200,10 +200,10 @@ Response: `{}`
 
 ## NetConnectedness
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -214,10 +214,10 @@ Response: `1`
 
 ## NetDisconnect
 
-
 Perms: write
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -228,10 +228,10 @@ Response: `{}`
 
 ## NetFindPeer
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -239,6 +239,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "ID": "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf",
@@ -250,10 +251,10 @@ Response:
 
 ## NetLimit
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "string value"
@@ -261,6 +262,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "Memory": 123,
@@ -276,10 +278,10 @@ Response:
 
 ## NetPeerInfo
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -287,6 +289,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "ID": "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf",
@@ -312,12 +315,12 @@ Response:
 
 ## NetPeers
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -331,10 +334,10 @@ Response:
 
 ## NetPing
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -345,10 +348,10 @@ Response: `60000000000`
 
 ## NetProtectAdd
 
-
 Perms: admin
 
 Inputs:
+
 ```json
 [
   [
@@ -361,12 +364,12 @@ Response: `{}`
 
 ## NetProtectList
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   "12D3KooWGzxzKZYveHXtpG6AsrUJBcWxHBFS2HsEoGTxrMLvKXtf"
@@ -375,10 +378,10 @@ Response:
 
 ## NetProtectRemove
 
-
 Perms: admin
 
 Inputs:
+
 ```json
 [
   [
@@ -391,12 +394,12 @@ Response: `{}`
 
 ## NetPubsubScores
 
-
 Perms: read
 
 Inputs: `null`
 
 Response:
+
 ```json
 [
   {
@@ -421,10 +424,10 @@ Response:
 
 ## NetSetLimit
 
-
 Perms: admin
 
 Inputs:
+
 ```json
 [
   "string value",
@@ -445,10 +448,10 @@ Response: `{}`
 
 ## NetStat
 
-
 Perms: read
 
 Inputs:
+
 ```json
 [
   "string value"
@@ -456,6 +459,7 @@ Inputs:
 ```
 
 Response:
+
 ```json
 {
   "System": {
@@ -506,4 +510,3 @@ Response:
   }
 }
 ```
-
