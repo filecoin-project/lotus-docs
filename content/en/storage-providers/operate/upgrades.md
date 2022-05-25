@@ -20,7 +20,7 @@ The are two types of upgrades:
 
 ## Cross-check your config file
 
-All upgrade types require you to double-check that your configuration files are up-to-date. You can do this by exporting the default configuration files from Lotus and comparing them to your configuration files.
+All upgrade types require you to double-check that your configuration files are up-to-date.You can do this by exporting the default configuration files from Lotus and comparing them to your configuration files.
 
 To export the default configuration files from Lotus, run:
 
@@ -47,7 +47,29 @@ If you would prefer to have Lotus export the default configuration to a file, ru
 lotus-miner config default >> ~/default-lotus-miner-configuration.toml
 ```
 
-Once you have the default configuration file, compare it with your configuration file and make sure that you're not missing any sections. See the [Lotus release notes](https://github.com/filecoin-project/lotus/releases) for details on what new sections have been added.
+Once you have the updated default configuration file, compare it with your configuration file and make sure that you're not missing any sections. You can use the `diff` command to produce a list of changes that would need to be made to the first file, to make it match the second file.
+
+If you keep the same formatting as the default configuration file it should be fairly easy to spot difference and new sections using this command:
+
+```shell
+diff -y -W 200 your-config.toml default-lotus-miner-configuration.toml
+```
+
+A `vertical bar` sign indcates that there is a difference in that line.
+
+```toml
+  #ListenAddress = "/ip4/127.0.0.1/tcp/4567/http"						   |	  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
+```
+
+While the `greater-than-sign` indicates that the first configuration file is missing some lines.
+
+```toml
+												   >	  # env var: LOTUS_STORAGE_ALLOWPROVEREPLICAUPDATE2
+												   >	  #AllowProveReplicaUpdate2 = true
+												   >
+```
+
+You can also check the [Lotus release notes](https://github.com/filecoin-project/lotus/releases) for details on what new sections have been added.
 
 ## Upgrade in-place
 
