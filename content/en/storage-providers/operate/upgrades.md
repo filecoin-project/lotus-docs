@@ -55,13 +55,13 @@ If you keep the same formatting as the default configuration file it should be f
 diff -y -W 200 your-config.toml default-lotus-miner-configuration.toml
 ```
 
-A `vertical bar` sign indcates that there is a difference in that line between your configuraion file, and the default configuration file.
+A `vertical bar` sign indcates that there is a difference in that line between your configuration file, and the default configuration file.
 
 ```toml
 #ListenAddress = "/ip4/127.0.0.1/tcp/4567/http"   |	  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
 ```
 
-While the `greater-than-sign` indicates that the your configuration file is missing some lines that are included in the updated default configuration file.
+The `greater-than-sign` indicates that your configuration file is missing some lines that are included in the updated default configuration file.
 
 ```toml
 					      >	  # env var: LOTUS_STORAGE_ALLOWPROVEREPLICAUPDATE2
