@@ -47,7 +47,7 @@ If you would prefer to have Lotus export the default configuration to a file, ru
 lotus-miner config default >> ~/default-lotus-miner-configuration.toml
 ```
 
-Once you have an updated default configuration file from the new version, compare it with your configuration file and make sure that you're not missing any sections. You can use the `diff` command to produce a list of changes that would need to be made to the first file, to make it match the second file.
+Once you have an updated default configuration file from the new version, compare it with your configuration file and make sure that you're not missing any sections. You can use the `diff` command to produce a list of changes that would need to be made to the your configuration file, to make it match the updated default configuration file.
 
 If you keep the same formatting as the default configuration file it should be fairly easy to spot difference and new sections using this command:
 
