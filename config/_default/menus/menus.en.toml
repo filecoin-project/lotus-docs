@@ -137,6 +137,12 @@
   url = "/reference/basics/overview"
 
 [[reference]]
+  name = "Methods v0"
+  weight = 5
+  identifier = "reference-methods-v0"
+  url = "/reference/methods-v0"
+
+[[reference]]
   name = "Miner methods v0"
   weight = 10
   identifier = "reference-miner-methods-v0"
