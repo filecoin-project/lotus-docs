@@ -137,22 +137,22 @@
   url = "/reference/basics/overview"
 
 [[reference]]
-  name = "Methods v0"
+  name = "General Methods"
   weight = 5
-  identifier = "reference-methods-v0"
-  url = "/reference/methods-v0"
+  identifier = "reference-methods"
+  url = "/reference/methods"
 
 [[reference]]
-  name = "Miner methods v0"
+  name = "Miner methods"
   weight = 10
-  identifier = "reference-miner-methods-v0"
-  url = "/reference/miner-methods-v0"
+  identifier = "reference-miner-methods"
+  url = "/reference/miner-methods"
 
 [[reference]]
-  name = "Worker methods v0"
+  name = "Worker methods"
   weight = 20
-  identifier = "reference-worker-methods-v0"
-  url = "/reference/worker-methods-v0"
+  identifier = "reference-worker-methods"
+  url = "/reference/worker-methods"
 
 [[reference]]
   name = "CLI lotus"
