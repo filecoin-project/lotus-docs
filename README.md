@@ -46,7 +46,7 @@ If you want to build this site locally, run the following:
 1. Open [localhost:1313](http://localhost:1313/) in your browser.
 1. Close the local server with `CTRL` + `c`.
 1. To restart the local server, run `npm start` from within the `lotus-docs` folder.
-1. To publish the site run: `npm run build`. The project will be built and saved to the `public` folder.
+1. Run `npm run build` to publish the site. The project will be built and saved to the `public` folder.
 
 ## License
 
