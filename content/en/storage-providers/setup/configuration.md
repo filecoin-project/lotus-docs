@@ -193,7 +193,7 @@ The addresses section allows users to specify additional addresses to send messa
 
 ## Next steps
 
-- Configure a [separate address for WindowPost messages]({{< relref "../../operate/addresses/" >}}).
-- Test your sealing pipeline by [running a benchmark]({{< relref "../../operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../operate/sector-pledging/" >}}).
-- Learn when to safely [shut down/restart your miner]({{< relref "../../operate/maintenance/" >}})
-- Consider [splitting markets and miners processes]({{< relref "../../advanced-configurations/split-markets-miners/" >}}) for increased stability.
+- Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
+- Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../operate/sector-pledging/" >}}).
+- Learn when to safely [shut down/restart your miner]({{< relref "../../storage-providers/operate/maintenance/" >}})
+- Consider [splitting markets and miners processes]({{< relref "../../storage-providers/advanced-configurations/split-markets-miners/" >}}) for increased stability.
