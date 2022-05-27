@@ -22,7 +22,7 @@ For any configuration in the config.toml file to take effect, the storage provid
 
 Since we initialized the storage provider with the `--no-local-storage` in the [initialize]({{< relref "../../storage-providers/setup/initialize/" >}} page, we need to specify the disk locations for long-term storage and sealing (fast SSDs recommended).
 
-The `lotus-miner` keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
+The `lotus-miner` keeps track of defined storage locations in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
 
 Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
 
