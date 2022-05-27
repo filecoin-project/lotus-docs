@@ -170,7 +170,7 @@ This section allows you to disable subsystems of the `lotus-miner`.
 
 ### Addresses section
 
-The addresses section allows users to specify additional addresses to send messages from. This helps mitigate head-of-line blocking for important messages when network fees are high. For more details see the [Addresses]({{< relref "../../operate/addresses/" >}}) section.
+The addresses section allows users to specify additional addresses to send messages from. This helps mitigate head-of-line blocking for important messages when network fees are high. For more details see the [Addresses]({{< relref "../../storage-providers/operate/addresses/" >}}) section.
 
 {{< details "Addresses section" >}}
 ```toml
@@ -194,6 +194,6 @@ The addresses section allows users to specify additional addresses to send messa
 ## Next steps
 
 - Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
-- Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../operate/sector-pledging/" >}}).
+- Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../storage-providers/operate/sector-pledging/" >}}).
 - Learn when to safely [shut down/restart your miner]({{< relref "../../storage-providers/operate/maintenance/" >}})
 - Consider [splitting markets and miners processes]({{< relref "../../storage-providers/advanced-configurations/split-markets-miners/" >}}) for increased stability.
