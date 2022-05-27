@@ -20,7 +20,7 @@ For any configuration in the config.toml file to take effect, the storage provid
 
 ## Required configurations
 
-Since we initialized the storage provider with the `--no-local-storage` in the [initialize]({{< relref "../../storage-providers/setup/initialize/" >}} page, we need to specify the disk locations for long-term storage and sealing (fast SSDs recommended).
+Since we initialized the storage provider with the `--no-local-storage` in the [initialize]({{< relref "../../storage-providers/setup/initialize/" >}}) page, we need to specify the disk locations for long-term storage and sealing (fast SSDs recommended).
 
 The `lotus-miner` keeps track of defined storage locations in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
 
@@ -28,7 +28,7 @@ Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.js
 
 ### Adding sealing storage location
 
-Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}} to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architecture your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
+Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architecture your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
 
 Under the storage-section in your `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` file, you can configure which sealing process you would like your `lotus-miner` to perform. If you want to fully delegate any of these operations to workers, set them to false.
 
@@ -104,7 +104,7 @@ The interval must be a number between `0` and `1`. The value `0.875` is a good s
 
 The `lotus-miner` configuration file is created after the [initialization step]({{< relref "../../storage-providers/setup/initialize/" >}}), and is placed in `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` when defined.
 
-You can see your versions default configuration file with the `lotus-miner config default` command. Its recommended to get familiar with the different sections and read through the comments in the file. In the `Operate` and `Advanced configurations` sections we will discuss some of these items more in-depth.
+You can see your versions default configuration file with the `lotus-miner config default` command. Its recommended to get familiar with the different sections and read through the comments in the file. We list a couple of the sections below, but the full list can always be found with the CLI. In the `Operate` and `Advanced configurations` sections we will discuss some of these items and sections more in-depth.
 
 The _configuration file_ has all the items commented. To customize one of the items, you must remove the leading `#`.
 
@@ -213,9 +213,62 @@ The addresses section allows users to specify additional addresses to send messa
 ```
 {{< /details >}}
 
+### Fees section
+
+The fees section allow you to define what the max amount of gas you want to spend on the different type of messages sent to the chain.
+
+{{< details "Fees section" >}}
+```toml
+[Fees]
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXPRECOMMITGASFEE
+  #MaxPreCommitGasFee = "0.025 FIL"
+
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXCOMMITGASFEE
+  #MaxCommitGasFee = "0.05 FIL"
+
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXTERMINATEGASFEE
+  #MaxTerminateGasFee = "0.5 FIL"
+
+  # WindowPoSt is a high-value operation, so the default fee should be high.
+  #
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXWINDOWPOSTGASFEE
+  #MaxWindowPoStGasFee = "5 FIL"
+
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXPUBLISHDEALSFEE
+  #MaxPublishDealsFee = "0.05 FIL"
+
+  # type: types.FIL
+  # env var: LOTUS_FEES_MAXMARKETBALANCEADDFEE
+  #MaxMarketBalanceAddFee = "0.007 FIL"
+
+  [Fees.MaxPreCommitBatchGasFee]
+    # type: types.FIL
+    # env var: LOTUS_FEES_MAXPRECOMMITBATCHGASFEE_BASE
+    #Base = "0 FIL"
+
+    # type: types.FIL
+    # env var: LOTUS_FEES_MAXPRECOMMITBATCHGASFEE_PERSECTOR
+    #PerSector = "0.02 FIL"
+
+  [Fees.MaxCommitBatchGasFee]
+    # type: types.FIL
+    # env var: LOTUS_FEES_MAXCOMMITBATCHGASFEE_BASE
+    #Base = "0 FIL"
+
+    # type: types.FIL
+    # env var: LOTUS_FEES_MAXCOMMITBATCHGASFEE_PERSECTOR
+    #PerSector = "0.03 FIL"
+```
+{{< /details >}}
+
 ## Next steps
 
-The storage provider should now be preliminary set up and running, and you should now be ready to explore how to operate it. We recommend reading through at least these pages:
+The storage provider should now be preliminary set up and running, and you should now be ready to explore how to operate it and pledge storage to the Filecoin network. We recommend reading through at least these pages:
 
 - Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
 - Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../storage-providers/operate/sector-pledging/" >}}).
