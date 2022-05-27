@@ -1,7 +1,7 @@
 ---
 title: "Initialize"
-description: "This guide describes the necessary steps to configure a Lotus miner for production."
-lead: "This guide describes the necessary steps to configure a Lotus miner for production."
+description: "This guide describes the necessary steps to initilize a storage provider on-chain."
+lead: "This guide describes the necessary steps to initilize a storage provider on-chain."
 draft: false
 menu:
     storage-providers:
@@ -14,45 +14,41 @@ weight: 210
 toc: true
 ---
 
-## Checklist before launch
+## Checklist
 
-To summarize, make sure that:
+Make sure that:
 
-- All the [prerequisite steps]({{< relref "prerequisites">}}) have been completed.
-- The _worker address_ has some funds so that the miner can be initialized.
-- The following environment variables have been defined and will be available for all Lotus miner instances:
+- All the [prerequisite steps]({{< relref "../../../storage-providers/setup/prerequisites/">}}) have been completed.
+- Wallets have been created for the owner and worker address, and the _worker address_ has funds so that the storage provider can be initialized.
+- The following environment variables have been defined and will be available for all ´lotus-miner` instances:
 
   ```plaintext
   export LOTUS_MINER_PATH=/path/to/miner/config/storage
   export LOTUS_PATH=/path/to/lotus/node/folder # When using a local node.
-  export BELLMAN_CPU_UTILIZATION=0.875 # Optimal value depends on your exact hardware.
-  export FIL_PROOFS_MAXIMIZE_CACHING=1
-  export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # When having GPU.
-  export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # When having GPU.
+  export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http # When using a remote Lotus node.
   export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
   export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
   ```
 
 - Parameters have been prefetched to the cache folders specified above.
-- The system has enough swap and it is active.
+- The system has enough swap if needed.
 - The lotus api has been configured and the variable has been exported in the environment where lotus miner runs.
-- Wallets have been created for the owner and worker address.
 
-## Miner initialization
+## Initialization
 
-Before starting your miner for the first time run:
+Before we can run the storage provider we need to initilize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
 
 ```shell
 lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
 ```
 
-- The `--no-local-storage` flag is used so that we can later configure [specific locations for storage]({{< relref "custom-storage-layout" >}}). This is optional but recommended.
-- The Lotus Miner configuration folder is created in `~/.lotusminer/` or `$LOTUS_MINER_PATH` if set.
-- The difference between _owner_ and _worker_ addresses is explained in the [miner addresses guide]({{< relref "addresses" >}}). As mentioned above, we recommend using two separate addresses. If the `--worker` flag is not provided, the owner address will be used. _Control addresses_ can be added later when the miner is running.
+- The Lotus Miner configuration folder is created in `~/.lotusminer/` or in your `$LOTUS_MINER_PATH` if set.
+- The difference between _owner_ and _worker_ addresses is explained in the [miner addresses guide]({{< relref "../../storage-providers/operate/addresses/" >}}). As mentioned above, we recommend using two separate addresses. If the `--worker` flag is not provided, the owner address will be used. _Control addresses_ can be added later when the storage provider is running.
+- The `--no-local-storage` flag is used so that we can later configure [specific locations for storage]({{< relref "../../storage-providers/operate/custom-storage-layout/" >}}) the location of our sealing storage, and our long term storage.
 
-## Connectivity to the miner
+## Connectivity to the storage provider
 
-Before you start your miner, it is important to configure it so that it is reachable from any peer in the Filecoin network. For this, you will need a stable public IP and edit your `~/.lotusminer/config.toml` as follows:
+Before you run your storage provider, it is important that it is reachable from any peer in the Filecoin network. For this, you will need a stable public IP and edit your `~/.lotusminer/config.toml` as follows:
 
 ```toml
 ...
@@ -62,11 +58,11 @@ Before you start your miner, it is important to configure it so that it is reach
 ...
 ```
 
-Once you start your miner, [make sure you can connect to its public IP/port]({{< relref "connectivity" >}}).
+Once you start your storage provider, [make sure you can connect to its public IP/port]({{< relref "../../storage-providers/operate/connectivity/" >}}).
 
-## Starting the miner
+## Running the storage provider
 
-You are now ready to start your Lotus miner:
+You are now ready to start the `lotus-miner` process:
 
 ```shell
 lotus-miner run
@@ -79,12 +75,12 @@ systemctl start lotus-miner
 ```
 
 {{< alert icon="warning" >}}
-**Do not proceed** from here until you have verified that your miner not only is running, but also [reachable on its public IP address]({{< relref "connectivity" >}}).
+**Do not proceed** from here until you have verified that your storage provider not only is running, but also [reachable on its public IP address]({{< relref "../../storage-providers/operate/connectivity/" >}}).
 {{< /alert >}}
 
-## Publishing the miner addresses
+## Publishing the addresses
 
-Once the miner is up and running, publish your miner address (which you configured above) to the chain so that other nodes can talk to it directly and make deals:
+Once the storage provider is up and running, publish your address (which you configured above) to the chain so that other nodes can talk to it directly and make deals:
 
 ```shell
 lotus-miner actor set-addrs /ip4/<YOUR_PUBLIC_IP_ADDRESS>/tcp/24001
@@ -92,12 +88,4 @@ lotus-miner actor set-addrs /ip4/<YOUR_PUBLIC_IP_ADDRESS>/tcp/24001
 
 ## Next steps
 
-Your miner should now be preliminarily set up and running, but **there are still a few more recommended tasks** to be ready for prime-time:
-
-- Set up your [custom storage layout]({{< relref "custom-storage-layout" >}}) (required if you used `--no-local-storage`).
-- Edit the miner [configuration settings]({{< relref "configuration" >}}) to fit your requirements.
-- Learn when to safely [shut down/restart your miner]({{< relref "maintenance" >}})
-- Update `ExpectedSealDuration` with the time it takes your miner to seal a sector: discover it by [running a benchmark]({{< relref "benchmarks" >}}) or by [pledging a sector]({{< relref "sector-pledging" >}}) and noting down the time.
-- Configure additional [seal workers]({{< relref "seal-workers" >}}) to increase the miner's capacity to seal sectors.
-- Configure a [separate address for WindowPost messages]({{< relref "addresses" >}}).
-- Consider [splitting markets and miners processes]({{< relref "split-markets-miners" >}}) for increased stability.
+Your storage provider should now be preliminarily initialized and running, but **there are still a few more things you need to configure** to be ready for prime-time. We will go through these in the [configuration section]({{< relref "../../storage-providers/setup/configuration/" >}}).
