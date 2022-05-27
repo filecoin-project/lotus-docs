@@ -91,7 +91,7 @@ It is recommended to set the following environment variables in the environment 
  export FIL_PROOFS_USE_MULTICORE_SDR=1
  ```
 
- Depending on your GPU, you might want to experiment with the optional `BELLMAN_CPU_UTILIZATION` variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel to the GPU. But omitting this environment variable is probably optimal if you have a newer GPU card.
+ Depending on your GPU, you might want to experiment with the optional `BELLMAN_CPU_UTILIZATION` variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel with the GPU. But omitting this environment variable is probably optimal if you have a newer GPU card.
 
  ```shell
  # See https://github.com/filecoin-project/bellman
