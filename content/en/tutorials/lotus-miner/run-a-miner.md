@@ -179,7 +179,6 @@ This section will cover the installation, configuration, and how to start the lo
     
     ```shell
     # See https://github.com/filecoin-project/rust-fil-proofs/
-    export FIL_PROOFS_MAXIMIZE_CACHING=1 # More speed at RAM cost (1x sector-size of RAM - 32 GB).
     export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # precommit2 GPU acceleration
     export FIL_PROOFS_USE_GPU_TREE_BUILDER=1
     
