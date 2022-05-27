@@ -78,9 +78,6 @@ This section will cover the installation, configuration and running a Lotus seal
 1. Add the following variables to the `~/.bashrc` file and source the file. The token used for API authentication is the same as generated in the [previous tutorial]({{<relref "run-a-miner#generate-auth-token-for-seal-worker">}}). 
     
     ```shell
-    # See https://github.com/filecoin-project/rust-fil-proofs/
-    export FIL_PROOFS_MAXIMIZE_CACHING=1 # More speed at RAM cost (1x sector-size of RAM - 32 GB).
-
     # The following increases speed of PreCommit1 at the cost of using a full
     # CPU Core-Complex rather than a single core. Should be used with CPU affinities set!
     # See https://github.com/filecoin-project/rust-fil-proofs/ and the seal-workers guide.
