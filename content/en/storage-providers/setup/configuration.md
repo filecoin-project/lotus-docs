@@ -176,22 +176,46 @@ The addresses section allows users to specify additional addresses to send messa
 ```toml
 [Addresses]
   # Addresses to send PreCommit messages from
-  PreCommitControl = []
+  #
+  # type: []string
+  # env var: LOTUS_ADDRESSES_PRECOMMITCONTROL
+  #PreCommitControl = []
+
   # Addresses to send Commit messages from
-  CommitControl = []
-  # Addresses to send Terminate Sector messages from
-  TerminateControl = []
-  # Addresses to send PublishStorageDeals from
-  DealPublishControl = []
-  # Disable the use of the owner address for messages which are sent automatically.
-  # This is useful when the owner address is an offline/hardware key
-  DisableOwnerFallback = false
-  # Disable the use of the worker address for messages for which it's possible to use other control addresses
-  DisableWorkerFallback = false
+  #
+  # type: []string
+  # env var: LOTUS_ADDRESSES_COMMITCONTROL
+  #CommitControl = []
+
+  # type: []string
+  # env var: LOTUS_ADDRESSES_TERMINATECONTROL
+  #TerminateControl = []
+
+  # type: []string
+  # env var: LOTUS_ADDRESSES_DEALPUBLISHCONTROL
+  #DealPublishControl = []
+
+  # DisableOwnerFallback disables usage of the owner address for messages
+  # sent automatically
+  #
+  # type: bool
+  # env var: LOTUS_ADDRESSES_DISABLEOWNERFALLBACK
+  #DisableOwnerFallback = false
+
+  # DisableWorkerFallback disables usage of the worker address for messages
+  # sent automatically, if control addresses are configured.
+  # A control address that doesn't have enough funds will still be chosen
+  # over the worker address if this flag is set.
+  #
+  # type: bool
+  # env var: LOTUS_ADDRESSES_DISABLEWORKERFALLBACK
+  #DisableWorkerFallback = false
 ```
 {{< /details >}}
 
 ## Next steps
+
+The storage provider should now be preliminary set up and running, and you should now be ready to explore how to operate it. We recommend reading through at least these pages:
 
 - Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
 - Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../storage-providers/operate/sector-pledging/" >}}).
