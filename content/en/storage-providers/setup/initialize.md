@@ -62,7 +62,7 @@ Before you start your miner, it is important to configure it so that it is reach
 ...
 ```
 
-Once you start your miner, [make sure you can connect to its public IP/port]({{< relref "connectivity" >}}).
+Once you start your miner, [make sure you can connect to its public IP/port]({{< relref "../operate/connectivity" >}}).
 
 ## Starting the miner
 
@@ -79,7 +79,7 @@ systemctl start lotus-miner
 ```
 
 {{< alert icon="warning" >}}
-**Do not proceed** from here until you have verified that your miner not only is running, but also [reachable on its public IP address]({{< relref "connectivity" >}}).
+**Do not proceed** from here until you have verified that your miner not only is running, but also [reachable on its public IP address]({{< relref "../operate/connectivity" >}}).
 {{< /alert >}}
 
 ## Publishing the miner addresses

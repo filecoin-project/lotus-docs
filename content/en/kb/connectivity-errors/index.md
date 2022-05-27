@@ -1,6 +1,7 @@
 ---
-title: "Add swap on Linux"
-description: "This is a guide for adding swap to a linux machine."
+title: "Common Connectivity Error"
+description: "This article lists out the common connectivity error a user  might face when running lotus-miner"
+lead: "This article lists out the common connectivity error a user  might face when running lotus-miner."
 draft: false
 menu:
   kb:
