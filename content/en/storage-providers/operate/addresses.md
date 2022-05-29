@@ -35,6 +35,10 @@ The owner address corresponds to a Lotus node address provided during the miner 
 
 The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "manage-fil" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
 
+{{< alert >}}
+Always keep a backup of the owner address!
+{{< /alert >}}
+
 The owner address can be updated with the following command:
 
 ```shell
@@ -113,10 +117,10 @@ To set up a _control address_:
    ```
 
    ```output
-   name       ID      key        use    balance
-   owner      t01111  f3abcd...  other  300 FIL
-   worker     t01111  f3abcd...  other  300 FIL
-   control-0  t02222  f3defg...  post   100 FIL
+   name       ID      key        use              balance
+   owner      f01234  f3zdes...                   300 FIL
+   worker     f01111  f3abcd...  other            300 FIL
+   control-0  f02222  f3defg...  post             100 FIL
    ```
 
 Repeat this procedure to add additional addresses.
@@ -127,9 +131,9 @@ Repeat this procedure to add additional addresses.
 lotus-miner --actor f01000 actor control list
 ```
 
-### Use control addresses for commits
+### Use control addresses for all messages
 
-Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits and commits. With this, only market messages are sent from the worker address. If the basefee is high, then you can still put sectors on chain without those messages being blocked by things like publishing deals.
+Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits, commits, publish deals and terminate. By default, the worker address will act as a fallback address if any of the control addresses are out of funds. See .lotusminer `config.toml` for more information. 
 
 1. Create two control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
 
@@ -176,7 +180,7 @@ Clean up the tasks required for your worker address by setting your control addr
 5. Add control addresses:
 
    ```shell with-output
-   lotus-miner actor control set --really-do-it=true f0100933 f0100939
+   lotus-miner actor control set --really-do-it f0100933 f0100939
    ```
 
    ```output
@@ -190,19 +194,24 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-   name       ID      key        use    balance
-   owner      t01...  f3abcd...  other  15 FIL
-   worker     t01...  f3abcd...  other  10 FIL
-   control-0  t02...  f3defg...  post   100 FIL
-   control-1  t02...  f3defg...  post   100 FIL
+   name       ID      key        use              balance
+   owner      f01234  f3zdes...                   300 FIL
+   worker     f01111  f3abcd...  other            300 FIL
+   control-0  f02222  f3defg...  post             100 FIL
+   control-1  f03333  f3vst2...  precommit        100 FIL
+   control-2  f04444  f3uuyr...  commit           200 FIL
+   control-3  f05555  f3wywg...  deals            100 FIL
+   control-4  f06666  f3qtma...  terminate         50 FIL
    ```
 
 6. Add the newly created addresses into the miner config under the `[Addresses]` section:
 
    ```yaml
    [Addresses]
-       PreCommitControl = ["f3rht..."]
-       CommitControl = ["f3sxs..."]
+       PreCommitControl = ["f3vst2..."]
+       CommitControl = ["f3uuyr..."]
+       TerminateControl = ["f3qtma..."]
+       DealPublishControl = ["f3wywg..."]
    ```
 
 7. Restart `lotus-miner`.
@@ -216,27 +225,29 @@ lotus-miner info
 ```
 
 ```output
-Miner: t01000
-Sector Size: 2 KiB
-Byte Power:   100 KiB / 100 KiB (100.0000%)
-Actual Power: 1e+03 Ki / 1e+03 Ki (100.0000%)
-  Committed: 100 KiB
-  Proving: 100 KiB
-Below minimum power threshold, no blocks will be won
-Deals: 0, 0 B
-  Active: 0, 0 B (Verified: 0, 0 B)
+Miner: f01000 (32 GiB sectors)
+Power: 1 Pi / 1 Ei (100.0000%)
+        Raw: 1 PiB / 1 PiB (100.0000%)
+        Committed: 1 PiB
+        Proving: 1 PiB
+Projected average block win rate: 1000/week (every 1h0m0s)
+Projected block win with 99.9% probability every 2h0m0s
+(projections DO NOT account for future network and miner growth)
 
-Miner Balance: 10582.321501530685596531 FIL
-  PreCommit:   0.000000286878768791 FIL
-  Pledge:      0.00002980232192 FIL
-  Locked:      10582.321420164834231291 FIL
-  Available:   0.000051276650676449 FIL
-Worker Balance: 49999999.999834359275302423 FIL
-Market (Escrow):  0 FIL
-Market (Locked):  0 FIL
+Miner Balance:    123456.789 FIL
+      PreCommit:  0
+      Pledge:     122965.789 FIL
+      Vesting:    250 FIL
+      Available:  250 FIL
+Market Balance:   0 FIL
+       Locked:    0 FIL
+       Available: 0 FIL
+Worker Balance:   500 FIL
+       Control:   600 FIL
+Total Spendable:  1350 FIL
 ```
 
-In this example, the miner ID is `t01000`, it has a total balance of `10582.321501530685596531 FIL`, and an available balance of `0.000051276650676449 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `49999999.999834359275302423 FIL`.
+In this example, the miner ID is `f01000`, it has a total balance of `123456.789 FIL`, and an available balance of `250 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `500 FIL` and the control balance is `600 FIL`. Control balance combines all funds in the control addresses and Total Spendable combines Available, Worker Balance and Control balances.
 
 ## Withdrawing funds from the Miner actor
 
