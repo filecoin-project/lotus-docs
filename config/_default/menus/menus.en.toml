@@ -76,12 +76,6 @@
   identifier = "developers-networks"
   url = "/developers/networks"
 
-[[developers]]
-  name = "APIs"
-  weight = 20
-  identifier = "developers-apis"
-  url = "/developers/apis"
-
 
 
 [[storage-providers]]
