@@ -4,11 +4,12 @@ description: "This page offers some troubleshooting advice for Lotus API users b
 lead: "This page offers some troubleshooting advice for Lotus API users by listing some of the most common errors that they can come accross."
 draft: false
 menu:
-    developers:
-             parent: "developers-apis"
-             identifier: "developers-apis-troubleshooting"
+    reference:
+             parent: "reference-basics"
+             identifier: "reference-basics-troubleshooting"
 aliases:
     - /docs/developers/troubleshooting/
+    - /developers/troubleshooting/
 weight: 140 
 toc: true
 ---
