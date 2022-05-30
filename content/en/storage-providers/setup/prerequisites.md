@@ -46,7 +46,7 @@ If you opt to run a miner on a different machine as the Lotus Node, set:
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/overview" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
 
 ### Performance tweaks
 
