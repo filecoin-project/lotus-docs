@@ -9,7 +9,7 @@ menu:
         identifier: "tutorials-store-and-retrieve-retrieve-data"
 aliases:
     - /tutorials/store-and-retrieve/retrieve-data/
-weight: 130
+weight: 115
 toc: true
 ---
 

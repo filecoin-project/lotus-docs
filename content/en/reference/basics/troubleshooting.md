@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/developers/troubleshooting/
     - /developers/troubleshooting/
-weight: 140 
+weight: 10 
 toc: true
 ---
 

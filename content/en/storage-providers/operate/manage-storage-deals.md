@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-manage-storage-deals"
 aliases:
     - /docs/storage-providers/manage-storage-deals/
-weight: 170
+weight: 345
 toc: true
 ---
 

@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/troubleshooting/
-weight: 170
+weight: 435
 toc: true
 ---
 

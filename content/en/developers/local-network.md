@@ -7,7 +7,7 @@ menu:
     developers:
         parent: "developers-networks"
         identifier: "developers-networks-local-network"
-weight: 310
+weight: 305
 toc: true
 aliases:
     - /docs/developers/developer-network

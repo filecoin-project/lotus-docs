@@ -8,7 +8,7 @@ menu:
         parent: "tutorials-lotus"
 aliases:
     - /docs/developers/payment-channels/
-weight: 160
+weight: 130
 toc: true
 ---
 

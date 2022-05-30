@@ -8,6 +8,7 @@ menu:
         parent: "lotus-configure"
 aliases:
     - /docs/set-up/nodes-in-china/
+weight: 320
 toc: true
 ---
 

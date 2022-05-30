@@ -9,7 +9,7 @@ menu:
         identifier: "lotus-configure-defaults"
 aliases:
     - /docs/set-up/configuration/
-weight: 110
+weight: 305
 toc: true
 ---
 

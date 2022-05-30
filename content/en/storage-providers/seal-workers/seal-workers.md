@@ -8,7 +8,7 @@ menu:
         parent: "storage-providers-seal-workers"
 aliases:
     - /docs/storage-providers/seal-workers/
-weight: 110
+weight: 405
 toc: true
 ---
 
@@ -67,7 +67,6 @@ export TMPDIR=/fast/disk/folder3                    # used when sealing
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export MARKETS_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export BELLMAN_CPU_UTILIZATION=0.875      # optimal value depends on exact hardware
-export FIL_PROOFS_MAXIMIZE_CACHING=1
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!

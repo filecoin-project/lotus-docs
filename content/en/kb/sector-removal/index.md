@@ -10,7 +10,7 @@ menu:
 toc: false
 pinned: false
 types: ["solution"]
-areas: ["OS", "Linux", "Lotus Node"]
+areas: ["OS", "Linux", "Lotus Node", "Lotus Miner"]
 ---
 
 ## Problem

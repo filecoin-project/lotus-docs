@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/apis/cli/
-weight: 180
+weight: 440
 toc: true
 ---
 

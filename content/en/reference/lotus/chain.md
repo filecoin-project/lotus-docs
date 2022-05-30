@@ -1,5 +1,9 @@
 ---
 title: "Chain"
+<<<<<<< HEAD:content/en/reference/lotus/chain.md
+=======
+description: ""
+>>>>>>> main:content/en/reference/api/chain.md
 draft: false
 menu:
     reference:

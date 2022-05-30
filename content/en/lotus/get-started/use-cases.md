@@ -9,7 +9,7 @@ menu:
         identifier: "types-of-node"
 aliases:
     - /build/examples
-weight: 140
+weight: 115
 toc: true
 ---
 

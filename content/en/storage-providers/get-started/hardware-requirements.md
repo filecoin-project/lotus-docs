@@ -9,7 +9,7 @@ menu:
         identifier: "storage-providers-hardware-requirements"
 aliases:
     - /docs/storage-providers/hardware-requirements/
-weight: 130
+weight: 120
 toc: true
 ---
 

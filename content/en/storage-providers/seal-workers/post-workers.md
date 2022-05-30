@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-seal-workers"
-weight: 120
+weight: 410
 toc: true
 ---
 

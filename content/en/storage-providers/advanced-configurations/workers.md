@@ -6,13 +6,17 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-advanced-configurations"
-weight: 110
+weight: 505
 toc: true
 ---
 
 While the Lotus workers have very reasonable default settings, some storage providers might want to fine tune some advanced configurations according to their setup.
 
-## Resource allocation in seal workers
+## Advanced seal worker configurations
+
+Although the default settings for the seal workers are reasonable, you can configure some advanced settings when running the workers. These settings should be tested for local optimizations of your hardware.
+
+### Resource allocation in seal workers
 
 Each **Seal Worker** can potentially run multiple tasks in available slots. Each slot is called a _window_. The number of available windows per worker is determined by the requirements of the sealing tasks being allocated to the worker and its available system resources, including:
 
@@ -115,7 +119,16 @@ When comparing task priority:
 
 ### Control groups
 
-Countrol groups (cgroups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the Lotus Worker will honor the cgroup memory limits configured on the host.
+Control groups (cgroups) is a Linux Kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. If cgroups are in use on the host, the `lotus-worker` will honor the cgroup memory limits configured on the host. There are 6 cgroup variables for each sealing stage.
+
+| Cgroup variable    |  Type    |  Explanation                                                                                                |
+|--------------------|----------|-------------------------------------------------------------------------------------------------------------|
+|  MinMemory         | uint64   | Minimum RAM used for decent performance.                                                                     |
+|  MaxMemory         | uint64   | Maximum memory (swap+RAM) usage during task execution.                                                        |
+|  GPUUtilization    | float64  | Number of GPUs a task can use.                                                                              |
+|  MaxParallelism    | int      | Number of CPU cores a task can use when GPU is not in use.                                                   |
+|  MaxParallelismGPU | int      | Number of CPU cores a task can use when GPU is in use. Inherits value from `MaxParallelism` when set to 0.  |
+|  BaseMinMemory     | uint64   | Minimum RAM used for decent performance. This is shared between the treads, unlike `MinMemory`. |
 
 These are the default variables for resource allocation tuning. These values override settings in the resource allocation table.
 
@@ -669,18 +682,15 @@ UNS_8M_MIN_MEMORY=8388608
 
 ## Advanced PoSt worker configurations
 
-{{< alert icon="tip" >}}
-Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
- {{< /alert >}}
+Although the default settings for the PoSt workers are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware. Most of the advanced PoSt worker configurations can be found in the helptext.
 
-Although the default settings are reasonable, you can configure some advanced settings when running the PoSt workers. These settings should be tested for local optimizations of your hardware.
+### Proving challenges
 
 The `--post-parallel-reads` option lets you set an upper boundary of how many challenges it reads from your storage simultaneously. This option is set to 128 by default.
 
 ```plaintext
 --post-parallel-reads value   maximum number of parallel challenge reads (0 = no limit) (default: 128)
 ```
-
 
 The `--post-read-timeout` option lets you set a cut off time for reading challenges from storage, after which it will abort the job. This option has no default limit.
 
@@ -689,3 +699,7 @@ The `--post-read-timeout` option lets you set a cut off time for reading challen
 ```
 
 Both these settings can be set at runtime of the PoSt workers.
+
+{{< alert icon="tip" >}}
+Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
+ {{< /alert >}}

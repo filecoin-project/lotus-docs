@@ -6,6 +6,8 @@ menu:
               parent: "reference-lotus"
               identifier: "reference-methods-auth"
 toc: true
+aliases:
+    - /developers/apis/json-rpc/
 ---
 
 ## AuthNew

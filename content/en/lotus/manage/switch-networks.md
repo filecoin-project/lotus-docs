@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/switch-networks/
-weight: 140
+weight: 420
 toc: true
 ---
 

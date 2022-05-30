@@ -64,12 +64,13 @@ alertText = ""
 # Edit Page
 docsRepo = "https://github.com/filecoin-project/lotus-docs"
 docsRepoBranch = "main"
-editPage = false
+editPage = true
+repoHost = "GitHub"
 
 [options]
     lazySizes = true
     clipBoard = true
-    instantPage = true
+    instantPage = false
     flexSearch = true
     darkMode = true
     bootStrapJs = true
