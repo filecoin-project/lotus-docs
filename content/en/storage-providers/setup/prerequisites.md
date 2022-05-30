@@ -46,7 +46,7 @@ export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/overview" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/overview" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access" >}}).
 
 ### Performance tweaks
 
@@ -69,7 +69,7 @@ If you opt to run the `lotus-miner` on a different machine than the Lotus Node, 
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "../../developers/api-access/#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
 
 ### Creating wallets for the storage provider
 
