@@ -49,7 +49,7 @@ If you want some or all of the sealing tasks to be perfomed on the `lotus-miner`
 lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 ```
 
-If you want to offload all the sealing tasks to `lotus-workers` you only need to add the sealing location on the workers and not on the `lotus-miner`. To setup seal workers follow the [seal worker]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}} guide.
+If you want to offload all the sealing tasks to `lotus-workers` you only need to add the sealing location on the workers and not on the `lotus-miner`. To setup seal workers follow the [seal worker]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) guide.
 
 ### Adding long-term storage location
 
