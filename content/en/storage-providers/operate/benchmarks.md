@@ -1,7 +1,7 @@
 ---
 title: "Benchmarks"
-description: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive mining operation takes. This guide describes how to install the benchmarking tool, and some basic operations."
-lead: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive mining operation takes. This guide describes how to install the benchmarking tool, and some basic operations."
+description: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive sealing task takes. This guide describes how to install the benchmarking tool, and some basic operations."
+lead: "Lotus comes with a benchmarking tool that can be used to test how long each resource-intensive sealing task takes. This guide describes how to install the benchmarking tool, and some basic operations."
 draft: false
 menu:
     storage-providers:
@@ -98,23 +98,7 @@ This will output something like:
   --version, -v  print the version (default: false)
 ```
 
-## Commands
-
-### Prove
-
-Benchmark a proof computation using `lotus-bench prove [command options] [arguments...]`. For example:
-
-```shell
-./lotus-bench prove
-```
-
-Available options:
-
-| Options              | Description                                                                              |
-| -------------------- | ---------------------------------------------------------------------------------------- |
-| `--no-gpu`           | Disable gpu usage for the benchmark run (default: false).                                |
-| `--miner-addr value` | Pass miner address (only necessary if using existing sectorbuilder) (default: "t01000"). |
-| `--help, -h`         | Show help (default: false).                                                              |
+## Benchmark
 
 ### Sealing
 
@@ -168,6 +152,22 @@ Available options:
 | `--parallel value`                         | (default: 1)                                                                                 |
 | `--help, -h`                               | show help (default: false)                                                                   |
 
+### Prove
+
+Benchmark a proof computation using `lotus-bench prove [command options] [arguments...]`. For example:
+
+```shell
+./lotus-bench prove
+```
+
+Available options:
+
+| Options              | Description                                                                              |
+| -------------------- | ---------------------------------------------------------------------------------------- |
+| `--no-gpu`           | Disable gpu usage for the benchmark run (default: false).                                |
+| `--miner-addr value` | Pass miner address (only necessary if using existing sectorbuilder) (default: "t01000"). |
+| `--help, -h`         | Show help (default: false).                                                              |
+
 ### Import
 
 Benchmark chain import and validation using `lotus-bench import command [command options] [arguments...]`. For example:
@@ -205,6 +205,23 @@ Available options:
 | `--head value`                      | tipset key of the head, useful when benchmarking validation on an existing chain store, where a CAR is not available; if both --car and --head are provided, --head takes precedence over the CAR root; the format is cid1,cid2,cid3... |
 | `--help, -h`                        | show help (default: false)                                                                                                                                                                                                              |
 | `--version, -v`                     | print the version (default: false)                                                                                                                                                                                                      |
+## Single task benchmark
+
+Sometimes you may only want to test the performance of a single task without running through the whole sealing task pipeline. This can be done with the `lotus-bench simple` command.
+
+### Create sector file
+
+Before we can benchmark a single task we need to have an unsealed sector file.
+
+```shell
+./lotus-bench simple addpiece --sector-size 32GiB /dev/zero /tmp/unsealed"
+```
+
+### Sealing tasks
+
+### PoSt tasks
+
+### SnapDeal tasks
 
 ## GPUs
 
