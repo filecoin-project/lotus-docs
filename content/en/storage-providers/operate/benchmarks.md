@@ -298,7 +298,7 @@ proof: 972929647be634d708e071bb0834d28e45[...]==
 
 **WindowPoSt:**
 
-To benchmark a single WindowPoSt you will need to specify the path of the sealed sector, the cache file, and the `commR` output you got in the PreCommit 2 step. Specifying the correct sector number is only needed if you are using an existing sectorbuilder and want to benchmark a real sector. Else you can specify any integer as the sector number, it won´t affect the performance.
+To benchmark a single WindowPoSt you will need to specify the path of the sealed sector, the cache file, and the `commR` output you got in the PreCommit2 step. Specifying the correct sector number is only needed if you are using an existing sectorbuilder and want to benchmark a real sector. Else you can specify any integer as the sector number, it won´t affect the performance.
 
 ```shell
 ./lotus-bench simple window-post --sector-size <size> /your/path/sealed /your/path/sealed <commR> [sector num]
