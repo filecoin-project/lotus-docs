@@ -267,7 +267,7 @@ d:baga6ea4seaqdsvqopmj2soyhujb72jza76t4wpq5fzifvm3ctz47iyytkewnubq r:bagboea4b5a
 
 **Commit1:**
 
-To run a single Commit 1 you will need to specify the path of the sealed sector, the cache file, and the `commD` and `commR` output from the PreCommit 2 step. You will also need to specify the path for the json output from the Commit1 step.
+To run a single Commit1 you will need to specify the path of the sealed sector, the cache file, and the `commD` and `commR` output from the PreCommit2 step. You will also need to specify the path for the json output from the Commit1 step.
 
 ```shell
 ./lotus-bench simple commit1 --sector-size <size> /your/path/sealed /your/path/cache <commD> <commR> /your/path/c1.json
