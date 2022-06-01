@@ -77,25 +77,25 @@ Use the self-documenting feature of the tool to explore the different commands.
 
 This will output something like:
 
-```
-  NAME:
-  lotus-bench - Benchmark performance of lotus on your hardware
+NAME:
+   lotus-bench - Benchmark performance of lotus on your hardware
 
-  USAGE:
-  lotus-bench [global options] command [command options] [arguments...]
+USAGE:
+   lotus-bench [global options] command [command options] [arguments...]
 
-  VERSION:
-  1.15.1
+VERSION:
+   1.15.4-dev+mainnet
 
-  COMMANDS:
-  prove    Benchmark a proof computation
-  sealing
-  import   benchmark chain import and validation
-  help, h  Shows a list of commands or help for one command
+COMMANDS:
+   prove    Benchmark a proof computation
+   sealing  Benchmark seal and winning post and window post
+   simple   Run basic sector operations
+   import   Benchmark chain import and validation
+   help, h  Shows a list of commands or help for one command
 
-  GLOBAL OPTIONS:
-  --help, -h     show help (default: false)
-  --version, -v  print the version (default: false)
+GLOBAL OPTIONS:
+   --help, -h     show help (default: false)
+   --version, -v  print the version (default: false)
 ```
 
 ## Benchmark
@@ -207,17 +207,66 @@ Available options:
 | `--version, -v`                     | print the version (default: false)                                                                                                                                                                                                      |
 ## Single task benchmark
 
-Sometimes you may only want to test the performance of a single task without running through the whole sealing task pipeline. This can be done with the `lotus-bench simple` command.
+Sometimes you may only want to test the performance of a single task without running through the whole sealing task pipeline. For this, you can use the `lotus-bench simple` command.
 
 ### Create sector file
 
-Before we can benchmark a single task we need to have an unsealed sector file.
+Before we can run sealing benchmarks, we need to create an unsealed sector file. You can specify which sector-size you want to create with the --sector-size flag.
 
 ```shell
-./lotus-bench simple addpiece --sector-size 32GiB /dev/zero /tmp/unsealed"
+./lotus-bench simple addpiece --sector-size 32GiB /dev/zero /your/path/unsealed
 ```
 
+Note that the `unsealed` in `/your/path` is the file that will be created by the command, and not a directory.
+
+Together with the performance, the command will output a CID and the number of bytes in the created unsealed sector. You will need both of these to perform the PreCommit 1 benchmark.
+
+```
+AddPiece 1m26.991655711s (376.7 MiB/s)
+baga6ea4seaqao7s73y24kcutaosvacpdjgfe5pw76ooefnyqw4ynr3d2y6x2mpq 34359738368
+```
+
+Available options:
+
+| Option                                     | Description                                                                                  |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| `--sector-size`                            | Specify the sector-size (supports: 2K, 512MiB, 32GiB, 64GiB) (default: 512MiB)               |
+
 ### Sealing tasks
+
+**PreCommit1:**
+
+To run a single PreCommit1 we will need the CID and amount of bytes in the unsealed sector created in the previous step. You will also need to specify where the path to the unsealed file is, and where the sealed sector and the cache file will be placed.
+
+```shell
+./lotus-bench simple precommit1 --sector-size 32GiB /your/path/unsealed /your/path/sealed /your/path/cache baga6ea4seaqao7s73y24kcutaosvacpdjgfe5pw76ooefnyqw4ynr3d2y6x2mpq 3435973836
+```
+
+Together with the performance, the command will create a PreCommit1 encoding that you will need if you want to perform the PreCommit 2 benchmark.
+
+```
+PreCommit1 3h10m38.942613688s (2.865 MiB/s)
+eyJfbG90dXNfU2VhbFJhbmRvbW5lc3MiOi[...]==
+```
+
+**PreCommit2:**
+
+To run a single PreCommit2 we will need to specify the path of the sealed sector, the cache file, and the PreCommit1 encoding from the previous step.
+
+```shell
+./lotus-bench simple precommit2 --sector-size 32GiB /your/path/sealed /your/path/cache eyJfbG90dXNfU2VhbFJhbmRvbW5lc3MiOi[...]==
+```
+
+seal: preCommit phase 2: 14m17.347652736s (38.22 MiB/s)
+d:baga6ea4seaqdsvqopmj2soyhujb72jza76t4wpq5fzifvm3ctz47iyytkewnubq r:bagboea4b5abcbztu2gpgzz746m537wntioqm5mjnfay5dwsugfqyshv4zljmnwyb
+
+**Commit1:**
+
+To run a single Commit1 we will need to specify the path of the sealed sector, the cache file, and the PreCommit1 output from the previous step.
+
+```shell
+./lotus-bench simple commit1 --sector-size 32GiB /your/path/sealed /your/path/cache eyJfbG90dXNfU2VhbFJhbmRvbW5lc3MiOi[...]==
+```
 
 ### PoSt tasks
 
