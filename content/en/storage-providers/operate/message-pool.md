@@ -86,7 +86,7 @@ Alternatively, the _GasPremium_, _GasFeeCap_ can be set manually with their resp
 lotus mpool replace --gas-feecap <feecap> --gas-premium <premium> <from> <nonce>
 ```
 
-If the new _gas premium_ is lower than the 1.25 ratio to the original, the message will not be included in the pool. Additional message fields, like the recipient of the transaction, can be changed when using the [`MpoolPush` API method]({{< relref "mpool" >}}) directly. In this case the new message will need to be locally signed first.
+If the new _gas premium_ is lower than the 1.25 ratio to the original, the message will not be included in the pool. Additional message fields, like the recipient of the transaction, can be changed when using the [`MpoolPush` API method]({{< relref "reference/lotus/mpool/#mpoolpush" >}}) directly. In this case the new message will need to be locally signed first.
 
 The _GasLimit_ should not be changed under normal circumstances. For instructions on how to use the optional flag to replace the _GasLimit_ please consult
 
