@@ -20,6 +20,8 @@ For any configuration in the config.toml file to take effect, the storage provid
 
 ## Required configurations
 
+The API section controls the settings of the [miner API]({{< relref "/reference/basics/overview" >}}):
+
 Since we initialized the storage provider with the `--no-local-storage` in the [initialize]({{< relref "../../storage-providers/setup/initialize/" >}}) page, we need to specify the disk locations for long-term storage and sealing (fast SSDs recommended).
 
 The `lotus-miner` keeps track of defined storage locations in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.

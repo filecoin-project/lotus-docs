@@ -11,13 +11,16 @@ aliases:
     - /developers/apis/
 ---
 
-This section contains reference information for the Lotus API and CLI. Most commands found within the CLI have an equivilent in the API. 
+This section contains reference information for the Lotus API and CLI. Most commands found within the CLI have an equivilent in the API.
 
-![](lotus-terminal-screenshot.png)
+## Lotus
 
-## API basics
+These are the methods available from the `lotus` daemon.
 
-To use the Lotus API you must either have a local `lotus-daemon` running, or be connected to a remote Lotus node.
+## Miner
 
-- Learn about the [different types of Lotus node]({{< relref "use-cases" >}})
-- Learn about remote [Glif nodes]({{< relref "glif-nodes" >}})
+These are the methods available from the `lotus-miner` daemon.
+
+## Worker
+
+These are the methods available from the `lotus-worker` daemon.
