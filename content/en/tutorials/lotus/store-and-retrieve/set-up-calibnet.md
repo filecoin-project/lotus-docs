@@ -13,9 +13,9 @@ weight: 107
 toc: true
 ---
 
-## Set up on Mainnet
+## Set up on mainnet
 
-Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node, creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
+Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node on a test network (known as calibnet), creating a Lotus lite-node on your computer, getting a FIL address (wallet), adding FIL to that wallet, and signing up for Filecoin+.
 
 {{< alert icon="tip" >}}
 Programs that interact with the Filecoin network are called _implementations_, and Lotus is a command-line interface (CLI) implementation. There are other implementation being created alongside Lotus, however Lotus is the only Filecoin implementation created and maintained by Protocol Labs.
@@ -31,101 +31,75 @@ As you're going through this section, make a note of the following variables:
 
 ## Prerequisites
 
-If you are using macOS you must have [Homebrew](https://brew.sh) installed. If you are using Linux you must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
+To install the calibnet version of Lotus, you will need to build from source, and have the following installed on your computer:
+
+* [go version 1.16 or above](https://go.dev/doc/install)
+* [Install rustc and other dependencies](https://github.com/rust-lang/rustup/blob/master/rustup-init.sh) with `rustup init`
+* [Homebrew](https://brew.sh/) should be installed on your Mac along with XCode
+* Check the [lotus Gihthub repository](https://github.com/filecoin-project/lotus) and note the branch for the latest release
+
+<!-- ![Check the latest Lotus release](lotus-release.png) -->
+
 
 ### Access a full-node
 
-A Lotus full-node is a computer running the `lotus daemon`. Full-nodes are unique because they have complete access to the Filecoin blockchain. The computer specifications required to run a Lotus full-node are relatively high and might be out of reach for most end-user laptops and PCs.
+A Lotus full-node is a computer running the `lotus daemon`. Full-nodes are unique because they have complete access to a Filecoin blockchain. The hardware required to run a Lotus full-node are relatively high and might be out of reach for most end-user laptops and PCs.
 
-Usually, we'd have to _spin up_ a full-node, but we're going to use a Lotus full-node provided by Protocol Labs for this tutorial. This node, called `api.chain.love`, is only for practice sessions like this tutorial and should not be relied upon for any production or development purposes.
+Usually, we'd have to _spin up_ a full-node, but for this tutorial we're going to use a Lotus [full-node testnet endpoint maintained by Glif](https://lotus.filecoin.io/developers/glif-nodes/#testnet-endpoint). This node, called `api.node.glif.io`, is only for practice sessions like this tutorial and should not be relied upon for any production or development purposes.
 
 ## Install a lite-node
 
-A lite-node lets your computer interact with the Filecoin network without having to run a resource-intensive full-node! Lite-nodes can do things like sign messages and talk to storage providers, but any processes that need data from the blockchain must come from a full-node. Luckily, lite-nodes automatically route any blockchain-based requests to a full-node. For this tutorial, you're going to run a Lotus lite-node on your local computer and have it connect to a full-node managed by Protocol Labs.
+A lite-node lets your computer interact with the Filecoin network without having to run a resource-intensive full-node! Lite-nodes can do things like sign messages and talk to storage providers, but any processes that need data from the blockchain must come from a full-node.
 
-To install a Lotus lite-node on your computer, you must have the tools required to _build_ a Lotus binary from the GitHub repository.
+For this tutorial, you're going to install a Lotus lite-node from binary on your local computer and have it connect to a full-node managed by Protocol Labs.
 
-### macOS
+To install a Lotus lite-node on your computer, you must have the tools required to _build_ a Lotus binary from the GitHub repository, listed in the prerequisites above.
 
-{{< alert icon="callout">}}
-You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebrew](https://brew.sh/) installed.
-{{< /alert >}}
+### MacOS, Ubuntu, or Powershell
 
-1. Add the `filecoin-project/lotus` Homebrew tap:
+To run calibnet, you will need to install the binary and build from source on MacOS, Ubuntu, or using Windows Powershell
 
-    ```shell
-    brew tap filecoin-project/lotus
-    ```
+1. If you already have another version of lotus installed, switch into a different directory to install the version for calibnet:
 
-1. Install Lotus:
+  ```shell
+  mkdir calibnet-folder
+  cd calibnet-folder
+  ```
 
-    ```shell
-    brew install lotus
-    ```
+1. Clone the Lotus repository and move into the `lotus` folder:
 
-1. Lotus is now installed on your computer.
+  ```shell
+  git clone https://github.com/filecoin-project/lotus/<releases/version>
+  cd lotus
+  ```
 
-### Ubuntu
 
-There are two simple ways to install Lotus on Ubuntu:
+  {{< alert icon="warning">}}**Run on a different $LOTUS_PATH** -  If you have installed Lotus for mainnet and are switching to calibnet (but you want to keep all your mainnet data intact for when you switch back), change your $LOTUS_PATH before running or building the lotus daemon:
 
-- [AppImage](#appimage)
-- [Snap](#snap)
+  To change your $LOTUS_PATH run: export LOTUS_PATH=~/.new-lotus-path. {{< /alert >}}
+  </br >
 
-#### AppImage
+1. Build the `lotus` executable:
 
-1. Update and upgrade your system:
+```shell
+make clean calibnet
+```
 
-    ```shell
-    sudo apt update -y && sudo apt upgrade -y
-    ```
 
-1. Download the latest `AppImage` file from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/):
 
-    ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.11.1/Lotus-v1.11.1-x86_64.AppImage
-    ```
-
-1. Make the `AppImage` executable:
-
-    ```shell
-    chmod +x Lotus-v1.11.1-x86_64.AppImage
-    ```
-
-1. Move the `AppImage` to `/usr/local/bin` and rename it `lotus`:
-
-    ```shell
-    sudo mv Lotus-v1.11.1-x86_64.AppImage /usr/local/bin/lotus
-    ```
-
-[Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
-
-#### Snap
-
-{{< alert >}}
-You must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
-{{< /alert >}}
-
-1. To install Lotus using Snap, run:
-
-    ```shell
-    snap install lotus-filecoin
-    ```
-
-[Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
 
 ## Run a Lotus lite-node
 
-Now that you have Lotus ready to run, you can start a Lotus lite-node on your computer and connect to the `api.chain.love` Lotus full-node!
+Now that you have Lotus ready to run, you can start a Lotus lite-node on your computer and connect to the `api.node.glif.io` Lotus full-node!
 
 {{< alert >}}
-Just as a reminder, `api.chain.love` is a Lotus full-node managed by Protocol Labs. It's ideal for use in this tutorial, but should not be used in a development or in a production environment.
+Just as a reminder, `api.node.glif.io` is a Lotus full-node managed by Protocol Labs. It's ideal for use in this tutorial, but should not be used in a development or in a production environment.
 {{< /alert >}}
 
-1. Open a terminal windows and run the `lotus daemon --lite` command, using `api.chain.love` as the full-node address:
+1. Open a terminal window and run the `lotus daemon --lite` command, using `api.node.glif.io` as the full-node address:
 
     ```shell with-output
-    FULLNODE_API_INFO=wss://api.chain.love lotus daemon --lite
+    FULLNODE_API_INFO=https://api.node.glif.io lotus daemon --lite
     ```
 
     ```
@@ -187,3 +161,8 @@ It is incredibly important that you backup your addreses. Storing a copy of your
     This will create a new file called `my_address.key` in the current directory.
 
 Once you have your address in a file, you can copy it to another drive, securely send it to another computer, or even print it out. It's important to keep this file safe. If anything happens to your Lotus node, you can still access your funds using this file.
+
+
+## Add funds to your address
+
+Now that you have created a wallet using your lotus lite node on calibnet, you can use the

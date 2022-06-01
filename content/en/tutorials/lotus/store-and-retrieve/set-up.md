@@ -13,9 +13,9 @@ weight: 105
 toc: true
 ---
 
-## Set up on Mainnet
+## Set up on mainnet
 
-Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node, creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
+Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node on the main network (also known as mainnet), creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
 
 {{< alert icon="tip" >}}
 Programs that interact with the Filecoin network are called _implementations_, and Lotus is a command-line interface (CLI) implementation. There are other implementation being created alongside Lotus, however Lotus is the only Filecoin implementation created and maintained by Protocol Labs.
