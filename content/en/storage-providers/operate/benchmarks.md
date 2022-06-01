@@ -397,7 +397,7 @@ It is recommended to configure and use the [CUDA architecture for Lotus]({{< rel
 
 ### Testing whether the GPU is used
 
-First, to watch GPU utilization run `nvtop` in one terminal, then in a separate terminal, run the a sealing benchmark to simulate sealing of a sector of small size:
+First, to watch GPU utilization run `nvtop` in one terminal, then in a separate terminal, run a sealing benchmark to simulate sealing of a sector of small size:
 
 ```shell
 ./lotus-bench sealing --sector-size=2KiB
