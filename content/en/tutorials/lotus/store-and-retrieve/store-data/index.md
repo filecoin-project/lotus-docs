@@ -1,7 +1,7 @@
 ---
 title: "Store data"
 description: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
-lead: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
+lead: Introduction to setting up, storing, and retrieving using the Filecoin network
 draft: false
 menu:
     tutorials:
@@ -252,7 +252,7 @@ Once the data has been sent to the storage clients, the storage deals can take u
     Sending Channels
     ID                   Status   Sending To   Root Cid     Initiated?  Transferred  Voucher
     1620782601911586915  Ongoing  ...KPFTTwY7  ...zyd3kapm  Y           224.1MiB     ...bqhcidjmajbelhlxfqry3d7qlu3tvar45a"}}
-    
+
     Receiving Channels
     ...
     ```
@@ -327,4 +327,3 @@ The following deal states are informational, and do not mean that a deal has fai
 | StorageDealWaitingForData | Either a manual transfer is occurring, or the storage provider has not received a data-transfer request from the client. |
 
 These states come from the [Lotus project GitHub repository](https://github.com/filecoin-project/go-fil-markets/blob/master/storagemarket/dealstatus.go).
-

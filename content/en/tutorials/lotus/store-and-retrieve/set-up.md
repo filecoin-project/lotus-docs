@@ -1,7 +1,7 @@
 ---
 title: "Set up"
 description: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
-lead: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
+lead: Setting up, storing, and retrieving using the Filecoin network
 draft: false
 menu:
     tutorials:
@@ -233,4 +233,3 @@ It is incredibly important that you backup your addreses. Storing a copy of your
     This will create a new file called `my_address.key` in the current directory.
 
 Once you have your address in a file, you can copy it to another drive, securely send it to another computer, or even print it out. It's important to keep this file safe. If anything happens to your Lotus node, you can still access your funds using this file.
-
