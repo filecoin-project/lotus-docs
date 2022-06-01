@@ -13,7 +13,7 @@ weight: 107
 toc: true
 ---
 
-## Set up on mainnet
+## Set up
 
 Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node on a test network (known as calibnet), creating a Lotus lite-node on your computer, getting a FIL address (wallet), adding FIL to that wallet, and signing up for Filecoin+.
 

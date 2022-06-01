@@ -13,7 +13,7 @@ weight: 105
 toc: true
 ---
 
-## Set up on mainnet
+## Set up 
 
 Before you begin storing any data on the Filecoin network, you need to run through a few steps to get everything set up. This section covers getting access to a Lotus full-node on the main network (also known as mainnet), creating a Lotus lite-node on your computer, getting a FIL address, and signing up to Filecoin+.
 
