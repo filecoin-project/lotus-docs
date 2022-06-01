@@ -111,6 +111,7 @@ Just as a reminder, `api.node.glif.io` is a Lotus full-node managed by Protocol 
     ```
 
 1. MacOS users may see a warning regarding Lotus. Select **Accept incoming connections** if you see a warning.
+
 1. The Lotus daemon will continue to run. You must run further commands from a separate terminal window.
 
 Next up is [getting a FIL address ↓](#get-a-fil-address)
@@ -163,6 +164,10 @@ It is incredibly important that you backup your addreses. Storing a copy of your
 Once you have your address in a file, you can copy it to another drive, securely send it to another computer, or even print it out. It's important to keep this file safe. If anything happens to your Lotus node, you can still access your funds using this file.
 
 
-## Add funds to your address
+## Add funds to your wallet
 
-Now that you have created a wallet using your lotus lite node on calibnet, you can use the
+Now that you have created a wallet using your lotus lite node on calibnet, you can use the lotus devnet to request funds.
+
+**[Devnet Faucet](https://faucet.calibration.fildev.network/)**
+
+ It may take a bit of time, but after a few hours, you should see 100 FIL sent to your calibnet account, that you can then use for fees & making deals on the test network
