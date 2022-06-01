@@ -378,7 +378,7 @@ ProveReplicaUpdate1 1.480227714s (345.9 MiB/s)
 
 **ProveReplicaUpdate2:**
 
-To run a single ProveReplicaUpdate 2 you need to specify the path for the original sectors sector-key, and the updated sectors `commR`and `commD` together with the `.json` file from the ProveReplicaUpdate 1 step.
+To run a single ProveReplicaUpdate2 you need to specify the path for the original sectors sector-key, and the updated sectors `commR`and `commD` together with the `.json` file from the ProveReplicaUpdate 1 step.
 
 ```shell
 ./lotus-bench simple provereplicaupdate2 --sector-size <size> <sectorKey> <ReplicaUpdate commR> <ReplicaUpdate commD> /your/path/PRU1.json
