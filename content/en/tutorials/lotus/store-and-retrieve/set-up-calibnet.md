@@ -1,5 +1,5 @@
 ---
-title: "Set up on mainnet"
+title: "Set up on calibnet"
 description: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
 lead: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
 draft: false
@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/tutorials/store-and-retrieve/
     - /tutorials/store-and-retrieve/set-up/
-weight: 105
+weight: 107
 toc: true
 ---
 
