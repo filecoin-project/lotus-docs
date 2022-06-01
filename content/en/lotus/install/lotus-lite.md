@@ -56,7 +56,7 @@ If you are using a node-hosting service like [Glif](https://www.glif.io/) or [In
     lotus auth create-token --perm write
     ```
 
-    Which permissions you choose will depend on your use case. Take a look at the [API tokens section to find out more →]({{< relref "reference/basics/api-access/#api-tokens" >}})
+    Which permissions you choose will depend on your use case. Take a look at the [API tokens section to find out more →]({{< relref "reference/basics/api-access#api-tokens" >}})
 
 1. Send this API token to your lite-node or to whoever will be the administrator for the lite-node.
 1. If you have the `lotus daemon` running, stop it and start it again. This forces Lotus to open the API port we just set.
