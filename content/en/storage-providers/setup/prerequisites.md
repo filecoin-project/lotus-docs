@@ -46,7 +46,7 @@ export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/overview" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/api-access/#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "reference/basics/api-access/#api-tokens" >}}).
 
 ### Performance tweaks
 
