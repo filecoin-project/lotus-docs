@@ -69,7 +69,7 @@ If you opt to run the `lotus-miner` on a different machine than the Lotus Node, 
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "api-access#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/api-access/#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "reference/basics/api-access/#api-tokens" >}}).
 
 ### Creating wallets for the storage provider
 
