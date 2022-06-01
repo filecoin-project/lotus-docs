@@ -172,7 +172,7 @@ A lite-node is limited in what it can do and is designed to only perform message
 
 ### Access and permissions
 
-Setting up a Lotus lite-node without using an [API token from a full-node]({{< relref "reference/basics/overview" >}}) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node.
+Setting up a Lotus lite-node without using an [API token from a full-node]({{< relref "reference/basics/api-access" >}}) results in the lite-node having read-only access to the full-node. While read-only access should be fine for most use-cases, there are situations where you need write access to the full-node.
 
 ## Use cases
 
