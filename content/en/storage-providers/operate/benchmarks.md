@@ -281,7 +281,7 @@ Commit1 352.760466ms (90.71 GiB/s)
 
 **Commit2:**
 
-To run a single Commit 2 you only need to specify the `.json` file from the Commit 1 step.
+To run a single Commit2 you only need to specify the `.json` file from the Commit1 step.
 
 ```shell
 ./lotus-bench simple commit2 /your/path/c1.json
