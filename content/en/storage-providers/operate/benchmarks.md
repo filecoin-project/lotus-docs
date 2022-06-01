@@ -273,7 +273,7 @@ To run a single Commit1 you will need to specify the path of the sealed sector, 
 ./lotus-bench simple commit1 --sector-size <size> /your/path/sealed /your/path/cache <commD> <commR> /your/path/c1.json
 ```
 
-Together with the performance, the command will save a `.json` file in the path you specified. This file is needed to perform the Commit 2 step.
+Together with the performance, the command will save a `.json` file in the path you specified. This file is needed to perform the Commit2 step.
 
 ```
 Commit1 352.760466ms (90.71 GiB/s)
