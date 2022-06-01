@@ -237,7 +237,7 @@ baga6ea4seaqao7s73y24kcutaosvacpdjgfe5pw76ooefnyqw4ynr3d2y6x2mpq 34359738368
 
 **PreCommit1:**
 
-To run a single PreCommit 1, you will need the CID and amount of bytes in the unsealed sector created in the `addpiece? step. You will also need to specify where the path to the unsealed file is, and where the sealed sector and the cache file will be placed.
+To run a single PreCommit 1, you will need the CID and amount of bytes in the unsealed sector created in the AddPiece step. You will also need to specify where the path to the unsealed file is, and where the sealed sector and the cache file will be placed.
 
 ```shell
 ./lotus-bench simple precommit1 --sector-size <size> /your/path/unsealed /your/path/sealed /your/path/cache [piece cid] [piece size]
