@@ -46,6 +46,10 @@ export FIL_PROOFS_PARAMETER_CACHE=/path/to/folder/in/fast/disk
 export FIL_PROOFS_PARENT_CACHE=/path/to/folder/in/fast/disk2
 ```
 
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "reference/basics/api-access#api-tokens" >}}).
+
+### Performance tweaks
+
 Parameters are read on every (re)start, so using disks with very fast access, like NVMe drives, will speed up `lotus-miner` and workers (re)boots. When the above variables are not set, things will end up in `/var/tmp/` by default.
 
 To download the parameters:
@@ -65,7 +69,7 @@ If you opt to run the `lotus-miner` on a different machine than the Lotus Node, 
 export FULLNODE_API_INFO=<api_token>:/ip4/<lotus_daemon_ip>/tcp/<lotus_daemon_port>/http
 ```
 
-Make sure the `ListenAddress` has [remote access enabled]({{< relref "../../developers/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "../../developers/api-access/#obtaining-tokens" >}}).
+Make sure the `ListenAddress` has [remote access enabled]({{< relref "reference/basics/api-access#enable-remote-api-access" >}}). Instructions on how to obtain a token are [available here]({{< relref "reference/basics/api-access#api-tokens" >}}).
 
 ### Creating wallets for the storage provider
 
