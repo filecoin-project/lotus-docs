@@ -44,7 +44,7 @@ lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-
 The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
 
 {{< alert >}}
-Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.]({{< relref "tutorials-lotus-miner-msig-as-owner" >}})
+Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.]({{< relref "tutorials/lotus-miner/msig-as-owner" >}})
 {{< /alert >}}
 
 ## The worker address
