@@ -33,7 +33,7 @@ The owner address corresponds to a Lotus node address provided during the miner 
 - Withdrawing balance from the _miner actor_.
 - Submit _WindowPoSts_, **unless _control addresses_ are defined and have enough balance** (continued below).
 
-The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#ledger). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
+The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "manage-fil#ledger" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
 
 The owner address can be updated with the following command:
 
@@ -44,7 +44,7 @@ lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-
 The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
 
 {{< alert >}}
-Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.](https://lotus.filecoin.io/tutorials/lotus-miner/msig-as-owner/)
+Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.]({{< relref "tutorials-lotus-miner-msig-as-owner" >}})
 {{< /alert >}}
 
 ## The worker address
@@ -285,6 +285,31 @@ Total Spendable:  1350 FIL
 ```
 
 In this example, the miner ID is `f01000`, it has a total balance of `123456.789 FIL`, and an available balance of `250 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `500 FIL` and the control balance is `600 FIL`. Control balance combines all funds in the control addresses and Total Spendable combines Available, Worker Balance and Control balances.
+
+Control addresses is a good way to avoid stuck messages in your local mpool, but it can still happen occasionally.
+A good pratice is to keep track of the basefee and always have enough FIL in the control addresses. 
+Adjust your fees limits in .lotusminer `config.toml` accordingly. 
+
+   ```yaml
+   [Fees]
+       MaxPreCommitGasFee = "0.025 FIL"
+       MaxCommitGasFee = "0.05 FIL"
+       MaxTerminateGasFee = "0.5 FIL"
+       MaxWindowPoStGasFee = "5 FIL"
+       MaxPublishDealsFee = "0.05 FIL"
+   ```
+
+ ```output
+   name       ID      key        use              balance
+   owner      f01234  f3zdes...                   300 FIL
+   worker     f01111  f3abcd...  other            50 FIL
+   control-0  f02222  f3defg...  post             10 FIL
+   control-1  f03333  f3vst2...  precommit        100 FIL
+   control-2  f04444  f3uuyr...  commit           200 FIL
+   control-3  f05555  f3wywg...  deals            50 FIL
+   control-4  f06666  f3qtma...  terminate        10 FIL
+   ```
+
 
 ## Withdrawing funds from the Miner actor
 
