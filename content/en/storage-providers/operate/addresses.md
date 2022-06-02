@@ -190,7 +190,7 @@ Clean up the tasks required for your worker address by setting your control addr
    f3qtma...  0 FIL    0
    ```
 
-2. Add some funds into those two addresses.
+2. Add some funds into those five addresses.
 3. Wait for around 5 minutes for the addresses to be assigned IDs.
 4. Get ID of those addresses:
 
@@ -216,6 +216,9 @@ Clean up the tasks required for your worker address by setting your control addr
    ```output
     Add f3defg...
     Add f3vst2...
+    Add f3uuyr...
+    Add f3wywg...
+    Add f3qtma...
     Message CID: bafy2bzacecfryzmwe5ghsazmfzporuybm32yw5q6q75neyopifps3c3gll6aq
    ```
 
