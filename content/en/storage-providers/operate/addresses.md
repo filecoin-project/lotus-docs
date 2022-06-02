@@ -35,8 +35,8 @@ The owner address corresponds to a Lotus node address provided during the miner 
 
 The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "manage-fil" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
 
-{{< alert >}}
-Always keep a backup of the owner address!
+{{< alert icon="tip" >}}
+We highly recommend exporting the owner wallet to cold storage, either use a Ledger or export it to a USB stick. 
 {{< /alert >}}
 
 The owner address can be updated with the following command:
@@ -46,6 +46,10 @@ lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-
 ```
 
 The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
+
+{{< alert >}}
+Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.](https://lotus.filecoin.io/tutorials/lotus-miner/msig-as-owner/)
+{{< /alert >}}
 
 ## The worker address
 
@@ -257,7 +261,7 @@ Transfer funds from the Miner actor address to the owner address by calling `act
 lotus-miner actor withdraw <amount>
 ```
 
-{{< alert >}}
+{{< alert icon="tip" >}}
 Tip: If no amount entered it will withdraw all Available funds. 
 {{< /alert >}}
 
