@@ -4,12 +4,12 @@ description: "The Message Pool (mpool) is the component of lotus that handles pe
 lead: "The Message Pool (mpool) is the component of lotus that handles pending messages for inclusion in the chain."
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-provider-message-pool"
+    lotus:
+        parent: "lotus-management"
 aliases:
     - /docs/storage-providers/message-pool/
-weight: 370
+    - /storage-providers/operate/message-pool/
+weight: 417
 toc: true
 ---
 
