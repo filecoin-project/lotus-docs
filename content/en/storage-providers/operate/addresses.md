@@ -135,7 +135,7 @@ lotus-miner --actor f01000 actor control list
 
 Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits, commits, publish deals and terminate. By default, the worker address will act as a fallback address if any of the control addresses are out of funds. See .lotusminer `config.toml` for more information. 
 
-1. Create two control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
+1. Create five control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
 
    ```shell with-output
    lotus wallet new bls
@@ -154,13 +154,40 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3uuyr...
+   ```
+
+   ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3wywg...
+   ```
+
+   ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3qtma...
+   ```
+
+   ```shell with-output
    lotus wallet list
    ```
 
    ```output
-   Address   Balance  Nonce  Default
+   Address    Balance  Nonce  Default
    f3defg...  0 FIL    0      X
    f3vst2...  0 FIL    0
+   f3uuyr...  0 FIL    0
+   f3wywg...  0 FIL    0
+   f3qtma...  0 FIL    0
    ```
 
 2. Add some funds into those two addresses.
@@ -175,12 +202,15 @@ Clean up the tasks required for your worker address by setting your control addr
     Address    ID        Balance                   Nonce  Default
     f3defg...  f02222    0.59466768102284489 FIL   1      X
     f3vst2...  f03333    0.4 FIL                   0
+    f3uuyr...  f04444    0.4 FIL                   0
+    f3wywg...  f05555    0.4 FIL                   0
+    f3qtma...  f06666    0.4 FIL                   0
    ```
 
 5. Add control addresses:
 
    ```shell with-output
-   lotus-miner actor control set --really-do-it f02222 f03333
+   lotus-miner actor control set --really-do-it f02222 f03333 f04444 f05555 f06666
    ```
 
    ```output
@@ -196,12 +226,12 @@ Clean up the tasks required for your worker address by setting your control addr
    ```output
    name       ID      key        use              balance
    owner      f01234  f3zdes...                   300 FIL
-   worker     f01111  f3abcd...  other            300 FIL
-   control-0  f02222  f3defg...  post             100 FIL
-   control-1  f03333  f3vst2...  precommit        100 FIL
-   control-2  f04444  f3uuyr...  commit           200 FIL
-   control-3  f05555  f3wywg...  deals            100 FIL
-   control-4  f06666  f3qtma...  terminate         50 FIL
+   worker     f01111  f3abcd...  other            0.4 FIL
+   control-0  f02222  f3defg...  post             0.4 FIL
+   control-1  f03333  f3vst2...  precommit        0.4 FIL
+   control-2  f04444  f3uuyr...  commit           0.4 FIL
+   control-3  f05555  f3wywg...  deals            0.4 FIL
+   control-4  f06666  f3qtma...  terminate        0.4 FIL
    ```
 
 6. Add the newly created addresses into the miner config under the `[Addresses]` section:
