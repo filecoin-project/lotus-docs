@@ -33,11 +33,7 @@ The owner address corresponds to a Lotus node address provided during the miner 
 - Withdrawing balance from the _miner actor_.
 - Submit _WindowPoSts_, **unless _control addresses_ are defined and have enough balance** (continued below).
 
-The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet]({{< relref "manage-fil" >}}). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
-
-{{< alert icon="tip" >}}
-We highly recommend exporting the owner wallet to cold storage, either use a Ledger or export it to a USB stick. 
-{{< /alert >}}
+The address chosen to be the miner's _owner address_ is designed to be kept offline in _cold storage_, or backed up by a [hardware wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#ledger). In production environments, we strongly recommend using separate _owner_ and _worker_ addresses.
 
 The owner address can be updated with the following command:
 
@@ -122,7 +118,7 @@ To set up a _control address_:
 
    ```output
    name       ID      key        use              balance
-   owner      f01234  f3zdes...                   300 FIL
+   owner      f01234  f3defg...                   300 FIL
    worker     f01111  f3abcd...  other            300 FIL
    control-0  f02222  f3defg...  post             100 FIL
    ```
@@ -146,7 +142,7 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```shell
-   f3rht...
+   f3defg...
    ```
 
    ```shell with-output
@@ -154,7 +150,7 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-   f3sxs...
+   f3vst2...
    ```
 
    ```shell with-output
@@ -163,8 +159,8 @@ Clean up the tasks required for your worker address by setting your control addr
 
    ```output
    Address   Balance  Nonce  Default
-   f3rht...  0 FIL    0      X
-   f3sxs...  0 FIL    0
+   f3defg...  0 FIL    0      X
+   f3vst2...  0 FIL    0
    ```
 
 2. Add some funds into those two addresses.
@@ -176,20 +172,20 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-    Address   ID        Balance                   Nonce  Default
-    f3rht...  f0100933  0.59466768102284489 FIL   1      X
-    f3sxs...  f0100939  0.4 FIL                   0
+    Address    ID        Balance                   Nonce  Default
+    f3defg...  f02222    0.59466768102284489 FIL   1      X
+    f3vst2...  f03333    0.4 FIL                   0
    ```
 
 5. Add control addresses:
 
    ```shell with-output
-   lotus-miner actor control set --really-do-it f0100933 f0100939
+   lotus-miner actor control set --really-do-it f02222 f03333
    ```
 
    ```output
-    Add f3rht...
-    Add f3sxs...
+    Add f3defg...
+    Add f3vst2...
     Message CID: bafy2bzacecfryzmwe5ghsazmfzporuybm32yw5q6q75neyopifps3c3gll6aq
    ```
 
@@ -264,6 +260,7 @@ lotus-miner actor withdraw <amount>
 {{< alert icon="tip" >}}
 Tip: If no amount entered it will withdraw all Available funds. 
 {{< /alert >}}
+
 
 {{< alert >}}
 The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporally imported for the operation to succeed.
