@@ -13,7 +13,7 @@ weight: 310
 toc: true
 ---
 
-During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `t0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
+During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `f0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
 
 The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the set up section for more information on how to [manage Lotus wallets]({{< relref "manage-fil" >}}).
 
@@ -222,6 +222,22 @@ Clean up the tasks required for your worker address by setting your control addr
     Message CID: bafy2bzacecfryzmwe5ghsazmfzporuybm32yw5q6q75neyopifps3c3gll6aq
    ```
 
+3. Wait for around 5 minutes to be sure that the message has landed.
+
+6. Add the newly created addresses into the miner config under the `[Addresses]` section:
+
+   ```yaml
+   [Addresses]
+       PreCommitControl = ["f3vst2..."]
+       CommitControl = ["f3uuyr..."]
+       TerminateControl = ["f3qtma..."]
+       DealPublishControl = ["f3wywg..."]
+   ```
+
+7. Restart `lotus-miner`.
+
+8. Done! 
+
    ```shell with-output
      lotus-miner actor control list
    ```
@@ -236,18 +252,6 @@ Clean up the tasks required for your worker address by setting your control addr
    control-3  f05555  f3wywg...  deals            0.4 FIL
    control-4  f06666  f3qtma...  terminate        0.4 FIL
    ```
-
-6. Add the newly created addresses into the miner config under the `[Addresses]` section:
-
-   ```yaml
-   [Addresses]
-       PreCommitControl = ["f3vst2..."]
-       CommitControl = ["f3uuyr..."]
-       TerminateControl = ["f3qtma..."]
-       DealPublishControl = ["f3wywg..."]
-   ```
-
-7. Restart `lotus-miner`.
 
 ## Managing balances
 
