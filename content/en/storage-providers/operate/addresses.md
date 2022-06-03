@@ -13,7 +13,7 @@ weight: 310
 toc: true
 ---
 
-During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `t0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
+During miner initialization, a _miner actor_ is created on the chain, and this actor gives the miner its ID `f0...`. The miner actor is in charge of collecting all the payments sent to the miner. For example, when a payment is sent for honoring the different types of deals, that payment goes to the miner actor, not the miner itself.
 
 The Lotus Miner daemon performs the operations required by the network and can use different Lotus node wallets to pay the fees or interact with the _miner actor_. Check out the set up section for more information on how to [manage Lotus wallets]({{< relref "manage-fil" >}}).
 
@@ -42,6 +42,10 @@ lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-
 ```
 
 The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
+
+{{< alert >}}
+Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.]({{< relref "../../tutorials/lotus-miner/msig-as-owner" >}})
+{{< /alert >}}
 
 ## The worker address
 
@@ -113,10 +117,10 @@ To set up a _control address_:
    ```
 
    ```output
-   name       ID      key        use    balance
-   owner      t01111  f3abcd...  other  300 FIL
-   worker     t01111  f3abcd...  other  300 FIL
-   control-0  t02222  f3defg...  post   100 FIL
+   name       ID      key        use              balance
+   owner      f01234  f3defg...                   300 FIL
+   worker     f01111  f3abcd...  other            300 FIL
+   control-0  f02222  f3defg...  post             100 FIL
    ```
 
 Repeat this procedure to add additional addresses.
@@ -127,18 +131,18 @@ Repeat this procedure to add additional addresses.
 lotus-miner --actor f01000 actor control list
 ```
 
-### Use control addresses for commits
+### Use control addresses for all messages
 
-Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits and commits. With this, only market messages are sent from the worker address. If the basefee is high, then you can still put sectors on chain without those messages being blocked by things like publishing deals.
+Clean up the tasks required for your worker address by setting your control addresses to perform pre-commits, commits, publish deals and terminate. By default, the worker address will act as a fallback address if any of the control addresses are out of funds. See .lotusminer `config.toml` for more information. 
 
-1. Create two control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
+1. Create five control addresses. Control addresses can be any _type_ of address: `secp256k1 ` or `bls`:
 
    ```shell with-output
    lotus wallet new bls
    ```
 
    ```shell
-   f3rht...
+   f3defg...
    ```
 
    ```shell with-output
@@ -146,7 +150,31 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-   f3sxs...
+   f3vst2...
+   ```
+
+   ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3uuyr...
+   ```
+
+   ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3wywg...
+   ```
+
+   ```shell with-output
+   lotus wallet new bls
+   ```
+
+   ```output
+   f3qtma...
    ```
 
    ```shell with-output
@@ -154,12 +182,15 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-   Address   Balance  Nonce  Default
-   f3rht...  0 FIL    0      X
-   f3sxs...  0 FIL    0
+   Address    Balance  Nonce  Default
+   f3defg...  0 FIL    0      X
+   f3vst2...  0 FIL    0
+   f3uuyr...  0 FIL    0
+   f3wywg...  0 FIL    0
+   f3qtma...  0 FIL    0
    ```
 
-2. Add some funds into those two addresses.
+2. Add some funds into those five addresses.
 3. Wait for around 5 minutes for the addresses to be assigned IDs.
 4. Get ID of those addresses:
 
@@ -168,44 +199,59 @@ Clean up the tasks required for your worker address by setting your control addr
    ```
 
    ```output
-    Address   ID        Balance                   Nonce  Default
-    f3rht...  f0100933  0.59466768102284489 FIL   1      X
-    f3sxs...  f0100939  0.4 FIL                   0
+    Address    ID        Balance                   Nonce  Default
+    f3defg...  f02222    0.59466768102284489 FIL   1      X
+    f3vst2...  f03333    0.4 FIL                   0
+    f3uuyr...  f04444    0.4 FIL                   0
+    f3wywg...  f05555    0.4 FIL                   0
+    f3qtma...  f06666    0.4 FIL                   0
    ```
 
 5. Add control addresses:
 
    ```shell with-output
-   lotus-miner actor control set --really-do-it=true f0100933 f0100939
+   lotus-miner actor control set --really-do-it f02222 f03333 f04444 f05555 f06666
    ```
 
    ```output
-    Add f3rht...
-    Add f3sxs...
+    Add f3defg...
+    Add f3vst2...
+    Add f3uuyr...
+    Add f3wywg...
+    Add f3qtma...
     Message CID: bafy2bzacecfryzmwe5ghsazmfzporuybm32yw5q6q75neyopifps3c3gll6aq
    ```
+
+3. Wait for around 5 minutes to be sure that the message has landed.
+
+6. Add the newly created addresses into the miner config under the `[Addresses]` section:
+
+   ```yaml
+   [Addresses]
+       PreCommitControl = ["f3vst2..."]
+       CommitControl = ["f3uuyr..."]
+       TerminateControl = ["f3qtma..."]
+       DealPublishControl = ["f3wywg..."]
+   ```
+
+7. Restart `lotus-miner`.
+
+8. Done! 
 
    ```shell with-output
      lotus-miner actor control list
    ```
 
    ```output
-   name       ID      key        use    balance
-   owner      t01...  f3abcd...  other  15 FIL
-   worker     t01...  f3abcd...  other  10 FIL
-   control-0  t02...  f3defg...  post   100 FIL
-   control-1  t02...  f3defg...  post   100 FIL
+   name       ID      key        use              balance
+   owner      f01234  f3zdes...                   300 FIL
+   worker     f01111  f3abcd...  other            0.4 FIL
+   control-0  f02222  f3defg...  post             0.4 FIL
+   control-1  f03333  f3vst2...  precommit        0.4 FIL
+   control-2  f04444  f3uuyr...  commit           0.4 FIL
+   control-3  f05555  f3wywg...  deals            0.4 FIL
+   control-4  f06666  f3qtma...  terminate        0.4 FIL
    ```
-
-6. Add the newly created addresses into the miner config under the `[Addresses]` section:
-
-   ```yaml
-   [Addresses]
-       PreCommitControl = ["f3rht..."]
-       CommitControl = ["f3sxs..."]
-   ```
-
-7. Restart `lotus-miner`.
 
 ## Managing balances
 
@@ -216,27 +262,54 @@ lotus-miner info
 ```
 
 ```output
-Miner: t01000
-Sector Size: 2 KiB
-Byte Power:   100 KiB / 100 KiB (100.0000%)
-Actual Power: 1e+03 Ki / 1e+03 Ki (100.0000%)
-  Committed: 100 KiB
-  Proving: 100 KiB
-Below minimum power threshold, no blocks will be won
-Deals: 0, 0 B
-  Active: 0, 0 B (Verified: 0, 0 B)
+Miner: f01000 (32 GiB sectors)
+Power: 1 Pi / 1 Ei (100.0000%)
+        Raw: 1 PiB / 1 PiB (100.0000%)
+        Committed: 1 PiB
+        Proving: 1 PiB
+Projected average block win rate: 1000/week (every 1h0m0s)
+Projected block win with 99.9% probability every 2h0m0s
+(projections DO NOT account for future network and miner growth)
 
-Miner Balance: 10582.321501530685596531 FIL
-  PreCommit:   0.000000286878768791 FIL
-  Pledge:      0.00002980232192 FIL
-  Locked:      10582.321420164834231291 FIL
-  Available:   0.000051276650676449 FIL
-Worker Balance: 49999999.999834359275302423 FIL
-Market (Escrow):  0 FIL
-Market (Locked):  0 FIL
+Miner Balance:    123456.789 FIL
+      PreCommit:  0
+      Pledge:     122965.789 FIL
+      Vesting:    250 FIL
+      Available:  250 FIL
+Market Balance:   0 FIL
+       Locked:    0 FIL
+       Available: 0 FIL
+Worker Balance:   500 FIL
+       Control:   600 FIL
+Total Spendable:  1350 FIL
 ```
 
-In this example, the miner ID is `t01000`, it has a total balance of `10582.321501530685596531 FIL`, and an available balance of `0.000051276650676449 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `49999999.999834359275302423 FIL`.
+In this example, the miner ID is `f01000`, it has a total balance of `123456.789 FIL`, and an available balance of `250 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `500 FIL` and the control balance is `600 FIL`. Control balance combines all funds in the control addresses and Total Spendable combines Available, Worker Balance and Control balances.
+
+Control addresses is a good way to avoid stuck messages in your local mpool, but it can still happen occasionally.
+A good pratice is to keep track of the basefee and always have enough FIL in the control addresses. 
+Adjust your fees limits in .lotusminer `config.toml` accordingly. 
+
+   ```yaml
+   [Fees]
+       MaxPreCommitGasFee = "0.025 FIL"
+       MaxCommitGasFee = "0.05 FIL"
+       MaxTerminateGasFee = "0.5 FIL"
+       MaxWindowPoStGasFee = "5 FIL"
+       MaxPublishDealsFee = "0.05 FIL"
+   ```
+
+ ```output
+   name       ID      key        use              balance
+   owner      f01234  f3zdes...                   300 FIL
+   worker     f01111  f3abcd...  other            50 FIL
+   control-0  f02222  f3defg...  post             10 FIL
+   control-1  f03333  f3vst2...  precommit        100 FIL
+   control-2  f04444  f3uuyr...  commit           200 FIL
+   control-3  f05555  f3wywg...  deals            50 FIL
+   control-4  f06666  f3qtma...  terminate        10 FIL
+   ```
+
 
 ## Withdrawing funds from the Miner actor
 
@@ -245,6 +318,11 @@ Transfer funds from the Miner actor address to the owner address by calling `act
 ```shell
 lotus-miner actor withdraw <amount>
 ```
+
+{{< alert icon="tip" >}}
+Tip: If no amount entered it will withdraw all Available funds. 
+{{< /alert >}}
+
 
 {{< alert >}}
 The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporally imported for the operation to succeed.
