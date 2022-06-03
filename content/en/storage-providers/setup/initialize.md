@@ -60,7 +60,6 @@ Before you run your storage provider, it is important that it is reachable from 
 
 Once you start your storage provider, [make sure you can connect to its public IP/port]({{< relref "../../storage-providers/operate/connectivity/" >}}).
 
-
 ## Running the storage provider
 
 You are now ready to start the `lotus-miner` process:
