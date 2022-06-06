@@ -1,6 +1,6 @@
 ---
-title: "Build "
-description: "This is a guide for adding swap to a linux machine."
+title: "How to join the `Butterfly` network."
+description: "This is a guide for how one can join the Butterfly network"
 date: 2022-03-17T12:00:35+01:00
 lastmod: 2021-11-16T12:00:35+01:00
 draft: false
