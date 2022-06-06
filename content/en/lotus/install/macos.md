@@ -127,7 +127,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
    For example:
 
    ```shell
-   git checkout releases/1.15.8
+   git checkout releases/v1.15.8
    ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
