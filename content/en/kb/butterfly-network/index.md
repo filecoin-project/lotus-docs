@@ -23,7 +23,7 @@ How to join the `Butterfly` network.
 The `Butterfly` network can not be considered a stable network and may be reset or upgraded at any moment with little notice.
 {{< /alert >}}
 
-Clone and checkout a release or branch as explained in the [build and install Lotus]({{< relref "/lotus/install/linux/#build-and-install-lotus" >}}) guide.
+Clone and checkout a release or branch as explained in the [build and install Lotus]({{< relref "../../lotus/install/linux/#build-and-install-lotus" >}}) guide.
 
 To join the `Butterfly` network, simply build Lotus by:
 ```shell
