@@ -2,7 +2,7 @@
 title: "Journal"
 description: "Storage providers can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
 lead: "Storage providers can use the journal to observe the workflow of the program in detail, and simplify troubleshooting."
-draft: false
+draft: true
 menu:
     storage-providers:
         parent: "storage-providers-operate"
