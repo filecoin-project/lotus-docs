@@ -56,7 +56,10 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
     ```shell
     xcode-select -p
     ```
-    ```
+
+    This should output something like:
+
+    ```plaintext
     /Library/Developer/CommandLineTools
     ```
 
@@ -68,6 +71,7 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
    ```shell
    xcode-select --install
    ```
+
    {{< /alert >}}
 
 Next up is installing Lotus' dependencies using Homebrew.
@@ -117,9 +121,13 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
 
    ```shell
-   git checkout <tag_or_release>
-   # For example:
-   git checkout <vX.X.X> # tag for a release
+   git checkout releases/<tag_or_release>
+   ```
+
+   For example:
+
+   ```shell
+   git checkout releases/1.15.8
    ```
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
@@ -128,7 +136,7 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 {{< /alert >}}
 
-3. Create necessary environment variable to allow Lotus to run on ARM architecture:
+1. Create necessary environment variable to allow Lotus to run on ARM architecture:
 
     ```shell
     export LIBRARY_PATH=/opt/homebrew/lib
@@ -173,9 +181,7 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 
     You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
 
-    {{< alert icon="tip">}}
     If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
-    {{< /alert >}}
 
 1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "nodes-in-china" >}})".
 1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
@@ -259,12 +265,13 @@ For example, after your Lotus daemon has been running for a few minutes, use `lo
 ```shell
 lotus net sync
 ```
-```
+
+```plaintext
 sync status:
 ...
-	Target:	[bafy2bzaceaki6bjhe2lxmtyexcff6vh5y5uw4tmbjr3gatwvh5dhaqqb2ykaa] (320791)
-	Stage: complete
-	Height: 320791
+    Target: [bafy2bzaceaki6bjhe2lxmtyexcff6vh5y5uw4tmbjr3gatwvh5dhaqqb2ykaa] (320791)
+    Stage: complete
+    Height: 320791
 ...
 ```
 
@@ -273,7 +280,8 @@ Or use `lotus net` to check the number of other peers that it is connected to in
 ```shell
 lotus net peers
 ```
-```
+
+```plaintext
 12D3KooWSDqWSDNZtpJae15FBGpJLeLmyabUfZmWDWEjqEGtUF8N, [/ip4/58.144.221.27/tcp/33425]
 12D3KooWRTQoDUhWVZH9z5u9XmaFDvFw14YkcW7dSBFJ8CuzDHnu, [/ip4/67.212.85.202/tcp/10906]
 ```
@@ -283,7 +291,8 @@ Or check the current version of your Lotus node as well as network.
 ```shell
 lotus version
 ```
-```
+
+```plaintext
 Daemon:  1.13.0+calibnet+git.7a55e8e89+api1.4.0
 Local: lotus version 1.13.0+calibnet+git.7a55e8e89
 # running lotus v1.13.0 on Calibration testnet
