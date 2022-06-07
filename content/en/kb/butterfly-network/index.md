@@ -13,7 +13,7 @@ types: ["solution"]
 areas: ["Lotus Node", "Lotus Miner"]
 ---
 
-## Problem
+## Butterfly Network
 
 How to join the `Butterfly` network.
 
