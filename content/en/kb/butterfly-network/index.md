@@ -17,7 +17,7 @@ areas: ["Butterfly Network", "Lotus Build"]
 
 How to join the `Butterfly` network.
 
-## Resolution
+## Steps to join butterfly network
 
 {{< alert icon="warning" >}}
 The `Butterfly` network can not be considered a stable network and may be reset or upgraded at any moment with little notice.
