@@ -19,8 +19,7 @@ The following error shows up in the lotus and lotus-miner logs
 error sending message: GasEstimateMessageGas error: estimating gas used: message execution failed: exit 16, reason: no valid updates (RetCode=16)
 ```
 
-Typically, a lotus of lotus components use `MpoolPushMessage` API to send messages to the chain. This API does an automatic calculation of the required gas fee.
-Sometimes, this calculation does not hold valid in the next epoch and message gets stuck in the `mpool` due to the low gas fee.
+Typically, Lotus components use `MpoolPushMessage` API to send messages to the chain. This API does an automatic calculation of the required gas fee. Sometimes, this calculation does not hold valid in the next epoch and message gets stuck in the `mpool` due to the low gas fee.
 
 ## Environment
 
