@@ -16,6 +16,7 @@ areas: ["Butterfly Network", "Lotus Build"]
 ## Butterfly Network
 
 The `Butterfly` test network is mostly an internal development and test network used by the Lotus team. It is used for short term testing, and should not be used for something that needs a long time operating network. To get updates about the Butterfly test network it is recommended to follow the `#lotus-butterfly` channel in the Filecoin Slack, as well as subscribing to [network updates](https://status.filecoin.io).
+The `Butterfly` network supports sector size of 512MiB, 32GiB and 64GiB.
 
 ## Steps to join butterfly network
 
