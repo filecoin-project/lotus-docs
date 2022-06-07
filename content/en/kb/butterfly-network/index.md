@@ -9,7 +9,7 @@ menu:
     parent: "browse"
 toc: false
 pinned: false
-types: ["solution"]
+types: ["article"]
 areas: ["Lotus Node", "Lotus Miner"]
 ---
 
