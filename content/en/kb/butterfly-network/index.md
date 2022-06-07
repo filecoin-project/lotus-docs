@@ -10,7 +10,7 @@ menu:
 toc: false
 pinned: false
 types: ["article"]
-areas: ["Lotus Node", "Lotus Miner"]
+areas: ["Butterfly Network", "Lotus Build"]
 ---
 
 ## Butterfly Network
