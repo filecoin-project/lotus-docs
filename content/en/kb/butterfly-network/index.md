@@ -1,5 +1,5 @@
 ---
-title: "How to join the Butterfly network."
+title: "How to join the Butterfly test network."
 description: "A guide to join the Butterfly network"
 date: 2022-03-17T12:00:35+01:00
 lastmod: 2021-11-16T12:00:35+01:00
@@ -15,7 +15,7 @@ areas: ["Butterfly Network", "Lotus Build"]
 
 ## Butterfly Network
 
-How to join the `Butterfly` network.
+The `Butterfly` testnetwork is mostly an internal development and test network used by the Lotus team. Its usecase is mostly for short term testing, and should not be used for something that needs a long time operating network. To get updates about the Butterfly test network it´s recommended to follow the `#lotus-butterfly` channel in the Filecoin Slack, as well as subscribing to [network updates](https://status.filecoin.io).
 
 ## Steps to join butterfly network
 
