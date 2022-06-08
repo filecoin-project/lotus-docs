@@ -27,9 +27,9 @@ You can quickly install Lotus using Homebrew on macOS.
 
 1. Add the `filecoin-project/lotus` tap:
 
-   ```shell
-   brew tap filecoin-project/lotus
-   ```
+    ```shell
+    brew tap filecoin-project/lotus
+    ```
 
 1. Install Lotus:
 
@@ -63,16 +63,11 @@ Lotus requires that X-Code CLI tools be installed before building the Lotus bina
     /Library/Developer/CommandLineTools
     ```
 
-    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
+    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew). If the above command doesn't return a path, install Xcode:
 
-   {{< alert icon="warning">}}
-   If the above command doesn't return a path, install Xcode:
-
-   ```shell
-   xcode-select --install
-   ```
-
-   {{< /alert >}}
+    ```shell
+    xcode-select --install
+    ```
 
 Next up is installing Lotus' dependencies using Homebrew.
 
@@ -82,9 +77,9 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 
 1. Use the command `brew install` to install the following packages:
 
-   ```shell
-   brew install go bzr jq pkg-config rustup hwloc coreutils
-   ```
+    ```shell
+    brew install go bzr jq pkg-config rustup hwloc coreutils
+    ```
 
 Next up is cloning the Lotus repository and building the executables.
 
@@ -113,28 +108,18 @@ These instructions are for installing Lotus on an M1-based Mac. If you have an I
 
 1. Clone the repository:
 
-   ```shell
-   git clone https://github.com/filecoin-project/lotus.git
-   cd lotus/
-   ```
+    ```shell
+    git clone https://github.com/filecoin-project/lotus.git
+    cd lotus/
+    ```
 
-1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
+1. Switch to the latest stable release branch:
 
-   ```shell
-   git checkout releases/<tag_or_release>
-   ```
+    ```shell
+    git checkout releases
+    ```
 
-   For example:
-
-   ```shell
-   git checkout releases/v1.15.8
-   ```
-
-    You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
-
-{{< alert icon="tip">}}
-If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
-{{< /alert >}}
+    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
 1. Create necessary environment variable to allow Lotus to run on ARM architecture:
 
@@ -166,40 +151,36 @@ These instructions are for installing Lotus on an Intel or AMD-based Mac. If you
 
 1. Clone the repository:
 
-   ```shell
-   git clone https://github.com/filecoin-project/lotus.git
-   cd lotus/
-   ```
+    ```shell
+    git clone https://github.com/filecoin-project/lotus.git
+    cd lotus/
+    ```
 
-1. Run `git checkout <RELEASE TAG>` to checkout to the latest Lotus release:
+1. Switch to the latest stable release branch:
 
     ```shell
-   git checkout <tag_or_release>
-   # For example:
-   git checkout <vX.X.X> # tag for a release
-   ```
+    git checkout releases
+    ```
 
-    You can use any tag listed on the [Lotus GitHub release page](https://github.com/filecoin-project/lotus/releases) to checkout to that specific release.
-
-    If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
+    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
 1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "nodes-in-china" >}})".
 1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variable:
 
-   ```shell
-   export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-   export CGO_CFLAGS="-D__BLST_PORTABLE__"
-   export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-   ```
+    ```shell
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
+    export CGO_CFLAGS="-D__BLST_PORTABLE__"
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+    ```
 
-   This is due to a Lotus bug that prevents Lotus from running on a processor without `adx` instruction support, and should be fixed soon.
+    This is due to a Lotus bug that prevents Lotus from running on a processor without `adx` instruction support, and should be fixed soon.
 
 1. Build and install Lotus:
 
-   ```shell
-   make clean && make all
-   sudo make install
-   ```
+    ```shell
+    make clean && make all
+    sudo make install
+    ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
 
