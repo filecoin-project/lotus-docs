@@ -1,15 +1,15 @@
 ---
-title: "Disputer"
+title: "Run a disputer"
 description: "Verifying submitted Window PoSts is expensive, and that cost can drastically increase when network congestion causes the gas base fee to rise. To address this, Filecoin Improvement Proposal FIP-0010 enables node operators to optimistically accept Window PoSts on-chain without verification, allowing them to be disputed later by off-chain-verifiers."
 lead: "Verifying submitted Window PoSts is expensive, and that cost can drastically increase when network congestion causes the gas base fee to rise. To address this, Filecoin Improvement Proposal FIP-0010 enables node operators to optimistically accept Window PoSts on-chain without verification, allowing them to be disputed later by off-chain-verifiers."
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-provider-operate-disputer"
+    tutorials:
+        parent: "tutorials-lotus"
 aliases:
     - /docs/storage-providers/disputer/
-weight: 355
+    - /storage-providers/operate/disputer/
+weight: 140
 toc: true
 ---
 
