@@ -1,7 +1,7 @@
 ---
-title: "Sector pledging"
-description: "Pledging sectors is a technique to seal sectors with random data to make increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
-lead: "Pledging sectors is a technique to seal sectors with random data to make increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
+title: "Get storage power"
+description: "A storage providers power in the network."
+lead: "A storage provider can obtain power in the network by pleding commited capacity sectors, or by taking in storage deals. This page covers the motivation, and steps needed to take for both of these methods"
 draft: false
 menu:
     storage-providers:
@@ -13,19 +13,19 @@ weight: 340
 toc: true
 ---
 
-## Reasons to pledge sectors
+## Reasons to pledge CC-sectors
 
-As [explained in "How mining works"](https://docs.filecoin.io/mine/how-mining-works/#power-and-rewards), the amount of power of a miner in the Filecoin network is directly proportional to the amount of live storage (active sectors) contributed to the network. Miners with more power have more chances to be selected to mine new blocks.
+As [explained in "How mining works"](https://docs.filecoin.io/mine/how-mining-works/#power-and-rewards), the amount of power of a storage provider in the Filecoin network is directly proportional to the amount of live storage (active sectors) contributed to the network. Storage providers with more power have more chances to be selected to mine new blocks.
 
-By sealing sectors with random data, a miner can demonstrate to the network that it can potentially offer that much storage for real deals when there is enough demand or when it decides to do so. This is known as _pledging_. In the meantime, pledged sectors work similar to regular sectors and result in an increase in the miner's power.
+By sealing sectors with random data, a storage provider can demonstrate to the network that it can offer that much storage, and later upgrade these sectors with real data by utilizing Snap Deals.
 
-Taking the above into account, **pledging sectors [on mainnet] network makes most sense when doing it at a scale where it provides enough power to have real chances to mine new blocks**. Otherwise, it is only useful for testing purposes.
+Taking the above into account, **pledging sectors makes the most sense when doing it at a scale where it provides enough power to have real chances to mine new blocks, and also to indicate to potential clients that you have a capacity to store large amounts of real data**.
 
 {{< alert icon="tip" >}}
-Pledging one sector during miner setup can be useful to test how long the sealing process takes and make sure that the miner's hardware is correctly configured before taking on real deals.
+Pledging a sector can be useful to test how long the sealing process takes and makes sure that the hardware is correctly configured before taking on real deals.
 {{< /alert >}}
 
-## Pledging a sector
+### Pledging a CC-sector
 
 To pledge a sector use:
 
@@ -35,11 +35,7 @@ lotus-miner sectors pledge
 
 In Lotus, this will pledge the space for ~538 days by default.
 
-> The protocol allows a sector to have expiration time between [180-540](https://github.com/filecoin-project/specs-actors/blob/73e0409ac77c918c8fc91681c250a710c4b9a374/actors/builtin/miner/policy.go#L201-L206) days. Lotus will allow user to set the committed capacity sector expiration time upon pledge once [issue #4760](https://github.com/filecoin-project/lotus/issues/4760) is addressed.
-
-{{< alert icon="warning" >}}
-This will write data to `$TMPDIR` so make sure that there is enough space available.
-{{< /alert >}}
+> The protocol allows a sector to have an expiration time between 180 and 540 days. You can change the the committed capacity sector expiration time by changing the `CommittedCapacitySectorLifetime = "12960h0m0s"` to your desired time in your config.toml file.
 
 Check that the sealing job has started with:
 
@@ -59,7 +55,7 @@ lotus-miner sealing workers
 
 When sealing for the new is complete, `pSet: NO` will become `pSet: YES`.
 
-## Adjusting the expected seal duration setting
+### Adjusting the expected seal duration setting
 
 If you pledged a sector, you can use the duration of the operation to update the [`ExpectedSealDuration` setting]({{< relref "configuration#dealmaking-section" >}}).
 
@@ -70,6 +66,10 @@ lotus-miner sectors status --log 0
 ```
 
 Then follow the instructions in the configuration reference linked above.
+
+## Reasons to pledge CC-sectors
+
+
 
 ## Inspect expiring sectors
 
