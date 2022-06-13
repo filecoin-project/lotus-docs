@@ -77,6 +77,9 @@ Use the self-documenting feature of the tool to explore the different commands.
 
 This will output something like:
 
+```
+Output:
+
 NAME:
    lotus-bench - Benchmark performance of lotus on your hardware
 
