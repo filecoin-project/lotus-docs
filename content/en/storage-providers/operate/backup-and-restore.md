@@ -15,18 +15,29 @@ toc: true
 
 ## Backup
 
-This process backs-up metadata of the Lotus miner, which is needed to restore the operation. This backup does not include sector data.
+This process backs-up metadata of the Lotus miner, which is needed to restore the operation. 
+
+{{< alert icon="callout" >}}
+Be warned: This backup does not include sector data.
+{{< /alert >}}
+
 
 1. Create a directory for this backup:
 
    ```shell
-   mkdir -p ~/lotus-backups/2020-11-15
+   mkdir -p ~/lotus-backups/
    ```
 
-1. Call `backup` to backup your miner and supply the destination for the `backup.cbor` file:
+2. Export this environment, note that is has to be in the same shell `lotus-miner run`:
+
+   ```
+   export LOTUS_BACKUP_BASE_PATH=/root/lotus-backups
+   ```
+
+3. Call `backup` to backup your miner and supply the destination for the `backup.cbor` file:
 
    ```shell with-output
-   lotus-miner backup /root/lotus-backups/2020-11-15/backup.cbor
+   lotus-miner backup /root/lotus-backups/backup_22-06-01.cbor
    ```
 
    This will output something like:
@@ -47,10 +58,10 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    Success
    ```
 
-1. Backup your `config.toml` and `storage.json` files:
+4. Backup your `config.toml` and `storage.json` files:
 
    ```shell
-   cp ~/.lotusminer/config.toml ~/.lotusminer/storage.json /root/lotus-backups/2020-11-15
+   cp ~/.lotusminer/config.toml ~/.lotusminer/storage.json /root/lotus-backups/2022
    ```
 
 The backup is now complete. Always follow the 3-2-1 rule when storing backups:
@@ -70,15 +81,15 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
 
    ```
    ...
-   2020-11-15T17:53:41.630Z        INFO    main    lotus-storage-miner/init_restore.go:254 Initializing libp2p identity
-   2020-11-15T17:53:41.631Z        INFO    main    lotus-storage-miner/init_restore.go:266 Configuring miner actor
-   2020-11-15T17:53:41.643Z        INFO    main    lotus-storage-miner/init.go:592 Waiting for message: bafy2bzacea3a7kqp3du5lwhm6xlaawxbz3ae7luefmhlcewljclauit7yexuq
+   2022-06-01T17:53:41.630Z        INFO    main    lotus-storage-miner/init_restore.go:254 Initializing libp2p identity
+   2022-06-01T17:53:41.631Z        INFO    main    lotus-storage-miner/init_restore.go:266 Configuring miner actor
+   2022-06-01T17:53:41.643Z        INFO    main    lotus-storage-miner/init.go:592 Waiting for message: bafy2bzacea3a7kqp3du5lwhm6xlaawxbz3ae7luefmhlcewljclauit7yexuq
    ```
 
 1. Copy `config.toml` and `storage.json` into `~/.lotusminer`:
 
    ```shell
-   cp lotus-backups/2020-11-15/config.toml lotus-backups/2020-11-15/storage.json .lotusminer
+   cp lotus-backups/2022-06-01/config.toml lotus-backups/2022-06-01/storage.json .lotusminer
    ```
 
 1. Start your miner:
