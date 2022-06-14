@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: "Daily chores"
 description: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
 lead: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
 draft: false
@@ -13,54 +13,66 @@ weight: 380
 toc: true
 ---
 
-## Error: Can't acquire bellman.lock
+## Daily chores
 
-The **Bellman** lockfile is created to lock a GPU for a process. This bug can occur when this file isn't properly cleaned up:
+## Inspect expiring sectors
 
-```sh
-mining block failed: computing election proof: github.com/filecoin-project/lotus/miner.(*Miner).mineOne
+The `check-expire` lets you inspect which sectors are about to expire. By default it will display the sectors that will expire within 60 days:
+
+```shell
+lotus-miner sectors check-expire
 ```
 
-This bug occurs when the miner can't acquire the `bellman.lock`. To fix it you need to stop the `lotus-miner` and remove `/tmp/bellman.lock`.
+If you want to display sectors that will expire later, or earlier, then 60 days from now, you can change the `--cutoff` option with your desired epoch length cutoff.
 
-## Error: Failed to get api endpoint
-
-```sh
-lotus-miner info
-# WARN  main  lotus-storage-miner/main.go:73  failed to get api endpoint: (/Users/user/.lotusminer) %!w(*errors.errorString=&{API not running (no endpoint)}):
+```shell with-output
+lotus-miner sectors check-expire --cutoff 345600
 ```
 
-If you see this, that means your **Lotus Miner** isn't ready yet. Your Lotus Node needs to [finish syncing]({{< relref "chain-management#checking-sync-status" >}}).
-
-## Error: Your computer may not be fast enough
-
-```sh
-CAUTION: block production took longer than the block delay. Your computer may not be fast enough to keep up
+```shell output
+ID  SealProof  InitialPledge  Activation                      Expiration                  MaxExpiration                 MaxExtendNow
+2585  8          1.111 FIL      920515 (48 weeks 1 day ago)     1938603 (in 2 weeks 1 day)     6176515 (in 4 years 3 weeks)   3448626 (in 1 year 25 weeks)  
+1619  8          264.472 mFIL   395718 (1 year 22 weeks ago)    1947243 (in 2 weeks 4 days)    5651718 (in 3 years 29 weeks)  3448626 (in 1 year 25 weeks)  
+1694  8          268.789 mFIL   410107 (1 year 21 weeks ago)    1961643 (in 3 weeks 2 days)    5666107 (in 3 years 30 weeks)  3448626 (in 1 year 25 weeks)  
+2108  8          827.247 mFIL   599683 (1 year 12 weeks ago)    2065323 (in 8 weeks 3 days)    5855683 (in 3 years 40 weeks)  3448626 (in 1 year 25 weeks)  
+3647  8          1.314 FIL      1534542 (17 weeks 5 days ago)   2141643 (in 12 weeks 2 days)   6790542 (in 4 years 34 weeks)  3448631 (in 1 year 25 weeks) 
+3791  8          1.378 FIL      1614739 (13 weeks 5 days ago)   2221947 (in 16 weeks 2 days)   6870739 (in 4 years 38 weeks)  3448631 (in 1 year 25 weeks)
 ```
 
-If you see this, that means [your computer is too slow]({{< relref "hardware-requirements" >}}) and your blocks are not included in the chain, and you will not receive any rewards.
+### Extend sectors
 
-## Error: No space left on device
+You can extend a sector with the command:
 
-```sh
-lotus-miner sectors pledge
-# No space left on device (os error 28)
+```shell
+lotus-miner sectors renew [command options] [arguments...]
 ```
 
-If you see this, that means [sector pledging wrote too much data to `$TMPDIR`]({{< relref "sector-pledging" >}}) which by default is the root partition (This is common for Linux setups). Usually your root partition does not get the largest partition of storage so you will need to change the environment variable to something else.
+This is an example of selecting sectors with a lifecycle between `epochnumber-a` epoch and `epochnumber-b` epoch and updating it to 1555200 epoch:
 
-## Error: GPU unused
+```shell
+lotus-miner sectors renew  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
+```
 
-If you suspect that your GPU is not being used, first make sure it is one or the supported or set it up as explained in the [custom GPUs guide]({{< relref "benchmarks" >}}). You can verify your GPU is being used by running a quick lotus-bench benchmark as explained there on that guide as well.
+This is an example of updating the lifecycle of a sector read from a file to 1555200 epoch:
 
-## Common connectivity errors
+```shell
+lotus-miner sectors renew  --sector-file <your-sectorfile> --new-expiration 1555200
+```
 
-| Error | What it means | How to fix |
-| ----- | ------------- | ---------- |
-| N/A | If you see "N/A" for deal success rate, this may be why. Once your miner seals its first sector, the dealbot will start attempting storage deals. From the moment a miner seals its first sector, you should have a storage deal result in max 48 hours (current timeout value for storage deals). For retrieval deals you should see a result in maxim 12 hours after the storage deal is reported successful (current timeout for retrieval deals ). The dashboard currently logs deal **results** only. If you have a storage or retrieval deal in progress you’ll still see “N/A” until it propagates to the chain. | No miner action needed. |
-| ClientQueryAsk failed : failed to open stream to miner: dial backoff | The connection to the remote host was attempted, but failed. | This may be due to issues with porting, IPs set within the config file, or simply no internet connectivity. To fix, [establish a public IP address](https://docs.filecoin.io/mine/connectivity/#establishing-a-public-ip-address). |
-| ClientQueryAsk failed : failed to open stream to miner: failed to dial | The deal-bot was unable to open a network socket to the miner. | This is likely because the miner's IP is not publicly dialable, or a port issue. To fix, [establish a public IP address](https://docs.filecoin.io/mine/connectivity/#establishing-a-public-ip-address). |
-| ClientQueryAsk failed : failed to open stream to miner: routing: not found | The deal-bot was unable to locate the miners IP and/or port. | Made sure you [published your miner's multiaddresses on the chain]({{< relref "initialize#publishing-the-miner-addresses" >}}) |
-| ClientQueryAsk failed : failed to read ask response: stream reset | Connectivity loss, either due to a high packet loss rate or libp2p too aggressively dropping/failing connections. | [Fix underway.] Lotus team is currently working on a change to use libp2p's connection tagging feature, which will retry connections if dropped. ([go-fil-markets/#361](https://github.com/filecoin-project/go-fil-markets/issues/361)). No action needed from miners. |
-| StorageDealError PublishStorageDeals: found message with equal nonce as the one we are looking for | [Under investigation.] We suspect a chain validation error | No action needed from miners. |
-| ClientMinerQueryOffer - Retrieval query offer errored: get cid info: No state for /bafk2bz... | [Under investigation.] | No action needed from miners. |
+{{< alert icon="warning" >}}
+You have to select the sectors to renew. That means you have to specify the `--from` and `--to` option, or specify the sector file, if no sector is selected this command will have no effect.
+
+Format of sector file:
+
+```
+1
+2
+...
+```
+{{< /alert >}}
+
+## Compacting partitions
+
+Expired, removed and terminated sectors will be listed in your proving partition until you compact your partitions. To clean up a partition in a deadline we can use the `lotus-miner sectors compact-partitions` command. The network enforces a security measure that disallows compacting a partition in a deadline untill 1800 epochs (15 hours) have passed. This is to enforce that compacting a deadline cannot be used to prevent invalid posts from being disputed.
+
+The `lotus-miner sectors compact-partitions` also includes a safety measure that disallows compacting during a challenge window, or the prior challenge window. This is because compaction rearranges metadata, and if done too close to a windowPoSt it could cause you to miss a windowPost.
