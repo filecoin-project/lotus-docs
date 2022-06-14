@@ -1,7 +1,7 @@
 ---
 title: "Manage storage deals"
-description: "This guide describes the different workflows and options that Lotus miners can use to manage storage deals."
-lead: "This guide describes the different workflows and options that Lotus miners can use to manage storage deals."
+description: "This guide describes the different workflows and options that Lotus storage providers can use to manage storage deals."
+lead: "This guide describes the different workflows and options that Lotus storage providers can use to manage storage deals."
 draft: false
 menu:
     storage-providers:
@@ -13,13 +13,17 @@ weight: 345
 toc: true
 ---
 
-During the lifetime of a miner, Filecoin network clients will query the storage _price-ask_ advertised by the miner and initiate deals. Deals go through several phases:
+During the lifetime of a miner, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
 
 1. Data transfer (for online deals) or data import (for offline deals)
 2. Sealing sector with deal data (miner)
 3. Proving (every 24 hours)
 
-The following sections provide insights into the different ways Lotus can be used to manage several parts of the storage-deal process.
+The following sections provide insights into the different ways Lotus markets subsystem can be used to manage several parts of the storage-deal process.
+
+{{< alert icon="warning" >}}
+If you are using Boost implementation of market then please refer to [Boost configuration](https://boost.filecoin.io/configuration) for making changes to deal configurations.
+{{< /alert >}}
 
 ## Enabling and disabling deals
 
