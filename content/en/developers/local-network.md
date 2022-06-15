@@ -14,6 +14,8 @@ aliases:
     - /docs/developers/local-network/
 ---
 
+1. You can view your site at [localhost:8080](http://localhost:8080).
+
 You can spin up a local network (local-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a local-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
 
 This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.
@@ -25,12 +27,11 @@ Since spinning up a local-net requires the `lotus` daemon, you need to have Lotu
 - [MacOS]({{< relref "../lotus/install/macos" >}})
 - [Linux]({{< relref "../lotus/install/linux" >}})
 
-
 Run through the installation steps for your operating system, then return here.
 
 ## Environment setup
 
-Local-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries. 
+Local-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries.
 
 1. Create the following environment variable in your terminal:
 
@@ -72,8 +73,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     ```shell
     make 2k
     ```
-
-    This will output something like:
 
     ```plaintext
     git submodule update --init --recursive
