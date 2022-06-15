@@ -14,6 +14,8 @@ aliases:
     - /docs/developers/local-network/
 ---
 
+1. You can view your site at [localhost:8080](http://localhost:8080).
+
 You can spin up a local network (local-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a local-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
 
 This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.

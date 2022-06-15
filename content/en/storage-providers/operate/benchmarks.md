@@ -17,13 +17,11 @@ toc: true
 
 1. You must have the Lotus repository on your computer. If you do not have an existing copy of the repository, [clone it from GitHub](https://github.com/filecoin-project/lotus/):
 
-   ```shell with-output
+   ```shell
    git clone https://github.com/filecoin-project/lotus.git ~/lotus
    ```
 
-   This will output something like:
-
-   ```
+   ```plaintext
    Cloning into '/root/lotus'...
    remote: Enumerating objects: 93, done.
    ...
@@ -37,9 +35,7 @@ toc: true
    make clean all && make install
    ```
 
-   This will output something like:
-
-   ```
+   ```plaintext
    rm -rf  build/.filecoin-install build/.update-modules  lotus lotus-miner lotus-worker lotus-shed lotus-gateway lotus-seed lotus-pond lotus-townhall lotus-fountain lotus-chainwatch lotus-bench lotus-stats lotus-pcr lotus-health lotus-wallet testground
    make -C extern/filecoin-ffi/ clean
    ...
@@ -54,9 +50,7 @@ toc: true
    make lotus-bench
    ```
 
-   This will output something like:
-
-   ```
+   ```plaintext
    rm -f lotus-bench
    go build -o lotus-bench ./cmd/lotus-bench
    ...
@@ -71,15 +65,11 @@ toc: true
 
 Use the self-documenting feature of the tool to explore the different commands.
 
-```shell with-output
-    ./lotus-bench --help
+```shell
+./lotus-bench --help
 ```
 
-This will output something like:
-
-```
-Output:
-
+```plaintext
 NAME:
    lotus-bench - Benchmark performance of lotus on your hardware
 
@@ -111,10 +101,8 @@ Benchmark a sealing computation using `lotus-bench sealing [command options] [ar
 ./lotus-bench sealing
 ```
 
-This will output something like:
-
-```
-2022-04-13T18:37:41.141+0200	INFO	lotus-bench	lotus-bench/main.go:103	Starting lotus-bench
+```plaintext
+2022-04-13T18:37:41.141+0200    INFO    lotus-bench	lotus-bench/main.go:103	Starting lotus-bench
 ...
 ----
 results (v28) SectorSize:(536870912), SectorNumber:(1)
