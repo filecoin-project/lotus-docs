@@ -13,7 +13,7 @@ weight: 345
 toc: true
 ---
 
-During the lifetime of a miner, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
+During the lifetime of a storage provider, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
 
 1. Data transfer (for online deals) or data import (for offline deals)
 2. Sealing sector with deal data (miner)
