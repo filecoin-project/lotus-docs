@@ -278,11 +278,11 @@ The storage provider should now be preliminary set up and running, and you shoul
 
 ### Split Market and Miner subsystem
 
-Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients. It is now possible to run mining and markets subsystems in separate processes and is highly recommended to avoid affecting ongoing Winning PoSt Window PoSt on the mining subsystem.
+The `lotus-miner` performs sealing and proving operations. It also performs market operations, providing storage and serving retrievals to clients. It is possible to separate the markets processes, and it is highly recommended to do so, to avoid affecting ongoing proving and sealing tasks.
 
-Currently, there are 2 implementation of market available which are compatible with Lotus miner subsystem.
+Currently, there are two implementations of market processes available which are compatible with `lotus-miner` subsystem.
 
 1. [Boost](https://boost.filecoin.io)
 2. [Lotus Market]({{< relref "../../storage-providers/advanced-configurations/split-markets-miners/" >}})
 
-Boost is the recommended choice as it supports multiple options for data transfer when making storage deals, including HTTP. Clients can host their CAR file on an HTTP server, such as S3, and provide that URL when proposing the storage deal. Once accepted, Boost will automatically fetch the CAR file from the specified URL. It also supports the same endpoints as Lotus Markets for making storage and retrieval deals, getting the storage and retrieval ask, and getting the status of ongoing deals. This ensures that clients running lotus can make deals with Storage Providers running boost.
+Boost is the recommended choice as it supports multiple options for data transfer when making storage deals, including HTTP. Clients can host their CAR file on an HTTP server, such as S3, and provide that URL when proposing the storage deal. Once accepted, Boost will automatically fetch the CAR file from the specified URL. Boost also supports the same endpoints as `Lotus Markets` for making storage and retrieval deals. This ensures that clients running Lotus can make deals with storage providers running Boost.
