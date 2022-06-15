@@ -25,12 +25,11 @@ Since spinning up a local-net requires the `lotus` daemon, you need to have Lotu
 - [MacOS]({{< relref "../lotus/install/macos" >}})
 - [Linux]({{< relref "../lotus/install/linux" >}})
 
-
 Run through the installation steps for your operating system, then return here.
 
 ## Environment setup
 
-Local-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries. 
+Local-nets use slightly different binaries to those used in the Filecoin mainnet. This section shows you how to setup the Lotus environment and build those binaries.
 
 1. Create the following environment variable in your terminal:
 
@@ -72,8 +71,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     ```shell
     make 2k
     ```
-
-    This will output something like:
 
     ```plaintext
     git submodule update --init --recursive
