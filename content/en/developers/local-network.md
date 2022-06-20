@@ -31,6 +31,7 @@ Run through the installation steps for your operating system, then return here.
 
 ## Prerequisites
 
+Since spinning up a local-net requires the `lotus` daemon, you need to have Lotus installed. To install `lotus`, you must complete the prerequisite steps based on your OS.
 
 ### Linux
 
