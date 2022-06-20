@@ -90,19 +90,19 @@ See the [official Golang installation instructions](https://golang.org/doc/insta
 
 You must have XCode and Homebrew installed to build Lotus from source. Lotus requires that X-Code CLI tools be installed before building the Lotus binaries.
 
-    Check if you already have the XCode Command Line Tools installed via the CLI, run:
+Check if you already have the XCode Command Line Tools installed via the CLI, run:
 
-        ```shell
-        xcode-select -p
-        ```
+    ```shell
+    xcode-select -p
+    ```
 
-    This should output something like:
+This should output something like:
 
-        ```plaintext
-        /Library/Developer/CommandLineTools
-        ```
+    ```plaintext
+    /Library/Developer/CommandLineTools
+    ```
 
-    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
+If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
 
    {{< alert icon="warning">}}
    If the above command doesn't return a path, install Xcode:
@@ -113,7 +113,7 @@ You must have XCode and Homebrew installed to build Lotus from source. Lotus req
 
    {{< /alert >}}
 
-Next up is installing Lotus' dependencies using Homebrew.
+Next up is installing Lotus dependencies using Homebrew.
 
 #### Homebrew
 
