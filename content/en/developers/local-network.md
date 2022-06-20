@@ -92,15 +92,15 @@ You must have XCode and Homebrew installed to build Lotus from source. Lotus req
 
 Check if you already have the XCode Command Line Tools installed via the CLI, run:
 
-    ```shell
-    xcode-select -p
-    ```
+```shell
+xcode-select -p
+```
 
 This should output something like:
 
-    ```plaintext
-    /Library/Developer/CommandLineTools
-    ```
+```plaintext
+/Library/Developer/CommandLineTools
+```
 
 If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
 
