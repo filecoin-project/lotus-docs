@@ -18,15 +18,6 @@ You can spin up a local network (local-net) using the regular Lotus binaries. Th
 
 This process requires you to use multiple terminal windows, so you might find a terminal multiplexer like [Tmux](https://github.com/tmux/tmux) helpful. However, you can easily complete this tutorial by just having several terminal windows open. The screenshots in this guide use Tmux.
 
-## Install Lotus
-
-Since spinning up a local-net requires the `lotus` daemon, you need to have Lotus installed. If you have already installed a Lotus node on this computer you can move onto the [next section ↓](#environment-setup)
-
-- [MacOS]({{< relref "../lotus/install/macos" >}})
-- [Linux]({{< relref "../lotus/install/linux" >}})
-
-Run through the installation steps for your operating system, then return here.
-
 ## Prerequisites
 
 Since spinning up a local-net requires the `lotus` daemon, you need to have Lotus installed. To install `lotus`, you must complete the prerequisite steps based on your OS.
