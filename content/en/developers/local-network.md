@@ -92,15 +92,15 @@ You must have XCode and Homebrew installed to build Lotus from source. Lotus req
 
     Check if you already have the XCode Command Line Tools installed via the CLI, run:
 
-    ```shell
-    xcode-select -p
-    ```
+        ```shell
+        xcode-select -p
+        ```
 
     This should output something like:
 
-    ```plaintext
-    /Library/Developer/CommandLineTools
-    ```
+        ```plaintext
+        /Library/Developer/CommandLineTools
+        ```
 
     If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew).
 
@@ -141,11 +141,11 @@ Follow the prompts to install Rust. The default installation option should be ch
 
 Create necessary environment variable:
 
-    ```shell
-    export LIBRARY_PATH=/opt/homebrew/lib
-    export FFI_BUILD_FROM_SOURCE=1
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-    ```
+```shell
+export LIBRARY_PATH=/opt/homebrew/lib
+export FFI_BUILD_FROM_SOURCE=1
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+```
 
 ## Lotus node setup
 
@@ -161,7 +161,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     ```
 
-1. Clone Lotus repo:
+2. Clone Lotus repo:
 
     ```shell
     git clone https://github.com/filecoin-project/lotus lotus-local-net
@@ -170,7 +170,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 
     The `filecoin-project/lotus` repository is the same one that you would use to join the Filecoin mainnet. The `git clone` command puts the Lotus repository into the `lotus-local-net` folder to keep this guide organized.
 
-1. Checkout to the latest branch:
+3. Checkout to the latest branch:
 
    ```shell
    git checkout <tag_or_release>
@@ -178,7 +178,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
    git checkout <vX.X.X> # tag for a release
    ```
 
-1. Remove any existing repositories.
+4. Remove any existing repositories.
 
     <!-- TODO: test if this section is necessary. -->
 
@@ -186,7 +186,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     rm -rf ~/.genesis-sectors
     ```
 
-1. Build the `2k` binary for Lotus:
+5. Build the `2k` binary for Lotus:
 
     ```shell
     make 2k
@@ -199,7 +199,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     go build  -ldflags="-X=github.com/filecoin-project/lotus/build.CurrentCommit=+git.8d5be1c01" -tags=2k -o lotus-gateway ./cmd/lotus-gateway
     ```
 
-1. Grab the 2048 byte parameters:
+6. Grab the 2048 byte parameters:
 
     ```shell
     ./lotus fetch-params 2048
@@ -213,7 +213,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     c261/paramfetch.go:162  parameter and key-fetching complete
     ```
 
-1. Pre-seal some sectors for the genesis block:
+7. Pre-seal some sectors for the genesis block:
 
     ```shell
     ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
@@ -227,7 +227,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     2021-02-23T10:59:36.937-0500    INFO    preseal seed/seed.go:232        Writing preseal manifest to /home/user/.genesis-sectors/pre-seal-t01000.json
     ```
 
-1. Create the genesis block:
+8. Create the genesis block:
 
     ```shell
     ./lotus-seed genesis new localnet.json
@@ -235,7 +235,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 
     This command does not output anything on success.
 
-1. Create a default address and give it some funds:
+9. Create a default address and give it some funds:
 
     ```shell
     ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
@@ -260,7 +260,7 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 
     This command will output a lot of information and continue to run. All further steps should be completed in a new terminal window.
 
-1. Create a new terminal window or tab and re-export the `LOTUS_PATH` and `LOTUS_MINER_PATH` variables:
+2. Create a new terminal window or tab and re-export the `LOTUS_PATH` and `LOTUS_MINER_PATH` variables:
 
     ```shell
     export LOTUS_PATH=~/.lotus-local-net
@@ -270,7 +270,7 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     ```
 
-1. Import the genesis miner key:
+3. Import the genesis miner key:
 
     ```shell
     ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
@@ -282,7 +282,7 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     imported key t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq successfully!
     ```
 
-1. Set up the genesis miner. This process can take a few minutes:
+4. Set up the genesis miner. This process can take a few minutes:
 
     ```shell
     ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
@@ -294,7 +294,7 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     Miner successfully created, you can now start it with 'lotus-miner run'
     ```
 
-1. Start the miner:
+5. Start the miner:
 
     ```shell
     ./lotus-miner run --nosync
