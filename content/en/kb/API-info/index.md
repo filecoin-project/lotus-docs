@@ -10,7 +10,7 @@ menu:
 toc: false
 pinned: false
 types: ["article"]
-areas: ["repo", "env", "Lotus Miner", "Lotus Node"]
+areas: ["env", "Lotus Miner", "Lotus Node"]
 ---
 
 ## Failing API Info
