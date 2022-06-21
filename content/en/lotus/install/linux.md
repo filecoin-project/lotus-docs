@@ -141,21 +141,13 @@ Once all the dependencies are installed, you can build and install Lotus.
    cd lotus/
    ```
 
-1. Checkout the release for the network you wish to use.
+1. Switch to the latest stable release branch:
 
-   To join mainnet, checkout the [latest release](https://github.com/filecoin-project/lotus/releases).
+    ```shell
+    git checkout releases
+    ```
 
-   If you are changing networks from a previous Lotus installation or there has been a network reset, read the [Switch networks guide]({{< relref "switch-networks" >}}) before proceeding.
-
-   For networks other than mainnet, look up the current branch or tag/commit for the network you want to join in the [Filecoin networks dashboard](https://network.filecoin.io), then build Lotus for your specific network below.
-
-   ```shell
-   git checkout <tag_or_branch>
-   # For example:
-   git checkout <vX.X.X> # tag for a release
-   ```
-
-   Currently, the latest code on the _master_ branch corresponds to the mainnet.
+    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
 1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
