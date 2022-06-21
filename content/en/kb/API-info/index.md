@@ -29,7 +29,7 @@ A `GetAPIInfo error` in Lotus can mean a couple of things:
 
 ## Resolution
 
-The most common issue for a failing `GetAPIInfo` error is that the correct environment variable for a repo is not set in the active terminal. Depending on which process you are running, check that one or multiple of these environment variables is set correctly in your current terminal:
+The most common issue for a `GetAPIInfo error` error is that the correct environment variable for a repo is not set in the active terminal. Depending on which process you are running, check that one or multiple of these environment variables is set correctly in your current terminal:
 
 ```plaintext
 FULLNODE_API_INFO=...
