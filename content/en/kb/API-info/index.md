@@ -1,5 +1,5 @@
 ---
-title: "Failing GetAPIInfo errors"
+title: "Debugging GetAPIInfo errors"
 description: "A article to help you troubleshoot failing GetAPIInfo error messages"
 date: 2022-03-22T12:00:35+01:00
 lastmod: 2022-03-22T12:00:35+01:00
