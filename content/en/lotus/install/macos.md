@@ -77,21 +77,19 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 
 1. Use the command `brew install` to install the following packages:
 
-    ```shell
-    brew install go bzr jq pkg-config rustup hwloc coreutils
-    ```
+   ```shell
+   brew install go bzr jq pkg-config hwloc coreutils
+   ```
 
 Next up is cloning the Lotus repository and building the executables.
 
 #### Rust
 
-We need to download and install the official compiler for the Rust programming language, and its package manager, Cargo.
+Rustup is an installer for the systems programming language Rust. Run the installer and follow the onscreen prompts. The default installation option should be chosen unless you are familiar with customisation:
 
 ```shell
-rustup-init
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-
-Follow the prompts to install Rust. The default installation option should be chosen unless you are familiar with customisation.
 
 ### Build and install Lotus
 
