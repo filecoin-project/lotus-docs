@@ -275,4 +275,14 @@ The storage provider should now be preliminary set up and running, and you shoul
 - Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
 - Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../storage-providers/operate/sector-pledging/" >}}).
 - Learn when to safely [shut down/restart your miner]({{< relref "../../storage-providers/operate/maintenance/" >}})
-- Consider [splitting markets and miners processes]({{< relref "../../storage-providers/advanced-configurations/split-markets-miners/" >}}) for increased stability.
+
+### Split Market and Miner subsystem
+
+The `lotus-miner` performs sealing and proving operations. It also performs market operations, providing storage and serving retrievals to clients. It is possible to separate the markets processes, and it is highly recommended to do so, to avoid affecting ongoing proving and sealing tasks.
+
+Currently, there are two implementations of market processes available which are compatible with `lotus-miner` subsystem.
+
+1. [Boost](https://boost.filecoin.io)
+2. [Lotus Market]({{< relref "../../storage-providers/advanced-configurations/split-markets-miners/" >}})
+
+Boost is the recommended choice as it supports multiple options for data transfer when making storage deals, including HTTP. Clients can host their CAR file on an HTTP server, such as S3, and provide that URL when proposing the storage deal. Once accepted, Boost will automatically fetch the CAR file from the specified URL. Boost also supports the same endpoints as `Lotus Markets` for making storage and retrieval deals. This ensures that clients running Lotus can make deals with storage providers running Boost.
