@@ -179,7 +179,6 @@ Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sect
     ```
 
 - Worker 2 (PC1, PC2):
-
     ```json
     {        
       "ID": "b5db38b9-2d2e-06eb-8367-7338e1bcd0f1",
@@ -193,7 +192,7 @@ Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sect
     ```
 
 - Worker 3 (PC1):
-```json
+    ```json
     {        
       "ID": "423e45b7-e8e6-64b5-9a62-eb45929d9562", 
       "Weight": 10,
