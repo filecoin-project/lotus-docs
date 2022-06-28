@@ -44,8 +44,6 @@ To export the default configuration files from Lotus, run:
 lotus config default
 ```
 
-This will output something like:
-
 ```toml
 [API]
   # Binding address for the Lotus API

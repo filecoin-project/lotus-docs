@@ -88,13 +88,11 @@ In lotus v1.10.0 and up, if `BatchPreCommit` is set to false, pre-commitments wi
 The current batch will be sent if any of `MaxPreCommitBatch`, `PreCommitBatchWait` or `PreCommitBatchSlack` is hit.
 {{< /alert >}}
 
-To check the list of the sectors pre-commitments that are in the batching queue, run:
+To check the list of the sectors pre-commitments that are in the batching queue, use `sectors batching precommit`. This command outputs the sector IDs:
 
 ```shell
 ./lotus-miner sectors batching precommit
 ```
-
-This will output the sector IDs:
 
 ```shell
 14
@@ -102,13 +100,11 @@ This will output the sector IDs:
 16
 ```
 
-To ignore the configuration and force push the current batch, run:
+To ignore the configuration and force push the current batch, use `sectors batching precommit --publish-now=true`. In the output, the message CID of the `PreCommitSectorsBatch` message and the sector number of the sectors' pre-commitments that are being submitted is listed.
 
 ```shell
 ./lotus-miner sectors batching precommit --publish-now=true
 ```
-
-Then in the output, the message CID of the `PreCommitSectorsBatch` message and the sector number of the sectors' pre-commitments that are being submitted is listed:
 
 ```shell
 Batch 0:
@@ -141,8 +137,6 @@ To check the list of the sectors prove-commitments that are in the batching queu
 ./lotus-miner sectors batching commit
 ```
 
-This will output something like:
-
 ```shell
 10
 11
@@ -154,13 +148,11 @@ This will output something like:
 17
 ```
 
-To ignore the configuration and force push the current batch, run:
+To ignore the configuration and force push the current batch, use `sectors batching commit --publish-now=true`. In the output, the message CID of the `ProveCommitAggregate` message and the sector number of the sectors' prove-commitments that are being submitted is listed.
 
 ```shell
 ./lotus-miner sectors batching commit --publish-now=true
 ```
-
-Then in the output, the message CID of the `ProveCommitAggregate` message and the sector number of the sectors' prove-commitments that are being submitted is listed:
 
 ```shell
 Batch 0:

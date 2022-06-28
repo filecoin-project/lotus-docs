@@ -140,8 +140,6 @@ Now we're ready to connect to our Lotus node and interact with the Lotus APIs. L
     node basicQuery.mjs
     ```
 
-    This will output something like:
-
     ```shell
     {
       Version: '1.15.0+calibnet+git.0ac1bbc7a',
@@ -249,20 +247,16 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     lotus wallet list 
     ```
 
-    This will output something like:
-
     ```shell
     Address                                    Balance        Nonce  
     t154xvuihhicgluafwmohwzwmtmqp44pwwgewyvma  100 FIL          0
     ```
 
-1. Next, generate an authorization token with _sign_ permission:
+1. Next, generate an authorization token with _sign_ permission. This will output your auth token. Save this somewhere, we'll be using it later.
 
     ```shell with-output
     lotus auth create-token --perm sign
     ```
-
-    This will output your auth token. Save this somewhere, we'll be using it later:
 
     ```shell
     eyJhbGciOiJIUzI1NiIsInRaaaaaa.xxxxxxx.bbbbbbbbbbbvq1W0ZjqrXHygd6fBRk
@@ -306,8 +300,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     node lotusWallet.mjs 
     ```
 
-    This will output something like:
-
     ```shell
     new wallet address:  t1ax5kdqxrrecxpyys6svvxjing7shqju26ytcsoa
     ```
@@ -317,8 +309,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     ```shell with-output
     lotus wallet list
     ```
-
-    This will output smething like:
 
     ```shell
     Address                                    Balance       Nonce   Default  
@@ -388,13 +378,11 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     walletBalance();
     ```
 
-1. Run the code to test the FIL transfer:
+1. Run the code to test the FIL transfer. This will output the FIL values in attoFIL.
 
     ```shell with-output
     node lotusWallet.mjs
     ```
-
-    This will output the FIL values in attoFIL:
 
     ```shell
     t154xvuihhicgluafwmohwzwmtmqp44pwwgewyvma : 89999999675971952500
@@ -406,8 +394,6 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     ```shell with-output
     lotus wallet list
     ```
-
-    This will output something like:
 
     ```shell
     Address                                    Balance                     Nonce  Default  
@@ -495,13 +481,11 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
     sendFromLightWallet();
     ```
 
-1. Run the code to test this transfer:
+1. Run the code to test this transfer. This will output a message CID.
 
     ```shell with-output
     node lightWallet.mjs
     ```
-
-    This will output a message CID.
 
     ```shell
     {
@@ -521,13 +505,11 @@ _Note that the simplest way to store data on Filecoin is by using one of the man
 
 Let's dive in!
 
-1. Start by generating an admin auth token. This is required to import data into the Lotus node:
+1. Start by generating an admin auth token. This is required to import data into the Lotus node. This will output your auth token. Make a note of this, we'll be using it later.
 
     ```shell with-output
     lotus auth create-token --perm admin
     ```
-
-    This will output your auth token. Make a note of this, we'll be using it later.
 
     ```shell
     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9......n7ugba1aJECuZXkMgJxHUH08MKTENQ-hAtsosDu-HXg
@@ -581,8 +563,6 @@ Let's dive in!
     lotus client list-asks
     ```
 
-    This will output something like:
-
     ```shell
     .. querying asks
     * Queried 43 asks, got 8 responses
@@ -594,7 +574,7 @@ Let's dive in!
 
     As a side note; if you were working on Filecoin Mainnet, you could use the [Filecoin Plus](https://lotus.filecoin.io/tutorials/store-and-retrieve/store-data/#find-a-storage-provider-via-filecoin-plus) program to find storage providers offering free storage for verified clients:
 
-1. Pick a storage provider ID from the `list-asks` response and add it into the following code. Replace `t00001` with the storage provider ID you picked:
+1. Pick a storage provider ID from the `list-asks` response and add it into the following code. Replace `t00001` with the storage provider ID you picked. If the storage provider you picked is active, the output will display as shown below.
 
     ```javascript
     //2. query Miner offers for storing this file
@@ -603,8 +583,6 @@ Let's dive in!
     const isActive = importResult.Root["/"] === queryOffer.Root["/"];
     console.log("Provider is active: ", isActive);
     ```
-
-    If the storage provider you picked is active, the above code will output:
 
     ```plaintext
     Provider is active: true
@@ -629,13 +607,11 @@ Let's dive in!
     }
     ```
 
-1. Let's run the js code to store a file on Filecoin:
+1. Let's run the js code to store a file on Filecoin. If everything runs successfully the script will output a deal CID.
 
     ```shell with-output
     node lightWallet.mjs
     ```
-
-    If everything runs successfully the script will output a deal CID:
 
     ```json
     {
@@ -650,8 +626,6 @@ You can check the status of your storage deal via the Lotus command line using i
 ```shell with-output
 lotus client list-deals --show-failed
 ```
-
-This should output something like:
 
 ```shell
 DealCid      DealId  Provider  State                     On Chain?  Slashed?  PieceCID     Size       Price             Duration  Verified  

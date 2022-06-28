@@ -79,8 +79,6 @@ You must have the following set up to follow this guide through:
     lotus-miner sectors list
     ```
 
-    This will output something like:
-
     ```plaintext
     ID  State    OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
     0   Proving  YES      YES     1550097 (in 10 weeks 1 day)  CC
@@ -96,8 +94,6 @@ You must have the following set up to follow this guide through:
     lotus-miner sectors pledge
     ```
 
-    This will output something like:
-
     ```plaintext
     Created CC sector:  2
     ```
@@ -107,8 +103,6 @@ You must have the following set up to follow this guide through:
     ```shell
     lotus-miner sectors list
     ```
-
-    This will output something like:
 
     ```shell
     ID  State                 OnChain  Active  Expiration                   Deals  DealWeight  VerifiedPower
@@ -180,8 +174,6 @@ lotus-miner sectors status --log <sectorNum>
     ```shell
     ./lotus client deal $ROOT t01000 0.00001 600001
     ```
- 
-    This will output something like:
 
     ```plaintext
     1500+0 records in

@@ -29,8 +29,6 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    lotus-miner backup /root/lotus-backups/2020-11-15/backup.cbor
    ```
 
-   This will output something like:
-
    ```
    Success
    ```
@@ -40,8 +38,6 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    ```shell with-output
    lotus-miner backup --offline /root/lotus-backups/2020-11-15/backup.cbor
    ```
-
-   This will output something like:
 
    ```
    Success
@@ -65,8 +61,6 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
    ```shell with-output
    lotus-miner init restore /root/lotus-backups/2020-11-15/backup.cbor
    ```
-
-   This will output something like:
 
    ```
    ...

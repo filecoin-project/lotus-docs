@@ -52,8 +52,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     echo "$(cut -c 1-64 minimal_finality_stateroots_517061_2021-02-20_11-00-00.sha256sum) minimal_finality_stateroots_517061_2021-02-20_11-00-00.car" | sha256sum --check
     ```
 
-    This will output something like:
-
     ```shell
     minimal_finality_stateroots_517061_2021-02-20_11-00-00.car: OK
     ```
@@ -95,8 +93,6 @@ Use `sync status` to output the current state of your local chain:
 lotus sync status
 ```
 
-This will output something like:
-
 ```shell
 sync status:
 worker 0:
@@ -116,8 +112,6 @@ Use `sync wait` to output the state of your current chain as an ongoing process:
 lotus sync wait
 ```
 
-This will output something like:
-
 ```shell
 Worker: 0; Base: 0; Target: 414300 (diff: 414300)
 State: header sync; Current Epoch: 410769; Todo: 3531
@@ -130,8 +124,6 @@ Use `chain getblock` to check when the last synced block was mined:
 ```shell
 date -d @$(./lotus chain getblock $(./lotus chain head) | jq .Timestamp)
 ```
-
-This will output something like:
 
 ```shell
 Mon 24 Aug 2020 06:00:00 PM EDT

@@ -44,8 +44,6 @@ Before you can retrieve data from a storage provider, you need to check that you
     lotus wallet list
     ```
 
-    Lotus will output something like:
-
     ```shell
     > Address                                    Balance  Nonce  Default
     > f16mwizoeloamhp4dea4uy367mlihddw2mflnb5vy  10 FIL   0      X

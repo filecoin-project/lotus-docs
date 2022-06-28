@@ -64,19 +64,15 @@ We now have our payload file ready to be stored using the Filecoin network.
 
 We need to tell our Lotus lite-node which file we want to store using Filecoin.
 
-1. Import the payload into the `lotus daemon` using the `import` command:
+1. Import the payload into the `lotus daemon` using the `import` command.  Lotus creates a directed acyclic graph (DAG) based off the payload. This process takes a few minutes. Once it's complete, Lotus will output the payload CID. This process takes about 60 seconds.
 
     ```shell
     lotus client import 5gb-filecoin-payload.bin
     ```
 
-    Lotus creates a directed acyclic graph (DAG) based off the payload. This process takes a few minutes. Once it's complete, Lotus will output the payload CID.
-
     ```plaintext output
     Import 3, Root bafykb...
     ```
-
-    This process takes about 60 seconds.
 
 1. Make a note of the CID `bafykb...`. This is your **Data CID**. We'll use it in an upcoming section.
 
@@ -245,8 +241,6 @@ Once the data has been sent to the storage clients, the storage deals can take u
     ```shell
     lotus client list-transfers
     ```
-
-    This command will output something like:
 
     ```plaintext output
     Sending Channels

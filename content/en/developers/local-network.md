@@ -96,8 +96,6 @@ Check if you already have the XCode Command Line Tools installed via the CLI, ru
 xcode-select -p
 ```
 
-This should output something like:
-
 ```plaintext
 /Library/Developer/CommandLineTools
 ```
@@ -205,8 +203,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     ./lotus fetch-params 2048
     ```
 
-    This will output something like:
-
     ```plaintext
     2021-02-23T10:58:01.469-0500    INFO    build   go-paramfetch@v0.0.2-0.20200701152213-3e0f0afdc261/paramfetch.go:138  Parameter file /var/tmp/filecoin-proof-parameters/v28-proof-of-spacetime-fallback-merkletree-poseidon_hasher-8-0-0-0cfb4f178bbb71cf2ecfcd42accce558b27199ab4fb59cb78f2483fe21ef36d9.vk is ok
     ...
@@ -218,8 +214,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     ```shell
     ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
     ```
-
-    This will output something like:
 
     ```plaintext
     sector-id: {{1000 0} 0}, piece info: {2048 baga6ea4seaqoej3hzxzqr5y25ibovtjrhed7yba5vm6gwartr5hsgcbao7aluki}
@@ -240,8 +234,6 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
     ```shell
     ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
     ```
-
-    This will output something like:
 
     ```plaintext
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:129       Adding miner t01000 to genesis template
@@ -276,8 +268,6 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key
     ```
 
-    This will output something like:
-
     ```plaintext
     imported key t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq successfully!
     ```
@@ -287,8 +277,6 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
     ```shell
     ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync
     ```
-
-    This process may take a few minutes. When complete, the terminal window will display:
 
     ```plaintext
     Miner successfully created, you can now start it with 'lotus-miner run'
