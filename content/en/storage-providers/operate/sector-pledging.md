@@ -1,6 +1,6 @@
 ---
 title: "Get storage power"
-description: "A storage providers power in the network."
+description: "How to obtain storage power in the network."
 lead: "A storage provider can obtain power in the network by pleding commited capacity sectors, or by taking in storage deals. This page covers the motivation, and steps needed to take for both of these methods"
 draft: false
 menu:
@@ -25,7 +25,7 @@ Taking the above into account, **pledging commited capacity sectors makes the mo
 Pledging a sector can be useful to test how long the sealing process takes and makes sure that the hardware is correctly configured before taking on real deals.
 {{< /alert >}}
 
-### Pledging a CC-sector
+### Pledging a CC-sectors
 
 To pledge a sector use:
 
@@ -67,5 +67,6 @@ lotus-miner sectors status --log 0
 
 Then follow the instructions in the configuration reference linked above.
 
-## Reasons to pledge CC-sectors
+## Reasons to take storage deals
 
+Another way to obtain storage power in the network is to take in storage deals. To be able to take in storage deals you will need to setup your markets part. As explained in the `Reason to pledge CC-sectors` section you can also update already sealed CC-sectors with storage deals via Snap Deals.
