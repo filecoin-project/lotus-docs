@@ -49,6 +49,9 @@ The Lotus Miner is itself a worker and will contribute to sealing operations lik
   AllowPreCommit2 = true
   AllowCommit = true
   AllowUnseal = true
+  AllowReplicaUpdate = true
+  AllowProveReplicaUpdate2 = true
+  AllowRegenSectorKey = true
 ```
 
 If you want to fully delegate any of these operations to workers, set them to `false`.
@@ -102,7 +105,7 @@ The above command will start the worker. Depending on the operations that you wa
    --regen-sector-key            enable regen sector key (default: true)
 ```
 
-All tasks are enabled by default, so if your seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option, and rather enable the tasks it is going to run.
+All tasks are enabled by default so if the seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option, and rather enable each task that it is going to run.
 
 Once the worker is running, it should connect to the Lotus miner. You can verify this with:
 
@@ -141,7 +144,7 @@ Advanced GPUs with more than 20 GB of memory capacity are theoretically capable 
 
 ## Running Multiple Lotus Workers
 
-Storage providers intending to scale significantly beyond the 10 TB minimum will likely want to run multiple Lotus Workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
+Storage providers intending to scale significantly beyond the 10 TB minimum will likely want to run multiple Lotus workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
 
 ### Sector Storage Groups
 

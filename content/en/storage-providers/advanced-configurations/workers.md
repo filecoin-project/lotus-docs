@@ -31,22 +31,21 @@ The default resource table lives in [resources.go](https://github.com/filecoin-p
 
 Here is the default resource value table. There values are conservative:
 
-| Sector size | Task Type  | Threads | Min RAM | Min disk space| GPU        |
+| Sector size | Task Type  | Threads | Min RAM | Min disk space| GPU     |
 |-------------|------------|---------|---------|------------|------------|
-|     32G     | AddPiece   | 1*      | 4G      | 4G         |            |
-|             | PreCommit1 | 1**     | 56G     | 64G        |            |
-|             | PreCommit2 | 92%***  | 15G     | 15G        | If Present |
-|             | Commit1    | 0****   | 1G      | 1G         |            |
-|             | Commit2    | 92%***  | 32G+30G | 32G+150G   | If Present |
-|     64G     | AddPiece   | 1*      | 8G      | 8G         |            |
-|             | PreCommit1 | 1**     | 112G    | 128G       |            |
-|             | PreCommit2 | 92%***  | 30G     | 30G        | If Present |
-|             | Commit1    | 0****   | 1G      | 1G         |            |
-|             | Commit2    | 92%***  | 64G+60G | 64G+190G   | If Present |
+|     32G     | AddPiece   | 92%    | 4G      | 4G         |            |
+|             | PreCommit1 | 1*     | 56G     | 64G        |            |
+|             | PreCommit2 | 92%**  | 15G     | 15G        | If Present |
+|             | Commit1    | 0***   | 1G      | 1G         |            |
+|             | Commit2    | 92%**  | 32G+30G | 32G+150G   | If Present |
+|     64G     | AddPiece   | 92%    | 8G      | 8G         |            |
+|             | PreCommit1 | 1*     | 112G    | 128G       |            |
+|             | PreCommit2 | 92%**  | 30G     | 30G        | If Present |
+|             | Commit1    | 0***   | 1G      | 1G         |            |
+|             | Commit2    | 92%**  | 64G+60G | 64G+190G   | If Present |
 
-\* AddPiece can use multiple threads. This value may change in near future.
-\** When used with the `FIL_PROOFS_USE_MULTICORE_SDR=1` environment variable, `PreCommit1` can use multiple cores, up to the number of cores sharing L3 caches.
-\*** Depending on the number of available threads, this value means:
+\* When used with the `FIL_PROOFS_USE_MULTICORE_SDR=1` environment variable, `PreCommit1` can use multiple cores, up to the number of cores sharing L3 caches.
+\** Depending on the number of available threads, this value means:
 
 ```plaintext
  12  * 0.92 = 11
@@ -57,7 +56,7 @@ Here is the default resource value table. There values are conservative:
  128 * 0.92 = 117
 ```
 
-\**** The Commit1 step is very cheap in terms of CPU time and blocks the Commit2 step. Allocating it to zero threads makes it more likely it will be scheduled with higher priority.
+\*** The Commit1 step is very cheap in terms of CPU time and blocks the Commit2 step. Allocating it to zero threads makes it more likely it will be scheduled with higher priority.
 
 The Unseal task has the same resource use as the PreCommit1 task.
 
