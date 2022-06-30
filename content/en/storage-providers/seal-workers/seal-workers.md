@@ -12,7 +12,7 @@ weight: 405
 toc: true
 ---
 
-While the Lotus Miner runs each of the sealing phases itself by default, you can use Lotus Workers to create a offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the Lotus Miner from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
+While the `lotus-miner` runs each of the sealing phases itself by default, you can use Lotus Workers to create a offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the `lotus-miner` from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
 
 ## Installation
 
@@ -66,7 +66,7 @@ The seal workers will fail to start if the file descriptor limit is not set high
 export TMPDIR=/fast/disk/folder3                    # used when sealing
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export MARKETS_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
-export BELLMAN_CPU_UTILIZATION=0.875      # optimal value depends on exact hardware
+export FFI_USE_CUDA=1 # if using CUDA
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
@@ -102,6 +102,8 @@ The above command will start the worker. Depending on the operations that you wa
    --regen-sector-key            enable regen sector key (default: true)
 ```
 
+All tasks are enabled by default, so if your seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option, and rather enable the tasks it is going to run.
+
 Once the worker is running, it should connect to the Lotus miner. You can verify this with:
 
 ```shell
@@ -123,9 +125,9 @@ Worker 1, host othercomputer
 
 You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
 
-Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU and GPU intensive. WindowPoSTs need to be submitted by the miner regularly. If a miner is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, and [lose collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between `lotus-miner` and `lotus-worker` instances.
+Additionally, be mindful of the local resources used by the sealing process (particularly CPU). WindowPoSTs are CPU and GPU intensive. WindowPoSTs need to be submitted by the storage provider regularly. If a storage provider is performing other CPU-bound sealing operations in parallel, it may fail to submit the WindowPoSTs in time, and [lose collateral](https://docs.filecoin.io/mine/slashing/) in the process. For this reason, we recommend careful allocation of CPU cores and GPUs available between `lotus-miner` and `lotus-worker` instances.
 
-Note that if you co-locate miner and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
+Note that if you co-locate `lotus-miner` and worker(s), you do not need to open up the miner API and it can stay listening on the local interface.
 
 ### Lotus Worker co-location
 
