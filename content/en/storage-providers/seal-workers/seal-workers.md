@@ -28,7 +28,7 @@ The Lotus Miner needs to be ready to accept API connections from workers.
 
 ### Allow external connections to the miner API
 
-Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network interface as [documented here]({{< relref "configuration#api-section" >}}). For security, the API port should not be open to the internet.
+Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network interface as [documented here]({{< relref "../../storage-providers/setup/configuration/#api-section" >}}). For security, the API port should not be open to the internet.
 
 ### Obtain an authentication token
 
@@ -36,7 +36,7 @@ Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network inter
 lotus-miner auth api-info --perm admin
 ```
 
-The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "api-access#api-tokens" >}}). Write down the output so that you can use it in the next step.
+The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "../../reference/basics/api-access/#api-tokens" >}}). Write down the output so that you can use it in the next step.
 
 ### Configuring the Lotus Miner sealing capabilities
 
@@ -60,9 +60,9 @@ If you want to fully delegate any of these operations to workers, set them to `f
 
 ### Environment variables
 
-Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "../setup/initialize" >}})):
+Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "../../storage-providers/setup/initialize/" >}})):
 
-The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "kb#soft-fd-limit" >}}) guide.
+The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "../../kb#soft-fd-limit" >}}) guide.
 
 ```
 # MINER_API_INFO as obtained before
@@ -83,7 +83,7 @@ export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
 
 {{< alert icon="tip" >}}
-When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
+When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../../lotus/configure/nodes-in-china/" >}})
 {{< /alert >}}
 
 ### Run the worker
