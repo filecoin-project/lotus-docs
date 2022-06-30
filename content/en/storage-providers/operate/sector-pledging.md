@@ -19,7 +19,7 @@ As [explained in "How mining works"](https://docs.filecoin.io/mine/how-mining-wo
 
 By sealing sectors with random data, a storage provider can demonstrate to the network that it can offer that much storage, and later upgrade these sectors with real data by utilizing Snap Deals.
 
-Taking the above into account, **pledging sectors makes the most sense when doing it at a scale where it provides enough power to have real chances to mine new blocks, and also to indicate to potential clients that you have a capacity to store large amounts of real data**.
+Taking the above into account, **pledging commited capacity sectors makes the most sense when doing it at a scale where it provides enough power to have real chances to mine new blocks, and also to indicate to potential clients that you have a capacity to store large amounts of real data**.
 
 {{< alert icon="tip" >}}
 Pledging a sector can be useful to test how long the sealing process takes and makes sure that the hardware is correctly configured before taking on real deals.
@@ -125,11 +125,3 @@ Format of sector file:
 ...
 ```
 {{< /alert >}}
-
-## Deprecated features
-
-The following features have been deprecated from the `lotus-miner sectors` subsection:
-
-### Mark for upgrade
-
-The `lotus-miner sectors mark-for-upgrade` command has been deprecated, as of Lotus 1.15.0.
