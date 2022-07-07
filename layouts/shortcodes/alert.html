@@ -1,6 +1,6 @@
 {{ $icon := .Get "icon" }}
 
-<div class="alert alert-warning d-flex" role="alert">
+<div class="alert alert-warning d-flex" style="margin-bottom: 1em;" role="alert">
   <div class="flex-shrink-1 alert-icon">
     {{ if eq $icon "warning" }} ❗ 
     {{ else if eq $icon "callout" }} 💬
