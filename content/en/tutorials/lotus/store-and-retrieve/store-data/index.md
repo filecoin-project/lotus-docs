@@ -44,19 +44,12 @@ For this tutorial, we're going to create a dummy 5GB file full of random data an
 
 1. Create a 5GB block of random data to serve as our payload:
 
-    **MacOS** users must run:
-
-    ```shell
-    dd if=/dev/urandom of=5gb-filecoin-payload.bin bs=1m count=5200
-    ```
-
-    **Linux** users should run:
 
     ```shell
     dd if=/dev/urandom of=5gb-filecoin-payload.bin bs=1M count=5200
     ```
 
-    This process will take about 60 seconds to create a dummy file.
+    This process will take up to 60 seconds to create a dummy file.
 
 We now have our payload file ready to be stored using the Filecoin network.
 
@@ -76,15 +69,18 @@ We need to tell our Lotus lite-node which file we want to store using Filecoin.
     Import 3, Root bafykb...
     ```
 
-    This process takes about 60 seconds.
+    This process takes up to 60 seconds.
 
 1. Make a note of the CID `bafykb...`. This is your **Data CID**. We'll use it in an upcoming section.
 
-Now that Lotus knows which file we want to use, we can create a deal with a Filecoin storage provider to store our data!
+{{< alert icon="tip" >}}
+'lotus client local' will list all the currently imported CIDs
+{{< /alert >}}
+
 
 ### Importing custom DAGs
 
-Advance IPLD users may want to import custom DAGs into Lotus (you may skip this section if that is not you).
+Advanced IPLD users may want to import custom DAGs into Lotus (you may skip this section if that is not you).
 
 The CAR file format allows to serialize any IPLD-DAG (i.e. a IPLD-CBOR). Custom IPLD-DAGs should be encoded in a well-known format (like CBOR) as otherwise Lotus will not know how to interpret them.
 
@@ -100,38 +96,7 @@ If your file is larger than a sector for the [Filecoin network in use](https://n
 
 Storage miners will specify which size(s) they're offering so you can select the best option for you. Smaller sectors are faster, while larger sectors are more cost-effective.
 
-## Find a storage provider via Filecoin Plus
-
-Storage providers get paid either by receiving FIL directly from users for storing their data, winning block rewards from the network, or both!
-
-Getting paid from users is straightforward. If Laika wants to store some data, and Albert is a storage provider, the two of them can create a deal to store Laika's data for `X` amount of time for `Y` FIL.
-
-Block rewards are randomly given to a storage provider every 30 seconds. The more data that a storage provider is _storing_, the higher their chances of winning the block reward. So if a storage provider accepts a deal from a user to store 5 GB of data, they have 5 chances to win the block reward for each 30 second round.
-
-DataCap acts as a kind of _multiplier_ for block rewards. If a storage provider accepts a deal from a user with DataCap attached, also known as a _verified deal_ , then the Filecoin network treats that deal as though it's 10x bigger. So a 5 GB deal gives the storage provider 50 chances to win the block reward instead of the usual 5 chances. Some storage providers find DataCap so valuable that they're willing to make verified deals without charging any FIL! You can find a list of these storage providers using the [Filecoin Plus Registry](https://plus.fil.org/).
-
-### Sign up
-
-Signing up to Filecoin Plus is easy and free!
-
-{{< alert >}}
-You need a GitHub account that is at least 180 days old. If you don't have a GitHub account that's old enough, [get in touch with the team on Filecoin Slack](https://filecoin.io/slack/).
-{{< /alert >}}
-
-1. Go to [plus.fil.org](https://plus.fil.org).
-1. Under **For Clients**, click **Proceed**.
-1. Under **Get Verified**, click **Get DataCap**.
-1. Click **Automatic Verification**.
-1. Click **Start** next to the GitHub logo.
-1. In the `Request` field, enter the public address you got from running `lotus wallet list`. This step may take a few minutes to complete.
-
-We need to find suitable storage providers before we can store our data. The Filecoin network allows storage providers to compete by offering different terms for pricing, acceptable data sizes, and other important deal parameters. It's also important to consider the storage provider's location; the closer the storage provider is to you, the faster the storage and retrieval process will be.
-
-We're going to use the Filecoin Plus Registry to find a couple of storage providers and check their information through the reputation system.
-
-{{< alert icon="tip" >}}
-Increasing the number of storage providers you use increases your data redundancy, and decreases the chances of your data being lost.
-{{< /alert >}}
+Now that Lotus has imported your file, we can create a deal with a Filecoin storage provider to store our data!
 
 ### Filecoin Plus Registry
 
@@ -151,6 +116,7 @@ Let's find a couple of storage providers to store our data.
 
 1. Make sure to write down the IDs of the storage providers you want to use. We'll be referring to these IDs in the next section.
 
+
 Filecoin Plus Registry only represents a small portion of the entire Filecoin mining community, you can also use other Filecoin reputation systems like [FilRep](https://filrep.io) to check more storage provider metrics, like storage power in the network, reachability and overall success rate.
 
 Now that you've found your storage providers, you can move onto creating a storage deal!
@@ -167,6 +133,13 @@ To complete this section, you need the **Data CID** you received after running `
 
     The interactive deal assistant will now ask you some questions.
 
+{{< alert icon="warning" >}}
+If you get a error 'actor not found', it likely means this address has never had FIL or Datacap added to it. You'll need to add some of either before you can do a deal.
+
+[Add Datacap](/tutorials/lotus/store-and-retrieve/set-up/#filecoin-plus)
+
+[Add FIL](/tutorials/lotus/store-and-retrieve/set-up/#adding-fil-to-your-wallet-or-using-filecoin-plus)
+{{< /alert >}}
 1. Specify the CID of the payload you want to backup on Filecoin. This is the CID that you got from running `lotus client import ~/5gb-filecoin-payload.bin`:
 
     ```plaintext output
@@ -237,9 +210,9 @@ Once the data has been sent to the storage clients, the storage deals can take u
     ```shell
     lotus client list-deals --show-failed
     ```
-
-    **DO NOT TURN OFF YOUR LOTUS NODE!** Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when.
-
+{{< alert icon="warning" >}}**DO NOT TURN OFF YOUR LOTUS NODE!** 
+Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when.
+{{< /alert >}}
 1. You can check the progress of any data transfers by running `lotus client list-transfers`:
 
     ```shell
