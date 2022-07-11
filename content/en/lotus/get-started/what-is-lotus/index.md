@@ -17,6 +17,10 @@ This sounds like a simple question; what is Lotus? And the surface-level answer 
 
 > Lotus is the reference node implementation for the Filecoin network.
 
+![High Level Lotus Suite](High-Level-Lotus-Suite.png)
+
+At a high level the Lotus Suite consists of the `Lotus`, `Lotus-Miner` and `Lotus-Worker` binaries. This section of the docs will focus on the `Lotus` binary.
+
 If you understood all that, great! You can leave this page and start diving into the rest of the documentation. However, if that sentence left you with more questions, then fear not! We're going to cover everything you need to know _without_ assuming you know anything about crypto, blockchain, web3. By the end of this page you should understand each word in that surface-level answer. 
 
 ## The Filecoin network
