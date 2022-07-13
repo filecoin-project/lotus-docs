@@ -14,7 +14,7 @@ toc: true
 
 As we mentioned in the installation guide, Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
-- Local devnet - [You can run a local devnet](https://docs.filecoin.io/build/local-devnet/#manual-set-up)
+- Local devnet - [You can run a local devnet]({{< relref "../../developers/local-network/">}})
 - Testnets
     - [Calibnet](https://network.filecoin.io/#calibration)
     - [NerpaNet](https://github.com/filecoin-project/community/discussions/74#discussioncomment-1348469) was deprecated on 2021-08-16 and is no longer available.
