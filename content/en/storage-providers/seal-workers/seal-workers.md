@@ -124,6 +124,36 @@ Worker 1, host othercomputer
         GPU: GeForce RTX 2080, not used
 ```
 
+### Limit tasks run in parallel
+
+You can limit the amount of tasks run in parallel per task type with environment variables. The environment variable are formatted as `[short task type]_[sector size]_MAX_CONCURRENT=[limit]`.
+
+And the short task type codes are:
+
+```
+AddPiece: AP
+PreCommit1: PC1
+PreCommit2: PC2
+Commit2:  C2
+ReplicaUpdate:  RU
+ProveReplicaUpdate2:  PRU2
+Fetch:  GET
+Unseal: UNS
+```
+
+As an example if you want to limit the amount of PreCommit 1 tasks a `lotus-worker` can run, you just export the `PC1_32G_MAX_CONCURRENT=4` enviroment variable before you start the worker.
+
+You should then be able to see the limits set in the sealing workers output:
+
+```shell
+lotus-miner sealing workers
+Worker c4d65451-07f8-4230-98ad-4f33dea2a8cc, host myhostname
+	TASK: PC1(1/4) AP(15/15) GET(3)
+	CPU:  [||||||||                                                        ] 16/128 core(s) in use
+	RAM:  [||||||||                                                        ] 12% 125.8 GiB/1008 GiB
+	[...]
+```
+
 ### Miner and worker co-location
 
 You can run a _Lotus Worker_ on the same machine as the _Lotus Miner_. This can be helpful to manage priorities between processes or better allocate available CPUs for each task. The `lotus-miner` daemon performs worker tasks by default, so to avoid conflicts we recommend disabling all task types in the [miner config Storage section]({{< relref "configuration#storage-section" >}}).
