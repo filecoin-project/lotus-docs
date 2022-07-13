@@ -105,7 +105,7 @@ The above command will start the worker. Depending on the operations that you wa
    --regen-sector-key            enable regen sector key (default: true)
 ```
 
-All tasks are enabled by default so if the seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option, and rather enable each task that it is going to run.
+All tasks are enabled by default so if the seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option and individually enable each task that it is going to run.
 
 Once the worker is running, it should connect to the Lotus miner. You can verify this with:
 
