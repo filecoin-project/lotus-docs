@@ -12,7 +12,7 @@ weight: 405
 toc: true
 ---
 
-While the `lotus-miner` runs each of the sealing phases itself by default, you can use Lotus Workers to create a offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the `lotus-miner` from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
+While the `lotus-miner` runs each of the sealing phases itself by default, you can use Lotus Workers to offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the `lotus-miner` from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
 
 ## Installation
 
