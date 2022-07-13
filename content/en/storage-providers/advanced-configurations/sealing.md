@@ -223,7 +223,7 @@ The storage section controls whether the `lotus-miner` can perform certain seali
 
 ### Worker assigning logic 
 
-The storage section includes a worker assigning logic. It allows you to specify if you want to assign tasks to `lotus-workers` with the lowest utilization (default), or you can specify it to assign tasks to as many distinct workers as possible with the `spread` option.
+The storage section includes a worker assigning logic. It allows you to specify if you want to assign tasks to `lotus-workers` with the lowest utilization (default), or if you want to assign tasks to as many distinct workers as possible with the `spread` option.
 
 ```toml
 # Assigner specifies the worker assigner to use when scheduling tasks.
