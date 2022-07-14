@@ -960,3 +960,29 @@ Both these settings can be set at runtime of the PoSt workers.
 {{< alert icon="tip" >}}
 Use with caution. Changing these values to extremes might cause you to miss windowPoSt.
  {{< /alert >}}
+ 
+### PoSt computations
+
+Window PoSt computations on the lotus-miner process can be fully disabled by setting `DisableBuiltinWindowPoSt = true` in your lotus-miner config file.
+
+{{< alert icon="tip" >}}
+This setting will be respected even if there are no connected window PoSt workers. Before enabling this option please ensure that your PoSt workers are correctly configured and available.
+{{< /alert >}}
+ 
+Winnning PoSt computations on the lotus-miner process can be also be fully disabled by setting `DisableBuiltinWinningPoSt = true` in your lotus-miner config file.
+
+{{< alert icon="tip" >}}
+This setting will also be respected even if there are no connected winning PoSt workers. Before enabling this option please ensure that your PoSt workers are correctly configured and available.
+{{< /alert >}}
+
+### Proving pre-checks
+
+In normal operation, when preparing to compute WindowPoSt, lotus-miner will perform a round of reading challenges from all sectors to confirm that those sectors can be proven.
+
+Disabling sector pre-checks will slightly reduce IO load when proving sectors, possibly resulting in shorter time to produce window PoSt. In setups with good IO capabilities the effect of this option on proving time should be negligible.
+
+Sevctor pre-checks can be disabled by setting `DisableWDPoStPreChecks = true` in your lotus-miner config file.
+
+{{< alert icon="tip" >}}
+Disabling sector pre-checks on systems with no PoSt workers is strongly discouraged.
+{{< /alert >}}
