@@ -981,7 +981,7 @@ In normal operation, when preparing to compute WindowPoSt, lotus-miner will perf
 
 Disabling sector pre-checks will slightly reduce IO load when proving sectors, possibly resulting in shorter time to produce window PoSt. In setups with good IO capabilities the effect of this option on proving time should be negligible.
 
-Sevctor pre-checks can be disabled by setting `DisableWDPoStPreChecks = true` in your lotus-miner config file.
+Sector pre-checks can be disabled by setting `DisableWDPoStPreChecks = true` in your lotus-miner config file.
 
 {{< alert icon="tip" >}}
 Disabling sector pre-checks on systems with no PoSt workers is strongly discouraged.
