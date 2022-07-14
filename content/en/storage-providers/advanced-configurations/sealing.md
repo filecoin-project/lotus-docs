@@ -221,25 +221,6 @@ The storage section controls whether the `lotus-miner` can perform certain seali
   AllowRegenSectorKey = true
 ```
 
-### Dissallow remote finalize
-
-```toml
-  DisallowRemoteFinalize when set to true will force all Finalize tasks to
-  run on workers with local access to both long-term storage and the sealing
-  path containing the sector.
-  --
-  WARNING: Only set this if all workers have access to long-term storage
-  paths. If this flag is enabled, and there are workers without long-term
-  storage access, sectors will not be moved from them, and Finalize tasks
-  will appear to be stuck.
-  --
-  If you see stuck Finalize tasks after enabling this setting, check
-  'lotus-miner sealing sched-diag' and 'lotus-miner storage find [sector num]'
-  # type: bool
-  # env var: LOTUS_STORAGE_DISALLOWREMOTEFINALIZE
-  DisallowRemoteFinalize = true
-```
-
 ### Worker assigning logic 
 
 The storage section includes a worker assigning logic. It allows you to specify if you want to assign tasks to `lotus-workers` with the lowest utilization (default), or if you want to assign tasks to as many distinct workers as possible with the `spread` option.
@@ -252,6 +233,25 @@ The storage section includes a worker assigning logic. It allows you to specify 
 # type: string
 # env var: LOTUS_STORAGE_ASSIGNER
 #Assigner = "utilization"
+```
+
+### Dissallow remote finalize
+
+If you do not want `Finalize` tasks be run be remote `lotus-workers` you can set the `DissallowRemoteFinalize` option to true. If set to true, all finalize tasks will be run on workers with local access to both the long-term storage and the sealing path containing the sector. 
+
+{{< alert icon="👉" >}}
+Only set this if all workers have access to long-term storage paths. If this flag is enabled, and there are workers without long-term storage access, sectors will not be moved from them, and Finalize tasks will appear to be stuck.
+{{< /alert >}}
+
+```toml
+  DisallowRemoteFinalize when set to true will force all Finalize tasks to
+  run on workers with local access to both long-term storage and the sealing
+  path containing the sector.
+  If you see stuck Finalize tasks after enabling this setting, check
+  'lotus-miner sealing sched-diag' and 'lotus-miner storage find [sector num]'
+  # type: bool
+  # env var: LOTUS_STORAGE_DISALLOWREMOTEFINALIZE
+  #DisallowRemoteFinalize = true
 ```
 
 ## Fees section
