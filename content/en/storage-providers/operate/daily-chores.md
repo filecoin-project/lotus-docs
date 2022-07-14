@@ -99,5 +99,23 @@ Faulty Sectors:           []
 To compact a partition, you need to specify the deadline and the partition index `lotus-miner sectors compact-partitions --deadline <Proving-Deadline> --partitions <Partition-Index>`.
 
 ```shell output
-lotus-miner sectors compact-partitions --deadline 1 --partitions 0
+lotus-miner sectors compact-partitions --deadline 1 --partitions 0 --really-do-it
+compacting 1 paritions
+Requested compact partitions in message bafy2bzacecnmiea6y7yt776vhur5rdjgliw5cvlb7cuf4q643ntu44odjgh64
+```
+
+After the compaction message has been sent, you should be able to see that your proving deadline has been compacted and old sectors has been removed:
+
+```shell output
+lotus-miner proving deadline 1
+Deadline Index:           1
+Partitions:               1
+Proven Partitions:        0
+Current:                  false
+
+Partition Index:          0
+Sectors:                  58
+Sector Numbers:           [2510 2533 2623 2691 2738 2740 2755 2764 2780 2853 2880 2908 2920 2932 2953 2982 3098 3099 3124 3136 3140 3146 3151 3205 3246 3252 3289 3344 3362 3365 3415 3432 3478 3537 3590 3591 3626 3638 3764 3782 3792 3886 3930 4004 4032 4044 4079 4148 4156 4177 4188 4223 4262 4295 4304 4410 4411 4419]
+Faults:                   0
+Faulty Sectors:           []
 ```
