@@ -6,9 +6,10 @@ draft: false
 menu:
     storage-providers:
         parent: "storage-providers-operate"
-        identifier: "storage-provider-troubleshooting"
+        identifier: "storage-provider-daily-chores"
 aliases:
     - /docs/storage-providers/troubleshooting/
+    - /storage-providers/operate/troubleshooting/
 weight: 380
 toc: true
 ---
@@ -76,3 +77,27 @@ Format of sector file:
 Expired, removed and terminated sectors will be listed in your proving partition until you compact your partitions. To clean up a partition in a deadline we can use the `lotus-miner sectors compact-partitions` command. The network enforces a security measure that disallows compacting a partition in a deadline untill 1800 epochs (15 hours) have passed. This is to enforce that compacting a deadline cannot be used to prevent invalid posts from being disputed.
 
 The `lotus-miner sectors compact-partitions` also includes a safety measure that disallows compacting during a challenge window, or the prior challenge window. This is because compaction rearranges metadata, and if done too close to a windowPoSt it could cause you to miss a windowPost.
+
+It is recommended to compact your partitions on a regular basis as it will save gas fees. All computations are captured and accounted for by the FVM and getting charged properly, this includes the bitfield computation. So if you have "dead” sectors stored in your `lotus-miner` actor state, every read/write to your sectors info will waste some computation which means higher gas costs.
+
+You can inspect which sectors and the partition index in a proving deadline with `lotus-miner proving deadline <deadlineIdx>`.
+
+```shell output
+lotus-miner proving deadline 1
+Deadline Index:           1
+Partitions:               1
+Proven Partitions:        0
+Current:                  false
+
+Partition Index:          0
+Sectors:                  74
+Sector Numbers:           [40 63 71 219 297 333 390 404 466 481 504 564 721 2510 2533 2549 2607 2623 2625 2691 2738 2740 2755 2764 2780 2853 2880 2908 2920 2932 2953 2982 3098 3099 3124 3136 3140 3146 3151 3205 3246 3252 3289 3344 3362 3365 3415 3432 3478 3537 3590 3591 3626 3638 3764 3782 3792 3886 3930 4004 4032 4044 4079 4148 4156 4177 4188 4223 4262 4295 4304 4410 4411 4419]
+Faults:                   0
+Faulty Sectors:           []
+```
+
+To compact a partition, you need to specify the deadline and the partition index `lotus-miner sectors compact-partitions --deadline <Proving-Deadline> --partitions <Partition-Index>`.
+
+```shell output
+lotus-miner sectors compact-partitions --deadline 1 --partitions 0
+```
