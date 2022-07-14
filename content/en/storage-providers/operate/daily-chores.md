@@ -78,7 +78,7 @@ Expired, removed and terminated sectors will be listed in your proving partition
 
 The `lotus-miner sectors compact-partitions` also includes a safety measure that disallows compacting during a challenge window, or the prior challenge window. This is because compaction rearranges metadata, and if done too close to a windowPoSt it could cause you to miss a windowPost.
 
-It is recommended to compact your partitions on a regular basis as it will save gas fees. All computations are captured and accounted for by the FVM and getting charged properly, this includes the bitfield computation. So if you have "dead” sectors stored in your `lotus-miner` actor state, every read/write to your sectors info will waste some computation which means higher gas costs.
+It is recommended to compact your partitions on a regular basis as it will save gas fees. All computations are captured and accounted for by the FVM, this includes the bitfield computation. If you have "dead” sectors stored in your `lotus-miner` actor state, every read/write to your sectors info will result in wasted computations leading to higher gas costs.
 
 You can inspect which sectors and the partition index in a proving deadline with `lotus-miner proving deadline <deadlineIdx>`.
 
