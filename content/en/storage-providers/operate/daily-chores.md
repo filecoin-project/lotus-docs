@@ -1,7 +1,7 @@
 ---
 title: "Daily chores"
-description: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
-lead: "This page offers some troubleshooting advice for Lotus Miners by listing some of the most common errors that users can come accross."
+description: "This page offers some advice for what you should do only a daily or weekly basis"
+lead: "This page offers some advice for what you should do only a daily or weekly basis"
 draft: false
 menu:
     storage-providers:
@@ -13,8 +13,6 @@ aliases:
 weight: 380
 toc: true
 ---
-
-## Daily chores
 
 ## Inspect expiring sectors
 
