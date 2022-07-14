@@ -237,7 +237,7 @@ The storage section includes a worker assigning logic. It allows you to specify 
 
 ### Dissallow remote finalize
 
-If you do not want `Finalize` tasks be run be remote `lotus-workers` you can set the `DissallowRemoteFinalize` option to true. If set to true, all finalize tasks will be run on workers with local access to both the long-term storage and the sealing path containing the sector. 
+If you do not want `Finalize` tasks to be run by remote workers, you can set the `DissallowRemoteFinalize` option to true. If set to true, all finalize tasks will be run on workers with local access to both the long-term storage and the sealing path containing the sector. 
 
 {{< alert icon="👉" >}}
 Only set this if all workers have access to long-term storage paths. If this flag is enabled, and there are workers without long-term storage access, sectors will not be moved from them, and Finalize tasks will appear to be stuck.
