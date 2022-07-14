@@ -204,7 +204,7 @@ For example, if you want to set the sector lifecycle to 180 days, you can multip
 
 ## Storage section
 
-The storage sector controls whether the miner can perform certain sealing actions. Depending on the setup and the use of additional [seal workers]({{< relref "seal-workers" >}}), you may want to modify some of the options.
+The storage section controls whether the `lotus-miner` can perform certain sealing actions. Depending on the setup and the use of additional [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), you may want to modify some of the options.
 
 ```toml
 [Storage]
@@ -216,6 +216,23 @@ The storage sector controls whether the miner can perform certain sealing action
   AllowPreCommit2 = true
   AllowCommit = true
   AllowUnseal = true
+  AllowReplicaUpdate = true
+  AllowProveReplicaUpdate2 = true
+  AllowRegenSectorKey = true
+```
+
+### Worker assigning logic 
+
+The storage section includes a worker assigning logic. It allows you to specify if you want to assign tasks to `lotus-workers` with the lowest utilization (default), or if you want to assign tasks to as many distinct workers as possible with the `spread` option.
+
+```toml
+# Assigner specifies the worker assigner to use when scheduling tasks.
+# "utilization" (default) - assign tasks to workers with lowest utilization.
+# "spread" - assign tasks to as many distinct workers as possible.
+#
+# type: string
+# env var: LOTUS_STORAGE_ASSIGNER
+#Assigner = "utilization"
 ```
 
 ## Fees section
