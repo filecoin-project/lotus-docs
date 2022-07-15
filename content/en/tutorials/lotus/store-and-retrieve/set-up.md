@@ -117,37 +117,50 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
     ```shell
     xcode-select -p (if missing, run xcode-select --install )
     ```
+    
 1. Install the pre-requisites via Homebrew
+
     ```shell
     brew install go bzr jq pkg-config rustup hwloc
     ```
+
 1. Clone the latest sources
+    
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
     ```
+
 1. Switch into the lotus folder
+    
     ```shell
     cd lotus/
     ```
+
 1. Checkout the latest release
+    
     ```shell
     git checkout tags/v1.16.1
     ```
+
 1. Setup some environment variables correctly
+    
     ```shell
     export LIBRARY_PATH=/opt/homebrew/lib; export FFI_BUILD_FROM_SOURCE=1
     ```
+
 1. Install Rust (when prompted, choose the default 'install' option) 
+    
     ```shell
     rustup-init
     ```
 
 1. Build the clients
+    
     ```shell
     make all
     ```
 
-{{< alert icon="tip" >}}If you get a warning: 'kIOMasterPortDefault' is deprecated: first deprecated in macOS 12.0' , don't worry - the build still worked. 
+{{< alert icon="tip" >}}If you get a warning: 'kIOMasterPortDefault' is deprecated: first deprecated in macOS 12.0' , don't worry - the build still worked.
 {{< /alert >}}
 
 1. Finally, install the client into your system
@@ -222,6 +235,11 @@ Now that you have Lotus ready to run, you can start a Lotus lite-node on your co
 
 {{< alert >}}
 Just as a reminder, `api.chain.love` is a Lotus full-node managed by Protocol Labs. It's ideal for use in this tutorial, but should not be used in a development or in a production environment.
+{{< /alert >}}
+
+
+{{< alert icon="tip" >}}
+if you installed via Snap, the binary name is 'lotus-filecoin.lotus' instead of just 'lotus'
 {{< /alert >}}
 
 1. Open a terminal windows and run the `lotus daemon --lite` command, using `api.chain.love` as the full-node address:
