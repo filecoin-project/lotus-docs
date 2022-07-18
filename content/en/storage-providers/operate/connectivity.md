@@ -83,4 +83,4 @@ There are multiple ways to achieve this:
 
 ## Common errors
 
-The [troubleshooting page]({{< relref "troubleshooting.md#common-connectivity-errors" >}}) has a list of common connectivity errors.
+The [troubleshooting page]({{< relref "connectivity-errors" >}}) has a list of common connectivity errors.
