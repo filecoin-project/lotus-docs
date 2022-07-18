@@ -314,7 +314,7 @@ Once you have your address in a file, you can copy it to another drive, securely
 Before you can transact on the network, you usually have to add some Filecoin to your wallet. You can do this via an exchange such as [Coinbase](https://www.coinbase.com), but you can bypass this stage by applying for Filecoin Plus Datacap below. If you have Datacap on your wallet, then transaction fees are covered, and you can start doing deals faster.  
 
 {{< alert icon="tip" >}}
-[Read more about managing wallets]({{< relref "managing-assets" >}})
+[Read more about managing wallets]({{< relref "manage-fil" >}})
 {{< /alert >}}
 
 ## Filecoin Plus
