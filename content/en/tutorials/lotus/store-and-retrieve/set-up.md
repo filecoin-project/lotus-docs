@@ -221,6 +221,7 @@ You must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
     ```shell
     sudo snap install lotus-filecoin
     ```
+
 2. The snap installer automatically starts a full lotus node in the background. For the purposes of this tutorial, we don't want that, so stop it, and then we can run a lotus lite node instead.
 
     ```shell
@@ -312,7 +313,8 @@ Once you have your address in a file, you can copy it to another drive, securely
 
 Before you can transact on the network, you usually have to add some Filecoin to your wallet. You can do this via an exchange such as [Coinbase](https://www.coinbase.com), but you can bypass this stage by applying for Filecoin Plus Datacap below. If you have Datacap on your wallet, then transaction fees are covered, and you can start doing deals faster.  
 
-{{< alert icon="tip" >}}[Read more about managing wallets](/about-filecoin/managing-assets)
+{{< alert icon="tip" >}}
+[Read more about managing wallets]({{< relref "managing-assets" >}})
 {{< /alert >}}
 
 ## Filecoin Plus

@@ -213,6 +213,7 @@ Once the data has been sent to the storage clients, the storage deals can take u
 {{< alert icon="warning" >}}**DO NOT TURN OFF YOUR LOTUS NODE!** 
 Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when.
 {{< /alert >}}
+
 1. You can check the progress of any data transfers by running `lotus client list-transfers`:
 
     ```shell
