@@ -210,6 +210,7 @@ Once the data has been sent to the storage clients, the storage deals can take u
     ```shell
     lotus client list-deals --show-failed
     ```
+
 {{< alert icon="warning" >}}**DO NOT TURN OFF YOUR LOTUS NODE!** 
 Your Lotus lite-node needs to remain online until the deal state has reached `StorageDealActive`. See the [Processing states](#processing-states) table below to find out which states happen and when.
 {{< /alert >}}
