@@ -23,7 +23,7 @@ ERROR: offer error: retrieval query offer errored: failed to fetch piece to retr
 
 The error indicates that dagstore does not have a corresponding index shard for the piece containing the requested data. When a retrieval is requested, the dagstore on storage provider side is queried and a reverse look up is used to determine the key(piece CID). This key is then used to query the piece store to find the sector containing the data and byte offset.
 
-If fo any reason the shard is not registered with the dagstore then reverse look up to find the piece CID fails and the above error is seen.
+If for any reason the shard is not registered with the dagstore then reverse look up to find the piece CID fails and the above error is seen.
 The most widedly know reason for not having the shard registered with dagstore is the below error. 
 
 ```
