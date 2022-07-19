@@ -62,7 +62,7 @@ mining/sealing/storage nodes can be configured to share the storage system
 machine, or as network mounts when running on separate machines. This setup
 enables more efficient access and reduces network IO loads.
 
-## Splitting the `lotus-miner` monolith into Subsystem
+## Splitting the `lotus-miner` monolith into subsystems
 
 {{< alert icon="tip" >}}
 This feature is available in lotus v1.11.1 and up.
