@@ -15,6 +15,10 @@ toc: true
 
 This section contains guides to initialize and run a successful storage provider operation using Lotus and should be approached by **advanced users only**. You should read through and be familiar with the concepts outlined in these two articles: [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [how mining works](https://docs.filecoin.io/mine/how-mining-works/), as well as having a Lotus node running.
 
+![High Level Full Lotus System](High-Level-Full-Lotus-System.png)
+
+At a high level, this section will cover documentation and guides about the `lotus-miner` and `lotus-worker` binaries, as well as how to use the built-in legacy lotus-markets. For documentation about Boost, you can check out the [Boost documentation](https://boost.filecoin.io)
+
 {{< alert icon="warning" >}}
 Being a storage provider on the _mainnet_ has stringent minimal **[hardware requirements]({{< relref "../../../storage-providers/get-started/hardware-requirements" >}})**. Do not attempt this installation if your server does not meet the minimum requirements.
 {{< /alert >}}
