@@ -179,7 +179,7 @@ needs to be publicly accessible so that clients can make storage and retrieval
 deals with your system.**
 
 {{< alert icon="tip" >}}
-If you were previously running a lotus storage provider monolith process, copy over the `Dealmaking` session from `~/.lotusminer/config.toml` to preserve your configuration! If you want to initialize the market nodes with the default dealmaking configuration, you can skip this section.
+If you were previously running a lotus storage provider monolith process, copy over the `Dealmaking` and `Fees` section from `~/.lotusminer/config.toml` to preserve your configuration! If you want to initialize the market nodes with the default dealmaking configuration, you can skip this section.
 {{< /alert >}}
 
 
@@ -229,6 +229,15 @@ If you were previously running a lotus storage provider monolith process, copy o
   Filter = "/absolute/path/to/storage_filter_program"
   # A command used for fine-grained evaluation of retrieval deals (see below)
   RetrievalFilter = "/absolute/path/to/retrieval_filter_program"
+
+[Fees]
+   MaxPreCommitGasFee = "0.025 FIL"
+   MaxCommitGasFee = "0.05 FIL"
+   MaxTerminateGasFee = "0.5 FIL"
+   MaxWindowPoStGasFee = "5 FIL"
+   MaxPublishDealsFee = "0.05 FIL"
+   MaxMarketBalanceAddFee = "0.007 FIL"
+# Fees needs to present, or it will operate with the default values. 
 ```
 
 {{< alert >}}
@@ -492,9 +501,17 @@ As soon as the message is confirmed, clients will know to look for the node iden
     lotus-miner actor set-addrs <NEW_MULTIADDR>
     ```
 
-9. Update the `Addresses` section of the markets `config.toml` to be the same as same the mining/sealing/proving node.
+9. Update the `Addresses` and the `Fees` section of the markets `config.toml` to be the same as same the mining/sealing/proving node.
 
     ```toml
+    [Fees]
+        MaxPreCommitGasFee = "0.025 FIL"
+        MaxCommitGasFee = "0.05 FIL"
+        MaxTerminateGasFee = "0.5 FIL"
+        MaxWindowPoStGasFee = "5 FIL"
+        MaxPublishDealsFee = "0.05 FIL"
+        MaxMarketBalanceAddFee = "0.007 FIL"
+    
     [Addresses]
         PreCommitControl = ["f00XX1"]
         CommitControl = ["f00XX2"]
