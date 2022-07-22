@@ -513,10 +513,10 @@ As soon as the message is confirmed, clients will know to look for the node iden
         MaxMarketBalanceAddFee = "0.007 FIL"
     
     [Addresses]
-        PreCommitControl = ["f00XX1"]
-        CommitControl = ["f00XX2"]
-        TerminateControl = []
-        DealPublishControl = ["f00XX3"]
+        PreCommitControl = ["f3uqltf1"]
+        CommitControl = ["f3uqltf2"]
+        TerminateControl = ["f3uqltf3"]
+        DealPublishControl = ["f3uqltf4"]
         DisableOwnerFallback = false
         DisableWorkerFallback = false
     ```
