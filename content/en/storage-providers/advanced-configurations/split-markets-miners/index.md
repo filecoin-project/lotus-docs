@@ -237,7 +237,7 @@ If you were previously running a lotus storage provider monolith process, copy o
    MaxWindowPoStGasFee = "5 FIL"
    MaxPublishDealsFee = "0.05 FIL"
    MaxMarketBalanceAddFee = "0.007 FIL"
-# Fees needs to present, or it will operate with the default values. 
+# Fees needs to be present, or it will operate with the default values. 
 ```
 
 {{< alert >}}
