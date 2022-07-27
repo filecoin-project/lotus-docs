@@ -15,7 +15,7 @@ toc: true
 
 If you used the `--no-local-storage` flag during the [miner initialization]({{< relref "../setup/initialize#miner-initialization" >}}), you should specify the disk locations for sealing (fast SSD recommended) and long-term storage.
 
-The Lotus Miner keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
+The `lotus-miner` keeps track of defined storage locations in in `~/.lotusminer/storage.json` (or `$LOTUS_MINER_PATH/storage.json`) and uses `~/.lotusminer` path as default.
 
 Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.json` file is created that contains the UUID assigned to this location, along with whether it can be used for sealing or storing.
 
@@ -29,7 +29,7 @@ lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 
 ### Filter sector types
 
-You can filter for what types of sectors are allowed in each sealing path by adjusting the configuration file that: `<path-to-storage>/sectorstorage.json`.
+You can filter for what sectors types are allowed in each sealing path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
 
 ```json
 {
@@ -57,7 +57,7 @@ This location can be made of large capacity, albeit slower, spinning-disks.
 
 ### Filter sector types
 
-You can filter for what sector types that are allowed in each sealing path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
+You can filter for what sector types that are allowed in each storage path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
 
 ```json
 {
@@ -85,14 +85,43 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 
 Any other value will generate a warning and be ignored.
 
+A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
+
+- Add "DenyTypes": ["unsealed"] to long-term storage path(s) where you want to store the sealed sectors.
+- Add "AllowTypes": ["unsealed"] to long-term storage path(s) where you want to store the unsealed sectors.
+
+{{< alert icon="tip">}}
+If there are existing files with disallowed types in a storage path, those files will remain readable for PoSt/Retrieval. So the worst that can happen in case of misconfiguration in the storage path is that sealing tasks will get stuck waiting for storage to become available.
+{{< /alert >}}
+
 ## Listing storage locations
+
+You can see all your storage locations with the `lotus-miner storage list` command:
 
 ```sh
 lotus-miner storage list
+007bc396-cf31-4493-b75a-412e8fdccc78:
+        [#########################################         ] 363 GiB/436.3 GiB 83%
+        Unsealed: 0; Sealed: 0; Caches: 0; Reserved: 0 B
+        Weight: 10; Use: Seal 
+        Local: /root/sealing
+        URL: http://127.0.0.1:2345/remote
+
+Storage3:
+        [#########################################         ] 363 GiB/436.3 GiB 83%
+        Unsealed: 5; Sealed: 0; Caches: 0; Reserved: 0 B
+        Weight: 10; Use: Store
+        Allow Types: unsealed
+        Local: /root/storage3
+        URL: http://127.0.0.1:2345/remote
 ```
 
-## Updating locations
+### Detach storage 
+
+## Redeclaring locations
 
 To move data from one location to another, follow the instructions in the [Miner maintenance guide]({{< relref "maintenance#changing-storage-locations" >}}).
+
+
 
 To fully remove one location, edit the `storage.json` manually and re-start your miner.
