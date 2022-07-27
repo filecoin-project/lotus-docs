@@ -30,7 +30,7 @@ Testnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
 
 - {{< alert icon="tip" >}}
-Also Testnet nodes follow RPC v1 via endpoint `https://api.calibration.node.glif.io/rpc/v1`
+You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc/v1`
 {{< /alert >}}
 
 ### Custom endpoints
