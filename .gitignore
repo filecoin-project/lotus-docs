@@ -5,3 +5,7 @@ resources
 .netlify
 TODO
 .DS_Store
+
+# JetBrains IDE
+.idea/
+
