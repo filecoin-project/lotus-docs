@@ -50,4 +50,4 @@ If you want to build this site locally, run the following:
 
 ## License
 
-Dual-licensed by Protocol Labs under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) and [MIT](http://opensource.org/licenses/MIT) terms, as explained in the [Permissive License Stack](https://protocol.ai/blog/announcing-the-permissive-license-stack/):
+Dual-licensed by Protocol Labs under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) and [MIT](http://opensource.org/licenses/MIT) terms, as explained in the [Permissive License Stack](https://protocol.ai/blog/announcing-the-permissive-license-stack/).
