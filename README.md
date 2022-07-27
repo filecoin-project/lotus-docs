@@ -1,4 +1,4 @@
-# Lotus docs 
+# Lotus docs
 
 This repository contains the documentation, build scripts, and issue tracking for the Lotus project. If you'd just like to read the Lotus docs, head to [lotus.filecoin.io](https://lotus.filecoin.io).
 
@@ -8,7 +8,7 @@ We would **love ❤️ your help** to improve existing items or make new ones ev
 
 ### Issues
 
-If you find something wrong within this repository, please raise an [issue here →](https://github.com/filecoin-project/lotus-docs/issues). 
+If you find something wrong within this repository, please raise an [issue here →](https://github.com/filecoin-project/lotus-docs/issues).
 
 If you are attempting to close an issue, great! Thanks for the help! Please leave a comment within the issue requesting to be assigned to that issue **before** submitting a pull request. This minimizes the chance of multiple different contributors duplicating work by submitting pull requests for the same issue. If you submit a pull request to an issue _without_ first being assigned to it, that pull request may not be accepted.
 
