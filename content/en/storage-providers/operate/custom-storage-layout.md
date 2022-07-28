@@ -85,10 +85,14 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 
 Any other value will generate a warning and be ignored.
 
+### Seperate sealed and unsealed
+
 A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
 
-- Add "DenyTypes": ["unsealed"] to long-term storage path(s) where you want to store the sealed sectors.
-- Add "AllowTypes": ["unsealed"] to long-term storage path(s) where you want to store the unsealed sectors.
+- Add `"DenyTypes": ["unsealed"]` to long-term storage path(s) where you want to store the sealed sectors.
+- Add `"AllowTypes": ["unsealed"]` to long-term storage path(s) where you want to store the unsealed sectors.
+
+This setting will still allow for `cache` and `update-cache` files to be put in the storage path that allows for `unsealed` sectors in it. If you want to completly deny all other sector types then `unsealed` in this path, you should add all other valid values to the `"DenyTypes"` for that storage path.
 
 {{< alert icon="tip">}}
 If there are existing files with disallowed types in a storage path, those files will remain readable for PoSt/Retrieval. So the worst that can happen in case of misconfiguration in the storage path is that sealing tasks will get stuck waiting for storage to become available.
@@ -98,30 +102,30 @@ If there are existing files with disallowed types in a storage path, those files
 
 You can see all your storage locations with the `lotus-miner storage list` command:
 
-```sh
+```shell
 lotus-miner storage list
-007bc396-cf31-4493-b75a-412e8fdccc78:
-        [#########################################         ] 363 GiB/436.3 GiB 83%
-        Unsealed: 0; Sealed: 0; Caches: 0; Reserved: 0 B
-        Weight: 10; Use: Seal 
-        Local: /root/sealing
-        URL: http://127.0.0.1:2345/remote
 
-Storage3:
-        [#########################################         ] 363 GiB/436.3 GiB 83%
-        Unsealed: 5; Sealed: 0; Caches: 0; Reserved: 0 B
-        Weight: 10; Use: Store
-        Allow Types: unsealed
-        Local: /root/storage3
-        URL: http://127.0.0.1:2345/remote
+[##########                             ] 1.521 TiB/6.93 TiB 21%
+  Unsealed: 1; Sealed: 2; Caches: 2; Reserved: 0 B
+  Weight: 10; Use: Seal 
+  Local: /root/sealing
+  URL: http://127.0.0.1:2345/remote
+
+Storage:
+[##############                         ] 27.61 TiB/96.64 TiB 28%
+  Unsealed: 411; Sealed: 471; Caches: 471; Reserved: 0 B
+  Weight: 10; Use: Store
+  Allow Types: unsealed
+  Local: /root/storage3
+  URL: http://127.0.0.1:2345/remote
 ```
 
-### Detach storage 
+### Detach storage paths
 
-## Redeclaring locations
+You can detach a storage path with the `lotus-miner storage detach /path/to/storage` command. Please note that if you are detaching a storage path forever you should make sure that there are no leftover sectors in the storage path. 
 
-To move data from one location to another, follow the instructions in the [Miner maintenance guide]({{< relref "maintenance#changing-storage-locations" >}}).
+## Updating locations
 
+You can update a sectors location with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a remote server its recommended to use a utility like rsync or similar.
 
-
-To fully remove one location, edit the `storage.json` manually and re-start your miner.
+After you have transferred the sector files to the new storage path you can redeclare them in that path with.
