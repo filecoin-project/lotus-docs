@@ -175,7 +175,7 @@ lotus daemon --import-chain <filename>
 If you do not want the daemon to start once the snapshot has finished, add the `--halt-after-import` flag:
 
 ```shell
-lotus daemon --import-snapshot --halt-after-import <filename>
+lotus daemon --halt-after-import --import-snapshot <filename>
 ```
 
 ## Compacting the chain data
