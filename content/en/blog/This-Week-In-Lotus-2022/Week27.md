@@ -1,14 +1,11 @@
 ---
 title: "This Week in Lotus - Week 27"
 description: "Stay up to date with what has happened in Lotus this week"
-lead: "What a week this has been!! The Filecoin network upgraded successfully to the network 16 at epoch 1960320, on July 6th"
 date: 2022-07-08T08:49:55+00:00
 lastmod: 2022-07-08T08:49:55+00:00
 draft: false
 images: []
 ---
-
-<h3 align="center"> This Week in Lotus - Week 27 </h3>
 
 :wave: **Hey everyone and welcome to This Week in Lotus!**
 

@@ -1,14 +1,11 @@
 ---
 title: "This Week in Lotus - Week 28"
 description: "Stay up to date with what has happened in Lotus this week"
-lead: "As the network 16 upgrade is now in the rearview mirror, it is back to more normal operations for the Lotus team."
 date: 2022-07-15T08:49:55+00:00
 lastmod: 2022-07-15T08:49:55+00:00
 draft: false
 images: []
 ---
-
-<h3 align="center"> This Week in Lotus - Week 28 </h3>
 
 :wave: **Hey everyone and welcome to This Week in Lotus!**
 
