@@ -74,6 +74,20 @@ lotus daemon --import-snapshot https://fil-chain-snapshots-fallback.s3.amazonaws
 
 {{< /alert >}}
 
+#### New Lightweight Snapshot Service
+
+We have soft launched a new Lightweight chain snapshot service which will be replacing the snapshots above in the future. More information about these snapshots can be found in [Notion](https://pl-strflt.notion.site/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024). These snapshots should be considered experimental during the soft launch and acoided for critical systems.
+
+**Mainnet**
+```shell
+lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
+```
+
+**Calibrationnet**
+```shell
+lotus daemon --import-snapshot https://snapshots.calibrationnet.filops.net/minimal/latest
+```
+
 ### Full chain snapshot
 
 Full chain snapshots contain every block from genesis until the current tipset. You can trustlessly import these complete snapshots by supplying the `--import-chain` option to recalculate the entire state during import:
