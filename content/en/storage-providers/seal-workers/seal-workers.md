@@ -74,6 +74,7 @@ export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 export FIL_PROOFS_PARENT_CACHE=/fast/disk/folder2   # > 50GiB!
+export LOTUS_WORKER_NAME="Your-Worker-Name" # if not set, defaults to hostname
 
 # The following increases speed of PreCommit1 at the cost of using a full
 # CPU core-complex rather than a single core.
@@ -123,6 +124,8 @@ Worker 1, host othercomputer
         VMEM: [||||||||||||||                                                  ] 23% 14 GiB/62.7 GiB
         GPU: GeForce RTX 2080, not used
 ```
+
+If you want to give the `lotus-worker` a custom name, you can specify it at runtime with the `--name` option, or by exporting the `LOTUS_WORKER_NAME=Your-Name` enviroment variable. 
 
 ### Limit tasks run in parallel
 
