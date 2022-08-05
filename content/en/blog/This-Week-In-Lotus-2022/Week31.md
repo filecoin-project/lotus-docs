@@ -9,7 +9,7 @@ images: []
 
 :wave: **Hey everyone and welcome to This Week in Lotus!**
 
-A soft-lunch of a new lightweight snapshot service where announced yesterday that will eventually replace the current documented snapshot steps in the Lotus Docs. [We really recommend you check it out](https://pl-strflt.notion.site/pl-strflt/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024), and adjust your operations accordingly if you rely on snapshots.
+A soft-launch of a new lightweight snapshot service where announced yesterday that will eventually replace the current documented snapshot steps in the Lotus Docs. [We really recommend you check it out](https://pl-strflt.notion.site/pl-strflt/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024), and adjust your operations accordingly if you rely on snapshots.
 
 [Lotus V1.17.0](https://github.com/filecoin-project/lotus/releases/tag/v1.17.0) was released this week. It includes a lot of new features and improvements! AppImage build targets are working again with v1.17.0, and homebrew installs now also supports M1 based macs.
 
