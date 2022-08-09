@@ -27,16 +27,16 @@ Building Lotus from source allows you to strictly configure how Lotus runs and h
 To install Lotus using Snap, run:
 
 ```shell
-snap install lotus-filecoin
+snap install lotus
 ```
 
 You can also install nightly builds by using the `--edge` flag. These builds are created every night from the `master` branch [Lotus GitHub repository](https://github.com/filecoin-project/lotus).
 
 ```shell
-snap install lotus-filecoin --edge
+snap install lotus --edge
 ```
 
-You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.io/lotus-filecoin).
+You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.io/lotus).
 
 ## AppImage
 
