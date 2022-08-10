@@ -124,6 +124,14 @@ Worker 1, host othercomputer
         GPU: GeForce RTX 2080, not used
 ```
 
+### Stop the worker
+
+Use the `stop` command to stop the worker:
+
+```shell
+lotus-worker stop <flags>
+```
+
 ### Limit tasks run in parallel
 
 You can limit the amount of tasks run in parallel per task type with environment variables. The environment variable are formatted as `[short task type]_[sector size]_MAX_CONCURRENT=[limit]`.
