@@ -40,7 +40,7 @@ If you are using a node-hosting service like [Glif](https://www.glif.io/) or [In
 
 1. On your full-node open `~/.lotus/config` and:
 
-    a. Uncommend line 3.
+    a. Uncomment line 3.
     a. Change `127.0.0.1` to `0.0.0.0`.
 
     ```toml
@@ -87,7 +87,7 @@ You need to create the Lotus executable to run your lite-node with. This process
 
 1. Move onto [starting the lite-node](#start-the-lite-node).
 
-### M1-based Macs <!--STEF update-->
+### M1-based Macs 
 
 Because of the novel architecture of the M1-based Mac computers, some specific environment variables must be set before creating the `lotus` executable.
 

@@ -173,9 +173,12 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
 3. Checkout to the latest branch:
 
    ```shell
+   git checkout releases
+   # 'releases' always checks out the latest stable release
+   # if you need a specific release use 
    git checkout <tag_or_release>
    # For example:
-   git checkout <vX.X.X> # tag for a release
+   git checkout v1.17.0 # tag for a release
    ```
 
 4. Remove any existing repositories.
