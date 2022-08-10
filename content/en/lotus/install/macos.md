@@ -272,9 +272,9 @@ lotus version
 ```
 
 ```plaintext
-Daemon:  1.13.0+calibnet+git.7a55e8e89+api1.4.0
-Local: lotus version 1.13.0+calibnet+git.7a55e8e89
-# running lotus v1.13.0 on Calibration testnet
+Daemon:  1.17.0+mainnet+git.e120c9eaf+api1.5.0
+Local: lotus version 1.17.0+mainnet+git.e120c9eaf
+# running lotus v1.17.0 on Calibration testnet
 ```
 
 ## Stop the Lotus daemon

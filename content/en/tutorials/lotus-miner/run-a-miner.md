@@ -52,11 +52,11 @@ This section will cover the installation, configuration and starting a lotus nod
     Follow the prompts to install Rust, and then run these commands:
      
     ```shell
-    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+    wget -c https://golang.org/dl/go1.17.9.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
     echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
     git clone https://github.com/filecoin-project/lotus.git
     cd lotus/
-    git checkout tags/v1.13.2
+    git checkout tags/v1.17.0
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     export FFI_BUILD_FROM_SOURCE=1
@@ -150,11 +150,11 @@ This section will cover the installation, configuration, and how to start the lo
     Follow the prompts to install Rust, and then run these commands:
     
     ```shell
-    wget -c https://golang.org/dl/go1.16.4.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+    wget -c https://golang.org/dl/go1.17.9.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
     echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
     git clone https://github.com/filecoin-project/lotus.git
     cd lotus/
-    git checkout tags/v1.13.2
+    git checkout tags/v1.17.0
     export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
     export CGO_CFLAGS="-D__BLST_PORTABLE__"
     export FFI_BUILD_FROM_SOURCE=1
