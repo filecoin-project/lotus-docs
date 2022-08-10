@@ -119,6 +119,14 @@ lotus-miner info
 >     WinPoSt: 3
 ```
 
+### Stop the PoSt worker
+
+Use the `stop` command to stop the worker:
+
+```shell
+lotus-worker stop <flags>
+```
+
 ## Multiple partitions
 
 If you have multiple partitions in a single proving deadline and multiple windowPoSt workers, each partition will run on separate workers in parallel, up to the number of partitions.
