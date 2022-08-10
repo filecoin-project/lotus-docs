@@ -137,7 +137,7 @@ Now we're ready to connect to our Lotus node and interact with the Lotus APIs. L
 2. Run the following command in your project directory:
 
     ```shell with-output
-    node basicQuery.mjs
+    node chainDataQuery.mjs
     ```
 
     This will output something like:
