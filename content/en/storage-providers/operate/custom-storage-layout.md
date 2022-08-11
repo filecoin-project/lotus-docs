@@ -92,7 +92,7 @@ A very basic setup where you want to seperate unsealed and sealed sectors could 
 - Add `"DenyTypes": ["unsealed"]` to long-term storage path(s) where you want to store the sealed sectors.
 - Add `"AllowTypes": ["unsealed"]` to long-term storage path(s) where you want to store the unsealed sectors.
 
-This setting will still allow for `cache` and `update-cache` files to be put in the storage path that allows for `unsealed` sectors in it. If you want to completly deny all other sector types then `unsealed` in this path, you should add all other valid values to the `"DenyTypes"` for that storage path.
+Setting only `unsealed` for `AllowTypes` will still allow `cache` and `update-cache` files to be placed in this storage path. If you want to completely deny all other types of sectors in this path, you can add additional valid values to the `"DenyTypes"` field.
 
 {{< alert icon="tip">}}
 If there are existing files with disallowed types in a storage path, those files will remain readable for PoSt/Retrieval. So the worst that can happen in case of misconfiguration in the storage path is that sealing tasks will get stuck waiting for storage to become available.
