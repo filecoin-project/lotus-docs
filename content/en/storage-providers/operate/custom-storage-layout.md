@@ -135,7 +135,7 @@ You can detach a storage path with the `lotus-miner storage detach /path/to/stor
 
 ## Updating locations
 
-You can update a sectors location with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a seperate server its recommended to use a utility like rsync or similar that has checksum on both ends. If moving data to a seperate server, it is also good practice to keep the important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
+You can update sector locations with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a separate server it's recommended to use a utility like r sync or similar that has checksum on both ends. If moving data to a separate server, it is also good practice to keep the important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
 
 1. To redeclare sector(s) in another storage path, first copy the sector file to the new location:
 
