@@ -47,7 +47,7 @@ You can filter for what sectors types are allowed in each sealing path by adjust
 
 ## Custom location for storing
 
-Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follow:
+Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follows:
 
 ```sh
 lotus-miner storage attach --init --store <PATH_FOR_LONG_TERM_STORAGE>
