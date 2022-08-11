@@ -25,7 +25,7 @@ Before we get started, let's just go over the terms we'll use in this guide:
 To spin up a Lotus lite-node, you will need:
 
 1. A Lotus node - For best results, make sure that this node is fully synced.
-2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.16.4 or higher installed.
+2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.17.9 or higher installed.
 3. You must have all the software dependencies required to build Lotus.
 
 ## Full-node preparation
@@ -40,7 +40,7 @@ If you are using a node-hosting service like [Glif](https://www.glif.io/) or [In
 
 1. On your full-node open `~/.lotus/config` and:
 
-    a. Uncommend line 3.
+    a. Uncomment line 3.
     a. Change `127.0.0.1` to `0.0.0.0`.
 
     ```toml
@@ -87,7 +87,7 @@ You need to create the Lotus executable to run your lite-node with. This process
 
 1. Move onto [starting the lite-node](#start-the-lite-node).
 
-### M1-based Macs
+### M1-based Macs 
 
 Because of the novel architecture of the M1-based Mac computers, some specific environment variables must be set before creating the `lotus` executable.
 
