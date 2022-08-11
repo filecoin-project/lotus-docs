@@ -13,7 +13,7 @@ weight: 105
 toc: true
 ---
 
-This section contains guides to initialize and run a successful storage provider operation using Lotus and should be approached by **advanced users only**. You should read through and be familiar with the concepts outlined in these two articles: [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [how mining works](https://docs.filecoin.io/mine/how-mining-works/), as well as having a Lotus node running.
+This section contains guides to initialize and run a successful storage provider operation using Lotus and should be approached by **advanced users only**. You should read through and be familiar with the concepts outlined in these two articles: [how Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/), [~~how mining works~~](https://docs.filecoin.io/mine/how-mining-works/), as well as having a Lotus node running.
 
 ![High Level Full Lotus System](High-Level-Full-Lotus-System.png)
 
