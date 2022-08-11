@@ -105,18 +105,27 @@ You can see all your storage locations with the `lotus-miner storage list` comma
 ```shell
 lotus-miner storage list
 
+Sealing:
 [##########                             ] 1.521 TiB/6.93 TiB 21%
   Unsealed: 1; Sealed: 2; Caches: 2; Reserved: 0 B
   Weight: 10; Use: Seal 
   Local: /root/sealing
   URL: http://127.0.0.1:2345/remote
 
-Storage:
-[##############                         ] 27.61 TiB/96.64 TiB 28%
-  Unsealed: 411; Sealed: 471; Caches: 471; Reserved: 0 B
+Storage-Unsealed:
+[##############                         ] 23.61 TiB/96.64 TiB 24%
+  Unsealed: 411; Sealed: 0; Caches: 0; Reserved: 0 B
   Weight: 10; Use: Store
   Allow Types: unsealed
   Local: /root/storage3
+  URL: http://127.0.0.1:2345/remote
+
+Storage-Sealed:
+[##############                         ] 27.61 TiB/96.64 TiB 28%
+  Unsealed: 0; Sealed: 471; Caches: 471; Reserved: 0 B
+  Weight: 10; Use: Store
+  Allow Types: sealed
+  Local: /root/storage2
   URL: http://127.0.0.1:2345/remote
 ```
 
@@ -126,6 +135,46 @@ You can detach a storage path with the `lotus-miner storage detach /path/to/stor
 
 ## Updating locations
 
-You can update a sectors location with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a remote server its recommended to use a utility like rsync or similar.
+You can update a sectors location with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a seperate server its recommended to use a utility like rsync or similar that has checksum on both ends. If moving data to a seperate server, it is also good practice to keep the important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
 
-After you have transferred the sector files to the new storage path you can redeclare them in that path with.
+1. To redeclare sector(s) in another storage path, first copy the sector file to the new location:
+
+```shell
+rsync -avP <source> <destination>
+sending incremental file list
+s-t01024-1
+[......]
+sent 537,002,093 bytes  received 35 bytes  358,001,418.67 bytes/sec
+total size is 536,870,912  speedup is 1.00
+```
+2. Redeclare the sector(s) in the new storage path.
+
+```shell
+lotus-miner storage redeclare --all /destination/path
+```
+
+You should now be able to see that the sectors has been redeclared in the new path. You also have the option to specify the `--id` of the storage path when redeclaring instead of using the actual path.
+
+3. Move sector(s) from the old storage-path to a backup folder.
+
+```shell
+rsync -avP --remove-source-files <old-path> <backup-destination>
+sending incremental file list
+sealed/
+sealed/s-t01024-1
+[......]
+sent 537,002,093 bytes  received 35 bytes  358,001,418.67 bytes/sec
+total size is 536,870,912  speedup is 1.00
+```
+
+4. Drop index entries with missing files in the old storage path
+
+```shell
+lotus-miner storage redeclare --all --drop-missing /old/path
+```
+
+You should now be anle to see that the sectors entries has been removed from the old path.
+
+5. Pass windowPoSt and remove the backup
+
+After passing you first windowPoSt(s), or running `lotus-miner proving compute window-post [deadlineIndex]` for the deadline(s) that includes the sectors moved to the new storage path, you can safely delete the backup files.
