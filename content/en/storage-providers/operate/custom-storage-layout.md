@@ -131,7 +131,7 @@ Storage-Sealed:
 
 ### Detach storage paths
 
-You can detach a storage path with the `lotus-miner storage detach /path/to/storage` command. Please note that if you are detaching a storage path forever you should make sure that there are no leftover sectors in the storage path. 
+You can detach a storage path with the `lotus-miner storage detach /path/to/storage` command. Please note that if you are permanently detaching a storage path you should make sure that there are no leftover sectors in the storage path. 
 
 ## Updating locations
 
