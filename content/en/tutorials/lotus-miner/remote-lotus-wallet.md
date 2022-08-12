@@ -12,7 +12,7 @@ toc: true
 
 ## Prerequisites
 
-- [lotus-wallet](../../) installed
+- [lotus-wallet] installed
 - Backup of your wallet keys.
 
 ### Advantages
