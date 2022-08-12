@@ -201,7 +201,7 @@ If the section doesn't exist, you can manually add it:
   #
   # type: bool
   # env var: LOTUS_INDEXPROVIDER_ENABLE
-  #Enable = false
+  #Enable = true
 
   # EntriesCacheCapacity sets the maximum capacity to use for caching the indexing advertisement
   # entries. Defaults to 1024 if not specified. The cache is evicted using LRU policy. The
