@@ -1,8 +1,8 @@
 ---
 title: "This Week in Lotus - Week 32"
 description: "Stay up to date with what has happened in Lotus this week"
-date: 2022-08-12T08:49:55+00:00
-lastmod: 2022-08-12T08:49:55+00:00
+date: 2022-08-12T00:00:55+00:00
+lastmod: 2022-08-12T00:00:55+00:00
 draft: false
 images: []
 ---
