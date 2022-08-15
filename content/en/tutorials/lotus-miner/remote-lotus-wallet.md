@@ -14,7 +14,7 @@ This tutorial is based on a setup with two different servers, one to run the `lo
 
 ## Prerequisites
 
-- [lotus-wallet] installed on a separate server.
+- [lotus-wallet](../../kb/install-lotus-wallet/) installed on a separate server.
 - Backup of your [addresses private keys](../../lotus/manage/manage-fil/index.md#exporting-and-importing-addresses).
 
 ## Initial setup
