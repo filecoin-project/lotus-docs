@@ -124,8 +124,15 @@ Worker 1, host othercomputer
         VMEM: [||||||||||||||                                                  ] 23% 14 GiB/62.7 GiB
         GPU: GeForce RTX 2080, not used
 ```
-
 If you want to give the `lotus-worker` a custom name, you can specify it at runtime with the `--name` option, or by exporting the `LOTUS_WORKER_NAME=Your-Name` enviroment variable. 
+
+### Stop the worker
+
+Use the `stop` command to stop the worker:
+
+```shell
+lotus-worker stop <flags>
+```
 
 ### Limit tasks run in parallel
 
