@@ -173,7 +173,7 @@ total size is 536,870,912  speedup is 1.00
 lotus-miner storage redeclare --all --drop-missing /old/path
 ```
 
-You should now be anle to see that the sectors entries has been removed from the old path.
+You should now be able to see that the sectors entries has been removed from the old path.
 
 5. Pass windowPoSt and remove the backup
 
