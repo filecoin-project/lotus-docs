@@ -15,7 +15,7 @@ areas: ["lotus-wallet"]
 
 ## Problem:
 
-When installing Lotus for mainnet, lotus-shed is not installed by default. 
+When installing Lotus for mainnet, lotus-wallet is not installed by default. 
 
 ## Environment:
 
