@@ -10,7 +10,7 @@ weight: 225
 toc: true
 ---
 
-Using lotus-wallet allows you to..
+This tutorial is based on a setup with two different servers, one to run the `lotus daemon` while the other runs the `lotus-wallet` application. 
 
 ## Prerequisites
 
@@ -98,12 +98,12 @@ Rule execution can halt with `Accept` or `Reject` or finish without either of th
 
 ### Setup rules token
 
-Start by creating a `.json` file and add your desired rules. In this example we will show how you can disallow `ExtendSectorExpiration`,`TerminateSectors`, `DeclareFaults` and `DeclareFaultsRecovered` messages from the addresses in the `lotus-wallet`.
+Start by creating a `.json` file and add your desired rules. In this example we will show how you can disallow `ExtendSectorExpiration`,`TerminateSectors` and `DeclareFaults` messages from the addresses in the `lotus-wallet`.
 
 ```json
 [
 {"Sign": {"Message": {"Method":
-{"Method": [8,9,10,11], "Next":{"Reject":{}}}
+{"Method": [8,9,10], "Next":{"Reject":{}}}
 }}}
 ]
 ```
@@ -181,3 +181,19 @@ These rules
 
 ### Example rules
 
+Only allow signing messages from f3aaa
+```json
+[
+{"Sign": {"Signer":{"Addr":["f3aaa"], "Next": {"Accept":{}}}}},
+{"Reject": {}}
+]
+```
+
+Disallow ExtendSectorExpiration, TerminateSectors, DeclareFaults, DeclareFaultsRecovered (Methods 8, 9, 10, 11):
+```json
+[
+{"Sign": {"Message": {"Method":
+{"Method": [8,9,10,11], "Next":{"Reject":{}}}
+}}}
+]
+```
