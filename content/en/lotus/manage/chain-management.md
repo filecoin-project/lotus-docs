@@ -333,7 +333,7 @@ the coldstore and a fresh hotstore is initialized.
 
 The hotstore is warmed up on first startup so as to load all chain
 headers and state roots in the current head.  This allows us to
-immediately gain the performance benefits of a smallerblockstore which
+immediately gain the performance benefits of a smaller blockstore which
 can be substantial for full archival nodes.
 
 All new writes are directed to the hotstore, while reads first hit the
