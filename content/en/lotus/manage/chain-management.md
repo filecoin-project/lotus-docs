@@ -361,7 +361,7 @@ Compaction works transactionally with the following algorithm:
 
 ## Cold Store Garbage Collection
 
-Garbage colelction can be performed manually by running the `lotus chain prune <flags>` command or automatically by setting the `EnableColdStoreAutoPrune` in your `.lotus/config.toml` as follows:
+Garbage collection can be performed manually by running the `lotus chain prune <flags>` command or automatically by setting the `EnableColdStoreAutoPrune` in your `.lotus/config.toml` as follows:
 
 ```toml
 # EnableColdStoreAutoPrune turns on compaction of the cold store i.e. pruning
