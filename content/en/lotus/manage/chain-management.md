@@ -359,7 +359,7 @@ Compaction works transactionally with the following algorithm:
 - At this point we are ready to begin purging
 - We then end the transaction and compact/gc the hotstore.
 
-## Garbage Collection
+## Cold Store Garbage Collection
 
 Garbage colelction can be performed manually by running the `lotus chain prune <flags>` command or automatically by setting the `EnableColdStoreAutoPrune` in your `.lotus/config.toml` as follows:
 
