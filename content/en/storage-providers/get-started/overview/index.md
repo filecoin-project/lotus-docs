@@ -45,7 +45,7 @@ A sector is the default unit of storage that storage providers submit to the Fil
 A sector can contain data from multiple deals and clients. A storage provider can also submit “Committed Capacity” (CC) sectors. CC sectors are available to the Filecoin network as committed storage power but do not initially contain storage deals. Actively proving CC sectors can be upgraded at a later date to include storage deals in a process known as Snap Deals.
 
 **Sealed sectors**
-An sealed sector is a sector that has been encoded to prepare it for the continous proving process.
+A sealed sector is a sector that has been encoded to prepare it for the continuous proving process.
 
 **Unsealed sectors**
 An unsealed sector is the raw data. Some clients request that their unsealed data is kept for fast retrievals.
