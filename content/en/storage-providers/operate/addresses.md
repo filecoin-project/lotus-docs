@@ -19,8 +19,15 @@ The Lotus Miner daemon performs the operations required by the network and can u
 
 The currently configured addresses used by a miner can be listed with:
 
-```shell
+```shell with output
 lotus-miner actor control list
+```
+
+```output
+name       ID      key        use              balance
+owner      f01234  f3defg...                   300 FIL
+worker     f01111  f3abcd...  other            300 FIL
+control-0  f02222  f3defg...  post             100 FIL
 ```
 
 The different types of addresses associated with a miner are described below:
@@ -37,8 +44,15 @@ The address chosen to be the miner's _owner address_ is designed to be kept offl
 
 The owner address can be updated with the following command:
 
-```shell
+```shell with-output
 lotus-miner actor set-owner --really-do-it <new address> <old address> && lotus-miner actor set-owner --really-do-it <new address> <new address>
+```
+
+```output
+Message CID: bafy2bzacebdjlbjqm5654nkmvev7epmjn3ki7z4yveycjkzm7hcypig232x4q
+message succeeded!
+Message CID: bafy2bzacebapq2fj5vw4icuu3wlafuzz5h7rky32kzkvh42fdi5wrmadm4ub2
+message succeeded!
 ```
 
 The old and the new address must be available to the Lotus node. You can [create a new address or import an existing one]({{< relref "manage-fil" >}}).
@@ -315,8 +329,14 @@ Adjust your fees limits in .lotusminer `config.toml` accordingly.
 
 Transfer funds from the Miner actor address to the owner address by calling `actor withdraw`:
 
-```shell
+```shell with-output
 lotus-miner actor withdraw <amount>
+```
+
+```output
+Requested rewards withdrawal in message bafy2bzacebcvcq7gcgyzpovyzhlz2jiztphzvyfvutbvz4riefqd5pegulz6e
+waiting for 5 epochs for confirmation..
+Successfully withdrew <amount> FIL 
 ```
 
 {{< alert icon="tip" >}}
