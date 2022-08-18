@@ -1,7 +1,7 @@
 ---
 title: "Architectures"
-description: "Filecoin allows anyone to set up a mining operation to participate in a global, distributed storage market."
-lead: "This section provides examples for Filecoin Storage mining setups to guide miners to plan and make the right choices when acquiring and setting up their mining infrastructure. Any storage mining setup must meet the minimal hardware requirements."
+description: "Filecoin allows anyone to set up a storage provider to participate in a global, distributed storage market."
+lead: "This section provides some high level architecture examples for storage provider setups. It will show the scalability of Lotus and should help potential storage providers get an idea of what possibilties and configurations that can be achieved with Lotus."
 draft: false
 menu:
     storage-providers:
@@ -13,18 +13,23 @@ weight: 125
 toc: true
 ---
 
+![Developer-Storage-Provider-Architechture.](Dev-SP-Architecture.png)
+
+![Data-Center-Storage-Provider-Architecture](Rack-by-Rack-SP-Architecture.png)
+
+## Community architectures
+
+Hardware requirements and architecture suggestions constantly evolve based on market demands and available hardware. Because of this, we aren't listing any specific hardware recommendations.
+
 {{< alert icon="callout" >}}
-We are working to improve this section. If you would like to share your mining setup, please create an issue in the [Lotus-docs Github](https://github.com/filecoin-project/lotus-docs/issues)!
+If you want to highlight your organizations architecutral storage provider setup, please create a pull request with a link to your architecture. [Lotus-docs Github](https://github.com/filecoin-project/lotus-docs/pulls)!
 {{< /alert >}}
 
-## Community suggestions
-
-Hardware requirements and architecture suggestions constantly evolve based on market demands and available hardware. Because of this, we aren't listing any recommendations or examples on this page. Instead, look at the [Example Miner Hardware Profiles](https://github.com/filecoin-project/lotus/discussions/6071) in the Lotus project GitHub discussions.
-
-[![Screenshot of a community discussion on GitHub.](github-arch-discussion.png)](https://github.com/filecoin-project/lotus/discussions/6071)
+### Enterprise architechtures
 
 This discussion is ongoing and frequently updated with the new recommendation from community storage providers.
 
-## Solo storage providing
+## SME architechtures
 
-Benjamin Hoejsbo recently gave a presentation on how to create a solo storage provider set up. [Check out the video on YouTube](https://www.youtube.com/watch?v=LKMjCgo-fkA).
+- Some smaller and medium [storage provider profiles and architectures](https://github.com/filecoin-project/lotus/discussions/6071) is listed in the Lotus project GitHub discussions.
+- Benjamin Hoejsbo recently gave a presentation on how to create a solo storage provider set up. [Check out the video on YouTube](https://www.youtube.com/watch?v=LKMjCgo-fkA).
