@@ -19,9 +19,15 @@ The full documentation :book: for **SplitStoreV2** is currently in review, and w
 - Enabling Sealing-as-a-Service is a priority this quarter, and we made some progress towards that goal this week. A draft for managing sector number assignment between a potential service and the lotus-miner was published.
 
 :bug: **Bugfixes:**
+- A UX-fix to exclude negative available balance from spendable amount if a storage provider was in debt was merged yesterday.
 
-A UX-fix to exclude negative available balance from spendable amount if a storage provider was in debt was merged yesterday.
+**Protocol development:**
+- The team has been actively engaging on a `Decoupling FIL+ from markets FIP-proposal` draft this week. Suggested order of :eyes: is starting [with the summary](https://github.com/filecoin-project/FIPs/discussions/313#discussion-3919528), then read the [current draft](https://github.com/filecoin-project/FIPs/pull/432/files) FIP. If you have questions and feedbacks, it [can be posted here](https://github.com/filecoin-project/FIPs/discussions/313).
+- We will start working on the accepted [FIP0034](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0034.md) - `Fix pre-commit deposit independent of sector content` which is scheduled to be included in the nv17 upgrade.
 
-**FIPs:**
+**Lotus community:**
+- The Lotus team will be at both [FIL Singapore](https://www.fil-singapore.io) and [FIL Lisbon](https://hub.fil.org/fil-lisbon) where we will host a **Lotus & friends day (registration opening soon, stay tuned)**. We hope to see many of you there :smile:.
+- :mega: The authors of the FIP0036 are looking for more [feedback from Lotus-users](https://github.com/filecoin-project/FIPs/discussions/421), and especially want them to check out the [SP return calculator](https://observablehq.com/@starboard/sproi-fip-duration-v2).
+
 
 That’s it for the week! **Have a great weekend!** :sunny:
