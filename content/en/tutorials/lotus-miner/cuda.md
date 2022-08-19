@@ -29,13 +29,13 @@ Many Linux distributions provide their packages of the NVIDIA Linux Graphics Dri
     If you are using an nvidia driver below < `460.91.03`
     
     ```shell
-    export BELLMAN_CUSTOM_GPU="GeForce RTX 3090:10496"
+    export RUST_GPU_TOOLS_CUSTOM_GPU="GeForce RTX 3090:10496"
     ```
     
     If you are using an Nvidia driver above > `510.47.03`
     
     ```shell
-    export BELLMAN_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
+    export RUST_GPU_TOOLS_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
     ```
     
 Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
