@@ -57,7 +57,7 @@ The following environment variables are required to be set before starting the w
 
 ```shell
 export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
-export BELLMAN_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
+export RUST_GPU_TOOLS_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 ```
 
