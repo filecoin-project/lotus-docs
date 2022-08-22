@@ -67,8 +67,8 @@ The seal workers will fail to start if the file descriptor limit is not set high
 ```
 # MINER_API_INFO as obtained before
 export TMPDIR=/fast/disk/folder3                    # used when sealing
-export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
-export MARKETS_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
+export MINER_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
+export MARKETS_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export FFI_USE_CUDA=1 # if using CUDA
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
