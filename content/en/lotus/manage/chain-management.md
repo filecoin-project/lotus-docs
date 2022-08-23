@@ -364,6 +364,15 @@ Garbage collection can be performed manually by running the `lotus chain prune <
 EnableColdStoreAutoPrune = true
 ```
 
+## Relocating the Cold Store
+
+Following successful configuration and activation of the SplitStore it is now also possible to further optimise daemon chain storage by relocating the coldstore data to slower and potentially less critical standard spinning disks. This can be accomplished by simply symlinking the current `/<lotus-repo>/datastore/chain` folder to a new folder locatated in your standard storage path.
+
+```shell
+mkdir /<standard-storage-path>/chain
+ln -s /<lotus-repo>/datastore/chain /<standard-storage-path>/chain
+```
+
 ## Utilities
 
 `lotus-shed` has a `splitstore` command which provides some utilities:
