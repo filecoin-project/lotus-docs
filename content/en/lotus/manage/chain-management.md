@@ -303,7 +303,7 @@ If you intend to use the discard-store you also need to add the following:
   # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
   HotStoreFullGCFrequency = 20
 
-  # EnableColdStoreAutoPrune turns on compaction of the cold store i.e. pruning
+  # EnableColdStoreAutoPrune turns on compaction of the coldstore i.e. pruning
   # where hotstore compaction occurs every finality epochs pruning happens every 3 finalities
   # Default is false
   #
@@ -364,7 +364,7 @@ Garbage collection can be performed manually by running the `lotus chain prune <
 EnableColdStoreAutoPrune = true
 ```
 
-## Relocating the Cold Store
+## Relocating the Coldstore
 
 Following successful configuration and activation of the SplitStore it is now also possible to further optimise daemon chain storage by relocating the coldstore data to slower and potentially less critical standard spinning disks. This can be accomplished by simply symlinking the current `/<lotus-repo>/datastore/chain` folder to a new folder locatated in your standard storage path.
 
