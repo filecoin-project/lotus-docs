@@ -45,6 +45,18 @@ As of version 1.17.1 you can filter for what sectors types are allowed in each s
 }
 ```
 
+Valid values for `AllowTypes` and `DenyTypes` are:
+
+```
+"unsealed"
+"sealed"
+"cache"
+"update"
+"update-cache"
+```
+
+These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
+
 ## Custom location for storing
 
 Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follows:
@@ -83,7 +95,7 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 "update-cache"
 ```
 
-Any other value will generate a warning and be ignored.
+These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
 
 ### Seperate sealed and unsealed
 
