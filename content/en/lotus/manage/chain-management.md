@@ -341,13 +341,14 @@ Once five finalities have elapsed and every subsequent finality, the blockstore 
 ## Compaction
 
 Compaction works transactionally with the following algorithm:
-- We prepare a transaction, whereby all i/o referenced objects through the API are tracked.
-- We walk the chain and mark reachable objects, keeping 4 finalities of state roots and messages and all headers all the way to genesis.
-- Once the chain walk is complete, we begin full transaction protection with concurrent marking; we walk and mark all references created during the chain walk. On the same time, all I/O through the API concurrently marks objects as live references.
-- We collect cold objects by iterating through the hotstore and checking the mark set; if an object is not marked, then it is candidate for purge.
+
+- We prepare a transaction whereby all i/o referenced objects through the API are tracked.
+- We walk the chain and mark reachable objects, keeping four finalities of state roots and messages and all headers all the way to genesis.
+- Once the chain walk is complete, we begin full transaction protection with concurrent marking; we walk and mark all references created during the chain walk. At the same time, all I/O through the API concurrently marks objects as live references.
+- We collect cold objects by iterating through the hotstore and checking the mark set; if an object is not marked, then it is a candidate for purge.
 - When running with a coldstore, we next copy all cold objects to the coldstore.
-- At this point we are ready to begin purging
-- We then end the transaction and compact/gc the hotstore.
+- At this point, we are ready to begin purging
+- We then end the transaction and compact/garbage collect the hotstore.
 
 ## Cold Store Garbage Collection
 
