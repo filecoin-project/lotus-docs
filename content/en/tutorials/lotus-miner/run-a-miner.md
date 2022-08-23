@@ -42,7 +42,7 @@ This section will cover the installation, configuration and starting a lotus nod
 
 ### Installation
 
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `RUST_GPU_TOOLS_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
     
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -62,7 +62,7 @@ This section will cover the installation, configuration and starting a lotus nod
     export FFI_BUILD_FROM_SOURCE=1
     export RUSTFLAGS="-C target-cpu=native -g"
     export FFI_USE_CUDA=1
-    export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
+    export RUST_GPU_TOOLS_CUSTOM_GPU="Quadro RTX 6000:4608"
     make clean calibnet
     ./lotus --version
     ```
@@ -140,7 +140,7 @@ This section will cover the installation, configuration, and how to start the lo
 
 ### Installation
 
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `BELLMAN_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention:
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `RUST_GPU_TOOLS_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention:
 
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -160,7 +160,7 @@ This section will cover the installation, configuration, and how to start the lo
     export FFI_BUILD_FROM_SOURCE=1
     export RUSTFLAGS="-C target-cpu=native -g"
     export FFI_USE_CUDA=1
-    export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
+    export RUST_GPU_TOOLS_CUSTOM_GPU="Quadro RTX 6000:4608"
     make clean calibnet
     ./lotus --version
     ```
@@ -193,7 +193,7 @@ This section will cover the installation, configuration, and how to start the lo
     export FIL_PROOFS_PARENT_CACHE=/home/miner/parent_cache   # > 50GiB!
 
     export FFI_USE_CUDA=1
-    export BELLMAN_CUSTOM_GPU="Quadro RTX 6000:4608"
+    export RUST_GPU_TOOLS_CUSTOM_GPU="Quadro RTX 6000:4608"
     
     export LOTUS_MINER_PATH=~/.lotusminer
     export GOLOG_OUTPUT=file
