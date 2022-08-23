@@ -29,7 +29,7 @@ lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 
 ### Filter sector types
 
-You can filter for what sectors types are allowed in each sealing path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
+As of version 1.17.1 you can filter for what sectors types are allowed in each sealing path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
 
 ```json
 {
