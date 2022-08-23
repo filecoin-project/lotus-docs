@@ -330,25 +330,13 @@ If you intend to use the discard-store you also need to add the following:
 
 ### Operation
 
-When the splitstore is first enabled, the existing blockstore becomes
-the coldstore and a fresh hotstore is initialized.
+When the splitstore is first enabled, the existing blockstore becomes the coldstore and a fresh hotstore is initialized.
 
-The hotstore is warmed up on first startup so as to load all chain
-headers and state roots in the current head.  This allows us to
-immediately gain the performance benefits of a smaller blockstore which
-can be substantial for full archival nodes.
+The hotstore is warmed up on the first startup to load all chain headers and state roots in the current head. This process allows us to immediately gain the performance benefits of a smaller blockstore, which can be substantial for full archival nodes.
 
-All new writes are directed to the hotstore, while reads first hit the
-hotstore, with fallback to the coldstore.
+All new writes are directed to the hotstore, while reads first hit the hotstore with fallback to the coldstore.
 
-Once 5 finalities have ellapsed, and every finality henceforth, the
-blockstore _compacts_.  Compaction is the process of moving all
-unreachable objects within the last 4 finalities from the hotstore to
-the coldstore. If the system is configured with a discard coldstore,
-these objects are discarded. Note that chain headers, all the way to
-genesis, are considered reachable. Stateroots and messages are
-considered reachable only within the last 4 finalities, unless there
-is a live reference to them.
+Once five finalities have elapsed and every subsequent finality, the blockstore _compacts_. Compaction is the process of moving all unreachable objects within the last four finalities from the hotstore to the coldstore. These objects are discarded if the system is configured with a discard coldstore. Chain headers are considered reachable all the way to the genesis block. Stateroots and messages are considered reachable only within the last four finalities unless there is a live reference to them.
 
 ## Compaction
 
