@@ -240,7 +240,7 @@ It is possible to _prune_ the current chain data used by Lotus to reduce the nod
 
 Version 1.17.1 introduces SplitStore, an actively scalable blockstore for the Filecoin chain which reduces the performance impact of large blockstores.
 
-SplitStore is a freestanding compacting blockstore that allows you to keep a small (60-275GiB) working set in a hot blockstore and reliably archive out of scope objects in a coldstore. The coldstore can also be a discard store, whereby out of scope objects are discarded or a universal badger blockstore (the default), which can be periodically garbage collected according to configurable user retention policies.
+SplitStore is a freestanding compacting blockstore that allows you to keep a small 60 GiB to 275 GiB working set in a hot blockstore and reliably archive out-of-scope objects in a coldstore. The coldstore can also be a _discard-store_, whereby out-of-scope objects are discarded, or a universal badger blockstore, which can be periodically garbage collected according to configurable user retention policies. The universal badger blockstore is the default storage type.
 
 To enable the splitstore, edit `.lotus/config.toml` and add the following:
 
