@@ -38,8 +38,8 @@ You can filter for what sectors types are allowed in each sealing path by adjust
   "CanSeal": false,
   "CanStore": true,
   "MaxStorage": 0,
-  "Groups": [],
-  "AllowTo": [],
+  "Groups": null,
+  "AllowTo": null,
   "AllowTypes": null,
   "DenyTypes": null
 }
@@ -66,8 +66,8 @@ You can filter for what sector types that are allowed in each storage path by ad
   "CanSeal": false,
   "CanStore": true,
   "MaxStorage": 0,
-  "Groups": [],
-  "AllowTo": [],
+  "Groups": null,
+  "AllowTo": null,
   "AllowTypes": null,
   "DenyTypes": null
 }
