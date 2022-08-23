@@ -250,7 +250,9 @@ To enable the splitstore, edit `.lotus/config.toml` and add the following:
   # env var: LOTUS_CHAINSTORE_ENABLESPLITSTORE
   EnableSplitstore = true
 ```
-If you intend to use the discard coldstore, your also need to add the following:
+
+If you intend to use the discard-store you also need to add the following:
+
 ```toml
 [Chainstore.Splitstore]
   # ColdStoreType specifies the type of the coldstore.
