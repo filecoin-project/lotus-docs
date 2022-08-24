@@ -25,6 +25,11 @@
   identifier = "kb"
   weight = 50
 
+[[main]]
+  name = "Blog"
+  url = "/blog"
+  identifier = "blog"
+  weight = 60
 
 
 [[lotus]]
