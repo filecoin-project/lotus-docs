@@ -3,10 +3,11 @@ title: "Glif nodes"
 description: "Glif provides a number of synced Lotus node endpoints on the Filecoin testnets and mainnet."
 draft: false
 menu:
-    developers:
-             parent: "developers-nodes"
+    lotus:
+             parent: "lotus-developers"
 aliases:
     - /docs/developers/hosted-lotus/
+    - /developers/glif-nodes/
 weight: 105
 toc: true
 ---

@@ -4,14 +4,15 @@ description: "Running a Filecoin network locally can be extremely useful for dev
 lead: "Running a Filecoin network locally can be extremely useful for developers wanting to build and test their applications. This page provides guidance on different methods to run a Filecoin network locally."
 draft: false
 menu:
-    developers:
-        parent: "developers-networks"
+    lotus:
+        parent: "lotus-developers"
         identifier: "developers-networks-local-network"
 weight: 305
 toc: true
 aliases:
     - /docs/developers/developer-network
     - /docs/developers/local-network/
+    - /developers/local-network/
 ---
 
 You can spin up a local network (local-net) using the regular Lotus binaries. This method will launch Lotus using 2 KiB sectors, allowing systems with fewer resources to run a local-net. This solution runs comfortably on a computer with 2 CPU cores and 4 GB RAM.
