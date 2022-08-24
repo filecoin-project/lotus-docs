@@ -1,5 +1,5 @@
 ---
-title: "Daily chores"
+title: "Chores"
 description: "This page offers some advice for what you should do only a daily or weekly basis"
 lead: "This page offers some advice for what you should do only a daily or weekly basis"
 draft: false
