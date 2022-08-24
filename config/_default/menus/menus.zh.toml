@@ -4,11 +4,6 @@
 #   weight = 10
 # 
 # [[main]]
-#   name = "Developers"
-#   url = "/developers/apis/json-rpc/"
-#   weight = 20
-# 
-# [[main]]
 #   name = "Storage Providers"
 #   url = "/storage-providers/get-started/overview"
 #   weight = 30
@@ -48,6 +43,12 @@
 #   identifier = "lotus-management"
 #   url = "/lotus/manage"
 # 
+#[[lotus]]
+# name = "Developers"
+# weight = 50
+# identifier = "lotus-developers"
+# url = "/lotus/developers"
+#
 # [[lotus]]
 #   name = "Project"
 #   weight = 50
