@@ -179,7 +179,7 @@ Local-nets use slightly different binaries to those used in the Filecoin mainnet
    # if you need a specific release use 
    git checkout <tag_or_release>
    # For example:
-   git checkout v1.17.0 # tag for a release
+   # git checkout v1.17.0 # tag for a release
    ```
 
 4. Remove any existing repositories.
