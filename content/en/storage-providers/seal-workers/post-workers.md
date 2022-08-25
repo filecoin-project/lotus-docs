@@ -142,16 +142,37 @@ deadline  partitions  sectors (faults)  proven partitions
 
 If the storage provider has four windowPoSt workers connected, the `lotus-miner` will compute each of the partitions on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel. The first windowPoSt worker will pick up the last partition to finish its computation.
 
-Depending on the scale of your operation it may be necessary to fine-tune the proving processes of your storage provider. This is particularly true in the case of `DeclareFaultsRecovered` messages across multiple partitions. This is done in the `Proving` section of the Lotus Miner's `config.toml`:
+Depending on the scale of your operation it may be necessary to fine-tune the proving processes of your storage provider. This is particularly true in the case of `DeclareFaultsRecovered` messages across multiple partitions. This is done in the `Proving` section of the Lotus Miner's `config.toml`: 
 
 ```toml
+  # Extract taken from version 1.17.1
+
 [Proving]
   # Maximum number of sector checks to run in parallel. (0 = unlimited)
+  # 
+  # WARNING: Setting this value too high may make the node crash by running out of stack
+  # WARNING: Setting this value too low may make sector challenge reading much slower, resulting in failed PoSt due
+  # to late submission.
+  # 
+  # After changing this option, confirm that the new value works in your setup by invoking
+  # 'lotus-miner proving compute window-post 0'
   #
   # type: int
   # env var: LOTUS_PROVING_PARALLELCHECKLIMIT
   #ParallelCheckLimit = 128
 
+  # Maximum number of partitions to prove in a single SubmitWindowPoSt messace. 0 = network limit (10 in nv16)
+  # 
+  # A single partition may contain up to 2349 32GiB sectors, or 2300 64GiB sectors.
+  # 
+  # The maximum number of sectors which can be proven in a single PoSt message is 25000 in network version 16, which
+  # means that a single message can prove at most 10 partinions
+  # 
+  # In some cases when submitting PoSt messages which are recovering sectors, the default network limit may still be
+  # too high to fit in the block gas limit; In those cases it may be necessary to set this value to something lower
+  # than 10; Note that setting this value lower may result in less efficient gas use - more messages will be sent,
+  # to prove each deadline, resulting in more total gas use (but each message will have lower gas limit)
+  # 
   # Setting this value above the network limit has no effect
   #
   # type: int
@@ -167,6 +188,11 @@ Depending on the scale of your operation it may be necessary to fine-tune the pr
   # type: int
   # env var: LOTUS_PROVING_MAXPARTITIONSPERRECOVERYMESSAGE
   #MaxPartitionsPerRecoveryMessage = 0
+```
+Version 1.17.1 also introduces the `LOTUS_RECOVERING_SECTOR_LIMIT` environment variable which allows you to limit the number of sectors declared in each `DeclareFaultsRecovered` message.
+
+```shell
+LOTUS_RECOVERING_SECTOR_LIMIT=<number-of-sectors>
 ```
 
 ### Testing the setup
