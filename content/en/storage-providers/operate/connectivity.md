@@ -40,8 +40,10 @@ There are different methods to test this:
 
 When the lotus miner is running and reachable, it should report it with:
 
-```sh
+```shell
 $ lotus-miner net reachability
+```
+```output
 AutoNAT status:  Public
 Public address:  /ip4/<IP>/tcp/<port>
 ```
@@ -52,8 +54,12 @@ Verify that the Public address corresponds to what you expect. `AutoNAT status: 
 
 To ensure storage and retrieval deals operate smoothly, it is recommended to check how many peers a miner is connected to after each start-up:
 
-```sh
+```shell
 lotus-miner net peers
+```
+```output
+QmUhB2wFQb4qsLZyoqVczMs6CgxSzQqij6gzmJ33Qeq8yn, [/ip4/<IP>/tcp/<port>]
+12D3KooWSVkZMoALKwWQpnkZoAHyPV1jYpciJ5ngwFSRv5LgWkwU, [/ip4/<IP>/tcp/<port>]
 ```
 
 The peer count should increase soon after starting the miner. You can also manually connect to peers with:

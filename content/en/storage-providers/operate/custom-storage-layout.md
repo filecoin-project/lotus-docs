@@ -116,7 +116,8 @@ You can see all your storage locations with the `lotus-miner storage list` comma
 
 ```shell
 lotus-miner storage list
-
+```
+```output
 Sealing:
 [##########                             ] 1.521 TiB/6.93 TiB 21%
   Unsealed: 1; Sealed: 2; Caches: 2; Reserved: 0 B
@@ -153,12 +154,15 @@ You can update sector locations with the `lotus-miner storage redeclare` command
 
 ```shell
 rsync -avP <source> <destination>
+```
+```output
 sending incremental file list
 s-t01024-1
 [......]
 sent 537,002,093 bytes  received 35 bytes  358,001,418.67 bytes/sec
 total size is 536,870,912  speedup is 1.00
 ```
+
 2. Redeclare the sector(s) in the new storage path.
 
 ```shell
@@ -171,6 +175,8 @@ You should now be able to see that the sectors has been redeclared in the new pa
 
 ```shell
 rsync -avP --remove-source-files <old-path> <backup-destination>
+```
+```output
 sending incremental file list
 sealed/
 sealed/s-t01024-1

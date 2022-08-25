@@ -28,10 +28,7 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    ```shell with-output
    lotus-miner backup /root/lotus-backups/2020-11-15/backup.cbor
    ```
-
-   This will output something like:
-
-   ```
+   ```output
    Success
    ```
 
@@ -40,10 +37,7 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    ```shell with-output
    lotus-miner backup --offline /root/lotus-backups/2020-11-15/backup.cbor
    ```
-
-   This will output something like:
-
-   ```
+   ```output
    Success
    ```
 
@@ -65,10 +59,7 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
    ```shell with-output
    lotus-miner init restore /root/lotus-backups/2020-11-15/backup.cbor
    ```
-
-   This will output something like:
-
-   ```
+   ```output
    ...
    2020-11-15T17:53:41.630Z        INFO    main    lotus-storage-miner/init_restore.go:254 Initializing libp2p identity
    2020-11-15T17:53:41.631Z        INFO    main    lotus-storage-miner/init_restore.go:266 Configuring miner actor
