@@ -338,7 +338,7 @@ All new writes are directed to the hotstore, while reads first hit the hotstore 
 
 Once five finalities have elapsed and every subsequent finality, the blockstore _compacts_. Compaction is the process of moving all unreachable objects within the last four finalities from the hotstore to the coldstore. These objects are discarded if the system is configured with a discard coldstore. Chain headers are considered reachable all the way to the genesis block. Stateroots and messages are considered reachable only within the last four finalities unless there is a live reference to them.
 
-## Compaction
+### Compaction
 
 Compaction works transactionally with the following algorithm:
 
@@ -350,7 +350,7 @@ Compaction works transactionally with the following algorithm:
 - At this point, we are ready to begin purging
 - We then end the transaction and compact/garbage collect the hotstore.
 
-## Cold Store Garbage Collection
+### Cold Store Garbage Collection
 
 Garbage collection can be performed manually by running the `lotus chain prune <flags>` command or automatically by setting the `EnableColdStoreAutoPrune` in your `.lotus/config.toml` as follows:
 
@@ -364,7 +364,7 @@ Garbage collection can be performed manually by running the `lotus chain prune <
 EnableColdStoreAutoPrune = true
 ```
 
-## Relocating the Coldstore
+### Relocating the Coldstore
 
 Following successful configuration and activation of the SplitStore it is now also possible to further optimise daemon chain storage by relocating the coldstore data to slower and potentially less critical standard spinning disks. This can be accomplished by simply symlinking the current `/<lotus-repo>/datastore/chain` folder to a new folder locatated in your standard storage path.
 
@@ -373,7 +373,7 @@ mkdir /<standard-storage-path>/chain
 ln -s /<lotus-repo>/datastore/chain /<standard-storage-path>/chain
 ```
 
-## Utilities
+### Utilities
 
 `lotus-shed` has a `splitstore` command which provides some utilities:
 
