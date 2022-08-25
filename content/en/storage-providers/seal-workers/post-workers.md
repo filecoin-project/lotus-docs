@@ -142,7 +142,7 @@ deadline  partitions  sectors (faults)  proven partitions
 
 If the storage provider has four windowPoSt workers connected, the `lotus-miner` will compute each of the partitions on each of the workers in parallel. If one windowPoSt worker gets disconnected, leaving you with only three windowPoSt workers, the first three partitions will be computed in parallel. The first windowPoSt worker will pick up the last partition to finish its computation.
 
-Depending on the scale of your operation it may be necessary to fine-tune the proving processes of your storage provider. This is particularly true in the case of `DeclareFaultsRecovered` messages across multiple partitions. This is done in the `Proving` section of the Lotus Miner's `config.toml`. Version 1.17.1 also introduces a new environment variable 
+Depending on the scale of your operation it may be necessary to fine-tune the proving processes of your storage provider. This is particularly true in the case of `DeclareFaultsRecovered` messages across multiple partitions. This is done in the `Proving` section of the Lotus Miner's `config.toml`: 
 
 ```toml
 [Proving]
