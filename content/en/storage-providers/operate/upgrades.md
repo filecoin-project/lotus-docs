@@ -27,10 +27,7 @@ To export the default configuration files from Lotus, run:
 ```shell
 lotus-miner config default
 ```
-
-This will output something like:
-
-```toml
+```output
 [API]
   # Binding address for the Lotus API
   #
@@ -97,15 +94,19 @@ lotus daemon
 systemctl start lotus-daemon
 ```
 
+Wait for it to finish syncing
+
 ```shell
 lotus sync wait
 ```
 
-2. Start your `lotus-miner` and your `lotus-workers`
+2. Start your `lotus-miner`.
 
 ```shell
 lotus-miner run
 ```
+
+And your `lotus-workers`
 
 ```shell
 lotus-worker run
