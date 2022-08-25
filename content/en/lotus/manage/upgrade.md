@@ -18,7 +18,10 @@ Usually, if you are updating Lotus, it as simple as rebuilding and re-installing
 
 ```shell
 git pull
-git checkout <branch or tag>
+git checkout releases
+# 'releases' always checks out the latest stable release
+# if you need a specific release use 
+# git checkout <tag_or_release>
 ```
 
 Once the new version is checked-out, rebuild and re-install as explained in the installation guide.

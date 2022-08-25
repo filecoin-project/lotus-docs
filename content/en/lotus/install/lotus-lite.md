@@ -118,7 +118,7 @@ Because of the novel architecture of the M1-based Mac computers, some specific e
     ```shell
     cd extern/filecoin-ffi
     git fetch -a
-    git checkout master
+    git checkout releases
     ```
 
 1. Create the `filecoin-ffi` executables:

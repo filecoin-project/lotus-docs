@@ -46,7 +46,10 @@ The following the steps walk through how to install a Lotus node. Further, more 
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
     cd lotus
-    git checkout vX.X.X # tag for the latest release
+    git checkout releases
+    # 'releases' always checks out the latest stable release
+    # if you need a specific release use 
+    git checkout <tag_or_release>
     ```
 
 1. Build and install Lotus for the Calibration network:

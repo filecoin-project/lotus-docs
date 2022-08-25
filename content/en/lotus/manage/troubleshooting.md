@@ -21,7 +21,10 @@ toc: true
 Please check the build logs closely. If you have a dirty state in your git branch make sure to do something like:
 
 ```sh
-git checkout <desired_branch>
+git checkout releases
+# 'releases' always checks out the latest stable release
+# if you need a specific release use 
+# git checkout <tag_or_release>
 git reset origin/<desired_branch> --hard
 make clean
 ```
