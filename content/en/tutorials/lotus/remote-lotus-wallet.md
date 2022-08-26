@@ -81,7 +81,7 @@ approved
 Repeat the process for all the addresses you want to be managed by the `lotus-wallet`. After importing all the keys stop the `lotus-wallet` and start removing the addresses on the lotus daemon node with `lotus wallet delete`. Your `lotus-wallet` will have to be turned off for it to not remove the keys on the `lotus-wallet` itself.
 
 {{< alert icon="warning">}}
-The `lotus wallet delete` cmd is just a soft-deletion of your addresses' private keys in the Lotus database. A hard deletion of the private keys in the `~/.lotus/keystore` folder are needed to make the not retrievable. NB! Make sure that you have a backup of your addresses' private keys in a safe and secure place before you hard-delete them.
+The `lotus wallet delete` cmd is just a soft-deletion of your addresses' private keys in the Lotus database. A hard deletion of the private keys in the `~/.lotus/keystore` folder is needed to make them non-retrievable. NB! Make sure that you have a backup of your addresses' private keys in a safe and secure place before you hard-delete them.
 {{< /alert >}}
 
 After all that is done, you can now restart the `lotus-wallet` without the `--interactive` mode. When you run the `lotus wallet list` on the lotus daemon node you should be able to see all your keys. You have now successfully set up the `lotus-wallet` binary to handle your keys and addresses.
