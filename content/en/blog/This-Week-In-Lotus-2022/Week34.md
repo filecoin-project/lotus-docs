@@ -23,6 +23,6 @@ The Lotus team has been drafting `FIP 44 - Standard Authentication Method for Ac
 
 As stated in the last newsletter, the Lotus team will be at both `FIL Singapore` and `FIL Lisbon`. In Lisbon we will host a **Lotus & friends day** on the 2nd of November, and we hope to see many of you there :smile:
 
-**PSA:** :page_with_curl: For everybody that looks at the Lotus Documentation often, you might have noticed that the top-bar changed a little bit. The Developer section in the top navigation has been moved as a sidebar section under the Lotus top navigation. In the top navigation we have made space for a Blog section that currently consists of all the This Week in Lotus newsletters. [We will updated this Blog section](https://lotus.filecoin.io/blog/) with Lotus events, recaps and more going forward.
+**PSA:** :page_with_curl: For everybody that looks at the Lotus Documentation often, you might have noticed that the top-bar changed a little bit. The Developer section in the top navigation is now a sidebar section under the Lotus top navigation. In the top-navigation we have made space for a Blog section that currently consists of all the This Week in Lotus newsletters. [We will update this Blog section](https://lotus.filecoin.io/blog/) with Lotus events, recaps and more.
 
 That´s it for the week! **Have a great weekend!** :sunny:
