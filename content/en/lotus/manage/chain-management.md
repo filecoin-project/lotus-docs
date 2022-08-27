@@ -366,7 +366,7 @@ EnableColdStoreAutoPrune = true
 
 ### Relocating the Coldstore
 
-Following successful configuration and activation of the SplitStore it is now also possible to further optimise daemon chain storage by relocating the coldstore data to slower and potentially less critical standard spinning disks. This can be accomplished by simply symlinking the current `/<lotus-repo>/datastore/chain` folder to a new folder locatated in your standard storage path.
+Following successful configuration and activation of the SplitStore it is now also possible to further optimise daemon chain storage by relocating the coldstore data to slower and potentially less critical standard spinning disks. This can be accomplished by simply symlinking the current `/<lotus-repo>/datastore/chain` folder to a new folder located in your standard storage path.
 
 ```shell
 mkdir /<standard-storage-path>/chain
