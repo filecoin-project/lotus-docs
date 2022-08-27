@@ -163,7 +163,7 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
     sudo make install
     ```
 
-Now, you're ready to [run a Lotus lite node](/get-started/store-and-retrieve/set-up/#run-a-lotus-lite-node)
+Now, you're ready to [run a Lotus lite node](#run-a-lotus-lite-node)
 
 ### Linux
 
