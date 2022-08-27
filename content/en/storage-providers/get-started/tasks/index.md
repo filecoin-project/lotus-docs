@@ -49,11 +49,11 @@ The WaitSeed state is a security wait requirement by the network that is initiat
 
 ### Commit 1
 
-The randomness aquired at the end of the wait seed state is used in the Commit 1 phase to select a random subset of leaf nodes from the merkle tree generated in the PreCommit 2 phase. From the subset of leaf nodes it checks, it generates a much smaller file then the full merkle tree. That file is is approximately 16MiB in size.
+The randomness aquired at the end of the wait seed state is used in the Commit 1 phase to select a random subset of leaf nodes from the merkle tree generated in the PreCommit 2 phase. From the subset of leaf nodes it checks, it generates a much smaller file than the full merkle tree. That file is is approximately 16MiB in size.
 
 ### Commit 2
 
-In the Commit 2 phase, the file from the Commit 1 gets compressed into a much smaller proof using zk-SNARKs. The proof generated at the end of Commit 2 can be verified that is correct very fast, and is small enough to be suitable for a blockchain. The final size of the proofs is approximately 2kib, and gets published on the blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
+In the Commit 2 phase, the file from the Commit 1 gets compressed into a much smaller proof using zk-SNARKs. The proof generated at the end of Commit 2 can be verified that is correct very fast, and is small enough to be suitable for a blockchain. The final size of the proof is approximately 2kib, and gets published on the blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
 
 ### windowPoSt
 
