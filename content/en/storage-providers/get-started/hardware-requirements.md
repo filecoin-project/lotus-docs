@@ -27,7 +27,7 @@ To run the just the `lotus-miner` process without any sealing tasks, it is recom
 
 ### PC1
 
-For the [PreCommit1 task](../get-started/tasks/#precommit-1) a CPU model with support for _Intel SHA Extensions_: AMD since Zen microarchitecture, or Intel since Ice Lake, is a must. Lack of SHA Extensions results in a very significant slow down.
+For the [PreCommit1 task]({{< relref "../../storage-providers/get-started/tasks/#precommit-1" >}}) a CPU model with support for _Intel SHA Extensions_: AMD since Zen microarchitecture, or Intel since Ice Lake, is a must. Lack of SHA Extensions results in a very significant slow down.
 
 ## RAM
 
