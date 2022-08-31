@@ -60,7 +60,7 @@ Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and 
 1. We need to add the newly installed CUDA to the PATH environment variable for the Linux User that will compile and run the Lotus:
     
     ```shell
-    echo -e 'export PATH=$PATH:/usr/local/cuda-11.6/bin \n export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.6/lib64` >> ~/.bashrc && source ~/.bashrc
+    echo -e `export PATH=$PATH:/usr/local/cuda-11.6/bin \n export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.6/lib64` >> ~/.bashrc && source ~/.bashrc
     ```
 
 1. Reboot the system for the changes to take effect and verify that the new CUDA toolkit and Nvidia driver versions are in use:
