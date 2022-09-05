@@ -172,7 +172,7 @@ lotus-miner sectors status --log <sectorNum>
 
     ```shell
     OUT=`./lotus client import $UUID.deal`
-    ROOT`echo $OUT | awk 'NF>1{print $NF}'` 
+    ROOT=`echo $OUT | awk 'NF>1{print $NF}'` 
     ```
 
 5. Invoke the `lotus client deal` command with the newly created `$ROOT` variable and some deal parameters:
