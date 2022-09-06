@@ -1,6 +1,6 @@
 ---
 title: "Networks"
-description: "This page provide details on available filecoin network and their uses."
+description: "This page provide details on available Filecoin networks and their uses."
 draft: false
 menu:
     lotus:
@@ -16,7 +16,7 @@ There are three networks available for Filecoin:
 
 - [Mainnet](#mainnet), the only production Filecoin network.
 - [Calibration](#calibration), the primary testing network for Filecoin. 
-- [Devnet]({{<relref "local-network">}}), the local development network designed to run with minimal resources for develpment testing.
+- [Devnet]({{<relref "../../lotus/developers/local-network/">}}), the local development network designed to run with minimal resources for develpment testing.
 
 ### Mainnet
 
@@ -60,27 +60,27 @@ Mainnet is the primary Filecoin network. Mainnet began on block 148,888. It supp
 /dns4/node.glif.io/tcp/1235/p2p/12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt
 /dns4/bootstrap-0.ipfsmain.cn/tcp/34721/p2p/12D3KooWQnwEGNqcM2nAcPtRR9rAX8Hrg4k9kJLCHoTR5chJfz6d
 /dns4/bootstrap-1.ipfsmain.cn/tcp/34723/p2p/12D3KooWMKxMkD5DMpSWsW7dBddKxKT7L2GgbNuckz9otxvkvByP
+/dns4/bootstarp-0.1475.io/tcp/61256/p2p/12D3KooWRzCVDwHUkgdK7eRgnoXbjDAELhxPErjHzbRLguSV1aRt
 ```
 
 **Resources**:
 
-- [Latest chain snapshot (pruned)](https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car)
-- [Latest chain snapshot (full)](https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/complete_chain_with_finality_stateroots_latest.car)
+- [Latest chain snapshot (lightweight)](https://snapshots.mainnet.filops.net/minimal/latest)
 - [Status page and incidents](https://filecoin.statuspage.io/)
 - [Stats dashboard](https://stats.filecoin.io/)
-- [Slack Channel for Updates: #fil-mainnet-announcements](https://filecoinproject.slack.com/archives/C019UFEACBT)
-- [Slack Channel for Questions: #fil-mainnet](https://filecoinproject.slack.com/archives/C0179RNEMU4)
-- [Block explorer: 1475 Explorer](https://1475ipfs.com/#/blockBrowser)
+- [Stats dashboard: Starboard](https://dashboard.starboard.ventures/dashboard)
+- [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
+- [Slack Channel for Questions: #fil-help](https://filecoinproject.slack.com/archives/CEGN061C5)
 - [Block explorer: Filfox](https://filfox.io/)
-- [Block explorer: Filplorer](https://filplorer.com/)
 - [Block explorer: Filscan](https://filscan.io/)
 - [Block explorer: Filscout](https://filscout.io/)
+- [Block explorer: IPFS6](https://ipfs6.com/)
 
 ### Calibration
 
 Calibration network is the most realistic simulation of the Filecoin mainnet:
 
-- Prospective storage miners can experience more realistic sealing performance and hardware requirements due to the use of final proofs constructions and parameters.
+- Prospective storage providers can experience realistic sealing performance and hardware requirements due to the use of final proofs constructions and parameters.
 - Prospective storage clients can store and retrieve real data on the network. Clients can participate in deal-making workflows and storage + retrieval functionality.
 - Same sector size as mainnet. The calibration network supports 32 GiB and 64 GiB sectors.
 
@@ -107,16 +107,28 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 **Bootstrap peers**:
 
 ```
-/dns4/bootstrap-0.calibration.fildev.network/tcp/1347/p2p/12D3KooWRLZAseMo9h7fRD6ojn6YYDXHsBSavX5YmjBZ9ngtAEec
-/dns4/bootstrap-1.calibration.fildev.network/tcp/1347/p2p/12D3KooWJFtDXgZEQMEkjJPSrbfdvh2xfjVKrXeNFG1t8ioJXAzv
-/dns4/bootstrap-2.calibration.fildev.network/tcp/1347/p2p/12D3KooWP1uB9Lo7yCA3S17TD4Y5wStP5Nk7Vqh53m8GsFjkyujD
-/dns4/bootstrap-3.calibration.fildev.network/tcp/1347/p2p/12D3KooWLrPM4WPK1YRGPCUwndWcDX8GCYgms3DiuofUmxwvhMCn
+/dns4/bootstrap-0.calibration.fildev.network/tcp/1347/p2p/12D3KooWJkikQQkxS58spo76BYzFt4fotaT5NpV2zngvrqm4u5ow
+/dns4/bootstrap-1.calibration.fildev.network/tcp/1347/p2p/12D3KooWLce5FDHR4EX4CrYavphA5xS3uDsX6aoowXh5tzDUxJav
+/dns4/bootstrap-2.calibration.fildev.network/tcp/1347/p2p/12D3KooWA9hFfQG9GjP6bHeuQQbMD3FDtZLdW1NayxKXUT26PQZu
+/dns4/bootstrap-3.calibration.fildev.network/tcp/1347/p2p/12D3KooWMHDi3LVTFG8Szqogt7RkNXvonbQYqSazxBx41A5aeuVz
 ```
 **Resources**:
 
+- [Latest chain snapshot (lightweight)](https://snapshots.calibrationnet.filops.net/minimal/latest)
 - [Faucet](https://faucet.calibration.fildev.network/)
 - [Stats Dashboard](https://stats.calibration.fildev.network/)
-- [Slack Channel for Updates: #fil-net-calibration-announce](https://filecoinproject.slack.com/archives/C01C5PT7ETC)
+- [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
 - [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
-- [Block explorer - filscan for Calibration](https://calibration.filscan.io/)
+- [Block explorer - Filscan for Calibration](https://calibration.filscan.io/)
+
+### Devnet
+
+The development network is designed to run locally with minimal resources for develpment testing. You can read the [setup guide here]({{<relref "../../lotus/developers/local-network/">}}).
+
+**Network parameters**:
+
+- Supported Sector Sizes: `2 KiB` and `8 MiB`
+- Consensus Miner Min Power: `2 KiB`
+- Epoch Duration Seconds: `4`
+- Pre-Commit Challenge Delay: `10`
