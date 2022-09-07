@@ -39,7 +39,7 @@
   url = "/lotus/get-started/what-is-lotus"
 
 [[lotus]]
-  name = "Install"
+  name = "Setup"
   weight = 20
   identifier = "lotus-install"
   url = "/lotus/install"
