@@ -235,7 +235,7 @@ In the event that the duration of a newly received deal exceeds the remaining du
 lotus-miner sectors extend --new-expiration <expiry-epoch> <sectornumber> && lotus-miner sectors match-pending-pieces
 ```
 
-Where `expiry-epoch` is the epoch number when the sector should expire. For example, there are 2880 30-second epochs in a day. If you want to extend the sector for 540 days, this argument would need to be `2880 (epochs/day)` * `540 days` + `current chain height`. 
+Where `expiry-epoch` is the epoch number when the sector should expire. For example, if you want to extend the sector for 540 days, this argument would need to be `2880 (epochs/day)` * `540 days` + `current chain height`. 
 
 This will match the piece to the newly extended sector and start the replica update process.
 
