@@ -310,3 +310,19 @@ Now that you've got everything setup, you can start the `lotus` and `lotus-miner
 
 You now have a fully functioning Filecoin local network! You can start testing your setup and playing with the Filecoin network in a safe and fast environment.
 
+### Connect multiple nodes
+
+To add additional nodes to your local network, copy the `devgen.car` in your lotus-local-net folder to the other nodes.
+
+
+1. Start the nodes with:
+
+```shell
+./lotus daemon  --genesis=devgen.car
+```
+
+2. Connect it to the first node:
+
+```shell
+./lotus net connect MULTIADDR_OF_THE_FIRST_SERVER
+```
