@@ -229,11 +229,13 @@ The command `lotus-miner sectors mark-for-upgrade` has been deprecated, as of Lo
 
 ### Extension workflow
 
-In the event that the duration of a newly received deal exceeds the remaining duration of the `Available` Snap-deals sector, you can run the following command:
+In the event that the duration of a newly received deal exceeds the remaining duration of the `Available` Snap-deals sector, you can run the following command to extend the sector's expiration time:
 
 ```shell
-lotus-miner sectors extend --new-expiration && lotus-miner sectors match-pending-pieces
+lotus-miner sectors extend --new-expiration <expiry-epoch> <sectornumber> && lotus-miner sectors match-pending-pieces
 ```
+
+Where `expiry-epoch` is the epoch number when the sector should expire. For example, there are 2880 30-second epochs in a day. If you want to extend the sector for 540 days, this argument would need to be `2880 (epochs/day)` * `540 days` + `current chain height`. 
 
 This will match the piece to the newly extended sector and start the replica update process.
 
