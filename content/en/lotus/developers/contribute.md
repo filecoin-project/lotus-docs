@@ -1,7 +1,7 @@
 ---
 title: "Contribute"
-description: "So you want to contribute to Filecoin and the ecosystem? Here is a quick listing of things we need help with and how you can get started. Even if what you want to do is not listed here, we probably accept contributions for it! If you're unsure, please open a issue."
-lead: "So you want to contribute to Filecoin and the ecosystem? Here is a quick listing of things we need help with and how you can get started. Even if what you want to do is not listed here, we probably accept contributions for it! If you're unsure, please open a issue."
+description: "So you want to contribute to Lotus? Here is a quick listing of things we need help with and how you can get started. Even if what you want to do is not listed here, we probably accept contributions for it! If you're unsure, please open a issue."
+lead: "So you want to contribute to Lotus? Here is a quick listing of things we need help with and how you can get started. Even if what you want to do is not listed here, we probably accept contributions for it! If you're unsure, please open a issue."
 draft: false
 menu:
     lotus:
@@ -14,7 +14,7 @@ toc: true
 
 ## Code
 
-Filecoin and its sister-projects are big, with lots of code written in multiple languages. We always need help writing and maintaining code, but it can be daunting to just jump in. We use the label _Help Wanted_ on features or bugfixes that people can help out with. They are an excellent place for you to start contributing code.
+Lotus, the reference implementation of Filecoin and its sister-projects are big, with lots of code written in multiple languages. We always need help writing and maintaining code, but it can be daunting to just jump in. We use the label _Help Wanted_ on features or bugfixes that people can help out with. They are an excellent place for you to start contributing code.
 
 The biggest and most active repositories we have today are:
 
@@ -28,20 +28,17 @@ If you want to start contributing to the core of Filecoin, those repositories ar
 - [IPLD](https://github.com/libp2p)
 - [Multiformats](https://github.com/multiformats)
 
-## Documentation
-
-Filecoin is a huge project and undertaking, and with lots of code comes the need for lots of good documentation! However, we need a lot more help to write the awesome docs the project needs. If writing technical documentation is your area, we’d absolutely love your help!
-
-Before contributing to the Filecoin docs, please read these quick guides; they'll save you time and help keep the docs accurate and consistent!
-
-1. [Style and formatting guide](https://docs.filecoin.io/community/contribute/grammar-formatting-and-style/)
-2. [Writing guide](https://docs.filecoin.io/community/contribute/writing-guide/)
-
-If you have never contributed to an open-source project before, or just need a refresher, take a look at the [contribution tutorial](https://docs.filecoin.io/community/contribute/contribution-tutorial/).
-
 ## Community
 
-If interacting with people is your favorite thing to do in this world, join the [Filecoin chat and discussion forums](https://docs.filecoin.io/community/chat-and-discussion-forums/) to say hello, meet others who share your goals, and connect with other members of the community.
+### Chat
+
+For shorter-lived discussions, our community chat open to all on both Slack and Matrix, with bridged channels allowing you to particate in the same conversations from either platform:
+
+- [Slack](https://filecoin.io/slack/)
+
+### Discussion Forums
+
+For long-lived discussions and for support, please use the [discussion tab on GitHub](https://github.com/filecoin-project/lotus/discussions) instead of Slack. It’s easy for complex discussions to get lost in a sea of new messages on those chat platforms, and posting longer discussions and support requests on the forums helps future visitors, too.
 
 ## Build Applications
 
