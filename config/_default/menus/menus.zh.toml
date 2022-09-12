@@ -54,12 +54,6 @@
 # weight = 50
 # identifier = "lotus-developers"
 # url = "/lotus/developers"
-#
-# [[lotus]]
-#   name = "Project"
-#   weight = 50
-#   identifier = "project"
-#   url = "/lotus/project"
 # 
 # [[developers]]
 #   name = "Nodes"
