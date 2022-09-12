@@ -96,10 +96,10 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
 1. Install Lotus from the filecoin-project tap
 
     ```shell
-    brew install filecoin-project/lotus/lotus 
+    brew install lotus
     ```
 
-1. Lotus is now installed on your computer.
+2. Lotus is now installed on your computer.
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
 
@@ -113,43 +113,48 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
     xcode-select -p (if missing, run xcode-select --install )
     ```
     
-1. Install the pre-requisites via Homebrew
+2. Install the pre-requisites via Homebrew
 
     ```shell
-    brew install go bzr jq pkg-config rustup hwloc
+    brew install go bzr jq pkg-config rustup hwloc coreutils
     ```
 
-1. Clone the latest sources
+3. Clone the latest sources
     
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
     ```
 
-1. Switch into the lotus folder
+4. Switch into the lotus folder
     
     ```shell
     cd lotus/
     ```
 
-1. Checkout the latest release
+5. Checkout the latest release
     
     ```shell
     git checkout releases
     ```
 
-1. Setup some environment variables correctly
+6. Setup some environment variables correctly
     
     ```shell
-    export LIBRARY_PATH=/opt/homebrew/lib; export FFI_BUILD_FROM_SOURCE=1
+    export LIBRARY_PATH=/opt/homebrew/lib
+    export FFI_BUILD_FROM_SOURCE=1
+    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
     ```
 
-1. Install Rust (when prompted, choose the default 'install' option) 
+7. Install Rust (when prompted, choose the default 'install' option) 
     
     ```shell
     rustup-init
     ```
 
-1. Build the clients
+{{< alert icon="tip" >}}If you dont want to restart the active terminal, 
+then source "$HOME/.cargo/env". {{< /alert >}}
+
+8. Build the clients
     
     ```shell
     make all
@@ -158,11 +163,14 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
 {{< alert icon="tip" >}}If you get a warning: 'kIOMasterPortDefault' is deprecated: first deprecated in macOS 12.0' , don't worry - the build still worked.
 {{< /alert >}}
 
-1. Finally, install the client into your system
+9. Finally, install the client into your system
     ```shell
     sudo make install
     ```
-
+10. Verify the installation 
+    ```shell
+    lotus -v
+    ```
 Now, you're ready to [run a Lotus lite node](#run-a-lotus-lite-node)
 
 ### Linux
@@ -182,19 +190,19 @@ There are two simple ways to install Lotus on Linux (this is tested on Ubuntu):
 1. Download the latest `AppImage` file from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.0/Lotus-v1.17.0-x86_64.AppImage
+    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.1/Lotus-v1.17.1-x86_64.AppImage
     ```
 
 1. Make the `AppImage` executable:
 
     ```shell
-    chmod +x Lotus-v1.17.0-x86_64.AppImage
+    chmod +x Lotus-v1.17.1-x86_64.AppImage
     ```
 
 1. Move the `AppImage` to `/usr/local/bin` and rename it `lotus`:
 
     ```shell
-    sudo mv Lotus-v1.17.0-x86_64.AppImage /usr/local/bin/lotus
+    sudo mv Lotus-v1.17.1-x86_64.AppImage /usr/local/bin/lotus
     ```
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
