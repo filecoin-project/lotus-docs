@@ -5,7 +5,7 @@ lead: "So you want to contribute to Filecoin and the ecosystem? Here is a quick 
 draft: false
 menu:
     lotus:
-         parent: "project"
+         parent: "lotus-developers"
 aliases:
     - /docs/project/contribute/
 weight: 505
@@ -18,7 +18,6 @@ Filecoin and its sister-projects are big, with lots of code written in multiple 
 
 The biggest and most active repositories we have today are:
 
-- [filecoin-project/venus](https://github.com/filecoin-project/venus)
 - [filecoin-project/lotus](https://github.com/filecoin-project/lotus)
 - [filecoin-project/rust-fil-proofs](https://github.com/filecoin-project/rust-fil-proofs)
 
