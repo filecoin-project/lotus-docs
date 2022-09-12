@@ -151,7 +151,7 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
     rustup-init
     ```
 
-{{< alert icon="tip" >}}If you dont want to restart the active terminal, then source "$HOME/.cargo/env" . {{< /alert >}}
+{{< alert icon="tip" >}}If you dont want to restart the active terminal, then source "$HOME/.cargo/env". {{< /alert >}}
 
 8. Build the clients
     
