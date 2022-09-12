@@ -62,12 +62,6 @@
   identifier = "lotus-developers"
   url = "/lotus/manage"
 
-[[lotus]]
-  name = "Project"
-  weight = 60
-  identifier = "project"
-  url = "/lotus/project"
-
 
 
 [[developers]]
