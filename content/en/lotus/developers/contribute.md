@@ -30,13 +30,9 @@ If you want to start contributing to the core of Filecoin, those repositories ar
 
 ## Community
 
-### Chat
+The Filecoin community is active and here to answer your questions in your channel of choice.
 
-For shorter-lived discussions, our community chat open to all on both Slack and Matrix, with bridged channels allowing you to particate in the same conversations from either platform:
-
-- [Slack](https://filecoin.io/slack/)
-
-### Discussion Forums
+For shorter-lived discussions, our community chat is open to all on both [Slack](https://filecoin.io/slack/)
 
 For long-lived discussions and for support, please use the [discussion tab on GitHub](https://github.com/filecoin-project/lotus/discussions) instead of Slack. It’s easy for complex discussions to get lost in a sea of new messages on those chat platforms, and posting longer discussions and support requests on the forums helps future visitors, too.
 
