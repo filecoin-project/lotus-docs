@@ -72,15 +72,16 @@ In the case of Lotus, a _Lotus node_ is a computer on a network that is running 
 
 ### Reference
 
-When Ikea first set out to create the Igno table, they first drafted a design. They then gave that design to Ikea's woodworking shop for the carpernters to create into a table. Once the table was complete, Ikea used this _first_ table as an example for what all the other Igno tables should be like.
+When Ikea first set out to create the Igno table, they first drafted a design. They then gave that design to Ikea's woodworking shop for the carpenters to develop into a table. Once the table was complete, Ikea used this _first_ table as an example of what all the other Igno tables should be.
 
-All subsequent Igno tables had to follow the rules set by this first table. The legs, tabletop, and sides all had to be certain lengths. However, all subsequent Igno tables didn't have to _exactly match_ the first table. It would be practically impossible to find two pieces of wood exactly the same. And subsequent Igno tables might have had screws going into the wood at slightly different angles. Also, Ikea didn't specify _how_ the tables should be made. 
+All subsequent Igno tables had to follow the rules set by this first table. The legs, tabletop, and sides all had to be specific lengths. However, all subsequent Igno tables didn't have to _exactly match_ the first table. Finding two pieces of wood exactly the same would be impossible. And subsequent Igno tables might have had screws going into the wood at slightly different angles. Also, Ikea didn't specify _how_ the tables should be made. 
 
 As long as the main features of the table exist, then each table that came out of an Ikea factory could be called an Igno table.
 
 Lotus isn't the only implementation for the Filecoin protocol. However, it is the implementation that _other_ implementations should look at when building their software. 
 
 So let's review. A _reference node implementation_ is:
+
 
 - an application
 - that's sets the example
