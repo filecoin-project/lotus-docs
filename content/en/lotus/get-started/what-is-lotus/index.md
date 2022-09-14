@@ -19,7 +19,7 @@ This sounds like a simple question; what is Lotus? And the surface-level answer 
 
 ![High Level Lotus Suite](High-Level-Lotus-Suite.png)
 
-At a high level the Lotus Suite consists of the `Lotus`, `Lotus-Miner` and `Lotus-Worker` binaries. This section of the docs will focus on the `Lotus` binary.
+At a high level the Lotus Suite consists of the `Lotus`, `Lotus-Miner` and `Lotus-Worker` programs. This section of the docs will focus on the `Lotus` programs.
 
 If you understood all that, great! You can leave this page and start diving into the rest of the documentation. However, if that sentence left you with more questions, then fear not! We're going to cover everything you need to know _without_ assuming you know anything about crypto, blockchain, web3. By the end of this page you should understand each word in that surface-level answer. 
 
@@ -47,9 +47,7 @@ The Filecoin protocol lets users store data on any of the computers in the netwo
 
 So let's review. _The Filecoin network_ is:
 
-- a group of computers
-- that are all following the same set of rules
-- to allow users to store pretty much anything on the computers
+- A group of computers that are all following the same set of rules to allow users to store pretty much anything on the computers
 
 ## A reference node implementation
 
@@ -80,9 +78,7 @@ Other computers refer to this node for how to talk to other computers.
 
 So let's review. A _node implementation_ is:
 
-- an application
-- that tells computers how to talk to other computers
-- on the Filecoin network
+- An application that tells computers how to talk to other computers on the Filecoin network
 
 ## In summary 
 
@@ -92,10 +88,7 @@ Hopefully that all made sense, so let's put all this together.
 
 To translate, Lotus is:
 
-- an application
-- that tells computers how to talk to other computers
-- that are all following the same set of rules
-- to allow users to store pretty much anything on the computers
+- An application that tells computers how to talk to other computers that are all following the same set of rules to allow users to store pretty much anything on the computers
 
 ## Why Filecoin
 
