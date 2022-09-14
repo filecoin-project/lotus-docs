@@ -44,17 +44,17 @@
   identifier = "lotus-install"
   url = "/lotus/install"
 
-[[lotus]]
-  name = "Configure"
-  weight = 30
-  identifier = "lotus-configure"
-  url = "/lotus/lotus-configure"
-
-[[lotus]]
+  [[lotus]]
   name = "Manage"
-  weight = 40
+  weight = 30
   identifier = "lotus-management"
   url = "/lotus/manage"
+
+[[lotus]]
+  name = "Advanced Configurations"
+  weight = 40
+  identifier = "lotus-configure"
+  url = "/lotus/lotus-configure"
 
 [[lotus]]
   name = "Developers"
