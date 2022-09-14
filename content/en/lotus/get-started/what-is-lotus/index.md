@@ -17,10 +17,6 @@ This sounds like a simple question; what is Lotus? And the surface-level answer 
 
 > Lotus is the reference node implementation for the Filecoin network.
 
-![High Level Lotus Suite](High-Level-Lotus-Suite.png)
-
-At a high level the Lotus Suite consists of the `Lotus`, `Lotus-Miner` and `Lotus-Worker` binaries. This section of the docs will focus on the `Lotus` binary.
-
 If you understood all that, great! You can leave this page and start diving into the rest of the documentation. However, if that sentence left you with more questions, then fear not! We're going to cover everything you need to know _without_ assuming you know anything about crypto, blockchain, web3. By the end of this page you should understand each word in that surface-level answer. 
 
 ## The Filecoin network
@@ -59,7 +55,7 @@ Again, let's start at the end.
 
 An **implementation** is _one way_ to do _something_. Take this table from Ikea as an example:
 
-![A wooden table from Ikea.](ingo-table.jpg)
+![A wooden table from Ikea.](ingo-table.png)
 
 It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it. It's one implementation, or application, of the table idea.
 
@@ -70,18 +66,25 @@ It's called Ingo, because Ikea likes to give their products fun names. Ingo is n
 
 A **node** is a computer that can talk to other computers on a network. In your home network there's probably a computer, a TV, and maybe a printer.
 
-Each node on your home network has programs that tell it how to talk to the other nodes on the network. Without these programs, the nodes wouldn't be able to understand each other, and would be pretty useless.
+Each node on your home network has programs that tell it how to talk to the other nodes on the network, and what to do with the information it receives from other nodes. Without these programs, the nodes wouldn't be able to understand each other, and would be pretty useless.
 
 In the case of Lotus, a _Lotus node_ is a computer on a network that is running the Lotus application.
 
 ### Reference
 
-Other computers refer to this node for how to talk to other computers.
+When Ikea first set out to create the Igno table, they first drafted a design. They then gave that design to Ikea's woodworking shop for the carpernters to create into a table. Once the table was complete, Ikea used this _first_ table as an example for what all the other Igno tables should be like.
 
-So let's review. A _node implementation_ is:
+All subsequent Igno tables had to follow the rules set by this first table. The legs, tabletop, and sides all had to be certain lengths. However, all subsequent Igno tables didn't have to _exactly match_ the first table. It would be practically impossible to find two pieces of wood exactly the same. And subsequent Igno tables might have had screws going into the wood at slightly different angles. Also, Ikea didn't specify _how_ the tables should be made. 
+
+As long as the main features of the table exist, then each table that came out of an Ikea factory could be called an Igno table.
+
+Lotus isn't the only implementation for the Filecoin protocol. However, it is the implementation that _other_ implementations should look at when building their software. 
+
+So let's review. A _reference node implementation_ is:
 
 - an application
-- that tells computers how to talk to other computers
+- that's sets the example
+- for how computers should talk to talk to other computers
 - on the Filecoin network
 
 ## In summary 
@@ -93,7 +96,8 @@ Hopefully that all made sense, so let's put all this together.
 To translate, Lotus is:
 
 - an application
-- that tells computers how to talk to other computers
+- that's sets the example
+- for how computers should talk to talk to other computers
 - that are all following the same set of rules
 - to allow users to store pretty much anything on the computers
 
