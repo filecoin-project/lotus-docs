@@ -28,9 +28,8 @@ Both the above features are quite big PRs, so it will take some time to get them
 **Protocol development:**
 - A lot of work for implementing `FIP0029 - Beneficiary address for SPs` into Lotus happened this week:
     - Adding a CLI for [changing the the beneficiary address](https://github.com/filecoin-project/lotus/pull/9307).
-    - Adding [beneficiary withdraw api and CLI](https://github.com/filecoin-project/lotus/pull/9296).
-- FIP45?
+    - Adding [beneficiary withdraw api and CLI](https://github.com/filecoin-project/lotus/pull/9296), adding caller for actorWithdrawCmd was also included in this PR.
 
-Consensus for `FIP0036` will be determined by FIL Poll. All community members are welcome to cast a vote via FIL Poll to either `approve` or `reject` FIP0036. [Read the announcement here](https://filecoinproject.slack.com/archives/C01EU76LPCJ/p1663189570934929).
+All community members are welcome to cast a vote on `FIP0036` via FIL Poll to either `approve` or `reject` FIP0036. [Read the announcement here](https://filecoinproject.slack.com/archives/C01EU76LPCJ/p1663189570934929).
 
 That´s it for the week! **Have a great weekend!** :sunny:
