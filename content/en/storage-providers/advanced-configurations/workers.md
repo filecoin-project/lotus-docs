@@ -128,6 +128,7 @@ Control groups (cgroups) is a Linux Kernel feature that limits, accounts for, an
 |  MaxParallelism    | int      | Number of CPU cores a task can use when GPU is not in use.                                                   |
 |  MaxParallelismGPU | int      | Number of CPU cores a task can use when GPU is in use. Inherits value from `MaxParallelism` when set to 0.  |
 |  BaseMinMemory     | uint64   | Minimum RAM used for decent performance. This is shared between the treads, unlike `MinMemory`. |
+|  MaxConcurrent     | int      | Maximum number of tasks of this type that can be scheduled on a worker (0=default, no limit)  | 
 
 These are the default variables for resource allocation tuning. These values override settings in the resource allocation table.
 
