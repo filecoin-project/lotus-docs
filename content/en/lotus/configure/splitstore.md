@@ -8,7 +8,7 @@ menu:
         parent: "lotus-configure"
 aliases:
     - /lotus/manage/chain-management/#splitstore
-weight: 310
+weight: 315
 toc: true
 ---
 
