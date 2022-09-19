@@ -71,7 +71,7 @@ Ensure that you fully trust the Lotus node you are connecting to.
 
    {{< alert icon="warning" >}}Calling `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.{{< /alert >}}
 
-1. Confirm the creation of the wallet on your Ledger device.
+1.  On your Ledger device, confirm the creation of the wallet.
 
 **From this point, any [FIL send operation](#sending-fil) from a Ledger wallet must be approved on the Ledger device.** Ensure that the Ledger device is connected, unlocked, and running the Filecoin app when performing any FIL send operation.
 
