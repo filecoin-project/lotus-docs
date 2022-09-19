@@ -1,16 +1,24 @@
 ---
 title: "Nodes in China"
-description: "This guide provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus."
-lead: "This guide provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus."
+description: "This article provides a few tips for users in China to get around some of the bandwidth issues or slowness they can suffer when building and running Lotus."
+date: 2022-09-19T00:00:35+01:00
+lastmod: 2022-09-19T00:00:35+01:00
 draft: false
 menu:
-    lotus:
-        parent: "lotus-configure"
+  kb:
+    parent: "browse"
 aliases:
     - /docs/set-up/nodes-in-china/
-weight: 320
-toc: true
+    - /lotus/configure/nodes-in-china/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Lotus Node", "Lotus Miner"]
 ---
+
+## Problem
+
+Users in China might experience bandwidth issues or slowness when building and downloading proof paramaters needed to run Lotus. This article provides a few tips to get around the bandwidth issues.
 
 ## Speed up proof parameter download for first boot
 

@@ -66,7 +66,7 @@ When the PoSt worker starts, it needs to read and verify the Filecoin proof para
 The PoSt workers will fail to start if the file descriptor limit is not set high enough. You can raise this limit temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "kb#soft-fd-limit" >}}) guide.
 
 {{< alert icon="tip" >}}
-When fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "nodes-in-china" >}})
+When fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../../kb/nodes-in-china/" >}})
 {{< /alert >}}
 
 ### Run the PoSt worker
