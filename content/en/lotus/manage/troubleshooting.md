@@ -33,7 +33,7 @@ make clean
 
 ## Slow builds/start from China
 
-See the [tips when running in China]({{< relref "nodes-in-china" >}}) guide.
+See the [tips when running in China]({{< relref "../../kb/nodes-in-china/" >}}) guide.
 
 ## Error: initializing node error: cbor input had wrong number of fields
 

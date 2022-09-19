@@ -84,7 +84,7 @@ export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
 
 {{< alert icon="tip" >}}
-When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../../lotus/configure/nodes-in-china/" >}})
+When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../../kb/nodes-in-china/" >}})
 {{< /alert >}}
 
 ### Run the worker
