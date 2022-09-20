@@ -10,7 +10,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/manage-fil-with-ledger/
-weight: 405
+weight: 407
 toc: true
 ---
 
