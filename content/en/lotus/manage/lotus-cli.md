@@ -12,7 +12,7 @@ weight: 440
 toc: true
 ---
 
-<!-- This page was copied from https://github.com/filecoin-project/lotus/blob/release/v1.17.0/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://github.com/filecoin-project/lotus/blob/release/v1.17.1/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
