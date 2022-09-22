@@ -104,7 +104,7 @@ lotus msig propose-threshold --from signerAddress multisigAddress newThreshold
 This will send a propose message that the other signers will need to approve. The new threshold will be approved when the old `propose-threshold` has been met.
 
 ## Inspect a multisig proposal
-Use `lotus-shed msg` to inspect the params of a message. The `lotus-shed` tool can be installed [following the steps here]({{< relref "../../areas/lotus-shed/" >}})
+Use `lotus-shed msg` to inspect the params of a message. The `lotus-shed` tool can be installed [following the steps here]({{< relref "../../kb/lotus-shed-not-installed/" >}})
 
 ```shell
 lotus-shed msg messageID
