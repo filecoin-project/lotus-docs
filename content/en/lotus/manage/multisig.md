@@ -12,9 +12,9 @@ weight: 410
 toc: true
 ---
 
-## Create a multsig wallet
+## Create a multisig wallet
 
-Use `lotus msig create` to a multisig wallet:
+You can use the `lotus msig create` command to create a multisig wallet:
 
 ```shell with-output
 lotus msig create signerAddress1 signerAddress2 signerAddress3...
@@ -23,7 +23,7 @@ lotus msig create signerAddress1 signerAddress2 signerAddress3...
 Created new multisig:  f01002 f24mscgjtgymb3dqtm4ycwydh4nhygktgxm3nbgva
 ```
 
-In the above example, `f01002` is the id address and `f24mscgjtgymb3dqtm4ycwydh4nhygktgxm3nbgva` is the actor address. Both addresses represent the newly created multisig wallet.
+In the above example, the `f01002` output is the id address and `f24mscgjtgymb3dqtm4ycwydh4nhygktgxm3nbgva` is the actor address. Both addresses represent the newly created multisig wallet.
 
 By default, signatures from all signers are required for approving a transaction. However, you can change the number of required approvals by using the `--required` option:
 
@@ -49,7 +49,7 @@ Transaction ID: 0
 
 In the above example `bafy2bzaceajm2mghc5rludlbcr3bnpqgcz5m6gmldq6ycrc4trkejz36tnrqe` is the `messageID`, and `0` is the `transactionID`.
 
-Other signers can use `lotus msig approve` to approve the messages:
+Other signers can then use `lotus msig approve` to approve this messages:
 
 ```shell
 lotus msig approve walletAddress transactionID proposerAddress destinationAddress value
@@ -93,8 +93,18 @@ ID      State    Approvals  To                                         Value   M
 0       pending  1          t1fjswymsauvfh5zxw34t2pgz7iev2fn56unyw6ci  20 FIL  Send(0)
 ```
 
+## Changing the approval threshold
+
+You can propose setting a different signing threshold on a multisignature wallet with the `lotus msig propose-threshold` command.
+
+```shell
+lotus msig propose-threshold --from signerAddress multisigAddress newThreshold
+```
+
+This will send a propose message that the other signers will need to approve. The new threshold will be approved when the old `propose-threshold` has been met.
+
 ## Inspect a multisig proposal
-Use `lotus-shed msg` to inspect the params of a message.
+Use `lotus-shed msg` to inspect the params of a message. The `lotus-shed` tool can be installed [following the steps here]({{< relref "../../areas/lotus-shed/" >}})
 
 ```shell
 lotus-shed msg messageID
