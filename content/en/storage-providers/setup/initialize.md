@@ -39,12 +39,13 @@ Make sure that:
 Before we can run the storage provider we need to initilize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
 
 ```shell
-lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
+lotus-miner init --owner=<address>  --worker=<address> --no-local-storage --sector-size=<32GiB or 64GiB>
 ```
 
 - The Lotus Miner configuration folder is created in `~/.lotusminer/` or in your `$LOTUS_MINER_PATH` if set.
 - The difference between _owner_ and _worker_ addresses is explained in the [miner addresses guide]({{< relref "../../storage-providers/operate/addresses/" >}}). As mentioned above, we recommend using two separate addresses. If the `--worker` flag is not provided, the owner address will be used. _Control addresses_ can be added later when the storage provider is running.
 - The `--no-local-storage` flag is used so that we can later configure [specific locations for storage]({{< relref "../../storage-providers/operate/custom-storage-layout/" >}}) the location of our sealing storage, and our long term storage.
+- The `--sector-size` specifies the sector size, and can not be changed after the init. The default is 32GiB.
 
 ## Connectivity to the storage provider
 
