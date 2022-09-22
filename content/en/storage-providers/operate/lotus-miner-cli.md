@@ -1,7 +1,7 @@
 ---
 title: "Lotus-miner CLI"
 description: "Reference documentation for the lotus-miner command-line interface."
-lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.17.0"
+lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.17.1"
 draft: false
 menu:
     storage-providers:
@@ -11,7 +11,7 @@ weight: 375
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.17.0/documentation/en/cli-lotus-miner.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.17.1/documentation/en/cli-lotus-miner.md -->
 
 # lotus-miner
 ```
@@ -22,7 +22,7 @@ USAGE:
    lotus-miner [global options] command [command options] [arguments...]
 
 VERSION:
-   1.17.0
+   1.17.1
 
 COMMANDS:
    init     Initialize a lotus miner repo
@@ -2070,7 +2070,7 @@ USAGE:
    lotus-miner proving deadlines [command options] [arguments...]
 
 OPTIONS:
-   --help, -h  show help (default: false)
+   --all, -a  Count all sectors (only live sectors are counted by default) (default: false)
    
 ```
 
@@ -2083,6 +2083,7 @@ USAGE:
    lotus-miner proving deadline [command options] <deadlineIdx>
 
 OPTIONS:
+   --bitfield, -b     Print partition bitfield stats (default: false)
    --sector-nums, -n  Print sector/fault numbers belonging to this deadline (default: false)
    
 ```
@@ -2165,12 +2166,14 @@ DESCRIPTION:
    stored while moving through the sealing pipeline (references as 'seal').
 
 COMMANDS:
-   attach   attach local storage path
-   list     list local storage paths
-   find     find sector in the storage system
-   cleanup  trigger cleanup actions
-   locks    show active sector locks
-   help, h  Shows a list of commands or help for one command
+   attach     attach local storage path
+   detach     detach local storage path
+   redeclare  redeclare sectors in a local storage path
+   list       list local storage paths
+   find       find sector in the storage system
+   cleanup    trigger cleanup actions
+   locks      show active sector locks
+   help, h    Shows a list of commands or help for one command
 
 OPTIONS:
    --help, -h  show help (default: false)
@@ -2213,6 +2216,34 @@ OPTIONS:
    --seal               (for init) use path for sealing (default: false)
    --store              (for init) use path for long-term storage (default: false)
    --weight value       (for init) path weight (default: 10)
+   
+```
+
+### lotus-miner storage detach
+```
+NAME:
+   lotus-miner storage detach - detach local storage path
+
+USAGE:
+   lotus-miner storage detach [command options] [path]
+
+OPTIONS:
+   --really-do-it  (default: false)
+   
+```
+
+### lotus-miner storage redeclare
+```
+NAME:
+   lotus-miner storage redeclare - redeclare sectors in a local storage path
+
+USAGE:
+   lotus-miner storage redeclare [command options] [arguments...]
+
+OPTIONS:
+   --all           redeclare all storage paths (default: false)
+   --drop-missing  Drop index entries with missing files (default: false)
+   --id value      storage path ID
    
 ```
 
@@ -2356,7 +2387,7 @@ USAGE:
    lotus-miner sealing abort [command options] [callid]
 
 OPTIONS:
-   --help, -h  show help (default: false)
+   --sched  Specifies that the argument is UUID of the request to be removed from scheduler (default: false)
    
 ```
 
