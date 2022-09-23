@@ -20,6 +20,7 @@ You may encounter an error saying that the `go` command was not found:
 ```shell with-output
 sudo make install
 ```
+
 ```
 bash: go: command not found
 expr: syntax error: unexpected argument '14'
