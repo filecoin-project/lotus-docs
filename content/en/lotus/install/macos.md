@@ -159,15 +159,6 @@ These instructions are for installing Lotus on an Intel Mac. If you have an M1-b
     The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
 1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "../../kb/nodes-in-china/" >}})".
-1. Some older Intel and AMD processors without the ADX instruction support may panic with illegal instruction errors. To fix this, add the `CGO_CFLAGS` environment variables:
-
-    ```shell
-    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__"
-    export CGO_CFLAGS="-D__BLST_PORTABLE__"
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-    ```
-
-    This is due to a Lotus bug that prevents Lotus from running on a processor without `adx` instruction support, and should be fixed soon.
 
 1. Build and install Lotus:
 
