@@ -33,12 +33,21 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 
 
 [Backup]
+  # When set to true disables metadata log (.lotus/kvlog). This can save disk
+  # space by reducing metadata redundancy.
+  # 
   # Note that in case of metadata corruption it might be much harder to recover
   # your node if metadata log is disabled
   #
   # type: bool
   # env var: LOTUS_BACKUP_DISABLEMETADATALOG
-  #DisableMetadataLog = false
+  #DisableMetadataLog = true
+
+
+[Logging]
+  [Logging.SubsystemLevels]
+    # env var: LOTUS_LOGGING_SUBSYSTEMLEVELS_EXAMPLE-SUBSYSTEM
+    #example-subsystem = "INFO"
 
 
 [Libp2p]
@@ -139,6 +148,14 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
   # env var: LOTUS_CLIENT_SIMULTANEOUSTRANSFERSFORRETRIEVAL
   #SimultaneousTransfersForRetrieval = 20
 
+  # Require that retrievals perform no on-chain operations. Paid retrievals
+  # without existing payment channels with available funds will fail instead
+  # of automatically performing on-chain operations.
+  #
+  # type: bool
+  # env var: LOTUS_CLIENT_OFFCHAINRETRIEVAL
+  #OffChainRetrieval = false
+
 
 [Wallet]
   # type: string
@@ -181,11 +198,11 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     #HotStoreType = "badger"
 
     # MarkSetType specifies the type of the markset.
-    # It can be "map" (default) for in memory marking or "badger" for on-disk marking.
+    # It can be "map" for in memory marking or "badger" (default) for on-disk marking.
     #
     # type: string
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_MARKSETTYPE
-    #MarkSetType = "map"
+    #MarkSetType = "badger"
 
     # HotStoreMessageRetention specifies the retention policy for messages, in finalities beyond
     # the compaction boundary; default is 0.
@@ -201,6 +218,30 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     # type: uint64
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
     #HotStoreFullGCFrequency = 20
+
+    # EnableColdStoreAutoPrune turns on compaction of the cold store i.e. pruning
+    # where hotstore compaction occurs every finality epochs pruning happens every 3 finalities
+    # Default is false
+    #
+    # type: bool
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_ENABLECOLDSTOREAUTOPRUNE
+    #EnableColdStoreAutoPrune = false
+
+    # ColdStoreFullGCFrequency specifies how often to performa a full (moving) GC on the coldstore.
+    # Only applies if auto prune is enabled.  A value of 0 disables while a value of 1 will do
+    # full GC in every prune.
+    # Default is 7 (about once every a week)
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTOREFULLGCFREQUENCY
+    #ColdStoreFullGCFrequency = 7
+
+    # ColdStoreRetention specifies the retention policy for data reachable from the chain, in
+    # finalities beyond the compaction boundary, default is 0, -1 retains everything
+    #
+    # type: int64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORERETENTION
+    #ColdStoreRetention = 0
 ```
 
 ## Connectivity

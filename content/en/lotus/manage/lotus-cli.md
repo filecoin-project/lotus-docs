@@ -1,7 +1,7 @@
 ---
 title: "CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.17.0."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.17.1."
 draft: false
 menu:
     lotus:
@@ -12,10 +12,9 @@ weight: 440
 toc: true
 ---
 
-<!-- This page was copied from https://github.com/filecoin-project/lotus/blob/release/v1.17.0/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://github.com/filecoin-project/lotus/blob/release/v1.17.1/documentation/en/cli-lotus.md -->
 
 # lotus
-
 ```
 NAME:
    lotus - Filecoin decentralized storage network client
@@ -24,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.17.0
+   1.17.1
 
 COMMANDS:
    daemon   Start a lotus daemon process
