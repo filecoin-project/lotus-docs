@@ -19,10 +19,6 @@ This article explains what propagation delay is, and how you can change the defa
 
 Propagation delay is the amount of time a storage provider is waiting for other blocks to arrive from the Filecoin network before they start generating their block (if they were eligible) on top of those.
 
-*Some examples:*
-
-1. A storage provider has a propagation delay of 6 seconds. If all parent blocks from the previous tipset come in before the propagation delay, that storage provider will 
-
 The propagation delay is not how long a storage provider waits to release a block, it is only how long they wait for other blocks to arrive from the network. A generated block will still be released exactly at epoch time independently of what the propagation delay is, so there is no way to game the system by changing this value high.
 
 Starting from the v1.17.2 release the default propagation delay is set to 10 seconds. Based on current block mining metrics and the propagation time of blocks, this setting should allow for sufficient time to receive all parent blocks from the previous tipset, while still giving you ample time to compute a block if you were eligible.
