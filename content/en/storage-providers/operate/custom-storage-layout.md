@@ -120,25 +120,25 @@ lotus-miner storage list
 ```output
 Sealing:
 [##########                             ] 1.521 TiB/6.93 TiB 21%
-  Unsealed: 1; Sealed: 2; Caches: 2; Reserved: 0 B
+  Unsealed: 15; Sealed: 10; Caches: 10; Updated: 7; Update-caches: 7; Reserved: 1.007 TiB
   Weight: 10; Use: Seal 
   Local: /root/sealing
   URL: http://127.0.0.1:2345/remote
 
 Storage-Unsealed:
-[##############                         ] 23.61 TiB/96.64 TiB 24%
-  Unsealed: 411; Sealed: 0; Caches: 0; Reserved: 0 B
+[###########################            ] 326.8 TiB/420.2 TiB 77%
+  Unsealed: 6520; Sealed: 0; Caches: 0; Updated: 0; Update-caches: 0; Reserved: 0 B
   Weight: 10; Use: Store
   Allow Types: unsealed
-  Local: /root/storage3
+  Local: /root/storage2
   URL: http://127.0.0.1:2345/remote
 
 Storage-Sealed:
-[##############                         ] 27.61 TiB/96.64 TiB 28%
-  Unsealed: 0; Sealed: 471; Caches: 471; Reserved: 0 B
+[###########################            ] 326.8 TiB/420.2 TiB 77%
+  Unsealed: 0; Sealed: 5960; Caches: 5960; Updated: 560; Update-caches: 560; Reserved: 0 B
   Weight: 10; Use: Store
   Allow Types: sealed
-  Local: /root/storage2
+  Local: /root/storage3
   URL: http://127.0.0.1:2345/remote
 ```
 
