@@ -149,7 +149,7 @@ Renewing 59 sectors:
 59 sectors renewed
 ```
 
-Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check the output is what the user expected before actually adding the flag.
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
 
 ### Renew sectors in a txt-file
 
@@ -179,7 +179,7 @@ Renewing 7 sectors:
 7 sectors renewed
 ```
 
-Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check the output is what the user expected before adding the flag.
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
 
 {{< alert icon="warning" >}}
 The format of the sector file has to be in the form like this (a single sector number per line):
@@ -213,4 +213,4 @@ Renewing 2 sectors:
 2 sectors renewed
 ```
 
-Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check the output is what the user expected before adding the flag.
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
