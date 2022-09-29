@@ -97,6 +97,10 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 
 These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
 
+{{< alert icon="tip" >}}
+If you'd like to have a clear overview of the storage list, it is possible to edit the "ID": "1626519a-5e05-493b-aa7a-0af71612010b" <-> "ID": "Sealing-Server" in `sectorstorage.json`.
+{{< /alert >}}
+
 ### Seperate sealed and unsealed
 
 A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
@@ -118,7 +122,7 @@ You can see all your storage locations with the `lotus-miner storage list` comma
 lotus-miner storage list
 ```
 ```output
-Sealing:
+Sealing-Server:
 [##########                             ] 1.521 TiB/6.93 TiB 21%
   Unsealed: 15; Sealed: 10; Caches: 10; Updated: 7; Update-caches: 7; Reserved: 1.007 TiB
   Weight: 10; Use: Seal 
