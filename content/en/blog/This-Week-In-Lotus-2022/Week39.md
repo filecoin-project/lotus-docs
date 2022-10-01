@@ -12,9 +12,7 @@ images: []
 The [second release candidate](https://github.com/filecoin-project/lotus/releases/tag/v1.17.2-rc2) for the upcoming `Lotus v1.17.2` was released this week. :mega: **Please note that Lotus v1.17.2** will require a Go-version of v1.18.1 or higher, so check which version you are on before upgrading!
 
 :rocket: **Features / Enhancements:**
-- *Redundant chain nodes:* We are getting [closer to merging the PR](https://github.com/filecoin-project/lotus/pull/9294) that will enable support for redundant Lotus chain nodes.
-   - Cluster nodes are now syncing messages from all local chainstores.
-   - Support for [typed errors over RPC](https://github.com/filecoin-project/lotus/pull/9384) was backported to master as it is needed for the PR.
+- *Redundant chain nodes:* We are getting [closer to merging the PR](https://github.com/filecoin-project/lotus/pull/9294) that will enable support for redundant Lotus chain nodes. Going forward we will start testing it properly to see if we need additional tools to properly support the feature.
 - The requirement for [checking parameters on startup](https://github.com/filecoin-project/lotus/pull/9391/files) has been disabled on `lotus-miner` nodes that have disabled all tasks (`PoSt / C2 / PR2`) that require parameters. This makes startups much faster :zap: and reducing downtime when restarts are needed.
 - A work-in-progress tool that allows you to explore data on the Filecoin network was opened as a draft. It is uncertain if this tool will live in the Lotus codebase, but it was opened up as others might find it useful.
 - A PR to add retrieval deal ID and bytes transferred to the lotus client retrieve output has been merged.
