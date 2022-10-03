@@ -68,8 +68,10 @@ lotus msig create address1 address2..
 This will create a new address and print it. You can distinguish mainnet from testnet addresses because they start with `f` for mainnet and `t` for testnets.
 
 {{< alert icon="warning">}}
-The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a [hardware wallet](#ledger).
+The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a 
+[hardware wallet]({{< relref "ledger" >}}).
 {{< /alert >}}
+
 
 ## Listing addresses
 
@@ -189,57 +191,3 @@ Each node stores its wallet in `~/.lotus/keystore`:
 ```
 
 To export a wallet when a node is offline, copy these files _from_ `~/.lotus/keystore` to another location. To import this wallet, copy these files _into_ `~/.lotus/keystore`. The Lotus node will automatically use these keys when it next starts.
-
-## Ledger
-
-### Setup your Ledger device
-
-1. Install [Ledger Live](https://www.ledger.com/start/) and follow the instructions to set up your device. Linux users may need to add the [necessary udev rules](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-USB-connection-issues-with-Ledger-Live?support=true).
-1. Enable **Developer mode** in the Ledger live settings:
-
-   ![ledger-enable-dev-mode](ledger.png)
-
-1. You should now be able to search and install the **Filecoin** app in the **Manager** section of Ledger Live.
-
-
-### Ledger Wallet UI Options
-
-You can either use the [browser-based Glif wallet](#glif-wallet) or manually manage your funds using the [Lotus node and Ledger integration](#lotus).
-
-#### Glif Wallet
-
-Filecoin is not accessible directly through the Ledger Live application. However, you can use your Ledger hardware with the Glif wallet at [glif.io](https://glif.io). Glif is an open-source Filecoin wallet you can use in the browser. It uses the [Filecoin Ledger integration library](https://github.com/Zondax/ledger-filecoin/), which has been security audited by a third-party.
-
-#### Lotus
-
-You can use a Filecoin Lotus node with Ledger hardware to manage your funds.
-
-##### Add your Ledger to a Lotus node
-
-Make sure you fully trust the Lotus node you are connecting to.
-
-1. In your `config.toml` file (`~/.lotus/config.toml`), add `EnableLedger = true` into to `[Wallet]` section:
-
-   ```toml
-   [Wallet]
-     EnableLedger = true
-   ```
-
-1. Unlock your Ledger device.
-1. Open the Filecoin app on your Ledger device and keep it connected to your computer.
-1. Use `wallet new secp256k1-ledger` to create a Ledger-backed wallet:
-
-   ```shell
-   lotus wallet new secp256k1-ledger
-   ```
-
-   You will have to confirm creation on your Ledger device.
-
-   {{< alert icon="warning" >}}Calling `lotus wallet new secp256k1-ledger` will provide a new Ledger-backed key whenever called. When called on a different Lotus node or in one that has been reset, the same keys will be generated as they are based on the Ledger device master key.{{< /alert >}}
-
-1. From this point, any [FIL send operation](#sending-fil) from a Ledger wallet will have to be approved on the Ledger device. Make sure it is connected, unlocked, and running the Filecoin app.
-
-
-{{< alert icon="warning" >}}
-The `lotus-shed` application provides additional Ledger functionality, like listing the keys in the device and providing information about them.
-{{< /alert >}}

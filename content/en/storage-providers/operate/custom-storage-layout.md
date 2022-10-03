@@ -97,6 +97,10 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 
 These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
 
+{{< alert icon="tip" >}}
+If you'd like to have a clear overview of the storage list, it is possible to edit the "ID": "1626519a-5e05-493b-aa7a-0af71612010b" <-> "ID": "Sealing-Server" in `sectorstorage.json`.
+{{< /alert >}}
+
 ### Seperate sealed and unsealed
 
 A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
@@ -118,27 +122,27 @@ You can see all your storage locations with the `lotus-miner storage list` comma
 lotus-miner storage list
 ```
 ```output
-Sealing:
+Sealing-Server:
 [##########                             ] 1.521 TiB/6.93 TiB 21%
-  Unsealed: 1; Sealed: 2; Caches: 2; Reserved: 0 B
+  Unsealed: 15; Sealed: 10; Caches: 10; Updated: 7; Update-caches: 7; Reserved: 1.007 TiB
   Weight: 10; Use: Seal 
   Local: /root/sealing
   URL: http://127.0.0.1:2345/remote
 
 Storage-Unsealed:
-[##############                         ] 23.61 TiB/96.64 TiB 24%
-  Unsealed: 411; Sealed: 0; Caches: 0; Reserved: 0 B
+[###########################            ] 326.8 TiB/420.2 TiB 77%
+  Unsealed: 6520; Sealed: 0; Caches: 0; Updated: 0; Update-caches: 0; Reserved: 0 B
   Weight: 10; Use: Store
   Allow Types: unsealed
-  Local: /root/storage3
+  Local: /root/storage2
   URL: http://127.0.0.1:2345/remote
 
 Storage-Sealed:
-[##############                         ] 27.61 TiB/96.64 TiB 28%
-  Unsealed: 0; Sealed: 471; Caches: 471; Reserved: 0 B
+[###########################            ] 326.8 TiB/420.2 TiB 77%
+  Unsealed: 0; Sealed: 5960; Caches: 5960; Updated: 560; Update-caches: 560; Reserved: 0 B
   Weight: 10; Use: Store
   Allow Types: sealed
-  Local: /root/storage2
+  Local: /root/storage3
   URL: http://127.0.0.1:2345/remote
 ```
 
