@@ -45,6 +45,6 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without
 1. You can now use that IPFS hash with `lotus` to create a storage deal.
 
     ```shell
-    lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 
+    lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 <price> <duration>
 ```
 
