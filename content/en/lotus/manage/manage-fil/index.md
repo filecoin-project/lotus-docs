@@ -17,7 +17,7 @@ To receive and send FIL with Lotus, you will need to have a Lotus node installed
 
 ## About Wallet Addresses
 
-When using a wallet, an account is identified by its [address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses). A Filecoin address always starts with the letter `f` and a digit that indicates what type of address it is.
+When using a wallet, an account is identified by its [address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses). A Filecoin address always starts with the letter `f` (`t` for testnets) and a digit that indicates what type of address it is.
 
 Filecoin accounts have two kinds of address, longer **public key** addresses, and shorter **ID** addresses. Both addresses refer to the same account and can be used to send and receive FIL using a wallet.
 
@@ -33,30 +33,41 @@ Because a public key address does not depend on any blockchain state, they are c
 
 ### ID Address
 
-ID addresses are a compact and more "human friendly" way to refer to an account than public key addresses. ID addresses always start with the characters `f0`, followed by a sequence of digits, for example: `f033259`.
+ID addresses are a compact and more "human friendly" way to refer to an account than public key addresses. ID addresses always start with the characters `f0` (or `t0` for testnets), followed by a sequence of digits, for example: `f033259`.
 
 Every ID address for a Filecoin account has an alternative public key address that corresponds to the same account. You can find the ID address for any public key address by searching for the public key address on [FilFox](https://filfox.info/), a Filecoin block explorer.
 
-Because they are more compact than public key addresses, ID addresses are often used when refering to miners and other long-lived Filecoin [Actors](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#actors). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
+Because they are more compact than public key addresses, ID addresses are often used when refering to storage providers and other long-lived Filecoin [Actors](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#actors). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
 
 While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](https://docs.filecoin.io/reference/glossary/#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
 
-More information about Addresses can be found in the [How Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses) section.
+More information about addresses can be found in the [How Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses) section.
 
 ## Creating a wallet
 
 Creating wallets using Lotus is very simple. There are mutliple wallet types to choose from.
 
+{{< alert icon="warning">}}
+The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a 
+[hardware wallet]({{< relref "../../manage/ledger" >}}).
+{{< /alert >}}
+
 ### Create a BLS wallet
 
-```shell
+```shell with-output
 lotus wallet new bls
+```
+```
+f3ryb26aqsxkq6cj6bs5inp5ssxkkw24l3st2uojcc5kh3vhtdqjt67zdhougqwrsvm4baagm7bclhmxs5crbq
 ```
 
 ### Create a secp256k1 wallet
 
-```shell
+```shell with-output
 lotus wallet new
+```
+```
+f1x37y5ekmq2yq5phcine3jvtrqgaxsjrdhpvmksa
 ```
 
 ### Create a multisig wallet
@@ -65,13 +76,7 @@ lotus wallet new
 lotus msig create address1 address2..
 ```
 
-This will create a new address and print it. You can distinguish mainnet from testnet addresses because they start with `f` for mainnet and `t` for testnets.
-
-{{< alert icon="warning">}}
-The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a 
-[hardware wallet]({{< relref "ledger" >}}).
-{{< /alert >}}
-
+If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}})
 
 ## Listing addresses
 
@@ -79,17 +84,25 @@ You can create as many addresses as you need. One of them will be the _default a
 
 You can see a list of all addresses for your current node:
 
-```shell
+```shell with-output
 lotus wallet list
 ```
-
-You can see the default address with:
-
-```shell
-lotus wallet default
+```
+Address                                                                                 Balance  Nonce  Default  
+f1x37y5ekmq2yq5phcine3jvtrqgaxsjrdhpvmksa                                               100 FIL    1               
+f3ryb26aqsxkq6cj6bs5inp5ssxkkw24l3st2uojcc5kh3vhtdqjt67zdhougqwrsvm4baagm7bclhmxs5crbq  10 FIL     4      X        
 ```
 
-If you wish, you can change the default address to a different one:
+You can see that your default address is marked with an X in the `lotus wallet list` output. You can also check it with:
+
+```shell with-out
+lotus wallet default
+```
+```
+f3ryb26aqsxkq6cj6bs5inp5ssxkkw24l3st2uojcc5kh3vhtdqjt67zdhougqwrsvm4baagm7bclhmxs5crbq
+```
+
+If you wish, you can change the default address to a different one with the `set-default` command:
 
 ```shell
 lotus wallet set-default <address>
@@ -97,15 +110,20 @@ lotus wallet set-default <address>
 
 ## Obtaining FIL
 
-For non-mainnet networks, `FIL` can be obtained from a faucet. A list of faucets is available on the [networks dashboard](https://network.filecoin.io). For mainnet, the easiest is to buy `FIL` from an exchange. Not all exchanges support `FIL`, so do your research before signing up.
+For non-mainnet networks, `FIL` can be obtained from a faucet. The faucet for the calibration network can [be found here](https://faucet.calibration.fildev.network/). For mainnet, the easiest is to buy `FIL` from an exchange. Not all exchanges support `FIL`, so do your research before signing up.
 
 Once you have received some `FIL`, use `wallet balance` to check your balance:
 
-```shell
-lotus wallet balance
+```shell with-output
+lotus wallet balance <address>
+```
+```
+100 FIL
 ```
 
+{{< alert icon="tip">}}
 Remember that you will only see the latest balance when your daemon is fully synced.
+{{< /alert >}}
 
 ## Sending FIL
 
@@ -131,13 +149,34 @@ lotus send --from f1zp2... f15zt... 3.141
 bafy2...
 ```
 
-For advanced sending options:
+For more advanced sending options you can always check out the command line helptext by adding `--help` or `-h` after the command:
 
-```shell
+```shell with-output
 lotus send --help
 ```
+```
+NAME:
+   lotus send - Send funds between accounts
 
-#### Specify Invocation Parameters
+USAGE:
+   lotus send [command options] [targetAddress] [amount]
+
+CATEGORY:
+   BASIC
+
+OPTIONS:
+   --force              Deprecated: use global 'force-send' (default: false)
+   --from value         optionally specify the account to send funds from
+   --gas-feecap value   specify gas fee cap to use in AttoFIL (default: "0")
+   --gas-limit value    specify gas limit (default: 0)
+   --gas-premium value  specify gas price to use in AttoFIL (default: "0")
+   --method value       specify method to invoke (default: 0)
+   --nonce value        specify the nonce to use (default: 0)
+   --params-hex value   specify invocation parameters in hex
+   --params-json value  specify invocation parameters in json
+```
+
+### Specify Invocation Parameters
 
 If you want specify invocation parameters using `lotus send`, you can use the following code-snippet to get the encoded parameters
 
@@ -163,7 +202,7 @@ Every transaction that sends `FIL` pays an additional fee based on its _gas_ usa
 Keep your addresses' private keys safe! Do not share them with anyone! Store them in a secure location!
 {{< /alert >}}
 
-You can export and re-import a wallet, including a different Lotus node. Use `wallet export` to export an address from a node:
+You can export a wallet from a Lotus node, and re-import it to a different Lotus node. Use `wallet export` to export an address from a node:
 
 ```shell
 lotus wallet export <address> > <address>.key
@@ -171,15 +210,16 @@ lotus wallet export <address> > <address>.key
 
 Use `wallet import` to import an address into a node:
 
-```shell
-lotus wallet import <address>.key
+```shell with-output
+lotus wallet import /path/to/<address>.key
 ```
-
-and:
+```
+imported key t1x37y5ekmq2yq5phcine3jvtrqgaxsjrdhpvmksa successfully!
+```
 
 ### Offline nodes
 
-Each node stores its wallet in `~/.lotus/keystore`:
+If your Lotus nodes is offline and not synced, you can still import the addresses to another Lotus node. Each Lotus node stores its wallet in `~/.lotus/keystore`:
 
 ```
 ~/.lotus/keystore/
@@ -190,4 +230,22 @@ Each node stores its wallet in `~/.lotus/keystore`:
 └── O5QWY3DFOQWWMM3VOBZHAZLCOIZGINLDMRZWWNLMNJS...
 ```
 
+The filename for the keys are base32 encoded, so you can find which address is which by decoding the string.
+
 To export a wallet when a node is offline, copy these files _from_ `~/.lotus/keystore` to another location. To import this wallet, copy these files _into_ `~/.lotus/keystore`. The Lotus node will automatically use these keys when it next starts.
+
+### Deleting addresses
+
+{{< alert icon="warning" >}}
+Please note that Lotus only performs a soft deletion of the address with the `delete` command, marking the address as unusable, without erasing the data itself from the database. You will have to manually go into `~/.lotus/keystore` and actually deleting the address itself for permanent removal. 
+{{< /alert >}}
+
+You can delete ann address in your wallet with the `lotus wallet delete` command.
+
+```shell
+lotus wallet delete <address>
+```
+
+{{< alert icon="warning" >}}
+Please note that Lotus only performs a soft deletion of the address with the `delete` command, marking the address as unusable, without erasing the data itself from the database. You will have to manually go into `~/.lotus/keystore` and actually deleting the address itself for permanent removal. 
+{{< /alert >}}
