@@ -28,7 +28,7 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without
     UseIpfs = true
     ```
 
-1. Restart your IPFS daemon.
+1. Restart your IPFS and Lotus daemon.
 1. You should now be able to make deals with the data associated with your IPFS node:
 
     ```shell
