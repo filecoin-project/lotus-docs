@@ -240,7 +240,7 @@ To export a wallet when a node is offline, copy these files _from_ `~/.lotus/key
 Please note that Lotus only performs a soft deletion of the address with the `delete` command, marking the address as unusable, without erasing the data itself from the database. You will have to manually go into `~/.lotus/keystore` and actually deleting the address itself for permanent removal. 
 {{< /alert >}}
 
-You can delete ann address in your wallet with the `lotus wallet delete` command.
+You can delete an address in your wallet with the `lotus wallet delete` command.
 
 ```shell
 lotus wallet delete <address>
