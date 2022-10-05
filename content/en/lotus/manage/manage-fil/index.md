@@ -72,8 +72,15 @@ f1x37y5ekmq2yq5phcine3jvtrqgaxsjrdhpvmksa
 
 ### Create a multisig wallet
 
-```shell
+A multi-signature (multisig) wallet refers to a wallet that requires multiple keys to authorize a `FIL` transactions.
+
+```shell with-output
 lotus msig create address1 address2..
+```
+```
+sent create in message:  bafy2bzaceagbn6eb643pirmqvuvy23pbhi6reh3yr6wtlqr2ywetomlo2giku
+waiting for confirmation..
+Created new multisig:  t01004 t2ff7ch2h7qr6f4q5lmvq3ajo6lxucei46attp3ai
 ```
 
 If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}})
@@ -95,7 +102,7 @@ f3ryb26aqsxkq6cj6bs5inp5ssxkkw24l3st2uojcc5kh3vhtdqjt67zdhougqwrsvm4baagm7bclhmx
 
 You can see that your default address is marked with an X in the `lotus wallet list` output. You can also check it with:
 
-```shell with-out
+```shell with-output
 lotus wallet default
 ```
 ```
@@ -104,8 +111,11 @@ f3ryb26aqsxkq6cj6bs5inp5ssxkkw24l3st2uojcc5kh3vhtdqjt67zdhougqwrsvm4baagm7bclhmx
 
 If you wish, you can change the default address to a different one with the `set-default` command:
 
-```shell
+```shell with-output
 lotus wallet set-default <address>
+```
+```
+Default address set to: t1ehwusalfn3wrng3zis4rhybdexgrtgsj6vp7fly
 ```
 
 ## Obtaining FIL
