@@ -12,7 +12,7 @@ weight: 120
 toc: true
 ---
 
-Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without having to re-import it into lotus. 
+Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), without having to re-import it into lotus. 
 
 1. Start the IPFS daemon on the same machine as your Lotus node:
 
