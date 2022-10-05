@@ -12,7 +12,7 @@ weight: 120
 toc: true
 ---
 
-Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without having to re-import it into lotus. 
+Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), without having to re-import it into lotus. 
 
 1. Start the IPFS daemon on the same machine as your Lotus node:
 
@@ -28,7 +28,7 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without
     UseIpfs = true
     ```
 
-1. Restart your IPFS daemon.
+1. Restart your IPFS and Lotus daemon.
 1. You should now be able to make deals with the data associated with your IPFS node:
 
     ```shell
@@ -45,6 +45,6 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.io), without
 1. You can now use that IPFS hash with `lotus` to create a storage deal.
 
     ```shell
-    lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 
+    lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 <price> <duration>
 ```
 
