@@ -252,8 +252,12 @@ Please note that Lotus only performs a soft deletion of the address with the `de
 
 You can delete an address in your wallet with the `lotus wallet delete` command.
 
-```shell
+```shell with-output
 lotus wallet delete <address>
+```
+```
+Soft deleting address: t1ceuikq3zsznu5tghv3ft7j6mmtdygqx7sjpezlq
+Hard deletion of the address in `~/.lotus/keystore` is needed for permanent removal
 ```
 
 {{< alert icon="warning" >}}
