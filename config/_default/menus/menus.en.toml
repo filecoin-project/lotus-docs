@@ -63,7 +63,6 @@
   url = "/lotus/manage"
 
 
-
 [[developers]]
   name = "Nodes"
   weight = 10
@@ -75,7 +74,6 @@
   weight = 30
   identifier = "developers-networks"
   url = "/developers/networks"
-
 
 
 [[storage-providers]]
