@@ -35,7 +35,9 @@ If you have access to the full-node you're using, you need to make some minor mo
 {{< alert icon="tip">}}
 If you are using the Protocol Labs `api.chain.love` Lotus full-node, you do not need to complete this section. The Protocol Labs Lotus full-node has been configured to accept all incoming requests, so you don't need to create any API keys.
 
-If you are using a node-hosting service like [Glif](https://www.glif.io/) or [Infura](https://infura.io/), you may need to create an API key through the service website.
+[Glif](https://api.node.glif.io/) endpoints also provide you with a production-ready publicly available node, that can be used without API keys: wss://wss.node.glif.io/apigw/lotus
+
+If you are using a node-hosting service like [Infura](https://infura.io/), you may need to create an API key through the service website.
 {{< /alert >}}
 
 1. On your full-node open `~/.lotus/config` and:
@@ -157,6 +159,11 @@ You've got the Lotus executables ready to go, and you have access to a Lotus ful
 
     ```shell
     FULLNODE_API_INFO=/ip4/YOUR_FULL_NODE_IP_ADDRESS/tcp/1234 lotus daemon --lite
+    ```
+    
+    `FULLNODE_API_INFO` variable accepts both [Multiaddr](https://github.com/multiformats/multiaddr) and Canonical (RFC1918, RFC1034) network address formats. For example, for Glif nodes the Lotus Lite run command may look like:
+    ```shell
+    FULLNODE_API_INFO=wss://wss.node.glif.io/apigw/lotus lotus daemon --lite
     ```
 
 1. You can now interact with your Lotus lite-node:
