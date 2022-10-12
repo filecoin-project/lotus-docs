@@ -22,8 +22,8 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 - Only POST requests are supported.
 - The Filecoin signing tools can be used to sign messages before submission when needed.
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
-- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
-- Mainnet network has a ws (web socket) endpoint. the ws link is available like [ws://wss.node.glif.io/apigw/lotus/rpc/v0](ws://wss.node.glif.io/apigw/lotus/rpc/v0)
+- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes. Alternatively, you can query the Filecoin CID Checker Mongo DB via the [publicly available API](https://filecoin.tools/docs/static/index.html).
+- Mainnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.node.glif.io/apigw/lotus/rpc/v0](wss://wss.node.glif.io/apigw/lotus/rpc/v0)
 
 ## Testnet endpoint
 
@@ -35,7 +35,7 @@ Testnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >
 You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc/v1`
 {{< /alert >}}
 
-- Testnet network has a ws (web socket) endpoint. the ws link is available like [ws://wss.dev.node.glif.io/apigw/lotus/rpc/v0](ws://wss.dev.node.glif.io/apigw/lotus/rpc/v0)
+- Testnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0](wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0)
 
 ### Custom endpoints
 
