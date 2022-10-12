@@ -60,15 +60,15 @@ Filecoin local networks use slightly different binaries than those used in the F
 
 1. Navigate to the `lotus-local-net`:
 
-   ```shell
+    ```shell
    cd lotus-local-net
-   ```
+    ```
 
 1. Checkout to the latest stable branch:
 
-   ```shell
+    ```shell
    git checkout releases
-   ```
+    ```
 
    {{< alert >}}
    Checking out `releases` will always checks out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v1.17.0`.
