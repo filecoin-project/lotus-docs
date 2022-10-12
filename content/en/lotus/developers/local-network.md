@@ -264,7 +264,7 @@ Now that your local network is running, it's time to play around with various Fi
 
 In this section, you will add additional nodes to your local network by copying the `devgen.car` file in your `lotus-local-net` folder to new nodes.
 
-1. Start a new nodes:
+1. Start a new node:
 
     ```shell
     ./lotus daemon  --genesis=devgen.car
