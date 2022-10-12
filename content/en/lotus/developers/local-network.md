@@ -266,15 +266,15 @@ In this section, you will add additional nodes to your local network by copying 
 
 1. Start a new nodes:
 
-```shell
-./lotus daemon  --genesis=devgen.car
-```
+    ```shell
+    ./lotus daemon  --genesis=devgen.car
+    ```
 
 1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
 
-```shell
-./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
-```
+    ```shell
+    ./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
+    ```
 
 ### Add notaries
 
