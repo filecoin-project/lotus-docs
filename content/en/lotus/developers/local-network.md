@@ -25,8 +25,8 @@ Before completing this tutorial, complete the prerequisites.
 
 1. Complete the appropriate steps to build the Lotus executables from source based on your operating system:
 
-    - [Linux]({{<relref "/lotus/install/linux#building-from-source" >}})
-    - [MacOS]({{<relref "/lotus/install/macos#building-from-source" >}})
+    - [Linux]({{<relref "../../lotus/install/linux#build-from-source/" >}})
+    - [MacOS]({{<relref "../../lotus/install/macos#build-from-source" >}})
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
