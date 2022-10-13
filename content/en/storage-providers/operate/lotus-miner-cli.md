@@ -11,7 +11,7 @@ weight: 375
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.17.1/documentation/en/cli-lotus-miner.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.17.2/documentation/en/cli-lotus-miner.md -->
 
 # lotus-miner
 ```
