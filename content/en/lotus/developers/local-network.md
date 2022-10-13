@@ -1,7 +1,7 @@
 ---
 title: "Local network"
-description: "This section describes how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
-lead: "This section describes how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
+description: "This tutorial describes how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
+lead: "This section tutorial how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
 draft: false
 menu:
     lotus:
@@ -16,6 +16,8 @@ aliases:
 ---
 
 If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first. 
+
+If you encounter errors while attempting this tutorial, see the [Troubleshooting]({{<relref "#troubleshooting">}}) section.
 
 Before completing this tutorial, complete the prerequisites.
 
@@ -178,8 +180,6 @@ Filecoin local networks use slightly different binaries than those used in the F
     ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
     ```
 
-    This will output something like:
-
     ```plaintext
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:129       Adding miner t01000 to genesis template 
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance 
@@ -199,7 +199,11 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
 1. Leaving the first terminal window open, switch to a second window so that the `lotus` daemon can continue to run. Complete all further steps in another terminal window.
 
-1. Re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
+
+   {{< alert >}}
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   {{< /alert >}}
 
     ```shell
     export LOTUS_PATH=~/.lotus-local-net 
@@ -214,8 +218,6 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     ```shell
     ./lotus wallet import --as-default ~/.genesis-sectors/pre-seal-t01000.key 
     ```
-
-    This will output something like:
 
     ```plaintext
     imported key t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq successfully! 
@@ -239,14 +241,30 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
     This command will continue to run while outputting information.
 
-1. Leaving the second terminal window open, switch to a third window. At this point, both the `lotus` node and the `lotus-miner` should be running in the first and second terminal windows, respectively. Complete all further steps in the new terminal window so that the `lotus-miner` can continue to run.
+1. Leaving the second terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the `lotus-miner` and `lotus` daemon can continue to run. 
 
-1. (**Local network with Fil+**) Import the root key holder addresses.
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
+
+   {{< alert >}}
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   {{< /alert >}}
+
+    ```shell
+    export LOTUS_PATH=~/.lotus-local-net 
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_ 
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__" 
+    export CGO_CFLAGS="-D__BLST_PORTABLE__" 
+    ```
+
+1. (**Local network with Fil+**) Import the first root key holder address:
 
     ```shell
     lotus wallet import bls-<root-key-1>.keyinfo 
     ```
-
+    
+1. (**Local network with Fil+**) Import the second root key holder address:
+   
     ```shell
     lotus wallet import bls-<root-key-2>.keyinfo 
     ```
@@ -255,7 +273,7 @@ Congratulations! You've set up a fully functioning local Filecoin network.
 
 ## Next steps
 
-Now that your local network is running, it's time to play around with various Filecoin features. Select one of the options below:
+Now that your local network is running, you can test various Filecoin features, like adding additional nodes or notaries. Select one of the options below:
 
 - [Connect multiple nodes](#connect-multiple-nodes)
 - (**Local network with Fil+**) [Add notaries](#add-notaries)
@@ -363,3 +381,21 @@ In this section, you will add two notaries to your local network with Fil+.
     ```
 
 1. To add `<notary-2>` to your local network, repeat steps 3 through 6.
+
+## Troubleshooting
+
+This section describes how to troubleshoot errors that may occur when completing this tutorial.
+
+### Error importing a root key holder address
+
+The following error may occur when you attempt to import a root key holder address:
+
+```shell
+ERROR: could not get API info for FullNode: repo directory does not exist. Make sure your configuration is correct
+```
+
+This error will occur when you haven't added the Lotus path environment variable. Fix this error by running the following command:
+
+```plaintext
+export LOTUS_PATH=~/.lotus-local-net
+```
