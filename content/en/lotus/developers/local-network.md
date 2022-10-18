@@ -15,14 +15,14 @@ aliases:
     - /developers/local-network/
 ---
 
-If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first. 
+If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first.
 
 If you encounter errors while attempting this tutorial, see the [Troubleshooting]({{<relref "#troubleshooting">}}) section.
 
 Before completing this tutorial, complete the prerequisites.
 
 ## Complete the prerequisites
-   
+
 1. Ensure that your system meets the [minimum requirements]({{<relref "/lotus/install/prerequisites" >}}).
 
 1. Complete the appropriate steps to build the Lotus executables from source based on your operating system:
@@ -32,7 +32,7 @@ Before completing this tutorial, complete the prerequisites.
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
-Now that you've completed the prerequisites, set up a Lotus node.
+Now that you've completed the prerequisites set up a Lotus node.
 
 ## Set up a Lotus node
 
@@ -73,7 +73,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     ```
 
    {{< alert >}}
-   Checking out `releases` will always checks out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v1.17.0`.
+   Checking out `releases` will always check out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v1.17.0`.
     {{< /alert >}}
 
 1. Remove any existing repositories.
@@ -105,7 +105,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     go build  -ldflags="-X=github.com/filecoin-project/lotus/build.CurrentCommit=+git.8d5be1c01" -tags=2k -o lotus-gateway ./cmd/lotus-gateway
     ```
 
-1. Fetch the proving parameters for a 2048 byte sector size:
+1. Fetch the proving parameters for a 2048-byte sector size:
 
     ```shell
     ./lotus fetch-params 2048
@@ -117,7 +117,8 @@ Filecoin local networks use slightly different binaries than those used in the F
     c261/paramfetch.go:162  parameter and key-fetching complete
     ```
 
-    Note that this command may take several minutes to complete. 
+    This command may take several minutes to complete.
+
 1. (**Local network with Fil+**) Build `lotus-shed`:
 
     ```shell
@@ -134,7 +135,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq
     ```
 
-    Make note of this address `<root-key-1>`, as you will need it in a later step.
+    Make a note of this address `<root-key-1>`, as you will need it in a later step.
 
 1. (**Local network with Fil+**) Create a BLS-addresses to serve as the second root key holder:
 
@@ -146,7 +147,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     t3uzbu6ey3wqop6uesj5tr6g4ntl3rocdymrxfhej2cuwmjmtdvughkhelijcr6rv4ewdghfxxswvqjtit5adq
     ```
 
-    Make note of this address `<root-key-2>`, as you will need it in a later step.
+    Make a note of this address `<root-key-2>`, as you will need it in a later step.
 
 1. Pre-seal 2 sectors for the genesis block:
 
@@ -174,7 +175,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     ./lotus-seed genesis set-signers --threshold=2 --signers <root-key-1> --signers <root-key-2> localnet.json
     ```
 
-1. Create a preminer and an address with some funds:
+1. Create a pre-miner and an address with some funds:
 
     ```shell
     ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
@@ -198,7 +199,6 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     This command will continue to run while outputting information.
 
 1. Leaving the first terminal window open, switch to a second window so that the `lotus` daemon can continue to run. Complete all further steps in another terminal window.
-
 1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
 
    {{< alert >}}
@@ -223,7 +223,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     imported key t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq successfully! 
     ```
 
-1. Start the genesis miner. This process can take a several minutes:
+1. Start the genesis miner. This process can take several minutes:
 
     ```shell
     ./lotus-miner init --genesis-miner --actor=t01000 --sector-size=2KiB --pre-sealed-sectors=~/.genesis-sectors --pre-sealed-metadata=~/.genesis-sectors/pre-seal-t01000.json --nosync 
@@ -242,7 +242,6 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     This command will continue to run while outputting information.
 
 1. Leaving the second terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the `lotus-miner` and `lotus` daemon can continue to run. 
-
 1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
 
    {{< alert >}}
@@ -262,9 +261,9 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     ```shell
     lotus wallet import bls-<root-key-1>.keyinfo 
     ```
-    
+
 1. (**Local network with Fil+**) Import the second root key holder address:
-   
+
     ```shell
     lotus wallet import bls-<root-key-2>.keyinfo 
     ```
@@ -322,7 +321,7 @@ In this section, you will add two notaries to your local network with Fil+.
     t1fbmwxevaj6iawvg3idycg77vxdi2b2paps5nn2i
     ```
 
-   You should now have a list of addresses for two root key holders and two notaries, like the following:
+    You should now have a list of addresses for two root key holders and two notaries, like the following:
 
     | Node type | ID | Address |
     | ---| --- | --- |
@@ -359,8 +358,8 @@ In this section, you will add two notaries to your local network with Fil+.
     ID      State    Approvals  To      Value   Method          Params
     0       pending  1          t06     0 FIL   AddVerifier(2)  82550122b8c615145baa529b6923780dc680756355a1874400989680
     ```
-    
- 1. Using the parameters displayed in the previous step, have the second root key holder `<root-key-2>` approve the proposal from `<root-key-1>`:
+
+1. Using the parameters displayed in the previous step, have the second root key holder `<root-key-2>` approve the proposal from `<root-key-1>`:
 
     ```shell
     lotus msig approve  --from=t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq f080 0 t0101 f06 0 2 82550122b8c615145baa529b6923780dc680756355a1874400989680
