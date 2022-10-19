@@ -31,31 +31,18 @@ We recommend most users perform the initial node sync from a lightweight snapsho
 These lightweight state snapshots **do not contain any message receipts**. To get message receipts, you need to sync your Lotus node from the genesis block without using any of these snapshots.
 {{< /alert >}}
 
-1. Download the most recent lightweight snapshot and its checksum:
+1. Download the most recent lightweight snapshot:
 
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    curl -sI https://snapshots.mainnet.filops.net/minimal/latest | perl -ne '/x-amz-website-redirect-location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    wget https://snapshots.mainnet.filops.net/minimal/latest
     ```
 
-    b. For **testnet**, use the [latest calibration network snapshot](https://snapshots.calibrationnet.filops.net/minimal/latest). Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them.
+    b. For **testnet**, use the [latest calibration network snapshot](https://snapshots.calibrationnet.filops.net/minimal/latest).
 
     ```shell
-    curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest
-    ```
-
-1. Check the `sha256sum` of the downloaded snapshot:
-
-    ```shell with-output
-    # Replace the filenames for both `.sha256sum` and `.car` files based on the snapshot you downloaded.
-    echo "$(cut -c 1-64 minimal_finality_stateroots_517061_2021-02-20_11-00-00.sha256sum) minimal_finality_stateroots_517061_2021-02-20_11-00-00.car" | sha256sum --check
-    ```
-
-    This will output something like:
-
-    ```shell
-    minimal_finality_stateroots_517061_2021-02-20_11-00-00.car: OK
+    wget https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
 1. Start the Lotus daemon using `--import-snapshot`:
@@ -64,15 +51,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
     lotus daemon --import-snapshot minimal_finality_stateroots_517061_2021-02-20_11-00-00.car
     ```
-
-{{< alert icon="tip" >}}
-We strongly recommend that you download and verify the checksum of the snapshot before importing. However, you can skip the `sha256sum` check and use the snapshot URL directly if you prefer:
-
-```shell
-lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
-```
-
-{{< /alert >}}
 
 #### New Lightweight Snapshot Service
 
