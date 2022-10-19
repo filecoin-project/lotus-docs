@@ -35,13 +35,13 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    curl -sI https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car | perl -ne '/x-amz-website-redirect-location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    curl -sI https://snapshots.mainnet.filops.net/minimal/latest | perl -ne '/x-amz-website-redirect-location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
     ```
 
-    b. For **testnet**, use the [latest calibration network snapshot](https://www.mediafire.com/file/gquphc7qw0ffzdk/lotus_cali_snapshot_2022_05_18_high_959844.car.tar.gz/file). Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them.
+    b. For **testnet**, use the [latest calibration network snapshot](https://snapshots.calibrationnet.filops.net/minimal/latest). Testnet snapshots are maintained by Filecoin community voluntarily, and may not be up-to-date. Please double check before using them.
 
     ```shell
-    curl -sI https://www.mediafire.com/file/gquphc7qw0ffzdk/lotus_cali_snapshot_2022_05_18_high_959844.car.tar.gz/file
+    curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
 1. Check the `sha256sum` of the downloaded snapshot:
@@ -68,7 +68,7 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 We strongly recommend that you download and verify the checksum of the snapshot before importing. However, you can skip the `sha256sum` check and use the snapshot URL directly if you prefer:
 
 ```shell
-lotus daemon --import-snapshot https://fil-chain-snapshots-fallback.s3.amazonaws.com/mainnet/minimal_finality_stateroots_latest.car
+lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
 ```
 
 {{< /alert >}}
