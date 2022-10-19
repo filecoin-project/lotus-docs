@@ -36,13 +36,13 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    wget https://snapshots.mainnet.filops.net/minimal/latest
+    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest
     ```
 
     b. For **testnet**, use the [latest calibration network snapshot](https://snapshots.calibrationnet.filops.net/minimal/latest).
 
     ```shell
-    wget https://snapshots.calibrationnet.filops.net/minimal/latest
+    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
 1. Start the Lotus daemon using `--import-snapshot`:
