@@ -54,8 +54,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 
 #### New Lightweight Snapshot Service
 
-We have soft launched a new Lightweight chain snapshot service which will be replacing the snapshots above in the future. More information about these snapshots can be found in [Notion](https://pl-strflt.notion.site/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024). These snapshots should be considered experimental during the soft launch and avoided for critical systems.
-
 **Mainnet**
 ```shell
 lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
