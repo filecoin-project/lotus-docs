@@ -49,7 +49,7 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 
     ```shell
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
-    lotus daemon --import-snapshot minimal_finality_stateroots_517061_2021-02-20_11-00-00.car
+    lotus daemon --import-snapshot 2262960_2022_10_19T16_00_00Z.car
     ```
 
 #### New Lightweight Snapshot Service
