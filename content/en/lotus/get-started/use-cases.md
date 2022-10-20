@@ -15,7 +15,7 @@ toc: true
 
 A lotus node is required to interact with the filecoin blockchain. These nodes are also required when running a storage provider runs a lotus-miner to offer the storage on the network.
 
-Usually, the lotus nodes are kept small and reqular chain compaction is done to avoid node getting too large. These nodes can be synced from a latest snapshot in case any failures and this reduces the time required to start them.
+Usually, the lotus nodes are kept small and regular chain compaction is done to avoid node getting too large. These nodes can be synced from a latest snapshot in case any failures and this reduces the time required to start them.
 
 A lotus node need to be deployed by anyone who wants to interact with the filecoin blockchain, provide storage, store data on filecoin and retrieve data from the filecoin network.
 
@@ -30,4 +30,4 @@ A lotus full node is useful when historical queries have to be run against the c
 
 Lite nodes are a scaled down version of a normal lotus node. These nodes require connection to a lotus node to function. Once connected to the lotus node, these can only perform message signing and deal transactions.
 
-A lite node is useful when there are hardware constraints as lite node requires significantly less resources than a normal lotus node. Another use case would be to process transactions in parallel with other lite nodes behind a normal lotus node. This increses the efficiency of the system.
+A lite node is useful when there are hardware constraints as lite node requires significantly less resources than a normal lotus node. Another use case would be to process transactions in parallel with other lite nodes behind a normal lotus node. This increases the efficiency of the system.
