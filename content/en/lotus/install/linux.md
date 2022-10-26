@@ -53,13 +53,13 @@ You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.i
 1. Make the AppImage executable:
 
     ```shell
-    chmod +x ./Lotus-v1.17.1-x86_64.AppImage
+    chmod +x ./Lotus-v1.17.2-x86_64.AppImage
     ```
 
 1. Move the `AppImage` to `/usr/local/bin` and rename it `lotus`:
 
     ```shell
-    sudo mv Lotus-v1.17.1-x86_64.AppImage /usr/local/bin/lotus
+    sudo mv Lotus-v1.17.2-x86_64.AppImage /usr/local/bin/lotus
     ```
 
 ## Building from source
@@ -198,7 +198,7 @@ Once all the dependencies are installed, you can build and install Lotus.
    lotus --version
    ```
    ```
-   lotus version 1.17.1+mainnet+git.8db6a939c
+   lotus version 1.17.2+mainnet+git.8db6a939c
    ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
@@ -320,9 +320,9 @@ lotus version
 ```
 
 ```
-Daemon:  1.17.1+mainnet+git.8db6a939c+api1.5.0
-Local: lotus version 1.17.1+mainnet+git.8db6a939c
-# running lotus v1.17.1 on Main net
+Daemon:  1.17.2+mainnet+git.fb0fb7144+api1.5.0
+Local: lotus version 1.17.2+mainnet+git.fb0fb7144
+# running lotus v1.17.2 on Main net
 ```
 
 ## Stop the Lotus daemon
