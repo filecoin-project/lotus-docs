@@ -92,14 +92,20 @@ A lite-node lets your computer interact with the Filecoin network without having
 You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebrew](https://brew.sh/) installed.
 {{< /alert >}}
 
+You can quickly install Lotus using Homebrew on macOS.
 
-1. Install Lotus from the filecoin-project tap
+1. Add the `filecoin-project/lotus` tap:
+
+    ```shell
+    brew tap filecoin-project/lotus
+    ```
+
+1. Install Lotus:
 
     ```shell
     brew install lotus
     ```
 
-2. Lotus is now installed on your computer.
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
 
