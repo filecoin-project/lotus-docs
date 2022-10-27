@@ -92,20 +92,14 @@ A lite-node lets your computer interact with the Filecoin network without having
 You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebrew](https://brew.sh/) installed.
 {{< /alert >}}
 
-You can quickly install Lotus using Homebrew on macOS.
 
-1. Add the `filecoin-project/lotus` tap:
-
-    ```shell
-    brew tap filecoin-project/lotus
-    ```
-
-1. Install Lotus:
+1. Install Lotus from the filecoin-project tap
 
     ```shell
     brew install lotus
     ```
 
+2. Lotus is now installed on your computer.
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
 
@@ -223,12 +217,6 @@ You must have [Snapd](https://snapcraft.io/docs/installing-snapd) installed.
 
     ```shell
     sudo snap install lotus
-    ```
-
-2. The snap installer automatically starts a full lotus node as a daemon. For the purposes of this tutorial, which uses a lite-node, we don't want that, so disable it, and then we can run a lotus lite-node instead.
-
-    ```shell
-    sudo snap disable lotus
     ```
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
