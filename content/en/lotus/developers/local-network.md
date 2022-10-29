@@ -78,7 +78,6 @@ Filecoin local networks use slightly different binaries than those used in the F
 
 1. Remove any existing repositories.
 
-    <!-- TODO: test if this section is necessary. -->
     ```shell
     rm -rf ~/.genesis-sectors
     ```
@@ -87,22 +86,6 @@ Filecoin local networks use slightly different binaries than those used in the F
 
     ```shell
     make 2k
-    ```
-
-1. Recursively update submodules:
-
-    ```shell
-    git submodule update --init --recursive
-    ```
-
-    ```plaintext
-    Submodule 'extern/filecoin-ffi' (https://github.com/filecoin-project/filecoin-ffi.git) registered for path 'extern/filecoin-ffi'
-    ```
-
-1. Build any new submodules:
-
-    ```shell
-    go build  -ldflags="-X=github.com/filecoin-project/lotus/build.CurrentCommit=+git.8d5be1c01" -tags=2k -o lotus-gateway ./cmd/lotus-gateway
     ```
 
 1. Fetch the proving parameters for a 2048-byte sector size:
@@ -380,21 +363,3 @@ In this section, you will add two notaries to your local network with Fil+.
     ```
 
 1. To add `<notary-2>` to your local network, repeat steps 3 through 6.
-
-## Troubleshooting
-
-This section describes how to troubleshoot errors that may occur when completing this tutorial.
-
-### Error importing a root key holder address
-
-The following error may occur when you attempt to import a root key holder address:
-
-```shell
-ERROR: could not get API info for FullNode: repo directory does not exist. Make sure your configuration is correct
-```
-
-This error will occur when you haven't added the Lotus path environment variable. Fix this error by running the following command:
-
-```plaintext
-export LOTUS_PATH=~/.lotus-local-net
-```
