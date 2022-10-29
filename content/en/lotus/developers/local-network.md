@@ -17,8 +17,6 @@ aliases:
 
 If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first.
 
-If you encounter errors while attempting this tutorial, see the [Troubleshooting]({{<relref "#troubleshooting">}}) section.
-
 Before completing this tutorial, complete the prerequisites.
 
 ## Complete the prerequisites
@@ -32,7 +30,7 @@ Before completing this tutorial, complete the prerequisites.
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
-Now that you've completed the prerequisites set up a Lotus node.
+Now that you've completed the prerequisites, set up a Lotus node.
 
 ## Set up a Lotus node
 
