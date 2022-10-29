@@ -190,7 +190,7 @@ There are two simple ways to install Lotus on Linux (this is tested on Ubuntu):
 1. Download the latest `AppImage` file from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.1/Lotus-v1.17.1-x86_64.AppImage
+    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.2/Lotus-v1.17.2-x86_64.AppImage
     ```
 
 1. Make the `AppImage` executable:
