@@ -64,13 +64,6 @@ sudo apt install -y aria2
     ```
 
 {{< alert icon="tip" >}}
-We strongly recommend that you download and verify the checksum of the snapshot before importing. However, you can skip the `sha256sum` check and use the snapshot URL directly if you prefer:
-
-```shell
-lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
-```
-
-{{< /alert >}}
 
 #### Sync wait
 
