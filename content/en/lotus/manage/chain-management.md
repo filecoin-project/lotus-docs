@@ -48,13 +48,11 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 {{< alert icon="tip" >}}
 We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
 Install `aria2c`:
-
+{{< /alert >}}
+    ```
 ```shell
 sudo apt install -y aria2
 ```
-
-{{< /alert >}}
-    ```
 
 1. Start the Lotus daemon using `--import-snapshot`:
 
