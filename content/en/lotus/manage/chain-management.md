@@ -35,14 +35,14 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    curl -sI https://snapshots.mainnet.filops.net/minimal/latest | perl -ne '/Location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest
     ```
 
     a. For **testnet**, command always contains the latest snapshot available for testnet:
 
 
     ```shell
-    curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest | perl -ne '/Location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
 1. Check the `sha256sum` of the downloaded snapshot:
