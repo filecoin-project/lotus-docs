@@ -47,10 +47,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 
 {{< alert icon="tip" >}}
 We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
-Install `aria2c`:
-```shell
-sudo apt install -y aria2
-```
 {{< /alert >}}
 
 1. Start the Lotus daemon using `--import-snapshot`:
@@ -59,8 +55,6 @@ sudo apt install -y aria2
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
     lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car
     ```
-
-{{< alert icon="tip" >}}
 
 #### Sync wait
 
