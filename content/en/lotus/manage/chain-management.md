@@ -45,17 +45,15 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
-1. Check the `sha256sum` of the downloaded snapshot:
+{{< alert icon="tip" >}}
+We strongly recommend that you use aria2c for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
+Install aria2c:
 
-    ```shell with-output
-    # Replace the filename based on the snapshot you downloaded.
-    sha256sum -c 1419120_2022_10_24T18_00_00Z.sha256sum
-    ```
+```shell
+sudo apt install -y aria2
+```
 
-    This will output something like:
-
-    ```shell
-    1419120_2022_10_24T18_00_00Z.car: OK
+{{< /alert >}}
     ```
 
 1. Start the Lotus daemon using `--import-snapshot`:
