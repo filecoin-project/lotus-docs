@@ -96,7 +96,7 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
 1. Install Lotus from the filecoin-project tap
 
     ```shell
-    brew install lotus
+    brew install filecoin-project/lotus/lotus
     ```
 
 2. Lotus is now installed on your computer.
@@ -105,7 +105,7 @@ You can install Lotus on MacOS 10.11 El Capitan or higher. You must have [Homebr
 
 ### MacOS build from source
 
-If Homebrew doesn't work for you, or if you prefer to build from source, try these steps. 
+If you prefer to build from source, try these steps. 
 
 1. Check that the XCode command line tools are installed.
 
@@ -116,7 +116,7 @@ If Homebrew doesn't work for you, or if you prefer to build from source, try the
 2. Install the pre-requisites via Homebrew
 
     ```shell
-    brew install go bzr jq pkg-config rustup hwloc coreutils
+    brew install go jq pkg-config rustup hwloc coreutils
     ```
 
 3. Clone the latest sources
@@ -190,19 +190,19 @@ There are two simple ways to install Lotus on Linux (this is tested on Ubuntu):
 1. Download the latest `AppImage` file from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.1/Lotus-v1.17.1-x86_64.AppImage
+    wget https://github.com/filecoin-project/lotus/releases/download/v1.17.2/Lotus-v1.17.2-x86_64.AppImage
     ```
 
 1. Make the `AppImage` executable:
 
     ```shell
-    chmod +x Lotus-v1.17.1-x86_64.AppImage
+    chmod +x Lotus-v1.17.2-x86_64.AppImage
     ```
 
 1. Move the `AppImage` to `/usr/local/bin` and rename it `lotus`:
 
     ```shell
-    sudo mv Lotus-v1.17.1-x86_64.AppImage /usr/local/bin/lotus
+    sudo mv Lotus-v1.17.2-x86_64.AppImage /usr/local/bin/lotus
     ```
 
 [Head onto the next section to run your Lotus lite-node ↓](#run-a-lotus-lite-node)
