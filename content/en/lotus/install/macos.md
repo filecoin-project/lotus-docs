@@ -163,7 +163,7 @@ These instructions are for installing Lotus on an Intel Mac. If you have an M1-b
 1. Build and install Lotus:
 
     ```shell
-    make clean && make all
+    make clean all
     sudo make install
     ```
 
