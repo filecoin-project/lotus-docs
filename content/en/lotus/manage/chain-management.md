@@ -30,7 +30,7 @@ We recommend most users perform the initial node sync from a lightweight snapsho
 These lightweight state snapshots **do not contain any message receipts**. To get message receipts, you need to sync your Lotus node from the genesis block without using any of these snapshots.
 {{< /alert >}}
 
-1. Download the most recent lightweight snapshot and its checksum:
+1. Download the most recent lightweight snapshot:
 
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
