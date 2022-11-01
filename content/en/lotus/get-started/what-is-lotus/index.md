@@ -57,7 +57,7 @@ Again, let's start at the end.
 
 An **implementation** is _one way_ to do _something_. Take this table from Ikea as an example:
 
-![A wooden table from Ikea.](ingo-table.jpg)
+![A wooden table from Ikea.](ingo-table.png)
 
 It's called Ingo, because Ikea likes to give their products fun names. Ingo is not the only table in the world; there are many more tables that exist. However, Ingo serves the primary functions of a table: it's flat, has legs to keep the surface off the floor, and you can put things on top of it. It's one implementation, or application, of the table idea.
 
