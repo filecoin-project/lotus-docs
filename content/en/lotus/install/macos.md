@@ -163,7 +163,7 @@ These instructions are for installing Lotus on an Intel Mac. If you have an M1-b
 1. Build and install Lotus:
 
     ```shell
-    make clean && make all
+    make clean all
     sudo make install
     ```
 
@@ -259,9 +259,8 @@ lotus version
 ```
 
 ```plaintext
-Daemon:  1.17.1+mainnet+git.8db6a939c+api1.5.0
-Local: lotus version 1.17.1+mainnet+git.8db6a939c
-# running lotus v1.17.1 on Calibration testnet
+Daemon:  1.17.2+mainnet+git.fb0fb7144+api1.5.0
+Local: lotus version 1.17.2+mainnet+git.fb0fb7144
 ```
 
 ## Stop the Lotus daemon

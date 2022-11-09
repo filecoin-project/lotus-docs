@@ -30,33 +30,24 @@ We recommend most users perform the initial node sync from a lightweight snapsho
 These lightweight state snapshots **do not contain any message receipts**. To get message receipts, you need to sync your Lotus node from the genesis block without using any of these snapshots.
 {{< /alert >}}
 
-1. Download the most recent lightweight snapshot and its checksum:
+1. Download the most recent lightweight snapshot:
 
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    curl -sI https://snapshots.mainnet.filops.net/minimal/latest | perl -ne '/Location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest
     ```
 
     a. For **testnet**, command always contains the latest snapshot available for testnet:
 
 
     ```shell
-    curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest | perl -ne '/Location:\s(.+)\.car/ && print "$1.sha256sum\n$1.car"' | xargs wget
+    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest
     ```
 
-1. Check the `sha256sum` of the downloaded snapshot:
-
-    ```shell with-output
-    # Replace the filename based on the snapshot you downloaded.
-    sha256sum -c 1419120_2022_10_24T18_00_00Z.sha256sum
-    ```
-
-    This will output something like:
-
-    ```shell
-    1419120_2022_10_24T18_00_00Z.car: OK
-    ```
+{{< alert icon="tip" >}}
+We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
+{{< /alert >}}
 
 1. Start the Lotus daemon using `--import-snapshot`:
 
@@ -64,15 +55,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
     lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car
     ```
-
-{{< alert icon="tip" >}}
-We strongly recommend that you download and verify the checksum of the snapshot before importing. However, you can skip the `sha256sum` check and use the snapshot URL directly if you prefer:
-
-```shell
-lotus daemon --import-snapshot https://snapshots.mainnet.filops.net/minimal/latest
-```
-
-{{< /alert >}}
 
 #### Sync wait
 
