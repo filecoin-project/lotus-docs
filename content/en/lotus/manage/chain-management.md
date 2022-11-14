@@ -16,11 +16,11 @@ toc: true
 
 Lotus will automatically sync to the latest _chain head_ by fetching the block headers from the current _head_ down to the last synced epoch. The node then retrieves and verifies all the blocks from the last synced epoch to the current head. Once Lotus is synced, it will learn about new blocks as they are mined for every epoch and verify them accordingly. Every epoch might see a variable number of mined blocks.
 
-Filecoin's blockchain is complex and grows relatively fast. It takes about 4 seconds to verify a tipset, which in turn means it takes about 1 month to validate 700,000 tipsets. As syncing the chain from genesis is no longer practical, an alternative is to obtain a collection of all IPLD blocks one needs to continue validating the chain state going forward. Such a collection is called a snapshot. Current;y one such snapshot is available
+Filecoin's blockchain is complex and grows relatively fast. It takes about 4 seconds to verify a tipset, which in turn means it takes about 1 month to validate 700,000 tipsets. As syncing the chain from genesis is no longer practical, an alternative is to obtain a collection of all IPLD blocks one needs to continue validating the chain state going forward. Such a collection is called a snapshot. Currently one such snapshot is available
 
 | Name                                 | End height   | Message start height       | State start height          |
 | ------------------------------------ | ------------ | -------------------------- | --------------------------- |
-| [Lightweight](#lightweight-snapshot) | Recent block | Recent block - 1802 blocks | Current block - 1802 blocks |
+| [Lightweight](#lightweight-snapshot) | Recent block | Recent block - 2000 blocks | Current block - 2000 blocks |
 
 ### Lightweight snapshot
 
@@ -35,19 +35,24 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest
+    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
     ```
 
     a. For **testnet**, command always contains the latest snapshot available for testnet:
 
-
     ```shell
-    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest
+    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
     ```
 
 {{< alert icon="tip" >}}
 We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
 {{< /alert >}}
+
+1. Uncompress the snapshot:
+
+    ```shell
+    zstd -d 1419120_2022_10_24T18_00_00Z.car.zst
+    ```
 
 1. Start the Lotus daemon using `--import-snapshot`:
 
@@ -55,6 +60,8 @@ We strongly recommend that you use `aria2c` for faster a download. However, you 
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
     lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car
     ```
+
+For more information about these snapshots please see the [Lightweight Filecoin Chain Snapshot notion page](https://www.notion.so/pl-strflt/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024).
 
 #### Sync wait
 
