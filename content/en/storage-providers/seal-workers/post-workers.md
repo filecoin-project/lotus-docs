@@ -79,9 +79,13 @@ lotus-worker run <flags>
 
 You´ll need to specify which PoSt operation you want the worker to perform with one of the following flags set to true:
 
-```plaintext
---winningpost                 enable winning post (default: false)
---windowpost                  enable window post (default: false)
+```toml
+--winningpost              enable winning post (default: false)
+--windowpost               enable window post (default: false)
+
+--no-local-storage         don't use repo for sector storage (default: false)
+
+## local storage is not needed to perform post tasks.
 ```
 
 A PoSt worker instance can only be either a winningPoSt worker, or a windowPoSt worker. Enabling a PoSt tasks will automatically disable all other tasks.
