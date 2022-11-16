@@ -1,7 +1,7 @@
 ---
 title: "SplitStore"
 description: "SplitStore, an actively scalable blockstore for the Filecoin chain which reduces the performance impact of large blockstores."
-lead: "Version 1.17.1 introduces SplitStore, an actively scalable blockstore for the Filecoin chain which reduces the performance impact of large blockstores."
+lead: "Version 1.19.0 introduces SplitStore, an actively scalable blockstore for the Filecoin chain which reduces the performance impact of large blockstores."
 draft: false
 menu:
     lotus:
@@ -12,7 +12,7 @@ weight: 315
 toc: true
 ---
 
-SplitStore is a freestanding compacting blockstore that allows you to keep a small 60 GiB to 275 GiB working set in a hot blockstore and reliably archive out-of-scope objects in a coldstore. The coldstore can also be a _discard-store_, whereby out-of-scope objects are discarded, or a universal badger blockstore, which can be periodically garbage collected according to configurable user retention policies. The universal badger blockstore is the default storage type.
+SplitStore is a freestanding compacting blockstore that allows you to keep a small 60 GiB to 275 GiB working set in a hot blockstore and reliably archive out-of-scope objects in a coldstore. The coldstore can also be a _discard_ store, whereby out-of-scope objects are discarded, a _universal_ store, which will store all chain data or a  _messages_ store which will only store on-chain messages. The _messages_ store type can be periodically garbage collected according to configurable user retention policies. The _messaqges_ badger blockstore is the default storage type.
 
 To enable the splitstore, edit `.lotus/config.toml` and add the following:
 
@@ -28,7 +28,7 @@ If you intend to use the discard-store you also need to add the following:
 ```toml
 [Chainstore.Splitstore]
   # ColdStoreType specifies the type of the coldstore.
-  # It can be "universal" (default) or "discard" for discarding cold blocks.
+  # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
   #
   # type: string
   # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
@@ -40,11 +40,11 @@ If you intend to use the discard-store you also need to add the following:
 ```toml
 [Chainstore.Splitstore]
   # ColdStoreType specifies the type of the coldstore.
-  # It can be "universal" (default) or "discard" for discarding cold blocks.
+  # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
   #
   # type: string
   # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-  ColdStoreType = "universal"
+  ColdStoreType = "messages"
 
   # HotStoreType specifies the type of the hotstore.
   # Only currently supported value is "badger".
@@ -74,30 +74,6 @@ If you intend to use the discard-store you also need to add the following:
   # type: uint64
   # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
   HotStoreFullGCFrequency = 20
-
-  # EnableColdStoreAutoPrune turns on compaction of the coldstore i.e. pruning
-  # where hotstore compaction occurs every finality epochs pruning happens every 3 finalities
-  # Default is false
-  #
-  # type: bool
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_ENABLECOLDSTOREAUTOPRUNE
-  EnableColdStoreAutoPrune = false
-
-  # ColdStoreFullGCFrequency specifies how often to performa a full (moving) GC on the coldstore.
-  # Only applies if auto prune is enabled.  A value of 0 disables while a value of 1 will do
-  # full GC in every prune.
-  # Default is 7 (about once every a week)
-  #
-  # type: uint64
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTOREFULLGCFREQUENCY
-  ColdStoreFullGCFrequency = 7
-
-  # ColdStoreRetention specifies the retention policy for data reachable from the chain, in
-  # finalities beyond the compaction boundary, default is 0, -1 retains everything
-  #
-  # type: int64
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORERETENTION
-  ColdStoreRetention = 0
   ```
 
 ### Operation
@@ -124,17 +100,7 @@ Compaction works transactionally with the following algorithm:
 
 ### Cold Store Garbage Collection
 
-Garbage collection can be performed manually by running the `lotus chain prune <flags>` command or automatically by setting the `EnableColdStoreAutoPrune` in your `.lotus/config.toml` as follows:
-
-```toml
-# EnableColdStoreAutoPrune turns on compaction of the cold store i.e. pruning
-# where hotstore compaction occurs every finality epochs pruning happens every 3 finalities
-# Default is false
-#
-# type: bool
-# env var: LOTUS_CHAINSTORE_SPLITSTORE_ENABLECOLDSTOREAUTOPRUNE
-EnableColdStoreAutoPrune = true
-```
+Garbage collection can be performed manually by running the `lotus chain prune <flags>` command.
 
 ### Relocating the Coldstore
 
