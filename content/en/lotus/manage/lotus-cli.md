@@ -12,7 +12,7 @@ weight: 440
 toc: true
 ---
 
-<!-- This page was copied from https://github.com/filecoin-project/lotus/blob/release/v1.17.2/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.18.0/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
@@ -23,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.17.2
+   1.18.0
 
 COMMANDS:
    daemon   Start a lotus daemon process
@@ -1224,6 +1224,8 @@ COMMANDS:
    check-client-datacap           check verified client remaining bytes
    check-notary-datacap           check a notary's remaining bytes
    sign-remove-data-cap-proposal  allows a notary to sign a Remove Data Cap Proposal
+   list-allocations               List allocations made by client
+   remove-expired-allocations     remove expired allocations (if no allocations are specified all eligible allocations are removed)
    help, h                        Shows a list of commands or help for one command
 
 OPTIONS:
@@ -1237,7 +1239,7 @@ NAME:
    lotus filplus grant-datacap - give allowance to the specified verified client address
 
 USAGE:
-   lotus filplus grant-datacap [command options] [arguments...]
+   lotus filplus grant-datacap [command options] [clientAddress datacap]
 
 OPTIONS:
    --from value  specify your notary address to send the message from
@@ -1276,7 +1278,7 @@ NAME:
    lotus filplus check-client-datacap - check verified client remaining bytes
 
 USAGE:
-   lotus filplus check-client-datacap [command options] [arguments...]
+   lotus filplus check-client-datacap [command options] clientAddress
 
 OPTIONS:
    --help, -h  show help (default: false)
@@ -1289,7 +1291,7 @@ NAME:
    lotus filplus check-notary-datacap - check a notary's remaining bytes
 
 USAGE:
-   lotus filplus check-notary-datacap [command options] [arguments...]
+   lotus filplus check-notary-datacap [command options] notaryAddress
 
 OPTIONS:
    --help, -h  show help (default: false)
@@ -1302,10 +1304,36 @@ NAME:
    lotus filplus sign-remove-data-cap-proposal - allows a notary to sign a Remove Data Cap Proposal
 
 USAGE:
-   lotus filplus sign-remove-data-cap-proposal [command options] [arguments...]
+   lotus filplus sign-remove-data-cap-proposal [command options] [verifierAddress clientAddress allowanceToRemove]
 
 OPTIONS:
    --id value  specify the RemoveDataCapProposal ID (will look up on chain if unspecified) (default: 0)
+   
+```
+
+### lotus filplus list-allocations
+```
+NAME:
+   lotus filplus list-allocations - List allocations made by client
+
+USAGE:
+   lotus filplus list-allocations [command options] clientAddress
+
+OPTIONS:
+   --expired  list only expired allocations (default: false)
+   
+```
+
+### lotus filplus remove-expired-allocations
+```
+NAME:
+   lotus filplus remove-expired-allocations - remove expired allocations (if no allocations are specified all eligible allocations are removed)
+
+USAGE:
+   lotus filplus remove-expired-allocations [command options] clientAddress Optional[...allocationId]
+
+OPTIONS:
+   --from value  optionally specify the account to send the message from
    
 ```
 
