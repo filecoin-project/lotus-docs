@@ -25,6 +25,6 @@ images: []
 **SnapDeals:**
 - One of the focus areas for the rest of Q4 is squashing outstanding SnapDeals-issues - and the team is doing an amazing job on clearing out the backlog and testing the fixes!! We will release special edition SnapDeals-updates starting from next week, summing up all the bug fixes and improvements that has happened, current SnapDeals-issues we are still working on and how to configure your setup for successful Snaps.
 
-:mega: **To storage providers**, the Lotus team has been looking into ways to support and improve the Lotus-Miner for enterprise SP deployments (both current and aspiring). We gathered all the high-level area we have identified and potential solutions we have been looking into. Please check out this Github discussion and add your feedback.
+:mega: **To storage providers**, the Lotus team has been looking into ways to support and improve the Lotus-Miner for enterprise SP deployments (both current and aspiring). We gathered all the high-level area we have identified and potential solutions we have been looking into. Please check out this Github discussion: [Architechtural/System-level problems for enterprise-level Storage Providers](https://github.com/filecoin-project/lotus/discussions/9686) and add your feedback.
 
 **That’s it for the week! Have a great weekend!** :sunny:
