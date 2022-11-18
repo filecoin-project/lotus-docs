@@ -1,7 +1,7 @@
 ---
 title: "CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.17.1."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.18.0."
 draft: false
 menu:
     lotus:
