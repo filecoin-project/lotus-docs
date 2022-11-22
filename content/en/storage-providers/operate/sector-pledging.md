@@ -1,6 +1,6 @@
 ---
 title: "Sector pledging"
-description: "Pledging sectors is a technique to seal sectors with random data to make increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
+description: "Pledging sectors is a technique to seal sectors with random data to increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
 lead: "Pledging sectors is a technique to seal sectors with random data to make increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
 draft: false
 menu:
