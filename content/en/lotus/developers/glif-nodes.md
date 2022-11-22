@@ -29,13 +29,25 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 
 Testnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >}}) can use `https://api.calibration.node.glif.io/rpc/v0`.
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
-- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
+- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals-calibration.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
 
 - {{< alert icon="tip" >}}
 You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc/v1`
 {{< /alert >}}
 
 - Testnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0](wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0)
+
+## Wallaby endpoint
+
+Wallaby nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >}}) can use `https://wallaby.node.glif.io/rpc/v0`.
+- Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
+- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals-wallaby.s3.amazonaws.com/StateMarketDeals.json). `StateMarketDeals` data is refreshed every 10 minutes.
+
+- {{< alert icon="tip" >}}
+You can use the `v1` JSON RPC API with `https://wallaby.node.glif.io/rpc/v1`
+{{< /alert >}}
+
+- Wallaby network has a ws (web socket) endpoint. the ws link is available like [wss://wss.wallaby.node.glif.io/apigw/lotus/rpc/v0](wss://wss.wallaby.node.glif.io/apigw/lotus/rpc/v0)
 
 ### Custom endpoints
 
