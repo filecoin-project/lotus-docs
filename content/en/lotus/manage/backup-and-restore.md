@@ -13,7 +13,11 @@ weight: 425
 toc: true
 ---
 
-This backup process is different to that of the [`lotus-miner` backup]({{< relref "backup-and-restore" >}}). This backup process does not retain any mining information.
+This backup process is different to that of the [`lotus-miner` backup]({{< relref "../../storage-providers/operate/backup-and-restore/" >}}). This backup process does not retain information related to a storage provider, it only backs up metadata for the Lotus daemon.
+
+{{< alert icon="warning" >}}
+This does not backup your addresses private keys. For that you need to [export your wallet addresses]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})
+{{< /alert >}}
 
 ## Backup
 
