@@ -12,19 +12,26 @@ weight: 420
 toc: true
 ---
 
-As we mentioned in the installation guide, Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
+Lotus is compiled to operate on a single network, and the information in the configuration folder corresponds to that network.
 
 - Local devnet - [You can run a local devnet]({{< relref "../developers/local-network/">}})
 - Testnets
-    - [Calibnet](https://network.filecoin.io/#calibration)
-    - [NerpaNet](https://github.com/filecoin-project/community/discussions/74#discussioncomment-1348469) was deprecated on 2021-08-16 and is no longer available.
+    - [Calibnet](https://network.filecoin.io/#calibration) - The calibration network is a testnetwork that mimics the properties of the mainnet. It is planned to be long-running, and will only be reset in case of critical bugs that are uncovered during network upgrade testing.
+    - [Wallby](https://kb.factor8.io/en/docs/fil/wallabynet) - The wallaby testnet is meant for fvm testing and therefore subject to frequent resets.
 - [Mainnet](https://network.filecoin.io/#mainnet)
 
-You can choose one of the following methods to switch to a different network.
+You can choose one of the following methods to switch to a different network on your setup:
 
 ## Clean, rebuild, reinstall
 
-The first method is the simplest. In this approach, you remove all the data related to the network you were running on before and launch a Lotus binary built to run on the new one:
+The first method is the simplest. In this approach, you remove or change the path for the data related to the network you were running on before and launch a Lotus binary built to run on the new one:
+
+{{< alert icon="warning">}}**Switching from Mainnet to Calibnet?**
+
+This process deletes everything from the old network, including wallets. If you are on `mainnet` and are switching to `calibnet` but you want to keep all your `mainnet` data intact for when you switch back, make sure to change your `$LOTUS_PATH` before running `lotus daemon`:
+
+To change your `$LOTUS_PATH` run: `export LOTUS_PATH=~/.new-lotus-path`.
+{{< /alert >}}
 
 1. Shut down the Lotus daemon if it is currently running.
 1. Remove the `~/.lotus` folder, or whatever you set `$LOTUS_PATH` to. The default is `~/.lotus`.
@@ -48,14 +55,8 @@ The first method is the simplest. In this approach, you remove all the data rela
     lotus daemon
     ```
 
-{{< alert icon="warning">}}**Run on a different `$LOTUS_PATH`.**
-This process deletes everything from the old network, including wallets. If you are on `mainnet` and are switching to `calibnet` but you want to keep all your `mainnet` data intact for when you switch back, change your `$LOTUS_PATH` before running `lotus daemon`:
-
-To change your `$LOTUS_PATH` run: `export LOTUS_PATH=~/.new-lotus-path`.
-{{< /alert >}}
-
 ## Backing up Lotus data
 
 If you wish to backup Lotus data, copy the `~/.lotus` (or `$LOTUS_PATH`) folder somewhere. This will take quite a while if the Lotus node has synced the whole network.
 
-Another alternative is to [export your wallets]({{< relref "manage-fil#exporting-and-importing-addresses" >}}) and also [export the chain]({{< relref "chain-management" >}}) for later re-import on a newly installed Lotus Node.
+Another alternative is to [export your wallets]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}}) and also [export the chain]({{< relref "../../lotus/manage/chain-management/#creating-a-snapshot" >}}) for later re-import on a newly installed Lotus Node.
