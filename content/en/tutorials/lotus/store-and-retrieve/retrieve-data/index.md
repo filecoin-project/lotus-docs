@@ -66,14 +66,14 @@ Before you can send a retrieval request, you need to collect some information to
 | Variable | Description |
 | --- | --- |
 | Miner ID | This is the ID of the storage provider where the data is stored. |
-| Data CID | This variable is also sometimes called the _Payload CID_. |
+| Payload CID | This variable is also sometimes called the _Data CID_. |
 | Address | The public address that was initially used to create the storage deal. |
 
 We're going to gather this information now.
 
-1. Copy this **address** to your clipboard: `f16wc2ees6nkmk4pguoaaly4zdkeemaajjbv7aqgq`.
+1. Copy this **address** to your clipboard: `f01787692`.
 
-    If you want to retrieve data that **you stored** you can use that **address** in place of the one we're using in this tutorial. If you'd like to use the **address** on your local Lotus note, run `lotus wallet list` and copy it to your clipboard.
+    If you want to retrieve data that **you stored** you can use your own **address** in place of the one we're using in this tutorial. If you'd like to use the **address** on your local Lotus note, run `lotus wallet list` and copy it to your clipboard.
 
     Remember, you will not be able to retrieve data stored less than 24 hours ago.
 
@@ -82,7 +82,7 @@ We're going to gather this information now.
 
     ![](filecoin-tools-search-address.png)
 
-    The default **address** supplied in this tutorial `f16wc2ees...` has only submitted one storage deal, so you'll only see one row in [filecoin.tools](https://filecoin.tools/f16wc2ees6nkmk4pguoaaly4zdkeemaajjbv7aqgq). If you are using a different **address**, you may see multiple rows. If you don't see _any_ rows, the **address** you searched for has not yet completed a deal. The **address** may have submitted a deal, but the storage provider is yet to _seal_ the data. Deals will only show up here once the storage provider has completed sealing the data.
+    The default **address** supplied in this tutorial `f01787692` has submitted several storage deals so you'll see multiple rows in [filecoin.tools](https://filecoin.tools/f01787692). If you are using a recently created **address**, you may only see a single row. If you don't see _any_ rows, the **address** you searched for has not yet completed a deal. The **address** may have submitted a deal, but the storage provider is yet to _seal_ the data. Deals will only show up here once the storage provider has completed sealing the data.
 
 1. Click anywhere on a row to view information about that specific deal:
 
@@ -92,18 +92,18 @@ We're going to gather this information now.
 
 ## Send a retrieval request
 
-Next up is creating the command for Lotus to run. The structure for a retrieval command is: `lotus client retrieve --provider <MINER ID> <DATA CID> ~/output-file`
+Next up is creating the command for Lotus to run. The structure for a retrieval command is: `lotus client retrieve --provider <MINER ID> <PAYLOAD CID> ~/output-file`
 
-1. Using the template above, create the command substituting `<MINER ID>` and `<DATA CID>` with the variables you got in the previous step. Your command should look something like this:
+1. Using the template above, create the command substituting `<MINER ID>` and `<PAYLOAD CID>` with the variables you got in the previous step. Your command should look something like this:
 
     ```shell
-    lotus client retrieve --provider f07709 mAVWg5AIgFw51hfKzfy8nRsKHlMtT8/DPBJhn1f9eFyOSeldlAiE output-file
+    lotus client retrieve --provider f08403 QmcV7HQyGrZz9wJPhYbWs6TM1RZwpuJsgnRCiftHTmaEgU output-file
     ```
 
     The `output-file` is the name of the file that you'd like to save. You can also add a path to this variable:
 
     ```shell
-    lotus client retrieve --provider f0100 mAVW...lAiE ~/Downloads/filecoin-download.tar
+    lotus client retrieve --provider f08403 QmcV7HQyGrZz9wJPhYbWs6TM1RZwpuJsgnRCiftHTmaEgU ~/Downloads/filecoin-download.tar
     ```
 
 1. Run the command. After submitting this command, your Lotus lite-node will send the retrieval request to the storage provider and wait for a response:
