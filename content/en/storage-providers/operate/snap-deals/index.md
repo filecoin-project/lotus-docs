@@ -53,6 +53,7 @@ Storage providers from the Lotus [community tested Snap-deals performance](https
 
 | Provider<br>Hardware | UpdateReplica<br>(RU) | ProveReplicaUpdate<br>(PR2) | ProveCommit<br>(C2) |	
 | --- | --- | --- | --- |
+| **CPU**: 10900X<br>**GPU**: RTX 4090 (CUDA) <br>**RAM**: 256 GB<br>**SWAP**: 0 GB<br>**Sector**: 32 GiB | 3m 23s | 9m 43s | 6m 57s |
 | **CPU**: 3975WX<br>**GPU**: 2x RTX 3090 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 32 GiB | 5m 38s | 7m 52s | 6m 57s |
 | **CPU**: EPYC 7F72<br>**GPU**: 2x RTX 2080ti (CUDA) <br>**RAM**: 256 GB<br>**SWAP**: 20 GB<br>**Sector**: 64 GiB | 9m 19s | 19m 0s | 16m 10s |
 | **CPU**: EPYC 7502<br>**GPU**: RTX 3080 (CUDA) <br>**RAM**: 512 GB<br>**SWAP**: 0 GB<br>**Sector**: 64 GiB | 12m 59s | 23m 13s | 18m 24s |
