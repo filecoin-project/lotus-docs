@@ -12,7 +12,7 @@ weight: 315
 toc: true
 ---
 
-SplitStore is a freestanding compacting blockstore that allows you to keep a small 60 GiB to 275 GiB working set in a hot blockstore and reliably archive out-of-scope objects in a coldstore. The coldstore can also be a _discard_ store, whereby out-of-scope objects are discarded, a _universal_ store, which will store all chain data or a  _messages_ store which will only store on-chain messages. The _messaqges_ badger blockstore is the default storage type.
+SplitStore is a freestanding compacting blockstore that allows you to keep a small 60 GiB to 275 GiB working set in a hot blockstore and reliably archive out-of-scope objects in a coldstore. The coldstore can also be a _discard_ store, whereby out-of-scope objects are discarded, a _universal_ store, which will store all chain data or a  _messages_ store which will only store on-chain messages. The _messages_ badger blockstore is the default storage type.
 
 To enable the splitstore, edit `.lotus/config.toml` and add the following:
 
