@@ -54,4 +54,3 @@ Currently, lotus installation is supported on the following platforms.
 
 - [Linux]({{< relref "linux" >}})
 - [MacOS]({{< relref "macos" >}})
-- [Cloud]({{< relref "cloud-services" >}})
