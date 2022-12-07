@@ -9,45 +9,77 @@ weight: 225
 toc: true
 ---
 
-You should now have Lotus installed, and should be able start the Lotus daemon and sync the chain.
+Now that we have installed Lotus we can download a lightweight chain snapshot and start syncing the chain.
 
-## Start the Lotus daemon and sync the chain
+## Download snapshot
+1. Download the most recent lightweight snapshot for the mainnet:
 
-The `lotus` application runs as a daemon and a client to control and interact with that daemon. A daemon is a long-running program that is usually run in the background.
+    ```shell
+    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
+    ```
 
-When using _mainnet_, we recommend you start the daemon [syncing from a trusted state snapshot]({{< relref "../manage/chain-management#lightweight-snapshot" >}}). In any case, you can start the daemon with the following command:
+1. Uncompress the downloaded snapshot:
 
-```shell
-lotus daemon
-```
+    ```shell
+    zstd -d 1419120_2022_10_24T18_00_00Z.car.zst
+    ```
+
+Now that we have downloaded a recent snapshot we can import the snapshot to Lotus and start the daemon process.
+
+## Import snapshot and start the Lotus daemon
+
+The `lotus` application runs as a daemon and a client to control and interact with that daemon. A daemon is a long-running program that is usually run in the background. 
 
 During the first run, Lotus will:
 
 - Set up its data folder at `~/.lotus`.
 - Download the necessary proof parameters. This is a few gigabytes of data that is downloaded once.
-- Import the snapshot (if specified) and start syncing the Lotus chain.
 
-The daemon will start producing lots of log messages right away. From this point, you will have to work on a new terminal. Any`lotus` commands you run now will communicate with the running daemon.
+If you do not want the chain data folder at the default `~/.lotus` location, you can specify its location by exporting the environment variable `LOTUS_PATH=path/to/.lotus`. If you want this environment variable to persist across sessions, you need to export the variable from the user’s profile script.
 
-{{< alert icon="tip">}}
-Do not be concerned by the number of warnings and sometimes errors showing in the logs. They are a normal part of the daemon lifecycle as it participates in the globally distributed consensus network.
-{{< /alert >}}
-
-If you used snapshots, subsequent daemon starts can proceed as normal without any options:
+### Import the snapshot:
 
 ```shell
-lotus daemon
-## When running with systemd do:
-# systemctl start lotus-daemon
+# Replace the filename for the `.car` file based on the snapshot you downloaded.
+lotus daemon --import-snapshot path/to/1419120_2022_10_24T18_00_00Z.car --halt-after-import
 ```
 
-For more information about syncing and snapshots, [see the Chain management section]({{< relref "../manage/chain-management" >}}).
+With this command Lotus will import the snapshot and halt after the import process has finished. After the process has halted we can start the daemon and sync the remaining blocks.
 
-We recommend waiting until the syncing process has completed, which should be relatively fast when using trusted state snapshot imports:
+### Start the Lotus daemon
+
+```
+nohup lotus daemon > ~/lotus.log 2>&1 &
+```
+
+This command makes the daemon run in the background and log messages to `~/lotus.log`. You can change the path of the lotus.log file if you want the logs to be logged elsewhere.
+
+
+### Check syncing status
+After the Lotus daemon has been running for a few minutes, use `lotus sync wait` to check the sync status of your lotus node.
 
 ```shell
 lotus sync wait
 ```
+```
+lotus sync wait
+Worker: 78534; Base: 2403099; Target: 2403099 (diff: 0)
+State: message sync; Current Epoch: 2403099; Todo: 0
+
+Done!
+```
+
+When the `lotus sync wait` command shows done you are fully synced with the chain.
+
+### Watch the logs
+
+```
+watch tail -30 ~/lotus.log
+```
+
+{{< alert icon="tip">}}
+Do not be concerned by the number of warnings and sometimes errors showing in the logs. They are a normal part of the daemon lifecycle as it participates in the globally distributed consensus network.
+{{< /alert >}}
 
 ## Interact with the daemon
 
@@ -70,21 +102,7 @@ lotus --help
 lotus client --help
 ```
 
-For example, after your Lotus daemon has been running for a few minutes, use `lotus sync` to check the sync status of your lotus node.
-
-```shell
-lotus net sync
-```
-```
-sync status:
-...
-	Target:	[bafy2bzaceaki6bjhe2lxmtyexcff6vh5y5uw4tmbjr3gatwvh5dhaqqb2ykaa] (320791)
-	Stage: complete
-	Height: 320791
-...
-```
-
-Or use `lotus net` to check the number of other peers that it is connected to in the Filecoin network.
+You can use the `lotus net peers` to check the number of other peers that it is connected to in the Filecoin network.
 
 ```shell
 lotus net peers
