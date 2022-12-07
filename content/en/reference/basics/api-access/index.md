@@ -32,7 +32,7 @@ To access the API remotely, Lotus needs to listen on the right IP/interface. The
 
 ```toml
 [API]
-  ListenAddress = "/ip4/<EXTERNAL_INTERFACE_IP>/tcp/3453/http" # port is an example
+  ListenAddress = "/ip4/<EXTERNAL_INTERFACE_IP>/tcp/1234/http" # port is an example
 
   # Only relevant for lotus-miner
   RemoteListenAddress = "<EXTERNAL_IP_AS_SEEN_BY_OTHERS:<EXTERNAL_PORT_AS_SEEN_BY_OTHERS>"
@@ -41,6 +41,43 @@ To access the API remotely, Lotus needs to listen on the right IP/interface. The
 `0.0.0.0` can be used too. This is a wildcard that means "all interfaces". Depending on the network setup, this may affect security (listening on the wrong, exposed interface).
 
 After making these changes, please restart the affected process.
+
+### Test your connection
+
+Run the following Curl command against your node to test that everything's working properly:
+
+```shell
+curl --location --request POST '150.125.10.5:1234/rpc/v0' \                     ~
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "jsonrpc":"2.0",
+    "method":"Filecoin.ChainHead",
+    "params":[],
+    "id":1
+}' | jq
+```
+
+```plaintext
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "Cids": [
+      {
+        "/": "bafy2bzacecj5o2do6e5rh42grz6cnqykibqalkwtol6qcv5ulebfovycf4uf4"
+      },
+      {
+        "/": "bafy2bzacea433mi5lgjuatvj3racbyv6rav27nrhtmoc3hsdwn3hb5g272mki"
+      },
+      {
+        "/": "bafy2bzacebn3hkx6f6dvsmjs2pp6jzhk5zr3ny6bnt63zopa2etiqzktbqw6s"
+      }
+    ],
+    "Blocks": [
+
+...
+```
+
+If you aren't getting a `Recv failure: Connection reset by peer` error, make sure that you're sending your request to the correct port. In this example above, the port set in the ~/.lotus/config.toml` file and the port used in our Curl request are both `1234`.
 
 ## API tokens
 
