@@ -17,7 +17,7 @@ toc: true
 
 A Lotus full node is required to interact with the Filecoin blockchain. These nodes are also required when running a storage provider on the Filecoin network.
 
-Usually, the Lotus full nodes are kept small, with regular chain compactions, or using the SplitStore-feature which discards older chain data. Lotus full nodes are usually synced from a snapshots, to reduce the time required to get in sync with the Filecoin Network.
+Usually, the Lotus full nodes are kept small, with regular chain compactions, or by using the SplitStore-feature which discards older chain data. Lotus full nodes are usually synced from snapshots to reduce the time required to get in sync with the Filecoin Network.
 
 ## Full historical node
 
@@ -29,6 +29,6 @@ Please do note that historical queries on a Lotus full historical node are slow 
 
 ## Lite client node
 
-Lite nodes are a scaled down version of a Lotus full node. These nodes require connection to a Lotus full node to function. Once connected to the Lotus full node, these Lotus Lite client nodes can only perform message signing and deal transactions.
+Lite nodes are a scaled-down version of a Lotus full node. These nodes require a connection to a Lotus full node to function. Once connected to the Lotus full node, these Lotus Lite client nodes can only perform message signing and deal transactions.
 
-A lite node is useful when there are hardware constraints, as lite node requires significantly less resources than a Lotus full node. Another use case would be to process transactions in parallel with other lite client nodes behind a Lotus full node. This increases the efficiency of the system.
+A lite node is useful when there are hardware constraints, as a lite node requires significantly fewer resources than a Lotus full node. Another use case would be to process transactions in parallel with other lite client nodes behind a Lotus full node. This increases the efficiency of the system.
