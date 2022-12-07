@@ -1,7 +1,7 @@
 ---
-title: "Types of node"
-description: "This page provide details on different types of lotus nodes and their use case."
-lead: "This page provide details on different types of lotus nodes and their use case."
+title: "Node types"
+description: "This page provide details on different lotus node types and their use case."
+lead: "This page provide details on different lotus node types and their use case."
 draft: false
 menu:
     lotus:
@@ -13,21 +13,22 @@ weight: 115
 toc: true
 ---
 
-A lotus node is required to interact with the filecoin blockchain. These nodes are also required when running a storage provider runs a lotus-miner to offer the storage on the network.
-
-Usually, the lotus nodes are kept small and regular chain compaction is done to avoid node getting too large. These nodes can be synced from a latest snapshot in case any failures and this reduces the time required to start them.
-
-A lotus node need to be deployed by anyone who wants to interact with the filecoin blockchain, provide storage, store data on filecoin and retrieve data from the filecoin network.
-
 ## Full node
 
-A lotus full node differs from a normal lotus node in just one aspect. A full node is synced from the epoch "0" or "genesis block" of the filecoin blockchain.
-These nodes require a huge amount of space to store the full chain and take a very long time be synced from the beginining. A [full chain snapshot can be imported]({{< relref "chain-management" >}}) on a new lotus node to designate it as a full lotus node.
+A Lotus full node is required to interact with the Filecoin blockchain. These nodes are also required when running a storage provider on the Filecoin network.
 
-A lotus full node is useful when historical queries have to be run against the chain. Please do note that historical queries are slow due to the size of the chain and can take anywhere between a few minutes to hours to get a response.
+Usually, the Lotus full nodes are kept small, with regular chain compactions, or by using the SplitStore-feature which discards older chain data. Lotus full nodes are usually synced from snapshots to reduce the time required to get in sync with the Filecoin Network.
 
-## Lite node
+## Full historical node
 
-Lite nodes are a scaled down version of a normal lotus node. These nodes require connection to a lotus node to function. Once connected to the lotus node, these can only perform message signing and deal transactions.
+A Lotus full historical node differs from a typical Lotus full node in just one aspect. A full historical node is synced from epoch "0" or the "genesis block" of the filecoin blockchain. These nodes require a huge amount of space to store the full chain data, and take a very long time be synced from the beginining.
 
-A lite node is useful when there are hardware constraints as lite node requires significantly less resources than a normal lotus node. Another use case would be to process transactions in parallel with other lite nodes behind a normal lotus node. This increases the efficiency of the system.
+A Lotus full historical node is useful in very limited cases. Most users that need to extract and inpsect pieces of the Filecoin chain, usually uses tools like [lily](https://lilium.sh/software/lily/introduction/), which allows for structured data extraction into a PostgresSQL/TimescaleDB database or CSV dumps for later query and analysis.
+
+Please do note that historical queries on a Lotus full historical node are slow due to the size of the chain, and can take anywhere between a few minutes to hours to get a response.
+
+## Lite client node
+
+Lite nodes are a scaled-down version of a Lotus full node. These nodes require a connection to a Lotus full node to function. Once connected to the Lotus full node, these Lotus Lite client nodes can only perform message signing and deal transactions.
+
+A lite node is useful when there are hardware constraints, as a lite node requires significantly fewer resources than a Lotus full node. Another use case would be to process transactions in parallel with other lite client nodes behind a Lotus full node. This increases the efficiency of the system.
