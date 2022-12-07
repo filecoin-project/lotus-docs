@@ -361,3 +361,21 @@ In this section, you will add two notaries to your local network with Fil+.
     ```
 
 1. To add `<notary-2>` to your local network, repeat steps 3 through 6.
+
+### Grant datacap
+
+In this section, you will grant datacap to a client from a notary.
+
+{{< alert >}}
+<u>Remember</u>: These steps won't work if you don't have a local network with Fil+ and noteries added on the network.
+{{< /alert >}}
+
+1. Grant datacap from `<notary-1>` to a <client-address>, and specify the amount of bytes in datacap you want to give the client.
+
+```shell
+lotus filplus --from=<notary-1> <client-address> <bytes>
+```
+
+```plaintext
+message sent, now waiting on cid: bafy2bzaceacajb2hpk6ywlk7xzghnm2n5rxndhaikwyvuvo2m2taynpaqrclc
+```
