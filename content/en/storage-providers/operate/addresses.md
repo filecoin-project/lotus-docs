@@ -24,10 +24,11 @@ lotus-miner actor control list
 ```
 
 ```output
-name       ID      key        use              balance
-owner      f01234  f3defg...                   300 FIL
-worker     f01111  f3abcd...  other            300 FIL
-control-0  f02222  f3defg...  post             100 FIL
+name         ID      key        use              balance
+owner        f01234  f3defg...                   300 FIL
+worker       f01111  f3abcd...  other            300 FIL
+beneficiary  f01234  f3defg...  other            300 FIL  
+control-0    f02222  f3defg...  post             100 FIL
 ```
 
 The different types of addresses associated with a miner are described below:
