@@ -7,12 +7,12 @@ draft: false
 images: []
 ---
 
-The final release of the Lotus v1.19.0 was released this week.? This feature release includes the official release of SplitStore, the experimental Lotus node cluster feature, as well as numerous enhancements and bugfixes.
+The final release of the Lotus v1.19.0 was released this week.? This feature r:star-struck: SplitStore, the :new: experimental Lotus node cluster feature, as well as numerous enhancements and bugfixes.
 
 **Avoid Add-Piece panic!**:scream_cat::
 We have gotten multiple reports about panics during the AddPiece phase after the network version 17 upgrade.
 
-We have issued and merged a fix for the panic, **which has been backported to the newly published v1.19.0 release?**
+We have [issued and merged a fix for the panic](https://github.com/filecoin-project/lotus/pull/9822), **which will be backported to the v1.19.0 release coming this weekend. We will also issue a patch release v1.18.2 with the fix.**
 
 **Network version 18 - Hygge**:
 The Lotus team has focused on preliminary work for the upcoming network version 18, codenamed Hygge, this week!
@@ -27,5 +27,7 @@ You can check [out the current scope of nv18 here!](https://github.com/filecoin-
 
 :milky_way: **For builders excited about FVM:**
 [Check out Space Warp](https://spacewarp.fvm.dev/) - it is a jam-packed program for builders leading up to the launch of Filecoin’s Virtual Machine on mainnet.
+
+We have some secret projects that we are working on, we will reveal more later :shushing_face: **PeSto and FilFil coming soon...**
 
 That’s it for the week! **Have a great weekend!** :sunny:
