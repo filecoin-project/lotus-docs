@@ -7,9 +7,9 @@ draft: false
 images: []
 ---
 
-The final release of the Lotus v1.19.0 was released this week.? This feature r:star-struck: SplitStore, the :new: experimental Lotus node cluster feature, as well as numerous enhancements and bugfixes.
+The final release of the Lotus v1.19.0 will be released this weekend. This feature r:star-struck: SplitStore, the :new: [experimental Lotus node cluster feature](https://lotus.filecoin.io/lotus/configure/clusters/), as well as numerous enhancements and bugfixes.
 
-**Avoid Add-Piece panic!**:scream_cat::
+**Avoid Add-Piece panic!**
 We have gotten multiple reports about panics during the AddPiece phase after the network version 17 upgrade.
 
 We have [issued and merged a fix for the panic](https://github.com/filecoin-project/lotus/pull/9822), **which will be backported to the v1.19.0 release coming this weekend. We will also issue a patch release v1.18.2 with the fix.**
@@ -21,7 +21,7 @@ In addition to all the *FEVM-related* Filecoin improvement proposals that have b
 
 - A FIP [proposing increased max sector duration.](https://github.com/filecoin-project/FIPs/blob/7a098c8003ff559d6a9a66663967c14ef0026c01/FIPS/fip-xxxx-sector-commitment-duration.md)
 - [MarketNotifyDeal called by market actor on proposal client](https://github.com/filecoin-project/FIPs/discussions/549)
-- A FIP [revisiting the Sector Duration Multipler.](https://github.com/filecoin-project/FIPs/discussions/554)
+- A FIP [revisiting the Sector Duration Multiplier.](https://github.com/filecoin-project/FIPs/discussions/554)
 
 You can check [out the current scope of nv18 here!](https://github.com/filecoin-project/tpm/discussions/115#discussioncomment-4337719)
 
