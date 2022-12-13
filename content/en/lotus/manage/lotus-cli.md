@@ -1,7 +1,7 @@
 ---
 title: "CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.18.0."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.19.0."
 draft: false
 menu:
     lotus:
@@ -12,7 +12,7 @@ weight: 440
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.18.0/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.19.0/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
@@ -23,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.18.0
+   1.19.0
 
 COMMANDS:
    daemon   Start a lotus daemon process
@@ -2103,6 +2103,7 @@ COMMANDS:
    decode                            decode various types
    encode                            encode various types
    disputer                          interact with the window post disputer
+   prune                             prune the stored chain state and perform garbage collection
    help, h                           Shows a list of commands or help for one command
 
 OPTIONS:
@@ -2425,6 +2426,22 @@ OPTIONS:
    
 ```
 
+### lotus chain prune
+```
+NAME:
+   lotus chain prune - prune the stored chain state and perform garbage collection
+
+USAGE:
+   lotus chain prune [command options] [arguments...]
+
+OPTIONS:
+   --move-to value    specify new path for coldstore during moving gc
+   --moving-gc        use moving gc for garbage collecting the coldstore (default: false)
+   --online-gc        use online gc for garbage collecting the coldstore (default: false)
+   --retention value  specify state retention policy (default: -1)
+   
+```
+
 ## lotus log
 ```
 NAME:
@@ -2586,7 +2603,7 @@ NAME:
    lotus net ping - Ping peers
 
 USAGE:
-   lotus net ping [command options] [arguments...]
+   lotus net ping [command options] [peerMultiaddr]
 
 OPTIONS:
    --count value, -c value     specify the number of times it should ping (default: 10)
