@@ -9,7 +9,13 @@ images: []
 
 **Videos from Lotus, Data Onboarding and Friends day:**
 
-All presentations and videos from our Lotus, Data Onboarding and Friends day in November are now out on the Lotus YouTube-channel. It´s a treasure trove of knowledge and insights for many aspects of the Filecoin network.
+All presentations and videos from our Lotus, Data Onboarding and Friends day in November are now out on the Lotus YouTube-channel. It´s a treasure trove of knowledge and insights for many aspects of the Filecoin network. To list a few:
+
+- [Filecoin Roadmap](https://youtu.be/LI3K-BkGitg)
+- [Once upon a Lotus](https://youtu.be/oIMvMb5wVO4)
+- [Wander the Lotus-Miner](https://youtu.be/FOCC6UTgGbg)
+- [Lotus’ Best Friend: Boost](https://youtu.be/5GhfeUCV1l0)
+- [Deep Dive Into Filecoin Proofs](https://youtu.be/RhEVZcsWkx0)
 
 [Check out the full playlist here.](https://www.youtube.com/watch?v=LI3K-BkGitg&list=PLhmonklIHGmXfYI9jUxZPx-_HF0REhq5Q&index=1) *Like & subscribe* :blue_heart:
 
@@ -17,7 +23,7 @@ All presentations and videos from our Lotus, Data Onboarding and Friends day in 
 
 As mentioned last week, the Lotus team has been focusing on a lot of preliminary work and work scope for next network upgrade, nv18 - codenamed Hygge. And this week has no different!
 
-Check in on this thread to [see the current scope of nv18!](https://github.com/filecoin-project/tpm/discussions/115#discussioncomment-4337719) It will be updated once the scope is finalized.
+Check in on this thread to [see the current scope of nv18!](https://github.com/filecoin-project/tpm/discussions/115#discussioncomment-4337719) Jennijuju will send a timeline and scope update soon!
 
 :screwdriver: **Fixes and Enhancements:**
 - A PR that adds the ability to list and remove expired claims for FIL+ deals is [now in review.](https://github.com/filecoin-project/lotus/pull/9875)
@@ -27,7 +33,7 @@ Check in on this thread to [see the current scope of nv18!](https://github.com/f
 
 **Scheduler :a:/:b:-testing and metrics:**
 
-One of the areas in the Architectural/System-level problems for enterprise-level Storage Providers [discussion](https://github.com/filecoin-project/lotus/discussions/9686) has been around the Sealing tasks scheduling inefficiencies. We are now at the point where we need to have actual metrics and numbers to move forward. If we can´t measure it, we can´t improve it!
+One of the areas in the Architectural/System-level problems for enterprise-level Storage Providers [discussion](https://github.com/filecoin-project/lotus/discussions/9686) has been around the Sealing tasks scheduling inefficiencies. We are now at the point where we need to have actual metrics and numbers to move forward. **If we can´t measure it, we can´t improve it!**
 
 Please check out the `Scheduler A/B-testing and metrics` post, and help out with gathering metrics: https://github.com/filecoin-project/lotus/discussions/9857
 
