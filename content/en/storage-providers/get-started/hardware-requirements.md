@@ -41,7 +41,7 @@ If windowPoSt tasks are not outsourced to a seperate windowPoSt worker, a powerf
 
 ### PC2
 
-The PreCommit 2 tasks is significantly faster when running on a GPU compared to when running on the CPU. The minimum VRAM requirement to run the PC2 process on a GPU is 6GiB VRAM.
+The PreCommit 2 tasks is significantly faster when running on a GPU compared to when running on the CPU. The minimum VRAM requirement to run the PC2 process on a GPU is 5GiB VRAM.
 
 ### C2
 
