@@ -17,7 +17,7 @@ While the `lotus-miner` runs each of the sealing phases itself by default, you c
 ## Installation
 
 {{< alert icon="callout" >}}
-During sealing, significant amounts of data are moved/copied across workers, so good network connectivity among them is a must.
+Depending on your lotus-worker setup, significant amounts of data might be moved/copied across workers, so good network connectivity among them is a must.
 {{< /alert >}}
 
 The `lotus-worker` application is built and installed along with the other Lotus binaries when following the installation guide. For simplicity, we recommend following the similar procedure as building `lotus-miner` application for building the `lotus-worker` application.
@@ -66,7 +66,6 @@ The seal workers will fail to start if the file descriptor limit is not set high
 
 ```
 # MINER_API_INFO as obtained before
-export TMPDIR=/fast/disk/folder3                    # used when sealing
 export MINER_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export MARKETS_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export FFI_USE_CUDA=1 # if using CUDA
@@ -82,10 +81,6 @@ export LOTUS_WORKER_NAME="Your-Worker-Name" # if not set, defaults to hostname
 # "Worker co-location" section below.
 export FIL_PROOFS_USE_MULTICORE_SDR=1
 ```
-
-{{< alert icon="tip" >}}
-When initially fetching parameter files, remember to set the [`IPFS_GATEWAY` variable when running from China]({{< relref "../../kb/nodes-in-china/" >}})
-{{< /alert >}}
 
 ### Run the worker
 
@@ -125,6 +120,14 @@ Worker 1, host othercomputer
         GPU: GeForce RTX 2080, not used
 ```
 If you want to give the `lotus-worker` a custom name, you can specify it at runtime with the `--name` option, or by exporting the `LOTUS_WORKER_NAME=Your-Name` enviroment variable. 
+
+### Sealing space location
+
+Now that the `lotus-worker` is running we need to attach the sealing storage location to the worker. The sealing location should be located on a fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+
+```shell
+lotus-worker storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
+```
 
 ### Stop the worker
 
