@@ -65,7 +65,7 @@ ListenAddresses = ["/ip4/0.0.0.0/tcp/4444", "/ip6/::/tcp/4444"]
 1. There is now a new section in the `config.toml` file for the lotus node, called `[Cluster]`. If you don't see this section in your own `config.toml`, please run `lotus config default` and copy the new section across.
 2. Whilst all three nodes and your miner are running, configure the `config.toml` for all three nodes as below. You can get the `multiaddress` for your nodes by checking the output of `lotus net listen` for all three daemons:
 ```toml
-[Raft]
+[Cluster]
 ClusterModeEnabled = true
 ```
 ```toml
