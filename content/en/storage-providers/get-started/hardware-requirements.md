@@ -17,9 +17,9 @@ The Filecoin network requires storage providers to run computationally expensive
 
 ## General hardware requirements
 
-The following are _general_ requirements and guidelines for each hardware type to run **just** the `lotus-miner` process without any sealing tasks. But it also highlights some of the requirements for sealing tasks under each hardware type. Resources needed by each sealing operation are detailed later below.
+The following are _general_ hardware requirements and guidelines for each task type or processes. Please keep in mind that each [specific operation requirement]({{< relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements" >}}) adds to the `Lotus-Miner` processes hardware recommendation of **128 GiB of RAM** if the windowPoSt task is not outsourced to a seperate windowPoSt worker. The RAM requirement **should** be complemented with **128 GiB of swap on a fast NVMe SSD**.
 
-Note that Lotus allows to configure and delegate sealing phases to [Lotus workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), which in setups that is going to seal multiple sectors in parallel is needed.
+Note that Lotus allows to configure and delegate sealing phases to [Lotus workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), which in setups that is going to seal multiple sectors in parallel is normally needed.
 
 ## CPU
 
@@ -87,8 +87,8 @@ The following table shows what hardware resources are needed to run a single tas
 | Sealing: commit phase 1    | Yes                                      | No       | -        | -                      | Exteremly light computation, usually faster then 1 second                                                                     |
 | Sealing: commit phase 2    | Yes (when no GPU, all cores)             | Yes      | 11.5 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
 | Unsealing                  | Yes (1 core or 1 core-complex)           | No       |          | 64GiB                  | Same process as preCommit phase 1. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).
-| Proving _WindowPoSt_       | Yes (all cores, when no GPU)             | Yes      | 10 GiB   | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. H**Highly recommended to run on a GPU**.                                                                                         
-| Proving _WinningPoSt_      | Yes                                      | No       | 5 GiB    | 16GiB                  | _WinningPoSt_ is a less intensive computation. Must be completed in a 25 seconds window. **Highly recommended to run on a GPU**.                                                                                                                    
+| Proving _WindowPoSt_       | Yes (all cores, when no GPU)             | Yes      | 11.5 GiB | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. H**Highly recommended to run on a GPU**.                                                                                         
+| Proving _WinningPoSt_      | Yes                                      | No       | 6 GiB    | 16GiB                  | _WinningPoSt_ is a less intensive computation. Must be completed in a 25 seconds window. **Highly recommended to run on a GPU**.                                                                                                                    
 
 ## Future proofing
 
