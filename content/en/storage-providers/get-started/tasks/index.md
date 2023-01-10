@@ -11,10 +11,6 @@ weight: 110
 toc: true
 ---
 
-This guide provides a high-level overview of the core tasks undertaken by the `lotus-miner` daemon and its sub-components.
-
-## Tasks
-
 We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into three categories.
 
 **Sealing tasks**: Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
@@ -26,6 +22,10 @@ Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate
 **Scheduling tasks**: These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
 
 ![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
+
+## Sealing tasks
+
+Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
 
 ### Add piece
 
@@ -55,6 +55,10 @@ The randomness aquired at the end of the wait seed state is used in the Commit 1
 
 In the Commit 2 phase, the file from the Commit 1 gets compressed into a much smaller proof using zk-SNARKs. The proof generated at the end of Commit 2 can be verified that is correct very fast, and is small enough to be suitable for a blockchain. The final size of the proof is approximately 2kib, and gets published on the blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
 
+## Proving tasks
+
+These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk to create a verifiable, and public record attesting to the storage providers continued commitment of storing the data, or for the network to reward storage providers for their contributions. 
+
 ### windowPoSt
 
 Window Proof-of-SpaceTime (WindowPoSt) is a proving task where the storage provider is asked to compute a proof that they are actually storing the data they have commited to the network. Every 24-hour period is broken into a series of windows, where each window is 30 minutes long. In a given window, a storage provider is asked to generate a proof based on random parts of the sealed sectors the storage provider has in that window. If they don’t have the data anymore, they won’t be able to respond with their proof in time, and will be penalized.
@@ -66,6 +70,22 @@ In this way, every sector is audited at least once in any 24-hour period, and a 
 Winning Proof-of-SpaceTime (WinningPoSt) is the mechanism by which storage providers are rewarded by the Filecoin network for their contributions to it. As a requirement for doing so, each storage provider is tasked with submitting a compressed Proof-of-Spacetime for a specified sector. Each elected storage provider who successfully creates a block is granted FIL, as well as the opportunity to charge other Filecoin participants fees to include messages in the block.
 
 Storage providers who fail to do this in the necessary window will forfeit their opportunity to mine a block.
+
+## Messages
+
+During the sealing phase the storage provider sends a couple of messages to the Filecoin network:
+
+![Overview of sealing messages](sealing-messages.png) 
+
+### PreCommitSector
+
+Through the `PreCommitSector` message a storage provider is putting up a deposit for a given sectors sealed data, often referred to as the SealedCID, or commitment to replica (commR). After the message is included on-chain, the sector is registered to the storage provider and the sector enters the WaitSeed state, which is a security wait requirement by the network.
+
+This message type can also be batched to include multiple PreCommitSector messages in a single message to save gas fees paid to the network. These batched messages are called `PreCommitSectorBatch`.
+
+### ProveCommitSector
+
+
 
 ## Tips
 
