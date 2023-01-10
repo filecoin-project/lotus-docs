@@ -85,7 +85,7 @@ This message type can also be batched to include multiple PreCommitSector messag
 
 ### ProveCommitSector
 
-
+The storage provider provides a Proof of Replication (PoRep) for the sector commited in . This proof must be submitted AFTER the security wait requirement by the network (WaitSeed), and before the PreCommit expiration.
 
 ## Tips
 
