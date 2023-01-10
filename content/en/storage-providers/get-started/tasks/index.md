@@ -25,7 +25,7 @@ Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate
 
 ## Sealing tasks
 
-Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
+Before a sector can be committed to the network, the storage provider *must* seal the sector, meaning the data needs to be encoded in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create because the encrypted version of each chunk of data depends on every other chunk of input data.
 
 ### Add piece
 
