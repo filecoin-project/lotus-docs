@@ -79,7 +79,7 @@ During the sealing phase the storage provider sends a couple of messages to the 
 
 ### PreCommitSector
 
-Through the `PreCommitSector` message a storage provider is putting up a deposit for a given sectors sealed data, often referred to as the SealedCID, or commitment to replica (commR). After the message is included on-chain, the sector is registered to the storage provider and the sector enters the WaitSeed state, which is a security wait requirement by the network.
+Through the `PreCommitSector` message a storage provider submits a deposit for a given sector's sealed data, often referred to as the SealedCID, or commitment to replica (commR). After the message is included on-chain, the sector is registered to the storage provider and the sector enters the WaitSeed state, which is a security wait requirement by the network.
 
 This message type can also be batched to include multiple PreCommitSector messages in a single message to save gas fees paid to the network. These batched messages are called `PreCommitSectorBatch`.
 
