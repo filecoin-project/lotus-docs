@@ -39,7 +39,7 @@ Make sure that:
 Before we can run the storage provider we need to initilize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
 
 ```shell
-lotus-miner init --owner=<address>  --worker=<address> --no-local-storage --sector-size=<32GiB or 64GiB>
+lotus-miner init --owner=<address>  --worker=<needs-bls-address> --no-local-storage --sector-size=<32GiB or 64GiB>
 ```
 
 - The Lotus Miner configuration folder is created in `~/.lotusminer/` or in your `$LOTUS_MINER_PATH` if set.
