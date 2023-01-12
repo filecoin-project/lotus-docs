@@ -93,4 +93,4 @@ You can now restart the `lotus-miner` process and see that it has been recovered
  
 ## Extras:
 
-These steps is only needed in cases where no proper metadata backup has been generated. It is adviced to setup [proper automated backups of the metadata]({{<relref "../../storage-providers/operate/backup-and-restore/#backup" >}})
+These steps are only needed in cases where no proper metadata backup has been generated. It is adviced to setup [proper automated backups of the metadata]({{<relref "../../storage-providers/operate/backup-and-restore/#backup" >}})
