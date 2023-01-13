@@ -123,7 +123,7 @@ Beneficiary Expiration: 12000
 
 To withdraw balance the withdrawal method can be called by the `beneficiary address` or the `owner address`, but the balance will always be sent to the beneficiary. The total balance withdrawed to a beneficiary address can´t exceed its quota or after the expiration epoch has passed.
 
-To revert the address back to the owner address after the exipiration epoch or the quota of the beneficiary address has been filled, you will need to propose changing the beneficiary address back to the owner with 0-values for the `quota` and `expiration`.
+To revert the address back to the owner address after the exipiration epoch or the quota of the beneficiary address has been filled, you will need to propose changing the beneficiary address back to the owner address with 0-values for the `quota` and `expiration`.
 
 ```shell with-output
 lotus-miner actor propose-change-beneficiary <owner> 0 0
