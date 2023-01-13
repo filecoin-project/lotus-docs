@@ -76,7 +76,7 @@ lotus-miner actor propose-change-beneficiary <beneficiaryAddress> <quota> <expir
 - `quota` is the amount of FIL this beneficiary is allowed to withdraw before it expires.
 - `expiration` chain epoch at which the beneficary address expires.
 
-As an example we can change the beneficiary address to another address, with a quota of 5 FIL and an expiration epoch height of 12000 with this command:
+As an example we can change the beneficiary address with a quota of 5 FIL and an expiration epoch height of 12000 with this command:
 
 ```shell with-output
 lotus-miner actor propose-change-beneficiary t3v43szapdkxo4s5hhmtyvxcvcr4lkaegghlkc3anlw7iuktsg25wckebkpk2t2qz7sreinte34oajdxzerykq 5 12000
