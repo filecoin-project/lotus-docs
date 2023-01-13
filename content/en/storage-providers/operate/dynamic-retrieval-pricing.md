@@ -20,7 +20,7 @@ toc: true
 
 ## Default policy
 
-The default pricing policy uses the price configured in the `Ask Store`, set using the `lotus retrieval-deals set-ask` CLI command, to price all retrieval deals. However, it will not charge for data transfer if there exists a verified storage deal for the payload being retrieved. This behavior can be turned off by setting the `VerifiedDealsFreeTransfer` flag to `false` in the `DealMaking.RetrievalPricing` section of the config:
+The default pricing policy uses the price configured in the `Ask Store`, set using the `lotus-miner retrieval-deals set-ask` CLI command, to price all retrieval deals. However, it will not charge for data transfer if there exists a verified storage deal for the payload being retrieved. This behavior can be turned off by setting the `VerifiedDealsFreeTransfer` flag to `false` in the `DealMaking.RetrievalPricing` section of the config:
 
 ```toml
 [Dealmaking.RetrievalPricing]
