@@ -62,6 +62,67 @@ The old and the new address must be available to the Lotus node. You can [create
 Want to add an additional layer of security for the owner's address? Check out how to setup a msig as a owner address [here.]({{< relref "../../tutorials/lotus-miner/msig-as-owner" >}})
 {{< /alert >}}
 
+### Beneficiary address
+
+A beneficiary address is a special purpose address which takes over the finicial control from the owner address for a given quota and time, but does not take over the owner addresses privileges. The seperation of owner and beneficiary brings more flexibility in the Filecoin financing market.
+
+You can propose changing the beneficiary address with:
+
+```shell
+lotus-miner actor propose-change-beneficiary <beneficiaryAddress> <quota> <expiration>
+```
+
+- `beneficiaryAddress` is the address you want to become a beneficiary for the given SP.
+- `quota` is the amount of FIL this beneficiary is allowed to withdraw before it expires.
+- `expiration` chain epoch at which the beneficary address expires.
+
+As an example we can change the beneficiary address to another address, with a quota of 5 FIL and an expiration epoch height of 12000 with this command:
+
+```shell with-output
+lotus-miner actor propose-change-beneficiary t3v43szapdkxo4s5hhmtyvxcvcr4lkaegghlkc3anlw7iuktsg25wckebkpk2t2qz7sreinte34oajdxzerykq 5 12000
+```
+```
+Propose Message CID: bafy2bzacebj2ifmxsttxtsu6oyosocyrjmduphtzq55njfmwmasehi4i5o7e2
+Beneficiary address change awaiting additional confirmations
+```
+
+In `lotus-miner info` you can now see that the new beneficiary info has been proposed:
+
+```shell
+Beneficiary:    t01223
+Pending Beneficiary Term:
+New Beneficiary:        t01671
+New Quota:      5000000000000000000
+New Expiration: 12000
+Approved By Beneficiary:        true
+Approved By Nominee:    false
+```
+
+For the change to take effect, the proposed new beneficiary address needs to confirm the proposal:
+
+```shell with-output
+lotus-miner actor confirm-change-beneficiary --new-beneficiary=true <minerAddress>
+```
+```
+Confirming Pending Beneficiary Term of:
+Beneficiary:  t01671
+Quota: 5000000000000000000
+Expiration Epoch: 12000
+Confirm Message CID: bafy2bzacebkxdcxc2poxspjfyi65uvlflqydi4vsuodxqd5go7dmr32x5mtt6
+Beneficiary address successfully changed
+```
+
+In you `lotus-miner info` command that the change has been confirmed, and what is left of the beneficiaries quota:
+
+```shell
+Beneficiary:    t01671
+Beneficiary Quota:      5000000000000000000
+Beneficiary Used Quota: 0
+Beneficiary Expiration: 12000
+```
+
+To withdraw balance the withdrawal method can be called by the `beneficiary address` or the `owner address`, but the balance will always be sent to the beneficiary. The total balance withdrawed to a beneficiary address can´t exceed its quota or after the expiration epoch has passed.
+
 ## The worker address
 
 The _worker address_ is used to send and pay for day-to-day operations performed by the miner:
