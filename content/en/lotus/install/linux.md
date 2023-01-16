@@ -13,8 +13,7 @@ The following instructions are specific to Linux installations.
 
 There are several ways to install Lotus on Linux:
 
-+ [Snap package manager](#snap-package-manager)
-+ [AppImage](#appimage)
++ [Downloading from Github](#downloading-from-github)
 + [Building from source](#building-from-source).
 
 {{< alert icon="warning">}}**Storage providers should build from source**.
@@ -22,44 +21,57 @@ There are several ways to install Lotus on Linux:
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Storage providers looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
 {{< /alert >}}
 
-## Snap package manager
+## Dowloading from Github
 
-To install Lotus using Snap, run:
+1. Install Lotus dependencies:
 
-```shell
-snap install lotus
-```
-
-You can also install nightly builds by using the `--edge` flag. These builds are created every night from the `master` branch [Lotus GitHub repository](https://github.com/filecoin-project/lotus).
+Arch:
 
 ```shell
-snap install lotus --edge
+sudo pacman -Syu hwloc
 ```
 
-You can find out more about this Snap [over at Snapcraft.io](https://snapcraft.io/lotus).
+Ubuntu/Debian:
 
-## AppImage
+```shell
+sudo apt install -y hwloc
+```
 
-[AppImages](https://appimage.org/) are portable applications that allow developers to package software and dependencies in a single executable. AppImages run on most Linux-based operating systems.
+Fedora:
 
-1. Go to the latest [releases page in the Lotus GitHub repository](https://github.com/filecoin-project/lotus/releases/latest).
-1. Under **Assets**, download the AppImage.
-1. Open a terminal window and move to the location where you downloaded the AppImage. This location is likely your **Downloads** folder:
+```shell
+sudo dnf -y install hwloc
+```
+
+OpenSUSE:
+
+```shell
+sudo zypper in hwloc
+```
+
+Amazon Linux 2:
+
+```shell
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y hwloc-devel
+```
+
+
+1. Download the latest Linux bundle from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    cd ~/Downloads
+    wget https://github.com/filecoin-project/lotus/releases/download/v1.19.0/lotus_1.19.0_linux_amd64.tar.gz
     ```
 
-1. Make the AppImage executable:
+1. Extract tar -xvf archive.tar.gz executable:
 
     ```shell
-    chmod +x ./Lotus-v1.17.2-x86_64.AppImage
+    tar -xvf lotus_1.19.0_linux_amd64.tar.gz
     ```
 
-1. Move the `AppImage` to `/usr/local/bin` and rename it `lotus`:
+1. Move the `lotus` binary to `/usr/local/bin`:
 
     ```shell
-    sudo mv Lotus-v1.17.2-x86_64.AppImage /usr/local/bin/lotus
+    sudo mv lotus_1.19.0_linux_amd64/lotus /usr/local/bin/lotus
     ```
 
 ## Building from source
