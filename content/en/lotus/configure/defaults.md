@@ -276,6 +276,7 @@ Variables specific to the _Lotus daemon_:
 - `LOTUS_CHAIN_TIPSET_CACHE`: Sets the size for the chainstore tipset cache. Defaults to `8192`. Increase if you perform frequent arbitrary tipset lookups.
 - `LOTUS_CHAIN_INDEX_CACHE`: Sets the size for the epoch index cache. Defaults to `32768`. Increase if you perform frequent deep chain lookups for block heights far from the latest height.
 - `LOTUS_BSYNC_MSG_WINDOW`: Sets the initial maximum window size for message fetching blocksync request. Set to 10-20 if you have an internet connection with low bandwidth.
+- `LOTUS_MIGRATION_MAX_WORKER_COUNT`: Limits the number of actors being migrated simultaneously. 
 
 ## Controlling a remote daemon
 
