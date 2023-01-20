@@ -80,7 +80,7 @@ As you're going through this section, make a note of the following variables:
 
 A Lotus full-node is a computer running the `lotus daemon`. Full-nodes are unique because they have complete access to the Filecoin blockchain. The computer specifications required to run a Lotus full-node are relatively high and might be out of reach for most end-user laptops and PCs.
 
-Usually, we'd have to _spin up_ a full-node, but we're going to use a Lotus full-node provided by Protocol Labs for this tutorial. This node, called `api.chain.love`, is only for practice sessions like this tutorial and should not be relied upon for any production or development purposes.
+Usually, we'd have to _spin up_ a full-node, but in this tutorial, we're going to use the lotus gateway service `api.chain.love`.
 
 ## Install a lite-node
 
@@ -231,11 +231,6 @@ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 ## Run a Lotus lite-node
 
 Now that you have Lotus ready to run, you can start a Lotus lite-node on your computer and connect to the `api.chain.love` Lotus full-node!
-
-{{< alert >}}
-Just as a reminder, `api.chain.love` is a Lotus full-node managed by Protocol Labs. It's ideal for use in this tutorial, but should not be used in a development or in a production environment.
-{{< /alert >}}
-
 
 1. Open a terminal windows and run the `lotus daemon --lite` command, using `api.chain.love` as the full-node address:
 
