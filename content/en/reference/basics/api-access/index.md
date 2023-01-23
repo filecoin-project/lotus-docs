@@ -88,6 +88,8 @@ API clients take care of the low-level details of making requests and handling r
 
 ## Go JSON-RPC client
 
+### Locally Hosted Node
+
 To use the Lotus Go client, the [Go RPC-API](https://github.com/filecoin-project/go-jsonrpc) library can be used to interact with the Lotus API node. This library was written by Lotus developers and it is used by Lotus itself.
 
 If your Lotus instance is hosted remotely, ensure that you have enabled [remote API access](#enable-remote-api-access). You will need to obtain an [API token](#api-tokens).
@@ -136,3 +138,47 @@ If your Lotus instance is hosted remotely, ensure that you have enabled [remote 
 
 1. Run `go mod init` to setup your `go.mod` file.
 1. You should now to be able to interact with the Lotus API.
+
+### Publicly Available Hosted Endpoints
+
+To use a publicly available hosted endpoint such as [Glif](https://api.hyperspace.node.glif.io/rpc/v0) follow the steps for the locally hosted node above replacing the script in step 2 with the following:
+
+{{< alert >}}
+**NOTE** - Publicly available hosted endpoints **do not** require an authorization token.
+{{< /alert >}}
+
+
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "log"
+
+    jsonrpc "github.com/filecoin-project/go-jsonrpc"
+    lotusapi "github.com/filecoin-project/lotus/api"
+)
+
+func main() {
+    addr := "wss.hyperspace.node.glif.io/apigw/lotus"
+
+    var api lotusapi.FullNodeStruct
+    closer, err := jsonrpc.NewMergeClient(context.Background(), "ws://"+addr+"/rpc/v0", "Filecoin", []interface{}{&api.Internal, &api.CommonStruct.Internal}, nil)
+    if err != nil {
+        log.Fatalf("connecting with lotus failed: %s", err)
+    }
+    defer closer()
+
+       // Now you can call any API you're interested in.
+    tipset, err := api.ChainHead(context.Background())
+    if err != nil {
+        log.Fatalf("calling chain head: %s", err)
+    }
+    fmt.Printf("Current chain head is: %s", tipset.String())
+}
+```
+Further information about currently availble hosted endpoints can be found at the following links:
+- [Glif](https://api.hyperspace.node.glif.io/rpc/v0)
+- [ChainStack](https://chainstack.com/labs/#filecoin)
