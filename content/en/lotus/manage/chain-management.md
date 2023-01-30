@@ -38,10 +38,16 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
     ```
 
-    a. For **testnet**, command always contains the latest snapshot available for testnet:
+    a. For **calibnet**, command always contains the latest snapshot available for the calibration testnet:
 
     ```shell
     aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
+    ```
+
+    a. For the **Hyperspacenet**, you can get the latest snapshot available with this command:
+
+    ```shell
+    aria2c -x5 https://snapshots.hyperspace.yoga/hyperspace-latest-pruned.car
     ```
 
 {{< alert icon="tip" >}}
