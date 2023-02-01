@@ -27,7 +27,7 @@ Attempting to [create a Lotus deal](https://docs.filecoin.io/get-started/store-a
 - Mainnet 
 
 ## Resolution
-You need fil in your wallet prior to the start of a deal or any process that interacts with datacap. Please [add fil](https://docs.filecoin.io/get-started/store-and-retrieve/setup/#adding-fil-to-your-wallet-or-using-filecoin-plus) to your wallet and try again.
+You need Fil in your wallet prior to the start of a deal or any process that interacts with datacap. Please [add fil](https://docs.filecoin.io/get-started/store-and-retrieve/setup/#adding-fil-to-your-wallet-or-using-filecoin-plus) to your wallet and try again.
 
 ## Extras
 
