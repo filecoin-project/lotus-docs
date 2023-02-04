@@ -16,10 +16,10 @@ SplitStore is a freestanding compacting blockstore that allows you to keep a sma
 
 ### Preparing for SplitStore
 
-{{< alert icon="warning" >}}Always enable or manually prune your SplitStore on a fully prepared `/.lotus/datastore` folder!	Always enable or manually prune your SplitStore on a fully prepared `/.lotus/datastore` folder!{{< /alert >}}
+{{< alert icon="warning" >}}Always enable or manually prune your SplitStore on a fully prepared `/.lotus/datastore` folder!{{< /alert >}}
 
 1. Manually delete the contents of your `/.lotus/datastore/chain` folder.	
-2. If you are already running a SplitStore enabed node, you will also need to clear your existing SplitStore folders. You can do this by either running [`./lotus-shed spltstore clear`](https://lotus.filecoin.io/lotus/configure/splitstore/#utilities) or by manually deleting the contents of your `/.lotus/datastore/splitstore` folder.
+2. If you are already running a SplitStore enabled node, you will also need to clear your existing SplitStore folders. You can do this by either running [`./lotus-shed spltstore clear`](https://lotus.filecoin.io/lotus/configure/splitstore/#utilities) or by manually deleting the contents of your `/.lotus/datastore/splitstore` folder.
 
 ### Enabling SplitStore 
 
