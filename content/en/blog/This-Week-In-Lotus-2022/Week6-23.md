@@ -1,8 +1,8 @@
 ---
 title: "This Week in Lotus - Week 6 - 2023"
 description: "Stay up to date with what has happened in Lotus this week"
-date: 2023-02-03T08:49:55+00:00
-lastmod: 2023-02-03T08:49:55+00:00
+date: 2023-02-10T08:49:55+00:00
+lastmod: 2023-02-10T08:49:55+00:00
 draft: false
 images: []
 ---
@@ -11,10 +11,10 @@ images: []
 
 The updated releases and network upgrade timelines are as follow:
 
-**2023-02-14** - The first release candidate of v1.20.0 will be released. Please note that this release candidate only sets upgrade epoch for the Calibration-testnet, and does not set the upgrade epochs for mainnet.
-**2023-02-21** - Calibration-testnet network upgrade
-**2023-02-28** - The final Lotus v1.20.0 will be released with everything set for mainnet.
-**2023-03-14** - The mainnet network upgrade
+- **2023-02-14** - The first release candidate of v1.20.0 will be released. Please note that this release candidate only sets upgrade epoch for the Calibration-testnet, and does not set the upgrade epochs for mainnet.
+- **2023-02-21** - Calibration-testnet network upgrade
+- **2023-02-28** - The final Lotus v1.20.0 will be released with everything set for mainnet.
+- **2023-03-14** - The mainnet network upgrade
 
 Get ready for a day full of :pie: (π day) **and FEVM launch!**
 
