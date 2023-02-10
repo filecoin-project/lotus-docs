@@ -340,6 +340,7 @@ Variables specific to the _Lotus daemon_:
 - `LOTUS_SKIP_GENESIS_CHECK=_yes_`: Set only if you wish to run a lotus network with a different genesis block.
 - `LOTUS_CHAIN_TIPSET_CACHE`: Sets the size for the chainstore tipset cache. Defaults to `8192`. Increase if you perform frequent arbitrary tipset lookups.
 - `LOTUS_CHAIN_INDEX_CACHE`: Sets the size for the epoch index cache. Defaults to `32768`. Increase if you perform frequent deep chain lookups for block heights far from the latest height.
+- `LOTUS_CHAIN_BADGERSTORE_COMPACTIONWORKERNUM`: Sets the [number of compaction workers](https://github.com/dgraph-io/badger/blob/a1714be7db5041d0d886ab3a9579893c8ca42805/options.go#L619-L626) for the badger blockstore.
 - `LOTUS_BSYNC_MSG_WINDOW`: Sets the initial maximum window size for message fetching blocksync request. Set to 10-20 if you have an internet connection with low bandwidth.
 - `LOTUS_MIGRATION_MAX_WORKER_COUNT`: Limits the number of actors being migrated simultaneously. 
 
