@@ -59,7 +59,7 @@ ListenAddress = "/ip4/127.0.0.1/tcp/6789/http"
 [Libp2p]
 ListenAddresses = ["/ip4/0.0.0.0/tcp/4444", "/ip6/::/tcp/4444"]
 ```
-5. Restart the second node and import Lotus wallet keys from the original node to the third node.
+5. Restart the third node and import Lotus wallet keys from the original node to the third node.
 
 ### Configuring Raft Consensus / Redundant Chain nodes
 1. There is now a new section in the `config.toml` file for the lotus node, called `[Cluster]`. If you don't see this section in your own `config.toml`, please run `lotus config default` and copy the new section across.
