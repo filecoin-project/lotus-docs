@@ -379,3 +379,87 @@ lotus filplus --from=<notary-1> <client-address> <bytes>
 ```plaintext
 message sent, now waiting on cid: bafy2bzaceacajb2hpk6ywlk7xzghnm2n5rxndhaikwyvuvo2m2taynpaqrclc
 ```
+
+### FEVM Features
+
+In this section, you can create f4 addresses and find the corresponding ETH account
+
+First set this value to true on your `config.toml`:
+```plaintext
+[Fevm]
+  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
+  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
+  #
+  # type: bool
+  # env var: LOTUS_FEVM_ENABLEETHRPC
+   EnableEthRPC = true
+```
+Create a new f4 address with this cmd:
+```shell
+lotus wallet new delegated
+```
+```
+f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+```
+
+To find the ETH account:
+```shell
+lotus evm stat f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+```
+```
+Filecoin address:  f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+Eth address:  0xa7cfe88fe6858e2ba1fe9eaec174be70d38ee2b7
+Code cid:  bafk2bzacedfvut2myeleyq67fljcrw4kkmn5pb5dpyozovj7jpoez5irnc3ro
+```
+{{< alert >}}
+<u>Vice versa</u>: `lotus evm stat 0xa7cfe88fe6858e2ba1fe9eaec174be70d38ee2b7`.
+{{< /alert >}}
+
+
+Deploy a contract:
+```shell
+lotus evm deploy --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey testcoin.bin
+```
+```
+sending message...
+waiting for message to execute...
+Actor ID: 1008
+ID Address: f01008
+Robust Address: f2mf75wcwurklloyc6zbrew2wqj4gyiih2cgcwjbi
+Eth Address: 0xfe6173918b2448ce93f4710f71a1051e405fdc29
+f4 Address: f410f7zqxhemlerem5e7uoehxdiifdzaf7xbjawmljkq
+Return: gxkD8FUCYX/bCtSKlrdgXshiS2rQTw2EIPpU/mFzkYskSM6T9HEPcaEFHkBf3Ck=
+```
+
+Invoke the contract:
+
+`lotus evm invoke [command options] <address> <calldata>`
+
+Example:
+```shell
+lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey t01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
+```
+```
+sending message...
+waiting for message to execute...
+Gas used:  2459725
+0000000000000000000000000000000000000000000000000000000000000000
+```
+
+
+If you encounter any issues, you can add a `--help` or `-h` behind the cmd you are trying to execute:
+```
+NAME:
+   lotus evm - Commands related to the Filecoin EVM runtime
+
+USAGE:
+   lotus evm command [command options] [arguments...]
+
+COMMANDS:
+     deploy            Deploy an EVM smart contract and return its address
+     invoke            Invoke an EVM smart contract using the specified CALLDATA
+     stat              Print eth/filecoin addrs and code cid
+     call              Simulate an eth contract call
+     contract-address  Generate contract address from smart contract code
+     help, h           Shows a list of commands or help for one command
+```
