@@ -437,7 +437,7 @@ Invoke the contract:
 
 Example:
 ```shell
-lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey t01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
+lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey f01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
 ```
 ```
 sending message...
