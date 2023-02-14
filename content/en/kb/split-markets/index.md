@@ -1,18 +1,25 @@
 ---
 title: "Split-markets"
 description: "Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients."
-lead: "Lotus performs mining operations, such as sealing files into sectors, calculating proofs over those files and submitting the proofs on chain. Lotus also performs markets operations, providing storage and serving retrievals to clients."
+date: 2023-02-14T12:00:35+01:00
+lastmod: 2023-02-14T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-advanced-configurations"
-        identifier: "storage-providers-split-markets"
+  kb:
+    parent: "browse"
 aliases:
     - /docs/storage-providers/split-markets-miners/
     - /storage-providers/configure/split-markets-miners/
-weight: 520
-toc: true
+    - /storage-providers/advanced-configurations/split-markets-miners/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["depricated"]
 ---
+
+{{< alert icon="warning" >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
+{{< /alert >}}
 
 ## Concepts
 
@@ -322,10 +329,6 @@ network, thus reducing network IO loads.
 If you have initialized the dagstore, you can optionally move the DAG store
 directory to the lotus markets repository, to carry over the indices you have
 already built up.
-
-{{< alert icon="tip" >}}
-Dagstore has not been introduced in v1.11.1 yet, we will update the docs once its available in Lotus.
-{{< /alert >}}
 
 ```shell
 mv ~/.lotusminer/dagstore ~/.lotusmarkets/
