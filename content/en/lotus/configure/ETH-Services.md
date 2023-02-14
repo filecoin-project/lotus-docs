@@ -4,7 +4,7 @@ description: "Version 1.20.0 introduces FEVM EVM services for Lotus node."
 draft: false
 menu:
     lotus:
-        parent: "lotus-configure"
+        parent: "lotus-configure/eth-services"
 weight: 320
 toc: true
 ---
