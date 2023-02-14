@@ -1,5 +1,5 @@
 ---
-title: "ETH Services"
+title: "Ethereum RPC"
 description: "Version 1.20.0 introduces FEVM services for Lotus node."
 draft: false
 menu:
