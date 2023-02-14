@@ -1,18 +1,25 @@
 ---
 title: "Dagstore"
 description: "The dagstore is a sharded store to hold large IPLD graphs efficiently, packaged as location-transparent attachable CAR files, with mechanical sympathy resulting in zero-copy access in ideal situations."
-lead: "The dagstore is a sharded store to hold large IPLD graphs efficiently, packaged as location-transparent attachable CAR files, with mechanical sympathy resulting in zero-copy access in ideal situations."
+date: 2023-02-14T12:00:35+01:00
+lastmod: 2023-02-14T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-providers-configure-dagstore"
+  kb:
+    parent: "browse"
 aliases:
     - /docs/storage-providers/dagstore/
     - /storage-providers/configure/dagstore/
-weight: 335
-toc: true
+    - /storage-providers/operate/dagstore/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["deprecated"]
 ---
+
+{{< alert icon="warning" >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
+{{< /alert >}}
 
 ## Conceptual overview
 
