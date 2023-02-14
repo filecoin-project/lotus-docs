@@ -52,7 +52,7 @@ Here's a definition of terms:
 
 By default, the dagstore root will be:
 
-- `$LOTUS_MARKETS_PATH/dagstore`, if you're running a [split miner/market deployment]({{< relref "split-markets-miners" >}}).
+- `$LOTUS_MARKETS_PATH/dagstore`, if you're running a [split miner/market deployment]({{< relref "../../kb/split-markets/" >}}).
 - `$LOTUS_MINER_PATH/dagstore`, if you're not.
 
 The directory structure is as follows:
@@ -179,7 +179,7 @@ The `lotus-miner` executable contains a `dagstore` command with several useful s
 
 Refer to the `--help` texts for more information.
 
-On a [split miner/market deployment]({{< relref "split-markets-miners" >}}), these commands hit the markets node as long as your environment variables are configured correctly.
+On a [split miner/market deployment]({{< relref "../../kb/split-markets/" >}}), these commands hit the markets node as long as your environment variables are configured correctly.
 
 ## Recommendations
 
