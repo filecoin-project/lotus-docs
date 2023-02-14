@@ -13,7 +13,7 @@ aliases:
 toc: false
 pinned: false
 types: ["article"]
-areas: ["depricated"]
+areas: ["deprecated"]
 ---
 
 {{< alert icon="warning" >}}
