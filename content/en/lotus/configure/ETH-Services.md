@@ -1,16 +1,130 @@
 ---
 title: "ETH Services"
-description: "Version 1.20.0 introduces FEVM EVM services for Lotus node."
+description: "Version 1.20.0 introduces FEVM services for Lotus node."
 draft: false
 menu:
     lotus:
-        parent: "lotus-configure/eth-services"
+        parent: "lotus-configure"
 weight: 320
 toc: true
 ---
 
-Version 1.19.0 introduces redundant Lotus node cluster raft concensus in order to maintain consistent state for nonces and messages being published in the event of Lotus node failure.
+## FEVM
+
+FEVM is a new feature in Lotus that allows node operators to run Ethereum smart contracts on the Filecoin network. By enabling FEVM in your Lotus node, you can create new use cases for the Filecoin network and integrate it with existing Ethereum applications.
+
+#### EnableEthRPC
+
+To enable the service set the value below to `true`:
+
+```toml
+[Fevm]
+  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
+  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
+  #
+  # type: bool
+  # env var: LOTUS_FEVM_ENABLEETHRPC
+   EnableEthRPC = true
+```
+
+#### FEVM in Lotus
+
+Once you have enabled FEVM, you can start using it to interact with Ethereum smart contracts. To do so, you can use any Ethereum client library that supports JSON-RPC over HTTP or WebSocket, such as web3.js or ethers.js.
+
+To use the Ethereum client library with your Lotus node, you need to configure it to connect to the `eth_rpc` API of your Lotus node. 
+By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
+
+#### Configuration Options
+```toml
+[Fevm]
+  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
+  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
+  #
+  # type: bool
+  # env var: LOTUS_FEVM_ENABLEETHRPC
+  #EnableEthRPC = false
+
+  # EthTxHashMappingLifetimeDays the transaction hash lookup database will delete mappings that have been stored for more than x days
+  # Set to 0 to keep all mappings
+  #
+  # type: int
+  # env var: LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS
+  #EthTxHashMappingLifetimeDays = 0
+
+  [Fevm.Events]
+    # EnableEthRPC enables APIs that
+    # DisableRealTimeFilterAPI will disable the RealTimeFilterAPI that can create and query filters for actor events as they are emitted.
+    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
+    #
+    # type: bool
+    # env var: LOTUS_FEVM_EVENTS_DISABLEREALTIMEFILTERAPI
+    #DisableRealTimeFilterAPI = false
+
+    # DisableHistoricFilterAPI will disable the HistoricFilterAPI that can create and query filters for actor events
+    # that occurred in the past. HistoricFilterAPI maintains a queryable index of events.
+    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
+    #
+    # type: bool
+    # env var: LOTUS_FEVM_EVENTS_DISABLEHISTORICFILTERAPI
+    #DisableHistoricFilterAPI = false
+
+    # FilterTTL specifies the time to live for actor event filters. Filters that haven't been accessed longer than
+    # this time become eligible for automatic deletion.
+    #
+    # type: Duration
+    # env var: LOTUS_FEVM_EVENTS_FILTERTTL
+    #FilterTTL = "24h0m0s"
+
+    # MaxFilters specifies the maximum number of filters that may exist at any one time.
+    #
+    # type: int
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERS
+    #MaxFilters = 100
+
+    # MaxFilterResults specifies the maximum number of results that can be accumulated by an actor event filter.
+    #
+    # type: int
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERRESULTS
+    #MaxFilterResults = 10000
+
+    # MaxFilterHeightRange specifies the maximum range of heights that can be used in a filter (to avoid querying
+    # the entire chain)
+    #
+    # type: uint64
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE
+    #MaxFilterHeightRange = 2880
+
+    # DatabasePath is the full path to a sqlite database that will be used to index actor events to
+    # support the historic filter APIs. If the database does not exist it will be created. The directory containing
+    # the database must already exist and be writeable. If a relative path is provided here, sqlite treats it as
+    # relative to the CWD (current working directory).
+    #
+    # type: string
+    # env var: LOTUS_FEVM_EVENTS_DATABASEPATH
+    #DatabasePath = ""
+```
+
+#### Environment variables
+
+- `LOTUS_FEVM_ENABLEETHRPC`: Enables the Eth RPC feature and allows storing a mapping of Eth transaction hashes to Filecoin message CIDs.
+- `LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS`: The number of days after which a transaction hash lookup database will delete mappings that have been stored.
+
+#### Utilities
+
+Create a new f4 address
 
 
-
+```shell
+NAME:
+   lotus evm - Commands related to the Filecoin EVM runtime
+USAGE:
+   lotus evm command [command options] [arguments...]
+COMMANDS:
+     deploy            Deploy an EVM smart contract and return its address
+     invoke            Invoke an EVM smart contract using the specified CALLDATA
+     stat              Print eth/filecoin addrs and code cid
+     call              Simulate an eth contract call
+     contract-address  Generate contract address from smart contract code
+     help, h           Shows a list of commands or help for one command
+```
 ```
