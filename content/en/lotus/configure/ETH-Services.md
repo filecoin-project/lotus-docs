@@ -111,9 +111,6 @@ By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
 
 #### Utilities
 
-Create a new f4 address
-
-
 ```shell
 NAME:
    lotus evm - Commands related to the Filecoin EVM runtime
@@ -127,4 +124,53 @@ COMMANDS:
      contract-address  Generate contract address from smart contract code
      help, h           Shows a list of commands or help for one command
 ```
+
+Examples:
+
+Create a new f4 address:
+
+```shell
+lotus wallet new delegated
+```
+```
+f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+```
+
+Find the corresponding ETH account:
+
+```shell
+lotus evm stat f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+```
+```
+Filecoin address:  f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+Eth address:  0xa7cfe88fe6858e2ba1fe9eaec174be70d38ee2b7
+Code cid:  bafk2bzacedfvut2myeleyq67fljcrw4kkmn5pb5dpyozovj7jpoez5irnc3ro
+```
+
+Deploy a contract:
+
+```shell
+lotus evm deploy --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey testcoin.bin
+```
+```
+sending message...
+waiting for message to execute...
+Actor ID: 1008
+ID Address: f01008
+Robust Address: f2mf75wcwurklloyc6zbrew2wqj4gyiih2cgcwjbi
+Eth Address: 0xfe6173918b2448ce93f4710f71a1051e405fdc29
+f4 Address: f410f7zqxhemlerem5e7uoehxdiifdzaf7xbjawmljkq
+Return: gxkD8FUCYX/bCtSKlrdgXshiS2rQTw2EIPpU/mFzkYskSM6T9HEPcaEFHkBf3Ck=
+```
+
+Invoke the contract:
+
+```shell
+lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey f01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
+```
+```
+sending message...
+waiting for message to execute...
+Gas used:  2459725
+0000000000000000000000000000000000000000000000000000000000000000
 ```
