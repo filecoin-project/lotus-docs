@@ -7,6 +7,8 @@ draft: false
 menu:
   kb:
     parent: "browse"
+aliases:
+    - /kb/depreciated-features/
 toc: false
 pinned: false
 types: ["article"]
