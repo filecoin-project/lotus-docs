@@ -108,6 +108,12 @@ By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
 
 - `LOTUS_FEVM_ENABLEETHRPC`: Enables the Eth RPC feature and allows storing a mapping of Eth transaction hashes to Filecoin message CIDs.
 - `LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS`: The number of days after which a transaction hash lookup database will delete mappings that have been stored.
+- `LOTUS_FEVM_EVENTS_DISABLEREALTIMEFILTERAPI` : Disables the RealTimeFilterAPI that can create and query filters for actor events as they are emitted. 
+- `LOTUS_FEVM_EVENTS_DISABLEHISTORICFILTERAPI` : Disables the HistoricFilterAPI that can create and query filters for actor events that occurred in the past.
+- `LOTUS_FEVM_EVENTS_MAXFILTERS` : Maximum number of filters that can exist at any one time.
+- `LOTUS_FEVM_EVENTS_MAXFILTERRESULTS` : Maximum number of results that can be accumulated by an actor event filter.
+- `LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE` : Maximum range of heights that can be used in a filter to avoid querying the entire chain.
+- `LOTUS_FEVM_EVENTS_DATABASEPATH` : The full path to a SQLite database that will be used to index actor events to support the HistoricFilterAPI. If the database does not exist, it will be created. 
 
 #### Utilities
 
