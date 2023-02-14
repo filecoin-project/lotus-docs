@@ -1,17 +1,26 @@
 ---
-title: "Dynamic retrieval pricing"
-description: "Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External."
-lead: "Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External."
+title: "Dynamic retrieval pricing is being depricated"
+description: "Dynamic retrieval pricing is being depricated"
+date: 2023-02-14T12:00:35+01:00
+lastmod: 2023-02-14T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-provider-dynamic-retrieval-pricing"
+  kb:
+    parent: "browse"
 aliases:
+    - /storage-providers/operate/dynamic-retrieval-pricing/
     - /docs/storage-providers/dynamic-retrieval-pricing/
-weight: 350
-toc: true
+toc: false
+pinned: false
+types: ["article"]
+areas: ["depricated"]
 ---
+
+{{< alert icon="warning" >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
+{{< /alert >}}
+
+Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External.
 
 | Policy name | Description |
 | --- | --- |
@@ -79,4 +88,3 @@ Strategy = "external"
 [Dealmaking.RetrievalPricing.External]
 Path = "/var/script"
 ```
-
