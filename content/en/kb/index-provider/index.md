@@ -1,19 +1,26 @@
 ---
 title: "Index provider"
 description: "Index provider is the backbone of content routing in Filecoin network: it advertises the availability of the content provided by a storage provider to indexer nodes."
-lead: "The index provider generates advertisements from the deals made by a storage provider and announces changes to the indexer nodes for further processing."
-draft: false 
+date: 2023-02-14T12:00:35+01:00
+lastmod: 2023-02-14T12:00:35+01:00
+draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-providers-index-provider"
-weight: 360
+  kb:
+    parent: "browse"
 aliases:
-    - /docs/storage-providers/index-provider/
-toc: true
+     - /docs/storage-providers/index-provider/
+     - /storage-providers/operate/index-provider/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Deprecated"]
 ---
 
-The index provider is a component of the _markets_ subsystem that enables content routing backed by the Filecoin network: it announces what content is stored by a storage provider by advertising the list of multihashes extracted from CARv2 indices stored by [DagStore]({{< relref "dagstore" >}}) along with metadata on how to retrieve the content. The indexing announcements are then published onto a gossipsub topic, which is listened to by a set of indexer nodes.
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
+ {{< /alert >}}
+
+The index provider is a component of the _markets_ subsystem that enables content routing backed by the Filecoin network: it announces what content is stored by a storage provider by advertising the list of multihashes extracted from CARv2 indices stored by [DagStore]({{< relref "../../storage-providers/operate/dagstore/" >}}) along with metadata on how to retrieve the content. The indexing announcements are then published onto a gossipsub topic, which is listened to by a set of indexer nodes.
 
 The indexer nodes then process the advertisements to facilitate a service where a client can look up the storage provider that stores a given CID or multihash.
 
@@ -237,4 +244,3 @@ If the section doesn't exist, you can manually add it:
   # env var: LOTUS_INDEXPROVIDER_PURGECACHEONSTART
   #PurgeCacheOnStart = false
 ```
-
