@@ -13,7 +13,7 @@ toc: true
 
 FEVM is a new feature in Lotus that allows node operators to run Ethereum smart contracts on the Filecoin network. By enabling FEVM in your Lotus node, you can create new use cases for the Filecoin network and integrate it with existing Ethereum applications.
 
-#### EnableEthRPC
+### EnableEthRPC
 
 To enable the service set the value below to `true`:
 
@@ -27,14 +27,14 @@ To enable the service set the value below to `true`:
    EnableEthRPC = true
 ```
 
-#### FEVM in Lotus
+### FEVM in Lotus
 
 Once you have enabled FEVM, you can start using it to interact with Ethereum smart contracts. To do so, you can use any Ethereum client library that supports JSON-RPC over HTTP or WebSocket, such as web3.js or ethers.js.
 
 To use the Ethereum client library with your Lotus node, you need to configure it to connect to the `eth_rpc` API of your Lotus node. 
 By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
 
-#### Configuration Options
+### Configuration Options
 ```toml
 [Fevm]
   # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
@@ -104,7 +104,7 @@ By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
     #DatabasePath = ""
 ```
 
-#### Environment variables
+### Environment variables
 
 - `LOTUS_FEVM_ENABLEETHRPC`: Enables the Eth RPC feature and allows storing a mapping of Eth transaction hashes to Filecoin message CIDs.
 - `LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS`: The number of days after which a transaction hash lookup database will delete mappings that have been stored.
@@ -115,7 +115,7 @@ By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
 - `LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE` : Maximum range of heights that can be used in a filter to avoid querying the entire chain.
 - `LOTUS_FEVM_EVENTS_DATABASEPATH` : The full path to a SQLite database that will be used to index actor events to support the HistoricFilterAPI. If the database does not exist, it will be created. 
 
-#### Utilities
+### Utilities
 
 ```shell
 NAME:
