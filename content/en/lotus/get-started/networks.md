@@ -15,7 +15,8 @@ toc: true
 There are three networks available for Filecoin:
 
 - [Mainnet](#mainnet), the only production Filecoin network.
-- [Calibration](#calibration), the primary testing network for Filecoin. 
+- [Calibration](#calibration), the primary testing network for Filecoin.
+- [Hyperspace](#hyperspace), the developer-oriented testing network for Filecoin.
 - [Devnet]({{<relref "../../lotus/developers/local-network/">}}), the local development network designed to run with minimal resources for develpment testing.
 
 ### Mainnet
@@ -121,6 +122,51 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
 - [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
 - [Block explorer - Filscan for Calibration](https://calibration.filscan.io/)
+
+### Hyperspace
+
+The Hyperspace test network is a developer-oriented testnet! It serves as the main pre-production developer test ground, where developers can test their applications, tooling, and smart contracts before launching them on the mainnet. 
+
+**Maintainer**: [Factor8 Solutions](https://hyperspace.yoga/#home)
+
+**Genesis**:
+
+- CAR File: `Qmbu9g75GMjbokCNHPQPXAyKZoY8NqVYtkY4PQT7Zvp2T6`
+- Reset Timestamp: `2023-01-16T6:00:00Z`
+- Genesis Block CID: `bafy2bzacebqfpeylmrl4h3pq4ofbdj2bfbw2i45fuy6qm4wxcyebpsxhrpqhu`
+- sha1 Digest: `52d82b6fcad138a726477152ff2543a91f2b83f8`
+
+**Network parameters**:
+
+- Supported Sector Sizes: `512 MiB` and `32 GiB` and `64 GiB`
+- Consensus Miner Min Power: `16 GiB`
+- Epoch Duration Seconds: `30`
+- Expected Leaders per Epoch: `5`
+- WindowPoSt Proving Period: `2880`
+- WindowPoSt Challenge Window: `60`
+- WindowPoSt Period Deadlines: `48`
+- Pre-Commit Challenge Delay: `10`
+
+**Bootstrap peers**:
+
+```
+/dns4/de0.bootstrap.hyperspace.yoga/tcp/31000/p2p/12D3KooWRiwg6EHAJMR5w3DZTgpS5W4ncWPSVP2Mr1o4ey1RYSQo
+/dns4/de1.bootstrap.hyperspace.yoga/tcp/31000/p2p/12D3KooWM9HZsp1bh5jNu2m9FBSbkKSeSWUPPuDBQiiMfPDBAK3U
+/dns4/au0.bootstrap.hyperspace.yoga/tcp/31000/p2p/12D3KooWLup1gTdG9ipt3bSUyPCmM4CT86p9nNe12oqrCX8Zo8Na
+/dns4/ca0.bootstrap.hyperspace.yoga/tcp/31000/p2p/12D3KooWNJ4evKioh6gexD4fyvyeFecNtp2oTEPTyp3jtSQ3pWaP
+/dns4/sg0.bootstrap.hyperspace.yoga/tcp/31000/p2p/12D3KooWCENec46HHByaJKzbjSqz9TqVdSxSAdi9FKNwdMvfw3vp
+```
+
+**Resources**:
+
+- [Latest chain snapshot (lightweight)](https://kb.factor8.io/docs/filecoin/testnets/hyperspace)
+- [Faucet](https://hyperspace.yoga/#faucet)
+- [Status page and incidents](https://filecoin.statuspage.io/)
+- [Slack Channel for Questions: #fil-net-hyperspace-discuss](https://filecoinproject.slack.com/archives/C04JEJB82RY)
+
+For a list of Hyperspace block explorers, RPC - public endpoints, auto-accepting storage deal storage providers, Reputation Systems, Filecoin CID Checker, Zondax Filecoin Solidity Libs, Chain Index APIs and much more:
+
+- [Additional developer resources](https://github.com/filecoin-project/testnet-hyperspace#resources)
 
 ### Devnet
 
