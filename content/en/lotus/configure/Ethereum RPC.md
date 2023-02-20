@@ -11,7 +11,7 @@ toc: true
 
 ## FEVM
 
-FEVM is a new feature in Lotus that allows node operators to run Ethereum smart contracts on the Filecoin network. By enabling FEVM in your Lotus node, you can create new use cases for the Filecoin network and integrate it with existing Ethereum applications.
+With the Filecoin EVM runtime being deployed on Filecoin mainnet via the network version 18 upgrade, node operators, API service providers and application developers will have a new set of configurations that will allow them to interact with the new EVM features.
 
 ### EnableEthRPC
 
