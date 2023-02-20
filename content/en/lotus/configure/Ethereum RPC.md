@@ -117,6 +117,7 @@ By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
 
 ### Utilities
 
+The Lotus command line interface also has a new set of commands that allow you to interact with the Filecoin EVM runtime:
 ```shell
 NAME:
    lotus evm - Commands related to the Filecoin EVM runtime
