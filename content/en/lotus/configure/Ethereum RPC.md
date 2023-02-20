@@ -27,9 +27,7 @@ To enable the service set the value below to `true`:
    EnableEthRPC = true
 ```
 
-### FEVM in Lotus
-
-Once you have enabled FEVM, you can start using it to interact with Ethereum smart contracts. To do so, you can use any Ethereum client library that supports JSON-RPC over HTTP or WebSocket, such as web3.js or ethers.js.
+Once you have enabled EthRPC in your Lotus node, you can start using it to interact with Ethereum smart contracts. To do so, you can use any Ethereum client library that supports JSON-RPC over HTTP or WebSocket, such as web3.js or ethers.js.
 
 To use the Ethereum client library with your Lotus node, you need to configure it to connect to the `eth_rpc` API of your Lotus node. 
 By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v0`.
