@@ -1,6 +1,6 @@
 ---
 title: "Getting logs for hard to solve issues"
-description: "This is article that provides some instructions that can potentially help us find the root cause of an issue faster"
+description: "This article provides some instructions that can potentially help us find the root cause of an issue faster"
 date: 2022-03-18T12:00:35+01:00
 lastmod: 2022-03-18T12:00:35+01:00
 draft: false
@@ -23,6 +23,12 @@ You can export the lotus stacktraces with this command:
 
 ```
 lotus pprof goroutines > goroutines.txt
+```
+
+If the suspected deadlock is related to the Lotus-Miner you can use the:
+
+```
+lotus-miner pprof goroutines > minergoroutines.txt
 ```
 
 Please attach these traces to any Github bug report where you suspect a deadlock.
