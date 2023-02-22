@@ -17,7 +17,7 @@ The Filecoin network requires storage providers to run computationally expensive
 
 ## General hardware requirements
 
-The following are _general_ hardware requirements and guidelines for each task type or processes. Please keep in mind that each [specific operation requirement]({{< relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements" >}}) adds to the `Lotus-Miner` processes hardware recommendation of **256 GiB of RAM**. The RAM requirement **should** be complemented with at least **128 GiB of swap on a fast NVMe SSD**.
+The Filecoin consensus relies on multiple stages, which are very difficult to execute on a single type of hardware. Therefore, it is strongly recommended against trying to run all parts of an SP from a single machine, as supporting such a setup economically is impossible. To complement the hardware recommendations for each task type or process, it is advisable to configure and delegate sealing phases to [`lotus-worker`]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), particularly in setups where multiple sectors need to be sealed in parallel. This will help ensure that each [specific operation requirement]({{< relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements" >}}) is met and that the `lotus-miner` processes run smoothly.
 
 | Hardware | Specification |
 |----------|---------------|
@@ -27,7 +27,6 @@ The following are _general_ hardware requirements and guidelines for each task t
 | GPU | Nvidia GPU with at least 11GB VRAM |
 | Disk | 2 TB NVMe disk |
 
-Note that Lotus allows to configure and delegate sealing phases to [Lotus workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), which in setups that is going to seal multiple sectors in parallel is normally needed.
 
 ## CPU
 
