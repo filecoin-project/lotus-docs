@@ -17,7 +17,15 @@ The Filecoin network requires storage providers to run computationally expensive
 
 ## General hardware requirements
 
-The following are _general_ hardware requirements and guidelines for each task type or processes. Please keep in mind that each [specific operation requirement]({{< relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements" >}}) adds to the `Lotus-Miner` processes hardware recommendation of **128 GiB of RAM** if the windowPoSt task is not outsourced to a seperate windowPoSt worker. The RAM requirement **should** be complemented with **128 GiB of swap on a fast NVMe SSD**.
+The following are _general_ hardware requirements and guidelines for each task type or processes. Please keep in mind that each [specific operation requirement]({{< relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements" >}}) adds to the `Lotus-Miner` processes hardware recommendation of **256 GiB of RAM**. The RAM requirement **should** be complemented with at least **128 GiB of swap on a fast NVMe SSD**.
+
+| Hardware | Specification |
+|----------|---------------|
+| CPU      | 8-core processor |
+| CPU Support | Models with support for _Intel SHA Extensions_ (AMD since Zen microarchitecture or Intel since Ice Lake) will significantly speed up the processes. |
+| RAM      | 256 GiB RAM + Swap |
+| GPU | Nvidia GPU with at least 11GB VRAM |
+| Disk | 2 TB NVMe disk |
 
 Note that Lotus allows to configure and delegate sealing phases to [Lotus workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}), which in setups that is going to seal multiple sectors in parallel is normally needed.
 
