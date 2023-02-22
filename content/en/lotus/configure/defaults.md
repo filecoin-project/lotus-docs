@@ -384,18 +384,12 @@ The [Environment variables section](#environment-variables) section above docume
 
 ## Eth Service
 
-The `ActorEvent` configuration section contains a set of settings for the event filtering API in the Lotus node. These settings control various aspects of the event filtering API, such as the ability to filter events in real-time, the ability to filter events that occurred in the past, the time to live for filters, the maximum number of filters that may exist, the maximum number of results that can be returned by a filter, the maximum range of heights that can be used in a filter, and the location of the database that will be used to index actor events.
+The `ActorEvent` configuration section contains settings for the event filtering API. These settings control various aspects of the event filtering API. The following setting are available:
 
-- `EnableRealTimeFilterAPI` determines if the APIs that can create and query filters for actor events as they are emitted are enabled.
-
-- `EnableHistoricFilterAPI` determines if the APIs that can create and query filters for actor events that occurred in the past are enabled. A queryable index of events will be maintained.
-
-- `FilterTTL` specifies the time to live for actor event filters. Filters that haven't been accessed longer than this time will become eligible for automatic deletion.
-
-- `MaxFilters` integer value that specifies the maximum number of filters that may exist at any one time.
-
-- `MaxFilterResults` integer value that specifies the maximum number of results that can be accumulated by an actor event filter.
-
-- `MaxFilterHeightRange` An unsigned 64-bit integer value that specifies the maximum range of heights that can be used in a filter to avoid querying the entire chain.
-
-- `ActorEventDatabasePath` A string value that specifies the full path to a sqlite database that will be used to index actor events to support the historic filter APIs. If the database does not exist it will be created. The directory containing the database must already exist and be writeable.
+- `EnableRealTimeFilterAPI`: determines if the APIs that can create and query filters for actor events as they are emitted are enabled.
+- `EnableHistoricFilterAPI`: determines if the APIs that can create and query filters for actor events that occurred in the past are enabled. A queryable index of events will be maintained.
+- `FilterTTL`: specifies the time to live for actor event filters. Filters that haven't been accessed longer than this time will become eligible for automatic deletion.
+- `MaxFilters`: integer value that specifies the maximum number of filters that may exist at any one time.
+- `MaxFilterResults`: integer value that specifies the maximum number of results that can be accumulated by an actor event filter.
+- `MaxFilterHeightRange`: An unsigned 64-bit integer value that specifies the maximum range of heights that can be used in a filter to avoid querying the entire chain.
+- `ActorEventDatabasePath`: A string value that specifies the full path to an SQLite database that will be used to index actor events to support the historic filter APIs. The database will be created if it does not exist. The directory containing the database must already exist and be writeable.
