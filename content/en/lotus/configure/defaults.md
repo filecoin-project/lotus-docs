@@ -381,3 +381,15 @@ lotus log list
 {{< alert icon="tip" >}}
 The [Environment variables section](#environment-variables) section above documents some `GOLOG_*` variables that allow to control logging locations and formats.
 {{< /alert >}}
+
+## Eth Service
+
+The `ActorEvent` configuration section contains settings for the event filtering API. These settings control various aspects of the event filtering API. The following setting are available:
+
+- `EnableRealTimeFilterAPI`: determines if the APIs that can create and query filters for actor events as they are emitted are enabled.
+- `EnableHistoricFilterAPI`: determines if the APIs that can create and query filters for actor events that occurred in the past are enabled. A queryable index of events will be maintained.
+- `FilterTTL`: specifies the time to live for actor event filters. Filters that haven't been accessed longer than this time will become eligible for automatic deletion.
+- `MaxFilters`: integer value that specifies the maximum number of filters that may exist at any one time.
+- `MaxFilterResults`: integer value that specifies the maximum number of results that can be accumulated by an actor event filter.
+- `MaxFilterHeightRange`: An unsigned 64-bit integer value that specifies the maximum range of heights that can be used in a filter to avoid querying the entire chain.
+- `ActorEventDatabasePath`: A string value that specifies the full path to an SQLite database that will be used to index actor events to support the historic filter APIs. The database will be created if it does not exist. The directory containing the database must already exist and be writeable.
