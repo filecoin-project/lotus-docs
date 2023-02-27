@@ -1,54 +1,121 @@
 ---
 title: "Retrieve data"
-description: "This guide will show you how to use Lotus to retrieve data that has been stored on the Filecoin network."
-lead: "This guide will show you how to use Lotus to retrieve data that has been stored on the Filecoin network."
-draft: true
+description: "There are multiple ways to fetch data from a storage provider. This pages covers some of the most popular methods."
+lead: "There are multiple ways to fetch data from a storage provider. This pages covers some of the most popular methods."
+draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
 aliases:
+    - /tutorials/store-and-retrieve/retrieve-data/
+    - /tutorials/lotus/store-and-retrieve/retrieve-data/
     - /docs/developers/retrieve-data/
-weight: 130
+weight: 115
 toc: true
 ---
 
-Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a [payment channel]({{< relref "payment-channels" >}}). Unlike storage deals, retrieval deals happen off-chain.
+## Lassie
 
-Currently, Lotus supports direct retrieval from the storage miners which originally stored the data, although, per the network's specification, it is planned to support independent retrieval miners that are specifically dedicated to that business by making retrieval an efficient, fast and reliable operation. At that point, clients will be able to search the network for all possible providers of their desired data (via the DHT, the chain, or out-of-band aggregators), compare deal terms, and chose the best retrieval option for their needs.
+Lassie is a simple retrieval client for Filecoin. It finds and fetches your data over the best retrieval protocols available.
 
-## Set up
+### Prerequisites
 
-To retrieve data from the Filecoin network, a Lotus Node needs to:
+Make sure that you have [Go](https://go.dev) installed and that your `GOPATH` is set up. By default, your `GOPATH` will be set to `~/go`.
 
-1. Perform a retrieval query using the desired _Data CID_ against the miner storing the data.
-2. Receive confirmation from the miner that it is holding that data and that it can provide it for a price.
-3. Send a deal proposal agreeing with the proposed terms.
-4. Receive the data from the miner, verify that it is correct and send incremental payments on the payment channel until the transfer is complete.
+### Install Lassie
 
-Currently the full amount of data must be received, although in the future it will be possible to use IPLD-selectors to pick custom subsets for retrieval.
+1. Download and install Lassie using the Go package manager:
 
-## Finding data by CID
-
-In order to retrieve some data you will need the **Data CID** that was used to create the storage deal.
-
-You can actually query the client to give you all the miners known to store certain data with:
-
-```shell
-lotus client find <Data CID>
+```shell with-output
+go install github.com/filecoin-project/lassie/cmd/lassie@latest
+```
+```
+go: downloading github.com/filecoin-project/lassie v0.3.1
+go: downloading github.com/libp2p/go-libp2p v0.23.2
+go: downloading github.com/filecoin-project/go-state-types v0.9.9
+...
 ```
 
-## Making a retrieval deal
+2. Install the [go-car](https://github.com/ipld/go-car) package using the Go package manager:
 
-The _retrieval deal_ process is simplified on a simple command:
+```shell with-output
+go install github.com/ipld/go-car/cmd/car@latest
+```
+```
+go: downloading github.com/ipld/go-car v0.6.0
+go: downloading github.com/ipld/go-car/cmd v0.0.0-20230215023242-a2a8d2f9f60f
+go: downloading github.com/ipld/go-codec-dagpb v1.6.0 
+...
+```
+The go-car package makes it easier to work with content-addressed archive (CAR) files.
+
+### Retrieve
+
+To retrieve data from Filecoin using Lassie, all you need is the CID of the content you want to download. You can use the following CIDs to test the process:
+
+1. The format for retrieving data using Lassie is:
 
 ```shell
-lotus client retrieve --miner <miner ID> <Data CID> <outfile>
+lassie fetch -o <OUTFILE_FILE_NAME> -p <CID>
 ```
 
-This command takes other optional flags (check `--help`).
+For example:
 
-If the outfile does not exist it will be created in the Lotus repository directory. This process may take 2 to 10 minutes.
+```shell with-output
+lassie fetch -o output.car -p bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6
+```
+```
+Fetching bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6
+Querying indexer for bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6...
+Found 4 storage providers candidates from the indexer, querying all of them:
+        12D3KooWPNbkEgjdBNeaCGpsgCrPRETe4uBZf1ShFXStobdN18ys
+        12D3KooWNHwmwNRkMEP6VqDCpjSZkqripoJgN7eWruvXXqC2kG9f
+        12D3KooWKGCcFVSAUXxe7YP62wiwsBvpCmMomnNauJCA67XbmHYj
+        12D3KooWLDf6KCzeMv16qPRaJsTLKJ5fR523h65iaYSRNfrQy7eU
+Querying [12D3KooWLDf6KCzeMv16qPRaJsTLKJ5fR523h65iaYSRNfrQy7eU] (started)...
+Querying [12D3KooWKGCcFVSAUXxe7YP62wiwsBvpCmMomnNauJCA67XbmHYj] (started)...
 
-{{< alert >}}
-If you added a CAR file serializing an IPLD-DAG with a format that cannot be readily turned into a file (i.e. anything non unixfs), pass the `--car` flag and deserialize your DAG manually as needed.
-{{< /alert >}}
+...
+```
+
+2. This will create an `output.car` file within your current directory:
+
+```shell with-output
+ls -l
+```
+```
+total 143M
+-rw-rw-r-- 1 user user 143M Feb 16 11:21 output.car
+```
+
+### Extract data
+
+Now that we’ve downloaded a CAR file, we need to find out what’s inside it.
+
+1. The format for extracting a .car file using Go-car is:
+
+```
+car extract --file <INPUT_FILE>
+```
+
+2. Extract the output.car file we just downloaded using Lassie:
+
+```
+car extract --file output.car
+```
+
+This command does not output anything on success.
+
+3. You can list the output of the `car` command with `ls`:
+
+```shell with-output
+ls -lh
+```
+```
+-rw-rw-r-- 1 user user 143M Feb 16 11:21 output.car
+-rw-rw-r-- 1 user user 143M Feb 16 11:36 moon-data.tar.gz
+```
+
+4. You can then manage the data as you need.
+
+And there we have it! Downloading and managing data from Filecoin is super simple when you use Lassie and Go-car!
