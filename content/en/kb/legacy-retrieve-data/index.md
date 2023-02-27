@@ -1,6 +1,6 @@
 ---
 title: "Retrieve data with the Legacy Markets"
-description: "This tutorial walks through legacy markets way to retrieve data on the Filecoin network"
+description: "This tutorial walks through data retrieval on the Filecoin network using legacy markets"
 date: 2023-02-23T12:00:35+01:00
 lastmod: 2023-02-23T12:00:35+01:00
 draft: false
