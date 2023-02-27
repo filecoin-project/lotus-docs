@@ -1,17 +1,24 @@
 ---
-title: "Retrieve data"
-description: "The process of storing and retrieving data using the Filecoin network is slightly different from how most storage platforms work. This tutorial walks you through the whole end-to-end process of keeping your data and then getting it back when you need it! This tutorial should take you about an hour to complete."
-lead: Introduction to setting up, storing, and retrieving using the Filecoin network
+title: "Retrieve data with the Legacy Markets"
+description: "This tutorial walks through data retrieval on the Filecoin network using legacy markets"
+date: 2023-02-23T12:00:35+01:00
+lastmod: 2023-02-23T12:00:35+01:00
 draft: false
 menu:
-    tutorials:
-        parent: "tutorials-lotus"
-        identifier: "tutorials-store-and-retrieve-retrieve-data"
+  kb:
+    parent: "browse"
 aliases:
     - /tutorials/store-and-retrieve/retrieve-data/
-weight: 115
-toc: true
+    - /tutorials/lotus/store-and-retrieve/retrieve-data/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Deprecated"]
 ---
+
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0).
+ {{< /alert >}}
 
 Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a [payment channel]({{< relref "payment-channels" >}}). Unlike storage deals, retrieval deals happen off-chain.
 
