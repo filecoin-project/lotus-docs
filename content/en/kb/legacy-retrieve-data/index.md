@@ -7,9 +7,6 @@ draft: false
 menu:
   kb:
     parent: "browse"
-aliases:
-    - /tutorials/store-and-retrieve/retrieve-data/
-    - /tutorials/lotus/store-and-retrieve/retrieve-data/
 toc: false
 pinned: false
 types: ["article"]
