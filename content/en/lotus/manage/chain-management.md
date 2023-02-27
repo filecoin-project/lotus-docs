@@ -126,11 +126,7 @@ lotus daemon --halt-after-import --import-snapshot <filename>
 
 It is possible to _prune_ the current chain data used by Lotus to reduce the node's disk footprint by resyncing from a minimal snapshot.
 
-1. Export the chain data:
-
-    ```shell
-    lotus chain export --recent-stateroots=901 --skip-old-msgs my-snapshot.car
-    ```
+1. Download a lightweight snapshot following the steps in [Lightweight Snapshots]({{< relref "../../lotus/manage/chain-management/#lightweight-snapshot" >}})
 
 1. Stop the Lotus daemon:
 
