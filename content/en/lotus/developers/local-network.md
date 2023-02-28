@@ -268,7 +268,7 @@ In this section, you will add additional nodes to your local network by copying 
 
 This should yield a result like so;
 
-    ```shell
+    ```plaintext
     /ip4/172.16.100.22/tcp/40395/p2p/12D3KooWAPNpm3n3PTaK2gkaZbCNeaNWMg18eLyxUe9PschraUqk
     ```
 
@@ -291,6 +291,8 @@ You should now see your new node getting synchronized with the chain. You can ch
     ```shell
     ./lotus sync wait
     ```
+
+In case you see a `success` result, but no established connection (e.g. errors in your genesis daemon) - make sure you are using the same genesis block carfile.
 
 ### Add notaries
 
