@@ -276,15 +276,15 @@ The port and IP can be configured by using the LIBP2P variables in your [config 
 
 1. Start a new node:
 
-```shell
-./lotus daemon  --genesis=devgen.car
-```
+    ```shell
+    ./lotus daemon  --genesis=devgen.car
+    ```
 
-2. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
+1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
 
-```shell
-./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
-```
+    ```shell
+    ./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
+    ```
 
 You should now see your new node getting synchronized with the chain. You can check the progress;
 
