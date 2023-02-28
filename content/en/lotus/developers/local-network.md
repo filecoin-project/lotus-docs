@@ -262,23 +262,23 @@ Now that your local network is running, you can test various Filecoin features, 
 
 In this section, you will add additional nodes to your local network by copying the `devgen.car` file in your `lotus-local-net` folder to new nodes. We will have to connect the new node to the original genesis node manually, as there's no DHT or bootstrapping for your local network. To get started, lets first fetch the address + peer ID in `multiaddr` format from the genesis node;
 
-    ```shell
-    ./lotus net listen
-    ```
+ ```shell
+./lotus net listen
+```
 
 This should yield a result like so;
 
-    ```plaintext
-    /ip4/172.16.100.22/tcp/40395/p2p/12D3KooWAPNpm3n3PTaK2gkaZbCNeaNWMg18eLyxUe9PschraUqk
-    ```
+```plaintext
+/ip4/172.16.100.22/tcp/40395/p2p/12D3KooWAPNpm3n3PTaK2gkaZbCNeaNWMg18eLyxUe9PschraUqk
+```
 
 The port and IP can be configured by using the LIBP2P variables in your [config or environment variables](https://github.com/filecoin-project/lotus/blob/v1.20.0-rc2/node/config/def.go#L57-L60). By default, LIBP2P will listen on a random port and on all available IP addresses.
 
 1. Start a new node:
 
-    ```shell
-    ./lotus daemon  --genesis=devgen.car
-    ```
+```shell
+./lotus daemon  --genesis=devgen.car
+```
 
 1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
 
