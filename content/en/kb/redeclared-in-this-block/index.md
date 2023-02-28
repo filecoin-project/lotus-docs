@@ -15,10 +15,10 @@ areas: ["Lotus Build"]
 
 ## Problem
 
-When trying to build Lotus, you encounter an error stating that some code has been
+When trying to build Lotus, you encounter an error stating that some code has been redeclared in a block. It usually looks something similar to this:
 
 ```shell
-redeclared in this block
+/usr/local/go/../...go:15:6 xxxx redeclared in this block
 ```
 
 ## Resolution
