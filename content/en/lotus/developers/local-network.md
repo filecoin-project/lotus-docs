@@ -280,17 +280,17 @@ The port and IP can be configured by using the LIBP2P variables in your [config 
 ./lotus daemon  --genesis=devgen.car
 ```
 
-1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
+2. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
 
-    ```shell
-    ./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
-    ```
+```shell
+./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
+```
 
 You should now see your new node getting synchronized with the chain. You can check the progress;
 
-    ```shell
-    ./lotus sync wait
-    ```
+```shell
+./lotus sync wait
+```
 
 In case you see a `success` result, but no established connection (e.g. errors in your genesis daemon) - make sure you are using the same genesis block carfile.
 
