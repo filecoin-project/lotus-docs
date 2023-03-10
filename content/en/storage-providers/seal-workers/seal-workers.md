@@ -129,14 +129,6 @@ Now that the `lotus-worker` is running we need to attach the sealing storage loc
 lotus-worker storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 ```
 
-### Stop the worker
-
-Use the `stop` command to stop the worker:
-
-```shell
-lotus-worker stop <flags>
-```
-
 ### Limit tasks run in parallel
 
 You can limit the amount of tasks run in parallel per task type with environment variables. The environment variable are formatted as `[short task type]_[sector size]_MAX_CONCURRENT=[limit]`.
@@ -184,6 +176,24 @@ The only cases where running multiple workers per machine may be a good idea is 
 It may still be beneficial to run workers in separate containers with non-overlapping resources (i.e., CPU, RAM, and GPU resources allocated exclusively to each worker) to fully utilize multiple GPUs. When using proprietary Nvidia drivers, it's possible to select which GPU device will be used by Lotus with the `NVIDIA_VISIBLE_DEVICES=<device number>` environment variable. Device numbers can be obtained with the `nvidia-smi -L` command.
 
 Advanced GPUs with more than 20 GB of memory capacity are theoretically capable of running sealing tasks in parallel as long as the total memory requirement of all tasks does not exceed the GPU's capacity. Parallel GPU task allocation can be accomplished through co-location of Lotus Workers on a single machine. In all cases, worker co-location should be undertaken with careful attention to avoid resource over-allocation.
+
+## Gracefully stopping a worker
+
+In a sealing pipeline you often have multiple lotus-workers, and gracefully shutting them down is important to not cause disruptions in the pipeline. Storage providers often have a lot incoming sealing tasks in the pipeline, but want/need to shut down worker nr.XX for maintainence/upgrade. We recommend following these steps:
+
+1. Disable all sealing tasks on the lotus-worker:
+
+```shell
+lotus-worker tasks disable --all
+```
+
+This will allow the worker to finish up its current tasks, and hand off the finilized sectors to your storage paths.
+
+2. After every sealing task on a given worker is done, you can use the `stop` command to detach the worker:
+
+```shell
+lotus-worker stop
+```
 
 ## Running Multiple Lotus Workers
 
