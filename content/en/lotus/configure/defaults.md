@@ -35,7 +35,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 [Backup]
   # When set to true disables metadata log (.lotus/kvlog). This can save disk
   # space by reducing metadata redundancy.
-  #
+  # 
   # Note that in case of metadata corruption it might be much harder to recover
   # your node if metadata log is disabled
   #
@@ -116,6 +116,35 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
   # env var: LOTUS_PUBSUB_REMOTETRACER
   #RemoteTracer = ""
 
+  # Path to file that will be used to output tracer content in JSON format.
+  # If present tracer will save data to defined file.
+  # Format: file path
+  #
+  # type: string
+  # env var: LOTUS_PUBSUB_JSONTRACER
+  #JsonTracer = ""
+
+  # Connection string for elasticsearch instance.
+  # If present tracer will save data to elasticsearch.
+  # Format: https://<username>:<password>@<elasticsearch_url>:<port>/
+  #
+  # type: string
+  # env var: LOTUS_PUBSUB_ELASTICSEARCHTRACER
+  #ElasticSearchTracer = ""
+
+  # Name of elasticsearch index that will be used to save tracer data.
+  # This property is used only if ElasticSearchTracer propery is set.
+  #
+  # type: string
+  # env var: LOTUS_PUBSUB_ELASTICSEARCHINDEX
+  #ElasticSearchIndex = ""
+
+  # Auth token that will be passed with logs to elasticsearch - used for weighted peers score.
+  #
+  # type: string
+  # env var: LOTUS_PUBSUB_TRACERSOURCEAUTH
+  #TracerSourceAuth = ""
+
 
 [Client]
   # type: bool
@@ -184,11 +213,11 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 
   [Chainstore.Splitstore]
     # ColdStoreType specifies the type of the coldstore.
-    # It can be "universal" (default) or "discard" for discarding cold blocks.
+    # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
     #
     # type: string
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-    #ColdStoreType = "universal"
+    #ColdStoreType = "messages"
 
     # HotStoreType specifies the type of the hotstore.
     # Only currently supported value is "badger".
@@ -219,87 +248,76 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
     #HotStoreFullGCFrequency = 20
 
-    # EnableColdStoreAutoPrune turns on compaction of the cold store i.e. pruning
-    # where hotstore compaction occurs every finality epochs pruning happens every 3 finalities
-    # Default is false
-    #
-    # type: bool
-    # env var: LOTUS_CHAINSTORE_SPLITSTORE_ENABLECOLDSTOREAUTOPRUNE
-    #EnableColdStoreAutoPrune = false
 
-    # ColdStoreFullGCFrequency specifies how often to performa a full (moving) GC on the coldstore.
-    # Only applies if auto prune is enabled.  A value of 0 disables while a value of 1 will do
-    # full GC in every prune.
-    # Default is 7 (about once every a week)
-    #
-    # type: uint64
-    # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTOREFULLGCFREQUENCY
-    #ColdStoreFullGCFrequency = 7
-
-    # ColdStoreRetention specifies the retention policy for data reachable from the chain, in
-    # finalities beyond the compaction boundary, default is 0, -1 retains everything
-    #
-    # type: int64
-    # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORERETENTION
-    #ColdStoreRetention = 0
-
-[ActorEvent]
-  # EnableRealTimeFilterAPI enables APIs that can create and query filters for actor events as they are emitted.
+[Cluster]
+  # EXPERIMENTAL. config to enabled node cluster with raft consensus
   #
   # type: bool
-  # env var: LOTUS_ACTOREVENT_ENABLEREALTIMEFILTERAPI
-  #EnableRealTimeFilterAPI = false
+  # env var: LOTUS_CLUSTER_CLUSTERMODEENABLED
+  #ClusterModeEnabled = false
 
-  # EnableHistoricFilterAPI enables APIs that can create and query filters for actor events that occurred in the past.
-  # A queryable index of events will be maintained.
-  #
-  # type: bool
-  # env var: LOTUS_ACTOREVENT_ENABLEHISTORICFILTERAPI
-  #EnableHistoricFilterAPI = false
-
-  # FilterTTL specifies the time to live for actor event filters. Filters that haven't been accessed longer than
-  # this time become eligible for automatic deletion.
-  #
-  # type: Duration
-  # env var: LOTUS_ACTOREVENT_FILTERTTL
-  #FilterTTL = "24h0m0s"
-
-  # MaxFilters specifies the maximum number of filters that may exist at any one time.
-  #
-  # type: int
-  # env var: LOTUS_ACTOREVENT_MAXFILTERS
-  #MaxFilters = 100
-
-  # MaxFilterResults specifies the maximum number of results that can be accumulated by an actor event filter.
-  #
-  # type: int
-  # env var: LOTUS_ACTOREVENT_MAXFILTERRESULTS
-  #MaxFilterResults = 10000
-
-  # MaxFilterHeightRange specifies the maximum range of heights that can be used in a filter (to avoid querying
-  # the entire chain)
-  #
-  # type: uint64
-  # env var: LOTUS_ACTOREVENT_MAXFILTERHEIGHTRANGE
-  #MaxFilterHeightRange = 2880
-
-  # ActorEventDatabasePath is the full path to a sqlite database that will be used to index actor events to
-  # support the historic filter APIs. If the database does not exist it will be created. The directory containing
-  # the database must already exist and be writeable. If a relative path is provided here, sqlite treats it as
-  # relative to the CWD (current working directory).
+  # A folder to store Raft's data.
   #
   # type: string
-  # env var: LOTUS_ACTOREVENT_ACTOREVENTDATABASEPATH
-  #ActorEventDatabasePath = ""
+  # env var: LOTUS_CLUSTER_DATAFOLDER
+  #DataFolder = ""
+
+  # InitPeersetMultiAddr provides the list of initial cluster peers for new Raft
+  # peers (with no prior state). It is ignored when Raft was already
+  # initialized or when starting in staging mode.
+  #
+  # type: []string
+  # env var: LOTUS_CLUSTER_INITPEERSETMULTIADDR
+  #InitPeersetMultiAddr = []
+
+  # LeaderTimeout specifies how long to wait for a leader before
+  # failing an operation.
+  #
+  # type: Duration
+  # env var: LOTUS_CLUSTER_WAITFORLEADERTIMEOUT
+  #WaitForLeaderTimeout = "15s"
+
+  # NetworkTimeout specifies how long before a Raft network
+  # operation is timed out
+  #
+  # type: Duration
+  # env var: LOTUS_CLUSTER_NETWORKTIMEOUT
+  #NetworkTimeout = "1m40s"
+
+  # CommitRetries specifies how many times we retry a failed commit until
+  # we give up.
+  #
+  # type: int
+  # env var: LOTUS_CLUSTER_COMMITRETRIES
+  #CommitRetries = 1
+
+  # How long to wait between retries
+  #
+  # type: Duration
+  # env var: LOTUS_CLUSTER_COMMITRETRYDELAY
+  #CommitRetryDelay = "200ms"
+
+  # BackupsRotate specifies the maximum number of Raft's DataFolder
+  # copies that we keep as backups (renaming) after cleanup.
+  #
+  # type: int
+  # env var: LOTUS_CLUSTER_BACKUPSROTATE
+  #BackupsRotate = 6
+
+  # Tracing enables propagation of contexts across binary boundaries.
+  #
+  # type: bool
+  # env var: LOTUS_CLUSTER_TRACING
+  #Tracing = false
 
 
 [Fevm]
-  # EnableEthHashToFilecoinCidMapping enables storing a mapping of eth transaction hashes to filecoin message Cids
-  # You will not be able to look up ethereum transactions by their hash if this is disabled.
+  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
+  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
   #
   # type: bool
-  # env var: LOTUS_FEVM_ENABLEETHHASHTOFILECOINCIDMAPPING
-  #EnableEthHashToFilecoinCidMapping = false
+  # env var: LOTUS_FEVM_ENABLEETHRPC
+  #EnableEthRPC = false
 
   # EthTxHashMappingLifetimeDays the transaction hash lookup database will delete mappings that have been stored for more than x days
   # Set to 0 to keep all mappings
@@ -307,6 +325,58 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
   # type: int
   # env var: LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS
   #EthTxHashMappingLifetimeDays = 0
+
+  [Fevm.Events]
+    # EnableEthRPC enables APIs that
+    # DisableRealTimeFilterAPI will disable the RealTimeFilterAPI that can create and query filters for actor events as they are emitted.
+    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
+    #
+    # type: bool
+    # env var: LOTUS_FEVM_EVENTS_DISABLEREALTIMEFILTERAPI
+    #DisableRealTimeFilterAPI = false
+
+    # DisableHistoricFilterAPI will disable the HistoricFilterAPI that can create and query filters for actor events
+    # that occurred in the past. HistoricFilterAPI maintains a queryable index of events.
+    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
+    #
+    # type: bool
+    # env var: LOTUS_FEVM_EVENTS_DISABLEHISTORICFILTERAPI
+    #DisableHistoricFilterAPI = false
+
+    # FilterTTL specifies the time to live for actor event filters. Filters that haven't been accessed longer than
+    # this time become eligible for automatic deletion.
+    #
+    # type: Duration
+    # env var: LOTUS_FEVM_EVENTS_FILTERTTL
+    #FilterTTL = "24h0m0s"
+
+    # MaxFilters specifies the maximum number of filters that may exist at any one time.
+    #
+    # type: int
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERS
+    #MaxFilters = 100
+
+    # MaxFilterResults specifies the maximum number of results that can be accumulated by an actor event filter.
+    #
+    # type: int
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERRESULTS
+    #MaxFilterResults = 10000
+
+    # MaxFilterHeightRange specifies the maximum range of heights that can be used in a filter (to avoid querying
+    # the entire chain)
+    #
+    # type: uint64
+    # env var: LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE
+    #MaxFilterHeightRange = 2880
+
+    # DatabasePath is the full path to a sqlite database that will be used to index actor events to
+    # support the historic filter APIs. If the database does not exist it will be created. The directory containing
+    # the database must already exist and be writeable. If a relative path is provided here, sqlite treats it as
+    # relative to the CWD (current working directory).
+    #
+    # type: string
+    # env var: LOTUS_FEVM_EVENTS_DATABASEPATH
+    #DatabasePath = ""
 ```
 
 ## Connectivity
