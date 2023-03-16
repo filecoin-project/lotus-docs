@@ -54,17 +54,11 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
 We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
 {{< /alert >}}
 
-1. Uncompress the snapshot:
-
-    ```shell
-    zstd -d 1419120_2022_10_24T18_00_00Z.car.zst
-    ```
-
 1. Start the Lotus daemon using `--import-snapshot`:
 
     ```shell
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
-    lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car
+    lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car.zst
     ```
 
 For more information about these snapshots please see the [Lightweight Filecoin Chain Snapshot notion page](https://www.notion.so/pl-strflt/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024).
