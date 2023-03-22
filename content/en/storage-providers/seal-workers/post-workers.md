@@ -51,7 +51,7 @@ Storage providers should design their worker sectors' access according to their 
 
 ### Environment variables
 
-Remember to have the appropriate `nvidia-drivers` and `nvidia-opencl-icd` installed if running OpenCL on your worker. If using CUDA, install the `CUDA-toolkit` and build lotus binaries with `FFI_USE_CUDA=1`
+Remember to install [CUDA]({{< relref "../../tutorials/lotus-miner/cuda" >}}) on your PoSt-worker. If you want to use OpenCL instead, [check out this article]({{< relref "../../kb/using-opencl/" >}}). 
 
 The following environment variables are required to be set before starting the worker:
 

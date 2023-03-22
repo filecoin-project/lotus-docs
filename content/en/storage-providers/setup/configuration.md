@@ -67,16 +67,6 @@ This location can be made of large capacity, albeit slower, spinning-disks.
 
 These prerequisites are optional and can be used on a case by case basis. Please make sure to understand the use case before performing these steps.
 
-### Using OpenCL instead of CUDA
-
-This step is only necessary if you are running an Nvidia GPU and would prefer to use OpenCL instead of CUDA. Please note that Cuda is recommended over OpenCL for sealing and proving workload. Most Linux distributions contain this package in their package manager:
-
-```shell
-sudo apt update -y && sudo apt install -y nvidia-opencl-icd -y
-```
-
-If you want to use OpenCL you do not need to compile FFI to use CUDA, so you can discard the `FFI_USE_CUDA` environment variable.
-
 ### Sealing performance
 
 It is recommended to set the following environment variables in the environment so that they are defined every time any of the lotus daemons are launched:
