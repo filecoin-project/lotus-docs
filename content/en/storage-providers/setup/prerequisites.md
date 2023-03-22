@@ -27,13 +27,9 @@ Please make sure that the following prerequites are met whether you are planning
 ### Install CUDA
 
 1. Install the latest stable [Nvidia drivers and Cuda]({{< relref "../../tutorials/lotus-miner/cuda" >}}) if you have an Nvidia card on your machine. Nvidia cards have a better performance with Cuda when compared to OpenCL.
-2. Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/install/prerequisites" >}}) to build the `lotus-miner` binary. Make sure that you have built Lotus with "Native Filecoin FFI" and exported the following variable to compile FFI to use Cuda if using Nvidia cards.
+2. Make sure you have followed the instructions to [install the Lotus suite]({{< relref "../../lotus/install/linux/#building-from-source" >}}) to build the `lotus-miner` binary. Make sure that you have built Lotus with "Native Filecoin FFI".
 
-    ```shell
-    export FFI_USE_CUDA=1
-    ```
-
- Please do not use the `lotus-miner` binary created during Lotus node installation process as it does not include the above options.
+If you want to use OpenCL, or disable the GPU when building Lotus, [check out this article]({{< relref "../../kb/using-opencl/" >}}).
 
 ### Configure parameters location
 
