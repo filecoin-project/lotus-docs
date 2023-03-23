@@ -16,6 +16,10 @@ SplitStore is a freestanding compacting blockstore that allows you to keep a sma
 
 ### Preparing for SplitStore
 
+{{< alert icon="warning" >}}From Lotus verion 1.21.0 SplitStore is automatically activated by default on new nodes. However, for existing Lotus users, you need to explicitly configure SplitStore by uncommenting the `EnableSplitstore` option in your `config.toml` file. To enable SplitStore, set `EnableSplitstore=true`, and to disable it, set `EnableSplitstore=false`.
+
+**It's important to note that your Lotus node will not start unless this configuration is properly set. If you are running a full archival node you will need to disable SplitStore as shown above!**{{< /alert >}}
+
 {{< alert icon="warning" >}}Always enable or manually prune your SplitStore on a fully prepared `/.lotus/datastore` folder!{{< /alert >}}
 
 1. Manually delete the contents of your `/.lotus/datastore/chain` folder.	
@@ -48,41 +52,63 @@ If you intend to use the discard-store you also need to add the following:
 
 ```toml
 [Chainstore.Splitstore]
-  # ColdStoreType specifies the type of the coldstore.
-  # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
-  #
-  # type: string
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-  ColdStoreType = "messages"
+    # HotStoreType specifies the type of the hotstore.
+    # Only currently supported value is "badger".
+    #
+    # type: string
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTORETYPE
+    HotStoreType = "badger"
 
-  # HotStoreType specifies the type of the hotstore.
-  # Only currently supported value is "badger".
-  #
-  # type: string
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTORETYPE
-  HotStoreType = "badger"
+    # MarkSetType specifies the type of the markset.
+    # It can be "map" for in memory marking or "badger" (default) for on-disk marking.
+    #
+    # type: string
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_MARKSETTYPE
+    MarkSetType = "badger"
 
-  # MarkSetType specifies the type of the markset.
-  # It can be "map" for in memory marking or "badger" (default) for on-disk marking.
-  #
-  # type: string
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_MARKSETTYPE
-  MarkSetType = "badger"
+    # HotStoreMessageRetention specifies the retention policy for messages, in finalities beyond
+    # the compaction boundary; default is 0.
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMESSAGERETENTION
+    HotStoreMessageRetention = 0
 
-  # HotStoreMessageRetention specifies the retention policy for messages, in finalities beyond
-  # the compaction boundary; default is 0.
-  #
-  # type: uint64
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMESSAGERETENTION
-  HotStoreMessageRetention = 0
+    # HotStoreFullGCFrequency specifies how often to perform a full (moving) GC on the hotstore.
+    # A value of 0 disables, while a value 1 will do full GC in every compaction.
+    # Default is 20 (about once a week).
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
+    HotStoreFullGCFrequency = 20
 
-  # HotStoreFullGCFrequency specifies how often to perform a full (moving) GC on the hotstore.
-  # A value of 0 disables, while a value 1 will do full GC in every compaction.
-  # Default is 20 (about once a week).
-  #
-  # type: uint64
-  # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
-  HotStoreFullGCFrequency = 20
+    # HotStoreMaxSpaceTarget sets a target max disk size for the hotstore. Splitstore GC
+    # will run moving GC if disk utilization gets within a threshold (150 GB) of the target.
+    # Splitstore GC will NOT run moving GC if the total size of the move would get
+    # within 50 GB of the target, and instead will run a more aggressive online GC.
+    # If both HotStoreFullGCFrequency and HotStoreMaxSpaceTarget are set then splitstore
+    # GC will trigger moving GC if either configuration condition is met.
+    # A reasonable minimum is 2x fully GCed hotstore size + 50 G buffer.
+    # At this minimum size moving GC happens every time, any smaller and moving GC won't
+    # be able to run. In spring 2023 this minimum is ~550 GB.
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACETARGET
+    HotStoreMaxSpaceTarget = 0
+
+    # When HotStoreMaxSpaceTarget is set Moving GC will be triggered when total moving size
+    # exceeds HotstoreMaxSpaceTarget - HotstoreMaxSpaceThreshold
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACETHRESHOLD
+    HotStoreMaxSpaceThreshold = 150000000000
+
+    # Safety buffer to prevent moving GC from overflowing disk when HotStoreMaxSpaceTarget
+    # is set.  Moving GC will not occur when total moving size exceeds
+    # HotstoreMaxSpaceTarget - HotstoreMaxSpaceSafetyBuffer
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACESAFETYBUFFER
+    HotstoreMaxSpaceSafetyBuffer = 50000000000
   ```
 
 ### Operation
