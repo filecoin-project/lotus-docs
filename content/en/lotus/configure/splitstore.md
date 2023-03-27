@@ -111,6 +111,15 @@ If you intend to use the discard-store you also need to add the following:
     HotstoreMaxSpaceSafetyBuffer = 50000000000
   ```
 
+### Manual Chain Store Garbage Collection
+
+Lotus version 1.21.0 also introudecs 3 new manual prune options:
+
+- `lotus chain prune hot-moving` - This command will perform a full GC of the `hotstore` folder and is the most resource-intensive of the three. The `hot-moving` option creates the new `hotstore` before it removes the old one so **it is essential that there is adequate disk space availble for the GC to succeed**. At the time of writing, a fully GC'd `hotstore` represenets aproximately 295 GiB. Please ensure you have at least the minimum available when using this option. In the event of limited availble disk space, you will need to use the `lotus chain prune hot` command as detailed below.
+- `lotus chain prune hot` - This option is a recommended for situations where spare disk space is limited, as it is much less resource-intensive. The intended use of this command is to gradually decrease the size of the `hotstore` until it reaches a level where you can safely run a full GC using `lotus chain prune hot-moving`.
+Please note that you may need to run this command several times to successfully decrease the `hotstore` footprint. We recommend starting with the following flags and values - `lotus chain prune hot --periodic --threshold 0.00000001`. The threshold setting is system and hotstore specific so you may need to experiment with different values in order to achieve the required outcome. 
+- `lotus chain prune compact-cold` - This command is used exclusively to manage the size of the coldstore and is only relevant for a non-discard SplitStore. 
+
 ### Operation
 
 When the splitstore is first enabled, the existing blockstore becomes the coldstore and a fresh hotstore is initialized.
@@ -132,10 +141,6 @@ Compaction works transactionally with the following algorithm:
 - When running with a coldstore, we next copy all cold objects to the coldstore.
 - At this point, we are ready to begin purging
 - We then end the transaction and compact/garbage collect the hotstore.
-
-### Cold Store Garbage Collection
-
-Garbage collection can be performed manually by running the `lotus chain prune <flags>` command.
 
 ### Relocating the Coldstore
 
