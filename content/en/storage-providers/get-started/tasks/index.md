@@ -49,7 +49,7 @@ The WaitSeed state is a security wait requirement by the network that is initiat
 
 ### Commit 1
 
-The randomness aquired at the end of the wait seed state is used in the Commit 1 phase to select a random subset of leaf nodes from the merkle tree generated in the PreCommit 2 phase. From the subset of leaf nodes it checks, it generates a much smaller file than the full merkle tree. That file is is approximately 16MiB in size.
+The randomness acquired at the end of the wait seed state is used in the Commit 1 phase to select a random subset of leaf nodes from the merkle tree generated in the PreCommit 2 phase. From the subset of leaf nodes it checks, it generates a much smaller file than the full merkle tree. That file is is approximately 16MiB in size.
 
 ### Commit 2
 
