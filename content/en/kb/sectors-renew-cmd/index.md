@@ -1,5 +1,5 @@
 ---
-title: "Lotus-Miner Sectors renew command"
+title: "Lotus-Miner Sectors renew command is removed"
 description: "The lotus-miner sectors renew command has been replaced by lotus-miner sectors extend"
 date: 2022-04-04T12:00:35+01:00
 lastmod: 2022-04-04T12:00:35+01:00
@@ -13,7 +13,7 @@ types: ["article"]
 areas: ["Deprecated"]
 ---
 
-The `lotus-miner sectors renew` command has been deprecated. It has been replaced by the `lotus-miner sectors extend` command.
+The `lotus-miner sectors renew` command has been deprecated and removed from the CLI. It has been replaced by the `lotus-miner sectors extend` command.
 
 The features and functionality from `lotus-miner sectors renew` has been ported over to the `lotus-miner sectors extend` command.
 
