@@ -1,5 +1,5 @@
 ---
-title: "Lotus-Miner Sectors renew command is removed"
+title: "Lotus-Miner Sectors renew command is removed from CLI"
 description: "The lotus-miner sectors renew command has been replaced by lotus-miner sectors extend"
 date: 2022-04-04T12:00:35+01:00
 lastmod: 2022-04-04T12:00:35+01:00
