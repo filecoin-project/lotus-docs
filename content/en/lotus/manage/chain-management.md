@@ -61,7 +61,7 @@ We strongly recommend that you use `aria2c` for faster a download. However, you 
     lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car.zst
     ```
 
-For more information about these snapshots please see the [Lightweight Filecoin Chain Snapshot notion page](https://www.notion.so/pl-strflt/Lightweight-Filecoin-Chain-Snapshots-17e4c386f35c44548f5863afb7b5e024).
+For more information about these snapshots, check out the [Lightweight Filecoin Chain Snapshot]({{< relref "../../kb/chain-snapshots/" >}}) knowledge base article.
 
 #### Sync wait
 
