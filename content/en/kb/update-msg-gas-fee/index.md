@@ -33,7 +33,7 @@ The messages stuck in `mpool` due to low gas fee can be updated with a higher ga
 1. Check the current base fee prices.
 
     ```shell
-    lotus chain head | xargs lotus chain getblock | jq -r .ParentBaseFee
+    lotus chain head | awk 'NR==1{print; exit}' | xargs lotus chain getblock | jq -r .ParentBaseFee
     ```
   
 2.  Replace the message with updated gas fee in the `mpool` using the below command
