@@ -20,59 +20,202 @@ This section controls some of the behavior around sector sealing:
   # If the miner is accepting multiple deals in parallel, up to MaxWaitDealsSectors of new sectors will be created.
   # If more than MaxWaitDealsSectors deals are accepted in parallel, only MaxWaitDealsSectors deals will be processed in parallel
   # Note that setting this number too high in relation to deal ingestion rate may result in poor sector packing efficiency
-  MaxWaitDealsSectors = 2
-  # Upper bound on how many sectors can be sealing at the same time when creating new CC sectors (0 = unlimited)
-  MaxSealingSectors = 0
-  # Upper bound on how many sectors can be sealing at the same time when creating new sectors with deals (0 = unlimited)
-  MaxSealingSectorsForDeals = 0
+  # 0 = no limit
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXWAITDEALSSECTORS
+  #MaxWaitDealsSectors = 2
+
+  # Upper bound on how many sectors can be sealing+upgrading at the same time when creating new CC sectors (0 = unlimited)
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXSEALINGSECTORS
+  #MaxSealingSectors = 0
+
+  # Upper bound on how many sectors can be sealing+upgrading at the same time when creating new sectors with deals (0 = unlimited)
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXSEALINGSECTORSFORDEALS
+  #MaxSealingSectorsForDeals = 0
+
+  # Prefer creating new sectors even if there are sectors Available for upgrading.
+  # This setting combined with MaxUpgradingSectors set to a value higher than MaxSealingSectorsForDeals makes it
+  # possible to use fast sector upgrades to handle high volumes of storage deals, while still using the simple sealing
+  # flow when the volume of storage deals is lower.
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_PREFERNEWSECTORSFORDEALS
+  #PreferNewSectorsForDeals = false
+
+  # Upper bound on how many sectors can be sealing+upgrading at the same time when upgrading CC sectors with deals (0 = MaxSealingSectorsForDeals)
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MAXUPGRADINGSECTORS
+  #MaxUpgradingSectors = 0
+
+  # When set to a non-zero value, minimum number of epochs until sector expiration required for sectors to be considered
+  # for upgrades (0 = DealMinDuration = 180 days = 518400 epochs)
+  # 
+  # Note that if all deals waiting in the input queue have lifetimes longer than this value, upgrade sectors will be
+  # required to have expiration of at least the soonest-ending deal
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MINUPGRADESECTOREXPIRATION
+  #MinUpgradeSectorExpiration = 0
+
+  # When set to a non-zero value, minimum number of epochs until sector expiration above which upgrade candidates will
+  # be selected based on lowest initial pledge.
+  # 
+  # Target sector expiration is calculated by looking at the input deal queue, sorting it by deal expiration, and
+  # selecting N deals from the queue up to sector size. The target expiration will be Nth deal end epoch, or in case
+  # where there weren't enough deals to fill a sector, DealMaxDuration (540 days = 1555200 epochs)
+  # 
+  # Setting this to a high value (for example to maximum deal duration - 1555200) will disable selection based on
+  # initial pledge - upgrade sectors will always be chosen based on longest expiration
+  #
+  # type: uint64
+  # env var: LOTUS_SEALING_MINTARGETUPGRADESECTOREXPIRATION
+  #MinTargetUpgradeSectorExpiration = 0
+
   # CommittedCapacitySectorLifetime is the duration a Committed Capacity (CC) sector will
   # live before it must be extended or converted into sector containing deals before it is
   # terminated. Value must be between 180-540 days inclusive
   #
   # type: Duration
-  CommittedCapacitySectorLifetime = "12960h0m0s"
+  # env var: LOTUS_SEALING_COMMITTEDCAPACITYSECTORLIFETIME
+  #CommittedCapacitySectorLifetime = "12960h0m0s"
 
   # Period of time that a newly created sector will wait for more deals to be packed in to before it starts to seal.
   # Sectors which are fully filled will start sealing immediately
-  WaitDealsDelay = "6h0m0s"
+  #
+  # type: Duration
+  # env var: LOTUS_SEALING_WAITDEALSDELAY
+  #WaitDealsDelay = "6h0m0s"
+
   # Whether to keep unsealed copies of deal data regardless of whether the client requested that. This lets the miner
   # avoid the relatively high cost of unsealing the data later, at the cost of more storage space
-  AlwaysKeepUnsealedCopy = true
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_ALWAYSKEEPUNSEALEDCOPY
+  #AlwaysKeepUnsealedCopy = true
+
   # Run sector finalization before submitting sector proof to the chain
-  FinalizeEarly = false
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_FINALIZEEARLY
+  #FinalizeEarly = false
+
+  # Whether new sectors are created to pack incoming deals
+  # When this is set to false no new sectors will be created for sealing incoming deals
+  # This is useful for forcing all deals to be assigned as snap deals to sectors marked for upgrade
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_MAKENEWSECTORFORDEALS
+  #MakeNewSectorForDeals = true
+
+  # After sealing CC sectors, make them available for upgrading with deals
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_MAKECCSECTORSAVAILABLE
+  #MakeCCSectorsAvailable = false
+
   # Whether to use available miner balance for sector collateral instead of sending it with each message
-  CollateralFromMinerBalance = false
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_COLLATERALFROMMINERBALANCE
+  #CollateralFromMinerBalance = false
+
   # Minimum available balance to keep in the miner actor before sending it with messages
-  AvailableBalanceBuffer = 0
+  #
+  # type: types.FIL
+  # env var: LOTUS_SEALING_AVAILABLEBALANCEBUFFER
+  #AvailableBalanceBuffer = "0 FIL"
+
   # Don't send collateral with messages even if there is no available balance in the miner actor
-  DisableCollateralFallback = false
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_DISABLECOLLATERALFALLBACK
+  #DisableCollateralFallback = false
+
   # enable / disable precommit batching (takes effect after nv13)
-  BatchPreCommits = true
-  # maximum precommit batch size up to 256 sectors - batches will be sent immediately above this size
-  MaxPreCommitBatch = 256
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_BATCHPRECOMMITS
+  #BatchPreCommits = true
+
+  # maximum precommit batch size - batches will be sent immediately above this size
+  #
+  # type: int
+  # env var: LOTUS_SEALING_MAXPRECOMMITBATCH
+  #MaxPreCommitBatch = 256
+
   # how long to wait before submitting a batch after crossing the minimum batch size
-  PreCommitBatchWait = "24h0m0s"
+  #
+  # type: Duration
+  # env var: LOTUS_SEALING_PRECOMMITBATCHWAIT
+  #PreCommitBatchWait = "24h0m0s"
+
   # time buffer for forceful batch submission before sectors/deal in batch would start expiring
-  PreCommitBatchSlack = "3h0m0s"
+  #
+  # type: Duration
+  # env var: LOTUS_SEALING_PRECOMMITBATCHSLACK
+  #PreCommitBatchSlack = "3h0m0s"
 
   # enable / disable commit aggregation (takes effect after nv13)
-  AggregateCommits = true
-  # minimum batched commit size, no less than 4
-  MinCommitBatch = 4
-  # maximum batched commit size up to 819 sectors - batches will be sent immediately above this size
-  MaxCommitBatch = 819
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_AGGREGATECOMMITS
+  #AggregateCommits = true
+
+  # minimum batched commit size - batches above this size will eventually be sent on a timeout
+  #
+  # type: int
+  # env var: LOTUS_SEALING_MINCOMMITBATCH
+  #MinCommitBatch = 4
+
+  # maximum batched commit size - batches will be sent immediately above this size
+  #
+  # type: int
+  # env var: LOTUS_SEALING_MAXCOMMITBATCH
+  #MaxCommitBatch = 819
+
   # how long to wait before submitting a batch after crossing the minimum batch size
-  CommitBatchWait = "24h0m0s"
+  #
+  # type: Duration
+  # env var: LOTUS_SEALING_COMMITBATCHWAIT
+  #CommitBatchWait = "24h0m0s"
+
   # time buffer for forceful batch submission before sectors/deals in batch would start expiring
-  CommitBatchSlack = "1h0m0s"
+  #
+  # type: Duration
+  # env var: LOTUS_SEALING_COMMITBATCHSLACK
+  #CommitBatchSlack = "1h0m0s"
 
-  # network BaseFee below which to stop doing commit aggregation, instead submitting proofs to the chain individually
-  AggregateAboveBaseFee = 0.00000000015 #0.15nano
+  # network BaseFee below which to stop doing precommit batching, instead
+  # sending precommit messages to the chain individually
+  #
+  # type: types.FIL
+  # env var: LOTUS_SEALING_BATCHPRECOMMITABOVEBASEFEE
+  #BatchPreCommitAboveBaseFee = "0.00000000032 FIL"
 
+  # network BaseFee below which to stop doing commit aggregation, instead
+  # submitting proofs to the chain individually
+  #
+  # type: types.FIL
+  # env var: LOTUS_SEALING_AGGREGATEABOVEBASEFEE
+  #AggregateAboveBaseFee = "0.00000000032 FIL"
 
-  TerminateBatchMax = 100
-  TerminateBatchMin = 1
-  TerminateBatchWait = "5m0s"
+  # type: uint64
+  # env var: LOTUS_SEALING_TERMINATEBATCHMAX
+  #TerminateBatchMax = 100
+
+  # type: uint64
+  # env var: LOTUS_SEALING_TERMINATEBATCHMIN
+  #TerminateBatchMin = 1
+
+  # type: Duration
+  # env var: LOTUS_SEALING_TERMINATEBATCHWAIT
+  #TerminateBatchWait = "5m0s"
 ```
 
 ### PreCommitSectorsBatch
