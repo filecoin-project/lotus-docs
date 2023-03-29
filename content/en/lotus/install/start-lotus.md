@@ -18,12 +18,6 @@ Now that we have installed Lotus we can download a lightweight chain snapshot an
     aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
     ```
 
-1. Uncompress the downloaded snapshot:
-
-    ```shell
-    zstd -d 1419120_2022_10_24T18_00_00Z.car.zst
-    ```
-
 Now that we have downloaded a recent snapshot we can import the snapshot to Lotus and start the daemon process.
 
 ## Import snapshot and start the Lotus daemon
@@ -41,7 +35,7 @@ If you do not want the chain data folder at the default `~/.lotus` location, you
 
 ```shell
 # Replace the filename for the `.car` file based on the snapshot you downloaded.
-lotus daemon --import-snapshot path/to/1419120_2022_10_24T18_00_00Z.car --halt-after-import
+lotus daemon --import-snapshot path/to/1419120_2022_10_24T18_00_00Z.car.zst --halt-after-import
 ```
 
 With this command Lotus will import the snapshot and halt after the import process has finished. After the process has halted we can start the daemon and sync the remaining blocks.
