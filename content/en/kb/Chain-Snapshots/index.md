@@ -21,7 +21,7 @@ These lightweight snapshots do not contain any message receipts.
 
 ## Snapshot Links
 
-The snapshot links issue a `302 Found` redirecting to the latest snapshot file. Snapshots files are named in the format of `<height>_YYYY_MM_DDTHH_MM_SSZ.car` where the date & time is the chain timestamp for the given height. The height is the highest TipSet height in the chain.
+The snapshot links issue a `302 Found` redirecting to the latest snapshot file. Snapshots files are named in the format of `<height>_YYYY_MM_DDTHH_MM_SSZ.car.zst` where the date & time is the chain timestamp for the given height. The height is the highest TipSet height in the chain.
 
 These links can be used directly with Lotus `--chain-import` flag, the redirect will be followed.
 
