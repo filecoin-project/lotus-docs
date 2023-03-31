@@ -13,8 +13,8 @@ types: ["article"]
 areas: ["Deprecated"]
 ---
 
-The `lotus-miner sectors renew` command has been deprecated and removed from the CLI. It has been replaced by the `lotus-miner sectors extend` command.
+The `lotus-miner sectors renew` command has been deprecated, removed from the CLI, and replaced by the `lotus-miner sectors extend` command.
 
-The features and functionality from `lotus-miner sectors renew` has been ported over to the `lotus-miner sectors extend` command.
+Features and functionality from `lotus-miner sectors renew` have been ported over to the `lotus-miner sectors extend` command.
 
-You can read more about sector extension in the [chores section of the docs]({{< relref "../../storage-providers/operate/daily-chores/#extend-sectors" >}})
+Learn more about sector extension in the [chores section]({{< relref "../../storage-providers/operate/daily-chores/#extend-sectors" >}}).
