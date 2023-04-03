@@ -37,6 +37,14 @@ sudo sysctl -p
 ```
 Values of the above resolution (the big number) may vary.
 
+
+**Debian:**
+
+On Debian systems the file-descriptor limit must be set in `/etc/security/limits.conf`, `/etc/systemd/system.conf` and `/etc/systemd/user.conf`.
+
+Make also sure that you don't override these in your systemd service file.
+
+
 ## Extras:
 
 [https://filecoinproject.slack.com/archives/CPFTWMY7N/p1639041748439100](https://filecoinproject.slack.com/archives/CPFTWMY7N/p1639041748439100)
