@@ -35,49 +35,41 @@ Lotus is now installed. You can now [start the Lotus daemon](#start-the-lotus-da
 
 You can build the Lotus executables from source by following these steps.
 
-### Software dependencies
+### Prerequisites
 
-You must have XCode and Homebrew installed to build Lotus from source.
+You must have XCode, Homebrew and Rust installed to build Lotus from source. Instructions for each are listed below.
 
-#### XCode Command Line Tools
+#### Install XCode CLI
 
-Lotus requires that X-Code CLI tools be installed before building the Lotus binaries.
+Lotus requires that XCode CLI be installed before building the Lotus binaries. To check if you already have XCode CLI, run:
 
-1. Check if you already have the XCode Command Line Tools installed via the CLI, run:
+```shell
+xcode-select -p
+```
 
-    ```shell
-    xcode-select -p
-    ```
+This should output something like:
 
-    This should output something like:
+```plaintext
+/Library/Developer/CommandLineTools
+```
 
-    ```plaintext
-    /Library/Developer/CommandLineTools
-    ```
+[move on to installing dependencies with Homebrew](#install-dependencies-with-homebrew)
 
-    If this command returns a path, then you have Xcode already installed! You can [move on to installing dependencies with Homebrew](#homebrew). If the above command doesn't return a path, install Xcode:
+```shell
+xcode-select --install
+```
 
-    ```shell
-    xcode-select --install
-    ```
+#### Install dependencies with Homebrew
 
-Next up is installing Lotus' dependencies using Homebrew.
-
-#### Homebrew
-
-We recommend that macOS users use [Homebrew](https://brew.sh) to install each of the necessary packages.
-
-1. Use the command `brew install` to install the following packages:
+We recommend that macOS users use [Homebrew](https://brew.sh) to install each of the necessary packages. Use the command `brew install` to install the following packages:
 
    ```shell
    brew install go bzr jq pkg-config hwloc coreutils
    ```
 
-Next up is cloning the Lotus repository and building the executables.
+#### Install Rust using Rustup
 
-#### Rust
-
-Rustup is an installer for the systems programming language Rust. Run the installer and follow the onscreen prompts. The default installation option should be chosen unless you are familiar with customisation:
+Rustup is an installer for the systems programming language Rust. Run the installer and follow the onscreen prompts. The default installation option should be chosen unless you are familiar with customization:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -85,19 +77,17 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Build and install Lotus
 
-The installation instructions are different depending on which CPU is in your Mac:
-
-- [M1-based CPUs](#m1-based-cpus)
-- [Intel CPUs](#intel-cpus)
-
-#### M1-based CPUs
-
 1. Clone the repository:
 
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
-    cd lotus/
     ```
+
+1. Navigate to the repository:
+
+   ```shell
+   cd lotus/
+   ```
 
 1. Switch to the latest stable release branch:
 
@@ -107,54 +97,18 @@ The installation instructions are different depending on which CPU is in your Ma
 
     The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
-1. Create the necessary environment variables to allow Lotus to run on M1 architecture:
-
-    ```shell
-    export LIBRARY_PATH=/opt/homebrew/lib
-    export FFI_BUILD_FROM_SOURCE=1
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-    ```
+    If you are in China, take a look at the [tips for running Lotus in China]({{< relref "../../kb/nodes-in-china/" >}})".
 
 1. Build the `lotus` daemon:
 
     ```shell
-    make all
-    ```
-
-1. Run the final `make` command to move this `lotus` executable to `/usr/local/bin`. This allows you to run `lotus` from any directory.
-
-    ```shell
-    sudo make install
-    ```
-
-1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
-
-#### Intel CPUs
-
-{{< alert icon="warning">}}
-These instructions are for installing Lotus on an Intel Mac. If you have an M1-based CPU, use the [M1-based CPU instructions ↑](#m1-based-cpus)
-{{< /alert >}}
-
-1. Clone the repository:
-
-    ```shell
-    git clone https://github.com/filecoin-project/lotus.git
-    cd lotus/
-    ```
-
-1. Switch to the latest stable release branch:
-
-    ```shell
-    git checkout releases
-    ```
-
-    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
-
-1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "../../kb/nodes-in-china/" >}})".
-
-1. Build and install Lotus:
-
-    ```shell
     make clean all
+    ```
+
+1. Run the final `make` command to move the `lotus` executable to `/usr/local/bin`. This allows you to run `lotus` from any directory.
+
+    ```shell
     sudo make install
     ```
+
+    Lotus is installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
