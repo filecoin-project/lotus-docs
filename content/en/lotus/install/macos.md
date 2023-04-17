@@ -23,21 +23,13 @@ Building Lotus from source allows you to strictly configure how Lotus runs and h
 
 ## Install with Homebrew
 
-You can quickly install Lotus using Homebrew on macOS.
+Using Brew, install Lotus from the `filecoin/lotus` tap:
 
-1. Add the `filecoin-project/lotus` tap:
+```shell
+brew install filecoin-project/lotus/lotus
+```
 
-    ```shell
-    brew tap filecoin-project/lotus
-    ```
-
-1. Install Lotus:
-
-    ```shell
-    brew install lotus
-    ```
-
-1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
+Lotus is now installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
 
 ## Build from source
 
