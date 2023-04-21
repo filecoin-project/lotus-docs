@@ -66,6 +66,10 @@ Want to add an additional layer of security for the owner's address? Check out h
 
 A beneficiary address is a special purpose address which takes over the finicial control from the owner address for a given quota and time, but does not take over the owner addresses privileges. The seperation of owner and beneficiary brings more flexibility in the Filecoin financing market.
 
+{{< alert icon="tip" >}}
+The `lotus-shed actor` command includes ability for beneficiary holders to approve changes, and withdraw balance. So that any beneficiary holder does not need to import their private keys where the `lotus-miner` process is running.
+{{< /alert >}}
+
 You can propose changing the beneficiary address with:
 
 ```shell
