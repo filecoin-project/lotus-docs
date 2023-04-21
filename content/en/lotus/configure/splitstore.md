@@ -24,6 +24,7 @@ SplitStore is a freestanding compacting blockstore that allows you to keep a sma
 
 1. Manually delete the contents of your `/.lotus/datastore/chain` folder.	
 2. If you are already running a SplitStore enabled node, you will also need to clear your existing SplitStore folders. You can do this by either running [`./lotus-shed splitstore clear --repo <lotus-repo-folder>`](https://lotus.filecoin.io/lotus/configure/splitstore/#utilities) or by manually deleting the contents of your `/.lotus/datastore/splitstore` folder.
+3. Now that the old chain is removed, you must download a fresh copy, normally a [minimal snapshot](https://lotus.filecoin.io/lotus/manage/chain-management/#lightweight-snapshot) and then reimport.
 
 ### Enabling SplitStore 
 
