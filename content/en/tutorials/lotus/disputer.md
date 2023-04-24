@@ -17,7 +17,7 @@ toc: true
 
 The Filecoin Improvement Proposal 0010 (FIP0010) allows storage providers to _optimistically_ accept Window Proof of Spacetime proofs (Windows PoSt) on-chain without verification, allowing them to be disputed later by off-chain verifiers. Any Lotus node may dispute any on-chain storage proofs submitted in the past 1800 epochs (~15h) by invoking `DisputeWindowedPoSt`.
 
-When a dispute successfully refutes an optimistically accepted Window PoSt, the storage provider is fined one invalid proof fee (IPF) per active sector in the partition at the moment when said storage provider submitted the proof, plus a flat fee of 20 FIL. All incorrectly proved sectors are marked faulty, and the address that submitted the dispute is awarded a fixed `DipsuteReward`.
+When a dispute successfully refutes an optimistically accepted Window PoSt, the storage provider is fined one invalid proof fee (IPF) per active sector in the partition at the moment when said storage provider submitted the proof, plus a flat fee of 20 FIL. All incorrectly proved sectors are marked faulty, and the address that submitted the dispute is awarded a fixed `DisputeReward`.
 
 ## Penalties and rewards
 
