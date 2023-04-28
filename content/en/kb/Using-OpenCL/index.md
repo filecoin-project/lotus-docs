@@ -32,4 +32,4 @@ Before building the Lotus-Miner binary you will need to export the `FFI_USE_OPEN
 
 You can also choose to disable the GPU entirely and instead make proving and sealing workloads be run on the CPU. Please note that this is not recommended.
 
-Before building the Lotus-Miner binary you will need to export the `FFI_NO_GPU=1` enviroment variable, and then [building from source process]({{< relref "../../storage-providers/operate/upgrades/#upgrade-in-place" >}}).
+Before building the any Lotus binary you will need to export the `FFI_USE_GPU=0` enviroment variable, and then [building from source process]({{< relref "../../storage-providers/operate/upgrades/#upgrade-in-place" >}}).
