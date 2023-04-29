@@ -23,7 +23,7 @@ When installing lotus for mainnet, lotus-shed is not installed by default.
 
 ## Resolution:
 
-After lotus installs (completely) run `make install lotus-shed`
+After lotus installs (completely) run `make lotus-shed`
 
 ## Extras:
 
