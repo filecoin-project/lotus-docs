@@ -35,7 +35,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 [Backup]
   # When set to true disables metadata log (.lotus/kvlog). This can save disk
   # space by reducing metadata redundancy.
-  # 
+  #
   # Note that in case of metadata corruption it might be much harder to recover
   # your node if metadata log is disabled
   #
@@ -209,7 +209,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 [Chainstore]
   # type: bool
   # env var: LOTUS_CHAINSTORE_ENABLESPLITSTORE
-  #EnableSplitstore = false
+  EnableSplitstore = true
 
   [Chainstore.Splitstore]
     # ColdStoreType specifies the type of the coldstore.
@@ -217,7 +217,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     #
     # type: string
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-    #ColdStoreType = "messages"
+    #ColdStoreType = "discard"
 
     # HotStoreType specifies the type of the hotstore.
     # Only currently supported value is "badger".
@@ -247,6 +247,35 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     # type: uint64
     # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREFULLGCFREQUENCY
     #HotStoreFullGCFrequency = 20
+
+    # HotStoreMaxSpaceTarget sets a target max disk size for the hotstore. Splitstore GC
+    # will run moving GC if disk utilization gets within a threshold (150 GB) of the target.
+    # Splitstore GC will NOT run moving GC if the total size of the move would get
+    # within 50 GB of the target, and instead will run a more aggressive online GC.
+    # If both HotStoreFullGCFrequency and HotStoreMaxSpaceTarget are set then splitstore
+    # GC will trigger moving GC if either configuration condition is met.
+    # A reasonable minimum is 2x fully GCed hotstore size + 50 G buffer.
+    # At this minimum size moving GC happens every time, any smaller and moving GC won't
+    # be able to run. In spring 2023 this minimum is ~550 GB.
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACETARGET
+    #HotStoreMaxSpaceTarget = 650000000000
+
+    # When HotStoreMaxSpaceTarget is set Moving GC will be triggered when total moving size
+    # exceeds HotstoreMaxSpaceTarget - HotstoreMaxSpaceThreshold
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACETHRESHOLD
+    #HotStoreMaxSpaceThreshold = 150000000000
+
+    # Safety buffer to prevent moving GC from overflowing disk when HotStoreMaxSpaceTarget
+    # is set.  Moving GC will not occur when total moving size exceeds
+    # HotstoreMaxSpaceTarget - HotstoreMaxSpaceSafetyBuffer
+    #
+    # type: uint64
+    # env var: LOTUS_CHAINSTORE_SPLITSTORE_HOTSTOREMAXSPACESAFETYBUFFER
+    #HotstoreMaxSpaceSafetyBuffer = 50000000000
 
 
 [Cluster]
