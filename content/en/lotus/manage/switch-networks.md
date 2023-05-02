@@ -17,7 +17,6 @@ Lotus is compiled to operate on a single network, and the information in the con
 - Local devnet - [You can run a local devnet]({{< relref "../developers/local-network/">}})
 - Testnets
     - [Calibnet](https://network.filecoin.io/#calibration) - The calibration network is a testnetwork that mimics the properties of the mainnet. It is planned to be long-running, and will only be reset in case of critical bugs that are uncovered during network upgrade testing.
-    - [Wallby](https://kb.factor8.io/en/docs/fil/wallabynet) - The wallaby testnet is meant for fvm testing and therefore subject to frequent resets.
 - [Mainnet](https://network.filecoin.io/#mainnet)
 
 You can choose one of the following methods to switch to a different network on your setup:
