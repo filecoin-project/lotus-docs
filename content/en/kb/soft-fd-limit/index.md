@@ -44,6 +44,12 @@ On Debian systems the file-descriptor limit must be set in `/etc/security/limits
 
 Make also sure that you don't override these in your systemd service file.
 
+**Mac OSX:**
+```bash
+sudo echo "limit maxfiles 1000000 1048576" >/etc/launchd.conf
+```
+And reboot.
+
 
 ## Extras:
 
