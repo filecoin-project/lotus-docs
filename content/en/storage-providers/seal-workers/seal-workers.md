@@ -64,6 +64,12 @@ Ensure that workers have access to the following environment variables when they
 
 The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "../../kb/soft-fd-limit/" >}}) guide.
 
+For Mac OSX, to permanently raise the limit, use:
+```bash
+sudo bash -c "echo \"limit maxfiles 1000000 1048576\" >/etc/launchd.conf"
+```
+And reload your terminal.
+
 ```
 # MINER_API_INFO as obtained before
 export MINER_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
