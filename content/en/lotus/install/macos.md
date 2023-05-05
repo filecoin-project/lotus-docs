@@ -38,6 +38,10 @@ You can quickly install Lotus using Homebrew on macOS.
     ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
+ 
+    ```shell
+    FULLNODE_API_INFO=wss://api.chain.love lotus daemon --lite
+    ```
 
 ## Build from source
 
