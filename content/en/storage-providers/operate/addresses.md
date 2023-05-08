@@ -105,7 +105,7 @@ Approved By Nominee:    false
 For the change to take effect, the proposed new beneficiary address needs to confirm the proposal:
 
 ```shell with-output
-lotus-miner actor confirm-change-beneficiary --new-beneficiary=true <minerAddress>
+lotus-miner actor confirm-change-beneficiary --new-beneficiary=true <minerID>
 ```
 ```
 Confirming Pending Beneficiary Term of:
