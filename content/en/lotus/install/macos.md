@@ -37,7 +37,11 @@ You can quickly install Lotus using Homebrew on macOS.
     brew install lotus
     ```
 
-1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
+1. You should now have Lotus installed. You can now [start the Lotus daemon]().
+ 
+{{< alert icon="tip" >}}
+You can also start the node in Lite mode if you leverage a public RPC provider, or have access to a full-node. Check out the [Start the lite-node]({{< relref "../../lotus/install/lotus-lite/#start-the-lite-node" >}}) article.
+{{< /alert >}}
 
 ## Build from source
 
