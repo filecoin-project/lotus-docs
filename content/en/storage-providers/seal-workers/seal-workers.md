@@ -200,7 +200,7 @@ Storage providers intending to scale significantly beyond the 10 TB minimum will
 
 ### Sector Storage Groups
 
-As of Lotus v1.13.2, the `sectorstore.json` file in each storage location contains two additional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers. These fields are optional.
+The `sectorstore.json` file in each storage location contains two additional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers. These fields are optional.
 
 ```
 Groups []string - list of group names the storage path belongs to.

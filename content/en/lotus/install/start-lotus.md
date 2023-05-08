@@ -114,9 +114,8 @@ lotus version
 ```
 
 ```
-Daemon:  1.17.2+mainnet+git.fb0fb7144+api1.5.0
-Local: lotus version 1.17.2+mainnet+git.fb0fb7144
-# running lotus v1.17.2 on Main net
+Daemon:  1.23.0+mainnet+git.d1d4b35ad+api1.5.0
+Local: lotus version 1.23.0+mainnet+git.d1d4b35ad
 ```
 
 ## Stop the Lotus daemon
