@@ -44,12 +44,6 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
     ```
 
-    a. For the **Hyperspacenet**, you can get the latest snapshot available with this command:
-
-    ```shell
-    aria2c -x5 https://snapshots.hyperspace.yoga/hyperspace-latest-pruned.car
-    ```
-
 {{< alert icon="tip" >}}
 We strongly recommend that you use `aria2c` for faster a download. However, you can replace `aria2c` with `wget` before snapshot URL if you prefer.
 {{< /alert >}}
