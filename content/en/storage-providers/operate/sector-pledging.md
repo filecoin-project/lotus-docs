@@ -152,7 +152,7 @@ Renewing 59 sectors:
     }
   ]
 }
-59 sectors renewed
+59 sectors extended
 ```
 
 Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
@@ -182,7 +182,7 @@ Renewing 7 sectors:
     }
   ]
 }
-7 sectors renewed
+7 sectors extended
 ```
 
 Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
@@ -216,7 +216,7 @@ Renewing 2 sectors:
     }
   ]
 }
-2 sectors renewed
+2 sectors extended
 ```
 
 Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
