@@ -96,26 +96,32 @@ ID  SealProof  InitialPledge  Activation                      Expiration        
 
 ## Extend sectors
 
-You can extend the lifecycle of a sector with the `lotus-miner sectors renew` command:
+{{< alert icon="warning" >}}
+Please note that for the Lotus v1.22.1 both the `lotus-miner sectors extend` and `lotus-miner sectors renew` commands exists. In this guide we explain how to extend sectors in Lotus v1.23.0 or higher.
+{{< /alert >}}
+
+You can extend the lifecycle of a sector with the `lotus-miner sectors extend` command:
 
 ```shell with-output
-lotus-miner sectors renew [command options] [arguments...]
+lotus-miner sectors extend [command options] [arguments...]
 ```
 ```
 NAME:
-   lotus-miner sectors renew - Renew expiring sectors while not exceeding each sector's max life
+   lotus-miner sectors extend - Extend expiring sectors while not exceeding each sector's max life
 
 USAGE:
-   lotus-miner sectors renew [command options] [arguments...]
+   lotus-miner sectors extend [command options] <sectorNumbers...(optional)>
 
 OPTIONS:
+   --drop-claims           drop claims for sectors that can be extended, but only by dropping some of their verified power claims (default: false)
    --exclude value         optionally provide a file containing excluding sectors
    --extension value       try to extend selected sectors by this number of epochs, defaults to 540 days (default: 1555200)
    --from value            only consider sectors whose current expiration epoch is in the range of [from, to], <from> defaults to: now + 120 (1 hour) (default: 0)
    --max-fee value         use up to this amount of FIL for one message. pass this flag to avoid message congestion. (default: "0")
+   --max-sectors value     the maximum number of sectors contained in each message (default: 0)
    --new-expiration value  try to extend selected sectors to this epoch, ignoring extension (default: 0)
    --only-cc               only extend CC sectors (useful for making sector ready for snap upgrade) (default: false)
-   --really-do-it          pass this flag to really renew sectors, otherwise will only print out json representation of parameters (default: false)
+   --really-do-it          pass this flag to really extend sectors, otherwise will only print out json representation of parameters (default: false)
    --sector-file value     provide a file containing one sector number in each line, ignoring above selecting criteria
    --to value              only consider sectors whose current expiration epoch is in the range of [from, to], <to> defaults to: now + 92160 (32 days) (default: 0)
    --tolerance value       don't try to extend sectors by fewer than this number of epochs, defaults to 7 days (default: 20160)
@@ -123,10 +129,10 @@ OPTIONS:
 
 ### Renew sectors in an epoch interval
 
-This is an example of selecting sectors with a an expiration epoch between `epochnumber-a` and `epochnumber-b`, and renewing those sectors with 1555200 epochs:
+This is an example of selecting sectors with a an expiration epoch between `epochnumber-a` and `epochnumber-b`, and extending those sectors with 1555200 epochs:
 
 ```shell with-output
-lotus-miner sectors renew  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
+lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
 ```
 ```
 Renewing 59 sectors: 
@@ -156,7 +162,7 @@ Please note that the command has to be executed with the `--really-do-it` flag t
 This is an example of updating the lifecycle of sectors read from a file, and renewing those sectors with 1555200 epochs:
 
 ```shell with-output
-lotus-miner sectors renew  --sector-file <your-sectorfile> --new-expiration 1555200
+lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 1555200
 ```
 ```
 Renewing 7 sectors: 
@@ -196,7 +202,7 @@ The format of the sector file has to be in the form like this (a single sector n
 If you only want to renew CC-sectors, there is an additional flag `--only-cc` which will ignore any deal sectors in a given intervall, or file, when renewing.
 
 ```shell with-output
-lotus-miner sectors renew  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200 --only-cc
+lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200 --only-cc
 ```
 ```
 Renewing 2 sectors: 

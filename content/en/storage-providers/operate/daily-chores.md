@@ -40,26 +40,30 @@ ID  SealProof  InitialPledge  Activation                      Expiration        
 
 ### Extend sectors
 
+{{< alert icon="warning" >}}
+Please note that for the Lotus v1.22.1 both the `lotus-miner sectors extend` and `lotus-miner sectors renew` commands exists. In this guide we explain how to extend sectors in Lotus v1.23.0 or higher.
+{{< /alert >}}
+
 You can extend a sector with the command:
 
 ```shell
-lotus-miner sectors renew [command options] [arguments...]
+lotus-miner sectors extend [command options] [arguments...]
 ```
 
 This is an example of selecting sectors with a lifecycle between `epochnumber-a` epoch and `epochnumber-b` epoch and updating it to 1555200 epoch:
 
 ```shell
-lotus-miner sectors renew  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
+lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
 ```
 
 This is an example of updating the lifecycle of a sector read from a file to 1555200 epoch:
 
 ```shell
-lotus-miner sectors renew  --sector-file <your-sectorfile> --new-expiration 1555200
+lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 1555200
 ```
 
 {{< alert icon="warning" >}}
-You have to select the sectors to renew. That means you have to specify the `--from` and `--to` option, or specify the sector file, if no sector is selected this command will have no effect.
+If you are using a sectorfile to extend sectors, please note that you will need to specify a sectorID per line in the textfile.
 
 Format of sector file:
 
