@@ -63,7 +63,7 @@ lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 155
 ```
 
 {{< alert icon="warning" >}}
-If you are using a sectorfile to extend sectors, please note that you will need to specify a sectorID per line in the textfile.
+If you are using a sector file to extend sectors, please note that you will need to specify a sectorID per line in the textfile.
 
 Format of sector file:
 
