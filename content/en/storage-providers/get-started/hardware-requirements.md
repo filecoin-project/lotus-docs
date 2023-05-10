@@ -61,7 +61,7 @@ The PreCommit 2 tasks is significantly faster when running on a GPU compared to 
 
 ### C2
 
-The Commit 2 tasks is significantly faster when running on a GPU compared to when running on the CPU. The minimum VRAM requirement to run the C2 process on a GPU is 11.5GiB VRAM.
+The Commit 2 tasks is significantly faster when running on a GPU compared to when running on the CPU. The minimum VRAM requirement to run the C2 process on a GPU is 11GiB VRAM.
 
 {{< alert icon="warning" >}}
 Mixing AMD and Nvidia GPUs in the same machine is known to cause issues with OpenCL and should be avoided. In general Nvidia GPUs have better support then AMD cards.
@@ -93,11 +93,11 @@ The following table shows what hardware resources are needed to run a single tas
 | Sealing: preCommit phase 1 | Yes (1 core or 1 core-complex)           | No       | -        | 64GiB                  | PoRep SDR encoding. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).
 | Sealing: preCommit phase 2 | Yes (when no GPU, all cores)             | Yes      | 5 GiB    | 30GiB                  | Read-heavy operation, fast NVMe disks recommended. **Highly recommended to run on a GPU**                                     |
 | Sealing: commit phase 1    | Yes                                      | No       | -        | -                      | Exteremly light computation, usually faster then 1 second                                                                     |
-| Sealing: commit phase 2    | Yes (when no GPU, all cores)             | Yes      | 11.5 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
+| Sealing: commit phase 2    | Yes (when no GPU, all cores)             | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
 | Unsealing                  | Yes (1 core or 1 core-complex)           | No       | -        | 64GiB                  | Same process as preCommit phase 1. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).
 | SnapDeals: Update Replica (RU) | Yes (when no GPU, all cores)             | Yes      | 5 GiB    | 64GiB               | **Highly recommended to run on a GPU**.                                          
-| SnapDeals: PRU2            | Yes (when no GPU, all cores)             | Yes      | 11.5 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
-| Proving _WindowPoSt_       | Yes (all cores, when no GPU)             | Yes      | 11.5 GiB | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. H**Highly recommended to run on a GPU**.                                                                                         
+| SnapDeals: PRU2            | Yes (when no GPU, all cores)             | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
+| Proving _WindowPoSt_       | Yes (all cores, when no GPU)             | Yes      | 11 GiB | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. H**Highly recommended to run on a GPU**.                                                                                         
 | Proving _WinningPoSt_      | Yes                                      | No       | 6 GiB    | 16GiB                  | _WinningPoSt_ is a less intensive computation. Must be completed in a 25 seconds window. **Highly recommended to run on a GPU**.                                                                                                                    
 
 ## Future proofing
