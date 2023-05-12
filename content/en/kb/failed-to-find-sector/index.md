@@ -25,7 +25,6 @@ If you are running `lotus-miner sectors list` with the Linux `watch` command or 
 
 - Mainnet
 - Calibnet
-- Hyperspace
 
 
 ## Resolution
