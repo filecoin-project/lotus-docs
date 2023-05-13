@@ -27,7 +27,7 @@ Each **Seal Worker** can potentially run multiple tasks in available slots. Each
 
 ### Task resource table
 
-The default resource table lives in [resources.go](https://github.com/filecoin-project/lotus/blob/master/extern/sector-storage/storiface/resources.go) and can be edited to tune the scheduled behavior to fit specific sealing clusters better.
+The default resource table lives in [resources.go](https://github.com/filecoin-project/lotus/blob/bc6017194d6b96beb281f34bb1bd422e861c30e2/storage/sealer/storiface/resources.go) and can be edited to tune the scheduled behavior to fit specific sealing clusters better.
 
 Here is the default resource value table. There values are conservative:
 

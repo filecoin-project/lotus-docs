@@ -45,7 +45,7 @@ on the mining node, and bring both the mining and markets nodes online.
 The following diagram summarizes the architecture of a split miner/markets
 deployment:
 
-![](miner-markets-segregation-v4.png)
+![Architecture of a split miner/markets deployment](miner-markets-segregation-v4.png)
 
 As you can see, only the markets and the fullnode/daemon run a libp2p host and
 expose public ports to the Internet. The mining/sealing/storage node stays
@@ -121,7 +121,7 @@ When a `lotus-miner` instance is configured as a `markets` node, it exposes
 a libp2p interface. The libp2p ports should be publically available so that
 the node can be dialed by clients that wish to make storage and retrieval deals.
 
-This guide won't go into details on how to make the endpoint connectable, as this ultimately depends on your network infrastructure and equipment, refer to the [lotus-miner connectivity guide](https://docs.filecoin.io/mine/lotus/connectivity/) for more details. Generally speaking, configuring static port mappings on your external-facing router, and ensuring your markets node has an internal static IP address and port should be sufficient, in addition to adjusting any firewalls that may be present.
+This guide won't go into details on how to make the endpoint connectable, as this ultimately depends on your network infrastructure and equipment, refer to the [lotus-miner connectivity guide](https://lotus.filecoin.io/storage-providers/operate/connectivity/) for more details. Generally speaking, configuring static port mappings on your external-facing router, and ensuring your markets node has an internal static IP address and port should be sufficient, in addition to adjusting any firewalls that may be present.
 
 
 {{< alert icon="tip" >}}
@@ -311,7 +311,7 @@ lotus-miner actor set-addrs <NEW_MULTIADDR>
 
 #### Step 4. Consider configuring storage.json on the markets node
 
-If you had [customized storage locations](https://docs.filecoin.io/mine/lotus/custom-storage-layout/)
+If you had [customized storage locations](https://lotus.filecoin.io/storage-providers/operate/custom-storage-layout/)
 for your monolith storage provider, consider either:
 
 1. copying the `~/.lotusminer/storage.json` file to the `~/.lotusmarket`

@@ -14,7 +14,7 @@ We will continue to monitor the network, and stay reactive to any circumstances 
 **SnapDeals :bug:-sprint:**
 One the focus areas for the Lotus-team in Q4 has been squashing outstanding SnapDeals-issues, and the team has done an amazing job clearing out the backlog, and testing the fixes. For this effort we have created a sprint report, detailing all the fixes that got fixed:
 
-[Read the full sprint report, with SnapDeal-configuration recommendations and benchmarks here.](https://www.notion.so/pl-strflt/Snap-BugFix-Sprint-2db34178fb6946059b68ebd55819303b)
+[Read the full sprint report, with SnapDeal-configuration recommendations and benchmarks here.](https://pl-strflt.notion.site/pl-strflt/Snap-BugFix-Sprint-2db34178fb6946059b68ebd55819303b)
 
 **Enhancements :rocket::**
 - The new snapshot service introduced `.zst` compressed snapshots which cut the size by almost ~50% compared to the non-compressed snapshot. A PR that got merged this week [added support for .zst imports in Lotus](https://github.com/filecoin-project/lotus/pull/9741). Now you do not have to uncompress the snapshot before importing it to Lotus.

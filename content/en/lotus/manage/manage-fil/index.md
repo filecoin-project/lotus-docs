@@ -17,19 +17,19 @@ To receive and send FIL with Lotus, you will need to have a Lotus node installed
 
 ## About Wallet Addresses
 
-When using a wallet, an account is identified by its [address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses). A Filecoin address always starts with the letter `f` (`t` for testnets) and a digit that indicates what type of address it is.
+When using a wallet, an account is identified by its [address](https://docs.filecoin.io/basics/what-is-filecoin/overview/). A Filecoin address always starts with the letter `f` (`t` for testnets) and a digit that indicates what type of address it is.
 
 Filecoin accounts have two kinds of address, longer **public key** addresses, and shorter **ID** addresses. Both addresses refer to the same account and can be used to send and receive FIL using a wallet.
 
 ### Public Key Address
 
-A [public key address](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#public-key-addresses-f1-and-f3) is derived directly from a cryptographic key. Public key addresses start with the characters `f1` (secp256k1) or `f3` (BLS), depending on the type of encryption key used.
+A [public key address](https://docs.filecoin.io/basics/the-blockchain/addresses/#public-keys) is derived directly from a cryptographic key. Public key addresses start with the characters `f1` (secp256k1) or `f3` (BLS), depending on the type of encryption key used.
 
 Here's an example of a secp256k1 public key address: `f1abjxfbp274xpdqcpuaykwkfb43omjotacm2p3za`.
 
 Public key addresses are the most common way to refer to Filecoin accounts, and they are supported by hardware wallets like [Ledger](https://ledger.com).
 
-Because a public key address does not depend on any blockchain state, they are considered [robust](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#robust-addresses-versus-id-addresses) and are recommended for most use cases involving transfers of FIL, for example, when sending FIL to another user through an exchange.
+Because a public key address does not depend on any blockchain state, they are considered [robust](https://docs.filecoin.io/basics/the-blockchain/addresses/#actor-ids) and are recommended for most use cases involving transfers of FIL, for example, when sending FIL to another user through an exchange.
 
 ### ID Address
 
@@ -37,11 +37,11 @@ ID addresses are a compact and more "human friendly" way to refer to an account 
 
 Every ID address for a Filecoin account has an alternative public key address that corresponds to the same account. You can find the ID address for any public key address by searching for the public key address on [FilFox](https://filfox.info/), a Filecoin block explorer.
 
-Because they are more compact than public key addresses, ID addresses are often used when refering to storage providers and other long-lived Filecoin [Actors](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#actors). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
+Because they are more compact than public key addresses, ID addresses are often used when refering to storage providers and other long-lived Filecoin [Actors](https://docs.filecoin.io/basics/the-blockchain/actors/). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
 
 While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](https://docs.filecoin.io/reference/glossary/#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
 
-More information about addresses can be found in the [How Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#addresses) section.
+More information about addresses can be found in the [How Filecoin works](https://docs.filecoin.io/basics/the-blockchain/addresses/) section.
 
 ## Creating a wallet
 
@@ -204,7 +204,7 @@ lotus send --params-hex=<encoded output from the previous step>
 
 ### Transaction fees
 
-Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "message-pool" >}}) and [Gas fees](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#gas-fees) sections.
+Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "message-pool" >}}) and [Gas fees](https://docs.filecoin.io/smart-contracts/filecoin-evm-runtime/how-gas-works/) sections.
 
 ## Exporting and importing addresses
 
