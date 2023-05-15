@@ -24,7 +24,7 @@ In this tutorial we'll set up a Lotus node locally and use the filecoin.js libra
 
 Before getting started, you should be familiar with:
 
-- [How Filecoin works](https://docs.filecoin.io/about-filecoin/how-filecoin-works/)
+- [How Filecoin works](https://docs.filecoin.io/basics/what-is-filecoin/overview/)
 - [Using the Lotus command line](https://lotus.filecoin.io/lotus/manage/lotus-cli/)
 
 Also, make sure you have the following dependencies installed with the latest version:
@@ -59,7 +59,7 @@ The following the steps walk through how to install a Lotus node. Further, more 
     sudo make install
     ```
 
-1. Download the latest chain snapshot using the [CID listed under `Genesis CAR file`](https://docs.filecoin.io/networks/overview/#calibration). Then sync to the network which will take several hours to fully sync the chain:
+1. Download the latest chain snapshot using the [CID listed under `Genesis CAR file`](https://docs.filecoin.io/networks/mainnet/details/). Then sync to the network which will take several hours to fully sync the chain:
 
     ```shell
     lotus daemon --import-snapshot curl -sI https://www.mediafire.com/file/gquphc7qw0ffzdk/lotus_cali_snapshot_2022_05_18_high_959844.car.tar.gz/file

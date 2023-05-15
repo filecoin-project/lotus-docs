@@ -38,7 +38,7 @@ The key error from the above output is `failed to create data store\n    1: No s
 
 ## Resolution
 
-In this example, the user was moving from calibnet to mainnet and had not created their sealing directory. The error could come up though in any circumstance where the sealing directory is not present or available. To create or manage your sealing directory, review the document [linked here](https://lotus.filecoin.io/storage-providers/configure/custom-storage-layout/#custom-location-for-sealing).  
+In this example, the user was moving from calibnet to mainnet and had not created their sealing directory. The error could come up though in any circumstance where the sealing directory is not present or available. To create or manage your sealing directory, review the document [linked here](https://lotus.filecoin.io/storage-providers/operate/custom-storage-layout/#custom-location-for-sealing).  
 
 ## Extras
 

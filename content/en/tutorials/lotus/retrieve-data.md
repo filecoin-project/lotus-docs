@@ -62,11 +62,11 @@ lassie fetch -o <OUTFILE_FILE_NAME> -p <CID>
 For example:
 
 ```shell with-output
-lassie fetch -o output.car -p bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6
+lassie fetch -o output.car -p bafykbzacecjedcvniq5wylq7cqre7la6diaxwsue5ssy3f3rzftwu3ielspru
 ```
 ```
-Fetching bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6
-Querying indexer for bafykbzaceatihez66rzmzuvfx5nqqik73hlphem3dvagmixmay3arvqd66ng6...
+Fetching bafykbzacecjedcvniq5wylq7cqre7la6diaxwsue5ssy3f3rzftwu3ielspru
+Querying indexer for bafykbzacecjedcvniq5wylq7cqre7la6diaxwsue5ssy3f3rzftwu3ielspru...
 Found 4 storage providers candidates from the indexer, querying all of them:
         12D3KooWPNbkEgjdBNeaCGpsgCrPRETe4uBZf1ShFXStobdN18ys
         12D3KooWNHwmwNRkMEP6VqDCpjSZkqripoJgN7eWruvXXqC2kG9f
