@@ -192,7 +192,7 @@ total size is 536,870,912  speedup is 1.00
 4. Drop index entries with missing files in the old storage path
 
 ```shell
-lotus-miner storage redeclare --all --drop-missing
+lotus-miner storage redeclare --all
 ```
 
 You should now be able to see that the sectors entries has been removed from the old path.
