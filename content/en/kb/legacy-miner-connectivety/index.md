@@ -1,17 +1,24 @@
 ---
-title: "Connectivity"
-description: "This guide shows tips and tricks to improve miner connectivity."
-lead: "This guide shows tips and tricks to improve miner connectivity."
+title: "Legacy lotus-miner markets connectivety"
+description: "This guide shows connectivety tips and tricks for the legacy lotus-miner markets"
+date: 2023-05-16T12:00:35+01:00
+lastmod: 2023-05-16T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-provier-connectivity"
+  kb:
+    parent: "browse"
 aliases:
     - /docs/storage-providers/connectivity/
-weight: 320
-toc: true
+    - /storage-providers/operate/connectivity/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Deprecated"]
 ---
+
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0).
+ {{< /alert >}}
 
 Filecoin miners, like participants in all peer-to-peer protocols, require a steady and quality pool of peers to communicate with in order to perform their various functions. This complements the [connectivity section]({{< relref "initialize#connectivity-to-the-miner" >}}) in the setup instructions and the [seal workers]({{< relref "seal-workers" >}}) guide.
 
