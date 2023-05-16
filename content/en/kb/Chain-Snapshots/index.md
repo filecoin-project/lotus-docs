@@ -34,19 +34,18 @@ curl -I https://snapshots.mainnet.filops.net/minimal/latest
 ```
 ```
 HTTP/1.1 302 Found
-Date: Mon, 14 Nov 2022 21:53:28 GMT
-Location: https://pub-fd31751bcb69400eb39e694385c19457.r2.dev/minimal/2338080_2022_11_14T18_00_00Z.car
+Date: Tue, 16 May 2023 14:58:50 GMT
+Location: https://pub-fd31751bcb69400eb39e694385c19457.r2.dev/minimal/2864400_2023_05_16T12_00_00Z.car.zst
 Connection: keep-alive
 ```
 
 You can then verify the snapshot:
 
 ```shell with-output
-curl https://pub-fd31751bcb69400eb39e694385c19457.r2.dev/minimal/2338080_2022_11_14T18_00_00Z.sha256sum
+curl https://pub-fd31751bcb69400eb39e694385c19457.r2.dev/minimal/2864400_2023_05_16T12_00_00Z.sha256sum
 ```
 ```
-192fa03d6451fd8f30f16b7904a591d2177a105d615a23432632fd40504ae375 *2338080_2022_11_14T18_00_00Z.car
-5cd4d033e261429a41d8936ce1557b2f81feb764487f863b69978781c3c09128 *2338080_2022_11_14T18_00_00Z.car.zst
+052fa682d62d835360fe5892a82a2f923464193e37a162d3c1a0849f63d669f6 *2864400_2023_05_16T12_00_00Z.car.zst
 ```
 
 
