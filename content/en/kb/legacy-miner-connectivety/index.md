@@ -17,7 +17,7 @@ areas: ["Deprecated"]
 ---
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0).
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to migrate to [Boost](https://boost.filecoin.io).
  {{< /alert >}}
 
 Filecoin miners, like participants in all peer-to-peer protocols, require a steady and quality pool of peers to communicate with in order to perform their various functions. This complements the [connectivity section]({{< relref "initialize#connectivity-to-the-miner" >}}) in the setup instructions and the [seal workers]({{< relref "seal-workers" >}}) guide.
