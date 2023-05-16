@@ -219,36 +219,10 @@ This section will cover the installation, configuration, and how to start the lo
     lotus-miner init --owner=<address>  --worker=<address> --no-local-storage
     ```
 
-1. Configure libp2p port in the `~/.lotusminer/config.toml` file so miner other nodes can find the miner in the network:
-    
-    ```shell
-    ...
-    [Libp2p]
-      ListenAddresses = ["/ip4/0.0.0.0/tcp/24001"] # choose a fixed port
-      AnnounceAddresses = ["/ip4/B.B.B.B/tcp/24001"] # important!
-    ...
-    ```
-    
-    Choosing port `0.0.0.0` on `ListenAddress` allows the miner process to listen on both internal interfaces `x.x.x.x` and `B.B.B.B`. But we are announcing only the public address so all connections coming from the network are routed via this address.
-
 1. Start the miner
     
     ```shell
     lotus-miner run
-    ```
-
-1. Test that your miner is reachable at its public address. Go through the [connectivity guide]({{<relref "../../storage-providers/operate/connectivity" >}}) in case you need more information about this. Please do not proceed with the next step if your miner is not reachable:
-    
-    ```shell
-    $ lotus-miner net reachability
-    AutoNAT status:  Public
-    Public address:  /ip4/<IP>/tcp/<port>
-    ```
-
-1. Publish your miner address in the network:
-    
-    ```shell
-    lotus-miner actor set-addrs /ip4/B.B.B.B/tcp/24001
     ```
 
 ### Lotus miner configuration
