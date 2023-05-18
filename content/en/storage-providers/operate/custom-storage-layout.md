@@ -152,7 +152,7 @@ You can detach a storage path with the `lotus-miner storage detach /path/to/stor
 
 ## Updating locations
 
-As of version 1.17.1 you can update sector locations without restarting the `lotus-miner` with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a separate server it's recommended to use a utility like r sync or similar that has checksum on both ends. If moving data to a separate server, it is also good practice to keep the important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
+You can update sector locations without restarting the `lotus-miner` with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a separate server it's recommended to use a utility like r-sync or similar that has checksum on both ends. If moving data to a separate server, it is also good practice to keep a backup of important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
 
 1. To redeclare sector(s) in another storage path, first copy the sector file to the new location:
 
@@ -170,7 +170,7 @@ total size is 536,870,912  speedup is 1.00
 2. Redeclare the sector(s) in the new storage path.
 
 ```shell
-lotus-miner storage redeclare --all /destination/path
+lotus-miner storage redeclare --all
 ```
 
 You should now be able to see that the sectors has been redeclared in the new path. You also have the option to specify the `--id` of the storage path when redeclaring instead of using the actual path.
@@ -192,7 +192,7 @@ total size is 536,870,912  speedup is 1.00
 4. Drop index entries with missing files in the old storage path
 
 ```shell
-lotus-miner storage redeclare --all --drop-missing /old/path
+lotus-miner storage redeclare --all
 ```
 
 You should now be able to see that the sectors entries has been removed from the old path.
