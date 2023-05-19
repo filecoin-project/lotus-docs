@@ -11,15 +11,15 @@ weight: 110
 toc: true
 ---
 
-We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into three categories.
+We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into a couple different categories.
 
 **Sealing tasks**: Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
-
-Snap-Deal sealing tasks are covered in a separate dedicated guide in the operate section.
 
 **Proving tasks**: These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
 
 **Scheduling tasks**: These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
+
+**SnapDeal tasks:** These tasks are a special type of sealing tasks which allows an storage provider to takes empty committed sectors and places deal data into them.
 
 ![Overview of the lotus-miner tasks](lotus-miner-tasks.png) 
 
@@ -59,13 +59,13 @@ In the Commit 2 phase, the file from the Commit 1 gets compressed into a much sm
 
 These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk to create a verifiable, and public record attesting to the storage providers continued commitment of storing the data, or for the network to reward storage providers for their contributions. 
 
-### windowPoSt
+### WindowPoSt
 
 Window Proof-of-SpaceTime (WindowPoSt) is a proving task where the storage provider is asked to compute a proof that they are actually storing the data they have commited to the network. Every 24-hour period is broken into a series of windows, where each window is 30 minutes long. In a given window, a storage provider is asked to generate a proof based on random parts of the sealed sectors the storage provider has in that window. If they don’t have the data anymore, they won’t be able to respond with their proof in time, and will be penalized.
 
 In this way, every sector is audited at least once in any 24-hour period, and a permanent, verifiable, and public record attesting to each storage providers continued commitment is kept.
 
-### winningPoSt
+### WinningPoSt
 
 Winning Proof-of-SpaceTime (WinningPoSt) is the mechanism by which storage providers are rewarded by the Filecoin network for their contributions to it. As a requirement for doing so, each storage provider is tasked with submitting a compressed Proof-of-Spacetime for a specified sector. Each elected storage provider who successfully creates a block is granted FIL, as well as the opportunity to charge other Filecoin participants fees to include messages in the block.
 
@@ -88,6 +88,14 @@ This message type can also be batched to include multiple PreCommitSector messag
 Through the `ProveCommitSector` message the storage provider provides a Proof of Replication (PoRep) for the sector commited in the `PreCommitSector` message. This proof must be submitted AFTER the security wait requirement by the network (WaitSeed), and before the PreCommit expiration of the sector.
 
 This message type can also be aggregated to include multiple ProveCommitSector messages in a single message. These aggregated messages are called `ProveCommitAggregate`.
+
+## SnapDeal tasks
+
+SnapDeal sealing tasks are a special type of sealing tasks which allows an storage provider to takes empty committed sectors and places deal data into them.
+
+### Replica Update
+
+### Prove Replica Update
 
 ## Tips
 
