@@ -14,27 +14,26 @@ weight: 385
 toc: true
 ---
 
-These operations are normally related to maintenances and upgrades. Given that miners are expected to submit proofs to the chain in a continuous fashion while running long and expensive operations, it is important that operators become familiar with how to manage some of the events in the miner lifecycle so that they can be performed with the maximum guarantees.
+These operations are normally related to maintenances and upgrades. Given that storage providers are expected to submit proofs to the chain in a continuous fashion while running long and expensive operations, it is important that operators become familiar with how to manage some of the events in the storage provider lifecycle, so that they can be performed with the maximum guarantees.
 
 ## Safely restarting the miner daemon
 
 The process of shutting down a miner and starting it again is complicated. Several factors need to be taken into account to be able to do it with all the guarantees:
 
-- How long the miner plans to be offline.
+- How long the storage provider plans to be offline.
 - The existence and distribution of proving deadlines for the miner.
-- The presence of open payment channels and ongoing retrieval deals.
 - The occurrence of ongoing sealing operations.
 
 ### Reducing the time offline
 
-Given the need to continuously send proofs to the network, the miner should be offline as little as possible. _Offline-time_ includes the time it takes for the computer to restart the miner daemon fully. For these reasons, we recommend you follow these steps:
+Given the need to continuously send proofs to the network, the storage provider should be offline as little as possible. _Offline-time_ includes the time it takes for the computer to restart the lotus-miner daemon fully. For these reasons, we recommend you follow these steps:
 
-1. Rebuild, install any upgrades before restarting the Lotus Miner process.
-1. Ensure the proof parameters are on a fast storage drive like an NVMe drive or SSD. These are the proof parameters that are downloaded the first time the miner is started, and are saved to `var/tmp/filecoin-proof-parameters`, or `$FIL_PROOFS_PARAMETER_CACHE` if the environment variable is defined.
+1. Rebuild, install any upgrades before restarting the lotus-miner process.
+1. Ensure the proof parameters are on a fast storage drive like an NVMe drive or SSD. These are the proof parameters that are downloaded the first time the lotus-miner is started, and are saved to `var/tmp/filecoin-proof-parameters`, or `$FIL_PROOFS_PARAMETER_CACHE` if the environment variable is defined.
 
 ### Ensuring proofs for the current deadline have been sent
 
-Shutting down your miner while there are still pending operations could get your [miner slashed](https://docs.filecoin.io/mine/slashing/). Check that there are no pending operations by running `lotus-miner proving info`. If any deadline shows a _block height_ in the past, do not restart yet.
+Shutting down your lotus-miner while there are still pending proving operations could get your [miner slashed](https://docs.filecoin.io/mine/slashing/). Check that there are no pending operations by running `lotus-miner proving info`. If any deadline shows a _block height_ in the past, do not restart yet.
 
 In the following example, `Deadline Open` is 454, which is earlier than `Current Epoch` of 500. This miner should not be shut down or restarted:
 
@@ -84,39 +83,25 @@ $ lotus-miner proving deadlines
 
 Every row corresponds to a deadline (a period of 30 minutes covering 24 hours). The current one is marked. This is sometimes useful to find a time of day in which the miner does not have to submit any proofs to the chain.
 
-### Checking and temporally disabling deals
-
-Before stopping the miner, check the state of your deals to make sure the miner is not receiving data or retrieving data for a client:
-
-```shell
-lotus-miner storage-deals list
-lotus-miner retrieval-deals list
-lotus-miner data-transfers list
-```
-
-To prevent new deals from coming in while you wait to finish work for the current deadline, you can disable storage and retrieval deals. This ensures that the miner does not find itself in the middle of a new deal when shutting down:
-
-```shell
-lotus-miner storage-deals selection reject --online --offline
-lotus-miner retrieval-deals selection reject --online --offline
-```
-
-After the miner has finished rebooting, the deals can be reset with:
-
-```shell
-lotus-miner storage-deals selection reset
-lotus-miner retrieval-deals selection reset
-```
-
 ### Checking ongoing seal operations
 
-To get an overview of your current sectors and states, run:
+To get an overview of your current sealing jobs with:
 
 ```shell
-lotus-miner sectors list
+lotus-miner sealing jobs
 ```
 
-Any ongoing sealing operation will be restarted from the last checkpoint, and usually corresponds to the start of the current sealing phase. Given that sealing is time consuming, you should wait for some stages that are close to finishing before restarting your miner.
+Before shutting down the lotus-miner you should gracefully shutdown any lotus-workers, or at least stop the current ongoing sealing operations. You can make sure that your lotus-workers do not get any new sealing tasks by disabling sealing tasks on a given lotus-worker.
+
+```shell
+lotus-worker tasks disable --all
+```
+
+After the worker has finished their sealing tasks, you can stop the worker with:
+
+```shell
+lotus-worker stop
+```
 
 ### Restarting the miner
 
@@ -128,15 +113,21 @@ lotus-miner stop
 # systemctl stop lotus-miner
 ```
 
-You can restart the miner as soon as you wish. Workers do not need to be restarted as they will reconnect to the miner automatically when it comes back up. However, if you are upgrading your node at the same time as shutting down your miner, you will need to restart the machine.
+You can restart the miner as soon as you wish. Workers do not need to be restarted as they will reconnect to the miner automatically when it comes back up.
 
-## Restarting workers
+## Graceful shutdown of lotus workers
 
-Lotus [seal workers]({{< relref "seal-workers" >}}) can be restarted any time, but if they are in the middle of one of the sealing steps, then the operation will start again (from the last checkpoint).
+Lotus [seal workers]({{< relref "seal-workers" >}}) can be restarted any time, but if they are in the middle of one of the sealing steps, then the operation will start again (from the last checkpoint). Its therefore recommended to gracefully let the lotus-worker finish its sealing tasks before stopping it. You can disable any new sealing tasks on the worker with:
 
-{{< alert icon="warning" >}}
-There is a maximum of three attempts to complete the _precommit2_ operation before sealing is fully started from scratch (_pre-commit1_ phase).
-{{< /alert >}}
+```shell
+lotus-worker tasks disable --all
+```
+
+After the worker has finished its sealing tasks, you can stop the lotus-worker gracefully with:
+
+```shell
+lotus-worker stop
+```
 
 ## Changing storage locations
 
