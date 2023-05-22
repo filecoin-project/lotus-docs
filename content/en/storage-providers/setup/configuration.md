@@ -268,10 +268,6 @@ The storage provider should now be preliminary set up and running, and you shoul
 
 ### Market operations
 
-The `lotus-miner` performs sealing and proving operations. To perform market operations, managing data onboarding and serving retrievals to clients, the storage providers needs to setup Boost.
+The `lotus-miner` performs sealing and proving operations. To perform market operations, managing data onboarding and serving retrievals to clients, the storage providers needs to setup [Boost](https://boost.filecoin.io).
 
-Currently, there are two implementations of market processes available which are compatible with `lotus-miner` subsystem.
-
-1. [Boost](https://boost.filecoin.io)
-
-Boost supports multiple options for data transfer when making storage deals, including HTTP. Clients can host their CAR file on an HTTP server, such as S3, and provide that URL when proposing the storage deal. Once accepted, Boost will automatically fetch the CAR file from the specified URL.
+Boost is the default markets implementation supported by Lotus. It supports multiple options for data transfer when making storage deals, including HTTP. Clients can host their CAR file on an HTTP server, such as S3, and provide that URL when proposing the storage deal. Once accepted, Boost will automatically fetch the CAR file from the specified URL.
