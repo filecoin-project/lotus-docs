@@ -366,7 +366,10 @@ The storage section controls whether the `lotus-miner` can perform certain seali
 
 ### Worker assigning logic 
 
-The storage section includes a worker assigning logic. It allows you to specify if you want to assign tasks to `lotus-workers` with the lowest utilization (default), or if you want to assign tasks to as many distinct workers as possible with the `spread` option.
+The storage section includes a worker assigning logic. It allows you to specify a assigning logic that suits your setup.
+
+- `utilization` is the default assinging logic, and tries to assing tasks to lotus-workers with the lowest utilization.
+- The `spread` assigning logic tries to assign tasks to as many distinct workers as possible.
 
 ```toml
 # Assigner specifies the worker assigner to use when scheduling tasks.
@@ -377,6 +380,13 @@ The storage section includes a worker assigning logic. It allows you to specify 
 # env var: LOTUS_STORAGE_ASSIGNER
 #Assigner = "utilization"
 ```
+
+You can also choose to use some experimental assigner logics:
+
+- The `experiment-spread-qcount` - this logic is similar to the spread assigner, but also takes into account task counts which are in running/preparing/queued states.
+- The `experiment-spread-tasks` - this logic is similar to the spread assigner, but counts running tasks on a per-task-type basis
+- The `experiment-spread-tasks-qcount` -  this logic similar to the spread assigner, but also takes into account task counts which are in running/preparing/queued states, as well as counting running tasks on a per-task-type basis.
+- The `experiment-random` - In each schedule loop this assinger logic figures a set of all workers which can handle the task and then picks a random one. 
 
 ### Dissallow remote finalize
 
