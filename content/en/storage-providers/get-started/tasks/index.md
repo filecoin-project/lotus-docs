@@ -91,11 +91,19 @@ This message type can also be aggregated to include multiple ProveCommitSector m
 
 ## SnapDeal tasks
 
-SnapDeal sealing tasks are a special type of sealing tasks which allows an storage provider to takes empty committed sectors and places deal data into them.
+SnapDeal sealing tasks are a special type of sealing tasks which allows a storage provider to takes already committed sealed sectors and place deal data into them.
 
 ### Replica Update
 
-### Prove Replica Update
+The Replica Update tasks is similar to the the PreCommit 2 task, with some additional logic that makes it impossible to know beforehand which bytes come out of the new sealed sector. This is to maintain security in the network. This task encodes the incoming unsealed data (deal data), into an existing sealed sector.
+
+### Prove Replica Update 1
+
+This task is similar to the Commit 1 task, only with slightly lighter proofs, because we only need to prove that we have encoded new data into the existing sealed sector.
+
+### Prove Replica Update 2
+
+In the Prove Replica Update 2 phase, the output from the Prove Replica Update 1 task gets compressed into a smaller proof using zk-SNARKs. The zk-SNARK genereated after the Prove Replica Update 2 can verify that the new data is encoded in the new sealed sector, and is small enough to be suitable for a blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
 
 ## Tips
 
