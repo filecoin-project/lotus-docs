@@ -17,7 +17,7 @@ This section contains guides to initialize and run a successful storage provider
 
 ![High Level Full Lotus System](High-Level-Full-Lotus-System.png)
 
-At a high level, this section will cover documentation and guides about the `lotus-miner` and `lotus-worker` binaries. For markets related operations, storage providers are adviced to use Boost, you can check out the [Boost documentation here](https://boost.filecoin.io)
+At a high level, this section will cover documentation and guides about the `lotus-miner` and `lotus-worker` binaries. For markets related operations, storage providers are advised to use Boost, you can check out the [Boost documentation here](https://boost.filecoin.io)
 
 {{< alert icon="warning" >}}
 Being a storage provider on the _mainnet_ has stringent minimal **[hardware requirements]({{< relref "../../../storage-providers/get-started/hardware-requirements" >}})**. Do not attempt this installation if your server does not meet the minimum requirements.
@@ -31,7 +31,7 @@ The guides in this section are meant to introduce high-level concepts early in t
 - The `Setup` segment contains all the necessary information for initializing the storage provider on the network.
 - The `Operate` segment contains the necessary information about operating the storage provider daily and introduces more complex operations like SnapDeals, Batching and Index Provider.
 - The `Workers` segment contains guides for setting up dedicated workers for offloading tasks from the `lotus-miner` binary.
-- The `Advanced onfigurations` segment details all the configurations you can tune to optimize your storage provider setup.
+- The `Advanced configurations` segment details all the configurations you can tune to optimize your storage provider setup.
 
 We recommend careful reading of every existing section and gaining as much background as possible before proceeding with a Lotus storage provider deployment.
 
