@@ -1,6 +1,6 @@
 ---
-title: "Legacy lotus-miner markets connectivety"
-description: "This guide shows connectivety tips and tricks for the legacy lotus-miner markets"
+title: "Legacy lotus-miner markets connectivity"
+description: "This guide shows connectivity tips and tricks for the legacy lotus-miner markets"
 date: 2023-05-16T12:00:35+01:00
 lastmod: 2023-05-16T12:00:35+01:00
 draft: false
