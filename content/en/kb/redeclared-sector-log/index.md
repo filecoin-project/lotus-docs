@@ -20,11 +20,10 @@ In your lotus-miner logs you might see these logs being printed:
 2023-05-22T13:51:12.919Z	WARN	stores	paths/index.go:369	sector {1278 1072} redeclared in d8cfac01-4999-45d5-8231-8aa9423224e2
 ```
 
-This can happen either because:
+These log appear:
 
 1. On startup the lotus-miner process will scan all sector storage paths to see where the sectors are located, and as suchs you will see these logs outputted.
 
-2. [Boost](https://boost.filecoin.io) added index integrity checks in Boost version v1.7.0 and higher, which is why you would see this logging at `random` times. The storage list api that Boost relies on in the Lotus-Miner unfortunately doesn’t automatically update removed sectors or removed unsealed copies, so they ask lotus-miner to update the list via the redeclare storage api, which should be a fairly light call.
+2. [Boost](https://boost.filecoin.io) added index integrity checks in Boost version v1.7.0 and higher, which is why you would see this logging at certain intervalls. The storage list api that Boost relies on in the Lotus-Miner unfortunately doesn’t automatically update removed sectors or removed unsealed copies, so they ask lotus-miner to update the list via the redeclare storage api, which should be a fairly light call.
 
 In Boost you can configure how often this API call occurs, you can read more about that here:
-
