@@ -37,18 +37,6 @@ You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc
 
 - Testnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0](wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0)
 
-## Hyperspace endpoint
-
-Hyperspace nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >}}) can use `https://hyperspace.node.glif.io/rpc/v0`.
-- Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
-- `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals-hyperspace.s3.amazonaws.com/StateMarketDeals.json.zst). `StateMarketDeals` data is refreshed every 10 minutes.
-
-- {{< alert icon="tip" >}}
-You can use the `v1` JSON RPC API with `https://hyperspace.node.glif.io/rpc/v1`
-{{< /alert >}}
-
-- Hyperspace network has a ws (web socket) endpoint. the ws link is available like [wss://wss.hyperspace.node.glif.io/apigw/lotus/rpc/v0](wss://wss.hyperspace.node.glif.io/apigw/lotus/rpc/v0)
-
 ### Custom endpoints
 
 Custom endpoints can be requested, including advanced permission settings. Let us know your use case.
