@@ -11,7 +11,7 @@ aliases:
     - /developers/apis/
 ---
 
-This section contains reference information for the Lotus API and CLI. Most commands found within the CLI have an equivilent in the API.
+This section contains reference information for the Lotus API and CLI. Most commands found within the CLI have an equivalent in the API.
 
 ## Lotus
 
