@@ -17,7 +17,7 @@ This section contains guides to initialize and run a successful storage provider
 
 ![High Level Full Lotus System](High-Level-Full-Lotus-System.png)
 
-At a high level, this section will cover documentation and guides about the `lotus-miner` and `lotus-worker` binaries. For markets related operations, storage providers are adviced to use Boost, you can check out the [Boost documentation here](https://boost.filecoin.io)
+At a high level, this section will cover documentation and guides about the `lotus-miner` and `lotus-worker` binaries. For markets related operations, storage providers are advised to use Boost, you can check out the [Boost documentation here](https://boost.filecoin.io)
 
 {{< alert icon="warning" >}}
 Being a storage provider on the _mainnet_ has stringent minimal **[hardware requirements]({{< relref "../../../storage-providers/get-started/hardware-requirements" >}})**. Do not attempt this installation if your server does not meet the minimum requirements.
