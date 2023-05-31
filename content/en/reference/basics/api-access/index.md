@@ -141,13 +141,16 @@ If your Lotus instance is hosted remotely, ensure that you have enabled [remote 
 
 ### Publicly Available Hosted Endpoints
 
-To use a publicly available hosted endpoint such as [Glif](https://api.hyperspace.node.glif.io/rpc/v0) follow the steps for the locally hosted node above replacing the script in step 2 with the following:
+To use a publicly available hosted endpoint follow the steps for the locally hosted node above replacing the script in step 2 with the following:
+
+Further information about currently availble hosted endpoints can be found at the following links:
+- [Ankr](https://www.ankr.com/rpc/filecoin/)
+- [Glif](https://api.node.glif.io)
+- [ChainStack](https://chainstack.com/labs/#filecoin)
 
 {{< alert >}}
 **NOTE** - Publicly available hosted endpoints **do not** require an authorization token.
 {{< /alert >}}
-
-
 
 ```go
 package main
@@ -162,7 +165,7 @@ import (
 )
 
 func main() {
-    addr := "wss.hyperspace.node.glif.io/apigw/lotus"
+    addr := "wss.calibration.node.glif.io/apigw/lotus"
 
     var api lotusapi.FullNodeStruct
     closer, err := jsonrpc.NewMergeClient(context.Background(), "ws://"+addr+"/rpc/v0", "Filecoin", []interface{}{&api.Internal, &api.CommonStruct.Internal}, nil)
@@ -179,6 +182,3 @@ func main() {
     fmt.Printf("Current chain head is: %s", tipset.String())
 }
 ```
-Further information about currently availble hosted endpoints can be found at the following links:
-- [Glif](https://api.hyperspace.node.glif.io/rpc/v0)
-- [ChainStack](https://chainstack.com/labs/#filecoin)
