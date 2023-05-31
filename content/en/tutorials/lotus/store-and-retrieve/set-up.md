@@ -151,7 +151,7 @@ If you prefer to build from source, try these steps.
     rustup-init
     ```
 
-{{< alert icon="tip" >}}If you dont want to restart the active terminal, 
+{{< alert icon="tip" >}}If you don't want to restart the active terminal, 
 then source "$HOME/.cargo/env". {{< /alert >}}
 
 8. Build the clients
