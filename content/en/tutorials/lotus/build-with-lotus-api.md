@@ -62,7 +62,7 @@ The following the steps walk through how to install a Lotus node. Further, more 
 1. Download the latest chain snapshot using the [CID listed under `Genesis CAR file`](https://docs.filecoin.io/networks/mainnet/details/). Then sync to the network which will take several hours to fully sync the chain:
 
     ```shell
-    lotus daemon --import-snapshot curl -sI https://www.mediafire.com/file/gquphc7qw0ffzdk/lotus_cali_snapshot_2022_05_18_high_959844.car.tar.gz/file
+    lotus daemon --import-snapshot curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest.zst
     ```
 
 1. [Create a wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#creating-a-wallet) and request some test FIL from the [Faucet](https://faucet.calibration.fildev.network/).
