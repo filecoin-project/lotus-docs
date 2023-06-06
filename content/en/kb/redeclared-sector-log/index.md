@@ -20,7 +20,7 @@ In your lotus-miner logs you might see these logs being printed:
 2023-05-22T13:51:12.919Z	WARN	stores	paths/index.go:369	sector {1278 1072} redeclared in d8cfac01-4999-45d5-8231-8aa9423224e2
 ```
 
-These log appear:
+These logs appear:
 
 1. On startup the lotus-miner process will scan all sector storage paths to see where the sectors are located, and as suchs you will see these logs outputted.
 
