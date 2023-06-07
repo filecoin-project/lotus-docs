@@ -10,7 +10,7 @@ menu:
 toc: false
 pinned: false
 types: ["article"]
-areas: [""Lotus Miner"]
+areas: ["Lotus Miner"]
 ---
 
 In your lotus-miner logs you might see these logs being printed:
