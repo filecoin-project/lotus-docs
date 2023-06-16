@@ -124,7 +124,7 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 
 ### Devnet
 
-The development network is designed to run locally with minimal resources for develpment testing. You can read the [setup guide here]({{<relref "../../lotus/developers/local-network/">}}).
+The development network is designed to run locally with minimal resources for development testing. You can read the [setup guide here]({{<relref "../../lotus/developers/local-network/">}}).
 
 **Network parameters**:
 
