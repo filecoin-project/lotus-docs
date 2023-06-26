@@ -139,7 +139,7 @@ Propose Message CID: bafy2bzacedsn3tkikqvt7wo3g7nrqjkbqojcbpasqnib32ihrjqgryqfho
 Beneficiary address successfully changed
 ```
 
-If you want to revert the beneficiary address due setting the wrong parameters or before the quota/expiration has been met, the owner and beneficiary can work together to revert it back to the owner address:
+If you want to revert the beneficiary address due to setting the wrong parameters or before the quota/expiration has been met, the owner and beneficiary can work together to revert it back to the owner address:
 
 1. First the `Owner` proposes to change the current beneficiary address back to itself:
 
