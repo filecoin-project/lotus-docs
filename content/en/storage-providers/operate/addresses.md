@@ -127,6 +127,8 @@ Beneficiary Expiration: 12000
 
 To withdraw balance the withdrawal method can be called by the `beneficiary address` or the `owner address`, but the balance will always be sent to the beneficiary. The total balance withdrawed to a beneficiary address can´t exceed its quota or after the expiration epoch has passed.
 
+#### Revert beneficiary address
+
 To revert the address back to the owner address after the exipiration epoch or the quota of the beneficiary address has been filled, you will need to propose changing the beneficiary address back to the owner address with 0-values for the `quota` and `expiration`.
 
 ```shell with-output
@@ -134,6 +136,32 @@ lotus-miner actor propose-change-beneficiary <owner> 0 0
 ```
 ```
 Propose Message CID: bafy2bzacedsn3tkikqvt7wo3g7nrqjkbqojcbpasqnib32ihrjqgryqfhokoa
+Beneficiary address successfully changed
+```
+
+If you want to revert the beneficiary address due setting the wrong parameters or before the quota/expiration has been met, the owner and beneficiary can work together to revert it back to the owner address:
+
+1. First the `Owner` proposes to change the current beneficiary address back to itself:
+
+```shell with-output
+lotus-miner actor propose-change-beneficiary <owner> 0 0
+```
+```
+Propose Message CID: bafy2bzacecwio3kq2mnhm5r5i6iakzfbebq27j26v5gn6wakdoffupe4zcxqc
+Beneficiary address change awaiting additional confirmations
+```
+
+2. Beneficiary address confirms the change back to the owner:
+
+```shell with-output
+./lotus-shed actor confirm-change-beneficiary --existing-beneficiary <minerID>
+```
+```
+Confirming Pending Beneficiary Term of:
+Beneficiary:  f0102
+Quota: 0
+Expiration Epoch: 0
+Confirm Message CID: bafy2bzacea4wdob4f5c4rywkhxwinqkxkxcz7xatzi72qi2w3dmnw4nwnnr52
 Beneficiary address successfully changed
 ```
 
