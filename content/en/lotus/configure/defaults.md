@@ -406,6 +406,15 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
     # type: string
     # env var: LOTUS_FEVM_EVENTS_DATABASEPATH
     #DatabasePath = ""
+
+
+[Index]
+  # EXPERIMENTAL FEATURE. USE WITH CAUTION
+  # EnableMsgIndex enables indexing of messages on chain.
+  #
+  # type: bool
+  # env var: LOTUS_INDEX_ENABLEMSGINDEX
+  #EnableMsgIndex = false
 ```
 
 ## Connectivity
@@ -441,7 +450,7 @@ Variables specific to the _Lotus daemon_:
 - `LOTUS_CHAIN_INDEX_CACHE`: Sets the size for the epoch index cache. Defaults to `32768`. Increase if you perform frequent deep chain lookups for block heights far from the latest height.
 - `LOTUS_CHAIN_BADGERSTORE_COMPACTIONWORKERNUM`: Sets the [number of compaction workers](https://github.com/dgraph-io/badger/blob/a1714be7db5041d0d886ab3a9579893c8ca42805/options.go#L619-L626) for the badger blockstore.
 - `LOTUS_BSYNC_MSG_WINDOW`: Sets the initial maximum window size for message fetching blocksync request. Set to 10-20 if you have an internet connection with low bandwidth.
-- `LOTUS_MIGRATION_MAX_WORKER_COUNT`: Limits the number of actors being migrated simultaneously. 
+- `LOTUS_MIGRATION_MAX_WORKER_COUNT`: Limits the number of actors being migrated simultaneously.
 
 ## Controlling a remote daemon
 
@@ -492,3 +501,14 @@ The `ActorEvent` configuration section contains settings for the event filtering
 - `MaxFilterResults`: integer value that specifies the maximum number of results that can be accumulated by an actor event filter.
 - `MaxFilterHeightRange`: An unsigned 64-bit integer value that specifies the maximum range of heights that can be used in a filter to avoid querying the entire chain.
 - `ActorEventDatabasePath`: A string value that specifies the full path to an SQLite database that will be used to index actor events to support the historic filter APIs. The database will be created if it does not exist. The directory containing the database must already exist and be writeable.
+
+## Indexing
+
+This feature is experimental -- use with caution.
+
+The `EnableMsgIndex` variable allows users to accelerate `StateSearchMessage` and related functionality. This feature comes with two `lotus-shed` commands:
+
+- `lotus-shed msgindex backfill`: backfill the index.
+- `lotus-shed msgindex prune`: prune old index entries.
+
+Users can enable this feature by creating a `LOTUS_INDEX_ENABLEMSINDEX` environment variable or setting `EnableMsgIndex` to `true` within their `~/.lotus/config.toml` file (or wherever their `config.toml` file is located). This feature is disabled by default.
