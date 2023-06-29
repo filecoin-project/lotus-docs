@@ -9,7 +9,7 @@ menu:
         identifier: "lotus-management-backup-and-restore"
 aliases:
     - /docs/set-up/backup-and-restore/
-weight: 425
+weight: 435
 toc: true
 ---
 

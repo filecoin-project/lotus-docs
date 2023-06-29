@@ -8,7 +8,7 @@ menu:
          parent: "lotus-developers"
 aliases:
     - /docs/project/contribute/
-weight: 505
+weight: 120
 toc: true
 ---
 

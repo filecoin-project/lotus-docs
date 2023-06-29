@@ -7,7 +7,7 @@ menu:
     storage-providers:
         parent: "storage-providers-operate"
         identifier: "storage-provider-lotus-miner-cli"
-weight: 390
+weight: 350
 toc: true
 ---
 

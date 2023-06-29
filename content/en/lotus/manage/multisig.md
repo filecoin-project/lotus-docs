@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/multisig/
-weight: 410
+weight: 415
 toc: true
 ---
 

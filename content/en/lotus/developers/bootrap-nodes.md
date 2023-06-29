@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/set-up/bootstrappers/
     - /lotus/configure/bootrap-nodes/
-weight: 315
+weight: 110
 toc: true
 ---
 

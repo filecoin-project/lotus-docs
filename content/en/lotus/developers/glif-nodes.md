@@ -8,7 +8,7 @@ menu:
 aliases:
     - /docs/developers/hosted-lotus/
     - /developers/glif-nodes/
-weight: 105
+weight: 115
 toc: true
 ---
 

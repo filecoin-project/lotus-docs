@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/storage-providers/lifecycle/
     - /storage-providers/configure/lifecycle/
-weight: 385
+weight: 345
 toc: true
 ---
 

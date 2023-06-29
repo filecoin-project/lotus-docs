@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/storage-providers/message-pool/
     - /storage-providers/operate/message-pool/
-weight: 417
+weight: 425
 toc: true
 ---
 
