@@ -1,19 +1,26 @@
 ---
-title: "Manage storage deals"
-description: "This guide describes the different workflows and options that Lotus storage providers can use to manage storage deals."
-lead: "This guide describes the different workflows and options that Lotus storage providers can use to manage storage deals."
+title: "Manage Storage Deals - Lotus-miner legacy markets"
+description: "This is a guide describing the different workflows and options that Lotus storage providers can use to manage storage deals with the Legacy Lotus-Miner market."
+date: 2023-05-16T12:00:35+01:00
+lastmod: 2023-05-16T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-operate"
-        identifier: "storage-provider-manage-storage-deals"
+  kb:
+    parent: "browse"
 aliases:
     - /docs/storage-providers/manage-storage-deals/
-weight: 345
-toc: true
+    - /storage-providers/operate/manage-storage-deals/
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Deprecated"]
 ---
 
-During the lifetime of a storage provider, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+ {{< /alert >}}
+
+uring the lifetime of a storage provider, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
 
 1. Data transfer (for online deals) or data import (for offline deals)
 2. Sealing sector with deal data (miner)
@@ -60,6 +67,10 @@ considering offline storage deals: true
 
 The values above affect new deals. Ongoing deals will still have to be honored.
 
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+ {{< /alert >}}
+
 ## Setting the asking price
 
 One of the most important aspects of accepting new deals will be the miners' conditions and price. Incoming deals are evaluated on these conditions and automatically accepted or rejected by Lotus miners.
@@ -89,6 +100,10 @@ Lotus clients can request the miner price as well with:
 ```shell
 lotus client query-ask <minerID>
 ```
+
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+ {{< /alert >}}
 
 ## Listing current deals
 
@@ -156,6 +171,10 @@ In this case, the miner will have to import the storage deal data manually with 
 ```shell
 lotus-miner storage-deals import-data <dealCid> <filePath>
 ```
+
+{{< alert icon="warning" >}}
+ The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+ {{< /alert >}}
 
 ### Offline deal workflow
 
