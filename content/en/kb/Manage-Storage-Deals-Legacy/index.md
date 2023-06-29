@@ -9,6 +9,7 @@ menu:
     parent: "browse"
 aliases:
     - /docs/storage-providers/manage-storage-deals/
+    - /storage-providers/operate/manage-storage-deals/
 toc: false
 pinned: false
 types: ["article"]
