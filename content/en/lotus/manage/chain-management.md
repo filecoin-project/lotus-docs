@@ -8,7 +8,7 @@ menu:
         parent: "lotus-management"
 aliases:
     - /docs/set-up/chain-management/
-weight: 415
+weight: 420
 toc: true
 ---
 

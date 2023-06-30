@@ -9,7 +9,7 @@ menu:
         identifier: "storage-provider-sector-pledging"
 aliases:
     - /docs/storage-providers/sector-pledging/
-weight: 340
+weight: 330
 toc: true
 ---
 

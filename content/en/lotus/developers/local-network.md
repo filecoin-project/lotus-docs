@@ -7,7 +7,7 @@ menu:
     lotus:
         parent: "lotus-developers"
         identifier: "developers-networks-local-network"
-weight: 305
+weight: 105
 toc: true
 aliases:
     - /docs/developers/developer-network

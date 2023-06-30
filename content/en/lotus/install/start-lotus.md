@@ -5,7 +5,7 @@ draft: false
 menu:
     lotus:
         parent: "lotus-install"
-weight: 225
+weight: 220
 toc: true
 ---
 

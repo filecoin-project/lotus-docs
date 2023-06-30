@@ -10,7 +10,7 @@ menu:
 aliases:
     - /docs/storage-providers/troubleshooting/
     - /storage-providers/operate/troubleshooting/
-weight: 380
+weight: 340
 toc: true
 ---
 
