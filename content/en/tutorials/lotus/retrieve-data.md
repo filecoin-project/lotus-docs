@@ -58,7 +58,7 @@ An example of fetching and extracting a single file, identified by its CID:
 lassie fetch -o - bafykbzacecjedcvniq5wylq7cqre7la6diaxwsue5ssy3f3rzftwu3ielspru | car extract - > Juantalks.mp4
 ```
 
-Basic progress information, similar to the output show below, is displayed:
+Basic progress information, similar to the output shown below, is displayed:
 
 ```plaintext
 Fetching bafykbzacecjedcvniq5wylq7cqre7la6diaxwsue5ssy3f3rzftwu3ielspru................................................................................................................................................
