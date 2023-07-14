@@ -393,7 +393,7 @@ In this section, you will grant datacap to a client from a notary.
 1. Grant datacap from `<notary-1>` to a <client-address>, and specify the amount of bytes in datacap you want to give the client.
 
 ```shell
-lotus filplus --from=<notary-1> <client-address> <bytes>
+lotus filplus grant-datacap --from=<notary-1> <client-address> <bytes>
 ```
 
 ```plaintext
