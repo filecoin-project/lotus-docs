@@ -38,7 +38,7 @@ lotus daemon --slash-consensus=true --slashdb-dir="/your/path"
 
 The `--slash-consensus` and `--slashdb-dir` flags are both required to succesfully invoke the Slasher service.
 
-The `--slasher-sender` flag is also provided to optionally set the account to report consensus faults from.
+The `--slasher-sender` flag is also provided to optionally set the account to report consensus faults from. If this flag is not set, the default wallet address will be used.
 
 
 # The Lotus Disputer
