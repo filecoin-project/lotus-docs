@@ -74,11 +74,3 @@ Simply run `lotus chain disputer start` to start the disputer. The Disputer will
 {{< alert icon="tip" >}}
 The Lotus Disputer will take a couple of minutes to fully start. Any `rpc output message buffer` warning messages displayed during the the initiation process can be safely ignored.
 {{< /alert >}}
-
-## Manual Disputes
-
-You can also send a specific `DisputeWindowedPoSt` message by running `lotus chain disputer dispute [minerAddress] [index] [postIndex]`, where:
-
-- `minerAddress` - The miner id responsible for submitting the offending the proof you want to dispute.
-- `index` - The deadline index of the proof you want to dispute for the miner - example `0,47`.
-- `postIndex` - The post snapshot index - see the definition [here](https://github.com/filecoin-project/specs-actors/pull/1327).
