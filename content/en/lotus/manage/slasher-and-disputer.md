@@ -2,7 +2,7 @@
 title: "Lotus Slasher & Lotus Disputer"
 description: "Lotus Slasher and Lotus Disputer are essential services provided by the Filecoin protocol. They help maintain network integrity, prevent bad actors, and reward active participants."
 lead: "Lotus Slasher and Lotus Disputer are essential services provided by the Filecoin protocol. They help maintain network integrity, prevent bad actors, and reward active participants."
-draft: true
+draft: false
 menu:
     lotus:
         parent: "lotus-management"
