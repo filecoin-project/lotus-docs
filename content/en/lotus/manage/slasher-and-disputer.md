@@ -43,11 +43,9 @@ The `--slasher-sender` flag is also provided to optionally set the account to re
 
 # The Lotus Disputer
 
-Prior to the introduction of [FIP-0010](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0010.md), Storage Providers were required to verify and record proofs of continued data storage in the form of on-chain WindowPoST messages. This approach often led to high costs and bandwidth usage associated with verifying proofs, especially during periods of congestion and rising gas fees. 
+WindowPoSTs are important proofs submitted daily to ensure continued storage of all data on the Filecoin network. These proofs are accepted and recorded off-chain, reducing the burden on Storage Providers and network bandwidth by eliminating the need for extensive on-chain proof checking.
 
-To address this issue, [FIP-0010](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0010.md) was proposed and accepted to optimistically accept and record the proofs off-chain, reducing the burden on Storage Providers and network bandwidth by eliminating the need for extensive on-chain proof checking.
-
-Third-party Lotus node operators now enable off-chain verification of accepted WindowPoST proofs through the use of the Lotus Disputer service, utilizing the `DisputeWindowedPoSt` functionality.
+Instead, the network relies on third-party Lotus node operators who enable off-chain verification of accepted WindowPoST proofs through the use of the Lotus Disputer service, utilizing the `DisputeWindowedPoSt` functionality.
 
 In the event that a Lotus Disputer successfully challenges an optimistically accepted Window PoST, the Storage Provider responsible for the faulty proof is fined based on the proportion of the expected block reward they would have received from each incorrectly proved sector. Additionally, all sectors with incorrect proofs are appropriately labelled as faulty. 
 
