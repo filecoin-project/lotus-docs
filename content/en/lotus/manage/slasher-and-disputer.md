@@ -20,7 +20,7 @@ The Slasher and Disputer services are designed to be highly efficient and lightw
 
 # The Lotus Slasher
 
-The Filecoin protocol enforces penalties for three types of consensus faults that can be committed by block producers. To detect and report these faults, any user running a Lotus node can leverage the Lotus Slasher service and invoke the `ReportConsensusFault` method on the respective miner actor. Detailed information about these three consensus faults can be found [here](https://github.com/filecoin-project/lotus/blob/dbbcf4b2ee9626796e23a096c66e67ff350810e4/chain/vm/fvm.go#L113-L132).
+The Filecoin protocol enforces penalties for three types of Consensus Faults that can be committed by block producers. To detect and report these faults, any user running a Lotus node can leverage the Lotus Slasher service. This service monitors all incoming blocks for potential Consensus Faults, and invokes the `ReportConsensusFault` method on the respective miner actor. Detailed information about these three Consensus Faults can be found [here](https://github.com/filecoin-project/lotus/blob/dbbcf4b2ee9626796e23a096c66e67ff350810e4/chain/vm/fvm.go#L113-L132).
 
 When a consensus fault is successfully identified by the Lotus Slasher, the block producer responsible for the fault is subjected to a fine equivalent to 5 times the current epoch's block reward value. Additionally, they are ineligible to produce any further blocks for a full finality period of 900 epochs. Furthermore, the offending block producer is prohibited from pre-committing or recovering storage during the same finality period.
 
@@ -72,7 +72,7 @@ Once the node is fully synced, you can configure `lotus chain disputer` with the
 Simply run `lotus chain disputer start` to start the disputer. The Disputer will automatically begin to dispute proofs from the current epoch unless a specific height is set using the `--start-epoch` flag.
 
 {{< alert icon="tip" >}}
-The Lotsu Disputer will take a couple of minutes to fully start. Any `rpc output message buffer` warning messages displayed during the the initiation process can be safely ignored.
+The Lotus Disputer will take a couple of minutes to fully start. Any `rpc output message buffer` warning messages displayed during the the initiation process can be safely ignored.
 {{< /alert >}}
 
 ## Manual Disputes
