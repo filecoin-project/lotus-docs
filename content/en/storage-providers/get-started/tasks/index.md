@@ -95,7 +95,7 @@ SnapDeal sealing tasks are a special type of sealing tasks which allows a storag
 
 ### Replica Update
 
-The Replica Update tasks is similar to the the PreCommit 2 task, with some additional logic that makes it impossible to know beforehand which bytes come out of the new sealed sector. This is to maintain security in the network. This task encodes the incoming unsealed data (deal data), into an existing sealed sector.
+The Replica Update tasks (also know as UpdateReplica in the sealing jobs output) is similar to the the PreCommit 2 task, with some additional logic that makes it impossible to know beforehand which bytes come out of the new sealed sector. This is to maintain security in the network. This task encodes the incoming unsealed data (deal data), into an existing sealed sector.
 
 ### Prove Replica Update 1
 
