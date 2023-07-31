@@ -206,6 +206,45 @@ lotus send --params-hex=<encoded output from the previous step>
 
 Every transaction that sends `FIL` pays an additional fee based on its _gas_ usage. Gas and fees are explained in the [How Filecoin Works guide](https://docs.filecoin.io/about-filecoin/how-filecoin-works/#the-network). By default, Lotus automatically sets all the necessary values. However, you may want to use the `--gas-feecap` flag in the `send` command to avoid surprises when network congestion is high. For more information about messages and fees, see the [Message Pool guide]({{< relref "message-pool" >}}) and [Gas fees](https://docs.filecoin.io/smart-contracts/filecoin-evm-runtime/how-gas-works/) sections.
 
+### Transfer FIL from/to ETH addresses
+
+Lotus users can use the Lotus CLI to transfer FIL from an `f1...` address to a `0xb...` address using the following process:
+
+1. Get the f04 address from an Ethereum-style address:
+
+```shell with-output
+lotus evm stat 0xb....
+```
+```
+Filecoin address:  f410fx...
+Eth address:  0xb...
+Actor lookup failed for faddr f410fx... with error: resolution lookup failed (f410fx...): resolve address f410fx...: actor not found
+```
+
+The above error is because the `f410fx...` address doesn't exist on-chain yet.
+
+2. Send FIL to initialize the address on-chain:
+
+```shell with-output
+lotus send --from f1... f410... 1.00 
+```
+```
+bafy2bza...
+```
+
+3. Check the chain info to see the new actor for 0xb...
+
+```shell with-output
+lotus evm stat 0xb...
+```
+```
+Filecoin address:  f410fx...
+Eth address:  0xb...
+ID address:  f02...
+Code cid:  bafk2bz...
+Actor Type:  fil/11/placeholder
+```
+
 ## Exporting and importing addresses
 
 {{< alert icon="warning">}}
