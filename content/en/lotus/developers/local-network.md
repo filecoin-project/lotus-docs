@@ -183,7 +183,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
 
    {{< alert >}}
-   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   <u>Warning</u>: Don’t add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
    {{< /alert >}}
 
     ```shell
@@ -387,10 +387,10 @@ In this section, you will add two notaries to your local network with Fil+.
 In this section, you will grant datacap to a client from a notary.
 
 {{< alert >}}
-<u>Remember</u>: These steps won't work if you don't have a local network with Fil+ and noteries added on the network.
+<u>Remember</u>: These steps won't work if you don't have a local network with Fil+ and notaries added on the network.
 {{< /alert >}}
 
-1. Grant datacap from `<notary-1>` to a <client-address>, and specify the amount of bytes in datacap you want to give the client.
+1. Grant datacap from `<notary-1>` to a client, and specify the amount of bytes in datacap you want to give the client.
 
 ```shell
 lotus filplus grant-datacap --from=<notary-1> <client-address> <bytes>
