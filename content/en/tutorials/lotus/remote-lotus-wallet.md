@@ -44,7 +44,7 @@ So in our example that would be:
 [Wallet]
   # type: string
   # env var: LOTUS_WALLET_REMOTEBACKEND
-  RemoteBackend = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJhZG1pbiJdLCJDcmVhdGVkIjoiMjAyMi0wOC0xMlQxMjo1Njo1My44MTc0MTUzMzlaIiwiUnVsZXMiOm51bGx9.bS-6hLG1csJu8Pa8c8AQ_5IUX98iAfyxlMRiO61X1_g:http://123.123.12.123:177"
+  RemoteBackend = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJhZG1pbiJdLCJDcmVhdGVkIjoiMjAyMi0wOC0xMlQxMjo1Njo1My44MTc0MTUzMzlaIiwiUnVsZXMiOm51bGx9.bS-6hLG1csJu8Pa8c8AQ_5IUX98iAfyxlMRiO61X1_g:http://123.123.12.123:1777"
 ```
 
 Then restart (or run) your lotus daemon node. You can confirm that your `lotus-wallet` remote backend is properly set up by running the `lotus wallet list` command on the lotus daemon. On the server that is running `lotus wallet` you should be able to see that action being logged:
@@ -78,10 +78,22 @@ Accept the above? (Authorize/No): Authorize
 approved
 ```
 
-Repeat the process for all the addresses you want to be managed by the `lotus-wallet`. After importing all the keys stop the `lotus-wallet` and start removing the addresses on the lotus daemon node with `lotus wallet delete`. Your `lotus-wallet` will have to be turned off for it to not remove the keys on the `lotus-wallet` itself.
+Repeat the process for all the addresses you want to be managed by the `lotus-wallet`. After importing all the keys stop the `lotus-wallet` process and restart the lotus daemon with the RemoteBackend config turned off:
+
+```shell
+[Wallet]
+  # type: string
+  # env var: LOTUS_WALLET_REMOTEBACKEND
+  #RemoteBackend = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJhZG1pbiJdLCJDcmVhdGVkIjoiMjAyMi0wOC0xMlQxMjo1Njo1My44MTc0MTUzMzlaIiwiUnVsZXMiOm51bGx9.bS-6hLG1csJu8Pa8c8AQ_5IUX98iAfyxlMRiO61X1_g:http://123.123.12.123:1777"
+```
+Now you can start removing the addresses on the lotus daemon node with `lotus wallet delete`.
 
 {{< alert icon="warning">}}
 The `lotus wallet delete` cmd is just a soft-deletion of your addresses' private keys in the Lotus database. A hard deletion of the private keys in the `~/.lotus/keystore` folder is needed to make them non-retrievable. NB! Make sure that you have a backup of your addresses' private keys in a safe and secure place before you hard-delete them.
 {{< /alert >}}
 
 After all that is done, you can now restart the `lotus-wallet` without the `--interactive` mode. When you run the `lotus wallet list` on the lotus daemon node you should be able to see all your keys. You have now successfully set up the `lotus-wallet` binary to handle your keys and addresses.
+
+## Extra steps
+
+If you want to create any new wallets that should you **do not want** to be on the remote `lotus-wallet` service (such as PoSt-control addresses for example) will require you to turn of the RemoteBackend config, restart the daemon and create them such that they land on the server running `lotus-daemon` and not the `lotus-wallet`.
