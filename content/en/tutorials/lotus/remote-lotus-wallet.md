@@ -93,3 +93,7 @@ The `lotus wallet delete` cmd is just a soft-deletion of your addresses' private
 {{< /alert >}}
 
 After all that is done, you can now restart the `lotus-wallet` without the `--interactive` mode. When you run the `lotus wallet list` on the lotus daemon node you should be able to see all your keys. You have now successfully set up the `lotus-wallet` binary to handle your keys and addresses.
+
+## Extra steps
+
+If you want to create any new wallets that should you **do not want** to be on the remote `lotus-wallet` service (such as PoSt-control addresses for example) will require you to turn of the RemoteBackend config, restart the daemon and create them such that they land on the server running `lotus-daemon` and not the `lotus-wallet`.
