@@ -30,16 +30,38 @@ The succesful Lotus Slasher operator receives a reward equal to 25% of the curre
 
 The Lotus Slasher is already packagaed with Lotus so no additional installation steps are required. You **do not** need to be running `lotus-miner` to operate a Slasher.
 
-The Lotus Slasher functionality is activated by simply providing additional flags to the `lotus daemon` launch command as shown below.
+The Lotus Slasher functionality is configured and activated in the Lotus daemon `config.toml`. Simply set `EnableConsensusFaultReporter` to `true` and provide a local directory path for `ConsensusFaultReporterDataDir`. 
+A specific wallet address may be set using the `ConsensusFaultReporterAddress` which will be responsible for submitting `ReportConsensusFault` messages. If no wallet address is specified, the default wallet will be used.
 
-```shell
-lotus daemon --slash-consensus=true --slashdb-dir="/your/path"
+```toml
+[FaultReporter]
+  # EnableConsensusFaultReporter controls whether the node will monitor and
+  # report consensus faults. When enabled, the node will watch for malicious
+  # behaviors like double-mining and parent grinding, and submit reports to the
+  # network. This can earn reporter rewards, but is not guaranteed. Nodes should
+  # enable fault reporting with care, as it may increase resource usage, and may
+  # generate gas fees without earning rewards.
+  #
+  # type: bool
+  # env var: LOTUS_FAULTREPORTER_ENABLECONSENSUSFAULTREPORTER
+  EnableConsensusFaultReporter = true
+
+  # ConsensusFaultReporterDataDir is the path where fault reporter state will be
+  # persisted. This directory should have adequate space and permissions for the
+  # node process.
+  #
+  # type: string
+  # env var: LOTUS_FAULTREPORTER_CONSENSUSFAULTREPORTERDATADIR
+  ConsensusFaultReporterDataDir = "/path/to/slasher/directory"
+
+  # ConsensusFaultReporterAddress is the wallet address used for submitting
+  # ReportConsensusFault messages. It will pay for gas fees, and receive any
+  # rewards. This address should have adequate funds to cover gas fees.
+  #
+  # type: string
+  # env var: LOTUS_FAULTREPORTER_CONSENSUSFAULTREPORTERADDRESS
+  ConsensusFaultReporterAddress = "f1123..."
 ```
-
-The `--slash-consensus` and `--slashdb-dir` flags are both required to succesfully invoke the Slasher service.
-
-The `--slasher-sender` flag is also provided to optionally set the account to report consensus faults from. If this flag is not set, the default wallet address will be used.
-
 
 # The Lotus Disputer
 
