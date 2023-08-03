@@ -7,18 +7,14 @@ menu:
     lotus:
         parent: "lotus-management"
 aliases:
-    - /docs/set-up/chain-management/
+    - /docs/set-up/slasher-and-disputer/
 weight: 455
 toc: true
 ---
 
-# The Lotus Slasher & Lotus Disputer
-
-Lotus Slasher and Lotus Disputer are essential services provided by the Filecoin protocol. They help maintain network integrity, prevent bad actors, and reward active participants. 
-
 The Slasher and Disputer services are designed to be highly efficient and lightweight processes that require minimal resources. Enabling these services will have no detrimental effect on the performance of your Lotus node.
 
-# The Lotus Slasher
+# Lotus Slasher
 
 The Filecoin protocol enforces penalties for three types of Consensus Faults that can be committed by block producers. To detect and report these faults, any user running a Lotus node can leverage the Lotus Slasher service. This service monitors all incoming blocks for potential Consensus Faults, and invokes the `ReportConsensusFault` method on the respective miner actor. Detailed information about these three Consensus Faults can be found [here](https://github.com/filecoin-project/lotus/blob/dbbcf4b2ee9626796e23a096c66e67ff350810e4/chain/vm/fvm.go#L113-L132).
 
@@ -63,7 +59,7 @@ A specific wallet address may be set using the `ConsensusFaultReporterAddress` w
   ConsensusFaultReporterAddress = "f1123..."
 ```
 
-# The Lotus Disputer
+# Lotus Disputer
 
 WindowPoSTs are important proofs submitted daily to ensure continued storage of all data on the Filecoin network. These proofs are accepted and recorded off-chain, reducing the burden on Storage Providers and network bandwidth by eliminating the need for extensive on-chain proof checking.
 
