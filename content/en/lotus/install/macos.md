@@ -119,14 +119,6 @@ The installation instructions are different depending on which CPU is in your Ma
 
     The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
-1. Create the necessary environment variables to allow Lotus to run on M1 architecture:
-
-    ```shell
-    export LIBRARY_PATH=/opt/homebrew/lib
-    export FFI_BUILD_FROM_SOURCE=1
-    export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-    ```
-
 1. Build the `lotus` daemon:
 
     ```shell
