@@ -67,7 +67,6 @@ The seal workers will fail to start if the file descriptor limit is not set high
 ```
 # MINER_API_INFO as obtained before
 export MINER_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
-export MARKETS_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http`
 export FIL_PROOFS_USE_GPU_COLUMN_BUILDER=1 # when GPU is available
 export FIL_PROOFS_USE_GPU_TREE_BUILDER=1   # when GPU is available
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
