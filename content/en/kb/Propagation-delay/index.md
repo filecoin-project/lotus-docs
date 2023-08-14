@@ -21,7 +21,7 @@ Propagation delay is the amount of time a storage provider is waiting for other 
 
 The propagation delay is not how long a storage provider waits to release a block, it is only how long they wait for other blocks to arrive from the network. A generated block will still be released exactly at epoch time independently of what the propagation delay is, so there is no way to game the system by changing this value high.
 
-Starting from the v1.17.2 release the default propagation delay is set to 10 seconds. Based on current block mining metrics and the propagation time of blocks, this setting should allow for sufficient time to receive all parent blocks from the previous tipset, while still giving you ample time to compute a block if you were eligible.
+The default propagation delay is set to 10 seconds. Based on current block mining metrics and the propagation time of blocks, this setting should allow for sufficient time to receive all parent blocks from the previous tipset, while still giving you ample time to compute a block if you were eligible.
 
 ## Changing the default
 

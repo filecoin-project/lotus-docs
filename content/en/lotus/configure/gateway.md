@@ -27,7 +27,7 @@ API requests should be directed to the Gateway process’s socket, not the Lotus
 
 The transaction hash database is relatively small, but is subject to chain activity, so ensure you source the latest information before deploying a gateway.
 
-As of June 2023 the total storage space required is under 2Gi, and grows at approximately 20Mb per day. 
+As of June 2023 the total storage space required is under 2GiB, and grows at approximately 20Mb per day. 
 
 ## Configuration
 

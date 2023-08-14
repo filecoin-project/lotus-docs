@@ -74,10 +74,6 @@ Based on the equation above, caching 128-bit long multihashes will result in chu
 
 ## Become an index provider
 
-{{< alert icon="tip" >}}
- This feature is available in lotus v1.15.1 and up.
-{{< /alert >}}
-
 New Storage Providers who initialized with v1.15.1 or greater will have the new CARv2 indexing format and can [announce](#bulk-index-announcement) their indices after sealing their first storage deal. Existing Storage Providers initilized before v1.15.1 will need to follow the [one-off migration](#one-off-migration) guide to enable the indexing integration.
 
 ### One-off migration
