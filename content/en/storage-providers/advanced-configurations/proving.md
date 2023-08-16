@@ -101,3 +101,32 @@ In cases when submitting PoSt messages which contain recovering sectors, the def
 # env var: LOTUS_PROVING_SINGLERECOVERINGPARTITIONPERPOSTMESSAGE
 #SingleRecoveringPartitionPerPostMessage = false
 ```
+
+### Parallel WindowPoSt batch processing
+
+{{< alert icon="warning" >}}
+Experimental feature:
+Please be cautious while using this feature as it's still under testing.
+{{< /alert >}}
+
+The parallel WindowPoSt batch processing configuration aims to optimize the utilization of WindowPoSt workers by allowing for the parallel processing of multiple WindowPoSts when an SP has multiple partitions within a single deadline.
+
+Setting the value to 0 removes any limit on the number of partitions processed in parallel. However, increasing parallel processing is beneficial only if you have multiple WindowPoSt-workers. If you have just one WindowPoSt-worker, increasing parallelism may actually reduce performance.
+
+```toml
+# Maximum number of partition batches to process in parellel. 0 = no limit.
+# 
+# A partition batch after being processed ends up as a PoSt message, so this limit can also be thought of as "how
+# many WindowPoSt messages to create in parallel".
+# 
+# Note that this is only really useful when multiple PoSt workers are connected and available. If there are no or
+# only one PoSt workers the effect will be limited, and performance may even degrade.
+# ------------------------
+# Experimental feature:
+# Please be cautious while using this feature as it's still under testing.
+# ------------------------
+#
+# type: int
+# env var: LOTUS_PROVING_MAXBATCHPARALLELISM
+#MaxBatchParallelism = 1
+```
