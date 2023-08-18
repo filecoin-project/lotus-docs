@@ -6,7 +6,6 @@ draft: false
 menu:
     lotus:
         parent: "lotus-configure"
-# I gobbled up a semi-duplicate page so I've absorbed the paths
 aliases:
     - /docs/set-up/bootstrappers/
     - /lotus/configure/bootrap-nodes/
@@ -19,7 +18,7 @@ toc: true
 Joining the Filecoin network requires knowledge of existing peers in the network. On startup Lotus, as well as other
 implementations, attempt to retrieve peer information from a known set of bootstrap nodes.
 
-At present, these known bootstrap nodes are [vendored into](https://github.com/filecoin-project/lotus/blob/c46aea6a368bbebf4a22e9924a3ea3393170fe90/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
+At present, these known bootstrap nodes are [included in](https://github.com/filecoin-project/lotus/blob/c46aea6a368bbebf4a22e9924a3ea3393170fe90/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
 
 Lotus is currently the only known filecoin implementation offering bootstrap functionality.
 
@@ -39,7 +38,7 @@ We currently run bootstrap nodes on the following hardware
 
 - Intel Xeon Platinum 8175M CPU @ 2.50GHz
 - 32Gb Memory
-- 5Mbps downlink, 2Mbps uplink
+- 5Mbps download speed, 2Mbps upload speed
 - 2Ti SSD storage for chain state storage
 
 It’s possible to reliably synchronise a bootstrap node with as few as 3 cores and 5Gb real memory, but you will need
@@ -50,7 +49,7 @@ To demonstrate the resource requirements of a bootstrap node, see the last 7 day
 ![7 Day CPU core usage profile](7d-cpu.png "7 Day CPU profile")
 ![7 Day Memory profile](7d-memory.png "7 Day Memory profile")
 ## Configuration
-We recomend the following configuration to be specified for running a bootstrap node.
+We recommend the following configuration to be specified for running a bootstrap node.
 ```toml
   [API]
     ListenAddress = "/ip4/0.0.0.0/tcp/1234/http"
@@ -71,7 +70,7 @@ e.g. `0.0.0.0` for all ipv4 addresses on this host.
 Libp2p's `ListenAddresses` should be configures similarly. 
 
 Given the traffic demands of a bootstrap node, we recomend tuning the connection parameters to a less
-aggressive threshold, allowing 400-500 connections with a timeout of 5 minutes.
+aggressive threshold, allowing 400-500 connections with a connection timeout of 5 minutes.
 
 If you intend to run a bootstrap node behind a reverse proxy or load balancer, you will need to configure
 `IPColocationWhitelist` to cover your IPs. This is because libp2p currently does not support proxy protocol,
@@ -81,7 +80,7 @@ applied (see
 
 ## Unlisted bootstrap nodes
 Bootstrapper nodes will automatically bootstrap with known bootstrappers. If you are operating your own
-infrastrucuture, you may want to manually peer your bootstrappers with each other.
+infrastructure, you may want to manually connect your bootstrap nodes to each other.
 
 ```shell
 lotus net peers
@@ -93,7 +92,7 @@ lotus net connect <peer_multiaddr>
 Lotus bootstrappers are built in at compile time. You can find the list of public bootstrapper nodes for
 each network [here](https://github.com/filecoin-project/lotus/tree/master/build/bootstrap). This list can be overridden by adding the following to your daemon config file.
 
-```
+```toml
 [Libp2p]
     BootstrapPeers = [
       "<multiaddr>"
