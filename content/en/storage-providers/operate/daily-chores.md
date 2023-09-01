@@ -38,34 +38,81 @@ ID  SealProof  InitialPledge  Activation                      Expiration        
 3791  8          1.378 FIL      1614739 (13 weeks 5 days ago)   2221947 (in 16 weeks 2 days)   6870739 (in 4 years 38 weeks)  3448631 (in 1 year 25 weeks)
 ```
 
-### Extend sectors
+## Extend sectors
 
 {{< alert icon="warning" >}}
 Please note that for the Lotus v1.22.1 both the `lotus-miner sectors extend` and `lotus-miner sectors renew` commands exists. In this guide we explain how to extend sectors in Lotus v1.23.0 or higher.
 {{< /alert >}}
 
-You can extend a sector with the command:
+You can extend the lifecycle of a sector with the `lotus-miner sectors extend` command:
 
 ```shell
 lotus-miner sectors extend [command options] [arguments...]
 ```
 
-This is an example of selecting sectors with a lifecycle between `epochnumber-a` epoch and `epochnumber-b` epoch and updating it to 1555200 epoch:
+### Extend sectors by specifying an epoch interval
 
-```shell
+This is an example of selecting sectors with a an expiration epoch between `epochnumber-a` and `epochnumber-b`, and extending those sectors with 1555200 epochs:
+
+```shell with-output
 lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
 ```
-
-This is an example of updating the lifecycle of a sector read from a file to 1555200 epoch:
-
-```shell
-lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 1555200
+```
+Renewing 59 sectors: 
+{
+  "Extensions": [
+    {
+      "Deadline": 0,
+      "Partition": 0,
+      "Sectors": "2282,2285,2383,2386,2388,2394-2396,2400-2406,2408-2416,2418-2420,2422-2423,2428,2430",
+      "NewExpiration": 3760173
+    },
+    {
+      "Deadline": 2,
+      "Partition": 0,
+      "Sectors": "2417,3769,3771-3772,3775-3776,3781,3783,3786-3787,3790-3791,3800,3802,3808,3814,3816,3834-3835,3839,3852,3860-3861,3878,3894,3904,3922,3961",
+      "NewExpiration": 3760173
+    }
+  ]
+}
+59 sectors extended
 ```
 
-{{< alert icon="warning" >}}
-If you are using a sector file to extend sectors, please note that you will need to specify a sectorID per line in the textfile.
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
 
-Format of sector file:
+
+### Extend sectors specified by txt-file
+
+This is an example of updating the lifecycle of sectors read from a file, and renewing those sectors with 1555200 epochs:
+
+```shell with-output
+lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 1555200
+```
+```
+Renewing 7 sectors: 
+{
+  "Extensions": [
+    {
+      "Deadline": 0,
+      "Partition": 0,
+      "Sectors": "2282,2285,2383,2386,2388",
+      "NewExpiration": 3760196
+    },
+    {
+      "Deadline": 2,
+      "Partition": 0,
+      "Sectors": "2417,3769",
+      "NewExpiration": 3760196
+    }
+  ]
+}
+7 sectors extended
+```
+
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
+
+{{< alert icon="warning" >}}
+The format of the sector file has to be in the form like this (a single sector number per line):
 
 ```
 1
@@ -73,6 +120,31 @@ Format of sector file:
 ...
 ```
 {{< /alert >}}
+
+### Extend only-cc sectors
+
+If you only want to renew CC-sectors, there is an additional flag `--only-cc` which will ignore any deal sectors in a given intervall, or file, when renewing.
+
+```shell with-output
+lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200 --only-cc
+```
+```
+Renewing 2 sectors: 
+{
+  "Extensions": [
+    {
+      "Deadline": 0,
+      "Partition": 0,
+      "Sectors": "2282,2285",
+      "NewExpiration": 3760206
+    }
+  ]
+}
+2 sectors extended
+```
+
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
+
 
 ## Compacting partitions
 
