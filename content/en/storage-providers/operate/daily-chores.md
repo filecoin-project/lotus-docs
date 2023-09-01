@@ -109,7 +109,7 @@ Renewing 7 sectors:
 7 sectors extended
 ```
 
-Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. Its good practice to check that the output is what the user expected before adding the flag.
+Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
 
 {{< alert icon="warning" >}}
 The format of the sector file has to be in the form like this (a single sector number per line):
