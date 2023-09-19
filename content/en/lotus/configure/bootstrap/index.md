@@ -69,7 +69,7 @@ e.g. `0.0.0.0` for all ipv4 addresses on this host.
 
 Libp2p's `ListenAddresses` should be configures similarly. 
 
-Given the traffic demands of a bootstrap node, we recomend tuning the connection parameters to a less
+Given the traffic demands of a bootstrap node, we recommend tuning the connection parameters to a less
 aggressive threshold, allowing 400-500 connections with a connection timeout of 5 minutes.
 
 If you intend to run a bootstrap node behind a reverse proxy or load balancer, you will need to configure

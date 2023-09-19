@@ -16,7 +16,7 @@ SplitStore is a freestanding compacting blockstore that allows you to keep a sma
 
 ### Preparing for SplitStore
 
-{{< alert icon="warning" >}}From Lotus verion 1.21.0 SplitStore is automatically activated by default on new nodes. However, for existing Lotus users, you need to explicitly configure SplitStore by uncommenting the `EnableSplitstore` option in your `config.toml` file. To enable SplitStore, set `EnableSplitstore=true`, and to disable it, set `EnableSplitstore=false`.
+{{< alert icon="warning" >}}From Lotus version 1.21.0 SplitStore is automatically activated by default on new nodes. However, for existing Lotus users, you need to explicitly configure SplitStore by uncommenting the `EnableSplitstore` option in your `config.toml` file. To enable SplitStore, set `EnableSplitstore=true`, and to disable it, set `EnableSplitstore=false`.
 
 **It's important to note that your Lotus node will not start unless this configuration is properly set. If you are running a full archival node you will need to disable SplitStore as shown above!**{{< /alert >}}
 
@@ -116,7 +116,7 @@ If you intend to use the discard-store you also need to add the following:
 
 Lotus version 1.21.0 also introudecs 3 new manual prune options:
 
-- `lotus chain prune hot-moving` - This command will perform a full GC of the `hotstore` folder and is the most resource-intensive of the three. The `hot-moving` option creates the new `hotstore` before it removes the old one so **it is essential that there is adequate disk space availble for the GC to succeed**. At the time of writing, a fully GC'd `hotstore` represenets aproximately 295 GiB. Please ensure you have at least the minimum available when using this option. In the event of limited availble disk space, you will need to use the `lotus chain prune hot` command as detailed below.
+- `lotus chain prune hot-moving` - This command will perform a full GC of the `hotstore` folder and is the most resource-intensive of the three. The `hot-moving` option creates the new `hotstore` before it removes the old one so **it is essential that there is adequate disk space available for the GC to succeed**. At the time of writing, a fully GC'd `hotstore` represenets aproximately 295 GiB. Please ensure you have at least the minimum available when using this option. In the event of limited available disk space, you will need to use the `lotus chain prune hot` command as detailed below.
 - `lotus chain prune hot` - This option is a recommended for situations where spare disk space is limited, as it is much less resource-intensive. The intended use of this command is to gradually decrease the size of the `hotstore` until it reaches a level where you can safely run a full GC using `lotus chain prune hot-moving`.
 Please note that you may need to run this command several times to successfully decrease the `hotstore` footprint. We recommend starting with the following flags and values - `lotus chain prune hot --periodic --threshold 0.00000001`. The threshold setting is system and hotstore specific so you may need to experiment with different values in order to achieve the required outcome. 
 - `lotus chain prune compact-cold` - This command is used exclusively to manage the size of the coldstore and is only relevant for a non-discard SplitStore. 

@@ -76,7 +76,7 @@ OPTIONS:
    --api-max-lookback value         maximum duration allowable for tipset lookbacks (default: 24h0m0s)
    --api-max-req-size value         maximum API request size accepted by the JSON RPC server (default: 0)
    --api-wait-lookback-limit value  maximum number of blocks to search back through for message inclusion (default: 20)
-   --conn-per-minute value          The number of incomming connections to accept from a single IP per minute.  Use 0 to disable (default: 0)
+   --conn-per-minute value          The number of incoming connections to accept from a single IP per minute.  Use 0 to disable (default: 0)
    --listen value                   host address and port the api server will listen on (default: "0.0.0.0:2346")
    --per-conn-rate-limit value      rate-limit API calls per each connection. Use 0 to disable (default: 0)
    --rate-limit value               rate-limit API calls. Use 0 to disable (default: 0)
