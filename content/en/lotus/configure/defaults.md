@@ -133,7 +133,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
   #ElasticSearchTracer = ""
 
   # Name of elasticsearch index that will be used to save tracer data.
-  # This property is used only if ElasticSearchTracer propery is set.
+  # This property is used only if ElasticSearchTracer property is set.
   #
   # type: string
   # env var: LOTUS_PUBSUB_ELASTICSEARCHINDEX

@@ -21,7 +21,7 @@ There are several ways to install Lotus on Linux:
 Building Lotus from source allows you to strictly configure how Lotus runs and how it communicates with its dependencies. Storage providers looking to improve their system efficiency should [install Lotus by building from source](#building-from-source).
 {{< /alert >}}
 
-## Dowloading from Github
+## Downloading from Github
 
 1. Install Lotus dependencies:
 

@@ -16,7 +16,7 @@ There are three networks available for Filecoin:
 
 - [Mainnet](#mainnet), the only production Filecoin network.
 - [Calibration](#calibration), the primary testing network for Filecoin.
-- [Devnet]({{<relref "../../lotus/developers/local-network/">}}), the local development network designed to run with minimal resources for develpment testing.
+- [Devnet]({{<relref "../../lotus/developers/local-network/">}}), the local development network designed to run with minimal resources for development testing.
 
 ### Mainnet
 

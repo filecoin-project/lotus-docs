@@ -65,7 +65,7 @@ This is an optional step. We can use `lotus` to talk to the Glif node API (as a 
 - It allows us to verify that the endpoint works and that credentials are correct when using a custom endpoint.
 - It makes debugging easier was we can try and quickly check things using the `lotus` CLI directly.
 
-To use `lotus`, download and extract the appropiate lotus release from the [releases page](https://github.com/filecoin-project/lotus/releases/). **The lotus version needs to match that of the running node**. We will not be running the Lotus daemon or syncing the chain, we will use it only as a client.
+To use `lotus`, download and extract the appropriate lotus release from the [releases page](https://github.com/filecoin-project/lotus/releases/). **The lotus version needs to match that of the running node**. We will not be running the Lotus daemon or syncing the chain, we will use it only as a client.
 
 Check the running version of the Glif node instance with:
 
@@ -100,7 +100,7 @@ By default, all read operations are enabled, along with the MPoolPush method. Th
 ...
 ```
 
-Get familiar with the capabilities of your node and verify that the endpoints. The CLI interactions will be useful when debugging things in a quick way. Note that the default Glif endpoint is load-balanced accross several Lotus nodes!
+Get familiar with the capabilities of your node and verify that the endpoints. The CLI interactions will be useful when debugging things in a quick way. Note that the default Glif endpoint is load-balanced across several Lotus nodes!
 
 ## Integrate directly with the JSON-RPC API
 

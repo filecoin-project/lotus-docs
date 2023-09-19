@@ -21,7 +21,7 @@ Usually, the Lotus full nodes are kept small, with regular chain compactions, or
 
 ## Full historical node
 
-A Lotus full historical node differs from a typical Lotus full node in just one aspect. A full historical node is synced from epoch "0" or the "genesis block" of the filecoin blockchain. These nodes require a huge amount of space to store the full chain data, and take a very long time be synced from the beginining.
+A Lotus full historical node differs from a typical Lotus full node in just one aspect. A full historical node is synced from epoch "0" or the "genesis block" of the filecoin blockchain. These nodes require a huge amount of space to store the full chain data, and take a very long time be synced from the beginning.
 
 A Lotus full historical node is useful in very limited cases. Most users that need to extract and inspect pieces of the Filecoin chain, usually uses tools like [lily](https://lilium.sh/software/lily/introduction/), which allows for structured data extraction into a PostgresSQL/TimescaleDB database or CSV dumps for later query and analysis.
 
