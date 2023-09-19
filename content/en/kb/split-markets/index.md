@@ -114,7 +114,7 @@ sector storage, sealing and proving;
     ```
 
 When a `lotus-miner` instance is configured as a `markets` node, it exposes
-a libp2p interface. The libp2p ports should be publically available so that
+a libp2p interface. The libp2p ports should be publicly available so that
 the node can be dialed by clients that wish to make storage and retrieval deals.
 
 This guide won't go into details on how to make the endpoint connectable, as this ultimately depends on your network infrastructure and equipment, refer to the [lotus-miner connectivity guide](https://lotus.filecoin.io/storage-providers/operate/connectivity/) for more details. Generally speaking, configuring static port mappings on your external-facing router, and ensuring your markets node has an internal static IP address and port should be sufficient, in addition to adjusting any firewalls that may be present.
@@ -165,7 +165,7 @@ In this guide, we are replacing the the backup file in the `/tmp` folder as it i
 #### Step 1. Create a seed config.toml for the markets service
 
 To initialize the markets service we need to create a seed `config.toml` for
-the markets node. Note: It is a temporary file and only used for initialize the market node, full configuration file will be loaded automatically upon initialization **without** overiding the sections set in this step.
+the markets node. Note: It is a temporary file and only used for initialize the market node, full configuration file will be loaded automatically upon initialization **without** overriding the sections set in this step.
 
 First create a `config.toml` file in a location of your choice(your market node needs to have access to read it), in this tutorial we will place it in the `/tmp` directory on your market machine as it is a temporary file)
 
