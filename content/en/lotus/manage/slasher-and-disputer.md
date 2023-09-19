@@ -20,7 +20,7 @@ The Filecoin protocol enforces penalties for three types of Consensus Faults tha
 
 When a consensus fault is successfully identified by the Lotus Slasher, the block producer responsible for the fault is subjected to a fine equivalent to 5 times the current epoch's block reward value. Additionally, they are ineligible to produce any further blocks for a full finality period of 900 epochs. Furthermore, the offending block producer is prohibited from pre-committing or recovering storage during the same finality period.
 
-The succesful Lotus Slasher operator receives a reward equal to 25% of the current epoch's block reward value.
+The successful Lotus Slasher operator receives a reward equal to 25% of the current epoch's block reward value.
 
 ## Run the Slasher
 
