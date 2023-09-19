@@ -13,7 +13,7 @@ weight: 325
 toc: true
 ---
 
-The are two types of upgrades: 
+There are two types of upgrades:
 
 - The [upgrade in-place](#upgrade-in-place) is the default procedure and just updates the software
 - The [upgrade with reset](#upgrade-with-reset) removes all the data and starts from scratch.
@@ -52,7 +52,7 @@ If you keep the same formatting as the default configuration file it should be f
 diff -y -W 200 your-config.toml default-lotus-miner-configuration.toml
 ```
 
-A `vertical bar` sign indcates that there is a difference in that line between your configuration file, and the default configuration file.
+A `vertical bar` sign indicates that there is a difference in that line between your configuration file, and the default configuration file.
 
 ```toml
 #ListenAddress = "/ip4/127.0.0.1/tcp/4567/http"   |	  #ListenAddress = "/ip4/127.0.0.1/tcp/2345/http"
@@ -118,12 +118,12 @@ lotus-worker run
 This upgrade procedure should only be used as a last resort or when the chain has been upgraded and requires such action to be taken.
 {{< /alert >}}
 
-It is similar to re-installing everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/install/prerequisites/" >}}) and [miner-setup]({{< relref "../../storage-providers/setup/initialize/" >}}) guides after it. Before you do this, consider:
+It is similar to reinstalling everything from scratch, so you can follow the usual [installation]({{< relref "../../lotus/install/prerequisites/" >}}) and [miner-setup]({{< relref "../../storage-providers/setup/initialize/" >}}) guides after it. Before you do this, consider:
 
 - [Backing up your Lotus wallets]({{< relref "../../lotus/manage/manage-fil/#exporting-and-importing-addresses" >}})
 - You may want to backup your Lotus Node and Miner configurations as well.
 
-Once you are ready, stop everything and delete the data folders (or rename them):
+Once you are ready, stop everything and delete the data folders, or rename them:
 
 ```shell
 # Assuming you are using the default data folders
@@ -132,4 +132,4 @@ rm -rf ~/.lotusminer
 rm -rf ~/.lotusworker
 ```
 
-After that Lotus applications will start from scratch.
+After that, Lotus applications will start from scratch.

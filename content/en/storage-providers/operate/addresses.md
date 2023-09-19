@@ -64,7 +64,7 @@ Want to add an additional layer of security for the owner's address? Check out h
 
 ### Beneficiary address
 
-A beneficiary address is a special purpose address which takes over the finicial control from the owner address for a given quota and time, but does not take over the owner addresses privileges. The seperation of owner and beneficiary brings more flexibility in the Filecoin financing market.
+A beneficiary address is a special purpose address which takes over the financial control from the owner address for a given quota and time, but does not take over the owner addresses privileges. The separation of owner and beneficiary brings more flexibility in the Filecoin financing market.
 
 {{< alert icon="tip" >}}
 The `lotus-shed actor` command includes ability for beneficiary holders to approve changes, and withdraw balance. So that any beneficiary holder does not need to import their private keys where the `lotus-miner` process is running.
@@ -78,7 +78,7 @@ lotus-miner actor propose-change-beneficiary <beneficiaryAddress> <quota> <expir
 
 - `beneficiaryAddress` is the address you want to become a beneficiary for the given SP.
 - `quota` is the amount of FIL this beneficiary is allowed to withdraw before it expires.
-- `expiration` chain epoch at which the beneficary address expires.
+- `expiration` chain epoch at which the beneficiary address expires.
 
 As an example we can change the beneficiary address with a quota of 5 FIL and an expiration epoch height of 12000 with this command:
 
@@ -125,11 +125,11 @@ Beneficiary Used Quota: 0
 Beneficiary Expiration: 12000
 ```
 
-To withdraw balance the withdrawal method can be called by the `beneficiary address` or the `owner address`, but the balance will always be sent to the beneficiary. The total balance withdrawed to a beneficiary address can´t exceed its quota or after the expiration epoch has passed.
+To withdraw balance the withdrawal method can be called by the `beneficiary address` or the `owner address`, but the balance will always be sent to the beneficiary. The total balance withdrawn to a beneficiary address can´t exceed its quota or after the expiration epoch has passed.
 
 #### Revert beneficiary address
 
-To revert the address back to the owner address after the exipiration epoch or the quota of the beneficiary address has been filled, you will need to propose changing the beneficiary address back to the owner address with 0-values for the `quota` and `expiration`.
+To revert the address back to the owner address after the expiration epoch or the quota of the beneficiary address has been filled, you will need to propose changing the beneficiary address back to the owner address with 0-values for the `quota` and `expiration`.
 
 ```shell with-output
 lotus-miner actor propose-change-beneficiary <owner> 0 0
@@ -185,7 +185,7 @@ _Control addresses_ are used to submit _WindowPoSts_ proofs to the chain. _Windo
 
 Many mining-related actions require sending messages to the chain, but not all of those are as high-value as _WindowPoSts_. By using _control addresses_ you can stop the first transaction holding up a line of transactions. This blocking problem is known as [head-of-line blocking.](https://en.wikipedia.org/wiki/Head-of-line_blocking)
 
-Multiple _control addresses_ can be created and configured. The first _control address_ that has enough funds to submit a _WindowPoSt_ transaction will be used. If there are no control addresses with sufficent funds then the owner address will be used. If the owner address has insufficent funds, or is unavailable, then the worker address will be used to submit a _WindowPoSt_.
+Multiple _control addresses_ can be created and configured. The first _control address_ that has enough funds to submit a _WindowPoSt_ transaction will be used. If there are no control addresses with sufficient funds then the owner address will be used. If the owner address has insufficient funds, or is unavailable, then the worker address will be used to submit a _WindowPoSt_.
 
 Otherwise, Lotus fails over to the _owner_ and ultimately to the _worker_ address.
 
@@ -405,7 +405,7 @@ Total Spendable:  1350 FIL
 In this example, the miner ID is `f01000`, it has a total balance of `123456.789 FIL`, and an available balance of `250 FIL` that can be used as collateral or to pay for the pledge. The worker balance is `500 FIL` and the control balance is `600 FIL`. Control balance combines all funds in the control addresses and Total Spendable combines Available, Worker Balance and Control balances.
 
 Control addresses is a good way to avoid stuck messages in your local mpool, but it can still happen occasionally.
-A good pratice is to keep track of the basefee and always have enough FIL in the control addresses. 
+A good practice is to keep track of the basefee and always have enough FIL in the control addresses. 
 Adjust your fees limits in .lotusminer `config.toml` accordingly. 
 
    ```yaml
@@ -449,5 +449,5 @@ Tip: If no amount entered it will withdraw all Available funds.
 
 
 {{< alert >}}
-The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporally imported for the operation to succeed.
+The owner's address will need to be available in the Lotus node and have enough funds to pay for the gas for this transaction. Cold addresses will need to be temporarily imported for the operation to succeed.
 {{< /alert >}}

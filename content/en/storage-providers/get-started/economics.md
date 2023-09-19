@@ -37,7 +37,7 @@ When storage provider get block rewards from the network, 25% percent of the rew
 
 ### Verified clients
 
-To further incentivize the storage of "useful" data over simple capacity commitments, storage provider have the additional opportunity to compete for special deals offered by _verified clients_. Such clients are certified with respect to their intent to offer deals involving the storage of meaningful data, and the power a storage provider earns for these deals is augmented by a multiplier. The total amount of power a given storage provider has, after accounting for this multiplier, is known as **quality-adjusted power**.
+To further incentivize the storage of "useful" data over simple capacity commitments, storage providers have the additional opportunity to compete for special deals offered by _verified clients_. Such clients are certified with respect to their intent to offer deals involving the storage of meaningful data, and the power a storage provider earns for these deals is augmented by a multiplier. The total amount of power a given storage provider has, after accounting for this multiplier, is known as **quality-adjusted power**.
 
 ### Retrieval fees
 
