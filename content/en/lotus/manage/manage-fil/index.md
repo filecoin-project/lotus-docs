@@ -37,7 +37,7 @@ ID addresses are a compact and more "human friendly" way to refer to an account 
 
 Every ID address for a Filecoin account has an alternative public key address that corresponds to the same account. You can find the ID address for any public key address by searching for the public key address on [FilFox](https://filfox.info/), a Filecoin block explorer.
 
-Because they are more compact than public key addresses, ID addresses are often used when refering to storage providers and other long-lived Filecoin [Actors](https://docs.filecoin.io/basics/the-blockchain/actors/). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
+Because they are more compact than public key addresses, ID addresses are often used when referring to storage providers and other long-lived Filecoin [Actors](https://docs.filecoin.io/basics/the-blockchain/actors/). As these actors receive a large volume of messages, the compact address can result in meaningful savings in gas fees. A multisig wallet is a type of Actor.
 
 While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](https://docs.filecoin.io/reference/glossary/#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
 
@@ -45,7 +45,7 @@ More information about addresses can be found in the [How Filecoin works](https:
 
 ## Creating a wallet
 
-Creating wallets using Lotus is very simple. There are mutliple wallet types to choose from.
+Creating wallets using Lotus is very simple. There are multiple wallet types to choose from.
 
 {{< alert icon="warning">}}
 The information for the addresses in your wallet is stored in the `~/.lotus/keystore` (or `$LOTUS_PATH/keystore`). Removing these folders will also remove the keys, and you will lose control of any funds in those wallets. We recommend [backing up your wallets](#exporting-and-importing-addresses) as soon as they have been created or using a 

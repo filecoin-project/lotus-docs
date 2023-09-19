@@ -121,7 +121,7 @@ For a deal to succeed, the miner needs to be correctly configured and running, a
 
 You can make deals with multiple miners for the same data.
 
-Once a deal is sucessful and the data is _sealed_, it can be [retrieved]({{< relref "retrieve-data" >}}).
+Once a deal is successful and the data is _sealed_, it can be [retrieved]({{< relref "retrieve-data" >}}).
 
 ## Additional tools
 

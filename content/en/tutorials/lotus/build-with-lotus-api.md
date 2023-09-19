@@ -321,7 +321,7 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
     lotus wallet list
     ```
 
-    This will output smething like:
+    This will output something like:
 
     ```shell
     Address                                    Balance       Nonce   Default  
