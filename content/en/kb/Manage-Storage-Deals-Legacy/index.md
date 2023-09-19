@@ -194,7 +194,7 @@ a. The client must send the data as `.car` files and must generate the CID of ea
 b. The client must share the CIDs of each `.car` file with the storage provider.
 1. If the files were compressed by the client to send over the internet, the storage provider must decompress the data. At this point, the storage provider may need to adjust the deal price to suit any changes in data size.
 1. This client sends a deal proposal. This can be viewed by the storage provider by running `lotus-miner storage-deals list`. The deal will have the `WaitingForData` status.
-1. The storage provder imports each deal using `lotus-miner storage-deals import-data <dealCid> <carFilePath>`.
+1. The storage provider imports each deal using `lotus-miner storage-deals import-data <dealCid> <carFilePath>`.
 
    {{< alert icon="tip" >}}
    Each import can take between 5 to 20 minutes. Sometimes the command will look like it has stalled. Be patient.
