@@ -101,7 +101,7 @@ These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed"
 If you'd like to have a clear overview of the storage list, it is possible to edit the "ID": "1626519a-5e05-493b-aa7a-0af71612010b" <-> "ID": "Sealing-Server" in `sectorstorage.json`.
 {{< /alert >}}
 
-### Seperate sealed and unsealed
+### Separate sealed and unsealed
 
 A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
 
@@ -152,7 +152,7 @@ You can detach a storage path with the `lotus-miner storage detach /path/to/stor
 
 ## Updating locations
 
-You can update sector locations without restarting the `lotus-miner` with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a separate server it's recommended to use a utility like r-sync or similar that has checksum on both ends. If moving data to a separate server, it is also good practice to keep a backup of important sector files like sealed sectors and cache until you have passed the first windowPoSt with the new storage location.
+You can update sector locations without restarting the `lotus-miner` with the `lotus-miner storage redeclare` command if you want to move sector data from one storage path to another storage path. If moving sectors to a storage path on a separate server it's recommended to use a utility like r-sync or similar that has checksum on both ends. If moving data to a separate server, it is also good practice to keep a backup of important sector files like sealed sectors and cache until you have passed the first WindowPoSt with the new storage location.
 
 1. To redeclare sector(s) in another storage path, first copy the sector file to the new location:
 

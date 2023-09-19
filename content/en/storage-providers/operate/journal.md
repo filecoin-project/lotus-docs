@@ -15,13 +15,13 @@ toc: true
 
 ## File location
 
-The journal directory  is located at `~/.lotusminer/journal` by default. If you have configured `LOTUS_MINER_PATH`,  it should be located in `LOTUS_MINER_PATH/journal`. The latest journal file is `lotus-journal.ndjson`.
+The journal directory is located at `~/.lotusminer/journal` by default. If you have configured `LOTUS_MINER_PATH`, it should be located in `LOTUS_MINER_PATH/journal`. The latest journal file is `lotus-journal.ndjson`.
 
-The journal file uses the json format by default, with system and event identifiers for easier filtering and processing.
+The journal file uses the JSON format by default, with system and event identifiers for easier filtering and processing.
 
 ## Check the journal
 
-1. Check the sealing process and sealing status:
+1. To check the sealing process and sealing status:
 
     ```shell with-output
     cat lotus-journal.ndjson | grep sealing_states
@@ -32,7 +32,7 @@ The journal file uses the json format by default, with system and event identifi
     {"System":"storage","Event":"sealing_states","Timestamp":"2021-09-22T12:53:14.389710503+08:00","Data":{"SectorNumber":67,"SectorType":5,"From":"WaitSeed","After":"Committing","Error":""}}
     ```
 
-1. Check for `windowpost`:
+1. To check for `windowpost`:
 
     ```shell with-output
     cat lotus-journal.ndjson | grep wdpost
@@ -42,7 +42,7 @@ The journal file uses the json format by default, with system and event identifi
     {"System":"wdpost","Event":"scheduler","Timestamp":"2021-09-22T12:49:33.802956998+08:00","Data":{"Deadline":{"CurrentEpoch":31436,"PeriodStart":29458,"Index":32,"Open":31378,"Close":31438,  "Challenge":31358,"FaultCutoff":31308,"WPoStPeriodDeadlines":48,"WPoStProvingPeriod":2880, "WPoStChallengeWindow":60,"WPoStChallengeLookback":20,"FaultDeclarationCutoff":70},"Height":31436, "TipSet":[{"/":"bafy2bzaceajca6lstl3f6ez2ilfsrqlhugcfvr7eybfyomvtbebt43z2xyjm2"}],"State":"started"}}  
     ```
 
-1. Check _mined_ records:
+1. To check _mined_ records:
 
     ```shell with-output
     cat lotus-journal.ndjson | grep block_mined

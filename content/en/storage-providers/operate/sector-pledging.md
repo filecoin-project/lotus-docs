@@ -1,7 +1,7 @@
 ---
 title: "Sector pledging"
 description: "Pledging sectors is a technique to seal sectors with random data to increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
-lead: "Pledging sectors is a technique to seal sectors with random data to make increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
+lead: "Pledging sectors is a technique to seal sectors with random data to increase the miner's power in the network. This guide covers the motivation, steps to create and upgrade pledged sectors back to a usable state."
 draft: false
 menu:
     storage-providers:
@@ -47,7 +47,7 @@ Check that the sealing job has started with:
 lotus-miner sealing jobs
 ```
 
-This will be accommpanied by a file in `<PATH_FOR_SEALING_STORAGE>/unsealed`.
+This will be accompanied by a file in `<PATH_FOR_SEALING_STORAGE>/unsealed`.
 
 After some minutes, you can check the sealing progress with:
 
@@ -57,7 +57,7 @@ lotus-miner sectors list
 lotus-miner sealing workers
 ```
 
-When sealing for the new is complete, `pSet: NO` will become `pSet: YES`.
+When sealing for the new sector is complete, `pSet: NO` will become `pSet: YES`.
 
 ## Adjusting the expected seal duration setting
 

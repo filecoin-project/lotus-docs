@@ -16,7 +16,7 @@ toc: true
 
 ## Inspect expiring sectors
 
-The `check-expire` lets you inspect which sectors are about to expire. By default it will display the sectors that will expire within 60 days:
+The `check-expire` command lets you inspect which sectors are about to expire. By default it will display the sectors that will expire within 60 days:
 
 ```shell
 lotus-miner sectors check-expire
@@ -52,7 +52,7 @@ lotus-miner sectors extend [command options] [arguments...]
 
 ### Extend sectors by specifying an epoch interval
 
-This is an example of selecting sectors with a an expiration epoch between `epochnumber-a` and `epochnumber-b`, and extending those sectors with 1555200 epochs:
+This is an example of selecting sectors with an expiration epoch between `epochnumber-a` and `epochnumber-b`, and extending those sectors with 1555200 epochs:
 
 ```shell with-output
 lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200
@@ -83,7 +83,7 @@ Please note that the command has to be executed with the `--really-do-it` flag t
 
 ### Extend sectors specified by txt-file
 
-This is an example of updating the lifecycle of sectors read from a file, and renewing those sectors with 1555200 epochs:
+This is an example of updating the lifecycle of sectors read from a file, and extending those sectors with 1555200 epochs:
 
 ```shell with-output
 lotus-miner sectors extend  --sector-file <your-sectorfile> --new-expiration 1555200
@@ -123,7 +123,7 @@ The format of the sector file has to be in the form like this (a single sector n
 
 ### Extend only-cc sectors
 
-If you only want to renew CC-sectors, there is an additional flag `--only-cc` which will ignore any deal sectors in a given intervall, or file, when renewing.
+If you only want to renew CC-sectors, there is an additional flag `--only-cc` which will ignore any deal sectors in a given interval, or file, when renewing.
 
 ```shell with-output
 lotus-miner sectors extend  --from <epochnumber-a> --to <epochnumber-b> --new-expiration 1555200 --only-cc
@@ -174,11 +174,11 @@ To compact a partition, you need to specify the deadline and the partition index
 
 ```shell output
 lotus-miner sectors compact-partitions --deadline 1 --partitions 0 --really-do-it
-compacting 1 paritions
+compacting 1 partitions
 Requested compact partitions in message bafy2bzacecnmiea6y7yt776vhur5rdjgliw5cvlb7cuf4q643ntu44odjgh64
 ```
 
-After the compaction message has been sent, you should be able to see that your proving deadline has been compacted and old sectors has been removed:
+After the compaction message has been sent, you should be able to see that your proving deadline has been compacted and old sectors have been removed:
 
 ```shell output
 lotus-miner proving deadline 1

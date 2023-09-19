@@ -40,7 +40,7 @@ You should be familiar with these key concepts related to being a storage provid
 
 ### Sectors
 
-A sector is the default unit of storage that storage providers submit to the Filecoin network. Storage providers can decide if they want to commit 32 GiB or 64 GiB sector sizes when they first initialize their storage provider. It´s not possible to change the sector size once it has been initialized on-chain.
+A sector is the default unit of storage that storage providers submit to the Filecoin network. Storage providers can decide if they want to commit 32 GiB or 64 GiB sector sizes when they first initialize their storage provider. It's not possible to change the sector size once it has been initialized on-chain.
 
 A sector can contain data from multiple deals and clients. A storage provider can also submit “Committed Capacity” (CC) sectors. CC sectors are available to the Filecoin network as committed storage power but do not initially contain storage deals. Actively proving CC sectors can be upgraded at a later date to include storage deals in a process known as Snap Deals.
 
@@ -48,7 +48,7 @@ A sector can contain data from multiple deals and clients. A storage provider ca
 A sealed sector is a sector that has been encoded to prepare it for the continuous proving process.
 
 **Unsealed sectors**
-An unsealed sector is the raw data. Some clients request that their unsealed data is kept for fast retrievals.
+An unsealed sector is the raw data. Some clients request that their unsealed data be kept for fast retrievals.
 
 ### Epoch
 

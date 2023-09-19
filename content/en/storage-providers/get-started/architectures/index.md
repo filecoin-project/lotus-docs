@@ -27,4 +27,4 @@ This discussion is ongoing and frequently updated with the new recommendation fr
 
 ## Solo storage providing
 
-Benjamin Hoejsbo recently gave a presentation on how to create a solo storage provider set up. [Check out the video on YouTube](https://www.youtube.com/watch?v=LKMjCgo-fkA).
+Benjamin Hoejsbo recently gave a presentation on how to create a solo storage provider setup. [Check out the video on YouTube](https://www.youtube.com/watch?v=LKMjCgo-fkA).

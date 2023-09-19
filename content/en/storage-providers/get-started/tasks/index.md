@@ -13,9 +13,9 @@ toc: true
 
 We can split the tasks the `lotus-miner` daemon and its sub-components are responsible for into a couple different categories.
 
-**Sealing tasks**: Before a sector can be commited to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
+**Sealing tasks**: Before a sector can be committed to network, the storage provider *must* seal the sector, meaning it needs to encode the data in the sector to prepare it for the proving tasks. Sealing a sector is a multi-step process and is time-intensive to create, because the encrypted version of each chunk of data depends on every other chunk of input data.
 
-**Proving tasks**: These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk.
+**Proving tasks**: These tasks allow storage providers to verifiably prove they have the data they have committed to the network on disk.
 
 **Scheduling tasks**: These are background tasks for controlling and optimizing work across all the sub components of `lotus-miner`. Since Lotus is highly configurable and many of the `lotus-miner` sub-components can be split into separate machines, scheduling work efficiently and securely is important.
 
@@ -29,11 +29,11 @@ Before a sector can be committed to the network, the storage provider *must* sea
 
 ### Add piece
 
-Add piece is the task where deal data, and padding if required, is written to a sector. A sector will be left open and waiting for more deal data until it´s full, then it will move on to the PreCommit 1 task. If no sectors with enough space are open when a `Add piece` task happens, a new sector will be created.
+Add piece is the task where deal data, and padding if required, is written to a sector. A sector will be left open and waiting for more deal data until it's full, then it will move on to the PreCommit 1 task. If no sectors with enough space are open when a `Add piece` task happens, a new sector will be created.
 
 ### PreCommit 1
 
-The PreCommit 1 task is the first phase of the Proof-of-Replication process and is where encoding and replication of the data takes place. The PreCommit 1 task is predominantly using a single CPU core, and is heavily utilizing the SHA256 instruction set. Using a CPU that have the SHA256 instruction set is therefore recommended.
+The PreCommit 1 task is the first phase of the Proof-of-Replication process and is where encoding and replication of the data takes place. The PreCommit 1 task is predominantly using a single CPU core, and is heavily utilizing the SHA256 instruction set. Using a CPU that has the SHA256 instruction set is therefore recommended.
 
 All 11 layers of calculation, layer by layer, are calculated sequentially. Each layer is 32GiB in size. When the PreCommit 1 process is finished you will have generated data to the amount of 384GiB (A 32GiB unsealed sector + (11 layers x 32GiB))
 
@@ -57,11 +57,11 @@ In the Commit 2 phase, the file from the Commit 1 gets compressed into a much sm
 
 ## Proving tasks
 
-These tasks allow storage providers to verifiably prove they have the data they have commited to the network on disk to create a verifiable, and public record attesting to the storage providers continued commitment of storing the data, or for the network to reward storage providers for their contributions. 
+These tasks allow storage providers to verifiably prove they have the data they have committed to the network on disk to create a verifiable, and public record attesting to the storage providers continued commitment of storing the data, or for the network to reward storage providers for their contributions. 
 
 ### WindowPoSt
 
-Window Proof-of-SpaceTime (WindowPoSt) is a proving task where the storage provider is asked to compute a proof that they are actually storing the data they have commited to the network. Every 24-hour period is broken into a series of windows, where each window is 30 minutes long. In a given window, a storage provider is asked to generate a proof based on random parts of the sealed sectors the storage provider has in that window. If they don’t have the data anymore, they won’t be able to respond with their proof in time, and will be penalized.
+Window Proof-of-SpaceTime (WindowPoSt) is a proving task where the storage provider is asked to compute a proof that they are actually storing the data they have committed to the network. Every 24-hour period is broken into a series of windows, where each window is 30 minutes long. In a given window, a storage provider is asked to generate a proof based on random parts of the sealed sectors the storage provider has in that window. If they don’t have the data anymore, they won’t be able to respond with their proof in time, and will be penalized.
 
 In this way, every sector is audited at least once in any 24-hour period, and a permanent, verifiable, and public record attesting to each storage providers continued commitment is kept.
 
@@ -85,7 +85,7 @@ This message type can also be batched to include multiple PreCommitSector messag
 
 ### ProveCommitSector
 
-Through the `ProveCommitSector` message the storage provider provides a Proof of Replication (PoRep) for the sector commited in the `PreCommitSector` message. This proof must be submitted AFTER the security wait requirement by the network (WaitSeed), and before the PreCommit expiration of the sector.
+Through the `ProveCommitSector` message the storage provider provides a Proof of Replication (PoRep) for the sector committed in the `PreCommitSector` message. This proof must be submitted AFTER the security wait requirement by the network (WaitSeed), and before the PreCommit expiration of the sector.
 
 This message type can also be aggregated to include multiple ProveCommitSector messages in a single message. These aggregated messages are called `ProveCommitAggregate`.
 
@@ -95,7 +95,7 @@ SnapDeal sealing tasks are a special type of sealing tasks which allows a storag
 
 ### Replica Update
 
-The Replica Update tasks (also know as UpdateReplica in the sealing jobs output) is similar to the the PreCommit 2 task, with some additional logic that makes it impossible to know beforehand which bytes come out of the new sealed sector. This is to maintain security in the network. This task encodes the incoming unsealed data (deal data), into an existing sealed sector.
+The Replica Update tasks (also known as UpdateReplica in the sealing jobs output) is similar to the the PreCommit 2 task, with some additional logic that makes it impossible to know beforehand which bytes come out of the new sealed sector. This is to maintain security in the network. This task encodes the incoming unsealed data (deal data), into an existing sealed sector.
 
 ### Prove Replica Update 1
 
@@ -103,7 +103,7 @@ This task is similar to the Commit 1 task, only with slightly lighter proofs, be
 
 ### Prove Replica Update 2
 
-In the Prove Replica Update 2 phase, the output from the Prove Replica Update 1 task gets compressed into a smaller proof using zk-SNARKs. The zk-SNARK genereated after the Prove Replica Update 2 can verify that the new data is encoded in the new sealed sector, and is small enough to be suitable for a blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
+In the Prove Replica Update 2 phase, the output from the Prove Replica Update 1 task gets compressed into a smaller proof using zk-SNARKs. The zk-SNARK generated after the Prove Replica Update 2 can verify that the new data is encoded in the new sealed sector, and is small enough to be suitable for a blockchain. The generation of the zk-SNARK can be done by the CPU or accelerated by using a GPU.
 
 ## Tips
 

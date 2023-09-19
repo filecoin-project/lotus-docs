@@ -26,7 +26,7 @@ The process of shutting down a miner and starting it again is complicated. Sever
 
 ### Reducing the time offline
 
-Given the need to continuously send proofs to the network, the storage provider should be offline as little as possible. _Offline-time_ includes the time it takes for the computer to restart the lotus-miner daemon fully. For these reasons, we recommend you follow these steps:
+Given the need to continuously send proofs to the network, the storage provider should be offline as little as possible. _Offline time_ includes the time it takes for the computer to restart the lotus-miner daemon fully. For these reasons, we recommend you follow these steps:
 
 1. Rebuild, install any upgrades before restarting the lotus-miner process.
 1. Ensure the proof parameters are on a fast storage drive like an NVMe drive or SSD. These are the proof parameters that are downloaded the first time the lotus-miner is started, and are saved to `var/tmp/filecoin-proof-parameters`, or `$FIL_PROOFS_PARAMETER_CACHE` if the environment variable is defined.

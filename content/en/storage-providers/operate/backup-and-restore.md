@@ -32,7 +32,7 @@ This process backs-up metadata of the Lotus miner, which is needed to restore th
    Success
    ```
 
-   Add the `--offline` backup if your miner is not currently running:
+   Add the `--offline` option if your miner is not currently running:
 
    ```shell with-output
    lotus-miner backup --offline /root/lotus-backups/2020-11-15/backup.cbor
@@ -53,7 +53,7 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
 
 ## Restore
 
-1. Copy your `backup.cbor`, `config.toml`, and `storage.json` files to the miner if it is on another computer.
+1. Copy your `backup.cbor`, `config.toml`, and `storage.json` files to the miner's directory if it is on another computer.
 1. Call `restore` to restore your miner from a backup file:
 
    ```shell with-output
@@ -66,13 +66,13 @@ The backup is now complete. Always follow the 3-2-1 rule when storing backups:
    2020-11-15T17:53:41.643Z        INFO    main    lotus-storage-miner/init.go:592 Waiting for message: bafy2bzacea3a7kqp3du5lwhm6xlaawxbz3ae7luefmhlcewljclauit7yexuq
    ```
 
-1. Copy `config.toml` and `storage.json` into `~/.lotusminer`:
+1. Copy `config.toml` and `storage.json` into `~/.lotusminer` directory:
 
    ```shell
    cp lotus-backups/2020-11-15/config.toml lotus-backups/2020-11-15/storage.json .lotusminer
    ```
 
-1. Start your miner:
+1. Start your Lotus miner:
 
    ```shell
    lotus-miner run
