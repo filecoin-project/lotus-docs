@@ -39,7 +39,7 @@ After the initial change, one of the multisignature address signers needs to pro
 lotus-shed miner-multisig --from <msig-signer-1> --multisig <msigID> --miner <minerID> propose-change-owner <new-owner-address>
 ```
 
-Depending on what kind of signature threshold the multisignature address has, the rest of the multisignature signers needs to approve the owner change proposal message:
+Depending on what kind of signature threshold the multisignature address has, the rest of the multisignature signers need to approve the owner change proposal message:
 
 ```shell
 lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner  <minerID> approve-change-owner <msigID> <txnId> <proposer-address>
@@ -77,7 +77,7 @@ Depending on what kind of signature threshold the multisignature address has, th
 lotus-shed miner-multisig --from <msig-signer-2> --multisig <msigID> --miner <MinerID> approve-change-owner <new-owner-address> <txnId> <proposer-address>
 ```
 
-Lastly, the single signature address needs to confirm the change to its address with:
+Lastly, the single signature address needs to confirm the change of ownership with:
 
 ```shell
 lotus-miner actor set-owner --really-do-it <new-owner-address> <new-owner-address>

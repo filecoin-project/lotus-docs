@@ -12,7 +12,7 @@ weight: 405
 toc: true
 ---
 
-While the `lotus-miner` runs each of the sealing phases itself by default, you can use Lotus Workers to offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free up the `lotus-miner` from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
+While the `lotus-miner` runs each of the sealing phases itself by default, you can use Lotus Workers to offload some phases from the _sealing pipeline_ to improve resource utilization and efficiency. The additional seal workers free the `lotus-miner` from CPU-intensive tasks to focus on performing and submitting _WindowPoSTs_ and _WinningPoSTs_ to the chain.
 
 ## Installation
 
@@ -36,11 +36,11 @@ Set `ListenAddress` and `RemoteListenAddress` to the IP of a local-network inter
 lotus-miner auth api-info --perm admin
 ```
 
-The Lotus Workers will need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "../../reference/basics/api-access/#api-tokens" >}}). Write down the output so that you can use it in the next step.
+The Lotus Workers need this token to connect to the Lotus Miner. For more info check the [API docs]({{< relref "../../reference/basics/api-access/#api-tokens" >}}). Write down the output so that you can use it in the next step.
 
 ### Configuring the Lotus Miner sealing capabilities
 
-The Lotus Miner is itself a worker and will contribute to sealing operations like any other worker. Depending on what phases of the sealing process you would like your workers to perform, you may choose to configure which ones the Lotus Miner will directly perform. This is done in the `Storage` section of the Lotus Miner's `config.toml`:
+The Lotus Miner is itself a worker and contributes to sealing operations like any other worker. Depending on what phases of the sealing process you would like your workers to perform, you may choose to configure which ones the Lotus Miner will directly perform. This is done in the `Storage` section of the Lotus Miner's `config.toml`:
 
 ```toml
 [Storage]
@@ -54,13 +54,13 @@ The Lotus Miner is itself a worker and will contribute to sealing operations lik
   AllowRegenSectorKey = true
 ```
 
-If you want to fully delegate any of these operations to workers, set them to `false`.
+If you wish to fully delegate any of these operations to workers, set them to `false`.
 
 ## Launching Lotus workers
 
 ### Environment variables
 
-Ensure that workers have access to the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "../../storage-providers/setup/initialize/" >}})):
+Ensure that workers can access the following environment variables when they run. These are similar to those used by the Miner daemon ([explained in the setup guide]({{< relref "../../storage-providers/setup/initialize/" >}})):
 
 The seal workers will fail to start if the file descriptor limit is not set high enough. This limit can be raised temporarily before starting the worker by running the command `ulimit -n 1048576`. Although, we recommend setting it permanently by following the [Permanently Setting Your ULIMIT System Value]({{< relref "../../kb/soft-fd-limit/" >}}) guide.
 
@@ -86,7 +86,7 @@ export FIL_PROOFS_USE_MULTICORE_SDR=1
 lotus-worker run <flags>
 ```
 
-The above command will start the worker. Depending on the operations that you want the worker to perform and the hardware that it is running on, you will want to specify for which sealing phases the worker will make itself available:
+The above command starts the worker. Depending on the operations that you want the worker to perform and the hardware that it is running on, you will want to specify for which sealing phases the worker will make itself available:
 
 ```
    --addpiece                    enable addpiece (default: true)
@@ -101,7 +101,7 @@ The above command will start the worker. Depending on the operations that you wa
 
 All tasks are enabled by default so if the seal worker is only going to run a small subset of these tasks it is recommended to add the `--no-default` option and individually enable each task that it is going to run.
 
-Once the worker is running, it should connect to the Lotus miner. You can verify this with:
+Once the worker is running, it connects to the Lotus miner. You can verify this with:
 
 ```shell
 $ lotus-miner sealing workers
@@ -121,7 +121,7 @@ If you want to give the `lotus-worker` a custom name, you can specify it at runt
 
 ### Sealing space location
 
-Now that the `lotus-worker` is running we need to attach the sealing storage location to the worker. The sealing location should be located on a fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+Now that the `lotus-worker` is running you need to attach the sealing storage location to the worker. The sealing location should be located on a fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
 
 ```shell
 lotus-worker storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
@@ -129,7 +129,7 @@ lotus-worker storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
 
 ### Limit tasks run in parallel
 
-You can limit the amount of tasks run in parallel per task type with environment variables. The environment variable are formatted as `[short task type]_[sector size]_MAX_CONCURRENT=[limit]`.
+You can set a limit on the amount of tasks run in parallel per task type with environment variables. The environment variable are formatted as `[short task type]_[sector size]_MAX_CONCURRENT=[limit]`.
 
 And the short task type codes are:
 
@@ -146,7 +146,7 @@ Unseal: UNS
 
 As an example if you want to limit the amount of PreCommit 1 tasks a `lotus-worker` can run, you just export the `PC1_32G_MAX_CONCURRENT=4` enviroment variable before you start the worker.
 
-You should then be able to see the limits set in the sealing workers output:
+You can then see the limits set in the sealing workers output:
 
 ```shell
 lotus-miner sealing workers
@@ -177,7 +177,7 @@ Advanced GPUs with more than 20 GB of memory capacity are theoretically capable 
 
 ## Gracefully stopping a worker
 
-In a sealing pipeline you often have multiple lotus-workers, and gracefully shutting them down is important to not cause disruptions in the pipeline. Storage providers often have a lot incoming sealing tasks in the pipeline, but want/need to shut down worker nr.XX for maintainence/upgrade. We recommend following these steps:
+In a sealing pipeline there are often multiple lotus-workers, and gracefully shutting them down is important to not cause disruptions in the pipeline. Storage providers often have a lot incoming sealing tasks in the pipeline, but want/need to shut down worker nr.XX for maintainence/upgrade. We recommend following these steps:
 
 1. Disable all sealing tasks on the lotus-worker:
 
@@ -195,11 +195,11 @@ lotus-worker stop
 
 ## Running Multiple Lotus Workers
 
-Storage providers intending to scale significantly beyond the 10 TB minimum will likely want to run multiple Lotus workers, each on a dedicated machine. Multi-worker environments can benefit from additional configuration. Each case will have unique requirements and considerations, and this document can provide only a very brief overview of some options.
+Storage providers intending to scale significantly beyond the 10 TB minimum may wish to run multiple Lotus workers, each on a dedicated machine. Multi-worker environments benefit from additional configuration. Each case has unique requirements and considerations, and this document can provide only a very brief overview of some options.
 
 ### Sector Storage Groups
 
-The `sectorstore.json` file in each storage location contains two additional fields to allow for creating worker groups to avoid unnecessarily moving data between multi-purpose workers. These fields are optional.
+The `sectorstore.json` file in each storage location contains two additional fields that allow creating worker groups to avoid unnecessarily moving data between multi-purpose workers. These fields are not mandatory.
 
 ```
 Groups []string - list of group names the storage path belongs to.
@@ -219,7 +219,7 @@ Consider a setup with three workers:
 - Worker 2 (PC1, PC2)
 - Worker 3 (PC1). 
 
-Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sector data from any of the three workers. For example, if Worker 1 finished a PC1 job but did not yet have an available PC2 window, the large volume of data generated in PC1 might be needlessly moved to Worker 2 for PC2. This wastes bandwidth and can cause data fetching to block data processing. The following `sectorstore.json` files are configured to avoid such unnecessary file transfers.
+Without storage groups, PC2 tasks on Workers 1 or 2 can be scheduled with sector data from any of the three workers. For example, if Worker 1 finished a PC1 job but did not yet have an available PC2 window, the large volume of data generated in PC1 might be needlessly moved to Worker 2 for PC2. This wastes bandwidth and may cause data fetching to block data processing. The following `sectorstore.json` files have been configured to avoid such unnecessary file transfers.
 
 - Worker 1 (PC1, PC2):
     ```json
@@ -260,13 +260,13 @@ Without storage groups, PC2 tasks on Workers 1 or 2 could be scheduled with sect
     }
     ```
 
-Worker 1 and Worker 2 are given unique `Groups` values, and each worker's `AllowTo` matches its respective `Groups`. This ensures PC1 and PC2 for any given sector always execute on the same worker. 
+Worker 1 and Worker 2 have been assigned unique `Groups` values, and each worker's `AllowTo` matches its respective `Groups`. This ensures PC1 and PC2 for any given sector always execute on the same worker. 
 
-Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value means sectors from Worker 3 will only go to Worker 1 for PC2.
+Setting `AllowTo` on Worker 3 to Worker 1's `Groups` value implies sectors from Worker 3 will only go to Worker 1 for PC2.
 
 #### Implementation
 
-To set up storage groups when initializing new storage paths: 
+To establish storage groups when initializing new storage paths: 
 
 ```shell
 lotus-miner storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
@@ -274,7 +274,7 @@ lotus-miner storage attach --init --seal [--groups <group-a>] [--groups <group-b
 lotus-worker storage attach --init --seal [--groups <group-a>] [--groups <group-b>] [--allow-to <group-a>] [--allow-to <group-b>] /path/to/storage
 ```
 
-For existing storage paths, add the lines to `sectorstore.json` in each sealing storage location, then restart `lotus-worker`. (The storage locations used by a worker can be found in `LOTUS_WORKER_PATH/storage.json`.)
+For existing storage paths, add these lines to `sectorstore.json` in each sealing storage location, then restart `lotus-worker`. (The storage locations used by a worker can be found in `LOTUS_WORKER_PATH/storage.json`.)
 
 ```json
 {

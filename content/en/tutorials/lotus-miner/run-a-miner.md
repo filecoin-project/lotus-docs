@@ -12,7 +12,7 @@ toc: true
 
 ## Setup details
 
-Below are the detail of the physical servers used in this tutorial. One of these machines will run a lotus node and other will be used to run a lotus-miner node.
+Below are the details of the physical servers used in this tutorial. One of these machines will run a lotus node and other will be used to run a lotus-miner node.
 
 ### Machine One
 
@@ -79,7 +79,7 @@ This section will cover the installation, configuration and starting a lotus nod
     lotus daemon &
     ```
 
-1. Configure lotus node to allow remote API access. Please do not listen on a public IP as it will allow anyone from the internet to be able to connect to this node. Ideally, use a private IP and in case there is no private IP available, please ensure that firewall is configured to reject all packets accept from miner/market APIs for security:
+1. Configure lotus node to allow remote API access. Please do not listen on a public IP as it will allow anyone from the internet to be able to connect to this node. Ideally, use a private IP and in case there is no private IP available, please ensure that the firewall is configured to reject all packets except from miner/market APIs for security
     
     ```shell
     [API]
@@ -121,7 +121,7 @@ This section will cover the installation, configuration and starting a lotus nod
     lotus wallet new bls
     ```
 
-1. Send some fils to the owner wallet from the [calibnet faucet]({{<relref "https://faucet.calibration.fildev.network/" >}}). For the mainnet, the user can send fils from an exchange or other sources.
+1. Send some FIL to the owner wallet from the [calibnet faucet]({{<relref "https://faucet.calibration.fildev.network/" >}}). For the mainnet, the user can send fils from an exchange or other sources.
 1. Send some fils from the owner wallet to the worker wallet:
    
     ```shell
@@ -166,7 +166,7 @@ This section will cover the installation, configuration, and how to start the lo
     ```
 
 1. Add sufficient swap to the machines based on the [hardware requirements guide]({{<relref "../../storage-providers/get-started/hardware-requirements/#specific-operation-requirements">}}).
-1. On the miner machines, create directories to store cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your miner:
+1. On the miner machines, create directories to store the cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your miner:
     
     ```shell
     mkdir ~/parent_cache
@@ -227,7 +227,7 @@ This section will cover the installation, configuration, and how to start the lo
 
 ### Lotus miner configuration
 
-1. Add storage for sealing as well as permanent storage of the sectors:
+1. Add storage for sealing, as well as permanent storage for the sectors:
     
     ```shell
     mkdir ~/storage

@@ -20,7 +20,7 @@ Make sure that:
 
 - All the [prerequisite steps]({{< relref "../../../storage-providers/setup/prerequisites/">}}) have been completed.
 - Wallets have been created for the owner and worker address, and the _worker address_ has funds so that the storage provider can be initialized.
-- The following environment variables have been defined and will be available for all ´lotus-miner` instances:
+- The following environment variables have been defined and will be available for all `lotus-miner` instances:
 
   ```plaintext
   export LOTUS_MINER_PATH=/path/to/miner/config/storage
@@ -36,7 +36,7 @@ Make sure that:
 
 ## Initialization
 
-Before we can run the storage provider we need to initilize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
+Before we can run the storage provider we need to initialize it by sending a message to the chain to tell the Filecoin network that we want to start a storage provider:
 
 ```shell
 lotus-miner init --owner=<address>  --worker=<needs-bls-address> --no-local-storage --sector-size=<32GiB or 64GiB>

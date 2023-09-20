@@ -30,7 +30,7 @@ Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.js
 
 ### Adding sealing storage location
 
-Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architecture your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
+Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architect your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
 
 Under the storage-section in your `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` file, you can configure which sealing process you would like your `lotus-miner` to perform. If you want to fully delegate any of these operations to workers, set them to false.
 
@@ -45,7 +45,7 @@ Under the storage-section in your `~/.lotusminer/config.toml` or `$LOTUS_MINER_P
   AllowProveReplicaUpdate2 = true
 ```
 
-If you want some or all of the sealing tasks to be perfomed on the `lotus-miner` you will need to add a **custom sealing location** for the tasks. The _seal_ storage location should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
+If you want some or all of the sealing tasks to be performed on the `lotus-miner` you will need to add a **custom sealing location** for the tasks. The _seal_ storage location should be a really fast storage medium so that the disk does not become the bottleneck that delays the sealing process. It can be specified with:
 
 ```sh
 lotus-miner storage attach --init --seal <PATH_FOR_SEALING_STORAGE>
@@ -82,7 +82,7 @@ It is recommended to set the following environment variables in the environment 
  export FIL_PROOFS_USE_MULTICORE_SDR=1
  ```
 
- Depending on your GPU, you might want to experiment with the optional `BELLMAN_CPU_UTILIZATION` variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel with the GPU. But omitting this environment variable is probably optimal if you have a newer GPU card.
+Depending on your GPU, you might want to experiment with the optional `BELLMAN_CPU_UTILIZATION` variable to designate a proportion of the multi-exponentiation calculation to be moved to a CPU in parallel with the GPU. However, omitting this environment variable is probably optimal if you have a newer GPU card.
 
  ```shell
  # See https://github.com/filecoin-project/bellman
@@ -260,7 +260,7 @@ The fees section allow you to define what the max amount of gas you want to spen
 
 ## Next steps
 
-The storage provider should now be preliminary set up and running, and you should now be ready to explore how to operate it and pledge storage to the Filecoin network. We recommend reading through at least these pages:
+The storage provider should now be preliminarily set up and running, and you should now be ready to explore how to operate it and pledge storage to the Filecoin network. We recommend reading through at least these pages:
 
 - Configure a [separate address for WindowPost messages]({{< relref "../../storage-providers/operate/addresses/" >}}).
 - Test your sealing pipeline by [running a benchmark]({{< relref "../../storage-providers/operate/benchmarks/" >}}) or by [pledging a sector]({{< relref "../../storage-providers/operate/sector-pledging/" >}}).
