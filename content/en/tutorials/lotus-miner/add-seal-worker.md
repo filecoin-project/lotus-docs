@@ -32,7 +32,7 @@ This section will cover the installation, configuration and running a Lotus seal
 
 ### Installation
 
-1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). As this is PC1 only worker, we have not used any `CUDA` variables but you can use them if building a worker that requires GPU usage.
+1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). As this is a PC1-only worker, we have not used any `CUDA` variables, but you can use them if you are building a worker that requires GPU usage.
 
     ```shell
     sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
@@ -66,7 +66,7 @@ This section will cover the installation, configuration and running a Lotus seal
     export GOLOG_FILE="$HOME/worker.log" >> ~/.bashrc && source ~/.bashrc
     ```
 
-1. On the seal-worker machines, create directories to store cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your seal-worker.
+1. On the seal-worker machines, create directories to store the cache. Make sure these directories are on a fast NVME disk. Otherwise, it will slow down your seal-worker.
     
     ```shell
     mkdir ~/parent_cache
@@ -75,7 +75,7 @@ This section will cover the installation, configuration and running a Lotus seal
 
 ### Setup
 
-1. Add the following variables to the `~/.bashrc` file and source the file. The token used for API authentication is the same as generated in the [previous tutorial]({{<relref "run-a-miner#generate-auth-token-for-seal-worker">}}). 
+1. Add the following variables to the `~/.bashrc` file and then source the file. The token used for API authentication is the same as generated in the [previous tutorial]({{<relref "run-a-miner#generate-auth-token-for-seal-worker">}}). 
     
     ```shell
     # The following increases speed of PreCommit1 at the cost of using a full
@@ -93,7 +93,7 @@ This section will cover the installation, configuration and running a Lotus seal
     export GOLOG_FILE="$HOME/miner.log"
     ```
 
-1. You then need to load in these changes:
+1. You then need to load these changes:
 
     ```shell
     source ~/.bashrc
@@ -119,12 +119,12 @@ This section will cover the installation, configuration and running a Lotus seal
     mkdir ~/tmp
     ```
     
-    Please make sure that ~/tmp directory is backed by a fast disk like NVME.
+    Please make sure that the ~/tmp directory is backed by a fast disk like NVME.
     
     ```shell
     lotus-worker storage attach --init --seal ~/tmp
     lotus-worker storage list
     ```
     
-Now the seal-worker is ready to start performing PC1 for the sectors.
+Now, the seal-worker is ready to start performing PC1 for the sectors.
 

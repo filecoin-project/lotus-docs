@@ -12,7 +12,7 @@ toc: true
 
 ## Installing latest stable Nvidia drivers
 
-Many Linux distributions provide their packages of the NVIDIA Linux Graphics Driver in the distribution's native package management format. This may interact better with the rest of your distribution's framework, and you may want to use this rather than NVIDIA's official package.
+Many Linux distributions provide packages of the NVIDIA Linux Graphics Driver in the distribution's native package management format. These packages may interact better with the rest of your distribution's framework, and you may want to use them rather than NVIDIA's official package.
 
 1. Download the latest stable package for your card using [the Nvidia website](https://www.nvidia.com/download/index.aspx).
 1. Once you have downloaded the driver, change to the directory containing the driver package and install the driver by running, as root, `sh ./NVIDIA-Linux-x86_64-<driver version>.run`:
@@ -24,7 +24,7 @@ Many Linux distributions provide their packages of the NVIDIA Linux Graphics Dri
     sudo sh NVIDIA-Linux-x86_64-510.54.run
     ```
 
-1. One of the last installation steps will offer to update your X configuration file(for X-server). Either accept that offer, edit your X configuration file manually so that the NVIDIA X driver will be used, or run `nvidia-xconfig`. There are some changes in the latest Nvidia driver, so if you upgrade your driver remember to check `nvidia-smi` - it will always display the correct name for the GPU.
+1. One of the last installation steps will offer to update your X configuration file (for X-server). Either accept that offer, edit your X configuration file manually so that the NVIDIA X driver will be used, or run `nvidia-xconfig`. There are some changes in the latest Nvidia driver, so if you upgrade your driver, remember to check `nvidia-smi`, it will always display the correct name for the GPU.
     
     If you are using an nvidia driver below < `460.91.03`
     
@@ -38,7 +38,7 @@ Many Linux distributions provide their packages of the NVIDIA Linux Graphics Dri
     export RUST_GPU_TOOLS_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
     ```
     
-Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
+Nvidia RTX 3090 was used in this example. Remember to replace this with your GPU model and the corresponding number of CUDA cores.
 
 ## Installing the latest CUDA toolkit
 
@@ -57,13 +57,13 @@ Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and 
 
 ## Configuring the variables
 
-1. We need to add the newly installed CUDA to the PATH environment variable for the Linux User that will compile and run the Lotus:
+1. We need to add the newly installed CUDA to the PATH environment variable for the Linux user that will compile and run the Lotus:
     
     ```shell
     echo -e `export PATH=$PATH:/usr/local/cuda-11.6/bin \n export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.6/lib64` >> ~/.bashrc && source ~/.bashrc
     ```
 
-1. Reboot the system for the changes to take effect and verify that the new CUDA toolkit and Nvidia driver versions are in use:
+1. Reboot the system for the changes to take effect, then verify that the new CUDA toolkit and Nvidia driver versions are in use:
     
     ```shell
     sudo nvidia-smi 

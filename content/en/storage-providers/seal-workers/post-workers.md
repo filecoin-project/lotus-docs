@@ -22,7 +22,7 @@ A lotus worker instance can only be one of the following:
 
 Before launching your PoSt worker, you need to ensure that your worker meets the minimal requirements for the job it will perform. You should also consider how the PoSt workers can access the sealed sectors and set the correct environment variables before running the workers.
 
-### Minminal requirements
+### Minimal requirements
 
 These are the minimal requirements for running each of the PoSt tasks:
 
@@ -52,8 +52,8 @@ Remember to install [CUDA]({{< relref "../../tutorials/lotus-miner/cuda" >}}) on
 The following environment variables are required to be set before starting the worker:
 
 ```shell
-export MINER_API_INFO:<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
-export RUST_GPU_TOOLS_CUSTOM_GPU="MODEL-NAME:CORES" # If you´re using a custom GPU
+export MINER_API_INFO=<TOKEN>:/ip4/<miner_api_address>/tcp/<port>/http
+export RUST_GPU_TOOLS_CUSTOM_GPU="MODEL-NAME:CORES" # If you're using a custom GPU
 export FIL_PROOFS_PARAMETER_CACHE=/fast/disk/folder # > 100GiB!
 ```
 
@@ -73,15 +73,15 @@ Use the `run` command to start the worker:
 lotus-worker run <flags>
 ```
 
-You´ll need to specify which PoSt operation you want the worker to perform with one of the following flags set to true:
+You'll need to specify which PoSt operation you want the worker to perform with one of the following flags set to true:
 
-```toml
+```shell
 --winningpost              enable winning post (default: false)
 --windowpost               enable window post (default: false)
 
 --no-local-storage         don't use repo for sector storage (default: false)
 
-## local storage is not needed to perform post tasks.
+## local storage is not needed to perform PoSt tasks.
 ```
 
 A PoSt worker instance can only be either a winningPoSt worker, or a windowPoSt worker. Enabling a PoSt tasks will automatically disable all other tasks.
@@ -124,7 +124,7 @@ lotus-miner info
 Use the `stop` command to stop the worker:
 
 ```shell
-lotus-worker stop <flags>
+lotus-worker stop
 ```
 
 ## Multiple partitions
@@ -133,7 +133,7 @@ If you have multiple partitions in a single proving deadline and multiple window
 
 Consider this proving deadline with four full partitions:
 
-```plaintext
+```shell
 lotus-miner proving deadlines
 Miner: f011235
 deadline  partitions  sectors (faults)  proven partitions
@@ -161,7 +161,7 @@ Depending on the scale of your operation it may be necessary to fine-tune the pr
   # env var: LOTUS_PROVING_PARALLELCHECKLIMIT
   #ParallelCheckLimit = 128
 
-  # Maximum number of partitions to prove in a single SubmitWindowPoSt messace. 0 = network limit (10 in nv16)
+  # Maximum number of partitions to prove in a single SubmitWindowPoSt message. 0 = network limit (10 in nv16)
   # 
   # A single partition may contain up to 2349 32GiB sectors, or 2300 64GiB sectors.
   # 

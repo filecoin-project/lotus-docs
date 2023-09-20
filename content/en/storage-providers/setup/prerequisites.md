@@ -82,7 +82,7 @@ f3...
 ```
 
 {{< alert icon="callout" >}}
-Next make sure to [send some funds]({{< relref "../../lotus/manage/manage-fil/" >}}) to the **worker address** so that the storage provider setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `onwer` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
+Next make sure to [send some funds]({{< relref "../../lotus/manage/manage-fil/" >}}) to the **worker address** so that the storage provider setup can be completed. The amount you should initialize with varies with gas fees, but 0.1 FIL is generally a safe amount. The sender doesn't have to be any particular address and can be specified using the `from` flag. If `from` is unspecified, the sender will default to the `owner` address, in which case the `owner` must have the 0.1 FIL. If the `owner` is also unspecified, the wallet's default address is used as the owner and that address must have the 0.1 FIL. 
 {{< /alert >}}
 
 For additional information about the different wallets that a storage provider can use and how to configure them, read the [addresses guide]({{< relref "../../storage-providers/operate/addresses/" >}}).
@@ -95,7 +95,7 @@ Safely [backup your wallets]({{< relref "../../lotus/manage/manage-fil/#exportin
 
 There are some changes in the latest Nvidia driver, so if you upgrade your driver remember to check `nvidia-smi` - it will always display the correct name for the GPU. The new names are not picked by FFI automatically and need to be exported manually.
 
-If you are using an nvidia driver below `460.91.03`
+If you are using an Nvidia driver below `460.91.03`
 
 ```shell
 export RUST_GPU_TOOLS_CUSTOM_GPU="GeForce RTX 3090:10496"
@@ -107,4 +107,4 @@ If you are using an Nvidia driver above `510.47.03`
 export RUST_GPU_TOOLS_CUSTOM_GPU="NVIDIA GeForce RTX 3090:10496"
 ```
 
-Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and amount of Cuda cores.
+Nvidia RTX 3090 was used in this example. Remember to edit it with your GPU and number of Cuda cores.
