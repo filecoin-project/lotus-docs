@@ -75,7 +75,7 @@ lotus-worker run <flags>
 
 You'll need to specify which PoSt operation you want the worker to perform with one of the following flags set to true:
 
-```toml
+```shell
 --winningpost              enable winning post (default: false)
 --windowpost               enable window post (default: false)
 
