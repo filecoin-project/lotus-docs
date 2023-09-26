@@ -39,7 +39,7 @@ In this section, we'll set up a Lotus node, install the filecoin.js library, and
 
 ### Lotus node
 
-The following the steps walk through how to install a Lotus node. Further, more detailed, instructions are available on the [Install a Lotus node page](https://lotus.filecoin.io/docs/set-up/install/).
+The following steps walk through how to install a Lotus node.. Further, more detailed, instructions are available on the [Install a Lotus node page](https://lotus.filecoin.io/docs/set-up/install/).
 
 1. Download the Lotus source code. The version number of the latest release can be found on the [lotus releases](https://github.com/filecoin-project/lotus/releases) page:
 
@@ -98,11 +98,11 @@ To make sure everything's running and set up properly, we should check a couple 
       t154xvuihhicgluafwmohwzwmtmqp44pwwgewyvma  100 FIL          0
       ```
 
-  This tells us that the testnet faucet was able to send us some test FIL.
+  This tells us that the testnet's faucet was able to send us some test FIL.
 
 ### Create a Node.js project
 
-Let's set up a Node.js project with the necessary dependencies.
+Let us set up a Node.js project with the necessary dependencies.
 
 1. Create a new Node.js project.
 
@@ -119,7 +119,7 @@ Let's set up a Node.js project with the necessary dependencies.
 
 ### Test a simple function
 
-Now we're ready to connect to our Lotus node and interact with the Lotus APIs. Let's write a simple script to query the Lotus version to verify if everything works as expected.
+Now we are ready to connect to our Lotus node and interact with the Lotus APIs. Let us write a simple script to query the Lotus version to verify if everything works as expected.
 
 1. Create a `chainDataQuery.mjs` file in your project and add the following code.
 
@@ -522,7 +522,7 @@ Storing data is one of the most important features of Filecoin. In this section,
 
 _Note that the simplest way to store data on Filecoin is by using one of the many [storage helper tools](https://docs.filecoin.io/store/overview/) which wrap all of the following steps into a single API call. However, we include this section of the tutorial for anyone who wants to explore Filecoin storage at the protocol level in order to build developer tools or deepen their understanding._
 
-Let's dive in!
+Let us dive in!
 
 1. Start by generating an admin auth token. This is required to import data into the Lotus node:
 
@@ -632,7 +632,7 @@ Let's dive in!
     }
     ```
 
-1. Let's run the js code to store a file on Filecoin:
+1. Let us run the js code to store a file on Filecoin:
 
     ```shell with-output
     node lightWallet.mjs
@@ -663,4 +663,4 @@ DealCid      DealId  Provider  State                     On Chain?  Slashed?  Pi
 ...wb4wiuwq  0       t01105    StorageDealClientFunding  N          N         ...7rkejcnq  3.969 MiB  0.0001041094 FIL  520547    false 
 ```
 
-Congratulations on making it all the way through this tutorial! In this tutorial, we learned the basics of interacting with the Filecoin network using an API client library and local Lotus node. This can serve as the foundation for you explore the complete [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/).
+Congrats on making it all the way through this tutorial! In this tutorial, we learned the basics of interacting with the Filecoin network using an API client library and local Lotus node. This can serve as the foundation for you explore the complete [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/).

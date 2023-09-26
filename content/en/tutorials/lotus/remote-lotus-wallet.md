@@ -67,7 +67,7 @@ On your lotus daemon node start importing the backup keys for the addresses you 
 lotus wallet import /path/to/backup/lotus-wallet.key
 ```
 
-On your `lotus-wallet` node you should now see a prompt, asking you if you want to import the private key. Authorize the import to finialize the address import on the `lotus-wallet`.
+On your `lotus-wallet` node you should now see a prompt, asking you if you want to import the private key. Authorize the import to finalize the address import on the `lotus-wallet`.
 
 ```shell
 -----
@@ -96,4 +96,4 @@ After all that is done, you can now restart the `lotus-wallet` without the `--in
 
 ## Extra steps
 
-If you want to create any new wallets that should you **do not want** to be on the remote `lotus-wallet` service (such as PoSt-control addresses for example) will require you to turn of the RemoteBackend config, restart the daemon and create them such that they land on the server running `lotus-daemon` and not the `lotus-wallet`.
+If you want to create any new wallets that you **do not want** to be on the remote `lotus-wallet` service (such as PoSt-control addresses for example) will require you to turn of the RemoteBackend config, restart the daemon and create them such that they land on the server running `lotus-daemon` and not the `lotus-wallet`.
