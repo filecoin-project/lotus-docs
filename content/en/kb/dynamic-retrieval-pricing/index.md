@@ -1,6 +1,6 @@
 ---
-title: "Dynamic retrieval pricing is being depricated"
-description: "Dynamic retrieval pricing is being depricated"
+title: "Dynamic retrieval pricing is being deprecated"
+description: "Dynamic retrieval pricing is being deprecated"
 date: 2023-02-14T12:00:35+01:00
 lastmod: 2023-02-14T12:00:35+01:00
 draft: false

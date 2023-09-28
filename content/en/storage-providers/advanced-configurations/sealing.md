@@ -378,7 +378,7 @@ The storage section controls whether the `lotus-miner` can perform certain seali
 
 The storage section includes a worker assigning logic. It allows you to specify a assigning logic that suits your setup.
 
-- `utilization` is the default assinging logic, and tries to assing tasks to lotus-workers with the lowest utilization.
+- `utilization` is the default assigning logic, and tries to assign tasks to lotus-workers with the lowest utilization.
 - The `spread` assigning logic tries to assign tasks to as many distinct workers as possible.
 
 ```toml
@@ -398,7 +398,7 @@ You can also choose to use some experimental assigner logics:
 - The `experiment-spread-tasks-qcount` -  this logic similar to the spread assigner, but also takes into account task counts which are in running/preparing/queued states, as well as counting running tasks on a per-task-type basis.
 - The `experiment-random` - In each schedule loop this assinger logic figures a set of all workers which can handle the task and then picks a random one. 
 
-### Dissallow remote finalize
+### Disallow remote finalize
 
 If you do not want `Finalize` tasks to be run by remote workers, you can set the `DissallowRemoteFinalize` option to true. If set to true, all finalize tasks will be run on workers with local access to both the long-term storage and the sealing path containing the sector. 
 

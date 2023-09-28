@@ -13,7 +13,7 @@ toc: true
 TODO:
 
 - Storage economics
-- Retrival reconomics
+- Retrieval reconomics
 
 ## Filecoin Plus
 

@@ -15,7 +15,7 @@ areas: ["leveldb", "Lotus Miner"]
 
 ## Problem:
 
-Corruption in the LevelDB metadata might happen due to a bad RAM-stick. In such cases you will encouter issues restarting the `lotus-miner` process again. The error log will look something similar to this: 
+Corruption in the LevelDB metadata might happen due to a bad RAM-stick. In such cases you will encounter issues restarting the `lotus-miner` process again. The error log will look something similar to this: 
 
 ```shell
   - leveldb/table: corruption on data-block (pos=1352397): checksum mismatch, want=0x972e02b got=0x43ac9dfa [file=xxxx.ldb]
@@ -58,7 +58,7 @@ Installing collected packages: plyvel
 Successfully installed plyvel-1.5.0
 ```
 
-Then we can write our Python program to recover the metadata. Type `python3` and write the program in the promts:
+Then we can write our Python program to recover the metadata. Type `python3` and write the program in the prompts:
 
 ```shell with-output
 python3
@@ -93,4 +93,4 @@ You can now restart the `lotus-miner` process and see that it has been recovered
  
 ## Extras:
 
-These steps are only needed in cases where no proper metadata backup has been generated. It is adviced to setup [proper automated backups of the metadata]({{<relref "../../storage-providers/operate/backup-and-restore/#backup" >}})
+These steps are only needed in cases where no proper metadata backup has been generated. It is advised to setup [proper automated backups of the metadata]({{<relref "../../storage-providers/operate/backup-and-restore/#backup" >}})

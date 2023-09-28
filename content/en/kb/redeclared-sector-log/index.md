@@ -24,6 +24,6 @@ These logs appear:
 
 1. On startup the lotus-miner process will scan all sector storage paths to see where the sectors are located, and as such you will see these logs outputted.
 
-2. Boost added index integrity checks in Boost version v1.7.0 and higher, which is why you would see this logging at certain intervalls. The storage list api that Boost relies on in the Lotus-Miner unfortunately doesn’t automatically update removed sectors or removed unsealed copies, so they ask lotus-miner to update the list via the redeclare storage api, which should be a fairly light call.
+2. Boost added index integrity checks in Boost version v1.7.0 and higher, which is why you would see this logging at certain intervals. The storage list api that Boost relies on in the Lotus-Miner unfortunately doesn’t automatically update removed sectors or removed unsealed copies, so they ask lotus-miner to update the list via the redeclare storage api, which should be a fairly light call.
 
 In Boost you can configure how often this API call occurs in your config file. Check the [Boost documentation for more information.](](https://boost.filecoin.io))

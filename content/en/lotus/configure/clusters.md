@@ -1,6 +1,6 @@
 ---
 title: "Lotus Node Clusters"
-description: "Version 1.19.0 introduces redundant Lotus node cluster raft concensus in order to maintain consistent state for nonces and messages being published in the event of Lotus node failure."
+description: "Version 1.19.0 introduces redundant Lotus node cluster raft consensus in order to maintain consistent state for nonces and messages being published in the event of Lotus node failure."
 draft: false
 menu:
     lotus:
@@ -11,7 +11,7 @@ weight: 325
 toc: true
 ---
 
-Version 1.19.0 introduces redundant Lotus node cluster raft concensus in order to maintain consistent state for nonces and messages being published in the event of Lotus node failure.
+Version 1.19.0 introduces redundant Lotus node cluster raft consensus in order to maintain consistent state for nonces and messages being published in the event of Lotus node failure.
 
 {{< alert icon="warning" >}}
    A minimum number of 3 Lotus nodes are required to enable and use Lotus node clusters 
@@ -77,7 +77,7 @@ FULLNODE_API_INFO=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid
 ```
 4. Restart all daemon and miner instances, stop the lotus-miner first followed by the three nodes.
 5. Start all three nodes followed by the lotus-miner. 
-6. You are now running raft concensus through node clustering.
+6. You are now running raft consensus through node clustering.
 7. You can check that the cluster is successfully running and determine the current node leader by running `./lotus-shed rpc RaftLeader`.
 
 ### Cluster config options

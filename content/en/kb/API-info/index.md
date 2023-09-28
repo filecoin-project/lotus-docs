@@ -17,7 +17,7 @@ areas: ["env", "Lotus Miner", "Lotus Node"]
 
 A `GetAPIInfo error` in Lotus can mean a couple of things:
 
-- Repo enviroment variable or flag is not set, or pointing at a wrong path.
+- Repo environment variable or flag is not set, or pointing at a wrong path.
 - There is a missing repo
 - Corrupted repo (e.g. missing API file)
 
