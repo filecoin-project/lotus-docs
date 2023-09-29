@@ -39,12 +39,11 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), witho
 
     ```shell
     added QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW example.txt
- 198.39 KiB / 198.39 KiB [==========================================] 100.00
+    198.39 KiB / 198.39 KiB [==========================================] 100.00
     ```
 
 1. You can now use that IPFS hash with `lotus` to create a storage deal.
 
     ```shell
     lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 <price> <duration>
-```
-
+    ```

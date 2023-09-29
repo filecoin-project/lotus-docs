@@ -45,7 +45,7 @@ During this phase an additional 64GiB file (32GiB sectors) that represents the m
 
 ### WaitSeed
 
-The WaitSeed state is a security wait requirement by the network that is initiated between the PreCommit 2 and the start of the Commit 1 phase. It is fixed at 150 epochs, i.e 75 minutes long. At the end of the wait seed state the sector aquires some randomness from the chain.
+The WaitSeed state is a security wait requirement by the network that is initiated between the PreCommit 2 and the start of the Commit 1 phase. It is fixed at 150 epochs, i.e 75 minutes long. At the end of the wait seed state the sector acquires some randomness from the chain.
 
 ### Commit 1
 
