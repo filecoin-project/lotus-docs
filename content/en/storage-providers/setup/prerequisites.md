@@ -14,7 +14,7 @@ toc: true
 Being a storage provider will only work if you fully comply with the [minimal hardware requirements]({{< relref "../../storage-providers/get-started/hardware-requirements/" >}}) for the network in which you will be a storage provider. The sealing process is very resource-intensive and is dependent on precise configuration. We strongly recommend Linux systems administration experience before embarking.
 
 {{< alert icon="callout" >}}
-Be warned: if you decide to skip any of the sections below, things will not work! Read and tread carefully.
+Be warned: if you decide to skip any of the sections below, things will not work! Read carefully.
 {{< /alert >}}
 
 Please make sure that the following prerequites are met whether you are planning to run the `lotus miner` on the same machine as the lotus daemon or a different machine.

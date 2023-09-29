@@ -1,7 +1,7 @@
 ---
 title: "Initialize"
-description: "This guide describes the necessary steps to initilize a storage provider on-chain."
-lead: "This guide describes the necessary steps to initilize a storage provider on-chain."
+description: "This guide describes the necessary steps to initialize a storage provider on-chain."
+lead: "This guide describes the necessary steps to initialize a storage provider on-chain."
 draft: false
 menu:
     storage-providers:
