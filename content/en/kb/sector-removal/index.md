@@ -70,7 +70,7 @@ You may encounter a sector removal situation where the `sealed`,`unsealed` and/o
 
 You can repopulate the missing data by either duplicating an existing sector's data and renaming the folder/files or by creating empty files/folders to act as placeholders using `touch`.
 
-In the event that the sector **sucessfully completed** sealing, you will need to create the dummy data in your long-term storage folder as follows:
+In the event that the sector **successfully completed** sealing, you will need to create the dummy data in your long-term storage folder as follows:
 
 ```plaintext
 /long-term-storage-folder/sealed/s-t01234-1237

@@ -18,7 +18,7 @@ areas: ["Lotus Node", "Lotus Miner"]
 
 ## Problem
 
-Users in China might experience bandwidth issues or slowness when building and downloading proof paramaters needed to run Lotus. This article provides a few tips to get around the bandwidth issues.
+Users in China might experience bandwidth issues or slowness when building and downloading proof parameters needed to run Lotus. This article provides a few tips to get around the bandwidth issues.
 
 ## Speed up proof parameter download for first boot
 

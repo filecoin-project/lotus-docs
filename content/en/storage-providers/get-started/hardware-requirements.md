@@ -69,7 +69,7 @@ Mixing AMD and Nvidia GPUs in the same machine is known to cause issues with Ope
 
 ## Disk
 
-The `lotus-miner` process in itself does not require a very large disk space. But it is recommended to have the process running on a fast storage medium like a NVMe disk, especially if the windowPoSt process is not outsourced to a seperate worker.
+The `lotus-miner` process in itself does not require a very large disk space. But it is recommended to have the process running on a fast storage medium like a NVMe disk, especially if the windowPoSt process is not outsourced to a separate worker.
 
 ### PC1 
 
@@ -87,18 +87,18 @@ Each Commit 2 task uses the 16MiB file generated in the [Commit1 phase]({{< relr
 
 The following table shows what hardware resources are needed to run a single tasks of the given sealing phase or proof calculation:
 
-| Operation                  | CPU used                                 | GPU used | VRAM     | Memory (32Gib sectors) | Notes                                                                                                                                                                                                                                       |
-| -------------------------- | ---------------------------------------- | -------- | -------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sealing: AddPiece          | Yes (all cores)                          | No       | -        | 0.2GiB                 | Write heavy
-| Sealing: preCommit phase 1 | Yes (1 core or 1 core-complex)           | No       | -        | 64GiB                  | PoRep SDR encoding. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).
-| Sealing: preCommit phase 2 | Yes (when no GPU, all cores)             | Yes      | 5 GiB    | 30GiB                  | Read-heavy operation, fast NVMe disks recommended. **Highly recommended to run on a GPU**                                     |
-| Sealing: commit phase 1    | Yes                                      | No       | -        | -                      | Extremely light computation, usually faster then 1 second                                                                     |
-| Sealing: commit phase 2    | Yes (when no GPU, all cores)             | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
-| Unsealing                  | Yes (1 core or 1 core-complex)           | No       | -        | 64GiB                  | Same process as preCommit phase 1. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).
-| SnapDeals: Update Replica (RU) | Yes (when no GPU, all cores)             | Yes      | 5 GiB    | 64GiB               | **Highly recommended to run on a GPU**.                                          
-| SnapDeals: PRU2            | Yes (when no GPU, all cores)             | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a perfomance hit.                                                                              
-| Proving _WindowPoSt_       | Yes (all cores, when no GPU)             | Yes      | 11 GiB | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. **Highly recommended to run on a GPU**.                                                                                         
-| Proving _WinningPoSt_      | Yes                                      | No       | 6 GiB    | 16GiB                  | _WinningPoSt_ is a less intensive computation and must be completed in a 25-second window. **It is highly recommended to run on a GPU.**                                                           
+| Operation                      | CPU used                       | GPU used | VRAM   | Memory (32Gib sectors) | Notes                                                                                                                                                                                     |
+| ------------------------------ | -------------------------------| -------- | ------ | ---------------------- |  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sealing: AddPiece              | Yes (all cores)                | No       | -      | 0.2GiB                 | Write heavy                                                                                                                                                                               |
+| Sealing: preCommit phase 1     | Yes (1 core or 1 core-complex) | No       | -      | 64GiB                  | PoRep SDR encoding. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).               |
+| Sealing: preCommit phase 2     | Yes (when no GPU, all cores)   | Yes      | 5 GiB  | 30GiB                  | Read-heavy operation, fast NVMe disks recommended. **Highly recommended to run on a GPU**                                                                                                 |
+| Sealing: commit phase 1        | Yes                            | No       | -      | -                      | Extremely light computation, usually faster then 1 second                                                                                                                                 |
+| Sealing: commit phase 2        | Yes (when no GPU, all cores)   | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a performance hit.                                                                      |
+| Unsealing                      | Yes (1 core or 1 core-complex) | No       | -      | 64GiB                  | Same process as preCommit phase 1. Not amenable to parallelization. Core usage depends on value of [`FIL_PROOFS_USE_MULTICORE_SDR`](https://github.com/filecoin-project/rust-fil-proofs/).|
+| SnapDeals: Update Replica (RU) | Yes (when no GPU, all cores)   | Yes      | 5 GiB  | 64GiB                  | **Highly recommended to run on a GPU**.                                                                                                                                                   |
+| SnapDeals: PRU2                | Yes (when no GPU, all cores)   | Yes      | 11 GiB | ~ 192GiB               | **Highly recommended to run on a GPU**. Using 128GiB RAM and 64GiB SWAP is possible, but comes at a performance hit.                                                                      |
+| Proving _WindowPoSt_           | Yes (all cores, when no GPU)   | Yes      | 11 GiB | 96GiB                  | _WindowPoSts_ must be submitted in 30 minute windows. When no GPU available, the more CPU cores the faster. **Highly recommended to run on a GPU**.                                       |
+| Proving _WinningPoSt_          | Yes                            | No       | 6 GiB  | 16GiB                  | _WinningPoSt_ is a less intensive computation and must be completed in a 25-second window. **It is highly recommended to run on a GPU.**                                                  |
 
 ## Future proofing
 

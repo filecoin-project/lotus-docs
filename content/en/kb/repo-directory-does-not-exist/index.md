@@ -15,7 +15,7 @@ areas: ["repo", "env", "Lotus Miner"]
 
 ## Problem
 
-When running `lotus-miner auth create-token --perm admin` the following error occures (could happen with any lotus-miner commands). 
+When running `lotus-miner auth create-token --perm admin` the following error occurs (could happen with any lotus-miner commands). 
 
 ```plaintext
 ERROR: could not get API info for StorageMiner: repo directory does not exist. Make sure your configuration is correct
