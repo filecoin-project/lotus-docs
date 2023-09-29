@@ -103,7 +103,7 @@ If you'd like to have a clear overview of the storage list, it is possible to ed
 
 ### Separate sealed and unsealed
 
-A very basic setup where you want to seperate unsealed and sealed sectors could be achieved by:
+A very basic setup where you want to separate unsealed and sealed sectors could be achieved by:
 
 - Add `"DenyTypes": ["unsealed"]` to long-term storage path(s) where you want to store the sealed sectors.
 - Add `"AllowTypes": ["unsealed"]` to long-term storage path(s) where you want to store the unsealed sectors.

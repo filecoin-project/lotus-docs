@@ -117,7 +117,7 @@ Worker 1, host othercomputer
         VMEM: [||||||||||||||                                                  ] 23% 14 GiB/62.7 GiB
         GPU: GeForce RTX 2080, not used
 ```
-If you want to give the `lotus-worker` a custom name, you can specify it at runtime with the `--name` option, or by exporting the `LOTUS_WORKER_NAME=Your-Name` enviroment variable. 
+If you want to give the `lotus-worker` a custom name, you can specify it at runtime with the `--name` option, or by exporting the `LOTUS_WORKER_NAME=Your-Name` environment variable. 
 
 ### Sealing space location
 
@@ -144,7 +144,7 @@ Fetch:  GET
 Unseal: UNS
 ```
 
-As an example if you want to limit the amount of PreCommit 1 tasks a `lotus-worker` can run, you just export the `PC1_32G_MAX_CONCURRENT=4` enviroment variable before you start the worker.
+As an example if you want to limit the amount of PreCommit 1 tasks a `lotus-worker` can run, you just export the `PC1_32G_MAX_CONCURRENT=4` environment variable before you start the worker.
 
 You can then see the limits set in the sealing workers output:
 
@@ -177,7 +177,7 @@ Advanced GPUs with more than 20 GB of memory capacity are theoretically capable 
 
 ## Gracefully stopping a worker
 
-In a sealing pipeline there are often multiple lotus-workers, and gracefully shutting them down is important to not cause disruptions in the pipeline. Storage providers often have a lot incoming sealing tasks in the pipeline, but want/need to shut down worker nr.XX for maintainence/upgrade. We recommend following these steps:
+In a sealing pipeline there are often multiple lotus-workers, and gracefully shutting them down is important to not cause disruptions in the pipeline. Storage providers often have a lot incoming sealing tasks in the pipeline, but want/need to shut down worker nr.XX for maintenance/upgrade. We recommend following these steps:
 
 1. Disable all sealing tasks on the lotus-worker:
 

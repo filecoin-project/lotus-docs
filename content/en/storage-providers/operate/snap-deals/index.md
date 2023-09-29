@@ -195,7 +195,7 @@ This process might take a while, but eventually, the deal will go to your `lotus
 
 ## Snap-deal queue
 
-A new feature in `lotus-miner` allows converting all the future "CC" sectors to snap-deal ready sectors by default. This features moves the newly sealed "CC" sector to "Available" state as part of the sector finalizing steps to mark it as available for snap deals. It provides two main benifits:
+A new feature in `lotus-miner` allows converting all the future "CC" sectors to snap-deal ready sectors by default. This features moves the newly sealed "CC" sector to "Available" state as part of the sector finalizing steps to mark it as available for snap deals. It provides two main benefits:
 
 1. It removes the manual intervention required to convert the "CC" sectors to snap-deal ready sectors and thus, reduces the overhead for the storage provider. 
 2. As all the new storage deals will be sealed as part of snap-deal, the sealing time would be considerable less.

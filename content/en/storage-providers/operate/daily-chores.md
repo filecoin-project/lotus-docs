@@ -148,7 +148,7 @@ Please note that the command has to be executed with the `--really-do-it` flag t
 
 ## Compacting partitions
 
-Expired, removed and terminated sectors will be listed in your proving partition until you compact your partitions. To clean up a partition in a deadline we can use the `lotus-miner sectors compact-partitions` command. The network enforces a security measure that disallows compacting a partition in a deadline untill 1800 epochs (15 hours) have passed. This is to enforce that compacting a deadline cannot be used to prevent invalid posts from being disputed.
+Expired, removed and terminated sectors will be listed in your proving partition until you compact your partitions. To clean up a partition in a deadline we can use the `lotus-miner sectors compact-partitions` command. The network enforces a security measure that disallows compacting a partition in a deadline until 1800 epochs (15 hours) have passed. This is to enforce that compacting a deadline cannot be used to prevent invalid posts from being disputed.
 
 The `lotus-miner sectors compact-partitions` also includes a safety measure that disallows compacting during a challenge window, or the prior challenge window. This is because compaction rearranges metadata, and if done too close to a windowPoSt it could cause you to miss a windowPost.
 

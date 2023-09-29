@@ -30,7 +30,7 @@ Upon initialization of a storage location, a `<path-to-storage>/sectorstorage.js
 
 ### Adding sealing storage location
 
-Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by defualt, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architect your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
+Before adding your sealing storage location you will need to consider where the sealing tasks are going to be performed. While the `lotus-miner` can run all of the sealing phases, and is configured to do so by default, using [seal workers]({{< relref "../../storage-providers/seal-workers/seal-workers/" >}}) to offload computational heavy sealing tasks to separate machines or processes is recommended. Depending on how you architect your system you will either need to add the sealing location to the `lotus-worker`, the `lotus-miner` or both depending on where you want the sealing tasks to be performed.
 
 Under the storage-section in your `~/.lotusminer/config.toml` or `$LOTUS_MINER_PATH/config.toml` file, you can configure which sealing process you would like your `lotus-miner` to perform. If you want to fully delegate any of these operations to workers, set them to false.
 
