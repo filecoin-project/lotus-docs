@@ -143,7 +143,7 @@ If your Lotus instance is hosted remotely, ensure that you have enabled [remote 
 
 To use a publicly available hosted endpoint follow the steps for the locally hosted node above replacing the script in step 2 with the following:
 
-Further information about currently availble hosted endpoints can be found at the following links:
+Further information about currently available hosted endpoints can be found at the following links:
 - [Ankr](https://www.ankr.com/rpc/filecoin/)
 - [Glif](https://api.node.glif.io)
 - [ChainStack](https://chainstack.com/labs/#filecoin)
