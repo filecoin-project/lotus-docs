@@ -188,15 +188,19 @@ Once all the dependencies are installed, you can build and install Lotus.
 
 1. Build and install Lotus
 
-   Lotus is compiled to operate on a single network,  run one of the following commands to build the lotus node for the specific lotus network.
+   Lotus is compiled to operate on a single network.
+
+   Choose the network you want to join, then run the corresponding command to build the Lotus node:
 
    ```shell
-   # join mainnet
-   make clean all
+   # For Mainnet:
+   make all
 
-   # Or to join a testnet or devnet:
-   make clean calibnet # Calibration with min 32GiB sectors
-
+   # For Calibration Testnet:
+   make calibnet
+   ```
+   Install Lotus:
+   ```shell
    sudo make install
    ```
 
@@ -210,7 +214,9 @@ Once all the dependencies are installed, you can build and install Lotus.
    lotus --version
    ```
    ```
-   lotus version 1.17.2+mainnet+git.8db6a939c
+   lotus version 1.23.3+mainnet+git.7bb1f98ac
+   # or
+   lotus version 1.23.3+calibnet+git.7bb1f98ac
    ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
