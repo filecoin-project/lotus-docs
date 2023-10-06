@@ -63,15 +63,7 @@ This section controls some of the behavior around sector sealing:
   # env var: LOTUS_SEALING_MINUPGRADESECTOREXPIRATION
   #MinUpgradeSectorExpiration = 0
 
-  # When set to a non-zero value, minimum number of epochs until sector expiration above which upgrade candidates will
-  # be selected based on lowest initial pledge.
-  # 
-  # Target sector expiration is calculated by looking at the input deal queue, sorting it by deal expiration, and
-  # selecting N deals from the queue up to sector size. The target expiration will be Nth deal end epoch, or in case
-  # where there weren't enough deals to fill a sector, DealMaxDuration (540 days = 1555200 epochs)
-  # 
-  # Setting this to a high value (for example to maximum deal duration - 1555200) will disable selection based on
-  # initial pledge - upgrade sectors will always be chosen based on longest expiration
+  # DEPRECATED: Target expiration is no longer used
   #
   # type: uint64
   # env var: LOTUS_SEALING_MINTARGETUPGRADESECTOREXPIRATION
@@ -137,12 +129,6 @@ This section controls some of the behavior around sector sealing:
   # env var: LOTUS_SEALING_DISABLECOLLATERALFALLBACK
   #DisableCollateralFallback = false
 
-  # enable / disable precommit batching (takes effect after nv13)
-  #
-  # type: bool
-  # env var: LOTUS_SEALING_BATCHPRECOMMITS
-  #BatchPreCommits = true
-
   # maximum precommit batch size - batches will be sent immediately above this size
   #
   # type: int
@@ -192,7 +178,8 @@ This section controls some of the behavior around sector sealing:
   #CommitBatchSlack = "1h0m0s"
 
   # network BaseFee below which to stop doing precommit batching, instead
-  # sending precommit messages to the chain individually
+  # sending precommit messages to the chain individually. When the basefee is
+  # below this threshold, precommit messages will get sent out immediately.
   #
   # type: types.FIL
   # env var: LOTUS_SEALING_BATCHPRECOMMITABOVEBASEFEE
@@ -226,6 +213,12 @@ This section controls some of the behavior around sector sealing:
   # type: Duration
   # env var: LOTUS_SEALING_TERMINATEBATCHWAIT
   #TerminateBatchWait = "5m0s"
+
+  # UseSyntheticPoRep, when set to true, will reduce the amount of cache data held on disk after the completion of PreCommit 2 to 11GiB.
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_USESYNTHETICPOREP
+  #UseSyntheticPoRep = false
 ```
 
 ### PreCommitSectorsBatch
@@ -354,6 +347,19 @@ The available units are:
 ```
 
 For example, if you want to set the sector lifecycle to 180 days, you can multiply 180 days by 24 hours per day to get 4320 hours and set this value to `"4320h0m0s"`.
+
+### Synthetic-PoRep
+
+The `UseSyntheticPoRep` configuration option, when set to true, enables the Synthetic Proof-of-Replication (Synthetic-PoRep) protocol. This protocol significantly reduces the storage overhead of the standard PoRep protocol from 352 GiB to approximately 11 GiB for 32 GiB sectors, and from 704 GiB to approximately 11 GiB for 64 GiB sectors. This is achieved by trading the storage of PoRep overhead data for synthetic challenge proofs, resulting in a net savings of up to 98% in PoRep storage consumption.
+
+```toml
+[Sealing]
+  # UseSyntheticPoRep, when set to true, reduces PoRep storage consumption by trading overhead data for synthetic challenge proofs.
+  #
+  # type: bool
+  # env var: LOTUS_SEALING_USESYNTHETICPOREP
+  #UseSyntheticPoRep = false
+```
 
 ## Storage section
 
