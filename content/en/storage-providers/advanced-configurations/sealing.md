@@ -214,7 +214,7 @@ This section controls some of the behavior around sector sealing:
   # env var: LOTUS_SEALING_TERMINATEBATCHWAIT
   #TerminateBatchWait = "5m0s"
 
-  # UseSyntheticPoRep, when set to true, will reduce the amount of cache data held on disk after the completion of PreCommit 2 to 11GiB.
+  # UseSyntheticPoRep, when set to true, will reduce the amount of cache data held on disk after the completion of PreCommit2 to 11GiB.
   #
   # type: bool
   # env var: LOTUS_SEALING_USESYNTHETICPOREP
