@@ -40,10 +40,6 @@ ID  SealProof  InitialPledge  Activation                      Expiration        
 
 ## Extend sectors
 
-{{< alert icon="warning" >}}
-Please note that for the Lotus v1.22.1 both the `lotus-miner sectors extend` and `lotus-miner sectors renew` commands exists. In this guide we explain how to extend sectors in Lotus v1.23.0 or higher.
-{{< /alert >}}
-
 You can extend the lifecycle of a sector with the `lotus-miner sectors extend` command:
 
 ```shell
