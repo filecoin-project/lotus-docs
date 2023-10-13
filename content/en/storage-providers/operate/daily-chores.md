@@ -146,7 +146,7 @@ Renewing 2 sectors:
 Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
 
 ## Move partitions
-Moving partitions between deadlines is enabled in network version 21 upgrade in the Filecoin network. In lotus a storage provider can move their partitions with the `lotus-miner actor move-partitions` command. The command is a powerful tool that provides flexibility and control to Storage Providers (SPs) in managing their proving periods, which can be beneficial for various reasons such as system performance optimization, cost savings, and improved duty roster management. A couple advanteges of moving partitions between deadlines can be:
+Moving partitions between deadlines is enabled in the network version 21 upgrade in the Filecoin network. In lotus a storage provider can move their partitions with the `lotus-miner actor move-partitions` command. The command is a powerful tool that provides flexibility and control to Storage Providers (SPs) in managing their proving periods, which can be beneficial for various reasons such as system performance optimization, cost savings, and improved duty roster management. A couple advanteges of moving partitions between deadlines can be:
 
 - **Creation of user-defined maintenance windows:** SPs can create designated periods for maintenance activities without the risk of losing power.
 - **Definition of free hours for better duty roster:** SPs can allocate specific hours of the day as free hours, enabling them to optimize their duty roster. This can be achieved by moving partitions out of those hours.
