@@ -78,7 +78,7 @@ FULLNODE_API_INFO=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid
 4. Restart all daemon and miner instances, stop the lotus-miner first followed by the three nodes.
 5. Start all three nodes followed by the lotus-miner. 
 6. You are now running raft consensus through node clustering.
-7. You can check that the cluster is successfully running and determine the current node leader by running `./lotus-shed rpc RaftLeader`.
+7. You can check that the cluster is successfully running and determine the current node leader by running `./lotus-shed rpc --version v1 RaftLeader`.
 
 ### Cluster config options
 
