@@ -7,6 +7,8 @@ draft: false
 menu:
   kb:
     parent: "browse"
+aliases:
+    - /storage-providers/advanced-configurations/market/
 toc: false
 pinned: false
 types: ["article"]
@@ -64,14 +66,6 @@ The final value of `ExpectedSealDuration` should equal `(TIME_TO_SEAL_A_SECTOR +
 `StartEpochSealingBuffer` allows `lotus-miner` to seal a sector before a certain epoch. For example: if the current epoch is 1000 and a deal within a sector must start on epoch 1500, then `lotus-miner` must wait until the current epoch is 1500 before it can start sealing that sector. However, if `lotus-miner` sets `StartEpochSealingBuffer` to 500, the `lotus-miner` can start sealing the sector at epoch 1000. 
 
 If there are multiple deals in a sector, the deal with a start time closest to the current epoch is what `StartEpochSealingBuffer` will be based off. So, if the sector in our example has three deals that start on epoch 1000, 1200, and 1400, then we `lotus-miner` will start sealing the sector at epoch 500.
-
-### Disabling new sector for deal
-
-If `MakeNewSectorForDeals` is set to `true` then `lotus-miner` will create new sectors for incoming deals. This option can set to `false` to ensure that all new deals are sealed as snap-deals into CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap-deals.
-
-### Make new CC sector available for snap-deal
-
-`MakeCCSectorsAvailable` makes all the new CC sectors available to be upgraded with snap-deals. When this boolean is set to `true`, all pledged "CC" sectors from that point onwards will be converted to "Available" state after sealing. This enables sealing the incoming storage deals more quickly into these "Available" sectors compared to creating a new sector for the deals. 
 
 ### Publishing several deals in one message
 
