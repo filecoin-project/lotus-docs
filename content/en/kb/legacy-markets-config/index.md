@@ -1,14 +1,21 @@
 ---
-title: "Market"
-description: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for lotus market"
-lead: "Lotus has a lot of advanced configurations you can tune to optimize your storage provider setup. This guide explains the advanced configuration options for lotus market"
+title: "Lotus-miner legacy markets Configs"
+description: "The Lotus-Miner Legacy Markets are deprecated. This is an overview of its configs."
+date: 2023-10-27T12:00:35+01:00
+lastmod: 2023-10-27T12:00:35+01:00
 draft: false
 menu:
-    storage-providers:
-        parent: "storage-providers-advanced-configurations"
-weight: 510
-toc: true
+  kb:
+    parent: "browse"
+toc: false
+pinned: false
+types: ["article"]
+areas: ["Deprecated"]
 ---
+
+{{< alert icon="warning" >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+{{< /alert >}}
 
 ## Dealmaking section
 
