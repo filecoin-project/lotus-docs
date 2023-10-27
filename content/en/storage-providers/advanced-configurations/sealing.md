@@ -454,3 +454,10 @@ Set the maximum cost you are willing to pay for onboarding **per** sector in `Ma
 The current `MaxCommitBatchGasFee.PerSector` is enough to aggregate proofs for 6 sectors. Adjust this respectively according to your operation. **If the value is too low, the message may wait in the mempool for a long while. If you don't have enough funds, the message will not be sent.**
 {{< /alert >}}
 
+### Make new CC sector available for snap-deal
+
+`MakeCCSectorsAvailable` makes all the new CC sectors available to be upgraded with snap-deals. When this boolean is set to `true`, all pledged "CC" sectors from that point onwards will be converted to "Available" state after sealing. This enables sealing the incoming storage deals more quickly into these "Available" sectors compared to creating a new sector for the deals. 
+
+### Disabling new sector for deal
+
+If `MakeNewSectorForDeals` is set to `true` then `lotus-miner` will create new sectors for incoming deals. This option can set to `false` to ensure that all new deals are sealed as snap-deals into CC sectors. This can help reduce the sealing time for the new deals as long as CC sectors are ready for the snap-deals.
