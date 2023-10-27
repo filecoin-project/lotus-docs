@@ -1,8 +1,8 @@
 ---
 title: "Lotus-miner legacy markets Configs"
 description: "The Lotus-Miner Legacy Markets are deprecated. This is an overview of its configs."
-date: 2023-10-27T12:00:35+01:00
-lastmod: 2023-10-27T12:00:35+01:00
+date: 2023-10-26T12:00:35+01:00
+lastmod: 2023-10-26T12:00:35+01:00
 draft: false
 menu:
   kb:
