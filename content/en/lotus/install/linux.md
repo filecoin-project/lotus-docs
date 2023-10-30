@@ -142,6 +142,15 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 See the [official Golang installation instructions](https://golang.org/doc/install) if you get stuck.
 {{< /alert >}}
 
+## System Configuration
+
+Before you proceed with the installation, you should increase the UDP buffer. You can do this by running the following commands:
+
+```shell
+sudo sysctl -w net.core.rmem_max=2097152
+sudo sysctl -w net.core.rmem_default=2097152
+```
+
 ### Build and install Lotus
 
 Once all the dependencies are installed, you can build and install Lotus.
