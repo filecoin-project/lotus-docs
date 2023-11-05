@@ -57,6 +57,10 @@ Valid values for `AllowTypes` and `DenyTypes` are:
 
 These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
 
+{{< alert icon="tip" >}}
+If you'd like to have a clear overview of the storage list, it is possible to edit the "ID": "1626519a-5e05-493b-aa7a-0af71612010b" <-> "ID": "Sealing-Server" in `sectorstorage.json`.
+{{< /alert >}}
+
 ## Custom location for storing
 
 Once the _sealing_ process is completed, sealed sectors are moved to the _store_ location, which can be specified as follows:
@@ -66,40 +70,6 @@ lotus-miner storage attach --init --store <PATH_FOR_LONG_TERM_STORAGE>
 ```
 
 This location can be made of large capacity, albeit slower, spinning-disks.
-
-### Filter sector types
-
-You can filter for what sector types that are allowed in each storage path by adjusting the configuration file in: `<path-to-storage>/sectorstorage.json`.
-
-```json
-{
-  "ID": "1626519a-5e05-493b-aa7a-0af71612010b",
-  "Weight": 10,
-  "CanSeal": false,
-  "CanStore": true,
-  "MaxStorage": 0,
-  "Groups": [],
-  "AllowTo": [],
-  "AllowTypes": null,
-  "DenyTypes": null
-}
-```
-
-Valid values for `AllowTypes` and `DenyTypes` are:
-
-```
-"unsealed"
-"sealed"
-"cache"
-"update"
-"update-cache"
-```
-
-These values must be put in an array to be valid (e.g `"AllowTypes": ["unsealed", "update-cache"]`), any other values will generate an error on startup of the `lotus-miner`. A restart of the `lotus-miner` is also needed for changes to take effect. 
-
-{{< alert icon="tip" >}}
-If you'd like to have a clear overview of the storage list, it is possible to edit the "ID": "1626519a-5e05-493b-aa7a-0af71612010b" <-> "ID": "Sealing-Server" in `sectorstorage.json`.
-{{< /alert >}}
 
 ### Separate sealed and unsealed
 
