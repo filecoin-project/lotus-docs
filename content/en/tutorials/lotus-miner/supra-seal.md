@@ -19,12 +19,12 @@ toc: true
 ## Benchmarks
 Some early benchmarks with different GPUs:
 
-| GPU            | Speedup | CUDA (sec) | SupraSeal (sec) |
-| -------------- | ------- | ---------- | --------------- |
-| Quadro RTX 6000| 4.86    | 1104       | 227             |
-| RTX 4090       | 3.67    | 525        | 143             |
-| A4000          | 2.03    | 1091       | 538             |
-| RTX 3090       | 3.88    | 535        | 138             |
+| GPU            | Speedup | CUDA (sec) | SupraSeal C2 (sec) |
+| -------------- | ------- | ---------- | ------------------ |
+| Quadro RTX 6000| 4.86    | 1104       | 227                |
+| RTX 4090       | 3.67    | 525        | 143                |
+| A4000          | 2.03    | 1091       | 538                |
+| RTX 3090       | 3.88    | 535        | 138                |
 
 ## Setup
 
