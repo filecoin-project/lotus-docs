@@ -20,9 +20,7 @@ Install dependencies needed for using the SupraSeal PC2 binary
 
 ```shell
 sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
-```
-
-- 
+``` 
 
 ## Benchmarks
 Some early benchmarks with different GPUs:
@@ -43,6 +41,14 @@ Some early benchmarks with different GPUs:
 git clone https://github.com/supranational/supra_seal.git
 cd supra_seal/
 ```
+
+4. Build SupraSeal binary depending on the sector size:
+
+```shell
+./build.sh [SectorSize]
+```
+
+5. 
 
 ## Benchmark
 
