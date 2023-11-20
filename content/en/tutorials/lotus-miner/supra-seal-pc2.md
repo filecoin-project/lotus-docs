@@ -12,45 +12,37 @@ toc: true
 
 ## Pre-requisites 
 
-- You need to have CUDA configured on your setup. Checkout the Cuda installation tutorial.
-- Install Rust
-- Ubuntu 22.04 LTS or higher.
-
-Install dependencies needed for using the SupraSeal PC2 binary
-
-```shell
-sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
-``` 
+- You need to have CUDA configured on your server. Check out the CUDA installation tutorial.
+- Rust installed.
+- Ubuntu 22.04 LTS or higher for the PC2-server.
 
 ## Benchmarks
 Some early benchmarks with different GPUs:
 
 | GPU            | Speedup | CUDA (sec) | SupraSeal PC2 (sec) |
 | -------------- | ------- | ---------- | ------------------- |
-| RTX A2000      | 4.86    | 1104       | 227                 |
+| RTX A5000      |         |            |                     |
 
 ## Setup
 
-1. Checkout Lotus v1.25.1 - [currently in rc1](https://github.com/filecoin-project/lotus/releases/tag/v1.25.1-rc1)
-2. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_CUDA_SUPRASEAL=1` exported.
+{{< alert icon="warning" >}}
+Note that the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` environment variable must be exported to all your PC1 and PC2 workers. SupraSeal PC2 is not compatible with sectors sealed without this enviroment variable.
+{{< /alert >}}
 
-
-3. Clone the SupraSeal repository
-
-```shell
-git clone https://github.com/supranational/supra_seal.git
-cd supra_seal/
-```
-
-4. Build SupraSeal binary depending on the sector size:
+1. Install dependencies needed for building and using the SupraSeal PC2 binary
 
 ```shell
-./build.sh [SectorSize]
+sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
+``` 
+
+2. Checkout [Lotus master](https://github.com/filecoin-project/lotus/releases/tag/v1.25.1-rc1).
+3. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_FIXED_ROWS_TO_DISCARD=1` exported. **Please note that you also need to export and build all PreCommit1 machines servers with this enviroment variable as well. Else the SupraSeal PC2 will just fail!**
+
+4. Run the build script for SupraSeal PC2 located in the `../lotus/scripts/` folder
+
+```
+cd /lotus/scripts
+./supraseal-pc2.sh
 ```
 
-5. 
-
-## Benchmark
-
-
-## Troubleshooting
+## Run a benchmark
