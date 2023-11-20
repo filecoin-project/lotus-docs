@@ -35,7 +35,7 @@ Note that the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` environment variable must be exp
 sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
 ``` 
 
-2. Checkout [Lotus master](https://github.com/filecoin-project/lotus/releases/tag/v1.25.1-rc1).
+2. Checkout [Lotus master](https://github.com/filecoin-project/lotus/tree/master).
 3. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_FIXED_ROWS_TO_DISCARD=1` exported. **Please note that you also need to export and build all PreCommit1 machines servers with this enviroment variable as well. Else the SupraSeal PC2 will just fail!**
 
 4. Run the build script for SupraSeal PC2 located in the `../lotus/scripts/` folder
