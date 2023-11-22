@@ -1,7 +1,7 @@
 ---
 title: "Lotus-miner CLI"
 description: "Reference documentation for the lotus-miner command-line interface."
-lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.23.3."
+lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.25.0."
 draft: false
 menu:
     storage-providers:
@@ -11,7 +11,7 @@ weight: 350
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.23.3/documentation/en/cli-lotus-miner.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.25.0/documentation/en/cli-lotus-miner.md -->
 
 # lotus-miner
 ```
@@ -22,7 +22,7 @@ USAGE:
    lotus-miner [global options] command [command options] [arguments...]
 
 VERSION:
-   1.23.3
+   1.25.0
 
 COMMANDS:
    init     Initialize a lotus miner repo
@@ -381,7 +381,7 @@ USAGE:
    lotus-miner actor compact-allocated [command options] [arguments...]
 
 OPTIONS:
-   --mask-last-offset value  Mask sector IDs from 0 to 'higest_allocated - offset' (default: 0)
+   --mask-last-offset value  Mask sector IDs from 0 to 'highest_allocated - offset' (default: 0)
    --mask-upto-n value       Mask sector IDs from 0 to 'n' (default: 0)
    --really-do-it            Actually send transaction performing the action (default: false)
    --help, -h                show help
