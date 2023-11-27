@@ -49,19 +49,19 @@ If you encounter the following issue when building:
 /usr/bin/ld: cannot find -lcudart_static
 ```
 
-You can fix it by running `find /usr/ -name libcudart_static`:
+You can fix it by running `find /usr/ -name libcudart_static*`:
 
 ```shell with-output
-find /usr/ -name libcudart_static
+find /usr/ -name libcudart_static*
 ```
 ```
-/usr/local/cuda-11.6/targets/x8664-linux/lib/libcudart_static.a
+/usr/local/cuda-11.6/targets/x86_64-linux/lib/libcudart_static.a
 ```
 
-And then exporting that as a `LIBRARY_PATH`:
+On most modern systems, you can fix this by updating the `LIBRARY_PATH` environment variable. This variable is used by the linker to find required libraries. By adding the path to the CUDA libraries, you're helping the linker find them when building your project. Here's how you can do it:
 
 ```shell
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-11.6/targets/x8664-linux/lib
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/targets/x86_64-linux/lib/
 ```
 
 Finally, source it. And rebuild:
