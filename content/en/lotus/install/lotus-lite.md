@@ -25,7 +25,7 @@ Before we get started, let's just go over the terms we'll use in this guide:
 To spin up a Lotus lite-node, you will need:
 
 1. A Lotus node - For best results, make sure that this node is fully synced.
-2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.17.9 or higher installed.
+2. A computer with at least 2GB RAM and a dual-core CPU to act as the Lotus lite-node. This can be your local machine. This computer must have Rust and Go 1.20.7 or higher installed.
 3. You must have all the software dependencies required to build Lotus.
 
 ## Full-node preparation
