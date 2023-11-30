@@ -28,7 +28,7 @@ Some early benchmarks with different GPUs:
 
 ## Setup
 
-1. Checkout Lotus v1.25.0 - [currently in rc1](https://github.com/filecoin-project/lotus/releases/tag/v1.25.0-rc1)
+1. [Checkout Lotus v1.25.0](https://github.com/filecoin-project/lotus/releases/tag/v1.25.0)
 2. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_CUDA_SUPRASEAL=1` exported.
 
 You can see that it's being enabled by checking that `supraseal-c2` is being downloaded when downloading the crates:
