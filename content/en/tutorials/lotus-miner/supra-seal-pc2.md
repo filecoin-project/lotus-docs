@@ -1,6 +1,6 @@
 ---
 title: "SupraSeal PC2 Setup"
-description: "This is a step by step guide on how to enable th experimental SupraSeal PC2 features on your Lotus-Workers."
+description: "This is a step by step guide on how to enable the experimental SupraSeal PC2 features on your Lotus-Workers."
 lead: "This is a step by step guide on how to enable the experimental SupraSeal C2 feature on your Lotus-Workers that is in the Lotus v1.25.0 release."
 draft: false
 menu:
