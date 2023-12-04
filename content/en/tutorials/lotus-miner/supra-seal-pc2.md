@@ -53,6 +53,8 @@ cd /lotus/scripts
 ./supraseal-pc2.sh
 ```
 
+By default, this script will build the SupraSeal PC2 binary for 512MiB and 32GiB sectors.
+
 ## Run with lotus-bench:
 
 1. Create a folder where we can keep all the assets we need for doing the benchmark.
@@ -105,4 +107,19 @@ And there you have the SupraSeal PC2 performance running `lotus-bench`.
 SupraSeal PC2 has been verified to function properly with Committed Capacity (CC) sectors, both Synthetic and non-Synthetic. However, we have experienced reliable errors when using it with deal sectors. As a result, we advise against using SupraSeal PC2 called through the lotus-worker for now with deal sectors in the sealing pipeline, except in testing environments. We will update this guide once the issues with sealing deal sectors have been resolved.
 {{< /alert >}}
 
-To run your lotus-worker calling the SupraSeal PC2-binary.
+You can run the lotus-worker calling the SupraSeal PC2-binary by using the `--external-pc2` flag, and giving the binary the information it needs. Here is an example:
+
+```shell
+lotus-worker run --external-pc2 './pc2 -b 32GiB -c /home/lotus/scripts/supra_seal/demos/rust/supra_seal.cfg -i "${EXTSEAL_PC2_CACHE}" -o "${EXTSEAL_PC2_CACHE}" -d "${EXTSEAL_PC2_UNSEALED}" && rm -f "${EXTSEAL_PC2_SEALED}" && mv "${EXTSEAL_PC2_CACHE}/sealed-file" "${EXTSEAL_PC2_SEALED}"'
+```
+
+In the `--external-pc2` flag, the parameters are as follows:
+
+- `./pc2`: This is the SupraSeal PC2 binary that will be called. The binary should be located in the same directory from which the lotus-worker command is run, or in a directory that is included in the system's PATH.
+- `-b`: This specifies the sector size. By default SupraSeal is built for 512MiB and 32GiB sectors. You can adjust this according to your needs.
+- `-c`: This is the path to the SupraSeal configuration file. It should be located in you `lotus/scripts/supra_seal` folder.
+- `-i "${EXTSEAL_PC2_CACHE}"`: This is the input directory for the cache. It uses the `EXTSEAL_PC2_CACHE` environment variable.
+- `-o "${EXTSEAL_PC2_CACHE}"`: This is the output directory for the cache. It also uses the `EXTSEAL_PC2_CACHE` environment variable.
+- `-d "${EXTSEAL_PC2_UNSEALED}"`: This is the directory for the unsealed sectors. It uses the `EXTSEAL_PC2_UNSEALED` environment variable.
+- `rm -f "${EXTSEAL_PC2_SEALED}"`: This command removes the existing sealed file if it exists.
+- `mv "${EXTSEAL_PC2_CACHE}/sealed-file" "${EXTSEAL_PC2_SEALED}"`: This command moves the newly sealed file to the sealed directory.
