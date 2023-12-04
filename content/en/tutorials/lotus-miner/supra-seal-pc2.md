@@ -20,7 +20,7 @@ SupraSeal PC2 has been verified to function properly with Committed Capacity (CC
 - Rust installed.
 - `lotus-bench` installed
 - Ubuntu 22.04 LTS or higher for the server running SupraSeal PC2.
-- Your lotus-miner and all your lotus-workers needs to be built from source with the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` enviroment variable.
+- Your lotus-miner and all your lotus-workers need to be built from source with the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` enviroment variable.
 
 ## Benchmarks
 Some early benchmarks with different GPUs (More coming):
