@@ -1,7 +1,7 @@
 ---
-title: "Lotus-Provider Setup and Configuration"
+title: "Lotus-Provider Setup"
 description: "Lotus-Provider simplifies setting up and managing multiple Miner IDs in a cluster, offering high availability, simplicity, and durability. It integrates with Yugabyte DB for efficient data management and scalability."
-lead: "Lotus-Provider offers an efficient solution for managing storage providers in a Lotus network, with a focus on high availability, easy setup, and robust data management using Yugabyte DB."
+lead: "Lotus-Provider offers an efficient solution for managing storage providers in the Filecoin network, with a focus on high availability, easy setup, and robust data management using Yugabyte DB."
 draft: false
 menu:
     storage-providers:
@@ -11,11 +11,21 @@ weight: 500
 toc: true
 ---
 
+
+
+
+{{< alert icon="warning" >}}
+**WARNING: Alpha Testing Phase**  
+This documentation is for Lotus-Provider which is currently in its alpha testing phase. It is **not** recommended for use in any production environment. You may try this setup on a local-dev-net or calibration net. Proceed at your own risk!
+{{< /alert >}}
+
+
 ## Overview
 Lotus-Provider is designed to simplify the setup process, allowing multiple Miner IDs to flow seamlessly through a cluster. Key features include:
 - **High Availability:** Run multiple instances with NxN Yugabyte DB cluster connections.
 - **Simplicity:** Easy setup with minimal configuration once the database is integrated.
 - **Durability:** Robust and reliable, with support for updates and maintenance.
+
 
 ## How to Get it Running
 To set up Lotus-Provider, you need a working Lotus instance with a running lotus-miner process. The steps include:
@@ -26,6 +36,32 @@ To set up Lotus-Provider, you need a working Lotus instance with a running lotus
 5. Starting Lotus-Provider.
 
 ### Detailed Steps
+
+# Setting Up Lotus-Provider
+
+This guide details the process for setting up the Lotus-Provider, focusing on integration with Yugabyte and configuring the system.
+
+## 1. Setting Up Yugabyte
+
+Ensure Yugabyte is running. Default settings for the username, password, and database are assumed by Lotus-Provider, which also looks for 'yugabyte' as a hostname by default.
+
+## 2. Building Binaries
+
+Checkout the required branch and update your local repository:
+
+```shell
+cd lotus
+git pull
+git checkout v1.25.1
+make all
+sudo make install
+```
+
+## 3. Configuring and Running the Miner
+
+Adjust the miner configuration to point to the Yugabyte database and start the miner process. 
+This step includes uploading the sectorIndex to the database.
+
 #### Setup YugabyteDB
 - Download and install from [Yugabyte](http://download.yugabyte.com).
 - Verify the setup with `ysqlsh`.
