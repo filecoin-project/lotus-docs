@@ -11,7 +11,7 @@ toc: true
 ---
 
 {{< alert icon="warning" >}}
-Lotus-Provider is in alpha state, and we recommend our users to only run and get used to Lotus-Provider in a testing environment.
+Lotus-Provider is in alpha state, and we recommend our users to only run lotus-provider in a testing enviroment for the time being.
 {{< /alert >}}
 
 Check out the accompanying video tutorial for migrating to Lotus-Provider:
