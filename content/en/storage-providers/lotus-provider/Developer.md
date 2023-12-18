@@ -1,5 +1,5 @@
 ---
-title: "Developer components of Lotus-Provider"
+title: "Developer components"
 description: "In-depth explanation of the core components of Lotus-Provider"
 lead: "This page provides a detailed overview of the core concepts and components that make up Lotus-Provider, including HarmonyDB, HarmonyTask, and more."
 draft: false
