@@ -28,7 +28,7 @@ Ensure that you have the following available before we install and set up Yugaby
 - CentOS 7 or later
 - Ubuntu 16.04 or later
 
-For other operating systems, consider running YugabyteDB in Docker or Kubernetes. Please check out the [YugabyteDB documentation](https://docs.yugabyte.com/preview/quick-start/).
+For other operating systems, Docker or Kubernetes. Please check out the [YugabyteDB documentation](https://docs.yugabyte.com/preview/quick-start/).
 
 2. **Python 3.** To check the version, execute the following command:
 
@@ -39,7 +39,7 @@ python --version
 Python 3.7.3
 ```
 
-If you encounter a Command 'python' not found error, you might not have an unversioned system-wide python command.
+If you encounter a `Command 'python' not found` error, you might not have an unversioned system-wide python command.
 
 - Starting from Ubuntu 20.04, python is no longer available. To fix this, run `sudo apt install python-is-python3`.
 - For CentOS 8, set `python3` as the alternative for python by running `sudo alternatives --set python /usr/bin/python3`
