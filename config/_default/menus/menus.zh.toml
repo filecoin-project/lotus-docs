@@ -103,6 +103,14 @@
 #  identifier = "storage-providers-advanced-configurations"
 #  url = "/storage-providers/advanced-configurations"
 #
+# 
+# [[storage-providers]]
+# name = "Lotus-Provider"
+# weight = 60
+# identifier = "lotus-provider"
+# url = "/storage-providers/lotus-provider"
+#
+#
 [[tutorials]]
   name = "Lotus"
   weight = 10
