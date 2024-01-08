@@ -350,7 +350,7 @@ For example, if you want to set the sector lifecycle to 180 days, you can multip
 
 ### Synthetic-PoRep
 
-The `UseSyntheticPoRep` configuration option (applicable after the nv21 upgrade), when set to true, enables the Synthetic Proof-of-Replication (Synthetic-PoRep) protocol. This protocol significantly reduces the storage overhead of the standard PoRep protocol from 352 GiB to approximately 11 GiB for 32 GiB sectors, and from 704 GiB to approximately 11 GiB for 64 GiB sectors. This is achieved by trading the storage of PoRep overhead data for synthetic challenge proofs, resulting in a net savings of up to 98% in PoRep storage consumption.
+The `UseSyntheticPoRep` configuration option (applicable after the nv21 upgrade), when set to true, enables the Synthetic Proof-of-Replication (Synthetic-PoRep) protocol. This protocol significantly reduces the storage overhead of the standard PoRep protocol from 352 GiB to approximately 11 GiB for 32 GiB sectors, and from 704 GiB to approximately 11 GiB for 64 GiB sectors. This is achieved by trading the storage of PoRep overhead data for synthetic challenge proofs, resulting in a net savings of up to 98% in PoRep storage consumption. Please note that changes to this setting will apply to new sectors only.
 
 ```toml
 [Sealing]
