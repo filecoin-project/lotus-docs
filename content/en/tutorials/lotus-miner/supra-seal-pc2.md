@@ -71,7 +71,7 @@ Please adjust the paths to your lotus-folder depending on where you are creating
 2. First generate a sector with some random data, we will use a 512MiB in this benchmark:
 
 ```shell with-output
-./lotus-bench simple addpiece --sector-size 512M /dev/random s-unsealed
+./lotus-bench simple addpiece --sector-size 512M /dev/zero s-unsealed
 ```
 ```
 AddPiece 1.613019762s (317.4 MiB/s)
