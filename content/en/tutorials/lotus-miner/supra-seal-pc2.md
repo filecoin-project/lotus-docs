@@ -28,6 +28,7 @@ Some early benchmarks with different GPUs (More coming):
 | GPU            | Speedup | CUDA (sec) | SupraSeal PC2 (sec) |
 | -------------- | ------- | ---------- | ------------------- |
 | RTX A5000      |         |            |         151         |
+| RTX A4000      |         |    775     |         234         |
 
 ## Setup
 
