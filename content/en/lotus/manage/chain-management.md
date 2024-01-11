@@ -35,13 +35,13 @@ These lightweight state snapshots **do not contain any message receipts**. To ge
     a. For **mainnet**, command always contains the latest snapshot available for mainnet:
 
     ```shell
-    aria2c -x5 https://snapshots.mainnet.filops.net/minimal/latest.zst
+    aria2c -x5 https://forest-archive.chainsafe.dev/latest/mainnet/
     ```
 
     a. For **calibnet**, command always contains the latest snapshot available for the calibration testnet:
 
     ```shell
-    aria2c -x5 https://snapshots.calibrationnet.filops.net/minimal/latest.zst
+    aria2c -x5 https://forest-archive.chainsafe.dev/latest/calibnet/
     ```
 
 {{< alert icon="tip" >}}
@@ -52,10 +52,8 @@ We strongly recommend that you use `aria2c` for faster a download. However, you 
 
     ```shell
     # Replace the filename for the `.car` file based on the snapshot you downloaded.
-    lotus daemon --import-snapshot 1419120_2022_10_24T18_00_00Z.car.zst
+    lotus daemon --import-snapshot forest_snapshot_mainnet_2024-01-11_height_3555440.forest.car.zst
     ```
-
-For more information about these snapshots, check out the [Lightweight Filecoin Chain Snapshot]({{< relref "../../kb/chain-snapshots/" >}}) knowledge base article.
 
 #### Sync wait
 
