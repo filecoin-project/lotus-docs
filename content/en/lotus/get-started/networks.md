@@ -65,9 +65,8 @@ Mainnet is the primary Filecoin network. Mainnet began on block 148,888. It supp
 
 **Resources**:
 
-- [Latest chain snapshot (lightweight)](https://snapshots.mainnet.filops.net/minimal/latest)
+- [Latest chain snapshot (lightweight)](https://forest-archive.chainsafe.dev/latest/mainnet/)
 - [Status page and incidents](https://filecoin.statuspage.io/)
-- [Stats dashboard](https://stats.filecoin.io/)
 - [Stats dashboard: Starboard](https://dashboard.starboard.ventures/dashboard)
 - [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-help](https://filecoinproject.slack.com/archives/CEGN061C5)
@@ -114,9 +113,8 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 ```
 **Resources**:
 
-- [Latest chain snapshot (lightweight)](https://snapshots.calibrationnet.filops.net/minimal/latest)
+- [Latest chain snapshot (lightweight)](https://forest-archive.chainsafe.dev/latest/calibnet/)
 - [Faucet](https://faucet.calibration.fildev.network/)
-- [Stats Dashboard](https://stats.calibration.fildev.network/)
 - [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
 - [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
