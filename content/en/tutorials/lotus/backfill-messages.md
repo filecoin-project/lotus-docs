@@ -1,7 +1,7 @@
 ---
 title: "Backfilling Messages in Lotus"
 description: "This tutorial guides you through the process of backfilling messages in Lotus."
-lead: "This tutorial guides you through the process of backfilling messages in Lotus for versions v1.25.0 or higher, ensuring your Lotus node is up-to-date with the blockchain's history."
+lead: "This tutorial guides you through the process of backfilling messages in Lotus for versions v1.25.1 or higher, ensuring your Lotus node is up-to-date with the blockchain's history."
 draft: false
 menu:
     tutorials:
