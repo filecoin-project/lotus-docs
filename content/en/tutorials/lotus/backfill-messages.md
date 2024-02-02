@@ -46,6 +46,9 @@ By default, `backfill-msgindex` starts from the current head and processes back 
 Optional Database Location Override: For complex setups, use `--repo=/path/to/repo` to specify the database location
 {{< /alert >}}
 
+{{< alert icon="warning">}}
+Continued running of backfill process beyong the specified FEVM epoch yields no additional benefit
+{{< /alert >}}
 
 ### Step 3: Check Database Index Size
 Use `ls -l /data/node/sqlite/` to inspect the size of your indexes, indicating the backfill's extent.
