@@ -11,11 +11,11 @@ toc: true
 ---
 
 ## Overview
-This tutorial guides you through the process of backfilling messages in Lotus for versions v1.25.0 or higher, ensuring your Lotus node is up-to-date with the blockchain's history.
+This tutorial guides you through the process of backfilling messages in Lotus for versions v1.25.1 or higher, ensuring your Lotus node is up-to-date with the blockchain's history.
 
 ## Prerequisites
-Lotus version 1.25.0 or higher installed.
-Basic understanding of Lotus configuration and command-line tools.
+- Lotus version 1.25.1 or higher installed.
+- Basic understanding of Lotus configuration and command-line tools.
 
 ## Configuration Settings
 Update Lotus `config.toml`: Ensure your `config.toml` file includes the following settings:
