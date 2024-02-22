@@ -82,7 +82,7 @@ We recommend that macOS users use [Homebrew](https://brew.sh) to install each of
 1. Use the command `brew install` to install the following packages:
 
    ```shell
-   brew install go bzr jq pkg-config hwloc coreutils
+   brew install go bzt jq pkg-config hwloc coreutils
    ```
 
 Next up is cloning the Lotus repository and building the executables.
