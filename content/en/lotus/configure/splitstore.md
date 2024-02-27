@@ -42,11 +42,11 @@ If you intend to use the discard-store you also need to add the following:
 ```toml
 [Chainstore.Splitstore]
   # ColdStoreType specifies the type of the coldstore.
-  # It can be "messages" (default) to store only messages, "universal" to store all chain state or "discard" for discarding cold blocks.
+  # It can be "discard" (default) for discarding cold blocks, "messages" to store only messages or "universal" to store all chain state..
   #
   # type: string
   # env var: LOTUS_CHAINSTORE_SPLITSTORE_COLDSTORETYPE
-  ColdStoreType = "discard"
+  #ColdStoreType = "discard"
 ```
 
 ### Configuration Options
