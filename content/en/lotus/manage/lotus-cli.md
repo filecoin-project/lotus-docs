@@ -1,7 +1,7 @@
 ---
 title: "Lotus CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.25.1."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.25.2."
 draft: false
 menu:
     lotus:
@@ -12,7 +12,7 @@ weight: 445
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.25.1/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.25.2/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
@@ -23,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.25.1
+   1.25.2
 
 COMMANDS:
    daemon   Start a lotus daemon process
