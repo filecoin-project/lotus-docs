@@ -120,7 +120,7 @@ Default address set to: t1ehwusalfn3wrng3zis4rhybdexgrtgsj6vp7fly
 
 ## Obtaining FIL
 
-For non-mainnet networks, `FIL` can be obtained from a faucet. The faucet for the calibration network can [be found here](https://faucet.calibration.fildev.network/). For mainnet, the easiest is to buy `FIL` from an exchange. Not all exchanges support `FIL`, so do your research before signing up.
+For non-mainnet networks, `FIL` can be obtained from a faucet. The faucet for the calibration network can [be found here](https://faucet.calibnet.chainsafe-fil.io/funds.html/). For mainnet, the easiest is to buy `FIL` from an exchange. Not all exchanges support `FIL`, so do your research before signing up.
 
 Once you have received some `FIL`, use `wallet balance` to check your balance:
 
