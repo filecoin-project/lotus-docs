@@ -121,7 +121,7 @@ This section will cover the installation, configuration and starting a lotus nod
     lotus wallet new bls
     ```
 
-1. Send some FIL to the owner wallet from the [calibnet faucet]({{<relref "https://faucet.calibration.fildev.network/" >}}). For the mainnet, the user can send fils from an exchange or other sources.
+1. Send some FIL to the owner wallet from the [calibnet faucet](https://faucet.calibnet.chainsafe-fil.io/funds.html). For the mainnet, the user can send fils from an exchange or other sources.
 1. Send some fils from the owner wallet to the worker wallet:
    
     ```shell

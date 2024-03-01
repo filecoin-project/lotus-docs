@@ -65,7 +65,7 @@ The following steps walk through how to install a Lotus node.. Further, more det
     lotus daemon --import-snapshot curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest.zst
     ```
 
-1. [Create a wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#creating-a-wallet) and request some test FIL from the [Faucet](https://faucet.calibration.fildev.network/).
+1. [Create a wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#creating-a-wallet) and request some test FIL from the [Faucet](https://faucet.calibnet.chainsafe-fil.io).
 1. [Enable remote API access to your Lotus node](https://lotus.filecoin.io/developers/api-access/).
 
 ### Verify your setup
@@ -465,7 +465,7 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
 
     Make sure to backup these three items by saving and storing `encryptedWallet`  as a json file, and recording mnemonic and wallet address somewhere safe.
 
-1. Request some FIL tokens from the [Calibration Faucet](https://faucet.calibration.fildev.network/) using the wallet address you just received.
+1. Request some FIL tokens from the [Calibration Faucet](https://faucet.calibnet.chainsafe-fil.io/funds.html) using the wallet address you just received.
 1. Next let's transfer some FIL from your light wallet to another wallet:
 
     ```javascript

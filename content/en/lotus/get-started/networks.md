@@ -114,7 +114,8 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 **Resources**:
 
 - [Latest chain snapshot (lightweight)](https://forest-archive.chainsafe.dev/latest/calibnet/)
-- [Faucet](https://faucet.calibration.fildev.network/)
+- [Calibration Faucet - ChainSafe](https://faucet.calibnet.chainsafe-fil.io/funds.html)
+- [Calibration Faucet - Zondax](https://beryx.zondax.ch/faucet)
 - [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
 - [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
