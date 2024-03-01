@@ -65,7 +65,7 @@ The following steps walk through how to install a Lotus node.. Further, more det
     lotus daemon --import-snapshot curl -sI https://snapshots.calibrationnet.filops.net/minimal/latest.zst
     ```
 
-1. [Create a wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#creating-a-wallet) and request some test FIL from the [Faucet](https://faucet.calibnet.chainsafe-fil.io/funds.html).
+1. [Create a wallet](https://lotus.filecoin.io/lotus/manage/manage-fil/#creating-a-wallet) and request some test FIL from the [Faucet](https://faucet.calibnet.chainsafe-fil.io).
 1. [Enable remote API access to your Lotus node](https://lotus.filecoin.io/developers/api-access/).
 
 ### Verify your setup
