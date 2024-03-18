@@ -47,7 +47,7 @@ Just before TermMax is reached, the client requests an extension to MaximumVerif
 
 2. Client A makes an allocation with TermMax 4 years against a provider. The provider seals the data and claims the allocation. The claim term starts and 4 years pass.
 Just before TermMax is reached, a new verified client B requests an extension to MaximumVerifiedAllocationTerm. Client B will spend the Datacap required for this claim and claim will be extended to MaximumVerifiedAllocationTerm from now.
-Thus, the total duration of this claim will become 9 years and provider will enjoy 10x power without having to reseal the data.
+Thus, the total duration of this claim will become 9 years and provider will enjoy 10x power without having to reseal the data for 5 years as the sector lifetime is currently limited to 5 years maximum.
 
 3. If a verified deal was made by client A before DDO was implemented and the allocation was created by Market Actor (old verified deal), then client A can extend the claim for this deal to MaximumVerifiedAllocationTerm without paying any further Datacap.
 
