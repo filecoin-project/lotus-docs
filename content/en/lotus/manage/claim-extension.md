@@ -24,7 +24,7 @@ An allocation may be removed after its expiration epoch has passed (by anyone) a
 | MaximumVerifiedAllocationExpiration |  The maximum difference between Expiration and the epoch at which an allocation is created is 60 days |
 
 {{< alert icon="tip" >}}
-Since, Datacap is independent of the time for which data is stored, it is recommended set TermMaximum as MaximumVerifiedAllocationTerm to store your data for maximum possible period.
+Since DataCap is independent of the time for which data is stored, it is recommended to set TermMaximum as MaximumVerifiedAllocationTerm to store your data for the maximum possible period.
 This was chosen by the deal `EndEpoch` in verified deals before [DDO](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0076.md) but can be set by the client for allocation after DDO.
 {{< /alert >}}
 
@@ -36,7 +36,7 @@ A claim represents a provider's obligation to store a piece of data, and corresp
 A verified client can extend the term for a claim. The cost of extension depends on which client is requesting this extension.
 
 If the original client who created the allocation requests the extension, the TermMax can be set to MaximumVerifiedAllocationTerm without spending any further Datacap by the client.
-The cost if the gas fee required to send the message requesting the extension.
+The cost is the gas fee required to send the message requesting the extension.
 
 If client extending the claim need not be the one that made the original allocation, they can extend the term for a claim beyond the initial maximum term by spending new DataCap. The claim's term maximum can be extended up to MaximumVerifiedAllocationTerm beyond the current epoch.
 This is similar to issuing a new allocation/claim for the same data, but avoids overheads of re-sealing.
@@ -46,7 +46,7 @@ This is similar to issuing a new allocation/claim for the same data, but avoids 
 Just before TermMax is reached, the client requests an extension to MaximumVerifiedAllocationTerm and the claim's TermMax is updated. The claim will now expire after 1 year thus making the total duration of claim to be 5 years.
 
 2. Client A makes an allocation with TermMax 4 years against a provider. The provider seals the data and claims the allocation. The claim term starts and 4 years pass.
-Just before TermMax is reached, a new verified client B requests an extension to MaximumVerifiedAllocationTerm. Client B will spend the Datacap required for this claim and claim will be extended to MaximumVerifiedAllocationTerm from now.
+Just before TermMax is reached, a new verified client B requests an extension to MaximumVerifiedAllocationTerm. Client B will spend the DataCap required for this claim, and the claim will be extended to MaximumVerifiedAllocationTerm from now.
 Thus, the total duration of this claim will become 9 years and provider will enjoy 10x power without having to reseal the data for 5 years as the sector lifetime is currently limited to 5 years maximum.
 
 3. If a verified deal was made by client A before DDO was implemented and the allocation was created by Market Actor (old verified deal), then client A can extend the claim for this deal to MaximumVerifiedAllocationTerm without paying any further Datacap.
