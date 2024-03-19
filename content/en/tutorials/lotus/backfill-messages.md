@@ -11,7 +11,7 @@ toc: true
 ---
 
 ## Overview
-This tutorial guides you through the process of backfilling messages in Lotus for versions v1.25.1 or higher, ensuring your Lotus node is up-to-date with the blockchain's history.
+This tutorial guides you through the process of **backfilling FEVM indexes (i.e., to serve Filecoin Ethereum JSON RPC queries of Filecoin’s EVM.** 
 
 ## Prerequisites
 - Lotus version 1.25.1 or higher installed.
@@ -65,6 +65,16 @@ Backfilling can be resource-intensive. Consider hardware requirements and possib
 
 ## Conclusion
 Following these steps ensures your Lotus node is fully synchronized with the network's history, enhancing performance and reliability.
+
+## Troubleshooting
+
+If backfilling results in the error "failed to load events for tipset," then those events may not exist in the chainstore. The FEVM backfilling script in Lotus only indexes the events but cannot get the events themselves. In this case, please recompute those missing events by running:
+
+```shell
+lotus state --tipset @2849740 compute-state
+```
+
+Where `2849740` represents the height of a tipset for which you are missing events.
 
 ## Related Resources
 GitHub issues and pull requests related to backfilling and performance improvements.
