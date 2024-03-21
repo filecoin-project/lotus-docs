@@ -15,7 +15,7 @@ The DataCap is now represented as a fungible token. These changes provide a foun
 
 ## What is an Allocation?
 An allocation specifies a range of terms for which the provider may commit the data, between some minimum and maximum. An allocation's maximum term must be at least as large as its minimum term.
-An allocation may be removed after its expiration epoch has passed (by anyone) and it was not converted to a claim. When removed, the DataCap tokens are transferred back to the client
+An allocation can be removed by any party once its expiration epoch has elapsed, provided it has not been converted into a claim. When removed, the DataCap tokens are transferred back to the client.
 
 | Terminology                         | Definition                                                                                            |
 |-------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -38,7 +38,7 @@ A verified client can extend the term for a claim. The cost of extension depends
 If the original client who created the allocation requests the extension, the TermMax can be set to MaximumVerifiedAllocationTerm without spending any further Datacap by the client.
 The cost is the gas fee required to send the message requesting the extension.
 
-If client extending the claim need not be the one that made the original allocation, they can extend the term for a claim beyond the initial maximum term by spending new DataCap. The claim's term maximum can be extended up to MaximumVerifiedAllocationTerm beyond the current epoch.
+The client extending the claim need not be the one that made the original allocation, they can extend the term for a claim beyond the initial maximum term by spending new DataCap. The claim's term maximum can be extended up to MaximumVerifiedAllocationTerm beyond the current epoch.
 This is similar to issuing a new allocation/claim for the same data, but avoids overheads of re-sealing.
 
 ### Example
@@ -58,7 +58,7 @@ Thus, the total duration of this claim will become 9 years and provider will enj
     ```sh
     lotus filplus extend-claim --client <original client Address> --provider <miner address> --all
     ```
-2. Extend all verified claims made with multiple storage provider
+2. Extend all verified claims made with multiple storage providers
     ```sh
     lotus filplus extend-claim --client <original client Address> --provider <miner address1> <miner address2>... --all
     ```
@@ -74,7 +74,7 @@ Thus, the total duration of this claim will become 9 years and provider will enj
     ```sh
     lotus filplus extend-claim --client <new client Address> --provider <miner address> --all
     ```
-6. Extend all verified claims made by a different client with multiple storage provider. This will use Datacap.
+6. Extend all verified claims made by a different client with multiple storage providers. This will use Datacap.
     ```sh
     lotus filplus extend-claim --client <new client Address> --provider <miner address1> <miner address2>... --all
     ```
