@@ -1,7 +1,7 @@
 ---
 title: "SupraSeal C2 Setup"
 description: "This is a step by step guide on how to enable SupraSeal C2 features on your Lotus-Workers."
-lead: "This is a step by step guide on how to enable the experimental SupraSeal C2 feature on your Lotus-Workers that is in the Lotus v1.25.0 release."
+lead: "This is a step by step guide on how to enable the experimental SupraSeal C2 feature on your Lotus-Workers."
 draft: false
 menu:
     tutorials:
@@ -28,7 +28,7 @@ Some early benchmarks with different GPUs:
 
 ## Setup
 
-1. [Checkout Lotus v1.25.1 or higher](https://github.com/filecoin-project/lotus/releases/)
+1. [Checkout the latest Lotus release](https://github.com/filecoin-project/lotus/releases/)
 2. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_CUDA_SUPRASEAL=1` exported.
 
 You can see that it's being enabled by checking that `supraseal-c2` is being downloaded when downloading the crates:

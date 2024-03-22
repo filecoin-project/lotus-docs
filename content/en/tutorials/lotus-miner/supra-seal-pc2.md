@@ -1,7 +1,7 @@
 ---
 title: "SupraSeal PC2 Setup"
 description: "This is a step by step guide on how to enable the experimental SupraSeal PC2 features on your Lotus-Workers."
-lead: "This is a step by step guide on how to enable the experimental SupraSeal C2 feature on your Lotus-Workers that is in the Lotus v1.25.0 release."
+lead: "This is a step by step guide on how to enable the experimental SupraSeal C2 feature on your Lotus-Workers."
 draft: false
 menu:
     tutorials:
@@ -20,7 +20,7 @@ SupraSeal PC2 has been verified to function properly with Committed Capacity (CC
 - Rust installed.
 - `lotus-bench` installed
 - Ubuntu 22.04 LTS or higher for the server running SupraSeal PC2.
-- Lotus v1.25.1 or higher installed. Your lotus-miner and all your lotus-workers need to be built from source with the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` enviroment variable to use SupraSeal PC2.
+- Your lotus-miner and all your lotus-workers need to be built from source with the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` enviroment variable to use SupraSeal PC2.
 
 ## Benchmarks
 Some early benchmarks with different GPUs (More coming):
@@ -42,7 +42,7 @@ Please note that the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` environment variable must
 sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
 ``` 
 
-2. Checkout [Lotus v1.25.1-rc1](https://github.com/filecoin-project/lotus/releases/tag/v1.25.1-rc1).
+2. Checkout [Lotus v1.26.0](https://github.com/filecoin-project/lotus/releases/tag/v1.26.0).
 3. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_FIXED_ROWS_TO_DISCARD=1` exported.
 
 **Please note that you also need to export and build with this enviroment variable across the lotus-miner stack of machines. Else the SupraSeal PC2 will fail!**

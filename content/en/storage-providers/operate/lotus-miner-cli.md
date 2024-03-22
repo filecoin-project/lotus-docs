@@ -1,7 +1,7 @@
 ---
 title: "Lotus-miner CLI"
 description: "Reference documentation for the lotus-miner command-line interface."
-lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.25.2."
+lead: "Reference documentation for the lotus-miner command-line interface. This documentation was automatically generated using Lotus v1.26.0."
 draft: false
 menu:
     storage-providers:
@@ -11,7 +11,7 @@ weight: 350
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.25.2/documentation/en/cli-lotus-miner.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.26.0/documentation/en/cli-lotus-miner.md -->
 
 # lotus-miner
 ```
@@ -22,7 +22,7 @@ USAGE:
    lotus-miner [global options] command [command options] [arguments...]
 
 VERSION:
-   1.25.2
+   1.26.0
 
 COMMANDS:
    init     Initialize a lotus miner repo

@@ -1,7 +1,7 @@
 ---
 title: "Lotus CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.25.2."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.26.0."
 draft: false
 menu:
     lotus:
@@ -12,7 +12,7 @@ weight: 445
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.25.2/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.26.0/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
@@ -23,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.25.2
+   1.26.0
 
 COMMANDS:
    daemon   Start a lotus daemon process
@@ -1204,8 +1204,8 @@ COMMANDS:
    check-client-datacap           check verified client remaining bytes
    check-notary-datacap           check a notary's remaining bytes
    sign-remove-data-cap-proposal  allows a notary to sign a Remove Data Cap Proposal
-   list-allocations               List allocations made by client
-   list-claims                    List claims made by provider
+   list-allocations               List allocations available in verified registry actor or made by a client if specified
+   list-claims                    List claims available in verified registry actor or made by provider if specified
    remove-expired-allocations     remove expired allocations (if no allocations are specified all eligible allocations are removed)
    remove-expired-claims          remove expired claims (if no claims are specified all eligible claims are removed)
    help, h                        Shows a list of commands or help for one command
@@ -1291,20 +1291,21 @@ OPTIONS:
 ### lotus filplus list-allocations
 ```
 NAME:
-   lotus filplus list-allocations - List allocations made by client
+   lotus filplus list-allocations - List allocations available in verified registry actor or made by a client if specified
 
 USAGE:
    lotus filplus list-allocations [command options] clientAddress
 
 OPTIONS:
    --expired   list only expired allocations (default: false)
+   --json      output results in json format (default: false)
    --help, -h  show help
 ```
 
 ### lotus filplus list-claims
 ```
 NAME:
-   lotus filplus list-claims - List claims made by provider
+   lotus filplus list-claims - List claims available in verified registry actor or made by provider if specified
 
 USAGE:
    lotus filplus list-claims [command options] providerAddress
