@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
         parent: "curio"
-weight: 120
+weight: 145
 toc: true
 ---
 

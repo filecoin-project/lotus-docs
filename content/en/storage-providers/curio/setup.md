@@ -6,7 +6,7 @@ draft: false
 menu:
     storage-providers:
         parent: "curio"
-weight: 110
+weight: 130
 toc: true
 ---
 
@@ -75,13 +75,13 @@ Ensure that you have the following available before we install and set up Yugaby
 You can adjust the `--advertise_address`, `--rpc_bind_addresses` and `--tserver_flags` according to your own configuration and needs.
 
 ## Migrating from `lotus-miner` to `curio`
-Curio provides a migration utility to users onboard quickly. Please run the below command on your `lotus-miner` node and follow the os-screen instructions.
+Curio provides a utility to users onboard quickly. Please run the below command on your `lotus-miner` node and follow the os-screen instructions.
 
 ```shell
 curio guided-setup
 ```
 
-Once the migration is complete, you can shut down all of your workers and miner processes. You can start `curio` process to replace them with correct configuration layer.
+Once the migration is complete, you can shut down all of your workers and miner processes. You can start `curio` process to replace them with correct configuration layer. TODO: Link to config
 
 ### Testing the setup
 
@@ -94,6 +94,10 @@ curio test window-post task
 From the output we can confirm that a WindowPoSt gets inserted to the database, and is being picked up by the Curio process running with the *wdpost* configuration layer.
 
 ## Initiating a new Curio cluster
-TODO: Add steps
+Curio provides a utility to users onboard quickly. Please run the below command on your new Curio node and follow the os-screen instructions.
 
+```shell
+curio
+```
 
+Once, the new miner has been created, You can start `curio` process with correct configuration layer. TODO: Link to config
