@@ -46,6 +46,8 @@ The HarmonyTask is pure (no task logic) distributed task manager.
 - Greedy Workers: Workers actively claim tasks they can handle.
 - Round Robin Assignment: After a worker claims a task, HarmonyDB attempts to distribute remaining work among other machines.
 
+![Curio Tasks](curio-tasks.png)
+
 ### Model
 
 - **Blocked Tasks:** Tasks can be blocked due to:

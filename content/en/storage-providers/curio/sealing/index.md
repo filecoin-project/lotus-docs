@@ -77,6 +77,8 @@ Mostly, errors occurring during the poller operation are logged and don't cause 
 By organizing work in this way, SealPoller ensures that each step in the sealing procedure occurs in the correct order, and that progress is made whenever it is possible to do so.
 It allows sectors to be sealed as efficiently as possible given the constraints of other tasks in progress.
 
+![Sealing task execution](sealing-tasks.png)
+
 ### Piece Park
 
 Traditionally, data needs to be available before it can be sealed for storage. However, this can lead to inefficiencies. Curio addresses this by introducing a "Piece Park."
