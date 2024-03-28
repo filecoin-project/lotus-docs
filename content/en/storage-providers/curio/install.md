@@ -10,7 +10,7 @@ weight: 125
 toc: true
 ---
 
-## Linux
+## Linux Build from source
 
 You can build the Curio executables from source by following these steps.
 
@@ -78,7 +78,7 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
 See the [official Golang installation instructions](https://golang.org/doc/install) if you get stuck.
 {{< /alert >}}
 
-## System Configuration
+### System Configuration
 
 Before you proceed with the installation, you should increase the UDP buffer. You can do this by running the following commands:
 
@@ -146,19 +146,15 @@ Once all the dependencies are installed, you can build and install Curio.
    sudo make install
    ```
 
-   This will put `curio` in `/usr/local/bin`.
+   This will put `curio` in `/usr/local/bin`. `curio` will use the `$HOME/.curio` folder by default.
 
-   `curio` will use the `$HOME/.curio` folder by default.
+   Run `curio --version`
 
-   ```shell
-   curio --version
    ```
-   ```
-   curio version 1.23.3+mainnet+git.7bb1f98ac
+   curio version 1.27.0-dev+mainnet+git.78d9d9baa
    # or
-   curio version 1.23.3+calibnet+git.7bb1f98ac
+   curio version 1.27.0-dev+calibnet+git.78d9d9baa
    ```
-   TODO: Fix this
 
 5. You should now have Curio installed. You can now [finish setting up the Curio node]({{< relref "setup" >}}).
 
@@ -173,9 +169,7 @@ export FFI_BUILD_FROM_SOURCE=1
 
 This method of building does not produce portable binaries. Make sure you run the binary on the same computer as you built it.
 
-# MacOS
-
-## Build from source
+## MacOS Build from source
 
 You can build the Curio executables from source by following these steps.
 
@@ -269,7 +263,15 @@ The installation instructions are different depending on which CPU is in your Ma
     sudo make install
     ```
 
-6. You should now have Curio installed. You can now set up a new Curio cluster or migrating from Lotus-Miner. TODO: Link
+6. Run `curio --version`
+
+   ```
+   curio version 1.27.0-dev+mainnet+git.78d9d9baa
+   # or
+   curio version 1.27.0-dev+calibnet+git.78d9d9baa
+   ```
+
+6. You should now have Curio installed. You can now [set up a new Curio cluster or migrating from Lotus-Miner]({{< relref "setup" >}}).
 
 #### Intel CPUs
 
@@ -296,4 +298,13 @@ These instructions are for installing Curio on an Intel Mac. If you have an M1-b
     make clean curio
     sudo make install
     ```
+
+4. Run `curio --version`
+
+   ```
+   curio version 1.27.0-dev+mainnet+git.78d9d9baa
+   # or
+   curio version 1.27.0-dev+calibnet+git.78d9d9baa
+   ```
+
    You can now [finish setting up the Curio node]({{< relref "setup" >}}).

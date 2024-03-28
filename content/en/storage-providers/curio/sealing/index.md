@@ -1,5 +1,5 @@
 ---
-title: "Sealing"
+title: "Curio Sealing"
 description: "This page explains how the sealing pipeline functions in Curio"
 lead: "This page explains how the sealing pipeline functions in Curio"
 date: 2024-03-19T21:24:38+04:00

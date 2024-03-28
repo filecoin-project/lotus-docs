@@ -17,7 +17,8 @@ Curio is in alpha state, and we recommend our users to only run Curio in a testi
 ## Setup YugaByteDB
 
 {{< alert icon="warning" >}}
-If you have already set up a YugabyteDB for Boost then you can reuse the same YugabyteDB instance for Curio. You can skip directly to migration or init. TODO: link
+If you have already set up a YugabyteDB for Boost then you can reuse the same YugabyteDB instance for Curio.
+You can skip directly to [migrating from Lotus-Miner to Curio]({{< relref "setup#migrating-from-lotus-miner-to-curio" >}}) or [Initializing new Curio Miner]({{< relref "setup#initiating-a-new-curio-cluster" >}}).
 {{< /alert >}}
 
 For this guide, we're setting up a single YugaByteDB. However, you can set up multiple YugaByteDB instances in a cluster to enable high availability.
@@ -74,14 +75,14 @@ Ensure that you have the following available before we install and set up Yugaby
 
 You can adjust the `--advertise_address`, `--rpc_bind_addresses` and `--tserver_flags` according to your own configuration and needs.
 
-## Migrating from `lotus-miner` to `curio`
+## Migrating from Lotus-miner to Curio
 Curio provides a utility to users onboard quickly. Please run the below command on your `lotus-miner` node and follow the os-screen instructions.
 
 ```shell
 curio guided-setup
 ```
 
-Once the migration is complete, you can shut down all of your workers and miner processes. You can start `curio` process to replace them with correct configuration layer. TODO: Link to config
+Once the migration is complete, you can shut down all of your workers and miner processes. You can start `curio` process to replace them with correct [configuration layer]({{< relref "config" >}}).
 
 ### Testing the setup
 
@@ -100,4 +101,4 @@ Curio provides a utility to users onboard quickly. Please run the below command 
 curio
 ```
 
-Once, the new miner has been created, You can start `curio` process with correct configuration layer. TODO: Link to config
+Once, the new miner has been created, You can start `curio` process with correct [configuration layer]({{< relref "config" >}}).

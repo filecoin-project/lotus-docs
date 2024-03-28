@@ -10,7 +10,7 @@ weight: 145
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.26.0/documentation/en/cli-lotus-provider.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/master/documentation/en/cli-curio.md -->
 
 # curio
 ```
@@ -31,7 +31,6 @@ COMMANDS:
    test          Utility functions for testing
    web           Start Curio web interface
    guided-setup  Run the guided setup for migrating from lotus-miner to Curio
-   from-miner    Express a database config (for curio) from an existing miner.
    seal          Manage the sealing pipeline
    version       Print version
    help, h       Shows a list of commands or help for one command
@@ -120,7 +119,6 @@ COMMANDS:
    interpret, view, stacked, stack  Interpret stacked config layers by this version of curio, with system-generated comments.
    remove, rm, del, delete          Remove a named config layer.
    edit                             edit a config layer
-   from-miner                       Express a database config (for curio) from an existing miner.
    new-cluster                      Create new configuration for a new cluster
    help, h                          Shows a list of commands or help for one command
 
@@ -218,24 +216,6 @@ OPTIONS:
    --no-source-diff       save the whole config into the layer, not just the diff (default: false)
    --no-interpret-source  do not interpret source layer (default: true if --source is set)
    --help, -h             show help
-```
-
-### curio config from-miner
-```
-NAME:
-   curio from-miner - Express a database config (for curio) from an existing miner.
-
-USAGE:
-   curio from-miner [command options] [arguments...]
-
-DESCRIPTION:
-   Express a database config (for curio) from an existing miner.
-
-OPTIONS:
-   --miner-repo value, --storagerepo value  Specify miner repo path. flag(storagerepo) and env(LOTUS_STORAGE_PATH) are DEPRECATION, will REMOVE SOON (default: "~/.lotusminer") [$LOTUS_MINER_PATH, $LOTUS_STORAGE_PATH]
-   --to-layer value, -t value               The layer name for this data push. 'base' is recommended for single-miner setup.
-   --overwrite, -o                          Use this with --to-layer to replace an existing layer (default: false)
-   --help, -h                               show help
 ```
 
 ### curio config new-cluster
@@ -346,24 +326,6 @@ USAGE:
 
 OPTIONS:
    --help, -h  show help
-```
-
-## curio from-miner
-```
-NAME:
-   curio from-miner - Express a database config (for curio) from an existing miner.
-
-USAGE:
-   curio from-miner [command options] [arguments...]
-
-DESCRIPTION:
-   Express a database config (for curio) from an existing miner.
-
-OPTIONS:
-   --miner-repo value, --storagerepo value  Specify miner repo path. flag(storagerepo) and env(LOTUS_STORAGE_PATH) are DEPRECATION, will REMOVE SOON (default: "~/.lotusminer") [$LOTUS_MINER_PATH, $LOTUS_STORAGE_PATH]
-   --to-layer value, -t value               The layer name for this data push. 'base' is recommended for single-miner setup.
-   --overwrite, -o                          Use this with --to-layer to replace an existing layer (default: false)
-   --help, -h                               show help
 ```
 
 ## curio seal
@@ -561,3 +523,4 @@ CATEGORY:
 OPTIONS:
    --help, -h  show help
 ```
+
