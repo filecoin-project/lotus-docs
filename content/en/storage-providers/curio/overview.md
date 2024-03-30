@@ -24,7 +24,7 @@ We are working on integrating Boost to allow market integration for data onboard
 
 ### High Availability
 Curio is designed for high availability. You can run multiple instances of Curio nodes to handle similar type of tasks.
-The distributed scheduler and greedy worker design will ensure that tasks are completed on time in case of partial outage.
+The distributed scheduler and greedy worker design will ensure that tasks are completed on time despite most partial outages.
 You can safely update one of your Curio machines without disrupting the operation of the others.
 
 ### Node Heartbeat
