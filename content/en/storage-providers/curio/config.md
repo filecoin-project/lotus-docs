@@ -21,12 +21,14 @@ Configuration layers can be arranged in a hierarchy, often from `base`(most gene
 The `base` layer defines default configuration values.
 More specific layers override these defaults with more targeted configurations.
 
-For example, in a simple three-layer configuration system, layers could be organized in the following order:
-Base Layer - This is the most general layer. It normally provides default settings.
-Miner Layer - This layer overrides the miner ID from emtpy to a `M1`.
-Task Layer - This layer enables SDR tasks.
+For example, in a simple two-layer configuration system, layers could be organized in the following order:
+Base Layer - This is the most general layer. It is always included, so add any modifications to defaults here. If you include all your miner IDs here (defined in the addresses section) all hardware will be used for all miner needs.
+Task Layer - This layer enables SDR tasks. Consider the included layers (below).
 
-If a Curio node is started with above 3 layers then it will perform SDR tasks for Miner ID `M1` and will use default values of any other configuration parameter.
+If a Curio node is started with above 2 layers then it will perform SDR tasks for all miner IDs and will use default values of any other configuration parameter.
+
+Example Use of Layers:  (`base` is always included)
+`curio run --layers=post`
 
 {{< alert icon="warning" >}}
 If `base` layers is always applied by default when a Curio node is started.

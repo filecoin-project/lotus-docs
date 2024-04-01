@@ -11,7 +11,7 @@ toc: true
 ---
 
 # Curio
-The core component of Curio are HarmonyDB, HarmonyTask, ChainScheduler and some abstraction of configuration & storage.
+The core internal components of Curio are HarmonyDB, HarmonyTask, ChainScheduler and a database abstraction of configuration & today's storage definitions.
 
 ![Curio Node](curio-node.png)
 
@@ -44,14 +44,14 @@ The HarmonyTask is pure (no task logic) distributed task manager.
 - Task-Centric: HarmonyTask focuses on managing tasks as small units of work, relieving developers from scheduling and management concerns.
 - Distributed: Tasks are distributed across machines for efficient execution.
 - Greedy Workers: Workers actively claim tasks they can handle.
-- Round Robin Assignment: After a worker claims a task, HarmonyDB attempts to distribute remaining work among other machines.
+- Round Robin Assignment: After a Curio node claims a task, HarmonyDB attempts to distribute remaining work among other machines.
 
 ![Curio Tasks](curio-tasks.png)
 
 ### Model
 
 - **Blocked Tasks:** Tasks can be blocked due to:
-    - Missing registration on running servers
+    - Configuration under 'subsystems' disabled on the running node
     - Reaching specified maximum task limits
     - Resource exhaustion
     - CanAccept() function (task-specific) rejecting the task
@@ -69,7 +69,8 @@ The HarmonyTask is pure (no task logic) distributed task manager.
 
 ## Distributed Scheduling
 Curio implements a distributed scheduling mechanism co-ordinated via the HarmonyDB. The tasks are picked by the Curio nodes based on what they can handle (type and resources).
-Nodes will avoid taking additional tasks if they already have an active task even if they have additional resources to accommodate the said additional task.
+Nodes are not greedy after taking a task, even if they have enough resources.
+Other nodes get a turn to claim a task. On 3 second intervals, if resources are available then an additional task will be taken.
 This ensures a more even scheduling of the tasks.
 
 ### Chain Scheduler
@@ -79,12 +80,11 @@ These callback function in turn add the new tasks for each type that depends on 
 ### Poller
 Poller is a simple loop that fetches pending tasks periodically according to predefined durations (100ms), or until a graceful exit is initiated by the context.
 Once the pending tasks are fetched from the database, it attempts to schedule all the tasks on the Curio node. This attempt will result in one of the following results:
-1. Task is accepted
-2. Task is not scheduled as machine is busy
-3. Task is not accepted as machine handle the specified Task
+- Task is accepted
+- Task is not scheduled as machine is busy
+- Task is not accepted as the node's CanAccept (defined by the task) elects not to handle the specified Task
 
 If the task is accepted during a polling cycle, the wait time before the next cycle is equal to 100ms. But if the task is not scheduled for any reason the poller will retry after 3 seconds.
-Also, if the elapsed time since the last follow-up of tasks in the database exceeds FOLLOW_FREQUENCY, the followWorkInDB function is called.
 
 ### Task Decision Logic
 For each task type a machine can handle, it first checks if the machine has enough capacity to execute the said task.

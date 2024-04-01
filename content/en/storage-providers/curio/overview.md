@@ -45,15 +45,15 @@ Start the binary with the appropriate flags to connect with YugabyteDB and speci
 
 ## Curio vs Lotus Miner
 
-| Feature                              | Curio                                                                           | Lotus-Miner                                                                           |
-|--------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| Scheduling                           | <span style="color:green">Distributed (Round Robin)</span>                      | <span style="color:orange">Single point of failure</span>                             |
-| High Availability                    | <span style="color:green">Available</span>                                      | <span style="color:orange">Single control process</span>                              |
-| Redundant Post                       | <span style="color:green">Available</span>                                      | <span style="color:orange">Not Available</span>                                       |
-| Task Retry Control                   | <span style="color:green">Task retry with a cutoff limit (per task)</span>      | <span style="color:orange">Unlimited retry leading to resource exhaustion</span>      |
-| Multiple Miner IDs                   | <span style="color:green">Curio cluster can supported multiple Miner IDs</span> | <span style="color:orange">Single Miner ID per Lotus-Miner</span>                     |
-| Shared Task nodes                    | <span style="color:green">Curio nodes can handle task for any Miner ID</span>   | <span style="color:orange">Attached workers handle tasks for a single Miner ID</span> |
-| Distributed Configuration Management | <span style="color:green">Configuration stored in Database</span>               | <span style="color:orange">All configuration in a single File</span>                  |
+| Feature                              | Curio                                                                                           | Lotus-Miner                                                                           |
+|--------------------------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| Scheduling                           | <span style="color:green">Distributed (Round Robin)</span>                                      | <span style="color:orange">Single point of failure</span>                             |
+| High Availability                    | <span style="color:green">Available</span>                                                      | <span style="color:orange">Single control process</span>                              |
+| Redundant Post                       | <span style="color:green">Available</span>                                                      | <span style="color:orange">Not Available</span>                                       |
+| Task Retry Control                   | <span style="color:green">Task retry with a cutoff limit (per task)</span>                      | <span style="color:orange">Unlimited retry leading to resource exhaustion</span>      |
+| Multiple Miner IDs                   | <span style="color:green">Curio cluster can support multiple Miner IDs</span>                   | <span style="color:orange">Single Miner ID per Lotus-Miner</span>                     |
+| Shared Task nodes                    | <span style="color:green">Curio nodes can handle task for multiple Miner IDS</span>             | <span style="color:orange">Attached workers handle tasks for a single Miner ID</span> |
+| Distributed Configuration Management | <span style="color:green">Configuration stored in the highly-available Yugabyte Database</span> | <span style="color:orange">All configuration in a single File</span>                  |
 
 ## Why Try Curio Alpha?
 Trying the Curio alpha allows you to explore these features and provide valuable feedback back to the development team for further development.

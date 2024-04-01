@@ -77,6 +77,7 @@ You can adjust the `--advertise_address`, `--rpc_bind_addresses` and `--tserver_
 
 ## Migrating from Lotus-miner to Curio
 Curio provides a utility to users onboard quickly. Please run the below command on your `lotus-miner` node and follow the os-screen instructions.
+It communicates in English (en), Chinese (zh), and Korean (ko).
 
 ```shell
 curio guided-setup
@@ -95,10 +96,10 @@ curio test window-post task
 From the output we can confirm that a WindowPoSt gets inserted to the database, and is being picked up by the Curio process running with the *wdpost* configuration layer.
 
 ## Initiating a new Curio cluster
-Curio provides a utility to users onboard quickly. Please run the below command on your new Curio node and follow the os-screen instructions.
+Curio provides a utility for users to onboard quickly. Please run the below command on your new Curio node, choose `Create a new miner` option and follow the on-screen instructions.
 
 ```shell
-curio
+curio guided-setup
 ```
 
 Once, the new miner has been created, You can start `curio` process with correct [configuration layer]({{< relref "config" >}}).

@@ -225,10 +225,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 The installation instructions are different depending on which CPU is in your Mac:
 
-- [M1-based CPUs](#m1-based-cpus)
+- [ARM-based CPUs (M1, M2, M3)](#arm-based-cpus)
 - [Intel CPUs](#intel-cpus)
 
-#### M1-based CPUs
+#### Arm based CPUs
 
 1. Clone the repository:
 
@@ -243,7 +243,7 @@ The installation instructions are different depending on which CPU is in your Ma
     git checkout master
     ```
 
-3. Create the necessary environment variables to allow Curio to run on M1 architecture:
+3. Create the necessary environment variables to allow Curio to run on Arm architecture:
 
     ```shell
     export LIBRARY_PATH=/opt/homebrew/lib
@@ -276,7 +276,7 @@ The installation instructions are different depending on which CPU is in your Ma
 #### Intel CPUs
 
 {{< alert icon="warning">}}
-These instructions are for installing Curio on an Intel Mac. If you have an M1-based CPU, use the [M1-based CPU instructions ↑](#m1-based-cpus)
+These instructions are for installing Curio on an Intel Mac. If you have an Arm-based CPU, use the [Arm-based CPU instructions ↑](#arm-based-cpus)
 {{< /alert >}}
 
 1. Clone the repository:
