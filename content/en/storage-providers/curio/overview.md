@@ -6,6 +6,8 @@ draft: false
 menu:
     storage-providers:
         parent: "curio"
+aliases:
+  - /storage-providers/lotus-provider/overview
 weight: 105
 toc: true
 ---
