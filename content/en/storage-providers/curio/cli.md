@@ -30,22 +30,23 @@ COMMANDS:
    config        Manage node config by layers. The layer 'base' will always be applied at Curio start-up.
    test          Utility functions for testing
    web           Start Curio web interface
-   guided-setup  Run the guided setup for migrating from lotus-miner to Curio
+   guided-setup  Run the guided setup for migrating from lotus-miner to Curio or Creating a new Curio miner
    seal          Manage the sealing pipeline
+   market
+   auth          Manage RPC permissions
+   log           Manage logging
+   wait-api      Wait for lotus api to come online
+   fetch-params  Fetch proving parameters
    version       Print version
    help, h       Shows a list of commands or help for one command
-   DEVELOPER:
-     auth          Manage RPC permissions
-     log           Manage logging
-     wait-api      Wait for lotus api to come online
-     fetch-params  Fetch proving parameters
 
 GLOBAL OPTIONS:
    --color              use color in display output (default: depends on output being a TTY)
-   --db-host value      Command separated list of hostnames for yugabyte cluster (default: "yugabyte") [$CURIO_DB_HOST, $CURIO_HARMONYDB_HOSTS]
+   --db-host value      Command separated list of hostnames for yugabyte cluster (default: "127.0.0.1") [$CURIO_DB_HOST, $CURIO_HARMONYDB_HOSTS]
    --db-name value      (default: "yugabyte") [$CURIO_DB_NAME, $CURIO_HARMONYDB_NAME]
    --db-user value      (default: "yugabyte") [$CURIO_DB_USER, $CURIO_HARMONYDB_USERNAME]
    --db-password value  (default: "yugabyte") [$CURIO_DB_PASSWORD, $CURIO_HARMONYDB_PASSWORD]
+   --db-port value      (default: "5433") [$CURIO_DB_PORT, $CURIO_HARMONYDB_PORT]
    --repo-path value    (default: "~/.curio") [$CURIO_REPO_PATH]
    --vv                 enables very verbose mode, useful for debugging the CLI (default: false)
    --help, -h           show help
@@ -65,7 +66,7 @@ COMMANDS:
    help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --machine value  machine host:port (lotus-provider run --listen address)
+   --machine value  machine host:port (curio run --listen address)
    --help, -h       show help
 ```
 
@@ -319,7 +320,7 @@ OPTIONS:
 ## curio guided-setup
 ```
 NAME:
-   curio guided-setup - Run the guided setup for migrating from lotus-miner to Curio
+   curio guided-setup - Run the guided setup for migrating from lotus-miner to Curio or Creating a new Curio miner
 
 USAGE:
    curio guided-setup [command options] [arguments...]
@@ -362,16 +363,33 @@ OPTIONS:
    --help, -h                         show help
 ```
 
-## curio version
+## curio market
 ```
 NAME:
-   curio version - Print version
+   curio market
 
 USAGE:
-   curio version [command options] [arguments...]
+   curio market command [command options] [arguments...]
+
+COMMANDS:
+   rpc-info
+   help, h   Shows a list of commands or help for one command
 
 OPTIONS:
    --help, -h  show help
+```
+
+### curio market rpc-info
+```
+NAME:
+   curio market rpc-info
+
+USAGE:
+   curio market rpc-info [command options] [arguments...]
+
+OPTIONS:
+   --layers value [ --layers value ]  list of layers to be interpreted (atop defaults). Default: base
+   --help, -h                         show help
 ```
 
 ## curio auth
@@ -501,9 +519,6 @@ NAME:
 USAGE:
    curio wait-api [command options] [arguments...]
 
-CATEGORY:
-   DEVELOPER
-
 OPTIONS:
    --timeout value  duration to wait till fail (default: 30s)
    --help, -h       show help
@@ -517,10 +532,18 @@ NAME:
 USAGE:
    curio fetch-params [command options] [sectorSize]
 
-CATEGORY:
-   DEVELOPER
-
 OPTIONS:
    --help, -h  show help
 ```
 
+## curio version
+```
+NAME:
+   curio version - Print version
+
+USAGE:
+   curio version [command options] [arguments...]
+
+OPTIONS:
+   --help, -h  show help
+```

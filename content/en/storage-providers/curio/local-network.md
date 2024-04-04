@@ -12,27 +12,27 @@ weight: 140
 ---
 A local-network is highly useful for getting familiar with Curio and experimenting with different scenarios in a safe manner.
 
-1. Please set up a [local network using the Lotus binaries]({{<relref "../../lotus/developers/local-network/">}}).
-2. [Build the `curio` binaries from "master" branch of the Lotus repo]({{< relref "install" >}}).
-3. Set up the [YugabyteDB]({{< relref "setup#setup-yugabytedb" >}})
-4. [Initialize a new miner]({{< relref "setup#initiating-a-new-curio-cluster" >}}) using the `guided-setup` command
+1. Please set up a [local network using the Lotus binaries].({{<relref "../../lotus/developers/local-network/">}}).
+2. [Build the `curio` binaries from "master" branch of the Lotus repo].({{< relref "install" >}}).
+3. Set up the [YugabyteDB].({{< relref "setup#setup-yugabytedb" >}})
+4. [Initialize a new miner]({{< relref "setup#initiating-a-new-curio-cluster" >}}) using the `guided-setup` command.
 5. Start the new Curio node
 
     ```
    curio run --nosync --layers seal,post,gui
    ```
 
-6. Attach the storage to the Curio node
+6. In an new terminal, attach some storage to the Curio node.
 
     ```
    curio cli storage --machine 127.0.0.1:12300 attach --init --seal --store ~/.curio
    ```
 
-7. Seal multiple CC sectors
+7. Seal multiple CC sectors.
 
     ```
    curio seal start --now --cc --actor <Miner ID from Step 4>
    ```
 
 8. Access the Curio UI page at [http://localhost:4701](http://localhost:4701) and watch the sector move through different sealing steps.
-9. Wait for the next WindowPost and allow the CC sectors to become "Active"
+9. Wait for the next WindowPost and allow the CC sectors to become "Active".
