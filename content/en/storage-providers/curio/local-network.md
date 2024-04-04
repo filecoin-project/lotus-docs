@@ -1,7 +1,7 @@
 ---
 title: "Curio Local Network"
-description: "This guide provides detailed information about to add a Curio miner to local network"
-lead: "This guide provides detailed information about to add a Curio miner to local network"
+description: "This guide provides detailed information about how to add a Curio miner to local network"
+lead: "This guide provides detailed information about how to add a Curio miner to local network"
 date: 2024-03-22T19:32:32+04:00
 lastmod: 2024-03-22T19:32:32+04:00
 draft: false
