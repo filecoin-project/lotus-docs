@@ -2,7 +2,7 @@
 title: "Import data from IPFS"
 description: "This guide will show you how to use Lotus to directly add IPFS-hosted data to the Filecoin network."
 lead: "This guide will show you how to use Lotus to directly add IPFS-hosted data to the Filecoin network."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"
@@ -11,6 +11,10 @@ aliases:
 weight: 120
 toc: true
 ---
+
+{{< alert icon="warning" >}}
+The import data from IPFS in Lotus has been deprecated as part of the deprecating the dealmaking pathway in Lotus. Check out: https://github.com/filecoin-project/lotus/pull/11661 for more context
+{{< /alert >}}
 
 Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), without having to re-import it into lotus. 
 
@@ -47,3 +51,7 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), witho
     ```shell
     lotus client deal QmV8FbWfaHeEVPMAzWM5paifwf94VFrpvehQqFZez5T6RW t01000 <price> <duration>
     ```
+
+{{< alert icon="warning" >}}
+The import data from IPFS in Lotus has been deprecated as part of the deprecating the dealmaking pathway in Lotus. Check out: https://github.com/filecoin-project/lotus/pull/11661 for more context
+{{< /alert >}}
