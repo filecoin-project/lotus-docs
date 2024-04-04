@@ -53,5 +53,5 @@ Lotus supports making deals with data stored in [IPFS](https://ipfs.tech), witho
     ```
 
 {{< alert icon="warning" >}}
-The import data from IPFS in Lotus has been deprecated as part of the deprecating the dealmaking pathway in Lotus. Check out: https://github.com/filecoin-project/lotus/pull/11661 for more context
+The import data from IPFS in Lotus has been deprecated as part of the deprecation of the dealmaking pathway in Lotus. Check out: https://github.com/filecoin-project/lotus/pull/11661 for more context
 {{< /alert >}}
