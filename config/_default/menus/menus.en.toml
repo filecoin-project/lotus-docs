@@ -107,10 +107,10 @@
   url = "/storage-providers/advanced-configurations"
 
 [[storage-providers]]
-  name = "Lotus-Provider"
+  name = "Curio"
   weight = 60
-  identifier = "lotus-provider"
-  url = "/storage-providers/lotus-provider"
+  identifier = "curio"
+  url = "/storage-providers/curio"
 
 
 [[tutorials]]
