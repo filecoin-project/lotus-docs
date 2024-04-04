@@ -14,7 +14,7 @@ toc: true
 Curio is in alpha state, and we recommend our users to only run Curio in a testing environment or Calibration network for the time being.
 {{< /alert >}}
 
-## Setup YugaByteDB
+## Setup YugabyteDB
 
 {{< alert icon="warning" >}}
 If you have already set up a YugabyteDB for Boost then you can reuse the same YugabyteDB instance for Curio.
@@ -97,6 +97,7 @@ From the output we can confirm that a WindowPoSt gets inserted to the database, 
 
 ## Initiating a new Curio cluster
 Curio provides a utility for users to onboard quickly. Please run the below command on your new Curio node, choose `Create a new miner` option and follow the on-screen instructions.
+It communicates in English (en), Chinese (zh), and Korean (ko).
 
 ```shell
 curio guided-setup
