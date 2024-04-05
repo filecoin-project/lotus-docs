@@ -12,9 +12,9 @@ weight: 140
 ---
 A local-network is highly useful for getting familiar with Curio and experimenting with different scenarios in a safe manner.
 
-1. Please set up a [local network using the Lotus binaries].({{<relref "../../lotus/developers/local-network/">}}).
-2. [Build the `curio` binaries from "master" branch of the Lotus repo].({{< relref "install" >}}).
-3. Set up the [YugabyteDB].({{< relref "setup#setup-yugabytedb" >}})
+1. Please set up a [local network using the Lotus binaries]({{<relref "../../lotus/developers/local-network/">}}).
+2. [Build the `curio` binaries from "master" branch of the Lotus repo]({{< relref "install" >}}).
+3. Set up the [YugabyteDB]({{< relref "setup#setup-yugabytedb" >}})
 4. [Initialize a new miner]({{< relref "setup#initiating-a-new-curio-cluster" >}}) using the `guided-setup` command.
 5. Start the new Curio node
 
