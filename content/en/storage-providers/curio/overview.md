@@ -49,7 +49,7 @@ Start the binary with the appropriate flags to connect with YugabyteDB and speci
 
 | Feature                              | Curio                                                                                           | Lotus-Miner                                                                           |
 |--------------------------------------|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| Scheduling                           | <span style="color:green">Distributed (Round Robin)</span>                                      | <span style="color:orange">Single point of failure</span>                             |
+| Scheduling                           | <span style="color:green">Collaborative (Prioritized Greedy)</span>                                      | <span style="color:orange">Single point of failure</span>                             |
 | High Availability                    | <span style="color:green">Available</span>                                                      | <span style="color:orange">Single control process</span>                              |
 | Redundant Post                       | <span style="color:green">Available</span>                                                      | <span style="color:orange">Not Available</span>                                       |
 | Task Retry Control                   | <span style="color:green">Task retry with a cutoff limit (per task)</span>                      | <span style="color:orange">Unlimited retry leading to resource exhaustion</span>      |
