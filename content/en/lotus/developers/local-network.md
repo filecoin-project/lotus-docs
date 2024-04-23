@@ -159,12 +159,12 @@ Filecoin local networks use slightly different binaries than those used in the F
 1. Create a pre-miner and an address with some funds:
 
     ```shell
-    ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
+    ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-f01000.json
     ```
 
     ```plaintext
-    2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:129       Adding miner t01000 to genesis template 
-    2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance 
+    2024-04-23T15:24:43.956-0700    INFO    lotus-seed  lotus-seed/genesis.go:128   Adding miner f01000 to genesis template
+    2024-04-23T15:24:43.956-0700    INFO    lotus-seed  lotus-seed/genesis.go:145   Giving f3qf2ivcxtok5pdssswqwpml5lfjj2idhv4cafbakwtiokwfhr4xrpadsqm7fxldudgeal2aa3kzrrxjd6zt7q some initial balance
     ```
 
 ## Start the nodes
@@ -174,7 +174,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 1. Start the first node:
 
     ```shell
-    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false 
+    ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false
     ```
 
     This command will continue to run while outputting information.
