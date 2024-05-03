@@ -14,7 +14,7 @@ A local-network is highly useful for getting familiar with Curio and experimenti
 
 ## Docker Devnet
 
-1. Close the Lotus Github repo and checkout the `release/cuio-beta` branch
+1. Clone the Lotus Github repo and checkout the `release/cuio-beta` branch
 
    ```shell
    git clone https://github.com/filecoin-project/lotus.git
