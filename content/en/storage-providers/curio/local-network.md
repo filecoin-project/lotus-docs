@@ -24,6 +24,7 @@ A local-network is highly useful for getting familiar with Curio and experimenti
 
 2. Build the images
    ```shell
+   unset FFI_BUILD_FROM_SOURCE
    make docker/curio-devnet
    ```
 
