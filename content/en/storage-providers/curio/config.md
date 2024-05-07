@@ -120,6 +120,6 @@ This integration is provided as a convenient gateway to the storage provider's a
 4. Once the service creation is complete, copy the "Integration Key" from the service and paste it in the "base" layer configuration for "PagerDutyIntegrationKey".
 5. Restart one of the nodes, and it will now generate critical alerts every hour.
 
-{{< alert icon="warning" >}}
+{{< alert icon="info" >}}
 Contributions to new critical alerts or integrations with other alerting systems are welcome.
 {{< /alert >}}
