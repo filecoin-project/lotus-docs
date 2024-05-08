@@ -12,6 +12,35 @@ weight: 140
 ---
 A local-network is highly useful for getting familiar with Curio and experimenting with different scenarios in a safe manner.
 
+## Docker Devnet
+
+1. Clone the Lotus Github repo and checkout the `release/cuio-beta` branch
+
+   ```shell
+   git clone https://github.com/filecoin-project/lotus.git
+   cd lotus/
+   git checkout release/curio-beta
+   ```
+
+2. Build the images
+   ```shell
+   unset FFI_BUILD_FROM_SOURCE
+   make docker/curio-devnet
+   ```
+
+3. Start the docker devnet
+   ```shell
+   make curio-devnet/up
+   ```
+
+4. Stop the docker devnet
+
+   ```shell
+   make curio-devnet/down
+   ```
+
+
+## Devnet
 1. Please set up a [local network using the Lotus binaries]({{<relref "../../lotus/developers/local-network/">}}).
 2. [Build the `curio` binaries from "master" branch of the Lotus repo]({{< relref "install" >}}).
 3. Set up the [YugabyteDB]({{< relref "setup#setup-yugabytedb" >}})
