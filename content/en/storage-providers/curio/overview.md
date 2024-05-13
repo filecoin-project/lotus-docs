@@ -16,6 +16,11 @@ toc: true
 Curio is in alpha state, and we recommend our users to only run Curio in a testing environment or Calibration Network for the time being.
 {{< /alert >}}
 
+{{< alert icon="warning" >}}
+Please note that Curio cluster cannot be shared across different networks.
+Example: A single Curio cluster cannot host miners IDs coming from Mainnet and Calibnet together.
+{{< /alert >}}
+
 Curio is the new implementation of Filecoin storage protocol. It aims to simplify the setup and operation of storage providers.
 It is currently in its alpha stage and is recommended for testing environments only.
 
