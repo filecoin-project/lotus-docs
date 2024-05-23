@@ -54,8 +54,8 @@ Ensure that you have the following available before we install and set up Yugaby
     **Note: avoid using ZFS as the backing drive for YugabyteDB because of advanced filesystem commands so-far is unavailable.**
 
     ```shell with-output
-    wget https://downloads.yugabyte.com/releases/2.20.0.1/yugabyte-2.20.0.1-b1-linux-x86_64.tar.gz
-    tar xvfz yugabyte-2.20.0.1-b1-linux-x86_64.tar.gz && cd yugabyte-2.20.0.1/
+    wget https://downloads.yugabyte.com/releases/2.21.0.1/yugabyte-2.21.0.1-b1-linux-x86_64.tar.gz
+    tar xvfz yugabyte-2.21.0.1-b1-linux-x86_64.tar.gz && cd yugabyte-2.21.0.1/
     ./bin/post_install.sh
     ./bin/yugabyted start --advertise_address 127.0.0.1  --master_flags rpc_bind_addresses=127.0.0.1 --tserver_flags rpc_bind_addresses=127.0.0.1
     ```
@@ -98,6 +98,20 @@ curio test window-post task
 From the output we can confirm that a WindowPoSt gets inserted to the database, and is being picked up by the Curio process running with the *wdpost* configuration layer.
 
 ## Initiating a new Curio cluster
+Initiating a new miner ID on the Filecoin network requires an owner, worker and sender address.
+These address can be same or different depending on the user's choice.
+Users must create these wallet on Lotus node before running the Curio commands.
+
+```shell
+lotus wallet new bls
+```
+
+Once new wallet are created, we must send some funds to them.
+
+```shell
+lotus send <WALLET> 5
+```
+
 Curio provides a utility for users to onboard quickly. Please run the below command on your new Curio node, choose `Create a new miner` option and follow the on-screen instructions.
 It communicates in English (en), Chinese (zh), and Korean (ko).
 
