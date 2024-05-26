@@ -2,7 +2,7 @@
 title: "Payment channels"
 description: "Payment channels are used to transfer funds between two actors. This guide explains how payment channels work in Lotus and provides some examples about how to operate with them."
 lead: "Payment channels are used to transfer funds between two actors. This guide explains how payment channels work in Lotus and provides some examples about how to operate with them."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"
