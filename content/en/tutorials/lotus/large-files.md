@@ -2,7 +2,7 @@
 title: "Large files"
 description: "This guide goes into more depth for storing very large files (over 1TiB), providing more insights into how data is stored and some best practices."
 lead: "This guide goes into more depth for storing very large files (over 1TiB), providing more insights into how data is stored and some best practices."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"
