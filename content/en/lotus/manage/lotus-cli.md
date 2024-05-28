@@ -1,7 +1,7 @@
 ---
 title: "Lotus CLI"
 description: "Reference documentation for the Lotus command-line interface."
-lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.26.0."
+lead: "Reference documentation for the Lotus command-line interface. This documentation was automatically generated using Lotus v1.27.0."
 draft: false
 menu:
     lotus:
@@ -12,7 +12,7 @@ weight: 445
 toc: true
 ---
 
-<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.26.0/documentation/en/cli-lotus.md -->
+<!-- This page was copied from https://raw.githubusercontent.com/filecoin-project/lotus/release/v1.27.0/documentation/en/cli-lotus.md -->
 
 # lotus
 ```
@@ -23,7 +23,7 @@ USAGE:
    lotus [global options] command [command options] [arguments...]
 
 VERSION:
-   1.26.0
+   1.27.0
 
 COMMANDS:
    daemon   Start a lotus daemon process
@@ -1208,6 +1208,7 @@ COMMANDS:
    list-claims                    List claims available in verified registry actor or made by provider if specified
    remove-expired-allocations     remove expired allocations (if no allocations are specified all eligible allocations are removed)
    remove-expired-claims          remove expired claims (if no claims are specified all eligible claims are removed)
+   extend-claim                   extends claim expiration (TermMax)
    help, h                        Shows a list of commands or help for one command
 
 OPTIONS:
@@ -1312,6 +1313,7 @@ USAGE:
 
 OPTIONS:
    --expired   list only expired claims (default: false)
+   --json      output results in json format (default: false)
    --help, -h  show help
 ```
 
@@ -1339,6 +1341,28 @@ USAGE:
 OPTIONS:
    --from value  optionally specify the account to send the message from
    --help, -h    show help
+```
+
+### lotus filplus extend-claim
+```
+NAME:
+   lotus filplus extend-claim - extends claim expiration (TermMax)
+
+USAGE:
+   Extends claim expiration (TermMax).
+   If the client is original client then claim can be extended to maximum 5 years and no Datacap is required.
+   If the client id different then claim can be extended up to maximum 5 years from now and Datacap is required.
+
+
+OPTIONS:
+   --term-max value, --tmax value                                                                               The maximum period for which a provider can earn quality-adjusted power for the piece (epochs). Default is 5 years. (default: 5256000)
+   --client value                                                                                               the client address that will used to send the message
+   --all                                                                                                        automatically extend TermMax of all claims for specified miner[s] to --term-max (default: 5 years from claim start epoch) (default: false)
+   --miner value, -m value, --provider value, -p value [ --miner value, -m value, --provider value, -p value ]  storage provider address[es]
+   --assume-yes, -y, --yes                                                                                      automatic yes to prompts; assume 'yes' as answer to all prompts and run non-interactively (default: false)
+   --confidence value                                                                                           number of block confirmations to wait for (default: 5)
+   --batch-size value                                                                                           number of extend requests per batch. If set incorrectly, this will lead to out of gas error (default: 500)
+   --help, -h                                                                                                   show help
 ```
 
 ## lotus paych
