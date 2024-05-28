@@ -98,25 +98,132 @@ curio test window-post task
 From the output we can confirm that a WindowPoSt gets inserted to the database, and is being picked up by the Curio process running with the *wdpost* configuration layer.
 
 ## Initiating a new Curio cluster
+To create a new Curio cluster, a Lotus daemon node is required.
+
+### Wallet setup
 Initiating a new miner ID on the Filecoin network requires an owner, worker and sender address.
 These address can be same or different depending on the user's choice.
 Users must create these wallet on Lotus node before running the Curio commands.
 
 ```shell
 lotus wallet new bls
+lotus wallet new bls
 ```
 
 Once new wallet are created, we must send some funds to them.
 
 ```shell
-lotus send <WALLET> 5
+lotus send <WALLET 1> 5
+lotus send <WALLET 2> 5
 ```
 
+### Creating new miner ID
 Curio provides a utility for users to onboard quickly. Please run the below command on your new Curio node, choose `Create a new miner` option and follow the on-screen instructions.
 It communicates in English (en), Chinese (zh), and Korean (ko).
 
-```shell
-curio guided-setup
-```
+1. Start the guided setup.
+    ```shell
+    curio guided-setup
+    ```
+
+2. Choose "Create a new miner" option.
+    ```text
+    Defaulting to English. Please reach out to the Curio team if you would like to have additional language support.
+    Use the arrow keys to navigate: ↓ ↑ → ←
+    ? I want to::
+    Migrate from existing Lotus-Miner
+    ▸ Create a new miner
+    ```
+
+3. Enter your YugabyteDB details.
+    ```text
+    This process is partially idempotent. Once a new miner actor has been created and subsequent steps fail, the user need to run 'curio config new-cluster < miner ID >' to finish the configuration.
+
+    Use the arrow keys to navigate: ↓ ↑ → ←
+    ? Enter the info to connect to your Yugabyte database installation (https://download.yugabyte.com/):
+    ▸ Host: 127.0.0.1
+    Port: 5433
+    Username: yugabyte
+    Password: yugabyte
+    Database: yugabyte
+    Continue to connect and update schema.
+
+    ✔ Step Complete: Pre-initialization steps complete
+    ```
+
+4. Enter the wallet details be used for "create miner" message.
+    ```text
+    Initializing a new miner actor.
+    Use the arrow keys to navigate: ↓ ↑ → ←
+    ? Enter the info to create a new miner:
+    ▸ Owner Address: <empty>  <------ Enter wallet 1 here
+    Worker Address: <empty>  <------ Enter wallet 2 here
+    Sender Address: <empty>  <------ Enter wallet 1 here
+    Sector Size: 0  <--------------- Sector Size (32 G/GiB/GB)
+    Confidence epochs: 0
+    Continue to verify the addresses and create a new miner actor.
+    ```
+
+    ```text
+    Initializing a new miner actor.
+    ✔ Owner Address: <empty>
+    Enter the owner address: t3weiymrx3iyivzeuub5l232gb62ocu7zbjtztudiipm6wkkmsehdydrdddm6cdrflxir26cmrz4xui6t5gruq
+    ✔ Worker Address: <empty>
+    Enter worker address: t3xhmgfxurecrusgubzdgme4t2ecxbiyny5uanfzvcrrihzhia654f6gp2ynugpiyp5xe7ibg6fqly76kowfva
+    ✔ Sender Address: <empty>
+    Enter sender address: t3weiymrx3iyivzeuub5l232gb62ocu7zbjtztudiipm6wkkmsehdydrdddm6cdrflxir26cmrz4xui6t5gruq
+    ✔ Sector Size: 0
+    Enter the sector size: 8 MiB
+    ✔ Confidence epochs: 0
+    Confidence epochs: 0
+    Pushed CreateMiner message: bafy2bzacebu3mhaj6chnz5frjo2sbxduebnh4e7e37fwm3jd7xhvhla7t6ylu
+    Waiting for confirmation
+    ```
+
+5. Wait for new miner actor to get created.
+    ```text
+    New miners address is: t01004 (t2cmgqvicpcil5zlp6bqsffmjjfz7ix66k4zaojay)
+    ✔ Step Complete: Miner t01004 created successfully
+
+    ✔ Step Complete: Configuration 'base' was updated to include this miner's address
+    ```
+
+6. We request you to please share the basic data about your miner with us to help us improve Curio.
+    ```text
+    The Curio team wants to improve the software you use. Tell the team you're using `curio`.
+    Use the arrow keys to navigate: ↓ ↑ → ←
+    ? Select what you want to share with the Curio team.:
+    ▸ Individual Data: Miner ID, Curio version, chain (mainnet or calibration). Signed.
+    Aggregate-Anonymous: version, chain, and Miner power (bucketed).
+    Hint: I am someone running Curio on whichever chain.
+    Nothing.
+    ```
+
+7. Finish the initialisation.
+    ```text
+    ✔ Step Complete: New Miner initialization complete.
+
+    Try the web interface with curio run --layers=gui for further guided improvements.
+    ```
+
+8. If you entered non-default in step 3 then please export the relevant details before running the Curio command.
+
+    | Env Variable      | UseCase                   |
+    |-------------------|---------------------------|
+    | CURIO_DB_HOST     | YugabyteDB SQL IP         |
+    | CURIO_DB_NAME     | YugabyteDB Name           |
+    | CURIO_DB_USER     | DB user for connection    |
+    | CURIO_DB_PASSWORD | User's password           |
+    | CURIO_DB_PORT     | YugabyteDB's SQL port     |
+    | CURIO_REPO_PATH   | Curio's default repo path |
+
+9. Try running Curio with only `GUI` first.
+
+    ```shell
+    curio run --layers gui
+    ```
+
+10. Add seal/permanent [storage for the first machine]({{< relref "storage" >}}).
+11. Start other nodes in the Curio cluster with respective config layers.
 
 Once, the new miner has been created, You can start `curio` process with correct [configuration layer]({{< relref "config" >}}).

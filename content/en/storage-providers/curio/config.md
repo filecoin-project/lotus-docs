@@ -51,6 +51,60 @@ For example, if a Curio node is started with the following layers:
 These layer will be stacked on top of each other to create the final configuration for the node.
 The order of stacking will base > miner1 > sdr > wdPost > pricing. If a configuration parameter is defined in multiple layers then the final layer value will be used.
 
+### Working with layers
+
+Curio allows you to manage node configurations using layers.
+Each layer can be applied or modified independently, with the 'base' layer being essential at startup.
+
+#### Print default configuration
+The default configuration is used in base layer by default.
+
+```shell
+curio config default
+```
+
+#### Adding a New Layer
+To add a new configuration layer or update an existing one, you can provide a filename or input directly via stdin.
+
+```shell
+curio config set --title <stdin/Filename>
+```
+
+#### List all layers
+List all configuration layers present in the database.
+
+```shell
+curio config ls
+```
+
+#### Editing a Layer
+Directly edit a configuration layer.
+
+- Edit with `vim` editor
+    ```shell
+    curio config edit --editor vim <layer name>
+    ```
+
+- Edit with a different editor like nano
+    ```shell
+    curio config edit --editor nano <layer name>
+    ```
+
+#### Interpreting Stacked Layers
+Interpret and view the combined effect of all applied configuration layers, including system-generated comments.
+
+```shell
+curio config view --layers [layer1,layers2]
+```
+
+#### Removing a Layer
+Remove a specific configuration layer by name.
+
+```shell
+curio config rm <layer name>
+```
+
+
 ### Pre-built Layers
 When the first Curio miner is initialized or when the first Lotus-Miner is migrated to Curio, the process creates some layers by default for the users.
 These layers mostly define if a particular task should be picked by the machine or not.
