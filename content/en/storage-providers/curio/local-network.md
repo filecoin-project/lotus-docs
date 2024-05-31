@@ -8,7 +8,7 @@ draft: false
 menu:
   storage-providers:
     parent: "curio"
-weight: 140
+weight: 145
 ---
 A local-network is highly useful for getting familiar with Curio and experimenting with different scenarios in a safe manner.
 

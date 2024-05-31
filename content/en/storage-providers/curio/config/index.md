@@ -161,6 +161,21 @@ EnableSendCommitMsg = true
 EnableWebGui = true
 ```
 
+### Configuration management in UI
+The Curio GUI provides a user-friendly interface for managing configurations.
+To access this feature, navigate to the "Configurations" page from the UI menu.
+On this page, all available layers in the database are listed.
+Users can edit each layer by clicking on it.
+
+![Configurations](config.png)
+
+
+To update a configuration field, users must first enable it by checking the corresponding box.
+After enabling, the field value can be populated.
+To comment out the field, simply uncheck the box.
+
+![Configuration edit](config-edit.png)
+
 ## Alert Manager
 Curio comes with a default integration with [PagerDuty.com](https://www.pagerduty.com/), allowing the sending of critical alerts to storage providers.
 To configure your Curio cluster to send alerts, you must set up a PagerDuty account.
