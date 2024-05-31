@@ -154,7 +154,7 @@ EnablePoRepProof = true
 EnableSendCommitMsg = true
 ```
 
-### gui
+#### gui
 
 ```toml
 [Subsystems]
