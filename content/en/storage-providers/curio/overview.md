@@ -13,7 +13,7 @@ toc: true
 ---
 
 {{< alert icon="warning" >}}
-Curio is in alpha state, and we recommend our users to only run Curio in a testing environment or Calibration Network for the time being.
+Curio is in beta state, and we recommend our users to only run Curio in a testing environment or Calibration Network for the time being.
 {{< /alert >}}
 
 {{< alert icon="warning" >}}
