@@ -50,6 +50,3 @@ Filecoin is ultimately about building better protocols, and we always welcome id
 
 - [filecoin-project/specs](https://github.com/filecoin-project/specs)
 
-## Research
-
-Finally, we see Protocol Labs as a research lab, where YOUR ideas can become technologies that have a real impact on the world. If you're interested in contributing to our research, please reach out to [research@protocol.ai](mailto:research@protocol.ai) for more information. Include what your interests are so we can make sure you get to work on something fun and valuable.
