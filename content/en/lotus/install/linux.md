@@ -173,7 +173,7 @@ Once all the dependencies are installed, you can build and install Lotus.
     The latest production release can be found on [GitHub](https://github.com/filecoin-project/lotus/releases) or via the [command line](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#why-is-the-releases-branch-deprecated-and-what-are-alternatives).
 
 
-1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
+1. If you are in China, see "[Lotus: tips when running in China]({{< relref "../../kb/nodes-in-china/" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
 
     a. If you have **an AMD Zen or Intel Ice Lake CPU (or later)**, enable the use of SHA extensions by adding these two environment variables:
