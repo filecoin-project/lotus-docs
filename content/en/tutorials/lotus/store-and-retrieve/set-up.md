@@ -211,7 +211,7 @@ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 1. Download the latest Linux bundle from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.26.0/lotus_v1.26.0_linux_amd64.tar.gz
+    wget https://github.com/filecoin-project/lotus/releases/download/v1.26.3/lotus_v1.26.3_linux_amd64.tar.gz
     ```
 
 1. Extract tar -xvf archive.tar.gz executable:
