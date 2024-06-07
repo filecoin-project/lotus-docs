@@ -83,7 +83,7 @@ waiting for confirmation..
 Created new multisig:  t01004 t2ff7ch2h7qr6f4q5lmvq3ajo6lxucei46attp3ai
 ```
 
-If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}})
+If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}}).
 
 ## Listing addresses
 

@@ -18,7 +18,7 @@ toc: true
 Joining the Filecoin network requires knowledge of existing peers in the network. On startup Lotus, as well as other
 implementations, attempt to retrieve peer information from a known set of bootstrap nodes.
 
-At present, these known bootstrap nodes are [included in](https://github.com/filecoin-project/lotus/blob/c46aea6a368bbebf4a22e9924a3ea3393170fe90/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
+At present, these known bootstrap nodes are [included in](https://github.com/filecoin-project/lotus/blob/master/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
 
 Lotus is currently the only known filecoin implementation offering bootstrap functionality.
 
