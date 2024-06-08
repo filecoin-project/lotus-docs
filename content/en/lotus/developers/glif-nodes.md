@@ -14,7 +14,7 @@ toc: true
 
 ## Mainnet endpoint
 
-Developers can interact directly with load-balanced, synced mainnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >}}) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
+Developers can interact directly with load-balanced, synced mainnet nodes using the [Lotus JSON RPC API]({{< relref "../../reference/basics/api-access" >}}) on the `https://api.node.glif.io` endpoint (or `https://api.node.glif.io/rpc/v0`).
 
 Unlike bare Lotus, the endpoint above is hardened and limited:
 
@@ -23,11 +23,11 @@ Unlike bare Lotus, the endpoint above is hardened and limited:
 - The Filecoin signing tools can be used to sign messages before submission when needed.
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals.s3.amazonaws.com/StateMarketDeals.json.zst). `StateMarketDeals` data is refreshed every 10 minutes. Alternatively, you can query the Filecoin CID Checker Mongo DB via the [publicly available API](https://filecoin.tools/docs/static/index.html).
-- Mainnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.node.glif.io/apigw/lotus/rpc/v0](wss://wss.node.glif.io/apigw/lotus/rpc/v0)
+- Mainnet network has a ws (web socket) endpoint. The WebSockets link is available at wss://wss.node.glif.io/apigw/lotus/rpc/v0
 
-## Testnet endpoint
+## Calibration endpoint
 
-Testnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >}}) can use `https://api.calibration.node.glif.io/rpc/v0`.
+Calibration nodes using the [JSON RPC API]({{< relref "../../reference/basics/api-access" >}}) can use `https://api.calibration.node.glif.io/rpc/v0`.
 - Only the _latest_ 2000 blocks are available on public endpoints. This is due to the limitation of [lightweight-snapshots]({{< relref "chain-management" >}}).
 - `Filecoin.StateMarketDeals` operation data is available as a [direct link to an AWS S3 bucket](https://marketdeals-calibration.s3.amazonaws.com/StateMarketDeals.json.zst). `StateMarketDeals` data is refreshed every 10 minutes.
 
@@ -35,7 +35,7 @@ Testnet nodes using the [JSON RPC API]({{< relref "/reference/basics/overview" >
 You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc/v1`
 {{< /alert >}}
 
-- Testnet network has a ws (web socket) endpoint. the ws link is available like [wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0](wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0)
+- The Calibration network has a WebSocket endpoint. The WebSlock link is available at wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v0
 
 ### Custom endpoints
 
@@ -65,7 +65,7 @@ This is an optional step. We can use `lotus` to talk to the Glif node API (as a 
 - It allows us to verify that the endpoint works and that credentials are correct when using a custom endpoint.
 - It makes debugging easier was we can try and quickly check things using the `lotus` CLI directly.
 
-To use `lotus`, download and extract the appropriate lotus release from the [releases page](https://github.com/filecoin-project/lotus/releases/). **The lotus version needs to match that of the running node**. We will not be running the Lotus daemon or syncing the chain, we will use it only as a client.
+To use `lotus`, build or install lotus for [Linux]({{< relref "../install/linux" >}}) or [MacOS]({{< relref "../install/macos" >}}). **The lotus version needs to match that of the running node**. We will not be running the Lotus daemon or syncing the chain; we will use it only as a client.
 
 Check the running version of the Glif node instance with:
 
@@ -73,7 +73,7 @@ Check the running version of the Glif node instance with:
 curl -X POST 'https://api.node.glif.io' -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","id":1,"method":"Filecoin.Version","params":[]}'
 ```
 
-Once downloaded, in order to let the Lotus binary talk to the Lotus remote endpoint, export the following environment variable:
+Once built or installed, in order to let the Lotus binary talk to the Lotus remote endpoint, export the following environment variable:
 
 ```shell
 export FULLNODE_API_INFO=<token>:<endpoint>
@@ -90,7 +90,7 @@ lotus net id 12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt
 
 If the above does not work, verify that you are using the right token and multiaddress.
 
-By default, all read operations are enabled, along with the MPoolPush method. This means that you will need to [sign messages yourself](https://docs.filecoin.io/build/signing-libraries/) using your own externally-managed wallets, unless you are given a full node under your full control. We can however, use the CLI to send any read commands. The following are just examples:
+By default, all read operations are enabled, along with the MPoolPush method. This means that you will need to [sign messages yourself](https://docs.filecoin.io/reference/general#message-signing-tools) using your own externally-managed wallets, unless you are given a full node under your full control. We can however, use the CLI to send any read commands. The following are just examples:
 
 ```shell
 ./lotus net id
@@ -106,7 +106,7 @@ Get familiar with the capabilities of your node and verify that the endpoints. T
 
 Your application will very probably interact with the Lotus JSON-RPC API directly. Here are the first steps to gain operative knowledge on this API:
 
-- Read the instructions in the [Lotus API reference](https://docs.filecoin.io/build/signing-libraries/). Understand how calls are performed, how authentication works and how parameters and responses are encoded in JSON-RPC. Try out some `curl` examples.
+- Read the instructions in the [Lotus API reference](https://docs.filecoin.io/reference/json-rpc). Understand how calls are performed, how authentication works and how parameters and responses are encoded in JSON-RPC. Try out some `curl` examples.
 - From the above, learn how to obtain the parameters and expected format for every endpoint from the Lotus Go documentation. This will be the first place to check if something does not work or the format of some parameter is not understood.
 - You can also use this [Lotus API documentation](https://documenter.getpostman.com/view/4872192/SWLh5mUd?version=latest) which covers the Glif Node-supported methods in a more readable form, with additional tips.
-- If you are planning to send transactions, you will need to manage wallets and create signatures for your messages. See the [signing libraries](https://docs.filecoin.io/build/signing-libraries/) page for different solutions.
+- If you are planning to send transactions, you will need to manage wallets and create signatures for your messages. See the [signing libraries](https://docs.filecoin.io/reference/general#message-signing-tools) page for different solutions.
