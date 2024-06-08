@@ -33,9 +33,7 @@ To spin up a Lotus lite-node, you will need:
 If you have access to the full-node you're using, you need to make some minor modifications to its configuration.
 
 {{< alert icon="tip">}}
-If you are using the Protocol Labs `api.chain.love` Lotus full-node, you do not need to complete this section. The Protocol Labs Lotus full-node has been configured to accept all incoming requests, so you don't need to create any API keys.
-
-[Glif](https://api.node.glif.io/) endpoints also provide you with a production-ready publicly available node, that can be used without API keys: wss://wss.node.glif.io/apigw/lotus
+If you are using the [Glif Lotus RPC Nodes]({{< relref "../developers/glif-nodes" >}}), you do not need to complete this section. Those full-nodes have been configured to accept all incoming requests, so you don't need to create any API keys.
 
 If you are using a node-hosting service like [Infura](https://infura.io/), you may need to create an API key through the service website.
 {{< /alert >}}
@@ -63,7 +61,7 @@ If you are using a node-hosting service like [Infura](https://infura.io/), you m
 
 Next up, you'll create the Lotus executable on your lite-node and running it in _lite_ mode!
 
-## Create the executable
+## Create the lite-node executable
 
 You need to create the Lotus executable to run your lite-node with. This process is the same as when creating a full-node.
 
