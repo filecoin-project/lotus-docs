@@ -17,7 +17,7 @@ areas: ["Deprecated"]
  The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0).
  {{< /alert >}}
 
-Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a [payment channel]({{< relref "payment-channels" >}}). Unlike storage deals, retrieval deals happen off-chain.
+Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a payment channel. Unlike storage deals, retrieval deals happen off-chain.
 
 Currently, Lotus supports direct retrieval from the storage miners which originally stored the data, although, per the network's specification, it is planned to support independent retrieval miners that are specifically dedicated to that business by making retrieval an efficient, fast and reliable operation. At that point, clients will be able to search the network for all possible providers of their desired data (via the DHT, the chain, or out-of-band aggregators), compare deal terms, and chose the best retrieval option for their needs.
 
