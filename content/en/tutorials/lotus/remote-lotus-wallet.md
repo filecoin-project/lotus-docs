@@ -6,7 +6,7 @@ draft: false
 menu:
     tutorials:
         parent: "tutorials-lotus"
-weight: 225
+weight: 115
 toc: true
 ---
 

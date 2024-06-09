@@ -2,7 +2,7 @@
 title: "Retrieve data"
 description: "There are multiple ways to fetch data from a storage provider. This pages covers some of the most popular methods."
 lead: "There are multiple ways to fetch data from a storage provider. This pages covers some of the most popular methods."
-draft: false
+draft: true
 menu:
     tutorials:
         parent: "tutorials-lotus"

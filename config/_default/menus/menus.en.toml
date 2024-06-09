@@ -10,7 +10,7 @@
 
 [[main]]
   name = "Tutorials"
-  url = "/tutorials/lotus/store-and-retrieve/set-up/"
+  url = "/tutorials/lotus/build-with-lotus-api/"
   weight = 30
 
 [[main]]

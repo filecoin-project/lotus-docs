@@ -6,7 +6,7 @@ menu:
     tutorials:
         parent: "tutorials-lotus"
 aliases:
-weight: 135
+weight: 105
 toc: true
 ---
 
