@@ -9,7 +9,7 @@ menu:
 aliases:
     - /docs/storage-providers/disputer/
     - /storage-providers/operate/disputer/
-weight: 140
+weight: 110
 toc: true
 ---
 
