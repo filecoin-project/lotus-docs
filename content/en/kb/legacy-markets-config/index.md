@@ -16,7 +16,7 @@ areas: ["Deprecated"]
 ---
 
 {{< alert icon="warning" >}}
-The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
 {{< /alert >}}
 
 ## Dealmaking section

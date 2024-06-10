@@ -17,8 +17,8 @@ areas: ["Deprecated"]
 ---
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 uring the lifetime of a storage provider, Filecoin network clients will query the storage _price-ask_ advertised by the storage provider and initiate deals. Deals go through several phases:
 
@@ -68,8 +68,8 @@ considering offline storage deals: true
 The values above affect new deals. Ongoing deals will still have to be honored.
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 ## Setting the asking price
 
@@ -102,8 +102,8 @@ lotus client query-ask <minerID>
 ```
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 ## Listing current deals
 
@@ -173,8 +173,8 @@ lotus-miner storage-deals import-data <dealCid> <filePath>
 ```
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users migrate to [Boost](https://boost.filecoin.io).
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 ### Offline deal workflow
 

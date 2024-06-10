@@ -15,7 +15,7 @@ toc: true
 ---
 
 {{< alert icon="callout">}}
-**We are not using the Lotus-binary here because the Lotus legacy markets is EOL, and will at some later point be removed**.
+**We are not using the Lotus-binary here because the Lotus/Lotus-Miner legacy markets code has been removed**.
 {{< /alert >}}
 
 ## Lassie
