@@ -22,8 +22,6 @@ There are three networks available for Filecoin:
 
 Mainnet is the primary Filecoin network. Mainnet began on block 148,888. It supports 32 GiB and 64 GiB sectors.
 
-**Maintainer**: [Protocol Labs](https://protocol.ai)
-
 **Genesis**:
 
 - CAR File: `QmavMCf95w2UMYGD1J5GpHcWBWXR2jTFYmtAkgeroMmpk1`
@@ -45,9 +43,6 @@ Mainnet is the primary Filecoin network. Mainnet began on block 148,888. It supp
 **Bootstrap peers**:
 
 ```
-/dns4/lotus-bootstrap.ipfsforce.com/tcp/41778/p2p/12D3KooWGhufNmZHF3sv48aQeS13ng5XVJZ9E6qy2Ms4VzqeUsHk
-/dns4/bootstrap-0.starpool.in/tcp/12757/p2p/12D3KooWGHpBMeZbestVEWkfdnC9u7p6uFHXL1n7m1ZBqsEmiUzz
-/dns4/bootstrap-1.starpool.in/tcp/12757/p2p/12D3KooWQZrGH1PxSNZPum99M1zNvjNFM33d1AAu5DcvdHptuU7u
 /dns4/node.glif.io/tcp/1235/p2p/12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt
 /dns4/bootstarp-0.1475.io/tcp/61256/p2p/12D3KooWRzCVDwHUkgdK7eRgnoXbjDAELhxPErjHzbRLguSV1aRt
 /dns4/bootstrap-venus.mainnet.filincubator.com/tcp/8888/p2p/QmQu8C6deXwKvJP2D8B6QGyhngc3ZiDnFzEHBDx8yeBXST
@@ -65,8 +60,8 @@ Mainnet is the primary Filecoin network. Mainnet began on block 148,888. It supp
 - [Slack Channel for Questions: #fil-help](https://filecoinproject.slack.com/archives/CEGN061C5)
 - [Block explorer: Filfox](https://filfox.io/)
 - [Block explorer: Filscan](https://filscan.io/)
-- [Block explorer: Filscout](https://filscout.io/)
-- [Block explorer: IPFS6](https://ipfs6.com/)
+- [Block explorer: Filutils](https://www.filutils.com/)
+- [Block explorer: Beryx](https://beryx.io)
 
 ### Calibration
 
@@ -76,7 +71,7 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 - Prospective storage clients can store and retrieve real data on the network. Clients can participate in deal-making workflows and storage + retrieval functionality.
 - Same sector size as mainnet. The calibration network supports 32 GiB and 64 GiB sectors.
 
-**Maintainer**: [Protocol Labs](https://protocol.ai)
+**Maintainer**: [ChainSafe](https://chainsafe.io)
 
 **Genesis**:
 
@@ -111,8 +106,9 @@ Calibration network is the most realistic simulation of the Filecoin mainnet:
 - [Calibration Faucet - Zondax](https://beryx.zondax.ch/faucet)
 - [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-net-calibration-discuss](https://filecoinproject.slack.com/archives/C01D42NNLMS)
-- [Block explorer - Filscout for Calibration](https://calibration.filscout.com/en)
+- [Block explorer - Filfox for Calibration](https://calibration.filfox.info/en)
 - [Block explorer - Filscan for Calibration](https://calibration.filscan.io/)
+- [Block explorer - Beryx for Calibration](https://beryx.io)
 
 ### Devnet
 
