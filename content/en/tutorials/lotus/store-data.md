@@ -12,6 +12,10 @@ weight: 120
 toc: true
 ---
 
+{{< alert icon="warning" >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
+
 This section covers an _online_ data import and is mostly suitable for smaller pieces of content. For _offline_ import and data transfer check the [very large files]({{< relref "large-files" >}}) guide.
 
 [在这里阅读中文版](/zh/docs/developers/store-data/)

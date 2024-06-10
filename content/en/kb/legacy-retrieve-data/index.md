@@ -14,8 +14,8 @@ areas: ["Deprecated"]
 ---
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0).
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 Data retrieval is achieved by making a _retrieval deal_ with a _retrieval miner_. In this agreement, the client agrees to pay the miner a certain amount for a given piece of data. This payment happens incrementally as data is received, using a payment channel. Unlike storage deals, retrieval deals happen off-chain.
 

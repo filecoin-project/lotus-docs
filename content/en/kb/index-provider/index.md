@@ -17,8 +17,8 @@ areas: ["Deprecated"]
 ---
 
 {{< alert icon="warning" >}}
- The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
- {{< /alert >}}
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
+{{< /alert >}}
 
 The index provider is a component of the _markets_ subsystem that enables content routing backed by the Filecoin network: it announces what content is stored by a storage provider by advertising the list of multihashes extracted from CARv2 indices stored by [DagStore]({{< relref "../../kb/dagstore/" >}}) along with metadata on how to retrieve the content. The indexing announcements are then published onto a gossipsub topic, which is listened to by a set of indexer nodes.
 

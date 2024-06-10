@@ -17,7 +17,7 @@ areas: ["deprecated"]
 ---
 
 {{< alert icon="warning" >}}
-The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost)
+The Legacy Lotus/Lotus-Miner Markets sub-system reached EOL at the [end of the 31st January 2023](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0). It has been fully removed from the Lotus/Lotus-Miner codebase as of 10th June 2024. We recommend our users to use the [Boost markets sub-system](https://github.com/filecoin-project/boost) instead.
 {{< /alert >}}
 
 Lotus allows you to set different policies to calculate the quoted price of a retrieval deal. The two available policies are Default, and External.
