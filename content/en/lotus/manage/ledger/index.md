@@ -51,7 +51,7 @@ Ensure that you fully trust the Lotus node you are connecting to.
 {{< /alert >}}
 
 1. Navigate to `~/.lotus/config.toml`.
-1. In the Lotus configuration file, add `EnableLedger = true` to the `[Wallet]` section:
+1. In the Lotus configuration file, remove "#" and set `EnableLedger = true` in the `[Wallet]` section:
 
    ```toml
    [Wallet]
