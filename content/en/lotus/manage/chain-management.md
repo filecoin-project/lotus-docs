@@ -75,7 +75,7 @@ Validated 0 messages (0 per second)
 Use `chain getblock` to check when the last synced block was mined:
 
 ```shell
-date -d @$(./lotus chain getblock $(./lotus chain head) | jq .Timestamp)
+date -d @$(./lotus chain getblock $(./lotus chain head | sed 1q) | jq .Timestamp)
 ```
 
 This will output something like:
