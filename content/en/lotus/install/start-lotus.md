@@ -19,7 +19,7 @@ Now that we have installed Lotus we can download a lightweight chain snapshot an
     ```
 
 {{< alert icon="tip" >}}
-If you are looking for the snapshot for the Calibration test network, check out this [link]({{< relref "reference/basics/api-access" >}})
+If you are looking for the snapshot for the Calibration test network, you can get the latest snapshot with this link [https://forest-archive.chainsafe.dev/latest/calibnet/](https://forest-archive.chainsafe.dev/latest/calibnet/)
 {{< /alert >}}
 
 Now that we have downloaded a recent snapshot we can import the snapshot to Lotus and start the daemon process.
