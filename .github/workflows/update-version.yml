@@ -20,14 +20,40 @@ jobs:
       - name: Get the latest release
         id: get_release
         run: |
-          latest_release=$(curl -s https://api.github.com/repos/filecoin-project/lotus/releases/latest | jq -r .tag_name)
-          echo "latest_release=$latest_release" >> $GITHUB_OUTPUT
+          RELEASES=$(curl -s "https://api.github.com/repos/filecoin-project/lotus/releases")
+
+          get_latest_release() {
+            local TAG_PATTERN=$1
+            local RELEASES_TAGS=$(echo "$RELEASES" | jq -r --arg pattern "$TAG_PATTERN" '
+              .[] | select(.tag_name | test("^" + $pattern)) | select(.prerelease == false) |
+              .tag_name
+            ')
+
+            if [ -z "$RELEASES_TAGS" ]; then
+              exit 1
+            fi
+
+            local LATEST_RELEASE=$(echo "$RELEASES_TAGS" | sed '/-/!{s/$/_/}' | sort -V | sed 's/_$//' | tail -n 1)
+
+            if [ -z "$LATEST_RELEASE" ]; then
+              exit 1
+            fi
+
+            echo "$LATEST_RELEASE"
+          }
+
+          latest_lotus=$(get_latest_release "v")
+          latest_miner=$(get_latest_release "miner/v")
+
+          echo "latest_lotus=$latest_lotus" >> $GITHUB_OUTPUT
+          echo "latest_miner=$latest_miner" >> $GITHUB_OUTPUT
 
       - name: Update version.json
         run: |
-          jq --arg version "$LATEST_VERSION" '.lotus = $version' data/version.json > data/version.tmp && mv data/version.tmp data/version.json
+          jq --arg lotus "$LATEST_LOTUS" --arg miner "$LATEST_MINER" '.lotus = $lotus | .miner = $miner' data/version.json > data/version.tmp && mv data/version.tmp data/version.json
         env:
-          LATEST_VERSION: ${{ steps.get_release.outputs.latest_release }}
+          LATEST_LOTUS: ${{ steps.get_release.outputs.latest_lotus }}
+          LATEST_MINER: ${{ steps.get_release.outputs.latest_miner }}
 
       - name: Check if changes exist
         id: git_diff

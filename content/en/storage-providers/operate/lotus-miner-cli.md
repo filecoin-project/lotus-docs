@@ -11,4 +11,4 @@ weight: 350
 toc: true
 ---
 
-{{< remote-markdown "https://api.github.com/repos/filecoin-project/lotus/contents/documentation/en/cli-lotus-miner.md" >}}
+{{< remote-markdown "https://api.github.com/repos/filecoin-project/lotus/contents/documentation/en/cli-lotus-miner.md" "miner" "miner/v%s" >}}

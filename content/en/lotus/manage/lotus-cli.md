@@ -12,4 +12,4 @@ weight: 445
 toc: true
 ---
 
-{{< remote-markdown "https://api.github.com/repos/filecoin-project/lotus/contents/documentation/en/cli-lotus.md" >}}
+{{< remote-markdown "https://api.github.com/repos/filecoin-project/lotus/contents/documentation/en/cli-lotus.md" "lotus" "v%s" >}}

@@ -1,7 +1,11 @@
 {{ $baseUrl := .Get 0 }}
-{{ $release := .Get 1 | default (index .Site.Data.version "lotus") }}
+{{ $project := .Get 1 | default "lotus" -}}
+{{ $releaseFmt := .Get 2 | default "v%s" -}}
 
-{{ $url := printf "%s?ref=release/v%s" $baseUrl $release }}
+{{ $releaseValue := index .Site.Data.version $project }}
+{{ $releaseName := printf $releaseFmt $releaseValue }}
+
+{{ $url := printf "%s?ref=release/%s" $baseUrl $releaseName }}
 
 {{ $response := getJSON $url }}
 {{ $content := $response.content | base64Decode }}
