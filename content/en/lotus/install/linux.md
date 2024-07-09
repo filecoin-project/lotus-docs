@@ -55,23 +55,22 @@ Amazon Linux 2:
 sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y hwloc-devel
 ```
 
-
 1. Download the latest Linux bundle from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v1.28.1/lotus_v1.28.1_linux_amd64.tar.gz
+    wget https://github.com/filecoin-project/lotus/releases/download/v{{< version >}}/lotus_v{{< version >}}_linux_amd64.tar.gz
     ```
 
-1. Extract tar -xvf archive.tar.gz executable:
+2. Extract tar -xvf archive.tar.gz executable:
 
     ```shell
-    tar -xvf lotus_v1.28.1_linux_amd64.tar.gz
+    tar -xvf lotus_v{{< version >}}_linux_amd64.tar.gz
     ```
 
-1. Move the `lotus` binary to `/usr/local/bin`:
+3. Move the `lotus` binary to `/usr/local/bin`:
 
     ```shell
-    sudo mv lotus_1.28.1_linux_amd64/lotus /usr/local/bin/lotus
+    sudo mv lotus_{{< version >}}_linux_amd64/lotus /usr/local/bin/lotus
     ```
 
 ## Building from source
@@ -126,10 +125,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Go
 
-To build Lotus, you need a working installation of [Go 1.21.7 or higher](https://golang.org/dl/):
+To build Lotus, you need a working installation of [Go {{< version "go" >}} or higher](https://golang.org/dl/):
 
 ```shell
-wget -c https://golang.org/dl/go1.21.7.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+wget -c https://golang.org/dl/go{{< version "go" >}}.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
 ```
 
 {{< alert icon="tip">}}
