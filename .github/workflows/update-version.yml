@@ -32,8 +32,6 @@ jobs:
       - name: Check if changes exist
         id: git_diff
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
           git diff --exit-code || echo "has_changes=true" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
