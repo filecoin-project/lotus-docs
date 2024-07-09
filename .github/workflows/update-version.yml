@@ -1,0 +1,50 @@
+name: Bump Lotus Version
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Get the latest release
+        id: get_release
+        run: |
+          latest_release=$(curl -s https://api.github.com/repos/filecoin-project/lotus/releases/latest | jq -r .tag_name)
+          echo "latest_release=$latest_release" >> $GITHUB_OUTPUT
+
+      - name: Update version.json
+        run: |
+          jq --arg version "$LATEST_VERSION" '.lotus = $version' data/version.json > data/version.tmp && mv data/version.tmp data/version.json
+        env:
+          LATEST_VERSION: ${{ steps.get_release.outputs.latest_release }}
+
+      - name: Check if changes exist
+        id: git_diff
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git diff --exit-code || echo "has_changes=true" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.git_diff.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6.1.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bump-lotus-version
+          title: "Bump Lotus version to ${{ steps.get_release.outputs.latest_release }}"
+          body: "This PR bumps the Lotus version to ${{ steps.get_release.outputs.latest_release }}."
+          commit-message: "Bump Lotus version to ${{ steps.get_release.outputs.latest_release }}"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          add-paths: |
+            data/version.json
