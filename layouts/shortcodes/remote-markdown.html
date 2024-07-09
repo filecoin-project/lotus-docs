@@ -1,0 +1,8 @@
+{{ $baseUrl := .Get 0 }}
+{{ $release := .Get 1 | default (index .Site.Data.version "lotus") }}
+
+{{ $url := printf "%s?ref=release/v%s" $baseUrl $release }}
+
+{{ $response := getJSON $url }}
+{{ $content := $response.content | base64Decode }}
+{{ $content | markdownify }}
