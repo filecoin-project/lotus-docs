@@ -43,4 +43,4 @@ lotus daemon stop
 ./lotus-shed check-invariants --repo=[path-to-your-.lotus-repo] [ParentStateRoot] [ChainHeight] > /path/to/saved/file/invariants
 ```
 
-In the above command, replace `[ParentStateRoot]` and `[ChainHeight]` with the output you got from step 1. Running the invariant check command will take a while (up to two hours depending on your hardware).
+In the above command, replace `[ParentStateRoot]` and `[ChainHeight]` with the output from step 1. Running the invariant check command will take a while (up to two hours depending on your hardware).
