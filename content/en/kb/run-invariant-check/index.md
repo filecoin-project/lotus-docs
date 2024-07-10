@@ -15,7 +15,7 @@ areas: ["Lotus"]
 
 ## Prerequisites
 
-To run a invariant check on your Lotus node, you need:
+To run an invariant check on your Lotus node, you need:
 
 - A lotus node that can be stopped
 - [`lotus-shed` installed]({{< relref "../../kb/lotus-shed-not-installed//" >}})
