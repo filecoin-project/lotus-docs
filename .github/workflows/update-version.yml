@@ -70,8 +70,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: bump-lotus-version
           title: "Bump Lotus versions (node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }})"
-          body: "This PR bumps the Lotus version to ${{ steps.get_release.outputs.latest_release }}."
-          commit-message: "Bump Lotus version to ${{ steps.get_release.outputs.latest_release }}"
+          body: "This PR bumps the Lotus versions to node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }}."
+          commit-message: "Bump Lotus versions to node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }}."
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           add-paths: |
             data/version.json
