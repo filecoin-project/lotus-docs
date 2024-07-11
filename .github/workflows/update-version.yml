@@ -23,8 +23,8 @@ jobs:
           RELEASES=$(curl -s "https://api.github.com/repos/filecoin-project/lotus/releases")
 
           get_latest_release() {
-            local TAG_PATTERN=$1
-            local RELEASES_TAGS=$(echo "$RELEASES" | jq -r --arg pattern "$TAG_PATTERN" '
+            local TAG_PREFIX=$1
+            local RELEASES_TAGS=$(echo "$RELEASES" | jq -r --arg pattern "$TAG_PREFIX" '
               .[] | select(.tag_name | test("^" + $pattern)) | select(.prerelease == false) |
               .tag_name
             ')
@@ -39,7 +39,7 @@ jobs:
               exit 1
             fi
 
-            echo "$LATEST_RELEASE"
+            echo "${LATEST_RELEASE#$TAG_PREFIX}"
           }
 
           latest_lotus=$(get_latest_release "v")
@@ -66,7 +66,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: bump-lotus-version
-          title: "Bump Lotus version to ${{ steps.get_release.outputs.latest_release }}"
+          title: "Bump Lotus versions (node=${{ steps.get_release.outputs.latest_lotus }}, miner=${{ steps.get_release.outputs.latest_miner }})"
           body: "This PR bumps the Lotus version to ${{ steps.get_release.outputs.latest_release }}."
           commit-message: "Bump Lotus version to ${{ steps.get_release.outputs.latest_release }}"
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
