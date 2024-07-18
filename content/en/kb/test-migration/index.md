@@ -49,7 +49,7 @@ The last step will create the migration jobs and run through them. You should ob
 
 ## Benchmark migration in online mode
 
-Only run this on a node that you can afford to stop syncing the chain, and can be cleaned up later on.
+Run this only on a node on which you can afford to stop syncing the chain. It can be cleaned up later.
 
 1. On your currently synced and running Lotus node, run:
 
