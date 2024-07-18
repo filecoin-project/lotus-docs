@@ -20,7 +20,7 @@ To benchmark a migration on your Lotus node, you need:
 - A lotus node that can be stopped
 - [`lotus-shed` installed]({{< relref "../../kb/lotus-shed-not-installed//" >}})
 
-## Test premigration
+## Benchmark migration in offline mode
 
 1. On your currently synced and running Lotus node, run:
 
@@ -46,3 +46,46 @@ lotus daemon stop
 In the above command, replace `[nv-version-to-migrate-to]` with the network version you want to migrate to. For example, if you want to test the migration to network version 21, you would replace `[nv-version-to-migrate-to]` with `21`.
 
 The last step will create the migration jobs and run through them. You should observe the time it starts, and when it finishes, as well as the system load during this migration.
+
+## Benchmark migration in online mode
+
+Only run this on a node that you can afford to stop syncing the chain, and can be cleaned up later on.
+
+1. On your currently synced and running Lotus node, run:
+
+```shell with-output
+lotus chain list | tail -n 1 | awk -F: '{print $1}'
+```
+```
+4099620
+```
+
+This gives you the current Epoch your node is on.
+
+2. To run a migration in online mode (i.e., while it continues to sync the chain), we need to adjust the upgrade epoch manually in the code.
+
+In the build/buildconstants/params_mainnet.go file, adjust the upgrade epoch to an epoch around 50 epochs ahead of your current epoch. Example:
+
+```go
+var UpgradeWaffleHeight = abi.ChainEpoch(4099620+50)
+```
+
+3. Stop your Lotus daemon
+
+```shell
+lotus daemon stop
+```
+
+4. Rebuild Lotus
+
+```shell
+make all
+```
+
+5. Restart your daemon
+
+```shell 
+lotus daemon 
+```
+
+Then, wait for the epoch set in step 2 to arrive and confirm and benchmark the migration in online mode. You will have to revert/clean up the code changes you made in the repository before you can restart your node and catch up with the correct chain.
