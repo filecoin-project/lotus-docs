@@ -71,7 +71,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     ```
 
    {{< alert >}}
-   Checking out `releases` will always check out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v1.26.3`.
+   Checking out `releases` will always check out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v{{< version >}}`.
     {{< /alert >}}
 
 1. Remove any existing repositories.

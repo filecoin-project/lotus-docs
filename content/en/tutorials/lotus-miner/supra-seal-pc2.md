@@ -42,7 +42,7 @@ Please note that the `FFI_USE_FIXED_ROWS_TO_DISCARD=1` environment variable must
 sudo apt install build-essential libconfig++-dev libgmp-dev wget git curl
 ``` 
 
-2. Checkout [Lotus v1.26.3](https://github.com/filecoin-project/lotus/releases/tag/v1.26.3).
+2. Checkout [Lotus v{{< version >}}](https://github.com/filecoin-project/lotus/releases/tag/v{{< version >}}).
 3. [Build from source]({{< relref "../../lotus/install/linux/#native-filecoin-ffi" >}}) with the environment variable `FFI_USE_FIXED_ROWS_TO_DISCARD=1` exported.
 
 **Please note that you also need to export and build with this enviroment variable across the lotus-miner stack of machines. Else the SupraSeal PC2 will fail!**
