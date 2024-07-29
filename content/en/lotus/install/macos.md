@@ -34,7 +34,7 @@ You can quickly install Lotus using Homebrew on macOS.
 1. Install Lotus:
 
     ```shell
-    brew install lotus
+    brew install lotus --formula
     ```
 
 1. You should now have Lotus installed. You can now [start the Lotus daemon]().
