@@ -19,22 +19,26 @@ Lotus, the reference implementation of Filecoin and its sister-projects are big,
 The biggest and most active repositories we have today are:
 
 - [filecoin-project/lotus](https://github.com/filecoin-project/lotus)
+- [filecoin-project/builtin-actors](https://github.com/filecoin-project/builtin-actors)
+- [filecoin-project/ref-fvm](https://github.com/filecoin-project/ref-fvm)
 - [filecoin-project/rust-fil-proofs](https://github.com/filecoin-project/rust-fil-proofs)
 
-If you want to start contributing to the core of Filecoin, those repositories are a great place start. But the _Help Wanted_ label exists in several related projects:
+If you want to start contributing to the core of Filecoin, those repositories are a great place start. 
+
+But the _Help Wanted_ label also exists in several related projects:
 
 - [IPFS](https://github.com/ipfs)
 - [libp2p](https://github.com/libp2p)
-- [IPLD](https://github.com/libp2p)
+- [IPLD](https://github.com/ipld)
 - [Multiformats](https://github.com/multiformats)
 
 ## Community
 
 The Filecoin community is active and here to answer your questions in your channel of choice.
 
-For shorter-lived discussions, our community chat is open to all on both [Slack](https://filecoin.io/slack/)
+For shorter-lived discussions, our community chat is open to all on [Slack](https://filecoin.io/slack/) in the #fil-lotus-dev channel.
 
-For long-lived discussions and for support, please use the [discussion tab on GitHub](https://github.com/filecoin-project/lotus/discussions) instead of Slack. It’s easy for complex discussions to get lost in a sea of new messages on those chat platforms, and posting longer discussions and support requests on the forums helps future visitors, too.
+For long-lived discussions and for support, please use [Lotus GitHub discussions](https://github.com/filecoin-project/lotus/discussions) instead of Slack. It’s easy for complex discussions to get lost in a sea of new messages on those chat platforms, and posting longer discussions and support requests on the forums helps future visitors, too.
 
 ## Build Applications
 
@@ -48,8 +52,6 @@ Get started by looking at the list of projects currently built on Filecoin. Buil
 
 Filecoin is ultimately about building better protocols, and we always welcome ideas and feedback on how to improve those protocols.
 
+- [filecoin-project/FIPs](https://github.com/filecoin-project/FIPs)
 - [filecoin-project/specs](https://github.com/filecoin-project/specs)
 
-## Research
-
-Finally, we see Protocol Labs as a research lab, where YOUR ideas can become technologies that have a real impact on the world. If you're interested in contributing to our research, please reach out to [research@protocol.ai](mailto:research@protocol.ai) for more information. Include what your interests are so we can make sure you get to work on something fun and valuable.

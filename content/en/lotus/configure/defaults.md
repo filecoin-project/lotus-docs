@@ -419,7 +419,7 @@ The Lotus daemon stores a configuration file in `~/.lotus/config.toml`. Note tha
 
 ## Connectivity
 
-Usually your lotus daemon will establish connectivity with others in the network and try to make itself diallable using uPnP. If you wish to manually ensure that your daemon is reachable:
+Usually your lotus daemon will establish connectivity with others in the network and try to make itself diallable using UPnP. If you wish to manually ensure that your daemon is reachable:
 
 - Set a fixed port of your choice in the `ListenAddresses` in the Libp2p section (i.e. 6665).
 - Open a port in your router that is forwarded to this port. This is usually called featured as "Port forwarding" and the instructions differ from router model to model but there are many guides online.

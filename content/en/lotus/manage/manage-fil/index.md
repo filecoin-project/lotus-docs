@@ -41,7 +41,7 @@ Because they are more compact than public key addresses, ID addresses are often 
 
 While you can send FIL to an ID address using a wallet, you should first check the details for the account on [FilFox](https://filfox.info/) to see when the account was created, as well as the corresponding public key address. If the address was created very recently (within the [finality period](https://docs.filecoin.io/reference/glossary/#finality)) there is a small chance that it could be re-assigned as the network reaches consensus, and the public key address should be used instead.
 
-More information about addresses can be found in the [How Filecoin works](https://docs.filecoin.io/basics/the-blockchain/addresses/) section.
+More information about addresses can be found in the [Filecoin address docs](https://docs.filecoin.io/basics/the-blockchain/addresses/).
 
 ## Creating a wallet
 
@@ -83,7 +83,7 @@ waiting for confirmation..
 Created new multisig:  t01004 t2ff7ch2h7qr6f4q5lmvq3ajo6lxucei46attp3ai
 ```
 
-If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}})
+If you want to read more about multisignature wallets and how they function, you can go to the [multisig page]({{< relref "../../manage/multisig" >}}).
 
 ## Listing addresses
 

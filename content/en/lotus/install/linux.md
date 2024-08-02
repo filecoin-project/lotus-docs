@@ -170,7 +170,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
     The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
 
-1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
+1. If you are in China, see "[Lotus: tips when running in China]({{< relref "../../kb/nodes-in-china/" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
 
     a. If you have **an AMD Zen or Intel Ice Lake CPU (or later)**, enable the use of SHA extensions by adding these two environment variables:

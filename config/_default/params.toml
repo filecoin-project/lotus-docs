@@ -14,15 +14,15 @@ titleHome = "Lotus Docs"
 
 ## Twitter Cards
 twitterSite = "@filecoin"
-twitterCreator = "@protocollabs"
+twitterCreator = "@_FilOz"
 
 ## JSON-LD
 # schemaType = "Person"
 schemaType = "Organization"
 schemaName = "Lotus"
-schemaAuthor = "Protocol Labs"
-schemaAuthorTwitter = "https://twitter.com/protocollabs"
-schemaAuthorLinkedIn = "https://www.linkedin.com/in/protocollabs/"
+schemaAuthor = "FilOz"
+schemaAuthorTwitter = "https://x.com/_FilOz"
+schemaAuthorLinkedIn = "https://www.linkedin.com/company/filoz/"
 schemaAuthorGitHub = "https://github.com/filecoin-project"
 schemaLocale = "en-US"
 schemaLogo = "lotus.png"
@@ -50,8 +50,8 @@ portraitPhotoWidths = [800, 700, 600, 500]
 lqipWidth = "20x"
 
 # Footer
-footer = "Built by Protocol Labs."
-footer_link = "https://protocol.ai"
+footer = "Developed and Maintained by FilOz."
+footer_link = "https://filoz.org"
 
 # Feed
 copyRight = ""
