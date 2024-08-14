@@ -67,11 +67,15 @@ Filecoin local networks use slightly different binaries than those used in the F
 1. Checkout to the latest stable branch:
 
     ```shell
-   git checkout releases
+   git checkout <latest-version>
     ```
 
    {{< alert >}}
-   Checking out `releases` will always check out the latest stable release. If you need a specific release, specify a specific `<tag_or_release>`. For example: `git checkout v1.28.1`.
+   The `releases` branch has been deprecated. To get the latest version:\
+    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
+    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
+    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
+    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
     {{< /alert >}}
 
 1. Remove any existing repositories.
