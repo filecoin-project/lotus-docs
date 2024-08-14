@@ -120,7 +120,8 @@ Because of the novel architecture of the M1-based Mac computers, some specific e
     ```shell
     cd extern/filecoin-ffi
     git fetch -a
-    git checkout releases
+    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    git checkout $LATEST_RELEASE
     ```
 
 1. Create the `filecoin-ffi` executables:

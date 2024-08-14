@@ -165,10 +165,19 @@ Once all the dependencies are installed, you can build and install Lotus.
 1. Switch to the latest stable release branch:
 
     ```shell
-    git checkout releases
+    git pull
+    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    git checkout $LATEST_RELEASE
     ```
 
-    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
+    {{< alert >}}
+    The `releases` branch has been deprecated. To get the latest version:\
+    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
+    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
+    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
+    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
+    {{< /alert >}}
+
 
 1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
 1. Depending on your CPU model, you will want to export additional environment variables:
