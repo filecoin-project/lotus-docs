@@ -18,8 +18,8 @@ Usually, if you are updating Lotus, it as simple as rebuilding and re-installing
 
 ```shell
 git pull
-git checkout releases
-# 'releases' always checks out the latest stable release
+LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+git checkout $LATEST_RELEASE
 # if you need a specific release use 
 # git checkout <tag_or_release>
 git submodule update

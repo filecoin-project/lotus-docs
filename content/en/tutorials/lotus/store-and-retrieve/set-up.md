@@ -138,8 +138,8 @@ If you prefer to build from source, try these steps.
 5. Checkout the latest release
     
     ```shell
-    git checkout releases
-    ```
+    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    git checkout $LATEST_RELEASE    ```
 
 6. Setup some environment variables correctly
     

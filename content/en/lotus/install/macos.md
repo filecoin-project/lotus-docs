@@ -114,10 +114,18 @@ The installation instructions are different depending on which CPU is in your Ma
 1. Switch to the latest stable release branch:
 
     ```shell
-    git checkout releases
+    git pull
+    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    git checkout $LATEST_RELEASE
     ```
 
-    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
+    {{< alert >}}
+    The `releases` branch has been deprecated. To get the latest version:\
+    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
+    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
+    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
+    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
+    {{< /alert >}}
 
 1. Create the necessary environment variables to allow Lotus to run on M1 architecture:
 
@@ -157,10 +165,18 @@ These instructions are for installing Lotus on an Intel Mac. If you have an M1-b
 1. Switch to the latest stable release branch:
 
     ```shell
-    git checkout releases
+    git pull
+    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    git checkout $LATEST_RELEASE
     ```
 
-    The `releases` branch always contains the latest stable release for Lotus. If you want to checkout to a network other than mainnet, take a look at the [Switching networks guide →]({{< relref "switch-networks" >}})
+    {{< alert >}}
+    The `releases` branch has been deprecated. To get the latest version:\
+    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
+    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
+    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
+    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
+    {{< /alert >}}
 
 1. If you are in China, take a look at some [tips for running Lotus in China]({{< relref "../../kb/nodes-in-china/" >}})".
 
