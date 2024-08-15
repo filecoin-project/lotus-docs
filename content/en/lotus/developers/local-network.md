@@ -70,27 +70,21 @@ Filecoin local networks use slightly different binaries than those used in the F
    git checkout <latest-version>
     ```
 
-   {{< alert >}}
-   The `releases` branch has been deprecated. To get the latest version:\
-    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
-    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
-    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
-    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
-    {{< /alert >}}
+   The latest production release can be found on [GitHub](https://github.com/filecoin-project/lotus/releases) or via the [command line](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#why-is-the-releases-branch-deprecated-and-what-are-alternatives).
 
-1. Remove any existing repositories.
+2. Remove any existing repositories.
 
     ```shell
     rm -rf ~/.genesis-sectors
     ```
 
-1. Build the `2k` binary for Lotus:
+3. Build the `2k` binary for Lotus:
 
     ```shell
     make 2k
     ```
 
-1. Fetch the proving parameters for a 2048-byte sector size:
+4. Fetch the proving parameters for a 2048-byte sector size:
 
     ```shell
     ./lotus fetch-params 2048
@@ -104,13 +98,13 @@ Filecoin local networks use slightly different binaries than those used in the F
 
     This command may take several minutes to complete.
 
-1. (**Local network with Fil+**) Build `lotus-shed`:
+5. (**Local network with Fil+**) Build `lotus-shed`:
 
     ```shell
     make lotus-shed
     ```
 
-1. (**Local network with Fil+**) Create a BLS-addresses to serve as the first root key holder:
+6. (**Local network with Fil+**) Create a BLS-addresses to serve as the first root key holder:
 
     ```shell
     ./lotus-shed keyinfo new bls
@@ -122,7 +116,7 @@ Filecoin local networks use slightly different binaries than those used in the F
 
     Make a note of this address `<root-key-1>`, as you will need it in a later step.
 
-1. (**Local network with Fil+**) Create a BLS-addresses to serve as the second root key holder:
+7. (**Local network with Fil+**) Create a BLS-addresses to serve as the second root key holder:
 
     ```shell
     ./lotus-shed keyinfo new bls
@@ -134,7 +128,7 @@ Filecoin local networks use slightly different binaries than those used in the F
 
     Make a note of this address `<root-key-2>`, as you will need it in a later step.
 
-1. Pre-seal 2 sectors for the genesis block:
+8. Pre-seal 2 sectors for the genesis block:
 
     ```shell
     ./lotus-seed pre-seal --sector-size 2KiB --num-sectors 2
@@ -146,7 +140,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     2021-02-23T10:59:36.937-0500    INFO    preseal seed/seed.go:232        Writing preseal manifest to /home/user/.genesis-sectors/pre-seal-t01000.json
     ```
 
-1. Create the genesis block:
+9. Create the genesis block:
 
     ```shell
     ./lotus-seed genesis new localnet.json
@@ -154,13 +148,13 @@ Filecoin local networks use slightly different binaries than those used in the F
 
     This command doesn't output anything on success.
 
-1. (**Local network with Fil+**) Using `<root-key-1>` and `<root-key-2>`, set the root key holders in the genesis block with a signature threshold of 2 for the f080 actor:
+10. (**Local network with Fil+**) Using `<root-key-1>` and `<root-key-2>`, set the root key holders in the genesis block with a signature threshold of 2 for the f080 actor:
 
     ```shell
     ./lotus-seed genesis set-signers --threshold=2 --signers <root-key-1> --signers <root-key-2> localnet.json
     ```
 
-1. Create a pre-miner and an address with some funds:
+11. Create a pre-miner and an address with some funds:
 
     ```shell
     ./lotus-seed genesis add-miner localnet.json ~/.genesis-sectors/pre-seal-t01000.json
