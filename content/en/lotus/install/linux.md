@@ -170,13 +170,7 @@ Once all the dependencies are installed, you can build and install Lotus.
     git checkout $LATEST_RELEASE
     ```
 
-    {{< alert >}}
-    The `releases` branch has been deprecated. To get the latest version:\
-    Lotus Node: `git tag -l 'v*' | sort -V -r | head -n 1`  
-    Lotus Miner: `git tag -l 'miner/v*' | sort -V -r | head -n 1`\
-    If you need a specific release, specify a specific <tag_or_release>. For example: git checkout v1.28.1.\
-    Reference: [Release Policy](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#security-fix-policy)
-    {{< /alert >}}
+    The latest production release can be found on [GitHub](https://github.com/filecoin-project/lotus/releases) or via the [command line](https://github.com/filecoin-project/lotus/blob/master/LOTUS_RELEASE_FLOW.md#why-is-the-releases-branch-deprecated-and-what-are-alternatives).
 
 
 1. If you are in China, see "[Lotus: tips when running in China]({{< relref "" >}})".
