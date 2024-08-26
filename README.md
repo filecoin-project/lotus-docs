@@ -54,7 +54,10 @@ This site is published publicly using fleek.xyz so it accessible via vanilla bro
 * https://lotus.filecoin.io
 * https://lotus-docs.on-fleek.app
 
-"Fleek CI" is a configured GitHub app, and it's tied to the infra@filoz.org account.
+"Fleek CI" is a configured GitHub app for this repo that does the publishing.  
+It is tied to the infra@filoz.org fleek.xyz account.  (The credentials are stored in FilOz 1Password.)
+
+lotus.filecoin.io DNS configuration is done with sead.ai, as they are the DNS managers of the filecoin.io domain.
 
 ## License
 
