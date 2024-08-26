@@ -23,23 +23,20 @@ jobs:
       - name: Get the latest release
         id: get_release
         run: |
-          RELEASES=$(curl -s "https://api.github.com/repos/filecoin-project/lotus/releases")
+          REPO="filecoin-project/lotus"
+          RELEASES_TAGS=$(curl -s "https://api.github.com/repos/${REPO}/releases" | jq -r '.[] | select(.prerelease == false) | .tag_name')
 
           get_latest_release() {
             local TAG_PREFIX=$1
-            local RELEASES_TAGS=$(echo "$RELEASES" | jq -r --arg pattern "$TAG_PREFIX" '
-              .[] | select(.tag_name | test("^" + $pattern)) | select(.prerelease == false) |
-              .tag_name
-            ')
+            local RELEASES_TAGS_WITH_PREFIX=$(echo "$RELEASES_TAGS" | grep "${TAG_PREFIX}")
 
-            if [ -z "$RELEASES_TAGS" ]; then
-              exit 1
+            if [ -z "$RELEASES_TAGS_WITH_PREFIX" ]; then
+                exit 1
             fi
 
-            local LATEST_RELEASE=$(echo "$RELEASES_TAGS" | sed '/-/!{s/$/_/}' | sort -V | sed 's/_$//' | tail -n 1)
-
+            local LATEST_RELEASE=$(echo "$RELEASES_TAGS_WITH_PREFIX" | sort -V | tail -n 1)
             if [ -z "$LATEST_RELEASE" ]; then
-              exit 1
+                exit 1
             fi
 
             echo "${LATEST_RELEASE#$TAG_PREFIX}"
