@@ -48,6 +48,17 @@ If you want to build this site locally, run the following:
 1. To restart the local server, run `npm start` from within the `lotus-docs` folder.
 1. Run `npm run build` to publish the site. The project will be built and saved to the `public` folder.
 
+## Publishing
+
+This site is published publicly using fleek.xyz so it accessible via vanilla browser HTTPS and IPFS protocols:
+* https://lotus.filecoin.io
+* https://lotus-docs.on-fleek.app
+
+"Fleek CI" is a configured GitHub app for this repo that does the publishing.  
+It is tied to the infra@filoz.org fleek.xyz account.  (The credentials are stored in FilOz 1Password.)
+
+lotus.filecoin.io DNS configuration is done with sead.ai, as they are the DNS managers of the filecoin.io domain.
+
 ## License
 
 Dual-licensed by Protocol Labs under [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) and [MIT](http://opensource.org/licenses/MIT) terms, as explained in the [Permissive License Stack](https://protocol.ai/blog/announcing-the-permissive-license-stack/):
