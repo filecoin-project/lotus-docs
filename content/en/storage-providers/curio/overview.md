@@ -7,6 +7,7 @@ menu:
         parent: "curio"
 aliases:
   - /storage-providers/lotus-provider/overview
+  - /storage-providers/lotus-provider/setup
 weight: 105
 toc: true
 ---
