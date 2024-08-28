@@ -18,7 +18,7 @@ toc: true
 Joining the Filecoin network requires knowledge of existing peers in the network. On startup Lotus, as well as other
 implementations, attempt to retrieve peer information from a known set of bootstrap nodes.
 
-At present, these known bootstrap nodes are [included in](https://github.com/filecoin-project/lotus/blob/c46aea6a368bbebf4a22e9924a3ea3393170fe90/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
+At present, these known bootstrap nodes are [included in](https://github.com/filecoin-project/lotus/blob/master/build/bootstrap/mainnet.pi) Lotus releases, but the list is also configurable at runtime.
 
 Lotus is currently the only known filecoin implementation offering bootstrap functionality.
 
@@ -34,20 +34,14 @@ While it’s possible to synchronise a Lotus node with relatively low resources,
 marginally more resources, it’s important to ensure that a bootstrap node is able to stay synchronised with the
 network while also serving an unpredictable number of bootstrap requests.
 
-We currently run bootstrap nodes on the following hardware
-
-- Intel Xeon Platinum 8175M CPU @ 2.50GHz
-- 32Gb Memory
-- 5Mbps download speed, 2Mbps upload speed
-- 2Ti SSD storage for chain state storage
-
 It’s possible to reliably synchronise a bootstrap node with as few as 3 cores and 5Gb real memory, but you will need
 to monitor resource usage closely in periods of high demand, and account for additional disk space for virtual memory.
 
-To demonstrate the resource requirements of a bootstrap node, see the last 7 days (ATOW) cpu and memory profile of one
-(out of 9) bootstrap nodes on the network.
+To demonstrate the resource requirements of a bootstrap node, see a 7 day window of cpu and memory profiles of one
+bootstrap node on the network.
 ![7 Day CPU core usage profile](7d-cpu.png "7 Day CPU profile")
 ![7 Day Memory profile](7d-memory.png "7 Day Memory profile")
+
 ## Configuration
 We recommend the following configuration to be specified for running a bootstrap node.
 ```toml

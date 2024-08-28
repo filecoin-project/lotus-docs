@@ -33,25 +33,21 @@ To spin up a Lotus lite-node, you will need:
 If you have access to the full-node you're using, you need to make some minor modifications to its configuration.
 
 {{< alert icon="tip">}}
-If you are using the Protocol Labs `api.chain.love` Lotus full-node, you do not need to complete this section. The Protocol Labs Lotus full-node has been configured to accept all incoming requests, so you don't need to create any API keys.
-
-[Glif](https://api.node.glif.io/) endpoints also provide you with a production-ready publicly available node, that can be used without API keys: wss://wss.node.glif.io/apigw/lotus
+If you are using the [Glif Lotus RPC Nodes]({{< relref "../developers/glif-nodes" >}}), you do not need to complete this section. Those full-nodes have been configured to accept all incoming requests, so you don't need to create any API keys.
 
 If you are using a node-hosting service like [Infura](https://infura.io/), you may need to create an API key through the service website.
 {{< /alert >}}
 
-1. On your full-node open `~/.lotus/config` and:
+1. On your full-node: 
+    1. open `~/.lotus/config`
+    2. Uncomment line 3
+    3. Change `127.0.0.1` to `0.0.0.0`
+        ```toml
+        ListenAddress = "/ip4/0.0.0.0/tcp/1234/http"
+        ```
+    4. Save and exit the file
 
-    a. Uncomment line 3.
-    a. Change `127.0.0.1` to `0.0.0.0`.
-
-    ```toml
-    ListenAddress = "/ip4/0.0.0.0/tcp/1234/http"
-    ```
-
-    Save and exit the file.
-
-1. Create an API token for your lite-node to use:
+2. Create an API token for your lite-node to use:
 
     ```shell
     # lotus auth create-token --perm <read,write,sign,admin>
@@ -60,12 +56,12 @@ If you are using a node-hosting service like [Infura](https://infura.io/), you m
 
     Which permissions you choose will depend on your use case. Take a look at the [API tokens section to find out more →]({{< relref "reference/basics/api-access#api-tokens" >}})
 
-1. Send this API token to your lite-node or to whoever will be the administrator for the lite-node.
-1. If you have the `lotus daemon` running, stop it and start it again. This forces Lotus to open the API port we just set.
+3. Send this API token to your lite-node or to whoever will be the administrator for the lite-node.
+4. If you have the `lotus daemon` running, stop it and start it again. This forces Lotus to open the API port we just set.
 
 Next up, you'll create the Lotus executable on your lite-node and running it in _lite_ mode!
 
-## Create the executable
+## Create the lite-node executable
 
 You need to create the Lotus executable to run your lite-node with. This process is the same as when creating a full-node.
 
