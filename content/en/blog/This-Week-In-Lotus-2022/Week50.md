@@ -23,7 +23,7 @@ All presentations and videos from our Lotus, Data Onboarding and Friends day in 
 
 As mentioned last week, the Lotus team has been focusing on a lot of preliminary work and work scope for next network upgrade, nv18 - codenamed Hygge. And this week has no different!
 
-Check in on this thread to [see the current scope of nv18!](https://github.com/filecoin-project/tpm/discussions/115#discussioncomment-4337719) Jennijuju will send a timeline and scope update soon!
+Check in on this thread to [see the current scope of nv18!](https://github.com/filecoin-project/core-devs/discussions/115) Jennijuju will send a timeline and scope update soon!
 
 :screwdriver: **Fixes and Enhancements:**
 - A PR that adds the ability to list and remove expired claims for FIL+ deals is [now in review.](https://github.com/filecoin-project/lotus/pull/9875)

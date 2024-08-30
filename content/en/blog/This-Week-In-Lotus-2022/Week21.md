@@ -14,7 +14,7 @@ This week´s update is filled with a massive amount of new upcoming features!! W
 **NV16 Updates:**
 - FIP0030, FIP0031, and FIP0032 have passed out of Last Call status and are now accepted! :tada::rocket::fire: These FIPs, which jointly support the introduction of the non-programmable [Filecoin Virtual Machine](https://fvm.filecoin.io), are now ready for implementation.
 - The nv16 upgrade has undergone testing on the Caterpillar network this week, and numerous bugs have been surfaced and fixed. We will continue the testing on the Butterfly network next week.
-- The network upgrade is expected late June/early July; for more information, see [HERE](https://github.com/filecoin-project/tpm/discussions/90#discussioncomment-2426261).
+- The network upgrade is expected late June/early July; for more information, see [HERE](https://github.com/filecoin-project/core-devs/discussions/90#discussioncomment-2192904).
 
 **Bugfixes for common issues**
 - The `lotus-miner proving compute window-post <Deadline>` command lets you manually trigger a window-post computation, even on [deadlines/partitions](https://github.com/filecoin-project/lotus/pull/8737) that are faulty.

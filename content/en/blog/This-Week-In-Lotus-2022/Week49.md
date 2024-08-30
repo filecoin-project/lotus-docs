@@ -23,7 +23,7 @@ In addition to all the *FEVM-related* Filecoin improvement proposals that have b
 - [MarketNotifyDeal called by market actor on proposal client](https://github.com/filecoin-project/FIPs/discussions/549)
 - A FIP [revisiting the Sector Duration Multiplier.](https://github.com/filecoin-project/FIPs/discussions/554)
 
-You can check [out the current scope of nv18 here!](https://github.com/filecoin-project/tpm/discussions/115#discussioncomment-4337719)
+You can check [out the current scope of nv18 here!](https://github.com/filecoin-project/core-devs/discussions/115)
 
 :milky_way: **For builders excited about FVM:**
 [Check out Space Warp](https://spacewarp.fvm.dev/) - it is a jam-packed program for builders leading up to the launch of Filecoin’s Virtual Machine on mainnet.
