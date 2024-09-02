@@ -21,7 +21,7 @@ weight: 105
 toc: true
 ---
 
-<p>If you are not redirected, <a href="https://docs.curiostorage.org">click here</a>.</p>
+<p>Curio documents have been moved. If you are not redirected, <a href="https://docs.curiostorage.org">click here</a>.</p>
 
 <script type="text/javascript">
     window.location.href = "https://docs.curiostorage.org";
