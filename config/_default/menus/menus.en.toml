@@ -106,11 +106,11 @@
   identifier = "storage-providers-advanced-configurations"
   url = "/storage-providers/advanced-configurations"
 
-[[storage-providers]]
-  name = "Curio"
-  weight = 60
-  identifier = "curio"
-  url = "/storage-providers/curio"
+#[[storage-providers]]
+#  name = "Curio"
+#  weight = 60
+#  identifier = "curio"
+#  url = "https://docs.curiostorage.org"
 
 
 [[tutorials]]
