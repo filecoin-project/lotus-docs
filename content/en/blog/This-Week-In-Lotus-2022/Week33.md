@@ -26,7 +26,7 @@ The full documentation :book: for **SplitStoreV2** is currently in review, and w
 - We will start working on the accepted [FIP0034](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0034.md) - `Fix pre-commit deposit independent of sector content` which is scheduled to be included in the nv17 upgrade.
 
 **Lotus community:**
-- The Lotus team will be at both [FIL Singapore](https://www.fil-singapore.io) and [FIL Lisbon](https://hub.fil.org/fil-lisbon) where we will host a **Lotus & friends day (registration opening soon, stay tuned)**. We hope to see many of you there :smile:.
+- The Lotus team will be at both [FIL Singapore](https://fil.org/events/fil-singapore.) and [FIL Lisbon](https://hub.fil.org/fil-lisbon) where we will host a **Lotus & friends day (registration opening soon, stay tuned)**. We hope to see many of you there :smile:.
 - :mega: The authors of the FIP0036 are looking for more [feedback from Lotus-users](https://github.com/filecoin-project/FIPs/discussions/421), and especially want them to check out the [SP return calculator](https://observablehq.com/@starboard/sproi-fip-duration-v2).
 
 That’s it for the week! **Have a great weekend!** :sunny:
