@@ -89,19 +89,19 @@ Building Lotus requires some system dependencies, usually provided by your distr
 Arch:
 
 ```shell
-sudo pacman -Syu opencl-icd-loader gcc git bzr jq pkg-config opencl-icd-loader opencl-headers opencl-nvidia hwloc
+sudo pacman -Syu opencl-icd-loader gcc git jq pkg-config opencl-icd-loader opencl-headers opencl-nvidia hwloc
 ```
 
 Ubuntu/Debian:
 
 ```shell
-sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
 ```
 
 Fedora:
 
 ```shell
-sudo dnf -y install gcc make git bzr jq pkgconfig mesa-libOpenCL mesa-libOpenCL-devel opencl-headers ocl-icd ocl-icd-devel clang llvm wget hwloc hwloc-devel
+sudo dnf -y install gcc make git jq pkgconfig mesa-libOpenCL mesa-libOpenCL-devel opencl-headers ocl-icd ocl-icd-devel clang llvm wget hwloc hwloc-devel
 ```
 
 OpenSUSE:
@@ -113,7 +113,7 @@ sudo zypper in gcc git jq make libOpenCL1 opencl-headers ocl-icd-devel clang llv
 Amazon Linux 2:
 
 ```shell
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y git gcc bzr jq pkgconfig clang llvm mesa-libGL-devel opencl-headers ocl-icd ocl-icd-devel hwloc-devel
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y git gcc jq pkgconfig clang llvm mesa-libGL-devel opencl-headers ocl-icd ocl-icd-devel hwloc-devel
 ```
 
 ### Rustup
