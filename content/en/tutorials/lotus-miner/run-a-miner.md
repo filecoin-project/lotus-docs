@@ -45,7 +45,7 @@ This section will cover the installation, configuration and starting a lotus nod
 1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `RUST_GPU_TOOLS_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention.
     
     ```shell
-    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
     
@@ -144,7 +144,7 @@ This section will cover the installation, configuration, and how to start the lo
 1. We have bundled all the install steps into the below code snippets so you can just copy and paste them into your terminal. If you would prefer to run each command step by step, take a look at the [Installation guide]({{<relref "/lotus/install/linux#building-from-source" >}}). `FFI_USE_CUDA=1` variable forces the use of CUDA architecture instead of OpenCL for Nvidia cards. `RUST_GPU_TOOLS_CUSTOM_GPU` variable need to be set after driver 475+ due to a change in naming convention:
 
     ```shell
-    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git bzr jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
+    sudo apt install mesa-opencl-icd ocl-icd-opencl-dev gcc git jq pkg-config curl clang build-essential hwloc libhwloc-dev wget -y && sudo apt upgrade -y
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     ```
     
