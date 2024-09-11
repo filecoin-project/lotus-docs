@@ -166,7 +166,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
     ```shell
     git pull
-    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    LATEST_RELEASE=$(git tag -l 'v*' | grep -v "-" | sort -V -r | head -n 1) # Finds the latest Lotus Node release
     git checkout $LATEST_RELEASE
     ```
 
