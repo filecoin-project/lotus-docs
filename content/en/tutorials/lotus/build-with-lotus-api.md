@@ -46,7 +46,7 @@ The following steps walk through how to install a Lotus node.. Further, more det
     ```shell
     git clone https://github.com/filecoin-project/lotus.git
     cd lotus
-    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    LATEST_RELEASE=$(git tag -l 'v*' | grep -v "-" | sort -V -r | head -n 1) # Finds the latest Lotus Node release
     git checkout $LATEST_RELEASE # if you need a specific release use 
     git checkout <tag_or_release>
     ```

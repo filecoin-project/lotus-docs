@@ -115,7 +115,7 @@ The installation instructions are different depending on which CPU is in your Ma
 
     ```shell
     git pull
-    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    LATEST_RELEASE=$(git tag -l 'v*' | grep -v "-" | sort -V -r | head -n 1) # Finds the latest Lotus Node release
     git checkout $LATEST_RELEASE
     ```
 
@@ -160,7 +160,7 @@ These instructions are for installing Lotus on an Intel Mac. If you have an M1-b
 
     ```shell
     git pull
-    LATEST_RELEASE=$(git tag -l 'v*' | sort -V -r | head -n 1) # Finds the latest Lotus Node release
+    LATEST_RELEASE=$(git tag -l 'v*' | grep -v "-" | sort -V -r | head -n 1) # Finds the latest Lotus Node release
     git checkout $LATEST_RELEASE
     ```
 
