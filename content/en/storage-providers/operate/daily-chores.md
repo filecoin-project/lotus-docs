@@ -141,31 +141,6 @@ Renewing 2 sectors:
 
 Please note that the command has to be executed with the `--really-do-it` flag to actually send the message. It's good practice to check that the output is what the user expected before adding the flag.
 
-## Move partitions
-Moving partitions between deadlines is enabled in the network version 21 upgrade in the Filecoin network. In lotus a storage provider can move their partitions with the `lotus-miner actor move-partitions` command. The command is a powerful tool that provides flexibility and control to Storage Providers (SPs) in managing their proving periods, which can be beneficial for various reasons such as system performance optimization, cost savings, and improved duty roster management. A couple advanteges of moving partitions between deadlines can be:
-
-- **Creation of user-defined maintenance windows:** SPs can create designated periods for maintenance activities without the risk of losing power.
-- **Definition of free hours for better duty roster:** SPs can allocate specific hours of the day as free hours, enabling them to optimize their duty roster. This can be achieved by moving partitions out of those hours.
-- **Cost savings for large SPs on WindowPoSt hardware:** Balancing the number of partitions across all the deadlines allows large SPs to optimize their hardware usage and reduce WindowPoSt hardware costs.
-- **Relieving access stress on storage nodes:** In scenarios where an excessive number of partitions are concentrated within a single deadline on specific storage nodes, redistributing some partitions to other deadlines can help alleviate access stress and improve overall performance.
-
-### Command Usage
-
-Here is the basic usage of the command:
-
-```shell
-lotus-miner actor move-partitions --orig-deadline ORIG_DEADLINE --dest-deadline DEST_DEADLINE --partition-indices PARTITION_INDICES --really-do-it
-```
-
-Replace `ORIG_DEADLINE`, `DEST_DEADLINE`, and `PARTITION_INDICES` with your desired values. `PARTITION_INDICES` should be a comma-separated list of partition indices starting from 0.
-
-The `--really-do-it` flag is required to actually execute the action. Without this flag, the command will only simulate the action.
-
-### When to Use
-
-You can use this command when the deadline of the partitions has been proven. You can move partitions from one deadline to another if the proving period of the destination deadline is within 24 hours after the last proving deadline of the partitions.
-
-
 ## Compacting partitions
 
 Expired, removed and terminated sectors will be listed in your proving partition until you compact your partitions. To clean up a partition in a deadline we can use the `lotus-miner sectors compact-partitions` command. The network enforces a security measure that disallows compacting a partition in a deadline until 1800 epochs (15 hours) have passed. This is to enforce that compacting a deadline cannot be used to prevent invalid posts from being disputed.
