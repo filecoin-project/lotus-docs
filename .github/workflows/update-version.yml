@@ -53,8 +53,16 @@ jobs:
         run: |
           REPO="filecoin-project/lotus"
           LATEST_RELEASE=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | jq -r .tag_name)
-          GO_MOD_URL="https://raw.githubusercontent.com/${REPO}/${LATEST_RELEASE}/go.mod"
-          GO_VERSION=$(curl -s $GO_MOD_URL | grep -oP 'go \K[0-9]+\.[0-9]+')
+          # Changed from go.mod to GO_VERSION_MIN
+          GO_MOD_URL="https://raw.githubusercontent.com/${REPO}/${LATEST_RELEASE}/GO_VERSION_MIN"
+          
+          GO_VERSION=$(curl -s $GO_MOD_URL | awk 'NR==1 {print $1}')
+          if [ -z "$GO_VERSION" ]; then
+            echo "Error: Could not find Go version in GO_VERSION_MIN"
+            exit 1
+          fi
+          
+          echo "Found Go version: $GO_VERSION"
           echo "current_go_version=$GO_VERSION" >> $GITHUB_OUTPUT
 
       - name: Update version.json
