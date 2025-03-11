@@ -17,6 +17,7 @@ aliases:
   - /storage-providers/curio/sealing
   - /storage-providers/curio/tasks
   - /storage-providers/curio/ui
+  - /storage-providers/curio/overview
 weight: 105
 toc: true
 ---
