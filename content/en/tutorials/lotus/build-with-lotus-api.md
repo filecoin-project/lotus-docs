@@ -25,6 +25,7 @@ In this tutorial we'll set up a Lotus node locally and use the filecoin.js libra
 Before getting started, you should be familiar with:
 
 - [How Filecoin works](https://docs.filecoin.io/basics/what-is-filecoin/overview/)
+- [What is Lotus](https://lotus.filecoin.io/lotus/get-started/what-is-lotus/)
 - [Using the Lotus command line](https://lotus.filecoin.io/lotus/manage/lotus-cli/)
 
 Also, make sure you have the following dependencies installed with the latest version:
