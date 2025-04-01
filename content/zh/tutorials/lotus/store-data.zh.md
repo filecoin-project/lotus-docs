@@ -2,7 +2,7 @@
 title: "存储数据"
 description: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
 lead: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
-draft: false 
+draft: true 
 menu:
     tutorials:
         parent: "tutorials-lotus"
@@ -11,7 +11,9 @@ weight: 355
 toc: true
 ---
 
-提示：提示：本章介绍“线上”数据导入，主要适用于较少的内容。对于“离线”导入和数据传输，请查看very large files 指引，该指引补充了一些更深入的知识
+{{< alert icon="warning" >}}
+Legacy Lotus/Lotus-Miner 市场子系统已于 [2023年1月31日](https://github.com/filecoin-project/lotus/releases/tag/v1.18.0) 结束生命周期(EOL)。截至2024年6月10日，它已从 Lotus/Lotus-Miner 代码库中完全移除。我们建议用户使用 [Boost](https://github.com/filecoin-project/boost)、[Curio Market](https://docs.curiostorage.org/curio-market) 或 [Droplet](https://droplet.venus-fil.io/intro/) 作为替代方案。
+{{< /alert >}}
 
 ## 概述
 

@@ -61,7 +61,7 @@
     </button>
     {{ end -}}
 
-    {{ if eq .Site.Params.options.multilingualMode true -}}
+    {{ if eq .Site.Params.options.multilingualMode false -}}
     <div class="dropdown order-md-2">
       <button class="btn btn-doks-light dropdown-toggle" id="doks-languages" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
         {{ .Site.Params.languageISO }}
