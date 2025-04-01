@@ -2,7 +2,7 @@
 title: "存储数据"
 description: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
 lead: "本指引将向您展示如何使用 Lotus 在 Filecoin 网络上导入和进行交易以存储数据"
-draft: false 
+draft: true 
 menu:
     tutorials:
         parent: "tutorials-lotus"
