@@ -5,7 +5,8 @@ on:
     - cron: "0 2 * * 0"  # Runs at 2 AM every Sunday
   workflow_dispatch:
   pull_request:
-    branches: [ main ]
+    types: [opened, synchronize]
+    branches: [main]
 
 jobs:
   linkChecker:
