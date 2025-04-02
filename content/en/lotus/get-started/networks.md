@@ -51,7 +51,7 @@ See https://github.com/filecoin-project/lotus/blob/master/build/bootstrap/mainne
 - [Stats dashboard: Starboard](https://dashboard.starboard.ventures/dashboard)
 - [Slack Channel for Updates: #fil-network-announcements](https://filecoinproject.slack.com/archives/C01AC6999KQ)
 - [Slack Channel for Questions: #fil-help](https://filecoinproject.slack.com/archives/CEGN061C5)
-- [Block explorer: Filfox](https://filfox.io/)
+- [Block explorer: Filfox](https://filfox.info/en)
 - [Block explorer: Filscan](https://filscan.io/)
 - [Block explorer: Filutils](https://www.filutils.com/)
 - [Block explorer: Beryx](https://beryx.io)
