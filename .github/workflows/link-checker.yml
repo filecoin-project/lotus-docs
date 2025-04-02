@@ -24,6 +24,6 @@ jobs:
         with:
           args: |
             --accept 100..=103,200..=299,403,429
-            --exclude '(twitter|x)\.com|localhost'
+            --exclude '(twitter|x)\.com|localhost|\{\{.*\}\}'
             --retry-wait-time 15
             '**/*.md'
