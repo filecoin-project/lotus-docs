@@ -22,7 +22,7 @@ The release has numerous other enhancements and bug fixes, so make sure to [chec
 - Network version 17 is now deployed to the Butterfly network :butterfly: The network will most likely be reset multiple times as we test out different network upgrade test cases.
 
 As you may know by now, we are hosting a Lotus, data onboarding, and friends day on Nov 2nd in Lisbon! The registration for the event is finally open, and the schedule has been finalised. **Come meet us in Lisbon, on Nov 2nd!**
-- Full schedule can be seen here: [https://bit.ly/lotusnfriends](https://lotusandfriends.com/)
+- Full schedule can be seen here: [https://bit.ly/lotusnfriends](https://www.youtube.com/watch?v=LI3K-BkGitg&list=PLhmonklIHGmXfYI9jUxZPx-_HF0REhq5Q)
 - Get your ticket to the event here: [https://bit.ly/lotusnfriends](https://bit.ly/lotusnfriends) 
 
 That´s it for the week! **Have a great weekend!** :sunny:
