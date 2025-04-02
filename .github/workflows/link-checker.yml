@@ -1,0 +1,29 @@
+name: Site Link Checker
+
+on:
+  schedule:
+    - cron: "0 2 * * 0"  # Runs at 2 AM every Sunday
+  workflow_dispatch:
+  pull_request:
+    types: opened
+    branches: main
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Lychee Link Checker
+        uses: lycheeverse/lychee-action@v2.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: lychee
+        with:
+          args: |
+            --accept 100..=103,200..=299,403,429
+            --exclude '(twitter|x)\.com'
+            --retry-wait-time 15
+            '**/*.md'
