@@ -81,4 +81,4 @@ The `lotus-shed` application provides additional Ledger functionality, like list
 
 Previously, Ledger Live users were required to install Glif Wallet to store FIL. The Ledger Live integration launched by Zondax is a convenient alternative where holders can enjoy the same benefits within the Ledger Live app without the need for a browser-based solution.
 
-The Glif wallet integration is still available at [glif.io](https://glif.io). Glif is an open-source, browser-based Filecoin wallet. It uses the [Filecoin Ledger integration library](https://github.com/Zondax/ledger-filecoin/), which has been security audited by a third-party.
+The Glif wallet integration is still available at [glif.io](https://www.glif.io/en). Glif is an open-source, browser-based Filecoin wallet. It uses the [Filecoin Ledger integration library](https://github.com/Zondax/ledger-filecoin/), which has been security audited by a third-party.

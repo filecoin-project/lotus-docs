@@ -12,6 +12,6 @@ The Protocol Labs Network has been gathering in Lisbon this week for **LabWeek22
 :flag-pt: **Lotus, Data onboarding and Friends day**
 - It´s only four days until [Lotus, Data onboarding and friends](https://pretix.eu/solaris/lotus-data-onboarding-friends-summit/) day on the 2nd of November. We have an impressive lineup of speakers and are looking forward to seeing everybody there.
 
-Also, a big shoutout :loudspeaker: to the Filecoin Saturn Network :ringed_planet:, a content delivery network (CDN) built on Filecoin which launched this week. Join the #filecoin-saturn in Slack and check out [https://strn.network/](https://strn.network/) for more information about how you can join the network.
+Also, a big shoutout :loudspeaker: to the Filecoin Saturn Network :ringed_planet:, a content delivery network (CDN) built on Filecoin which launched this week. Join the #filecoin-saturn in Slack and check out [https://saturn.tech](https://saturn.tech) for more information about how you can join the network.
 
 That’s it for the week! **Have a great weekend!** :sunny:

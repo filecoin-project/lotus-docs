@@ -21,7 +21,7 @@ The Lotus team will be holding a **Shark :shark: AMA** on Thursday 20th October 
 - Mainnet: `2022-11-09`
 
 :flag-pt: **Lotus, Data Onboarding and friends Day**
-- We have an amazing lineup of speakers for the Lotus, Data Onboarding and friends day: [https://lotusandfriends.com](https://lotusandfriends.com).
+- We have an amazing lineup of speakers for the Lotus, Data Onboarding and friends day: [https://lotusandfriends.com](https://www.youtube.com/playlist?list=PLhmonklIHGmXfYI9jUxZPx-_HF0REhq5Q).
    - There will be deep dives on the lotus-miner, the Filecoin Virtual Machine, and Filecoin Proofs. You will get to know Boost better from presentation held by Boost Core Engineers, there will be panels on the “Path to Become an Enterprise Storage Provider in Filecoin” and a “E2E of Filecoin, Storage, Compute & Retrievals”" workshop. You will get intros to Filecoin Station and Filecoin Saturn, plus many many other interesting talks!!
 - **Ticket are limited and going fast** :zap:️:bullettrain_side:, so secure your spot to the event here: [https://pretix.eu/solaris/lotus-data-onboarding-friends-summit/](https://pretix.eu/solaris/lotus-data-onboarding-friends-summit/).
 
