@@ -15,7 +15,7 @@ areas: ["sealing", "Lotus Worker", "Lotus Miner"]
 
 ## Problem
 
-Attempting to [create a Lotus deal](https://lotus.filecoin.io/tutorials/lotus/store-and-retrieve/store-data/) results in the following error.
+Attempting to [create a deal](https://lotus.filecoin.io/tutorials/lotus/store-and-retrieve/store-data)) results in the following error.
 
 ```json
 "ERROR: resolve address f1qim...jjy: actor not found"
