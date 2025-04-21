@@ -100,7 +100,7 @@ You can confirm everything is setup correctly by visiting:
 
 1. Log in to Grafana using the web interface.
 2. Navigate to "Home" > "Dashboards" > Click the drop down menu in the "New" button and select "Import"
-3. Paste any of the existing dashboards in lotus/metrics/grafana into the "Import via panel json" panel.
+3. Paste any of the existing dashboards in `lotus/metrics/grafana` into the "Import via panel json" panel.
 4. Click "Load"
 5. Select the Prometheus datasource you created earlier
 6. Click "Import"
