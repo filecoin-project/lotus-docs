@@ -5,7 +5,7 @@
 {{ $releaseValue := index .Site.Data.version $project }}
 {{ $releaseName := printf $releaseFmt $releaseValue }}
 
-{{ $url := printf "%s?ref=release/%s" $baseUrl $releaseName }}
+{{ $url := printf "%s?ref=%s" $baseUrl $releaseName }}
 
 {{ $response := getJSON $url }}
 {{ $content := $response.content | base64Decode }}
