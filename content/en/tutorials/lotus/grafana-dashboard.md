@@ -1,7 +1,7 @@
 ---
-title: "Grafana dashboard"
-description: "Lotus supports exporting a wide range of metrics, enabling users to gain insights into its behavior and effectively analyze performance issues. These metrics can be conveniently utilized with aggregation and visualization tools for in-depth analysis. In this tutorial, we show how you can set up Prometheus and Grafana for monitoring and visualizing these metrics"
-lead: "Lotus supports exporting a wide range of metrics, enabling users to gain insights into its behavior and effectively analyze performance issues. These metrics can be conveniently utilized with aggregation and visualization tools for in-depth analysis. In this tutorial, we show how you can set up Prometheus and Grafana for monitoring and visualizing these metrics"
+title: "Grafana dashboard for Lotus"
+description: "This tutorial shows how to set up Prometheus and Grafana for monitoring your Lotus node with the pre-configured dashboards provided in the Lotus repository."
+lead: "Lotus supports exporting a wide range of metrics that can be visualized with Grafana. This tutorial guides you through setting up Prometheus and Grafana to monitor your Lotus node."
 draft: false
 menu:
     tutorials:
@@ -10,152 +10,58 @@ weight: 150
 toc: true
 ---
 
-- **Prometheus**: Prometheus is an open-source monitoring and alerting toolkit designed for collecting and storing time-series data from various systems and applications. It provides a robust querying language (PromQL) and a web-based interface for analyzing and visualizing metrics.
+## Overview
 
-- **Grafana**: Grafana is an open-source platform for creating, sharing, and visualizing interactive dashboards and graphs. It integrates with various data sources, including Prometheus, to help users create meaningful visual representations of their data and set up alerting based on specific conditions.
+Lotus nodes export metrics that can be collected and visualized to gain insights into node performance and behavior. This tutorial will show you how to:
+
+1. Set up Prometheus to collect metrics from your Lotus node
+2. Set up Grafana to visualize these metrics
+3. Import the pre-configured dashboards from the Lotus repository
 
 ## Prerequisites
 
-- You have a Linux or Mac based system.
-- You have root access to install software
-- You have lotus node already running
+- A Linux or macOS system with a running Lotus node
+- Administrative/root access to install software
+- The Lotus repository cloned on your system (for config files and dashboards)
 
-**Note:** These instructions have been tested on Ubuntu 23.04 and on Mac M1.
+## Setting up monitoring
 
-## Install and start Prometheus
+The Lotus repository includes detailed instructions for setting up Prometheus and Grafana, along with pre-configured dashboards in its [metrics documentation](https://github.com/filecoin-project/lotus/blob/master/metrics/README.md).
 
-### On Ubuntu:
+Follow these steps:
 
-```
-# install prometheus
-sudo apt-get install prometheus
+1. Clone the Lotus repository if you haven't already:
+   ```
+   git clone https://github.com/filecoin-project/lotus.git
+   cd lotus
+   ```
 
-# copy the prometheus.yml config to the correct directory
-sudo cp metrics/prometheus.yml /etc/prometheus/prometheus.yml
+2. Follow the instructions in the [Lotus metrics README](https://github.com/filecoin-project/lotus/blob/master/metrics/README.md) to:
+   - Install and configure Prometheus
+   - Install and configure Grafana
+   - Import the pre-configured dashboards
 
-# start prometheus
-sudo systemctl start prometheus
+## Available Dashboards
 
-# enable prometheus on boot (optional)
-sudo systemctl enable prometheus
-```
+The Lotus repository includes several pre-configured dashboards:
 
-### On Mac:
+- **F3Dashboard.json**: Monitors F3 metrics like GPBFT instance completion rates, error counts, phase transitions, and encoding performance.
+- **MessageExecution.json**: Provides insights into message execution metrics, focusing on ApplyBlocks timing data.
+- **Node system health**: When using node_exporter, you can monitor system-level metrics like CPU, memory, disk, and network usage.
 
-```
-# install prometheus
-brew install prometheus
+## Troubleshooting
 
-# start prometheus
-prometheus --config.file=lotus/metrics/prometheus.yml
-```
+If you encounter issues:
 
-## Install and start Grafana
+1. Make sure your Lotus node is running and exporting metrics
+2. Verify Prometheus is configured to scrape your Lotus node endpoint
+3. Check that Grafana can connect to your Prometheus instance
+4. Ensure you're importing the dashboard JSON files correctly
 
-### On Ubuntu:
+For more detailed troubleshooting, refer to the [Lotus metrics documentation](https://github.com/filecoin-project/lotus/blob/master/metrics/README.md).
 
-```
-# download the Grafana GPG key in our keyring
-wget -q -O - https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/grafana.gpg > /dev/null
+## Additional Resources
 
-# add the Grafana repository to our APT sources
-echo "deb [signed-by=/usr/share/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
-
-# update our APT cache
-sudo apt-get update
-
-# now we can install grafana
-sudo apt-get install grafana
-
-# start grafana
-sudo systemctl start grafana-server
-
-# start grafana on boot (optional)
-sudo systemctl enable grafana-server
-```
-
-### On Mac:
-
-```
-brew install grafana
-brew services start grafana
-```
-
-You should now have Prometheus and Grafana running on your machine where Prometheus is already collecting metrics from your Lotus node (if its running) and saving it to a database.
-
-You can confirm everything is setup correctly by visiting:
-- Prometheus (http://localhost:9090): You can open the metric explorer and view any of the aggregated metrics scraped from Lotus
-- Grafana (http://localhost:3000): Default username/password is admin/admin, remember to change it after login.
-
-## Add Prometheus as datasource in Grafana
-
-1. Log in to Grafana using the web interface.
-2. Navigate to "Home" > "Connections" > "Data Sources."
-3. Click "Add data source."
-4. Choose "Prometheus."
-5. In the "HTTP" section, set the URL to http://localhost:9090.
-6. Click "Save & Test" to verify the connection.
-
-## Import one of the existing dashboards in lotus/metrics/grafana
-
-1. Log in to Grafana using the web interface.
-2. Navigate to "Home" > "Dashboards" > Click the drop down menu in the "New" button and select "Import"
-3. Paste any of the existing dashboards in `lotus/metrics/grafana` into the "Import via panel json" panel.
-4. Click "Load"
-5. Select the Prometheus datasource you created earlier
-6. Click "Import"
-
-### Available Dashboards
-
-The Lotus repository includes a couple of pre-configured dashboards that can be imported:
-
-- **F3Dashboard.json**: A comprehensive dashboard for monitoring F3 metrics, including GPBFT instance completion rates, error counts by type, phase transitions, and encoding performance. This is ideal for monitoring the health and performance of your F3 system.
-- **MessageExecution.json**: Provides insights into message execution metrics, with a focus on ApplyBlocks timing data.
-
-You can find all available Grafana dashboard templates in the [Lotus GitHub repository](https://github.com/filecoin-project/lotus/tree/master/metrics/grafana).
-
-# Collect system metrics using node_exporter
-
-Although Lotus includes many useful metrics it does not include system metrics, such as information about cpu, memory, disk, network, etc. If you are investigating an issue and have Lotus metrics available, its often very useful to correlate certain events or behaviour with general system metrics.
-
-## Install node_exporter
-If you have followed this guide so far and have Prometheus and Grafana already running, you can run the following commands to also aggregate the system metrics:
-
-Ubuntu:
-
-```
-
-# download the newest release by https://github.com/prometheus/node_exporter/releases (it was 1.6.1 as of writing this doc)
-wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
-
-# extract the release (it contains a single binary plus some docs)
-tar -xf node_exporter-1.6.1.linux-amd64.tar.gz
-
-# move it to /usr/local/bin
-sudo mv node_exporter-1.6.1.linux-amd64/node_exporter /usr/local/bin
-
-# run node_exporter
-node_exporter
-```
-
-Mac:
-
-```
-# install node_exporter
-brew install node_exporter
-
-# run node_exporter
-node_exporter
-```
-
-## Import system dashboard
-
-Since our `prometheus.yml` config already has configuration for node_exporter, we can go straight away and import a Grafana dashboard for viewing:
-
-1. Download the most recent dashboard from https://grafana.com/grafana/dashboards/1860-node-exporter-full/
-2. Log in to Grafana (http://localhost:3000) using the web interface.
-3. Navigate to "Home" > "Dashboards" > Click the drop down menu in the "New" button and select "Import"
-4. Paste any of the existing dashboards in lotus/metrics/grafana into the "Import via panel json" panel.
-5. Click "Load"
-6. Select the Prometheus datasource you created earlier
-7. Click "Import"
+- [Prometheus documentation](https://prometheus.io/docs/introduction/overview/)
+- [Grafana documentation](https://grafana.com/docs/)
+- [Lotus metrics documentation](https://github.com/filecoin-project/lotus/blob/master/metrics/README.md)
