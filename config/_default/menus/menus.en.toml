@@ -1,11 +1,11 @@
 [[main]]
   name = "Lotus"
-  url = "/lotus/get-started/what-is-lotus"
+  url = "/lotus/get-started/what-is-lotus/"
   weight = 10
 
 [[main]]
   name = "Storage Providers"
-  url = "/storage-providers/get-started/overview"
+  url = "/storage-providers/get-started/overview/"
   weight = 20
 
 [[main]]
@@ -21,7 +21,7 @@
 
 [[main]]
   name = "Knowledge Base"
-  url = "/kb"
+  url = "/kb/"
   identifier = "kb"
   weight = 50
 
