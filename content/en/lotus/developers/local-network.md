@@ -181,7 +181,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
 
    {{< alert >}}
-   <u>Warning</u>: Don’t add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
    {{< /alert >}}
 
     ```shell
@@ -238,13 +238,13 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 1. (**Local network with Fil+**) Import the first root key holder address:
 
     ```shell
-    lotus wallet import bls-<root-key-1>.keyinfo 
+    ./lotus wallet import bls-<root-key-1>.keyinfo 
     ```
 
 1. (**Local network with Fil+**) Import the second root key holder address:
 
     ```shell
-    lotus wallet import bls-<root-key-2>.keyinfo 
+    ./lotus wallet import bls-<root-key-2>.keyinfo 
     ```
 
 Congratulations! You've set up a fully functioning local Filecoin network.
@@ -303,7 +303,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Create a wallet addresses for the first notary `<notary-1>`:
 
     ```shell
-    lotus wallet new secp256k1
+    ./lotus wallet new secp256k1
     ```
 
     ```plaintext
@@ -313,7 +313,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Create a wallet addresses for the second notary `<notary-2>`:
 
     ```shell
-    lotus wallet new secp256k1
+    ./lotus wallet new secp256k1
     ```
 
     ```plaintext
@@ -342,7 +342,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Inspect the `f080` actor to view the parameters needed by `<root-key-2>` to approve the proposal created in the previous step:
 
     ```shell
-    lotus msig inspect f080
+    ./lotus msig inspect f080
     ```
 
     ```plaintext
@@ -361,7 +361,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Using the parameters displayed in the previous step, have the second root key holder `<root-key-2>` approve the proposal from `<root-key-1>`:
 
     ```shell
-    lotus msig approve  --from=t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq f080 0 t0101 f06 0 2 82550122b8c615145baa529b6923780dc680756355a1874400989680
+    ./lotus msig approve  --from=t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq f080 0 t0101 f06 0 2 82550122b8c615145baa529b6923780dc680756355a1874400989680
     ```
 
     ```plaintext
@@ -371,7 +371,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Check that `<notary-1>` is in the list of notaries:
 
     ```shell
-    lotus filplus list-notaries
+    ./lotus filplus list-notaries
     ```
 
     ```plaintext
@@ -391,7 +391,7 @@ In this section, you will grant datacap to a client from a notary.
 1. Grant datacap from `<notary-1>` to a client, and specify the amount of bytes in datacap you want to give the client.
 
 ```shell
-lotus filplus grant-datacap --from=<notary-1> <client-address> <bytes>
+./lotus filplus grant-datacap --from=<notary-1> <client-address> <bytes>
 ```
 
 ```plaintext
@@ -417,7 +417,7 @@ Using the Filecoin EVM runtime features within a Lotus node, you can deploy and 
 1. Create a new `f4` address:
 
     ```shell
-    lotus wallet new delegated
+    ./lotus wallet new delegated
     ```
     
     ```plaintext
@@ -427,7 +427,7 @@ Using the Filecoin EVM runtime features within a Lotus node, you can deploy and 
 1. Using the output of the previous command, find the associated Ethereum address using `lotus evm stat`:
 
     ```shell
-    lotus evm stat f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
+    ./lotus evm stat f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey
     ```
 
     ```plaintext
@@ -439,7 +439,7 @@ Using the Filecoin EVM runtime features within a Lotus node, you can deploy and 
     You can also supply `lotus evm stat` an ethereum address to get the corresponding Filecoin address:
 
     ```shell
-    lotus evm stat 0xa7cfe88fe6858e2ba1fe9eaec174be70d38ee2b7
+    ./lotus evm stat 0xa7cfe88fe6858e2ba1fe9eaec174be70d38ee2b7
     ```
 
     ```plaintext
@@ -452,7 +452,7 @@ Using the Filecoin EVM runtime features within a Lotus node, you can deploy and 
 1. Deploy the `testcoin.bin` using `emv deploy`:
 
     ```shell
-    lotus evm deploy --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey testcoin.bin
+    ./lotus evm deploy --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey testcoin.bin
     ```
 
     ```plaintext
@@ -470,13 +470,13 @@ Using the Filecoin EVM runtime features within a Lotus node, you can deploy and 
 
 
     ```shell
-    lotus evm invoke <ID address> <calldata>
+    ./lotus evm invoke <ID address> <calldata>
     ```
 
     For example:
 
     ```shell
-    lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey f01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
+    ./lotus evm invoke --from=f410fu7h6rd7gqwhcxip6t2xmc5f6odjy5yvxaih7xey f01008 f8b2cb4f000000000000000000000000ff00000000000000000000000000000000000064
     ```
 
     ```plaintext
