@@ -351,8 +351,8 @@ In this section, you will add two notaries to your local network with Fil+.
     Threshold: 2 / 2
     Signers:
     ID      Address
-    t0100   t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq
-    t0101   t3uzbu6ey3wqop6uesj5tr6g4ntl3rocdymrxfhej2cuwmjmtdvughkhelijcr6rv4ewdghfxxswvqjtit5adq
+    t0100   t3uzbu6ey3wqop6uesj5tr6g4ntl3rocdymrxfhej2cuwmjmtdvughkhelijcr6rv4ewdghfxxswvqjtit5adq
+    t0101   t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq
     Transactions:  1
     ID      State    Approvals  To      Value   Method          Params
     0       pending  1          t06     0 FIL   AddVerifier(2)  82550122b8c615145baa529b6923780dc680756355a1874400989680
@@ -361,7 +361,7 @@ In this section, you will add two notaries to your local network with Fil+.
 1. Using the parameters displayed in the previous step, have the second root key holder `<root-key-2>` approve the proposal from `<root-key-1>`:
 
     ```shell
-    ./lotus msig approve  --from=t3wjygqclp4bmahoxlf3ncm2pe4m2mray275fqcjgj3l4actndmmpx3wwbxkjwgianbj33mp76ngb542ugtpdq f080 0 t0101 f06 0 2 82550122b8c615145baa529b6923780dc680756355a1874400989680
+    ./lotus msig approve --from=<root-key-2> f080 0 <root-key-1> t06 0 2 82550122b8c615145baa529b6923780dc680756355a1874400989680
     ```
 
     ```plaintext
