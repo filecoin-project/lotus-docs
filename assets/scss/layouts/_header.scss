@@ -1,3 +1,5 @@
+$nav-link-color-hover: $purple-300;
+
 .banner .nav li {
   @extend .nav-item;
 }
@@ -121,7 +123,7 @@ button#doks-versions {
 
 .offcanvas .nav-link:hover,
 .offcanvas .nav-link:focus {
-  color: $link-color;
+  color: $nav-link-color-hover;
 }
 
 .offcanvas .nav-link.active {
