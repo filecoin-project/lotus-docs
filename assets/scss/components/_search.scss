@@ -74,3 +74,83 @@
     padding-left: 1rem;
   }
 }
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  transition: all 0.15s ease;
+
+  &:hover {
+    .search-icon {
+      color: $gray-600;
+    }
+
+    .is-search {
+      border-color: $gray-400;
+    }
+  }
+}
+
+.search-icon {
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $gray-500;
+  pointer-events: none;
+  transition: color 0.15s ease;
+}
+
+.is-search {
+  padding-left: 2.5rem !important;
+  transition: all 0.15s ease;
+  border: 1px solid $gray-300;
+
+  &:focus {
+    border-color: $gray-400;
+    box-shadow: 0 0 0 0.1rem rgba($gray-400, 0.1);
+  }
+
+  // Style the clear button (X) for Chrome/Safari
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // Style the clear button (X) for Firefox
+  &::-moz-search-clear {
+    height: 14px;
+    width: 14px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // Style the clear button (X) for Edge/IE
+  &::-ms-clear {
+    height: 14px;
+    width: 14px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E") no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

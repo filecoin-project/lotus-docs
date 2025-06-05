@@ -101,8 +101,14 @@
 
     {{ if .Site.Params.options.flexSearch -}}
     <form class="doks-search position-relative flex-grow-1 me-auto">
-      <input id="search" class="form-control is-search" type="search" placeholder="Search docs..." aria-label="Search docs..." autocomplete="off">
-      <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+      <div class="search-wrapper position-relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6c757d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon position-absolute">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search" class="form-control is-search pl-4 pr-2" type="search" placeholder="Search docs" aria-label="Search Lotus documentation" autocomplete="off">
+        <div id="suggestions" class="shadow bg-white rounded d-none"></div>
+      </div>
     </form>
     {{ end -}}
 
