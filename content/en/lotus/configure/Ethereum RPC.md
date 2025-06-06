@@ -15,17 +15,33 @@ With the Filecoin EVM runtime being deployed on Filecoin mainnet via the network
 
 ### EnableEthRPC
 
-To enable the service set the value below to `true`:
+To enable the service, set both values below to `true`:
 
 ```toml
 [Fevm]
-  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
-  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
+  # EnableEthRPC enables eth_ RPC methods.
+  # Note: Setting this to true will also require that ChainIndexer is enabled, otherwise it will cause an error at startup.
+  # Set EnableIndexer in the ChainIndexer section of the config to true to enable the ChainIndexer.
   #
   # type: bool
   # env var: LOTUS_FEVM_ENABLEETHRPC
-   EnableEthRPC = true
+  EnableEthRPC = true
+
+[ChainIndexer]
+  # EnableIndexer controls whether the chain indexer is active.
+  # The chain indexer is responsible for indexing tipsets, messages, and events from the chain state.
+  # It is a crucial component for optimizing Lotus RPC response times.
+  # If EnableEthRPC or EnableActorEventsAPI are set to true, the ChainIndexer must be enabled using
+  # this option to avoid errors at startup.
+  #
+  # type: bool
+  # env var: LOTUS_CHAININDEXER_ENABLEINDEXER
+  EnableIndexer = true
 ```
+
+{{< alert icon="important" >}}
+**ChainIndexer Requirement**: The ChainIndexer (`EnableIndexer = true`) is mandatory when enabling EthRPC. The ChainIndexer maintains the required indices for Ethereum-compatible queries and proper EthRPC operation.
+{{< /alert >}}
 
 Once you have enabled EthRPC in your Lotus node, you can start using it to interact with Ethereum smart contracts. To do so, you can use any Ethereum client library that supports JSON-RPC over HTTP or WebSocket, such as web3.js or ethers.js.
 
@@ -33,86 +49,93 @@ To use the Ethereum client library with your Lotus node, you need to configure i
 By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v1`.
 
 ### Configuration Options
+
+Note: these configuration options are a subset snapshot from [default-lotus-config.toml](https://github.com/filecoin-project/lotus/blob/master/documentation/en/default-lotus-config.toml).  Please consult the latest default configuration for the most updated options, defaults, and documentation.
+
 ```toml
 [Fevm]
-  # EnableEthRPC enables eth_ rpc, and enables storing a mapping of eth transaction hashes to filecoin message Cids.
-  # This will also enable the RealTimeFilterAPI and HistoricFilterAPI by default, but they can be disabled by config options above.
+  # EnableEthRPC enables eth_ RPC methods.
+  # Note: Setting this to true will also require that ChainIndexer is enabled, otherwise it will cause an error at startup.
+  # Set EnableIndexer in the ChainIndexer section of the config to true to enable the ChainIndexer.
   #
   # type: bool
   # env var: LOTUS_FEVM_ENABLEETHRPC
   #EnableEthRPC = false
 
-  # EthTxHashMappingLifetimeDays the transaction hash lookup database will delete mappings that have been stored for more than x days
-  # Set to 0 to keep all mappings
+  # EthTraceFilterMaxResults sets the maximum results returned per request by trace_filter
+  #
+  # type: uint64
+  # env var: LOTUS_FEVM_ETHTRACEFILTERMAXRESULTS
+  #EthTraceFilterMaxResults = 500
+
+  # EthBlkCacheSize specifies the size of the cache used for caching Ethereum blocks.
+  # This cache enhances the performance of the eth_getBlockByHash RPC call by minimizing the need to access chain state for
+  # recently requested blocks that are already cached.
+  # The default size of the cache is 500 blocks.
+  # Note: Setting this value to 0 disables the cache.
   #
   # type: int
-  # env var: LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS
-  #EthTxHashMappingLifetimeDays = 0
+  # env var: LOTUS_FEVM_ETHBLKCACHESIZE
+  #EthBlkCacheSize = 500
 
-  [Fevm.Events]
-    # EnableEthRPC enables APIs that
-    # DisableRealTimeFilterAPI will disable the RealTimeFilterAPI that can create and query filters for actor events as they are emitted.
-    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
-    #
-    # type: bool
-    # env var: LOTUS_FEVM_EVENTS_DISABLEREALTIMEFILTERAPI
-    #DisableRealTimeFilterAPI = false
+[ChainIndexer]
+  # See the "ChainIndexer" section below for more info on the ChainIndexer.
+  # 
+  # EnableIndexer controls whether the chain indexer is active.
+  # The chain indexer is responsible for indexing tipsets, messages, and events from the chain state.
+  # It is a crucial component for optimizing Lotus RPC response times.
+  # If EnableEthRPC or EnableActorEventsAPI are set to true, the ChainIndexer must be enabled using
+  # this option to avoid errors at startup.
+  #
+  # type: bool
+  # env var: LOTUS_CHAININDEXER_ENABLEINDEXER
+  #EnableIndexer = false
 
-    # DisableHistoricFilterAPI will disable the HistoricFilterAPI that can create and query filters for actor events
-    # that occurred in the past. HistoricFilterAPI maintains a queryable index of events.
-    # The API is enabled when EnableEthRPC is true, but can be disabled selectively with this flag.
-    #
-    # type: bool
-    # env var: LOTUS_FEVM_EVENTS_DISABLEHISTORICFILTERAPI
-    #DisableHistoricFilterAPI = false
+  # GCRetentionEpochs specifies the number of epochs for which data is retained in the Indexer.
+  # The garbage collection (GC) process removes data older than this retention period.
+  # Setting this to 0 disables GC, preserving all historical data indefinitely.
+  #
+  # See https://github.com/filecoin-project/lotus/blob/master/documentation/en/chain-indexer-overview-for-operators.md#chainindexer-config for more info.
+  #
+  # type: int64
+  # env var: LOTUS_CHAININDEXER_GCRETENTIONEPOCHS
+  #GCRetentionEpochs = 0
 
-    # FilterTTL specifies the time to live for actor event filters. Filters that haven't been accessed longer than
-    # this time become eligible for automatic deletion.
-    #
-    # type: Duration
-    # env var: LOTUS_FEVM_EVENTS_FILTERTTL
-    #FilterTTL = "24h0m0s"
+[Events]
+  # EnableActorEventsAPI enables the Actor events API that enables clients to consume events
+  # emitted by (smart contracts + built-in Actors).
+  # Note: Setting this to true will also require that ChainIndexer is enabled, otherwise it will cause an error at startup.
+  #
+  # type: bool
+  # env var: LOTUS_EVENTS_ENABLEACTOREVENTSAPI
+  #EnableActorEventsAPI = false
 
-    # MaxFilters specifies the maximum number of filters that may exist at any one time.
-    #
-    # type: int
-    # env var: LOTUS_FEVM_EVENTS_MAXFILTERS
-    #MaxFilters = 100
+  # FilterTTL specifies the time to live for actor event filters. Filters that haven't been accessed longer than
+  # this time become eligible for automatic deletion.
+  #
+  # type: Duration
+  # env var: LOTUS_EVENTS_FILTERTTL
+  #FilterTTL = "1h0m0s"
 
-    # MaxFilterResults specifies the maximum number of results that can be accumulated by an actor event filter.
-    #
-    # type: int
-    # env var: LOTUS_FEVM_EVENTS_MAXFILTERRESULTS
-    #MaxFilterResults = 10000
+  # MaxFilters specifies the maximum number of filters that may exist at any one time.
+  #
+  # type: int
+  # env var: LOTUS_EVENTS_MAXFILTERS
+  #MaxFilters = 100
 
-    # MaxFilterHeightRange specifies the maximum range of heights that can be used in a filter (to avoid querying
-    # the entire chain)
-    #
-    # type: uint64
-    # env var: LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE
-    #MaxFilterHeightRange = 2880
+  # MaxFilterResults specifies the maximum number of results that can be accumulated by an actor event filter.
+  #
+  # type: int
+  # env var: LOTUS_EVENTS_MAXFILTERRESULTS
+  #MaxFilterResults = 10000
 
-    # DatabasePath is the full path to a sqlite database that will be used to index actor events to
-    # support the historic filter APIs. If the database does not exist it will be created. The directory containing
-    # the database must already exist and be writeable. If a relative path is provided here, sqlite treats it as
-    # relative to the CWD (current working directory).
-    #
-    # type: string
-    # env var: LOTUS_FEVM_EVENTS_DATABASEPATH
-    #DatabasePath = ""
+  # MaxFilterHeightRange specifies the maximum range of heights that can be used in a filter (to avoid querying
+  # the entire chain)
+  #
+  # type: uint64
+  # env var: LOTUS_EVENTS_MAXFILTERHEIGHTRANGE
+  #MaxFilterHeightRange = 2880
 ```
-
-### Environment variables
-
-- `LOTUS_FVM_CONCURRENCY`: Users with higher available memory can experiment with setting LOTUS_FVM_CONCURRENCY to higher values, up to 48, to allow for more concurrent FVM execution.
-- `LOTUS_FEVM_ENABLEETHRPC`: Enables the Eth RPC feature and allows storing a mapping of Eth transaction hashes to Filecoin message CIDs.
-- `LOTUS_FEVM_ETHTXHASHMAPPINGLIFETIMEDAYS`: The number of days after which a transaction hash lookup database will delete mappings that have been stored.
-- `LOTUS_FEVM_EVENTS_DISABLEREALTIMEFILTERAPI` : Disables the RealTimeFilterAPI that can create and query filters for actor events as they are emitted. 
-- `LOTUS_FEVM_EVENTS_DISABLEHISTORICFILTERAPI` : Disables the HistoricFilterAPI that can create and query filters for actor events that occurred in the past.
-- `LOTUS_FEVM_EVENTS_MAXFILTERS` : Maximum number of filters that can exist at any one time.
-- `LOTUS_FEVM_EVENTS_MAXFILTERRESULTS` : Maximum number of results that can be accumulated by an actor event filter.
-- `LOTUS_FEVM_EVENTS_MAXFILTERHEIGHTRANGE` : Maximum range of heights that can be used in a filter to avoid querying the entire chain.
-- `LOTUS_FEVM_EVENTS_DATABASEPATH` : The full path to a SQLite database that will be used to index actor events to support the HistoricFilterAPI. If the database does not exist, it will be created. 
 
 ### Utilities
 
@@ -180,3 +203,19 @@ waiting for message to execute...
 Gas used:  2459725
 0000000000000000000000000000000000000000000000000000000000000000
 ```
+
+## ChainIndexer
+
+The ChainIndexer is a critical component introduced in Lotus v1.31.0 that provides indexing capabilities for the Filecoin blockchain. It's essential for EthRPC functionality and various blockchain query operations.
+
+For comprehensive information about ChainIndexer configuration, operation, and troubleshooting, please refer to the [ChainIndexer Overview for Operators](https://github.com/filecoin-project/lotus/blob/master/documentation/en/chain-indexer-overview-for-operators.md) documentation in the Lotus GitHub repository.
+
+### Key ChainIndexer Features
+
+- **Blockchain Indexing**: Provides efficient indexing of data for faster queries
+- **Backfill Support**: Allows backfilling of historical data when needed
+- **Performance Optimization**: Improves query performance for applications requiring blockchain data access
+
+### ChainIndexer Configuration
+
+For detailed configuration options, operational procedures, and advanced settings, consult the [complete ChainIndexer documentation](https://github.com/filecoin-project/lotus/blob/master/documentation/en/chain-indexer-overview-for-operators.md).
