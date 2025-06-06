@@ -6,11 +6,11 @@ if (search !== null) {
 }
 
 function inputFocus(e) {
-  if (e.ctrlKey && e.key === '/' ) {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
     e.preventDefault();
     search.focus();
   }
-  if (e.key === 'Escape' ) {
+  if (e.key === 'Escape') {
     search.blur();
     suggestions.classList.add('d-none');
   }
