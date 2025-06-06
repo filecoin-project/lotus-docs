@@ -95,6 +95,8 @@ Note: these configuration options are a subset snapshot from [default-lotus-conf
   # The garbage collection (GC) process removes data older than this retention period.
   # Setting this to 0 disables GC, preserving all historical data indefinitely.
   #
+  # See https://github.com/filecoin-project/lotus/blob/master/documentation/en/chain-indexer-overview-for-operators.md#chainindexer-config for more info.
+  #
   # type: int64
   # env var: LOTUS_CHAININDEXER_GCRETENTIONEPOCHS
   #GCRetentionEpochs = 0
