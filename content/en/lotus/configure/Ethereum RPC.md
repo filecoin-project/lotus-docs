@@ -137,20 +137,6 @@ Note: these configuration options are a subset snapshot from [default-lotus-conf
   #MaxFilterHeightRange = 2880
 ```
 
-### Environment variables
-
-- `LOTUS_FVM_CONCURRENCY`: Users with higher available memory can experiment with setting LOTUS_FVM_CONCURRENCY to higher values, up to 48, to allow for more concurrent FVM execution.
-- `LOTUS_FEVM_ENABLEETHRPC`: Enables the Eth RPC feature.
-- `LOTUS_FEVM_ETHTRACEFILTERMAXRESULTS`: Sets the maximum results returned per request by trace_filter.
-- `LOTUS_FEVM_ETHBLKCACHESIZE`: Specifies the size of the cache used for caching Ethereum blocks.
-- `LOTUS_CHAININDEXER_ENABLEINDEXER`: Enables the chain indexer which is required for EthRPC functionality.
-- `LOTUS_CHAININDEXER_GCRETENTIONEPOCHS`: Specifies the number of epochs for which data is retained in the indexer.
-- `LOTUS_EVENTS_ENABLEACTOREVENTSAPI`: Enables the Actor events API that enables clients to consume events emitted by smart contracts and built-in actors.
-- `LOTUS_EVENTS_FILTERTTL`: Specifies the time to live for actor event filters.
-- `LOTUS_EVENTS_MAXFILTERS`: Maximum number of filters that can exist at any one time.
-- `LOTUS_EVENTS_MAXFILTERRESULTS`: Maximum number of results that can be accumulated by an actor event filter.
-- `LOTUS_EVENTS_MAXFILTERHEIGHTRANGE`: Maximum range of heights that can be used in a filter to avoid querying the entire chain.
-
 ### Utilities
 
 The Lotus command line interface also has a new set of commands that allow you to interact with the Filecoin EVM runtime:
