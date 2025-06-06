@@ -79,6 +79,8 @@ Note: these configuration options are a subset snapshot from [default-lotus-conf
   #EthBlkCacheSize = 500
 
 [ChainIndexer]
+  # See the "ChainIndexer" section below for more info on the ChainIndexer.
+  # 
   # EnableIndexer controls whether the chain indexer is active.
   # The chain indexer is responsible for indexing tipsets, messages, and events from the chain state.
   # It is a crucial component for optimizing Lotus RPC response times.
