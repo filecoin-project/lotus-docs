@@ -49,6 +49,9 @@ To use the Ethereum client library with your Lotus node, you need to configure i
 By default, the `eth_rpc` API is available at `http://127.0.0.1:1234/rpc/v1`.
 
 ### Configuration Options
+
+Note: these configuration options are a subset snapshot from [default-lotus-config.toml](https://github.com/filecoin-project/lotus/blob/master/documentation/en/default-lotus-config.toml).  Please consult the latest default configuration for the most updated options, defaults, and documentation.
+
 ```toml
 [Fevm]
   # EnableEthRPC enables eth_ RPC methods.
