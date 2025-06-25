@@ -96,10 +96,6 @@ lotus net id 12D3KooWBF8cpp65hp2u9LK5mh19x67ftAam84z9LsfaquTDSBpt
 
 If you want to run a Lotus lite node connected to Glif endpoints, there are some specific considerations:
 
-{{< alert icon="warning" >}}
-When using Lotus v1.33.0 or later with lite nodes, you may encounter WebSocket errors because the lite node assumes the full node supports RPC v2, which Glif nodes do not currently support.
-{{< /alert >}}
-
 For lite node connections without authentication, you can use:
 
 ```shell
