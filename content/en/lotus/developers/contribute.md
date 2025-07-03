@@ -36,7 +36,7 @@ But the _Help Wanted_ label also exists in several related projects:
 
 The Filecoin community is active and here to answer your questions in your channel of choice.
 
-For shorter-lived discussions, our community chat is open to all on [Slack](https://filecoinproject.slack.com/) in the #fil-lotus-dev channel.
+For shorter-lived discussions, our community chat is open to all on [Slack](https://filecoin.io/slack/) in the #fil-lotus-dev channel.
 
 For long-lived discussions and support, please use [Lotus GitHub discussions](https://github.com/filecoin-project/lotus/discussions) instead of Slack. It’s easy for complex discussions to get lost in a sea of new messages on those chat platforms, and posting longer discussions and support requests on the forums helps future visitors, too.
 
