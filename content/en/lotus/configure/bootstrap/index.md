@@ -94,4 +94,4 @@ each network [here](https://github.com/filecoin-project/lotus/tree/master/build/
 ```
 
 ## For prospective operators
-If you're running a bootstrap node, and wish to join the known bootstrap nodes list, please get in touch over [filecoin slack](https://filecoin.io/slack/).
+If you're running a bootstrap node, and wish to join the known bootstrap nodes list, please get in touch over in the [#fil-lotus-help](https://filecoinproject.slack.com/archives/CPFTWMY7N) channel on Slack.
