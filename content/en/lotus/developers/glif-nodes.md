@@ -42,7 +42,7 @@ You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc
 Custom endpoints can be requested, including advanced permission settings. Let us know your use case.
 
 {{< alert icon="tip" >}}
-For support, questions and current status, visit the [#fil-glif-node-hosting](https://filecoinproject.slack.com/archives/C017HM9BJ8Z) channel in [Filecoin Community Slack](https://filecoin.io/slack).
+For support, questions and current status, visit the [#fil-glif-node-hosting](https://filecoinproject.slack.com/archives/C017HM9BJ8Z) channel in Filecoin Slack.
 {{< /alert >}}
 
 ## Get started
