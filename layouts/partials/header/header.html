@@ -37,6 +37,7 @@
             {{- $active = or $active (and (eq .Name "Developers") (eq $current.Section "developers")) -}}
             {{- $active = or $active (and (eq .Name "Knowledge Base") (eq $current.Section "kb")) -}}
             {{- $active = or $active (and (eq .Name "Tutorials") (eq $current.Section "tutorials")) -}}
+            {{- $active = or $active (and (eq .Name "Reference") (eq $current.Section "reference")) -}}
             {{- $active = or $active (and (eq .Name "Blog") (eq $current.Section "blog" "authors")) -}}
             <li class="nav-item">
               <a class="nav-link ps-0 py-1{{ if $active }} active{{ end }}" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
