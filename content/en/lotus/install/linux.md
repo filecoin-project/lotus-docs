@@ -1,6 +1,6 @@
 ---
-title: "Linux"
-description: "This page provide detailed steps to install Lotus on Linux."
+title: "Lotus on Linux"
+description: "This page provides detailed steps to install Lotus on Linux."
 draft: false
 menu:
     lotus:
@@ -132,7 +132,7 @@ wget -c https://golang.org/dl/go{{< version "go" >}}.linux-amd64.tar.gz -O - | s
 ```
 
 {{< alert icon="tip">}}
-You'll need to add `/usr/local/go/bin` to your path. For most Linux distributions you can run something like:
+You'll need to add `/usr/local/go/bin` to your path. For most Linux distributions, you can run something like:
 
 ```shell
 echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc && source ~/.bashrc
@@ -218,7 +218,7 @@ Once all the dependencies are installed, you can build and install Lotus.
 
    `lotus` will use the `$HOME/.lotus` folder by default for storage (configuration, chain data, wallets). See [advanced options]({{< relref "configuration" >}}) for information on how to customize the Lotus folder.
 
-   Once the installation is finished, use the command down below to ensure lotus is installed successfully for the right network.
+   Once the installation is finished, use the command below to ensure lotus is installed successfully for the right network.
 
    ```shell
    lotus --version
@@ -229,7 +229,7 @@ Once all the dependencies are installed, you can build and install Lotus.
    lotus version 1.23.3+calibnet+git.7bb1f98ac
    ```
 
-1. You should now have Lotus installed. You can now [start the Lotus daemon](#start-the-lotus-daemon-and-sync-the-chain).
+1. You should now have Lotus installed. You can now [start the Lotus daemon]({{< relref "../install/start-lotus/#start-the-lotus-daemon" >}}
 
 ### Native Filecoin FFI
 
