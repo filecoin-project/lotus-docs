@@ -229,7 +229,8 @@ Once all the dependencies are installed, you can build and install Lotus.
    lotus version 1.23.3+calibnet+git.7bb1f98ac
    ```
 
-1. You should now have Lotus installed. You can now [start the Lotus daemon]({{< relref "../install/start-lotus/#start-the-lotus-daemon" >}}
+1. You should now have Lotus installed. You can now [start the Lotus daemon]({{< relref "start-lotus.md#start-the-lotus-daemon" >}})
+
 
 ### Native Filecoin FFI
 
