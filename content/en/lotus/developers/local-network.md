@@ -1,7 +1,7 @@
 ---
-title: "Local network"
-description: "This tutorial describes how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
-lead: "This section tutorial how set up and run a local Filecoin network (local-net) with 2 KiB sectors and root key holders using the regular Lotus binaries. A local-net is useful for developing applications and testing features, like Filecoin+ (Fil+)."
+title: "Devnet - Local network"
+description: "This tutorial describes how to set up and run a local Filecoin network (devnet) with 2 KiB sectors and root key holders using the slightly different Lotus binaries. A devnet is useful for developing applications and testing features, like Filecoin+ (Fil+)."
+lead: "This section tutorial shows how to set up and run a local Filecoin network (devnet) with 2 KiB sectors and root key holders using the slightly different Lotus binaries. A devnet is useful for developing applications and testing features, like Filecoin+ (Fil+)."
 draft: false
 menu:
     lotus:
@@ -13,6 +13,7 @@ aliases:
     - /docs/developers/developer-network
     - /docs/developers/local-network/
     - /developers/local-network/
+    - /developers/devnet/
 ---
 
 If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first.
@@ -25,8 +26,8 @@ Before completing this tutorial, complete the prerequisites.
 
 1. Complete the appropriate steps to build the Lotus executables from source based on your operating system:
 
-    - [Linux]({{<relref "../../lotus/install/linux#build-from-source/" >}})
-    - [MacOS]({{<relref "../../lotus/install/macos#build-from-source" >}})
+    - [Lotus on Linux]({{<relref "../../lotus/install/linux#build-from-source/" >}})
+    - [Lotus on MacOS]({{<relref "../../lotus/install/macos#build-from-source" >}})  
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
