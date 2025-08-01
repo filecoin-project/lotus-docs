@@ -16,24 +16,30 @@ aliases:
     - /developers/devnet/
 ---
 
-If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first.
+If you are unfamiliar with setting up and running a devnet, it's highly recommended that you do so without Fil+ first.
 
 Before completing this tutorial, complete the prerequisites.
 
-## Complete the prerequisites
+## Prerequisites
 
 1. Ensure that your system meets the [minimum requirements]({{<relref "/lotus/install/prerequisites" >}}).
 
-1. Complete the appropriate steps to build the Lotus executables from source based on your operating system:
+1. To set up the environment, you would need:
+   - an internet connection to download the software and the code;
+   - superuser privileges;
+   - operating system Linux or MacOS;
+   - git and a git user.
+  
+1. Complete the appropriate steps to install software dependencies, build the regular Lotus executables from source based on your operating system:
 
     - [Lotus on Linux]({{<relref "../../lotus/install/linux#build-from-source/" >}})
     - [Lotus on MacOS]({{<relref "../../lotus/install/macos#build-from-source" >}})  
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
-Now that you've completed the prerequisites, set up a Lotus node.
+Now that you've completed the prerequisites, set up a Lotus node for devnet.
 
-## Set up a Lotus node
+## Set up a Lotus node for Devnet
 
 Filecoin local networks use slightly different binaries than those used in the Filecoin mainnet. This section describes how to set up the Lotus environment and build the binaries.
 
