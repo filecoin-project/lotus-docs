@@ -172,7 +172,7 @@ Filecoin local networks use slightly different binaries than those used in the F
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance 
     ```
 
-## Start a Lotus daemon and a Lotus miner
+## Start a Lotus daemon and a Lotus-Miner
 
 Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-miner` nodes.
 
@@ -207,8 +207,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     export CGO_CFLAGS="-D__BLST_PORTABLE__" 
     ```
 
-
-1. Start the first node - Lotus deamon:
+1. Start the first node - Lotus daemon:
 
     ```shell
     ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false 
@@ -216,14 +215,14 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
    This command will continue to run while outputting information.
    As a result of this command, a genesis block and a state tree will be generated and stored in a devgen.car as a snapshot. Use the path to a copy of this file as a `--genesis` parameter when syncing other devnet nodes later.
+   
    By default, the `lotus` daemon will start listening on port `1234`. Do not reuse this port for other nodes on the devnet.
 
 1. Leaving the first terminal window open, switch to a second window so that the `lotus` daemon can continue to run. Complete all further steps in another terminal window.
 
+### Terminal window 2: Lotus-Miner
 
-### Terminal window 2: Lotus miner 1
-
-1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH` `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
 
    {{< alert >}}
    <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
@@ -267,7 +266,6 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
 1. Leaving the second terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the `lotus-miner` and `lotus` daemon can continue to run.
 
-
 ### Terminal window 3: Network prompts (1)
 
 1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
@@ -296,7 +294,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     ./lotus wallet import bls-<root-key-2>.keyinfo 
     ```
 
-    Congratulations! You've set up a fully functioning local Filecoin network of two nodes. Keep the terminals open if you are going to [connect multiple nodes and notaries](#next-steps:-connect-nodes-and-notaries), or prompt for the network information.
+    Congratulations! You've set up a fully functioning local Filecoin network of two nodes. Keep the terminals open if you are going to [connect multiple nodes and notaries](#next-steps-connect-nodes-and-notaries), or prompt for the network information.
 
     Now we can prompt for the network information:
 
@@ -319,7 +317,6 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
   ./lotus daemion stop
   ```
 
-
 ## Next steps: Connect nodes and notaries
 
 Now that your local network is running, you can test various Filecoin features, like adding additional nodes or notaries. Select one of the options below:
@@ -331,8 +328,7 @@ Now that your local network is running, you can test various Filecoin features, 
 
 **Node synchronization strategy.** In this section, you will add a third node to your local network by copying the `devgen.car` file in your `lotus-local-net` folder to the new node. We will have to connect the new node to the original genesis node manually, as there's no DHT or bootstrapping for your local network. Alternatively, we can reference the existing copy of the file in the `~/.lotus-local-net/devgen.car`.
 
-
-**RPC endpoint port.** A different port for the third node must be specified to avoid a collision by using `--api` parameter on the `lotus` daemon start. The port and IP can be configured by using the LIBP2P variables in your [config or environment variables](https://github.com/filecoin-project/lotus/blob/v1.20.0-rc2/node/config/def.go#L57-L60). By default, LIBP2P will listen on port `1234` and on all available IP addresses. 
+**RPC endpoint port.** A different port for the third node must be specified to avoid a collision by using `--api` parameter on the `lotus` daemon start. The port and IP can be configured by using the LIBP2P variables in your [config or environment variables](https://github.com/filecoin-project/lotus/blob/master/node/config/def.go#L57-L60). By default, LIBP2P will listen on port `1234` and on all available IP addresses. 
 
 **Current state of a local machine.** At this point, we assume that 
 - terminals 1, 2, and 3 are still open and
