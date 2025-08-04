@@ -16,24 +16,30 @@ aliases:
     - /developers/devnet/
 ---
 
-If you are unfamiliar with the process of setting up and running a local network, it's highly recommended that you set up a local network without Fil+ first.
+If you are unfamiliar with setting up and running a devnet, it's highly recommended that you do so without Fil+ first.
 
 Before completing this tutorial, complete the prerequisites.
 
-## Complete the prerequisites
+## Prerequisites
 
 1. Ensure that your system meets the [minimum requirements]({{<relref "/lotus/install/prerequisites" >}}).
 
-1. Complete the appropriate steps to build the Lotus executables from source based on your operating system:
+1. To set up the environment, you would need:
+   - an internet connection to download the software and the code;
+   - superuser privileges;
+   - operating system Linux or MacOS;
+   - git and a git user.
+  
+1. Complete the appropriate steps to install software dependencies, build the regular Lotus executables from source based on your operating system:
 
     - [Lotus on Linux]({{<relref "../../lotus/install/linux#build-from-source/" >}})
     - [Lotus on MacOS]({{<relref "../../lotus/install/macos#build-from-source" >}})  
 
 1. (Optional) Because this tutorial requires multiple terminal windows, install a terminal multiplexer like [Tmux](https://github.com/tmux/tmux).
 
-Now that you've completed the prerequisites, set up a Lotus node.
+Now that you've completed the prerequisites, set up a Lotus node for devnet.
 
-## Set up a Lotus node
+## Set up a Lotus node for Devnet
 
 Filecoin local networks use slightly different binaries than those used in the Filecoin mainnet. This section describes how to set up the Lotus environment and build the binaries.
 
@@ -166,23 +172,60 @@ Filecoin local networks use slightly different binaries than those used in the F
     2022-02-08T15:44:19.734-0500    INFO    lotus-seed      lotus-seed/genesis.go:146       Giving t3xe5je75lkrvye32tfl37gug3az42iotuu3wxgkrhbpbvmum4lu26begiw74ju5a35nveqaw4ywdibj4y6kxq some initial balance 
     ```
 
-## Start the nodes
+## Start a Lotus daemon and a Lotus-Miner
 
 Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-miner` nodes.
 
-1. Start the first node:
+   {{< alert >}}
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   {{< /alert >}}
+
+### Terminal window 1: Lotus daemon 1
+
+1. Navigate to the `lotus-local-net` directory created in the previous steps:
+      ```shell
+      cd ~/lotus-local-net
+      ```
+  
+1. Check if the Lotus environment variables are set from earlier:
+
+    ```shell
+    echo LOTUS_PATH 
+    echo LOTUS_MINER_PATH
+    echo LOTUS_SKIP_GENESIS_CHECK 
+    echo CGO_CFLAGS_ALLOW
+    echo CGO_CFLAGS 
+    ```
+
+    If the variables are empty, export them:
+
+    ```shell
+    export LOTUS_PATH=~/.lotus-local-net 
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_ 
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__" 
+    export CGO_CFLAGS="-D__BLST_PORTABLE__" 
+    ```
+
+1. Start the first node - Lotus daemon:
 
     ```shell
     ./lotus daemon --lotus-make-genesis=devgen.car --genesis-template=localnet.json --bootstrap=false 
     ```
 
-    This command will continue to run while outputting information.
+   This command will continue to run while outputting information.
+   As a result of this command, a genesis block and a state tree will be generated and stored in a devgen.car as a snapshot. Use the path to a copy of this file as a `--genesis` parameter when syncing other devnet nodes later.
+   
+   By default, the `lotus` daemon will start listening on port `1234`. Do not reuse this port for other nodes on the devnet.
 
 1. Leaving the first terminal window open, switch to a second window so that the `lotus` daemon can continue to run. Complete all further steps in another terminal window.
-1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
+
+### Terminal window 2: Lotus-Miner
+
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH` `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
 
    {{< alert >}}
-   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
    {{< /alert >}}
 
     ```shell
@@ -221,11 +264,14 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
     This command will continue to run while outputting information.
 
-1. Leaving the second terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the `lotus-miner` and `lotus` daemon can continue to run. 
-1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW` and `CGO_CFLAGS` variables:
+1. Leaving the second terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the `lotus-miner` and `lotus` daemon can continue to run.
+
+### Terminal window 3: Network prompts (1)
+
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
 
    {{< alert >}}
-   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/enviroment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
    {{< /alert >}}
 
     ```shell
@@ -248,9 +294,30 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
     ./lotus wallet import bls-<root-key-2>.keyinfo 
     ```
 
-Congratulations! You've set up a fully functioning local Filecoin network.
+    Congratulations! You've set up a fully functioning local Filecoin network of two nodes. Keep the terminals open if you are going to [connect multiple nodes and notaries](#next-steps-connect-nodes-and-notaries), or prompt for the network information.
 
-## Next steps
+    Now we can prompt for the network information:
+
+1. `MULTIADDRESS_OF_THE_FIRST_NODE`. Fetch the address + peer ID in `multiaddr` format from the genesis node. It
+    ```shell
+    ./lotus net listen
+    ```
+    ```plaintext
+    # Example of the response
+    /ip4/172.16.100.22/tcp/40395/p2p/12D3KooWAPNpm3n3PTaK2gkaZbCNeaNWMg18eLyxUe9PschraUqk
+    ```
+
+1. **List of tipsets.** You can get a list of the tipsets in a reverse chronological order, showing the latest blocks first. Each entry includes metadata for the tipset at a given epoch, such as `<Height>: (<Timestamp>) [CID: Miner,]`.
+     ```shell
+     ./lotus chain list
+     ```
+
+1. To stop the lotus daemon.
+  ```shell
+  ./lotus daemion stop
+  ```
+
+## Next steps: Connect nodes and notaries
 
 Now that your local network is running, you can test various Filecoin features, like adding additional nodes or notaries. Select one of the options below:
 
@@ -259,39 +326,78 @@ Now that your local network is running, you can test various Filecoin features, 
 
 ### Connect multiple nodes
 
-In this section, you will add additional nodes to your local network by copying the `devgen.car` file in your `lotus-local-net` folder to new nodes. We will have to connect the new node to the original genesis node manually, as there's no DHT or bootstrapping for your local network. To get started, lets first fetch the address + peer ID in `multiaddr` format from the genesis node;
+**Node synchronization strategy.** In this section, you will add a third node to your local network by copying the `devgen.car` file in your `lotus-local-net` folder to the new node. We will have to connect the new node to the original genesis node manually, as there's no DHT or bootstrapping for your local network. Alternatively, we can reference the existing copy of the file in the `~/.lotus-local-net/devgen.car`.
 
- ```shell
-./lotus net listen
-```
+**RPC endpoint port.** A different port for the third node must be specified to avoid a collision by using `--api` parameter on the `lotus` daemon start. The port and IP can be configured by using the LIBP2P variables in your [config or environment variables](https://github.com/filecoin-project/lotus/blob/master/node/config/def.go#L57-L60). By default, LIBP2P will listen on port `1234` and on all available IP addresses. 
 
-This should yield a result like so;
+**Current state of a local machine.** At this point, we assume that 
+- terminals 1, 2, and 3 are still open and
+- the `lotus` daemon and `lotus-miner` from the [Start a Lotus daemon and a Lotus miner](#start-a-lotus-daemon-and-a-lotus-miner) are still running.
+- Also, the `MULTIADDRESS_OF_THE_FIRST_NODE` is still valid, and
+- `~/.lotus-local-net/devgen.car` still exists.
 
-```plaintext
-/ip4/172.16.100.22/tcp/40395/p2p/12D3KooWAPNpm3n3PTaK2gkaZbCNeaNWMg18eLyxUe9PschraUqk
-```
+#### Terminal window 4: Lotus daemon 2
 
-The port and IP can be configured by using the LIBP2P variables in your [config or environment variables](https://github.com/filecoin-project/lotus/blob/v1.20.0-rc2/node/config/def.go#L57-L60). By default, LIBP2P will listen on a random port and on all available IP addresses.
+1. **Different LOTUS_PATH** In this new terminal, we will export different `LOTUS_PATH`, `LOTUS_MINER_PATH` environmental variables, and same `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
 
-1. Start a new node:
-
-    ```shell
-    ./lotus daemon  --genesis=devgen.car
-    ```
-
-1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>`, connect the new node to the first node:
+   {{< alert >}}
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   {{< /alert >}}
 
     ```shell
-    ./lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
+    export LOTUS_PATH=~/.lotus-local-net2 
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net2
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_ 
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__" 
+    export CGO_CFLAGS="-D__BLST_PORTABLE__" 
+    ```
+    
+1. Start a new node on port `4444` with a reference to the snapshot created by the genesis node [Lotus daemon 1](#terminal-window-1-lotus-daemon-1)
+
+    ```shell
+    lotus daemon  --genesis=~/lotus-local-net/devgen.car --api=4444
+    ```
+1. Leaving the forth terminal window open, switch to a third window. Complete all further steps in the new terminal window so that the second `lotus` daemon can continue to run.
+
+
+#### Terminal window 5: Network prompts (2)
+
+1. Export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables, that we used for the `lotus` daemon 2 in the previous step in the [Terminal window 4](#terminal-window-4-lotus-daemon-2):
+
+   {{< alert >}}
+   <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
+   {{< /alert >}}
+
+    ```shell
+    export LOTUS_PATH=~/.lotus-local-net2 
+    export LOTUS_MINER_PATH=~/.lotus-miner-local-net2
+    export LOTUS_SKIP_GENESIS_CHECK=_yes_ 
+    export CGO_CFLAGS_ALLOW="-D__BLST_PORTABLE__" 
+    export CGO_CFLAGS="-D__BLST_PORTABLE__" 
     ```
 
-You should now see your new node getting synchronized with the chain. You can check the progress;
+1. Using the `<MULTIADDRESS_OF_THE_FIRST_NODE>` from the [Terminal window 3](#terminal-window-3-network-prompts-1) in the previous section, connect the new node to the first node:
 
-```shell
-./lotus sync wait
-```
+    ```shell
+    lotus net connect <MULTIADDRESS_OF_THE_FIRST_NODE>
+    ```
 
-In case you see a `success` result, but no established connection (e.g. errors in your genesis daemon) - make sure you are using the same genesis block carfile.
+1. You should now see your new node is getting synchronized with the chain. You can check the progress:
+   ```shell
+   lotus sync wait
+   ```
+   In case you see a `success` result, but no established connection (e.g., errors in your genesis daemon) - make sure you are using the same genesis block `.car` file (`devgen.car`).
+
+1. You can list peers on the current devnet:
+
+   ```shell
+   lotus net peers
+   ```
+
+1. List of the tipsets in a reverse chronological order, showing the latest blocks first. Each entry includes metadata for the tipset at a given epoch, such as `<Height>: (<Timestamp>) [CID: Miner,]`.
+     ```shell
+     ./lotus chain list
+     ```
 
 ### Add notaries
 
@@ -301,7 +407,7 @@ In this section, you will add two notaries to your local network with Fil+.
 <u>Remember</u>: These steps won't work if you don't have a local network with Fil+ set up.
 {{< /alert >}}
 
-1. Create a wallet addresses for the first notary `<notary-1>`:
+1. Create a wallet address for the first notary `<notary-1>`:
 
     ```shell
     ./lotus wallet new secp256k1
@@ -311,7 +417,7 @@ In this section, you will add two notaries to your local network with Fil+.
     t1ek4mmfiulovffg3jen4a3ruaovrvlimhd6dzmjy
     ```
 
-1. Create a wallet addresses for the second notary `<notary-2>`:
+1. Create a wallet address for the second notary `<notary-2>`:
 
     ```shell
     ./lotus wallet new secp256k1
