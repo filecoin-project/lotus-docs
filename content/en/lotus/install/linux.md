@@ -25,52 +25,58 @@ Building Lotus from source allows you to strictly configure how Lotus runs and h
 
 1. Install Lotus dependencies:
 
-Arch:
-
-```shell
-sudo pacman -Syu hwloc
-```
-
-Ubuntu/Debian:
-
-```shell
-sudo apt install -y hwloc
-```
-
-Fedora:
-
-```shell
-sudo dnf -y install hwloc
-```
-
-OpenSUSE:
-
-```shell
-sudo zypper in hwloc
-```
-
-Amazon Linux 2:
-
-```shell
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y hwloc-devel
-```
-
-1. Download the latest Linux bundle from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
-
+    Arch:
+    
     ```shell
-    wget https://github.com/filecoin-project/lotus/releases/download/v{{< version >}}/lotus_v{{< version >}}_linux_amd64_V1.tar.gz
+    sudo pacman -Syu hwloc
+    ```
+    
+    Ubuntu/Debian:
+    
+    ```shell
+    sudo apt install -y hwloc
+    ```
+    
+    Fedora:
+    
+    ```shell
+    sudo dnf -y install hwloc
+    ```
+    
+    OpenSUSE:
+    
+    ```shell
+    sudo zypper in hwloc
+    ```
+    
+    Amazon Linux 2:
+    
+    ```shell
+    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm; sudo yum install -y hwloc-devel
     ```
 
-2. Extract tar -xvf archive.tar.gz executable:
+2. Download the latest Linux bundle from the [Lotus GitHub releases page](https://github.com/filecoin-project/lotus/releases/latest):
 
     ```shell
-    tar -xvf lotus_v{{< version >}}_linux_amd64.tar.gz
+    wget https://github.com/filecoin-project/lotus/releases/download/v{{< version >}}/lotus_v{{< version >}}_linux_amd64_v1.tar.gz
     ```
 
-3. Move the `lotus` binary to `/usr/local/bin`:
+3. Extract tar -xvf archive.tar.gz executable:
+
+    ```shell
+    tar -xvf lotus_v{{< version >}}_linux_amd64_v1.tar.gz
+    ```
+
+4. Move the `lotus` binary to `/usr/local/bin`:
 
     ```shell
     sudo mv lotus_{{< version >}}_linux_amd64/lotus /usr/local/bin/lotus
+    ```
+
+5. Set execute permissions on the binary:
+
+    ```shell
+    chmod ugo+x /usr/local/bin/lotus
     ```
 
 ## Building from source
