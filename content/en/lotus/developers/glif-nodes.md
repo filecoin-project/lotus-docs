@@ -35,7 +35,7 @@ Calibration nodes using the [JSON RPC API]({{< relref "../../reference/basics/ap
 You can use the `v1` JSON RPC API with `https://api.calibration.node.glif.io/rpc/v1`
 {{< /alert >}}
 
-- The Calibration network has a WebSocket endpoint. The WebSocket link is available at wss://wss.calibration.node.glif.io/apigw/lotus/rpc/1
+- The Calibration network has a WebSocket endpoint. The WebSocket link is available at wss://wss.calibration.node.glif.io/apigw/lotus/rpc/v1
 
 ### Custom endpoints
 
