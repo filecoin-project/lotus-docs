@@ -34,7 +34,7 @@ jobs:
         run: npm run build
 
       - name: Upload to Filecoin
-        uses: filecoin-project/filecoin-pin/.github/actions/filecoin-pin-upload-action@caf15149d621b6675fb4e35975d08ce830dfc4ff
+        uses: sgtpooki/filecoin-upload-action@56c3695cf8e36f308ab474ce770c668ed6f1a8c0
         with:
           privateKey: ${{ secrets.FILECOIN_WALLET_KEY }}
           path: public
