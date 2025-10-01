@@ -28,6 +28,7 @@ jobs:
         uses: sgtpooki/filecoin-upload-action@main
         with:
           mode: upload
+          artifact_name: ${{ inputs.artifact_name }} # only used if manually input from the action trigger UI
           walletPrivateKey: ${{ secrets.FILECOIN_WALLET_KEY }}
           minDays: "30"
           # 0.0001 USDFC for PRs, 0.10 USDFC for main
