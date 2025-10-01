@@ -5,6 +5,11 @@ on:
     workflows: ["Build Site"]
     types: [completed]
   workflow_dispatch:  # Allow manual triggers
+    inputs:
+      artifact_name:
+        description: 'Artifact name (for manual testing only, e.g., filecoin-build-pr-822)'
+        required: false
+        type: string
 
 permissions:
   contents: read
