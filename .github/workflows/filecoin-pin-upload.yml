@@ -1,0 +1,42 @@
+name: Upload to Filecoin
+
+on:
+  workflow_run:
+    workflows: ["Build Site"]
+    types: [completed]
+  workflow_dispatch:  # Allow manual triggers
+    inputs:
+      artifact_name:
+        description: 'Artifact name (for manual testing only, e.g., filecoin-build-pr-822)'
+        required: false
+        type: string
+      build_run_id:
+        description: 'Build workflow run ID (find it in the build workflow URL)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read        # needed to download artifacts
+  pull-requests: write # needed to comment on PRs
+
+jobs:
+  upload:
+    # Only upload if build succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.FILECOIN_PIN_GH_TOKEN }}
+    steps:
+      - name: Upload to Filecoin
+        uses: sgtpooki/filecoin-upload-action@641a2bf866d4ad0c47c98c0ddefaffdd4e628500
+        with:
+          mode: upload
+          artifact_name: ${{ inputs.artifact_name }} # only used if manually input from the action trigger UI
+          build_run_id: ${{ inputs.build_run_id }} # only used if manually input from the action trigger UI
+          walletPrivateKey: ${{ secrets.FILECOIN_WALLET_KEY }}
+          minDays: "30"
+          # 0.0001 USDFC for PRs, 0.10 USDFC for main
+          maxTopUp: ${{ github.event.workflow_run.event == 'pull_request' && '0.0001' || '0.01' }}
+          # Note: this provider should not be set in prod, but while testing things, it's a reliable provider we can depend on.
+          providerAddress: "0xa3971A7234a3379A1813d9867B531e7EeB20ae07"
