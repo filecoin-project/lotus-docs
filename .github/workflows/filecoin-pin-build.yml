@@ -29,6 +29,6 @@ jobs:
         run: npm run build
 
       - name: Create CAR file and save metadata
-        uses: sgtpooki/filecoin-upload-action@main
+        uses: sgtpooki/filecoin-upload-action@641a2bf866d4ad0c47c98c0ddefaffdd4e628500
         with:
           path: public

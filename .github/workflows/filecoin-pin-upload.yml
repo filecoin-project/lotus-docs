@@ -29,7 +29,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.FILECOIN_PIN_GH_TOKEN }}
     steps:
       - name: Upload to Filecoin
-        uses: sgtpooki/filecoin-upload-action@main
+        uses: sgtpooki/filecoin-upload-action@641a2bf866d4ad0c47c98c0ddefaffdd4e628500
         with:
           mode: upload
           artifact_name: ${{ inputs.artifact_name }} # only used if manually input from the action trigger UI
@@ -38,4 +38,5 @@ jobs:
           minDays: "30"
           # 0.0001 USDFC for PRs, 0.10 USDFC for main
           maxTopUp: ${{ github.event.workflow_run.event == 'pull_request' && '0.0001' || '0.01' }}
+          # Note: this provider should not be set in prod, but while testing things, it's a reliable provider we can depend on.
           providerAddress: "0xa3971A7234a3379A1813d9867B531e7EeB20ae07"
