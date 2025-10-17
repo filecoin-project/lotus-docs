@@ -33,9 +33,9 @@ To spin up a Lotus lite-node, you will need:
 If you have access to the full-node you're using, you need to make some minor modifications to its configuration.
 
 {{< alert icon="tip">}}
-If you are using the [Glif Lotus RPC Nodes]({{< relref "../developers/glif-nodes" >}}), you do not need to complete this section. Those full-nodes have been configured to accept all incoming requests, so you don't need to create any API keys.
+If you are using the [Chain.Love nodes]({{< relref "../developers/chain-love" >}}), you do not need to complete this section. Those full-nodes have been configured to accept all incoming requests, so you don't need to create any API keys.
 
-If you are using a node-hosting service like [Infura](https://infura.io/), you may need to create an API key through the service website.
+Other RPC providers may require creation of the API key through the service website.
 {{< /alert >}}
 
 1. On your full-node: 
@@ -158,9 +158,9 @@ You've got the Lotus executables ready to go, and you have access to a Lotus ful
     FULLNODE_API_INFO=/ip4/YOUR_FULL_NODE_IP_ADDRESS/tcp/1234 lotus daemon --lite
     ```
     
-    `FULLNODE_API_INFO` variable accepts both [Multiaddr](https://github.com/multiformats/multiaddr) and Canonical (RFC1918, RFC1034) network address formats. For example, for Glif nodes the Lotus Lite run command may look like:
+    `FULLNODE_API_INFO` variable accepts both [Multiaddr](https://github.com/multiformats/multiaddr) and Canonical (RFC1918, RFC1034) network address formats. For example, for Chain.Love nodes the Lotus Lite run command may look like:
     ```shell
-    FULLNODE_API_INFO=wss://wss.node.glif.io/apigw/lotus lotus daemon --lite
+    FULLNODE_API_INFO=wss://filecoin.chain.love/ws lotus daemon --lite
     ```
 
 1. You can now interact with your Lotus lite-node:
