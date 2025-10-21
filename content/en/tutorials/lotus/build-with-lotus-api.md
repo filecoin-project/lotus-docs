@@ -16,7 +16,7 @@ Several API client libraries are available. These libraries manage the low-level
 - [filecoin-js-signer](https://github.com/blitslabs/filecoin-js-signer)
 - [Filecoin Signing Tools](https://github.com/Zondax/filecoin-signing-tools)
 
-To use the complete API, we'll need to run our own node locally. For read-only access, you can also use a hosted node such as those provided by [Glif](https://lotus.filecoin.io/developers/glif-nodes/) or [Infura](https://blog.infura.io/introducing-infura-support-for-filecoin-developers/).
+To use the complete API, we'll need to run our own node locally. For read-only access, you can also use a hosted node such as those provided by [Chain.Love](https://lotus.filecoin.io/developers/chain-love/).
 
 In this tutorial we'll set up a Lotus node locally and use the filecoin.js library to interact with it.
 
@@ -424,14 +424,14 @@ Lotus wallets are created and hosted in the Lotus node. When the Lotus node is r
 
 The `filecoin.js` library also supports creating a light wallet using a _mnemonic_ and a password. As long as you have the mnemonic and password of your wallet, you can recover it anywhere and use it by sending PRC requests to any Lotus full nodes.
 
-1. In your `build-with-lotus` project, let's create a `lightWallet.mjs` file. Since we are using a light wallet, we will use the Glif hosted endpoint as the connection to the Filecoin network to send transactions. First, we import all the modules and create a connection and lightWallet client using the Glif endpoint's URL:
+1. In your `build-with-lotus` project, let's create a `lightWallet.mjs` file. Since we are using a light wallet, we will use the Chain.Love hosted endpoint as the connection to the Filecoin network to send transactions. First, we import all the modules and create a connection and lightWallet client using the Chain.Love's endpoint's URL:
 
     ```javascript
     import { HttpJsonRpcConnector, LotusClient, LightWalletProvider,MnemonicWalletProvider} from "filecoin.js";
     import BigNumber from "bignumber.js";
-    const glifNodeurl = "https://calibration.node.glif.io";
-    const glifNodeConn = new HttpJsonRpcConnector({url:glifNodeurl});
-    const glifClient = new LotusClient(glifNodeConn);
+    const chainLoveNodeurl = "https://calibration.filecoin.chain.love";
+    const chainLoveNodeConn = new HttpJsonRpcConnector({url:chainLoveNodeurl});
+    const chainLoveClient = new LotusClient(chainLoveNodeConn);
     ```
 
 1. When creating a light wallet using the BIP39 standard, it is very important to backup the mnemonic code, the `encryptedWallet` object, and your password. Do not share them &mdash; anyone who has this information will have control of your light wallet and assets!
@@ -439,7 +439,7 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
     ```javascript with-output
     async function createLightWallet(){
         try {
-            const lightWallet = new LightWalletProvider(glifClient, () => { return '<YOUR-Password>' }, 'test');
+            const lightWallet = new LightWalletProvider(chainLoveClient, () => { return '<YOUR-Password>' }, 'test');
             let mnemonic = await lightWallet.createLightWallet('<YOUR-Password>');
             console.log(mnemonic);
             let encryptedWallet = lightWallet.keystore.serialize();
@@ -514,7 +514,7 @@ The `filecoin.js` library also supports creating a light wallet using a _mnemoni
 
     After the message containing this transfer makes it on-chain, you will be able to see it using the [Filecoin Calibration Explorer](https://calibration.filscan.io/tipset/message-list) website.
 
-By this point we've learned how to create a wallet on the Lotus node using an RPC API call, as well as create a light wallet and manage its assets through a hosted Glif node. To explore more features of the Lotus API, keep following this tutorial. You can also go to the [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/) and start creating your own projects on Filecoin.
+By this point we've learned how to create a wallet on the Lotus node using an RPC API call, as well as create a light wallet and manage its assets through a hosted Chain.Love nodes. To explore more features of the Lotus API, keep following this tutorial. You can also go to the [Lotus JSON-RPC API](https://lotus.filecoin.io/developers/apis/json-rpc/) and start creating your own projects on Filecoin.
 
 ## Make a storage deal
 

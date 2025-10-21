@@ -145,8 +145,11 @@ To use a publicly available hosted endpoint follow the steps for the locally hos
 
 Further information about currently available hosted endpoints can be found at the following links:
 - [Ankr](https://www.ankr.com/rpc/filecoin/)
-- [Glif](https://api.node.glif.io)
+- [Chain.Love](https://filecoin.chain.love/)
 - [ChainStack](https://chainstack.com/labs/#filecoin)
+
+Additionally you may take a look at a curated list of RPC providers from Chain.Love:
+{% @chainlove-widget/chainlove-compare url="https://widget.docs.chain.love/?network=filecoin&category=rpc" %}
 
 {{< alert >}}
 **NOTE** - Publicly available hosted endpoints **do not** require an authorization token.
@@ -165,7 +168,7 @@ import (
 )
 
 func main() {
-    addr := "wss.calibration.node.glif.io/apigw/lotus"
+    addr := "calibration.filecoin.chain.love/ws"
 
     var api lotusapi.FullNodeStruct
     closer, err := jsonrpc.NewMergeClient(context.Background(), "ws://"+addr+"/rpc/v0", "Filecoin", []interface{}{&api.Internal, &api.CommonStruct.Internal}, nil)
