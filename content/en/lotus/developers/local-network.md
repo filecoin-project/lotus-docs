@@ -190,11 +190,11 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 1. Check if the Lotus environment variables are set from earlier:
 
     ```shell
-    echo LOTUS_PATH 
-    echo LOTUS_MINER_PATH
-    echo LOTUS_SKIP_GENESIS_CHECK 
-    echo CGO_CFLAGS_ALLOW
-    echo CGO_CFLAGS 
+    echo $LOTUS_PATH 
+    echo $LOTUS_MINER_PATH
+    echo $LOTUS_SKIP_GENESIS_CHECK 
+    echo $CGO_CFLAGS_ALLOW
+    echo $CGO_CFLAGS 
     ```
 
     If the variables are empty, export them:
@@ -222,7 +222,7 @@ Now that you've set up your Lotus nodes, you can start the `lotus` and `lotus-mi
 
 ### Terminal window 2: Lotus-Miner
 
-1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH` `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
+1. Because environmental variables are reset when you open a new terminal window, you must re-export the `LOTUS_PATH`, `LOTUS_MINER_PATH`, `LOTUS_SKIP_GENESIS_CHECK`, `CGO_CFLAGS_ALLOW`, and `CGO_CFLAGS` variables:
 
    {{< alert >}}
    <u>Warning</u>: Don't add the variables to your system-wide settings (`/etc/environment`, `/etc/profile.d`, etc.), as they will collide with variables in real networks like calibnet or mainnet.
