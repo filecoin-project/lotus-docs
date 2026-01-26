@@ -1,0 +1,571 @@
+{
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin"
+        },
+        {
+          "key": "Feature-Policy",
+          "value": "geolocation 'self'"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about-filecoin/networks",
+      "destination": "/lotus/get-started/networks/",
+      "permanent": true
+    },
+    {
+      "source": "/build/examples",
+      "destination": "/lotus/get-started/use-cases/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/api-access/",
+      "destination": "/reference/basics/api-access/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/apis/",
+      "destination": "/reference/basics/overview/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/apis/json-rpc/",
+      "destination": "/reference/lotus/auth/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/devnet/",
+      "destination": "/lotus/developers/local-network/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/glif-nodes/",
+      "destination": "/lotus/developers/chain-love/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/local-network/",
+      "destination": "/lotus/developers/local-network/",
+      "permanent": true
+    },
+    {
+      "source": "/developers/troubleshooting/",
+      "destination": "/reference/basics/troubleshooting/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/",
+      "destination": "/lotus/get-started/what-is-lotus/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/apis/cli/",
+      "destination": "/lotus/manage/lotus-cli/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/api-access/",
+      "destination": "/reference/basics/api-access/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/developer-network",
+      "destination": "/lotus/developers/local-network/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/hosted-lotus/",
+      "destination": "/lotus/developers/chain-love/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/import-data-from-ipfs/",
+      "destination": "/tutorials/lotus/import-data-from-ipfs/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/large-files/",
+      "destination": "/tutorials/lotus/large-files/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/local-network/",
+      "destination": "/lotus/developers/local-network/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/payment-channels/",
+      "destination": "/tutorials/lotus/payment-channels/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/retrieve-data/",
+      "destination": "/tutorials/lotus/retrieve-data/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/store-data/",
+      "destination": "/tutorials/lotus/store-data/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/developers/troubleshooting/",
+      "destination": "/reference/basics/troubleshooting/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/getting-started/what-is-lotus/",
+      "destination": "/lotus/get-started/what-is-lotus/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/project/contribute/",
+      "destination": "/lotus/developers/contribute/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/about/",
+      "destination": "/lotus/get-started/what-is-lotus/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/backup-and-restore/",
+      "destination": "/lotus/manage/backup-and-restore/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/bootstrappers/",
+      "destination": "/lotus/configure/bootstrap/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/chain-management/",
+      "destination": "/lotus/manage/chain-management/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/configuration/",
+      "destination": "/lotus/configure/defaults/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/install/",
+      "destination": "/lotus/install/prerequisites/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/manage-fil-with-ledger/",
+      "destination": "/lotus/manage/ledger/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/manage-fil/",
+      "destination": "/lotus/manage/manage-fil/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/multisig/",
+      "destination": "/lotus/manage/multisig/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/nodes-in-china/",
+      "destination": "/kb/nodes-in-china/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/running-in-the-cloud/",
+      "destination": "/lotus/install/cloud-services/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/slasher-and-disputer/",
+      "destination": "/lotus/manage/slasher-and-disputer/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/switch-networks/",
+      "destination": "/lotus/manage/switch-networks/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/set-up/troubleshooting/",
+      "destination": "/kb/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/addresses/",
+      "destination": "/storage-providers/operate/addresses/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/backup-and-restore/",
+      "destination": "/storage-providers/operate/backup-and-restore/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/benchmarks/",
+      "destination": "/storage-providers/operate/benchmarks/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/config/",
+      "destination": "/storage-providers/setup/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/connectivity/",
+      "destination": "/kb/legacy-miner-connectivety/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/custom-storage-layout/",
+      "destination": "/storage-providers/operate/custom-storage-layout/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/dagstore/",
+      "destination": "/kb/dagstore/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/disputer/",
+      "destination": "/tutorials/lotus/disputer/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/dynamic-retrieval-pricing/",
+      "destination": "/kb/dynamic-retrieval-pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/hardware-requirements/",
+      "destination": "/storage-providers/get-started/hardware-requirements/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/index-provider/",
+      "destination": "/kb/index-provider/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/lifecycle/",
+      "destination": "/storage-providers/operate/maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/manage-storage-deals/",
+      "destination": "/kb/Manage-Storage-Deals-Legacy/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/message-pool/",
+      "destination": "/lotus/manage/message-pool/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/miner-journal/",
+      "destination": "/storage-providers/operate/journal/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/mining-architectures/",
+      "destination": "/storage-providers/get-started/architectures/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/overview/",
+      "destination": "/storage-providers/get-started/overview/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/seal-workers/",
+      "destination": "/storage-providers/seal-workers/seal-workers/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/sector-pledging/",
+      "destination": "/storage-providers/operate/sector-pledging/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/setup/",
+      "destination": "/storage-providers/setup/initialize/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/split-markets-miners/",
+      "destination": "/kb/split-markets/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/troubleshooting/",
+      "destination": "/storage-providers/operate/daily-chores/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/storage-providers/upgrades/",
+      "destination": "/storage-providers/operate/upgrades/",
+      "permanent": true
+    },
+    {
+      "source": "/docs/tutorials/store-and-retrieve/",
+      "destination": "/tutorials/lotus/store-and-retrieve/set-up/",
+      "permanent": true
+    },
+    {
+      "source": "/get-started/lotus/installation",
+      "destination": "/lotus/install/prerequisites/",
+      "permanent": true
+    },
+    {
+      "source": "/get-started/lotus/send-and-receive-fil",
+      "destination": "/lotus/manage/manage-fil/",
+      "permanent": true
+    },
+    {
+      "source": "/kb/depreciated-features/",
+      "destination": "/kb/mark-for-upgrade-unsupported/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus/configure/bootrap-nodes/",
+      "destination": "/lotus/configure/bootstrap/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus/configure/nodes-in-china/",
+      "destination": "/kb/nodes-in-china/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus/developers/bootrap-nodes/",
+      "destination": "/lotus/configure/bootstrap/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus/manage/chain-management",
+      "destination": "/lotus/configure/clusters/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus/manage/troubleshooting/",
+      "destination": "/kb/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/advanced-configurations/market/",
+      "destination": "/kb/legacy-markets-config/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/advanced-configurations/split-markets-miners/",
+      "destination": "/kb/split-markets/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/configuration/",
+      "destination": "/storage-providers/setup/configuration/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/dagstore/",
+      "destination": "/kb/dagstore/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/lifecycle/",
+      "destination": "/storage-providers/operate/maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/setup/",
+      "destination": "/storage-providers/setup/initialize/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/snap-deals/",
+      "destination": "/storage-providers/operate/snap-deals/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/configure/split-markets-miners/",
+      "destination": "/kb/split-markets/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/cli",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/config",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/design",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/install",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/local-network",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/overview",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/sealing",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/setup",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/tasks",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/curio/ui",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/lotus-provider/overview",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/lotus-provider/setup",
+      "destination": "/storage-providers/curio/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/connectivity/",
+      "destination": "/kb/legacy-miner-connectivety/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/dagstore/",
+      "destination": "/kb/dagstore/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/disputer/",
+      "destination": "/tutorials/lotus/disputer/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/dynamic-retrieval-pricing/",
+      "destination": "/kb/dynamic-retrieval-pricing/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/index-provider/",
+      "destination": "/kb/index-provider/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/journal/",
+      "destination": "/storage-providers/advanced-configurations/logging/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/manage-storage-deals/",
+      "destination": "/kb/Manage-Storage-Deals-Legacy/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/message-pool/",
+      "destination": "/lotus/manage/message-pool/",
+      "permanent": true
+    },
+    {
+      "source": "/storage-providers/operate/troubleshooting/",
+      "destination": "/storage-providers/operate/daily-chores/",
+      "permanent": true
+    },
+    {
+      "source": "/store/lotus/store-data",
+      "destination": "/tutorials/lotus/store-and-retrieve/store-data/",
+      "permanent": true
+    },
+    {
+      "source": "/store/lotus/very-large-files",
+      "destination": "/tutorials/lotus/large-files/",
+      "permanent": true
+    },
+    {
+      "source": "/store/slate",
+      "destination": "/tutorials/lotus/store-and-retrieve/store-data/",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/lotus/store-and-retrieve/retrieve-data/",
+      "destination": "/tutorials/lotus/retrieve-data/",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/store-and-retrieve/retrieve-data/",
+      "destination": "/tutorials/lotus/retrieve-data/",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/store-and-retrieve/set-up/",
+      "destination": "/tutorials/lotus/store-and-retrieve/set-up/",
+      "permanent": true
+    },
+    {
+      "source": "/tutorials/store-and-retrieve/store-data/",
+      "destination": "/tutorials/lotus/store-and-retrieve/store-data/",
+      "permanent": true
+    }
+  ]
+}
