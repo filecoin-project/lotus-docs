@@ -70,7 +70,7 @@ Building Lotus from source allows you to strictly configure how Lotus runs and h
 4. Move the `lotus` binary to `/usr/local/bin`:
 
     ```shell
-    sudo mv lotus_{{< version >}}_linux_amd64/lotus /usr/local/bin/lotus
+    sudo mv lotus_v{{< version >}}_linux_amd64/lotus /usr/local/bin/lotus
     ```
 
 5. Set execute permissions on the binary:
