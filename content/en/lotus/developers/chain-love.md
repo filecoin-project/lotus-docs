@@ -82,7 +82,8 @@ export FULLNODE_API_INFO=<token>:<endpoint>
 export FULLNODE_API_INFO=https://filecoin.chain.love
 
 # For WebSocket connections (useful for lite nodes)
-export FULLNODE_API_INFO=wss://filecoin.chain.love/ws/rpc/v1
+# Do not append /rpc/v1 — Lotus adds the /rpc/<version> path itself.
+export FULLNODE_API_INFO=wss://filecoin.chain.love/ws
 ```
 
 You can test that it works with:
@@ -101,16 +102,25 @@ For lite node connections without authentication, you can use:
 FULLNODE_API_INFO=wss://filecoin.chain.love/ws ./lotus daemon --lite
 ```
 
-However, if you need to provide an API token, you must specify the API version in the URL to avoid routing issues. Use this format:
+However, if you need to provide an API token, pass it as a `token` query parameter. Do **not** append `/rpc/v1` to the URL — Lotus adds the `/rpc/<version>` path itself, so writing it yourself produces a duplicated `/rpc/v1/rpc/v1` path. Use this format:
 
 ```shell
-FULLNODE_API_INFO=wss://filecoim.chain.love/ws/rpc/v1?token=YOUR_TOKEN ./lotus daemon --lite
+FULLNODE_API_INFO=wss://filecoin.chain.love/ws?token=YOUR_TOKEN ./lotus daemon --lite
 ```
 
-This ensures the lite node sends requests to the correct endpoint instead of malformed URLs that won't work with the Glif infrastructure.
+Lotus builds the final RPC URL by appending the version path in `DialArgs` ([`cli/util/apiinfo.go`](https://github.com/filecoin-project/lotus/blob/master/cli/util/apiinfo.go)):
+
+```go
+func (a APIInfo) DialArgs(version string) (string, error) {
+	// ...
+	return url.JoinPath(a.Addr, "rpc", version)
+}
+```
+
+So `wss://filecoin.chain.love/ws?token=YOUR_TOKEN` is turned into `wss://filecoin.chain.love/ws/rpc/v1?token=YOUR_TOKEN`, keeping the version path and the query string in the right places.
 
 {{< alert icon="tip" >}}
-For Calibration network lite nodes, use `wss://calibration.filecoin.chain.love/ws/rpc/v1?token=YOUR_TOKEN` with the appropriate token.
+For Calibration network lite nodes, use `wss://calibration.filecoin.chain.love/ws?token=YOUR_TOKEN` with the appropriate token.
 {{< /alert >}}
 
 By default, all read operations are enabled, along with the MPoolPush method. This means that you will need to [sign messages yourself](https://docs.filecoin.io/reference/general#message-signing-tools) using your own externally-managed wallets, unless you are given a full node under your full control. We can however, use the CLI to send any read commands. The following are just examples:
