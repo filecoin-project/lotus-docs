@@ -1,6 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const purgecss = require('@fullhuman/postcss-purgecss');
-const whitelister = require('purgecss-whitelister');
+const styleSafelist = require('./style-safelist');
 
 module.exports = {
   plugins: [
@@ -20,10 +20,9 @@ module.exports = {
         'td',
         'h5',
         'alert-link',
-        ...whitelister([
+        ...styleSafelist([
           './assets/scss/components/_buttons.scss',
           './assets/scss/components/_code.scss',
-          './assets/scss/components/_diagrams.scss',
           './assets/scss/components/_syntax.scss',
           './assets/scss/components/_search.scss',
           './assets/scss/common/_dark.scss',
@@ -33,4 +32,4 @@ module.exports = {
       ],
     }),
   ],
-}
+};
