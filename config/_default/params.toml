@@ -70,13 +70,11 @@ repoHost = "GitHub"
 [options]
     lazySizes = true
     clipBoard = true
-    instantPage = false
     flexSearch = true
     darkMode = true
     bootStrapJs = true
     breadCrumb = false 
     highLight = true
-    kaTex = false
     progressBar = true
     collapsibleSidebar = true
     multilingualMode = true
