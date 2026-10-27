@@ -10,12 +10,12 @@ for (var i = 0; i < pre.length; ++ i)
     element.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy"></button>');
     
     if (element.nextElementSibling) {
-      if (element.nextElementSibling.localName == "pre") {
+      if (element.nextElementSibling.localName == 'pre') {
         element.style.marginBottom = 0;
       }
     }
   }
-  if (element.previousElementSibling.localName == "pre") {
+  if (element.previousElementSibling.localName == 'pre') {
     element.style.marginTop = 0;
     element.style.opacity = 0.5; 
   }

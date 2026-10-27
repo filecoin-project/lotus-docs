@@ -35,6 +35,11 @@ has no Extended release for Linux ARM64 or Windows ARM64, so these targets fail
 with an explicit error rather than installing a binary without SCSS support.
 The installer uses Node.js built-ins and adds no npm dependencies.
 
+Use Node.js 22.22.2 or later in the Node 22 LTS series (`nvm use` reads the
+checked-in `.nvmrc`). This matches the supported runtime for the CSS and lint tools.
+The `micromark-extension-math` override keeps markdownlint's transitive KaTeX
+parser on a patched release; KaTeX is not included in the website.
+
 If you want to build this site locally, run the following:
 
 1. Clone this repository:
