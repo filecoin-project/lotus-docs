@@ -6,8 +6,7 @@ for (var i = 0; i < pre.length; ++ i)
 {
   var element = pre[i];
 
-  var mermaid = element.getElementsByClassName('language-mermaid')[0];
-  if (mermaid == null && (element.previousElementSibling.localName != "pre")) {
+  if (element.previousElementSibling.localName != 'pre') {
     element.insertAdjacentHTML('afterbegin', '<button class="btn btn-copy"></button>');
     
     if (element.nextElementSibling) {

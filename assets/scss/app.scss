@@ -11,7 +11,6 @@
 // @import "highlight.js/scss/github-dark-dimmed";
 
 /** Import KaTeX */
-@import "katex/dist/katex";
 
 /** Import theme styles */
 @import "common/fonts";
@@ -25,7 +24,6 @@
 @import "components/comments";
 @import "components/forms";
 @import "components/images";
-@import "components/mermaid";
 @import "components/search";
 @import "components/tables";
 @import "components/tooltips";

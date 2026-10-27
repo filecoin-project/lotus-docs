@@ -84,12 +84,6 @@ target = "static"
 [[module.mounts]]
 source = "node_modules/flexsearch"
 target = "assets/js/vendor/flexsearch"
-[[module.mounts]]
-source = "node_modules/katex"
-target = "assets/js/vendor/katex"
-[[module.mounts]]
-source = "node_modules/mermaid"
-target = "assets/js/vendor/mermaid"
 # see https://github.com/h-enk/doks/discussions/281
 [[module.mounts]]
 source = "node_modules/bootstrap"

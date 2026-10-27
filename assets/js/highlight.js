@@ -19,7 +19,7 @@ hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('yaml', yaml);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {
+  document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block);
   });
 });
