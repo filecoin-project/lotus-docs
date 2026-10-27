@@ -30,8 +30,9 @@
     "env": "env",
     "precheck": "npm version",
     "check": "exec-bin node_modules/.bin/hugo/hugo version",
-    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
+    "postinstall": "node scripts/install-hugo.js",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "test:installer": "node --test scripts/install-hugo.test.js"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0",
@@ -43,7 +44,6 @@
     "exec-bin": "^1.0.0",
     "flexsearch": "^0.7.21",
     "highlight.js": "^11.2",
-    "hugo-installer": "^3.1",
     "lazysizes": "^5.3",
     "markdownlint-cli": "^0.31.1",
     "postcss": "^8.3",

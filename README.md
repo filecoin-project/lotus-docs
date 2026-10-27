@@ -22,6 +22,19 @@ Feel free to submit pull requests with any changes you'd like to see! If you're 
 
 ## Project set up
 
+The install step downloads **Hugo Extended 0.88.1** from the official Hugo
+GitHub release, verifies its checked-in SHA-256 checksum, and installs only the
+Hugo executable under `node_modules/.bin/hugo`. Keep this version pinned until
+theme compatibility has been checked; changing `otherDependencies.hugo` also
+requires adding the new official release checksums in `scripts/install-hugo.js`.
+
+The installer supports Linux x64, macOS x64/Apple Silicon, and Windows x64. It
+requires outbound HTTPS access to GitHub release assets and system `tar`
+(included with macOS, typical Linux environments, and Windows 10/11). Hugo 0.88.1
+has no Extended release for Linux ARM64 or Windows ARM64, so these targets fail
+with an explicit error rather than installing a binary without SCSS support.
+The installer uses Node.js built-ins and adds no npm dependencies.
+
 If you want to build this site locally, run the following:
 
 1. Clone this repository:
